@@ -10,10 +10,10 @@ class PermissionsTableSeeder extends Seeder
     public function run()
     {
         $ps = [
-            0 => ["permission", "Permission", "Permission menu that goes under ACL"],
-            1 => ["role", "Role", "Role menu that goes under ACL"],
-            2 => ["user", "User", "User menu that goes under ACL"],
-            3 => ["user_permission", "User_Permission", "User Permission menu that goes under ACL"],
+            0 => ["permission", "Permission", "Permission menu that goes under Access Control"],
+            1 => ["role", "Role", "Role menu that goes under Access Control"],
+            2 => ["user", "User", "User menu that goes under Access Control"],
+            3 => ["user_permission", "User_Permission", "User Permission menu that goes under Access Control"],
             4 => ["customer_create", "Customer_Create", "Customer Create menu that goes under Customer"],
             5 => ["customer_edit", "Customer_Edit", "Customer Edit Permission"],
             6 => ["customer_delete", "Customer_Delete", "Customer Delete Permission"],

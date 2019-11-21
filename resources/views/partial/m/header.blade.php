@@ -91,7 +91,7 @@
                 <div class="kt-header__topbar-user">
                     <span class="kt-header__topbar-welcome kt-hidden-mobile">Hi,</span>
                     <span class="kt-header__topbar-username kt-hidden-mobile">
-                        [[User Name]]
+                        {{Auth::user()->name}}
                     </span>
                     {{--   User image will go here      --}}
                     <img class="kt-hidden" alt="Pic" src="{{asset('m/assets/media/users/300_25.jpg')}}"/>

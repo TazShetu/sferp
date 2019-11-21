@@ -239,6 +239,17 @@
 
 <!--begin:: Vendor Plugins -->
 <script src="{{asset('m/assets/plugins/general/jquery/dist/jquery.js')}}" type="text/javascript"></script>
+{{--side menu active--}}
+<script>
+    $(function () {
+        $('.kt-menu__nav li a').filter(function () {
+            return this.href === location.href;
+        }).closest("li").addClass('kt-menu__item--active');
+        $('.kt-menu__nav li .kt-menu__submenu ul li a').filter(function () {
+            return this.href === location.href;
+        }).closest("li").addClass('kt-menu__item--active').parents("li").addClass('kt-menu__item--open kt-menu__item--here');
+    });
+</script>
 <script src="{{asset('m/assets/plugins/general/popper.js/dist/umd/popper.js')}}" type="text/javascript"></script>
 <script src="{{asset('m/assets/plugins/general/bootstrap/dist/js/bootstrap.min.js')}}" type="text/javascript"></script>
 <script src="{{asset('m/assets/plugins/general/js-cookie/src/js.cookie.js')}}" type="text/javascript"></script>
