@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Permission;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AclController extends Controller
 {
@@ -13,8 +15,14 @@ class AclController extends Controller
 
     public function permission()
     {
-        return view('permission.index');
+        if (Auth::user()->can('permission')) {
+            $permissions = Permission::paginate(10);
+            return view('permission.index', compact('permissions'));
+        } else {
+            abort(403);
+        }
     }
+
 
     public function role()
     {

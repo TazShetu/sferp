@@ -1,5 +1,12 @@
 @extends('layouts.m')
 @section('title', 'Customer List')
+@section('style')
+    <style>
+        /*.kt-user-card-v2 .kt-user-card-v2__details {*/
+        /*    line-height: 0;*/
+        /*}*/
+    </style>
+@endsection
 @section('content_head')
     <div class="kt-subheader   kt-grid__item" id="kt_subheader">
         <div class="kt-container  kt-container--fluid ">
@@ -10,7 +17,8 @@
                 <span class="kt-subheader__separator kt-subheader__separator--v"></span>
                 <div class="kt-subheader__group" id="kt_subheader_search">
 										<span class="kt-subheader__desc" id="kt_subheader_total">
-											450 Total </span>
+											{{$customers->total()}} Total
+                                        </span>
                     <form class="kt-margin-l-20" id="kt_subheader_search_form">
                         <div class="kt-input-icon kt-input-icon--right kt-subheader__search">
                             <input type="text" class="form-control" placeholder="Search..." id="generalSearch">
@@ -95,55 +103,175 @@
 @section('content')
     <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
 
-        <!--begin::Portlet-->
-        <div class="kt-portlet kt-portlet--mobile">
-            <div class="kt-portlet__body kt-portlet__body--fit">
-
-                <!--begin: Datatable -->
-                <div class="kt-datatable" id="kt_apps_user_list_datatable">
-                    {{--     Js is pushing the table here and change the class of this div            --}}
-
-
-                </div>
-                <!--end: Datatable -->
+        @if(session('Success'))
+            <div class="alert alert-success text-center">
+                {{session('Success')}}
             </div>
-        </div>
+        {{--        @elseif(session('Cannotdelete'))--}}
+        {{--            <div class="alert alert-warning text-center">--}}
+        {{--                {{session('Cannotdelete')}}--}}
+        {{--            </div>--}}
+    @endif
 
-        <!--end::Portlet-->
+    <!--begin::Portlet-->
+        <div class="kt-portlet kt-portlet--mobile">
+            <div class="kt-portlet__head kt-portlet__head--lg">
+                <div class="kt-portlet__head-label">
+                    <span class="kt-portlet__head-icon">
+                        <i class="kt-font-brand flaticon2-line-chart"></i>
+                    </span>
+                    <h3 class="kt-portlet__head-title">
+                        All Customers
+                    </h3>
+                </div>
+            </div>
+            <div class="kt-portlet__body">
+                <!--begin: Datatable -->
+                <div class="kt-datatable kt-datatable--default kt-datatable--brand kt-datatable--loaded"
+                     id="kt_apps_user_list_datatable" style="">
+                    <table class="kt-datatable__table" style="display: block;">
+                        <thead class="kt-datatable__head">
+                        <tr class="kt-datatable__row" style="left: 0px;">
+                            <th data-field="RecordID"
+                                class="kt-datatable__cell--center kt-datatable__cell kt-datatable__cell--check"><span
+                                        style="width: 20px;"><label
+                                            class="kt-checkbox kt-checkbox--single kt-checkbox--all kt-checkbox--solid"><input
+                                                type="checkbox">&nbsp;<span></span></label></span></th>
+                            <th data-field="AgentName" class="kt-datatable__cell kt-datatable__cell--sort"><span
+                                        style="width: 200px;">User</span></th>
+                            <th data-field="Country" class="kt-datatable__cell kt-datatable__cell--sort"><span
+                                        style="width: 214px;">Company</span></th>
+                            <th data-field="ShipDate" class="kt-datatable__cell kt-datatable__cell--sort"><span
+                                        style="width: 214px;">Business Area</span></th>
+                            <th data-field="ShipName" data-autohide-disabled="false"
+                                class="kt-datatable__cell kt-datatable__cell--sort"><span
+                                        style="width: 152px;">Business Telephone</span></th>
+                            <th data-field="Status" class="kt-datatable__cell kt-datatable__cell--sort"><span
+                                        style="width: 200px;">Business Email</span></th>
+                            <th data-field="Type" data-autohide-disabled="false"
+                                class="kt-datatable__cell kt-datatable__cell--sort"><span
+                                        style="width: 110px;">Action</span></th>
+                        </tr>
+                        </thead>
+                        <tbody style="" class="kt-datatable__body">
+                        @foreach($customers as $i => $customer)
 
-        <!--begin::Modal-->
-        <div class="modal fade" id="kt_datatable_records_fetch_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Selected Records</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true"></span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="kt-scroll" data-scroll="true" data-height="200">
-                            <ul id="kt_apps_user_fetch_records_selected"></ul>
+                            <tr data-row="0" class="kt-datatable__row" style="left: 0px;">
+                                <td class="kt-datatable__cell--center kt-datatable__cell kt-datatable__cell--check"
+                                    data-field="RecordID"><span style="width: 20px;"><label
+                                                class="kt-checkbox kt-checkbox--single kt-checkbox--solid"><input
+                                                    type="checkbox" value="1">&nbsp;<span></span></label></span></td>
+                                <td data-field="AgentName" class="kt-datatable__cell">
+                                <span style="width: 200px;">
+                                    <div class="kt-user-card-v2">
+                                        <div class="kt-user-card-v2__pic">
+                                            <img alt="photo" src="{{asset('m/assets/media/users/100_6.jpg')}}">
+{{--                                            <div class="kt-badge kt-badge--xl kt-badge--danger">N</div>--}}
+                                        </div>
+                                        <div class="kt-user-card-v2__details">
+                                            <a class="kt-user-card-v2__name" href="#">{{$customer->name}} </a>
+                                            <span class="kt-user-card-v2__desc">{{$customer->type}} </span>
+                                        </div>
+                                    </div>
+                                </span>
+                                </td>
+                                <td data-field="Country" class="kt-datatable__cell"><span
+                                            style="width: 214px;">
+                                    {{$customer->company_name}}
+                                    </span></td>
+                                <td data-field="ShipDate" class="kt-datatable__cell"><span
+                                            style="width: 214px;">
+                                        {{$customer->business_area}}
+                                    </span></td>
+                                <td data-field="ShipName" data-autohide-disabled="false" class="kt-datatable__cell">
+                                <span style="width: 152px;">
+                                    {{$customer->business_telephone}}
+                                </span>
+                                </td>
+                                <td data-field="Status" class="kt-datatable__cell">
+                                <span style="width: 200px;">
+                                      {{$customer->business_email}}
+                                </span>
+                                </td>
+                                <td data-field="Type" data-autohide-disabled="false" class="kt-datatable__cell">
+                                <span style="width: 110px;">
+                                         @permission('customer_edit')
+                                    <a href="#" title="Edit details" class="btn btn-sm btn-clean btn-icon btn-icon-md">
+                                        [[<i class="la la-edit"></i>]]
+                                    </a>
+                                    @endpermission
+                                    @permission('customer_delete')
+                                    <a title="Delete" class="btn btn-sm btn-clean btn-icon btn-icon-md">
+                                        [[<i class="la la-trash"></i>]]
+                                    </a>
+                                    @endpermission
+                                </span>
+                                </td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
+                    <div class="kt-datatable__pager kt-datatable--paging-loaded">
+                        {{$customers->links()}}
+                        <div class="kt-datatable__pager-info">
+                            <span class="kt-datatable__pager-detail">Showing {{$customers->firstItem()}} - {{$customers->lastItem()}} of {{$customers->total()}}</span>
                         </div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-brand" data-dismiss="modal">Close</button>
-                    </div>
+                </div>
+
+                <!--end: Datatable -->
+
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">First</th>
+                        <th scope="col">Last</th>
+                        <th scope="col">Handle</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td>@mdo</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">2</th>
+                        <td>Jacob</td>
+                        <td>Thornton</td>
+                        <td>@fat</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">3</th>
+                        <td colspan="2">Larry the Bird</td>
+                        <td>@twitter</td>
+                    </tr>
+                    </tbody>
+                </table>
+
+
                 </div>
             </div>
+
+
+            <!--end::Portlet-->
+
+            <!--begin::Modal-->
+
+            <!--end::Modal-->
         </div>
 
-        <!--end::Modal-->
-    </div>
+    @endsection
+    {{--@section('stickyToolbar')    --}}
+    {{--@endsection--}}
+    @section('script')
+        <!--begin::Page Vendors(used by this page) -->
 
-@endsection
-{{--@section('stickyToolbar')    --}}
-{{--@endsection--}}
-@section('script')
-    <!--begin::Page Vendors(used by this page) -->
-    <!--end::Page Vendors -->
+            <!--end::Page Vendors -->
 
-    <!--begin::Page Scripts(used by this page) -->
-    <script src="{{asset('m/assets/js/pages/custom/user/list-datatable.js')}}" type="text/javascript"></script>
-    <!--end::Page Scripts -->
+            <!--begin::Page Scripts(used by this page) -->
+
+            <!--end::Page Scripts -->
 @endsection

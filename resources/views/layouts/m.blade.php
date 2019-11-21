@@ -242,12 +242,24 @@
 {{--side menu active--}}
 <script>
     $(function () {
+        let url = location.href;
+        if (url.includes('?')) {
+            // only take the url before ?
+            var check = url.substr(0, url.indexOf('?'));
+        }
+        else {
+            var check = url;
+        }
         $('.kt-menu__nav li a').filter(function () {
-            return this.href === location.href;
+            return this.href === check;
         }).closest("li").addClass('kt-menu__item--active');
         $('.kt-menu__nav li .kt-menu__submenu ul li a').filter(function () {
-            return this.href === location.href;
+            return this.href === check;
         }).closest("li").addClass('kt-menu__item--active').parents("li").addClass('kt-menu__item--open kt-menu__item--here');
+
+        $('.cancel').on('click', function () {
+            $(this).attr('href', $(this).attr('data-link'));
+        });
     });
 </script>
 <script src="{{asset('m/assets/plugins/general/popper.js/dist/umd/popper.js')}}" type="text/javascript"></script>

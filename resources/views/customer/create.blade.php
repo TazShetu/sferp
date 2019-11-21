@@ -7,6 +7,16 @@
                 <h3 class="kt-subheader__title">
                     Create Customer
                 </h3>
+                <span class="kt-subheader__separator kt-subheader__separator--v"></span>
+                <div class="kt-subheader__breadcrumbs">
+                    <a href="{{route('home')}}" class="kt-subheader__breadcrumbs-home"><i class="flaticon2-shelter"></i></a>
+                    <span class="kt-subheader__breadcrumbs-separator"></span>
+                    <a href="javascript:void (0)" class="kt-subheader__breadcrumbs-link">Customer</a>
+                    <span class="kt-subheader__breadcrumbs-separator"></span>
+                    <a href="{{route('customer.create')}}"
+                       class="kt-subheader__breadcrumbs-link kt-subheader__breadcrumbs-link--active"
+                       style="padding-right: 1rem;">Create</a>
+                </div>
             </div>
             <div class="kt-subheader__toolbar"></div>
         </div>
@@ -17,33 +27,34 @@
     <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
         <div class="kt-portlet kt-portlet--tabs">
             <div class="kt-portlet__body">
-                <form action="" method="">
-                    <div class="tab-content">
-                        <div class="tab-pane active" id="kt_user_edit_tab_1" role="tabpanel">
-                            <div class="kt-form kt-form--label-right">
-                                <div class="kt-form__body">
-                                    <div class="kt-section kt-section--first">
+                <div class="tab-content">
+                    <div class="tab-pane active" id="kt_user_edit_tab_1" role="tabpanel">
+                        <div class="kt-form kt-form--label-right">
+                            <div class="kt-form__body">
+                                <div class="kt-section kt-section--first">
+                                    <form action="{{route('customer.store')}}" method="post"
+                                          enctype="multipart/form-data">
+                                        @csrf
                                         <div class="kt-section__body">
                                             <div class="form-group row">
                                                 <label class="col-xl-3 col-lg-3 col-form-label">Avatar</label>
                                                 <div class="col-lg-9 col-xl-6">
-                                                    <div class="kt-avatar kt-avatar--outline kt-avatar--circle-"
-                                                         id="kt_user_edit_avatar">
+
+                                                    <div class="kt-avatar kt-avatar--outline" id="kt_user_avatar_1">
                                                         <div class="kt-avatar__holder"
-                                                             style="background-image: url('{{asset('m/assets/media/users/300_20.jpg')}}');"></div>
-                                                        <label class="kt-avatar__upload"
-                                                               data-toggle="kt-tooltip" title=""
-                                                               data-original-title="Change avatar">
+                                                             style="background-image: url({{asset('avatar.png')}})"></div>
+                                                        <label class="kt-avatar__upload" data-toggle="kt-tooltip"
+                                                               title="" data-original-title="Change avatar">
                                                             <i class="fa fa-pen"></i>
-                                                            <input type="file" name="profile_avatar"
+                                                            <input type="file" name="avatar"
                                                                    accept=".png, .jpg, .jpeg">
                                                         </label>
-                                                        <span class="kt-avatar__cancel"
-                                                              data-toggle="kt-tooltip" title=""
-                                                              data-original-title="Cancel avatar">
-																				<i class="fa fa-times"></i>
-																			</span>
+                                                        <span class="kt-avatar__cancel" data-toggle="kt-tooltip"
+                                                              title="" data-original-title="Cancel avatar">
+														<i class="fa fa-times"></i>
+													</span>
                                                     </div>
+                                                    <span class="form-text text-muted">Allowed file types: png, jpg, jpeg.</span>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
@@ -51,14 +62,24 @@
                                                     Name
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">
-                                                    <input class="form-control" type="text" value="Nick">
+                                                    <input class="form-control {{$errors->has('name') ? 'is-invalid' : ''}}"
+                                                           type="text" placeholder="Full Name" name="name" required
+                                                           value="{{old('name')}}">
+                                                    @if($errors->has('name'))
+                                                        <span class="invalid-feedback">{{$errors->first('name')}}</span>
+                                                    @endif
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <label class="col-xl-3 col-lg-3 col-form-label">
                                                     Date Of Birth</label>
                                                 <div class="col-lg-9 col-xl-6">
-                                                    <input class="form-control" type="date" value="2011-08-19">
+                                                    <input class="form-control {{$errors->has('dateOfBirth') ? 'is-invalid' : ''}}"
+                                                           type="date" name="dateOfBirth" required
+                                                           value="{{old('dateOfBirth')}}">
+                                                    @if($errors->has('dateOfBirth'))
+                                                        <span class="invalid-feedback">{{$errors->first('dateOfBirth')}}</span>
+                                                    @endif
                                                 </div>
                                             </div>
                                             <div class="form-group row">
@@ -66,8 +87,12 @@
                                                     Company Name
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">
-                                                    <input class="form-control" type="text"
-                                                           value="Loop Inc.">
+                                                    <input class="form-control {{$errors->has('companyName') ? 'is-invalid' : ''}}"
+                                                           type="text" placeholder="Company Name" name="companyName"
+                                                           required value="{{old('companyName')}}">
+                                                    @if($errors->has('companyName'))
+                                                        <span class="invalid-feedback">{{$errors->first('companyName')}}</span>
+                                                    @endif
                                                 </div>
                                             </div>
                                             <div class="form-group row">
@@ -75,8 +100,12 @@
                                                     NID Number
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">
-                                                    <input class="form-control" type="text"
-                                                           value="Loop Inc.">
+                                                    <input class="form-control {{$errors->has('nidNumber') ? 'is-invalid' : ''}}"
+                                                           type="text" placeholder="NID Number" name="nidNumber"
+                                                           required value="{{old('nidNumber')}}">
+                                                    @if($errors->has('nidNumber'))
+                                                        <span class="invalid-feedback">{{$errors->first('nidNumber')}}</span>
+                                                    @endif
                                                 </div>
                                             </div>
                                             <div class="form-group row">
@@ -84,7 +113,8 @@
                                                 <div class="col-lg-9 col-xl-6">
                                                     <div></div>
                                                     <div class="custom-file">
-                                                        <input type="file" class="custom-file-input" id="customFile">
+                                                        <input type="file" class="custom-file-input" id="customFile"
+                                                               name="nidFile">
                                                         <label class="custom-file-label" style="text-align: left;"
                                                                for="customFile">Choose file</label>
                                                     </div>
@@ -96,8 +126,13 @@
                                                     Business Address
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">
-                                                    <input class="form-control" type="text"
-                                                           value="House 1, Road 1, Dhanmondi, Dhaka">
+                                                    <input class="form-control {{$errors->has('businessAddress') ? 'is-invalid' : ''}}"
+                                                           type="text" placeholder="Business Address"
+                                                           name="businessAddress" required
+                                                           value="{{old('businessAddress')}}">
+                                                    @if($errors->has('businessAddress'))
+                                                        <span class="invalid-feedback">{{$errors->first('businessAddress')}}</span>
+                                                    @endif
                                                 </div>
                                             </div>
                                             <div class="form-group row">
@@ -105,8 +140,12 @@
                                                     Business Area/Zone
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">
-                                                    <input class="form-control" type="text"
-                                                           value=Mirpur Dhaka">
+                                                    <input class="form-control {{$errors->has('businessArea') ? 'is-invalid' : ''}}"
+                                                           type="text" placeholder="Business Area" name="businessArea"
+                                                           required value="{{old('businessArea')}}">
+                                                    @if($errors->has('businessArea'))
+                                                        <span class="invalid-feedback">{{$errors->first('businessArea')}}</span>
+                                                    @endif
                                                 </div>
                                             </div>
                                             <div class="form-group row">
@@ -117,9 +156,13 @@
                                                         <div class="input-group-prepend"><span
                                                                     class="input-group-text"><i
                                                                         class="la la-phone"></i></span></div>
-                                                        <input type="text" class="form-control"
-                                                               value="+35278953712" placeholder="Phone"
-                                                               aria-describedby="basic-addon1">
+                                                        <input class="form-control {{$errors->has('businessTelephone') ? 'is-invalid' : ''}}"
+                                                               type="text" placeholder="Business Telephone"
+                                                               name="businessTelephone" required
+                                                               value="{{old('businessTelephone')}}">
+                                                        @if($errors->has('businessTelephone'))
+                                                            <span class="invalid-feedback">{{$errors->first('businessTelephone')}}</span>
+                                                        @endif
                                                     </div>
                                                 </div>
                                             </div>
@@ -131,9 +174,13 @@
                                                         <div class="input-group-prepend"><span
                                                                     class="input-group-text"><i
                                                                         class="la la-phone"></i></span></div>
-                                                        <input type="text" class="form-control"
-                                                               value="+35278953712" placeholder="Phone"
-                                                               aria-describedby="basic-addon1">
+                                                        <input class="form-control {{$errors->has('businessTelephone2') ? 'is-invalid' : ''}}"
+                                                               type="text" placeholder="Business Telephone 2"
+                                                               name="businessTelephone2"
+                                                               value="{{old('businessTelephone2')}}">
+                                                        @if($errors->has('businessTelephone2'))
+                                                            <span class="invalid-feedback">{{$errors->first('businessTelephone2')}}</span>
+                                                        @endif
                                                     </div>
                                                 </div>
                                             </div>
@@ -146,10 +193,13 @@
                                                         <div class="input-group-prepend"><span
                                                                     class="input-group-text"><i
                                                                         class="la la-at"></i></span></div>
-                                                        <input type="text" class="form-control"
-                                                               value="nick.bold@loop.com"
-                                                               placeholder="Email"
-                                                               aria-describedby="basic-addon1">
+                                                        <input class="form-control {{$errors->has('businessEmail') ? 'is-invalid' : ''}}"
+                                                               type="email" placeholder="Business Email"
+                                                               name="businessEmail" required
+                                                               value="{{old('businessEmail')}}">
+                                                        @if($errors->has('businessEmail'))
+                                                            <span class="invalid-feedback">{{$errors->first('businessEmail')}}</span>
+                                                        @endif
                                                     </div>
                                                 </div>
                                             </div>
@@ -162,10 +212,12 @@
                                                         <div class="input-group-prepend"><span
                                                                     class="input-group-text"><i
                                                                         class="la la-at"></i></span></div>
-                                                        <input type="text" class="form-control"
-                                                               value="nick.bold@loop.com"
-                                                               placeholder="Email"
-                                                               aria-describedby="basic-addon1">
+                                                        <input class="form-control {{$errors->has('businessEmail2') ? 'is-invalid' : ''}}"
+                                                               type="email" placeholder="Business Alternative Email"
+                                                               name="businessEmail2" value="{{old('businessEmail2')}}">
+                                                        @if($errors->has('businessEmail2'))
+                                                            <span class="invalid-feedback">{{$errors->first('businessEmail2')}}</span>
+                                                        @endif
                                                     </div>
                                                 </div>
                                             </div>
@@ -174,21 +226,27 @@
                                                     Customer Type
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">
-                                                    <select class="form-control">
+                                                    <select class="form-control" name="customerType" required>
                                                         <option selected disabled hidden>Choose...</option>
-                                                        <option value="id">Dealer</option>
-                                                        <option value="msa">Sub Dealer</option>
-                                                        <option value="ca">Individual</option>
+                                                        <option value="Dealer">Dealer</option>
+                                                        <option value="Sub Dealer">Sub Dealer</option>
+                                                        <option value="Individual">Individual</option>
                                                     </select>
+                                                    @if($errors->has('customerType'))
+                                                        <span class="invalid-feedback">{{$errors->first('customerType')}}</span>
+                                                    @endif
                                                 </div>
                                             </div>
                                             <div class="form-group form-group-last row">
-                                                <label class="col-xl-3 col-lg-3 col-form-label">Company
-                                                    Site</label>
+                                                <label class="col-xl-3 col-lg-3 col-form-label">Company Site</label>
                                                 <div class="col-lg-9 col-xl-6">
                                                     <div class="input-group">
-                                                        <input type="text" class="form-control"
-                                                               placeholder="Username" value="loop">
+                                                        <input class="form-control {{$errors->has('companySite') ? 'is-invalid' : ''}}"
+                                                               type="text" placeholder="Company Site" name="companySite"
+                                                               required value="{{old('companySite')}}">
+                                                        @if($errors->has('companySite'))
+                                                            <span class="invalid-feedback">{{$errors->first('companySite')}}</span>
+                                                        @endif
                                                         <div class="input-group-append"><span
                                                                     class="input-group-text">.com</span></div>
                                                     </div>
@@ -199,131 +257,21 @@
                                                 <div class="row">
                                                     <div class="col-xl-3"></div>
                                                     <div class="col-lg-9 col-xl-6">
-                                                        <a href="#" class="btn btn-label-brand btn-bold">Save
-                                                            changes</a>
-                                                        <a href="#" class="btn btn-clean btn-bold">Cancel</a>
+                                                        <button type="submit" class="btn btn-label-brand btn-bold">
+                                                            Create
+                                                        </button>
+                                                        <a href="javascript:void (0)" data-link="{{route('cancel')}}"
+                                                           class="cancel btn btn-label-danger btn-bold float-right">Cancel</a>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
-                        <div class="tab-pane" id="kt_user_edit_tab_2" role="tabpanel">
-                            <div class="kt-form kt-form--label-right">
-                                <div class="kt-form__body">
-                                    <div class="kt-section kt-section--first">
-                                        <div class="kt-section__body">
-                                            <div class="row">
-                                                <label class="col-xl-3"></label>
-                                                <div class="col-lg-9 col-xl-6">
-                                                    <h3 class="kt-section__title kt-section__title-sm">
-                                                        Contact Person:</h3>
-                                                </div>
-                                            </div>
-                                            <div id="kt_repeater_1">
-                                                <div class="form-group form-group-last row" id="kt_repeater_1">
-                                                    <label class="col-lg-2 col-form-label">Contacts:</label>
-                                                    <div data-repeater-list="" class="col-lg-10">
-                                                        <div data-repeater-item
-                                                             class="form-group row align-items-center">
-                                                            <div class="col-md-3">
-                                                                <div class="kt-form__group--inline">
-                                                                    <div class="kt-form__label">
-                                                                        <label>Contact Person Name:</label>
-                                                                    </div>
-                                                                    <div class="kt-form__control">
-                                                                        <input type="text" class="form-control"
-                                                                               placeholder="Enter full name">
-                                                                    </div>
-                                                                </div>
-                                                                <div class="d-md-none kt-margin-b-10"></div>
-                                                            </div>
-                                                            <div class="col-md-3">
-                                                                <div class="kt-form__group--inline">
-                                                                    <div class="kt-form__label">
-                                                                        <label>Contact Person Designation:</label>
-                                                                    </div>
-                                                                    <div class="kt-form__control">
-                                                                        <input type="text" class="form-control"
-                                                                               placeholder="Enter Designation">
-                                                                    </div>
-                                                                </div>
-                                                                <div class="d-md-none kt-margin-b-10"></div>
-                                                            </div>
-                                                            <div class="col-md-3">
-                                                                <div class="kt-form__group--inline">
-                                                                    <div class="kt-form__label">
-                                                                        <label class="kt-label m-label--single">Contact
-                                                                            Person Number:</label>
-                                                                    </div>
-                                                                    <div class="kt-form__control">
-                                                                        <input type="text" class="form-control"
-                                                                               placeholder="Enter contact number">
-                                                                    </div>
-                                                                </div>
-                                                                <div class="d-md-none kt-margin-b-10"></div>
-                                                                <div class="col-md-3">
-                                                                    <a href="javascript:;" data-repeater-delete=""
-                                                                       class="btn-sm btn btn-label-danger btn-bold"
-                                                                       style="margin-top: 24px;">
-                                                                        <i class="la la-trash-o"></i>
-                                                                        Delete
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group form-group-last row">
-                                                        <label class="col-lg-2 col-form-label"></label>
-                                                        <div class="col-lg-4">
-                                                            <a href="javascript:;" data-repeater-create=""
-                                                               class="btn btn-bold btn-sm btn-label-brand">
-                                                                <i class="la la-plus"></i> Add
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="kt-separator kt-separator--space-lg kt-separator--fit kt-separator--border-solid"></div>
-                                                <div class="kt-form__actions">
-                                                    <div class="row">
-                                                        <div class="col-xl-3"></div>
-                                                        <div class="col-lg-9 col-xl-6">
-                                                            <a href="#" class="btn btn-label-brand btn-bold">Save
-                                                                changes</a>
-                                                            <a href="#" class="btn btn-clean btn-bold">Cancel</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="tab-pane" id="kt_user_edit_tab_3" role="tabpanel">
-                                <div class="kt-form kt-form--label-right">
-                                    <div class="kt-form__body">
-                                        <div class="kt-section kt-section--first">
-                                            <div class="kt-section__body">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="kt-separator kt-separator--space-lg kt-separator--fit kt-separator--border-solid"></div>
-                                    <div class="kt-form__actions">
-                                        <div class="row">
-                                            <div class="col-xl-3"></div>
-                                            <div class="col-lg-9 col-xl-6">
-                                                <a href="#" class="btn btn-label-brand btn-bold">Save
-                                                    changes</a>
-                                                <a href="#" class="btn btn-clean btn-bold">Cancel</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                </form>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -333,6 +281,9 @@
 {{--@endsection--}}
 @section('script')
     <!--begin::Page Vendors(used by this page) -->
+
+    <script src="{{asset('m/assets/js/pages/crud/file-upload/ktavatar.js')}}" type="text/javascript"></script>
+
     <!--end::Page Vendors -->
 
     <!--begin::Page Scripts(used by this page) -->

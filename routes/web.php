@@ -4,7 +4,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
-
+Route::get('/cancel', function () {
+    return redirect()->back();
+})->name('cancel');
 
 
 Auth::routes();
@@ -19,7 +21,9 @@ Route::get('/role', 'AclController@role')->name('role');
 Route::get('/user', 'HomeController@user')->name('users');
 Route::get('/user-permission', 'AclController@userPermission')->name('user.permission');
 
-Route::get('/customer-list', 'CustomerController@list')->name('customer.list');
 Route::get('/customer-create', 'CustomerController@create')->name('customer.create');
+Route::post('/customer-store', 'CustomerController@store')->name('customer.store');
+
+Route::get('/customer-list', 'CustomerController@list')->name('customer.list');
 Route::get('/customer-edit', 'CustomerController@edit')->name('customer.edit');
 Route::get('/customer-profile', 'CustomerController@show')->name('customer.profile');
