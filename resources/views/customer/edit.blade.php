@@ -798,12 +798,12 @@
     <script src="{{asset('m/assets/js/pages/custom/user/edit-user.js')}}" type="text/javascript"></script>
     <script src="{{asset('m/assets/js/pages/crud/forms/widgets/form-repeater.js')}}" type="text/javascript"></script>
     <script>
-        var map = new GMaps({
+        var page_map = new GMaps({
             div: '#kt_gmap_3',
             lat: 23.724728,
             lng: 90.410900,
         });
-        map.addMarker({
+        page_map.addMarker({
             lat: 23.724728,
             lng: 90.410900,
             title: 'Office',
@@ -824,8 +824,9 @@
         //         content: '<span style="color:#000">HTML Content!</span>'
         //     }
         // });
-        map.setZoom(5);
+        page_map.setZoom(5);
         $('#kt_gmap_3').height('500px').width('auto');
+        
     </script>
 {{--    <script src="{{asset('m/assets/js/pages/crud/file-upload/uppy.js')}}" type="text/javascript"></script>--}}
 

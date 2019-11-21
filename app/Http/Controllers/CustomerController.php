@@ -89,12 +89,12 @@ class CustomerController extends Controller
     }
 
 
-    public function edit(Customer $customer)
+    public function edit($cid)
     {
         return view('customer.edit');
     }
 
-    public function show(Customer $customer)
+    public function show($cid)
     {
         return view('customer.profile');
     }

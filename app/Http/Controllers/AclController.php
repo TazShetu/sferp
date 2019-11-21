@@ -16,7 +16,7 @@ class AclController extends Controller
     public function permission()
     {
         if (Auth::user()->can('permission')) {
-            $permissions = Permission::paginate(10);
+            $permissions = Permission::paginate(5);
             return view('permission.index', compact('permissions'));
         } else {
             abort(403);
