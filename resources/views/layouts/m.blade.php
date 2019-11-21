@@ -256,6 +256,10 @@
         $('.kt-menu__nav li .kt-menu__submenu ul li a').filter(function () {
             return this.href === check;
         }).closest("li").addClass('kt-menu__item--active').parents("li").addClass('kt-menu__item--open kt-menu__item--here');
+
+        $('.cancel').on('click', function () {
+            $(this).attr('href', $(this).attr('data-link'));
+        });
     });
 </script>
 <script src="{{asset('m/assets/plugins/general/popper.js/dist/umd/popper.js')}}" type="text/javascript"></script>

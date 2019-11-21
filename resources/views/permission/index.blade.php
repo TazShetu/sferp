@@ -18,9 +18,7 @@
                        style="padding-right: 1rem;">Permission</a>
                 </div>
             </div>
-            <div class="kt-subheader__toolbar">
-
-            </div>
+            <div class="kt-subheader__toolbar"></div>
         </div>
     </div>
 @endsection

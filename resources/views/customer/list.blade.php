@@ -95,7 +95,17 @@
 @section('content')
     <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
 
-        <!--begin::Portlet-->
+        @if(session('Success'))
+            <div class="alert alert-success text-center">
+                {{session('Success')}}
+            </div>
+        {{--        @elseif(session('Cannotdelete'))--}}
+        {{--            <div class="alert alert-warning text-center">--}}
+        {{--                {{session('Cannotdelete')}}--}}
+        {{--            </div>--}}
+    @endif
+
+    <!--begin::Portlet-->
         <div class="kt-portlet kt-portlet--mobile">
             <div class="kt-portlet__body kt-portlet__body--fit">
 
@@ -112,7 +122,8 @@
         <!--end::Portlet-->
 
         <!--begin::Modal-->
-        <div class="modal fade" id="kt_datatable_records_fetch_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="kt_datatable_records_fetch_modal" tabindex="-1" role="dialog"
+             aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -141,9 +152,10 @@
 {{--@endsection--}}
 @section('script')
     <!--begin::Page Vendors(used by this page) -->
+
     <!--end::Page Vendors -->
 
     <!--begin::Page Scripts(used by this page) -->
-    <script src="{{asset('m/assets/js/pages/custom/user/list-datatable.js')}}" type="text/javascript"></script>
+
     <!--end::Page Scripts -->
 @endsection
