@@ -118,7 +118,7 @@
                             @csrf
                         </form>
                         <a href="#" target="_blank"
-                           class="btn btn-clean btn-sm btn-bold">[[Profile Setting]]</a>
+                           class="btn btn-label btn-label-success btn-sm btn-bold">[[Profile Setting]]</a>
                     </div>
                 </div>
 

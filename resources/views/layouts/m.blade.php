@@ -242,11 +242,19 @@
 {{--side menu active--}}
 <script>
     $(function () {
+        let url = location.href;
+        if (url.includes('?')) {
+            // only take the url before ?
+            var check = url.substr(0, url.indexOf('?'));
+        }
+        else {
+            var check = url;
+        }
         $('.kt-menu__nav li a').filter(function () {
-            return this.href === location.href;
+            return this.href === check;
         }).closest("li").addClass('kt-menu__item--active');
         $('.kt-menu__nav li .kt-menu__submenu ul li a').filter(function () {
-            return this.href === location.href;
+            return this.href === check;
         }).closest("li").addClass('kt-menu__item--active').parents("li").addClass('kt-menu__item--open kt-menu__item--here');
     });
 </script>

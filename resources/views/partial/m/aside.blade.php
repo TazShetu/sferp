@@ -89,7 +89,7 @@
                             <li class="kt-menu__item " aria-haspopup="true">
                                 <a href="{{route('permission')}}" class="kt-menu__link ">
                                     <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>
-                                    <span class="kt-menu__link-text">[[Permissions]]</span>
+                                    <span class="kt-menu__link-text">Permissions</span>
                                 </a>
                             </li>
                             <li class="kt-menu__item " aria-haspopup="true">
@@ -117,7 +117,7 @@
                     data-ktmenu-submenu-toggle="hover">
                     <a href="javascript:;" class="kt-menu__link kt-menu__toggle">
                         <span class="kt-menu__link-icon">
-                            <i class="flaticon-map"></i>
+                            <i class="flaticon2-avatar"></i>
                         </span>
                         <span class="kt-menu__link-text">Customer</span>
                         <i class="kt-menu__ver-arrow la la-angle-right"></i>
