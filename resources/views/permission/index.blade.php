@@ -30,6 +30,7 @@
                 You can Only Edit Permission's description, not the actual permission.
             </div>
         </div>
+        <!--begin::Portlet-->
         <div class="kt-portlet kt-portlet--mobile">
             <div class="kt-portlet__head kt-portlet__head--lg">
                 <div class="kt-portlet__head-label">
@@ -42,10 +43,7 @@
                 </div>
             </div>
             <div class="kt-portlet__body">
-
                 <!--begin: Datatable -->
-
-
                 <div class="kt-datatable kt-datatable--default kt-datatable--brand kt-datatable--loaded" id="local_data"
                      style="">
                     <table class="kt-datatable__table" style="display: block;">

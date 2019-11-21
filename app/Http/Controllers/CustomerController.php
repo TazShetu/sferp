@@ -16,7 +16,12 @@ class CustomerController extends Controller
 
     public function list()
     {
-        return view('customer.list');
+        if (Auth::user()->can('customer_create') || Auth::user()->can('customer_list')) {
+            $customers = Customer::paginate(10);
+            return view('customer.list', compact('customers'));
+        } else {
+            abort(403);
+        }
     }
 
     public function create()
