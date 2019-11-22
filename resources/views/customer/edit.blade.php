@@ -5,12 +5,17 @@
         <div class="kt-container  kt-container--fluid ">
             <div class="kt-subheader__main">
                 <h3 class="kt-subheader__title">
-                    Edit User
+                    Edit Customer
                 </h3>
                 <span class="kt-subheader__separator kt-subheader__separator--v"></span>
-                <div class="kt-subheader__group" id="kt_subheader_search">
-										<span class="kt-subheader__desc" id="kt_subheader_total">
-											Alex Stone </span>
+                <div class="kt-subheader__breadcrumbs">
+                    <a href="{{route('home')}}" class="kt-subheader__breadcrumbs-home"><i class="flaticon2-shelter"></i></a>
+                    <span class="kt-subheader__breadcrumbs-separator"></span>
+                    <a href="{{route('customer.list')}}" class="kt-subheader__breadcrumbs-link">Customer</a>
+                    <span class="kt-subheader__breadcrumbs-separator"></span>
+                    <a href="javascript:void (0)"
+                       class="kt-subheader__breadcrumbs-link kt-subheader__breadcrumbs-link--active"
+                       style="padding-right: 1rem;">Edit</a>
                 </div>
             </div>
             <div class="kt-subheader__toolbar"></div>

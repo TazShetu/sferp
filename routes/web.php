@@ -11,7 +11,7 @@ Route::get('/cancel', function () {
 
 Auth::routes();
 
-Route::get('/test', 'HomeController@test')->name('test');
+Route::get('/forbidden', 'HomeController@test')->name('test');
 
 
 Route::get('/home', 'HomeController@index')->name('home');

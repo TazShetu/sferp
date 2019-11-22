@@ -11,7 +11,7 @@
                 <div class="kt-subheader__breadcrumbs">
                     <a href="{{route('home')}}" class="kt-subheader__breadcrumbs-home"><i class="flaticon2-shelter"></i></a>
                     <span class="kt-subheader__breadcrumbs-separator"></span>
-                    <a href="javascript:void (0)" class="kt-subheader__breadcrumbs-link">Customer</a>
+                    <a href="{{route('customer.list')}}" class="kt-subheader__breadcrumbs-link">Customer</a>
                     <span class="kt-subheader__breadcrumbs-separator"></span>
                     <a href="{{route('customer.create')}}"
                        class="kt-subheader__breadcrumbs-link kt-subheader__breadcrumbs-link--active"

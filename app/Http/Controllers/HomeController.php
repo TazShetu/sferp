@@ -28,10 +28,7 @@ class HomeController extends Controller
 
     public function test()
     {
-        $u = User::find(2);
-        $u->attachRole(1);
-//        $u->attachPermission(1);
-        return "success";
+        return view('test');
     }
 
 

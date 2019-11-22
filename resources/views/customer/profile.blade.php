@@ -1,23 +1,21 @@
 @extends('layouts.m')
-@section('title', 'Customer Edit')
+@section('title', 'Customer Profile')
 @section('content_head')
     <div class="kt-subheader   kt-grid__item" id="kt_subheader">
         <div class="kt-container  kt-container--fluid ">
             <div class="kt-subheader__main">
                 <h3 class="kt-subheader__title">
-                    Profile 3 </h3>
-                <span class="kt-subheader__separator kt-hidden"></span>
+                    Customer Profile
+                </h3>
+                <span class="kt-subheader__separator kt-subheader__separator--v"></span>
                 <div class="kt-subheader__breadcrumbs">
-                    <a href="#" class="kt-subheader__breadcrumbs-home"><i class="flaticon2-shelter"></i></a>
+                    <a href="{{route('home')}}" class="kt-subheader__breadcrumbs-home"><i class="flaticon2-shelter"></i></a>
                     <span class="kt-subheader__breadcrumbs-separator"></span>
-                    <a href="" class="kt-subheader__breadcrumbs-link">
-                        Apps </a>
+                    <a href="{{route('customer.list')}}" class="kt-subheader__breadcrumbs-link">Customer</a>
                     <span class="kt-subheader__breadcrumbs-separator"></span>
-                    <a href="" class="kt-subheader__breadcrumbs-link">
-                        Users </a>
-                    <span class="kt-subheader__breadcrumbs-separator"></span>
-                    <a href="" class="kt-subheader__breadcrumbs-link">
-                        Profile 3 </a>
+                    <a href="javascript:void (0)"
+                       class="kt-subheader__breadcrumbs-link kt-subheader__breadcrumbs-link--active"
+                       style="padding-right: 1rem;">Profile</a>
                 </div>
             </div>
             <div class="kt-subheader__toolbar">
@@ -133,7 +131,6 @@
                 <!--end:: Widgets/Applications/User/Profile3-->
             </div>
         </div>
-
         <!--End::Section-->
 
         <!--Begin::Section-->
@@ -243,8 +240,196 @@
                 </div>
             </div>
         </div>
-
         <!--End::Section-->
+
+        <!--Begin::Section-->
+        <div class="row">
+            <div class="col-xl-12">
+                <!--Begin:: Portlet-->
+                <div class="kt-portlet">
+                    <div class="kt-portlet__head">
+                        <div class="kt-portlet__head-label">
+                            <h3 class="kt-portlet__head-title">
+                                Customer
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="kt-form kt-form--label-right">
+                                <div class="kt-portlet__body">
+                                    <div class="form-group form-group-xs row">
+                                        <label class="col-4 col-form-label">Name:</label>
+                                        <div class="col-8">
+                                            <span class="form-control-plaintext kt-font-bolder">John Doe</span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-group-xs row">
+                                        <label class="col-4 col-form-label">Date OF Birth:</label>
+                                        <div class="col-8">
+                                            <span class="form-control-plaintext kt-font-bolder">14-12-1984</span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-group-xs row">
+                                        <label class="col-4 col-form-label">Company Name:</label>
+                                        <div class="col-8">
+                                            <span class="form-control-plaintext kt-font-bolder">Doe Corporation</span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-group-xs row">
+                                        <label class="col-4 col-form-label">NID Number:</label>
+                                        <div class="col-8">
+                                            <span class="form-control-plaintext kt-font-bolder">456 7890456</span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-group-xs row">
+                                        <label class="col-4 col-form-label">Business Address:</label>
+                                        <div class="col-8">
+                                            <span class="form-control-plaintext kt-font-bolder">Mirpur DOHS, Dhaka</span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-group-xs row">
+                                        <label class="col-4 col-form-label">Business Area:</label>
+                                        <div class="col-8">
+                                            <span class="form-control-plaintext kt-font-bolder">Mirpur</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="kt-form kt-form--label-right">
+                                <div class="kt-portlet__body">
+                                    <div class="form-group form-group-xs row">
+                                        <label class="col-4 col-form-label">Business Telephone:</label>
+                                        <div class="col-8">
+                                            <span class="form-control-plaintext kt-font-bolder">+88025698523</span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-group-xs row">
+                                        <label class="col-4 col-form-label">Business Telephone 2:</label>
+                                        <div class="col-8">
+                                            <span class="form-control-plaintext kt-font-bolder">+8801711569856</span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-group-xs row">
+                                        <label class="col-4 col-form-label">Business Email:</label>
+                                        <div class="col-8">
+                                            <span class="form-control-plaintext kt-font-bolder">
+                                                <a href="mailto:doe@gmail.com">doe@gmail.com</a>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-group-xs row">
+                                        <label class="col-4 col-form-label">Business Email 2:</label>
+                                        <div class="col-8">
+                                            <span class="form-control-plaintext kt-font-bolder">
+                                                <a href="mailto:doe@gmail.com">doe@gmail.com</a>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-group-xs row">
+                                        <label class="col-4 col-form-label">Customer Type:</label>
+                                        <div class="col-8">
+                                            <span class="form-control-plaintext kt-font-bolder">Sub Dealer</span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-group-xs row">
+                                        <label class="col-4 col-form-label">Website:</label>
+                                        <div class="col-8">
+                                            <span class="form-control-plaintext kt-font-bolder">
+                                                <a href="http://www.loop.com">www.loop.com</a>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                </div>
+                <!--End:: Portlet-->
+            </div>
+        </div>
+        <!--End::Section-->
+
+        <!--Begin::Section-->
+        <div class="row">
+            {{--   Start Loop Of Contract person         --}}
+            <div class="col-lg-6">
+                <div class="kt-portlet">
+                    <div class="kt-portlet__head">
+                        <div class="kt-portlet__head-label">
+                            <h3 class="kt-portlet__head-title">
+                                Contact Person 1
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="kt-form kt-form--label-right">
+                        <div class="kt-portlet__body">
+                            <div class="form-group form-group-xs row">
+                                <label class="col-4 col-form-label">Name:</label>
+                                <div class="col-8">
+                                    <span class="form-control-plaintext kt-font-bolder">Loop Man.</span>
+                                </div>
+                            </div>
+                            <div class="form-group form-group-xs row">
+                                <label class="col-4 col-form-label">Designation:</label>
+                                <div class="col-8">
+                                    <span class="form-control-plaintext kt-font-bolder">Personal Secretary</span>
+                                </div>
+                            </div>
+                            <div class="form-group form-group-xs row">
+                                <label class="col-4 col-form-label">Phone:</label>
+                                <div class="col-8">
+                                    <span class="form-control-plaintext kt-font-bolder">+8806 7890456</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{--   End Loop Of Contract person         --}}
+
+            <div class="col-lg-6">
+                <div class="kt-portlet">
+                    <div class="kt-portlet__head">
+                        <div class="kt-portlet__head-label">
+                            <h3 class="kt-portlet__head-title">
+                                Contact Person 2
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="kt-form kt-form--label-right">
+                        <div class="kt-portlet__body">
+                            <div class="form-group form-group-xs row">
+                                <label class="col-4 col-form-label">Name:</label>
+                                <div class="col-8">
+                                    <span class="form-control-plaintext kt-font-bolder">Dori Jain</span>
+                                </div>
+                            </div>
+                            <div class="form-group form-group-xs row">
+                                <label class="col-4 col-form-label">Designation:</label>
+                                <div class="col-8">
+                                    <span class="form-control-plaintext kt-font-bolder">Accountant</span>
+                                </div>
+                            </div>
+                            <div class="form-group form-group-xs row">
+                                <label class="col-4 col-form-label">Phone:</label>
+                                <div class="col-8">
+                                    <span class="form-control-plaintext kt-font-bolder">+8804569890456</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--End::Section-->
+
 
     </div>
 @endsection
