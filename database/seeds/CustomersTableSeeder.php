@@ -13,6 +13,7 @@ class CustomersTableSeeder extends Seeder
         $c->dob = '1984-11-26';
         $c->company_name = 'Doe Enterprise';
         $c->nid = '0123456789';
+        $c->bin = 'xx01255xx255xxx0';
         $c->business_address = 'Mohakhali, Dhaka';
         $c->business_area = 'Mohakhali';
         $c->business_telephone = '+8802152635';

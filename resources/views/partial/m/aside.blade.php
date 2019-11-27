@@ -13,8 +13,7 @@
         </div>
         <div class="kt-aside__brand-tools">
             <button class="kt-aside__brand-aside-toggler" id="kt_aside_toggler">
-								<span><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                                           width="24px" height="24px" viewBox="0 0 24 24" version="1.1"
+								<span><svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1"
                                            class="kt-svg-icon">
 										<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
 											<polygon points="0 0 24 0 24 24 0 24"/>
@@ -26,8 +25,7 @@
                                                   transform="translate(15.999997, 11.999999) scale(-1, 1) rotate(-270.000000) translate(-15.999997, -11.999999) "/>
 										</g>
 									</svg></span>
-                <span><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                           width="24px" height="24px" viewBox="0 0 24 24" version="1.1" class="kt-svg-icon">
+                                    <span><svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" class="kt-svg-icon">
 										<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
 											<polygon points="0 0 24 0 24 24 0 24"/>
 											<path d="M12.2928955,6.70710318 C11.9023712,6.31657888 11.9023712,5.68341391 12.2928955,5.29288961 C12.6834198,4.90236532 13.3165848,4.90236532 13.7071091,5.29288961 L19.7071091,11.2928896 C20.085688,11.6714686 20.0989336,12.281055 19.7371564,12.675721 L14.2371564,18.675721 C13.863964,19.08284 13.2313966,19.1103429 12.8242777,18.7371505 C12.4171587,18.3639581 12.3896557,17.7313908 12.7628481,17.3242718 L17.6158645,12.0300721 L12.2928955,6.70710318 Z"
@@ -60,6 +58,7 @@
                         <span class="kt-menu__link-text">Dashboard</span>
                     </a>
                 </li>
+                @permission('permission|role|user|user_permission')
                 <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"
                     data-ktmenu-submenu-toggle="hover">
                     <a href="javascript:;" class="kt-menu__link kt-menu__toggle">
@@ -76,33 +75,43 @@
                                     <span class="kt-menu__link-text">Access Control</span>
                                 </span>
                             </li>
+                            @permission('permission')
                             <li class="kt-menu__item " aria-haspopup="true">
                                 <a href="{{route('permission')}}" class="kt-menu__link ">
                                     <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>
                                     <span class="kt-menu__link-text">Permissions</span>
                                 </a>
                             </li>
+                            @endpermission
+                            @permission('role')
                             <li class="kt-menu__item " aria-haspopup="true">
                                 <a href="{{route('role')}}" class="kt-menu__link ">
                                     <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>
                                     <span class="kt-menu__link-text">[[Roles]]</span>
                                 </a>
                             </li>
+                            @endpermission
+                            @permission('user')
                             <li class="kt-menu__item " aria-haspopup="true">
                                 <a href="{{route('users')}}" class="kt-menu__link ">
                                     <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>
                                     <span class="kt-menu__link-text">[[User]]</span>
                                 </a>
                             </li>
+                            @endpermission
+                            @permission('user_permission')
                             <li class="kt-menu__item " aria-haspopup="true">
                                 <a href="{{route('user.permission')}}" class="kt-menu__link ">
                                     <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>
                                     <span class="kt-menu__link-text">[[User Permission]]</span>
                                 </a>
                             </li>
+                            @endpermission
                         </ul>
                     </div>
                 </li>
+                @endpermission
+                @permission('customer')
                 <li class="kt-menu__item  " aria-haspopup="true">
                     <a href="{{route('customer.list')}}" class="kt-menu__link ">
                         <span class="kt-menu__link-icon">
@@ -111,6 +120,7 @@
                         <span class="kt-menu__link-text">Customer</span>
                     </a>
                 </li>
+                @endpermission
             </ul>
         </div>
     </div>

@@ -23,7 +23,7 @@
                         <div class="kt-input-icon kt-input-icon--right kt-subheader__search">
                             <input type="text" class="form-control" placeholder="Search..." id="generalSearch">
                             <span class="kt-input-icon__icon kt-input-icon__icon--right">
-                                <span>
+                                <span>[[
                                     <svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1"
                                          class="kt-svg-icon">
                                         <g stroke="none" stroke-width="1" fill="none"
@@ -34,7 +34,7 @@
                                             <path d="M11,16 C13.7614237,16 16,13.7614237 16,11 C16,8.23857625 13.7614237,6 11,6 C8.23857625,6 6,8.23857625 6,11 C6,13.7614237 8.23857625,16 11,16 Z M11,18 C7.13400675,18 4,14.8659932 4,11 C4,7.13400675 7.13400675,4 11,4 C14.8659932,4 18,7.13400675 18,11 C18,14.8659932 14.8659932,18 11,18 Z"
                                                   fill="#000000" fill-rule="nonzero"/>
                                         </g>
-                                    </svg>
+                                    </svg>]]
                                     <!--<i class="flaticon2-search-1"></i>-->
                                 </span>
                             </span>
@@ -117,17 +117,19 @@
                             <td>{{$customer->business_telephone}}</td>
                             <td>{{$customer->business_email}}</td>
                             <td>
-                                @permission('customer_edit')
-                                <a href="{{route('customer.edit', ['cid' => $customer->id])}}" title="Edit details"
+{{--                                @permission('customer_edit')--}}
+                                <a href="{{route('customer.edit', ['cid' => $customer->id])}}" title="Edit"
                                    class="btn btn-sm btn-clean btn-icon btn-icon-md">
-                                    <i class="la la-edit"></i>
+                                    [[<i class="la la-edit"></i>]]
                                 </a>
-                                @endpermission
-                                @permission('customer_delete')
-                                <a title="Delete" class="btn btn-sm btn-clean btn-icon btn-icon-md">
-                                    <i class="la la-trash"></i>
+{{--                                @endpermission--}}
+{{--                                @permission('customer_delete')--}}
+                                <a href="{{route('customer.delete', ['cid' => $customer->id])}}" title="Delete"
+                                   class="btn btn-sm btn-clean btn-icon btn-icon-md"
+                                   onclick="return confirm('Are you sure you want to delete the customer ?')">
+                                    <i class="la la-trash" style="color: #fd397a;"></i>
                                 </a>
-                                @endpermission
+{{--                                @endpermission--}}
                             </td>
                         </tr>
                     @endforeach

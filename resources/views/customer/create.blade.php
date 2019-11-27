@@ -97,6 +97,32 @@
                                             </div>
                                             <div class="form-group row">
                                                 <label class="col-xl-3 col-lg-3 col-form-label">
+                                                    VAT/BIN Number
+                                                </label>
+                                                <div class="col-lg-9 col-xl-6">
+                                                    <input class="form-control {{$errors->has('binNumber') ? 'is-invalid' : ''}}"
+                                                           type="text" placeholder="VAT/BIN Number" name="binNumber"
+                                                           required value="{{old('binNumber')}}">
+                                                    @if($errors->has('binNumber'))
+                                                        <span class="invalid-feedback">{{$errors->first('binNumber')}}</span>
+                                                    @endif
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-xl-3 col-lg-3 col-form-label">Upload File:</label>
+                                                <div class="col-lg-9 col-xl-6">
+                                                    <div></div>
+                                                    <div class="custom-file">
+                                                        <input type="file" class="custom-file-input" id="customFile2"
+                                                               name="binFile">
+                                                        <label class="custom-file-label" style="text-align: left;"
+                                                               for="customFile2">Tax / Bin File</label>
+                                                    </div>
+                                                    <span class="form-text text-muted">Max file size is 10MB and max number of files is 1.</span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-xl-3 col-lg-3 col-form-label">
                                                     NID Number
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">
@@ -116,9 +142,9 @@
                                                         <input type="file" class="custom-file-input" id="customFile"
                                                                name="nidFile">
                                                         <label class="custom-file-label" style="text-align: left;"
-                                                               for="customFile">Choose file</label>
+                                                               for="customFile">NID Card File</label>
                                                     </div>
-                                                    <span class="form-text text-muted">Max file size is 1MB and max number of files is 5.</span>
+                                                    <span class="form-text text-muted">Max file size is 10MB and max number of files is 1.</span>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
