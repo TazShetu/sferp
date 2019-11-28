@@ -91,7 +91,7 @@ class CustomerController extends Controller
                 $customer->business_email_2 = $request->businessEmail2;
             }
             $customer->save();
-            Session::flash('Success', "Customer '$customer->name' has been created successfully. You can add Contact Person in contact person tab.");
+            Session::flash('Success', "Customer '$customer->name' has been created successfully. You can add Contact Person in Contact Person tab.");
             return redirect()->route('customer.edit', ['cid' => $customer->id]);
         } else {
             abort(403);
@@ -198,6 +198,9 @@ class CustomerController extends Controller
     public function updateContactPerson(Request $request, $cid)
     {
         if (Auth::user()->can('customer')) {
+//            dd($cid);
+//            dd($request->name);
+            dd($request->cName);
             $request->validate([
                 'cName' => 'required',
                 'designation' => 'required',

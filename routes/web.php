@@ -29,5 +29,5 @@ Route::get('/customer-delete/{cid}', 'CustomerController@destroy')->name('custom
 
 Route::get('/customer-edit/{cid}', 'CustomerController@edit')->name('customer.edit');
 Route::post('/customer-update/{cid}', 'CustomerController@update')->name('customer.update');
-Route::post('/customer-update-cperson/{cid}', 'CustomerController@updateContactPerson')->name('customer.update.contact.person');
+Route::post('/customer-update-contact-person/{cid}', 'CustomerController@updateContactPerson')->name('customer.update.contact.person');
 

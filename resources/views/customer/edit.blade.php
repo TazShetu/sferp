@@ -383,11 +383,14 @@
                         <div class="kt-form kt-form--label-right">
                             <div class="kt-form__body">
                                 <div class="kt-section kt-section--first">
-                                    {{--Form Start--}}
-                                    <form action="{{route('customer.update.contact.person', ['cid' => $customer->id])}}"
-                                          method="post">
-                                        @csrf
-                                        <div class="kt-section__body">
+                                    <div class="kt-section__body">
+                                        {{--Form Start--}}
+                                        <form action="{{route('customer.update.contact.person', ['cid' => $customer->id])}}"
+                                              method="post">
+                                            @csrf
+{{--                                            <input class="form-control {{$errors->has('name') ? 'is-invalid' : ''}}"--}}
+{{--                                                   type="text" name="name" required--}}
+{{--                                                   value="{{$customer->name}}">--}}
                                             <div id="kt_repeater_1">
                                                 <div class="form-group form-group-last row" id="kt_repeater_1">
                                                     <!-- <label class="col-lg-2 col-form-label">Contacts:</label> -->
@@ -410,7 +413,7 @@
                                                                     </div>
                                                                     <div class="kt-form__control">
                                                                         <input type="text" class="form-control"
-                                                                               name="cName[]"
+                                                                               name="cName"
                                                                                placeholder="Enter full name" required>
                                                                     </div>
                                                                 </div>
@@ -479,9 +482,9 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </form>
-                                    {{--Form End--}}
+                                        </form>
+                                        {{--Form End--}}
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -561,9 +564,9 @@
     </script>
     {{--    <script src="{{asset('m/assets/js/pages/crud/file-upload/uppy.js')}}" type="text/javascript"></script>--}}
 
-{{--    <script src="{{asset('m/assets/js/pages/crud/forms/widgets/form-repeater.js')}}" type="text/javascript"></script>--}}
+    {{--    <script src="{{asset('m/assets/js/pages/crud/forms/widgets/form-repeater.js')}}" type="text/javascript"></script>--}}
     <script>
-        jQuery(document).ready(function() {
+        jQuery(document).ready(function () {
             $('#kt_repeater_1').repeater({
                 initEmpty: false,
                 show: function () {
