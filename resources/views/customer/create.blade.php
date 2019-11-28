@@ -74,9 +74,17 @@
                                                 <label class="col-xl-3 col-lg-3 col-form-label">
                                                     Date Of Birth</label>
                                                 <div class="col-lg-9 col-xl-6">
-                                                    <input class="form-control {{$errors->has('dateOfBirth') ? 'is-invalid' : ''}}"
-                                                           type="date" name="dateOfBirth" required
-                                                           value="{{old('dateOfBirth')}}">
+                                                    <div class="input-group date">
+                                                        <input class="form-control {{$errors->has('dateOfBirth') ? 'is-invalid' : ''}}"
+                                                               type="text" name="dateOfBirth" required readonly
+                                                               placeholder="Select date" id="kt_datepicker_2"
+                                                               value="{{old('dateOfBirth')}}">
+                                                        <div class="input-group-append">
+														<span class="input-group-text">
+															<i class="la la-calendar-check-o"></i>
+														</span>
+                                                        </div>
+                                                    </div>
                                                     @if($errors->has('dateOfBirth'))
                                                         <span class="invalid-feedback">{{$errors->first('dateOfBirth')}}</span>
                                                     @endif
@@ -309,6 +317,10 @@
     <!--begin::Page Vendors(used by this page) -->
 
     <script src="{{asset('m/assets/js/pages/crud/file-upload/ktavatar.js')}}" type="text/javascript"></script>
+
+    <script src="{{asset('m/assets/js/pages/crud/forms/widgets/bootstrap-datepicker.js')}}"
+            type="text/javascript"></script>
+
 
     <!--end::Page Vendors -->
 

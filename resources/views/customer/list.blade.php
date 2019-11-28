@@ -120,7 +120,7 @@
 {{--                                @permission('customer_edit')--}}
                                 <a href="{{route('customer.edit', ['cid' => $customer->id])}}" title="Edit"
                                    class="btn btn-sm btn-clean btn-icon btn-icon-md">
-                                    [[<i class="la la-edit"></i>]]
+                                    <i class="la la-edit"></i>
                                 </a>
 {{--                                @endpermission--}}
 {{--                                @permission('customer_delete')--}}

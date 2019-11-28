@@ -19,7 +19,7 @@
                 </div>
             </div>
             <div class="kt-subheader__toolbar">
-                <a href="#" class="btn btn-label-success btn-bold">[[Edit]]</a>
+                <a href="{{route('customer.edit', ['cid' => $customer->id])}}" class="btn btn-label-success btn-bold">Edit</a>
             </div>
         </div>
     </div>
@@ -149,12 +149,6 @@
                                             <span class="form-control-plaintext kt-font-bolder">{{$customer->business_address}}</span>
                                         </div>
                                     </div>
-                                    {{--                                    <div class="form-group form-group-xs row">--}}
-                                    {{--                                        <label class="col-4 col-form-label">Business Area:</label>--}}
-                                    {{--                                        <div class="col-8">--}}
-                                    {{--                                            <span class="form-control-plaintext kt-font-bolder">{{$customer->business_area}}</span>--}}
-                                    {{--                                        </div>--}}
-                                    {{--                                    </div>--}}
                                 </div>
                             </div>
 
