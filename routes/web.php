@@ -17,6 +17,8 @@ Route::get('/forbidden', 'HomeController@test')->name('test');
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/permission', 'AclController@permission')->name('permission');
+Route::get('/permission-edit/{pid}', 'AclController@permissionEdit')->name('permission.edit');
+Route::post('/permission-update/{pid}', 'AclController@permissionUpdate')->name('permission.update');
 Route::get('/role', 'AclController@role')->name('role');
 Route::post('/role-store', 'AclController@roleStore')->name('role.store');
 Route::get('/role-delete/{rid}', 'AclController@roleDelete')->name('role.delete');

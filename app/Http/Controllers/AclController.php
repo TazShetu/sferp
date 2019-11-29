@@ -27,6 +27,35 @@ class AclController extends Controller
     }
 
 
+    public function permissionEdit($pid)
+    {
+        if (Auth::user()->can('permission')) {
+            $pedit = Permission::find($pid);
+            $permissions = Permission::paginate(10);
+            return view('permission.edit', compact('permissions', 'pedit'));
+        } else {
+            abort(403);
+        }
+    }
+
+
+    public function permissionUpdate(Request $request, $pid)
+    {
+        if (Auth::user()->can('permission')) {
+            $request->validate([
+                'description' => 'required',
+            ]);
+            $p = Permission::find($pid);
+            $p->description = $request->description;
+            $p->update();
+            Session::flash('Success', "The Permission description has been updated successfully.");
+            return redirect()->back();
+        } else {
+            abort(403);
+        }
+    }
+
+
     public function role()
     {
         if (Auth::user()->can('role')) {
@@ -36,7 +65,6 @@ class AclController extends Controller
         } else {
             abort(403);
         }
-
     }
 
 

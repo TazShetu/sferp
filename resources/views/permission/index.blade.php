@@ -24,6 +24,15 @@
 @endsection
 @section('content')
     <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
+        @if(session('Success'))
+            <div class="alert alert-success text-center">
+                {{session('Success')}}
+            </div>
+        @elseif(session('unsuccess'))
+            <div class="alert alert-warning text-center">
+                {{session('unsuccess')}}
+            </div>
+        @endif
         <div class="alert alert-light alert-elevate" role="alert">
             <div class="alert-icon"><i class="flaticon-warning kt-font-brand"></i></div>
             <div class="alert-text">
@@ -106,8 +115,8 @@
                                 </td>
                                 <td data-autohide-disabled="false" class="kt-datatable__cell">
                                 <span style="overflow: visible; position: relative; width: 110px;">
-                                    <a href="#" title="Edit details" class="btn btn-sm btn-clean btn-icon btn-icon-md">
-                                        [[<i class="la la-edit"></i>]]
+                                    <a href="{{route('permission.edit', ['pid' => $permission->id])}}" title="Edit details" class="btn btn-sm btn-clean btn-icon btn-icon-md">
+                                        <i class="la la-edit"></i>
                                     </a>
                                     <a title="Delete" class="btn btn-sm btn-clean btn-icon btn-icon-md disabled">
                                         <i class="la la-trash"></i>

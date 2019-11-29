@@ -32,5 +32,8 @@ class PermissionsTableSeeder extends Seeder
             $a->save();
             $s->attachPermission($a);
         }
+
+        $r4 = Role::find(4);
+        $r4->attachPermission(5);
     }
 }
