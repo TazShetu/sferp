@@ -199,7 +199,7 @@ class CustomerController extends Controller
     {
         if (Auth::user()->can('customer')) {
 //            dd($cid);
-//            dd($request->name);
+            dd($request->name);
             dd($request->cName);
             $request->validate([
                 'cName' => 'required',

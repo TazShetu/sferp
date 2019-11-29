@@ -388,9 +388,9 @@
                                         <form action="{{route('customer.update.contact.person', ['cid' => $customer->id])}}"
                                               method="post">
                                             @csrf
-{{--                                            <input class="form-control {{$errors->has('name') ? 'is-invalid' : ''}}"--}}
-{{--                                                   type="text" name="name" required--}}
-{{--                                                   value="{{$customer->name}}">--}}
+                                            {{--                                            <input class="form-control {{$errors->has('name') ? 'is-invalid' : ''}}"--}}
+                                            {{--                                                   type="text" name="name" required--}}
+                                            {{--                                                   value="{{$customer->name}}">--}}
                                             <div id="kt_repeater_1">
                                                 <div class="form-group form-group-last row" id="kt_repeater_1">
                                                     <!-- <label class="col-lg-2 col-form-label">Contacts:</label> -->
@@ -404,8 +404,11 @@
                                                         {{--               End loop                                     --}}
 
 
-                                                        <div data-repeater-item
-                                                             class="form-group row align-items-center">
+                                                        <div class="form-group row align-items-center"
+                                                             data-repeater-item>
+                                                            <input class="form-control {{$errors->has('name') ? 'is-invalid' : ''}}"
+                                                                   type="text" name="name" required
+                                                                   value="{{$customer->name}}">
                                                             <div class="col-md-3">
                                                                 <div class="kt-form__group--inline">
                                                                     <div class="kt-form__label">

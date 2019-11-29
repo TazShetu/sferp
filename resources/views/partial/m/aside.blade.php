@@ -87,7 +87,7 @@
                             <li class="kt-menu__item " aria-haspopup="true">
                                 <a href="{{route('role')}}" class="kt-menu__link ">
                                     <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>
-                                    <span class="kt-menu__link-text">[[Roles]]</span>
+                                    <span class="kt-menu__link-text">Roles</span>
                                 </a>
                             </li>
                             @endpermission
@@ -95,7 +95,7 @@
                             <li class="kt-menu__item " aria-haspopup="true">
                                 <a href="{{route('users')}}" class="kt-menu__link ">
                                     <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>
-                                    <span class="kt-menu__link-text">[[User]]</span>
+                                    <span class="kt-menu__link-text">User</span>
                                 </a>
                             </li>
                             @endpermission

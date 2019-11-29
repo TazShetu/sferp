@@ -1,11 +1,11 @@
 @extends('layouts.m')
-@section('title', 'Roles')
+@section('title', 'Edit Role')
 @section('content_head')
     <div class="kt-subheader   kt-grid__item" id="kt_subheader">
         <div class="kt-container  kt-container--fluid ">
             <div class="kt-subheader__main">
                 <h3 class="kt-subheader__title">
-                    Roles
+                    Edit Role
                 </h3>
                 <span class="kt-subheader__separator kt-subheader__separator--v"></span>
                 <div class="kt-subheader__breadcrumbs">
@@ -16,6 +16,10 @@
                     <a href="{{route('role')}}"
                        class="kt-subheader__breadcrumbs-link kt-subheader__breadcrumbs-link--active"
                        style="padding-right: 1rem;">Role</a>
+                    <span class="kt-subheader__breadcrumbs-separator"></span>
+                    <a href="javascript:void (0)"
+                       class="kt-subheader__breadcrumbs-link kt-subheader__breadcrumbs-link--active"
+                       style="padding-right: 1rem;">Edit</a>
                 </div>
             </div>
         </div>
@@ -50,7 +54,8 @@
                                 <div class="kt-form kt-form--label-right">
                                     <div class="kt-form__body">
                                         <div class="kt-section kt-section--first">
-                                            <form action="{{route('role.store')}}" method="post">
+                                            <form action="{{route('role.update', ['rid' => $redit->id])}}"
+                                                  method="post">
                                                 @csrf
                                                 <div class="kt-section__body">
                                                     <div class="form-group row">
@@ -59,8 +64,8 @@
                                                         </label>
                                                         <div class="col-lg-9 col-xl-6">
                                                             <input class="form-control {{$errors->has('name') ? 'is-invalid' : ''}}"
-                                                                   type="text" placeholder="Role Name" name="name"
-                                                                   required value="{{old('name')}}">
+                                                                   type="text" name="name"
+                                                                   required value="{{$redit->name}}">
                                                             @if($errors->has('name'))
                                                                 <span class="invalid-feedback">{{$errors->first('name')}}</span>
                                                             @endif
@@ -72,9 +77,8 @@
                                                         </label>
                                                         <div class="col-lg-9 col-xl-6">
                                                             <input class="form-control {{$errors->has('description') ? 'is-invalid' : ''}}"
-                                                                   type="text" placeholder="Description"
-                                                                   name="description"
-                                                                   value="{{old('description')}}">
+                                                                   type="text" name="description"
+                                                                   value="{{$redit->description}}">
                                                             @if($errors->has('description'))
                                                                 <span class="invalid-feedback">{{$errors->first('description')}}</span>
                                                             @endif
@@ -90,7 +94,14 @@
                                                                 @foreach($permissions as $permission)
                                                                     <label class="kt-checkbox">
                                                                         <input type="checkbox" name="permissions[]"
-                                                                               value="{{$permission->id}}"> {{$permission->display_name}}
+                                                                               value="{{$permission->id}}"
+                                                                               @foreach($pedits as $pe)
+                                                                               @if(($pe->id * 1) == ($permission->id * 1))
+                                                                               checked
+                                                                                @break
+                                                                                @endif
+                                                                                @endforeach
+                                                                        > {{$permission->display_name}}
                                                                         <span></span>
                                                                     </label>
                                                                 @endforeach
@@ -104,7 +115,7 @@
                                                             <div class="col-lg-9 col-xl-6">
                                                                 <button type="submit"
                                                                         class="btn btn-label-brand btn-bold">
-                                                                    Create
+                                                                    Save Changes
                                                                 </button>
                                                                 <a href="javascript:void (0)"
                                                                    data-link="{{route('cancel')}}"
@@ -155,15 +166,27 @@
                                         <td>{{$role->name}}</td>
                                         <td>{{$role->description}}</td>
                                         <td>
-                                            <a href="{{route('role.edit', ['cid' => $role->id])}}" title="Edit"
-                                               class="btn btn-sm btn-clean btn-icon btn-icon-md">
-                                                <i class="la la-edit"></i>
-                                            </a>
-                                            <a href="{{route('role.delete', ['rid' => $role->id])}}" title="Delete"
-                                               class="btn btn-sm btn-clean btn-icon btn-icon-md"
-                                               onclick="return confirm('Are you sure you want to delete the customer ?')">
-                                                <i class="la la-trash" style="color: #fd397a;"></i>
-                                            </a>
+                                            @if($role->id != $redit->id)
+                                                <a href="{{route('role.edit', ['cid' => $role->id])}}" title="Edit"
+                                                   class="btn btn-sm btn-clean btn-icon btn-icon-md">
+                                                    <i class="la la-edit"></i>
+                                                </a>
+                                                <a href="{{route('role.delete', ['rid' => $role->id])}}" title="Delete"
+                                                   class="btn btn-sm btn-clean btn-icon btn-icon-md"
+                                                   onclick="return confirm('Are you sure you want to delete the customer ?')">
+                                                    <i class="la la-trash" style="color: #fd397a;"></i>
+                                                </a>
+                                            @else
+                                                <a href="#" title="Edit"
+                                                   class="btn btn-sm btn-clean btn-icon btn-icon-md disabled">
+                                                    <i class="la la-edit"></i>
+                                                </a>
+                                                <a href="#" title="Delete"
+                                                   class="btn btn-sm btn-clean btn-icon btn-icon-md disabled">
+                                                    <i class="la la-trash" style="color: #fd397a;"></i>
+                                                </a>
+                                            @endif
+
                                         </td>
                                     </tr>
                                 @endif

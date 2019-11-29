@@ -18,6 +18,10 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/permission', 'AclController@permission')->name('permission');
 Route::get('/role', 'AclController@role')->name('role');
+Route::post('/role-store', 'AclController@roleStore')->name('role.store');
+Route::get('/role-delete/{rid}', 'AclController@roleDelete')->name('role.delete');
+Route::get('/role-edit/{rid}', 'AclController@roleEdit')->name('role.edit');
+Route::post('/role-update/{rid}', 'AclController@roleUpdate')->name('role.update');
 Route::get('/user', 'HomeController@user')->name('users');
 Route::get('/user-permission', 'AclController@userPermission')->name('user.permission');
 
