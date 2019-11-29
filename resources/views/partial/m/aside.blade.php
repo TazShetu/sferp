@@ -99,14 +99,14 @@
                                 </a>
                             </li>
                             @endpermission
-                            @permission('user_permission')
-                            <li class="kt-menu__item " aria-haspopup="true">
-                                <a href="{{route('user.permission')}}" class="kt-menu__link ">
-                                    <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>
-                                    <span class="kt-menu__link-text">[[User Permission]]</span>
-                                </a>
-                            </li>
-                            @endpermission
+{{--                            @permission('user_permission')--}}
+{{--                            <li class="kt-menu__item " aria-haspopup="true">--}}
+{{--                                <a href="{{route('user.permission')}}" class="kt-menu__link ">--}}
+{{--                                    <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>--}}
+{{--                                    <span class="kt-menu__link-text">[[User Permission]]</span>--}}
+{{--                                </a>--}}
+{{--                            </li>--}}
+{{--                            @endpermission--}}
                         </ul>
                     </div>
                 </li>

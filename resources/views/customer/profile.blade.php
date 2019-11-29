@@ -78,11 +78,11 @@
                                             </div>
                                             <div class="progress" style="height: 5px;width: 100%;">
                                                 <div class="progress-bar kt-bg-success" role="progressbar"
-                                                     style="width: 65%;" aria-valuenow="65"
+                                                     style="width: {{$percentage}}%;" aria-valuenow="{{$percentage}}"
                                                      aria-valuemin="0" aria-valuemax="100"></div>
                                             </div>
                                             <div class="kt-widget__stats">
-                                                [[65]]%
+                                                {{$percentage}}%
                                             </div>
                                         </div>
                                     </div>
@@ -223,13 +223,14 @@
 
         <!--Begin::Section-->
         <div class="row">
-            {{--   Start Loop Of Contract person         --}}
+            @if(count($cPersons) > 0)
+            @foreach($cPersons as $i => $cPerson)
             <div class="col-lg-6">
                 <div class="kt-portlet">
                     <div class="kt-portlet__head">
                         <div class="kt-portlet__head-label">
                             <h3 class="kt-portlet__head-title">
-                                [[Contact Person 1]]
+                                Contact {{ (count($cPersons) > 1) ? 'People' : 'Person' }} {{$i + 1}}
                             </h3>
                         </div>
                     </div>
@@ -238,60 +239,40 @@
                             <div class="form-group form-group-xs row">
                                 <label class="col-4 col-form-label">Name:</label>
                                 <div class="col-8">
-                                    <span class="form-control-plaintext kt-font-bolder">Loop Man.</span>
+                                    <span class="form-control-plaintext kt-font-bolder">{{$cPerson->name}}</span>
                                 </div>
                             </div>
                             <div class="form-group form-group-xs row">
                                 <label class="col-4 col-form-label">Designation:</label>
                                 <div class="col-8">
-                                    <span class="form-control-plaintext kt-font-bolder">Personal Secretary</span>
+                                    <span class="form-control-plaintext kt-font-bolder">{{$cPerson->designation}}</span>
                                 </div>
                             </div>
                             <div class="form-group form-group-xs row">
                                 <label class="col-4 col-form-label">Phone:</label>
                                 <div class="col-8">
-                                    <span class="form-control-plaintext kt-font-bolder">+8806 7890456</span>
+                                    <span class="form-control-plaintext kt-font-bolder">{{$cPerson->number}}</span>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            {{--   End Loop Of Contract person         --}}
+            @endforeach
+                @else
+            <div class="col-lg-12">
+                <div class="kt-portlet">
+                    <div class="kt-portlet__head">
+                        <div class="kt-portlet__head-label">
+                            <h3 class="kt-portlet__head-title">
+                                No Contact Person For This Customer
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @endif
 
-            <div class="col-lg-6">
-                <div class="kt-portlet">
-                    <div class="kt-portlet__head">
-                        <div class="kt-portlet__head-label">
-                            <h3 class="kt-portlet__head-title">
-                                [[Contact Person 2]]
-                            </h3>
-                        </div>
-                    </div>
-                    <div class="kt-form kt-form--label-right">
-                        <div class="kt-portlet__body">
-                            <div class="form-group form-group-xs row">
-                                <label class="col-4 col-form-label">Name:</label>
-                                <div class="col-8">
-                                    <span class="form-control-plaintext kt-font-bolder">Dori Jain</span>
-                                </div>
-                            </div>
-                            <div class="form-group form-group-xs row">
-                                <label class="col-4 col-form-label">Designation:</label>
-                                <div class="col-8">
-                                    <span class="form-control-plaintext kt-font-bolder">Accountant</span>
-                                </div>
-                            </div>
-                            <div class="form-group form-group-xs row">
-                                <label class="col-4 col-form-label">Phone:</label>
-                                <div class="col-8">
-                                    <span class="form-control-plaintext kt-font-bolder">+8804569890456</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
         <!--End::Section-->
 

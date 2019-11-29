@@ -151,7 +151,7 @@
                             @foreach($roles as $i => $role)
                                 @if($i > 2)
                                     <tr>
-                                        <th scope="row">{{$i + 1}}</th>
+                                        <th scope="row">{{$i - 2}}</th>
                                         <td>{{$role->name}}</td>
                                         <td>{{$role->description}}</td>
                                         <td>

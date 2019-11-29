@@ -28,10 +28,10 @@
             <div class="alert alert-success text-center">
                 {{session('Success')}}
             </div>
-            {{--        @elseif(session('Cannotdelete'))--}}
-            {{--            <div class="alert alert-warning text-center">--}}
-            {{--                {{session('Cannotdelete')}}--}}
-            {{--            </div>--}}
+        @elseif(session('unsuccess'))
+            <div class="alert alert-warning text-center">
+                {{session('unsuccess')}}
+            </div>
         @endif
         @if($errors->has('cName') || $errors->has('designation') || $errors->has('number'))
             <div class="alert alert-danger text-center">
@@ -388,27 +388,64 @@
                                         <form action="{{route('customer.update.contact.person', ['cid' => $customer->id])}}"
                                               method="post">
                                             @csrf
-                                            {{--                                            <input class="form-control {{$errors->has('name') ? 'is-invalid' : ''}}"--}}
-                                            {{--                                                   type="text" name="name" required--}}
-                                            {{--                                                   value="{{$customer->name}}">--}}
                                             <div id="kt_repeater_1">
                                                 <div class="form-group form-group-last row" id="kt_repeater_1">
-                                                    <!-- <label class="col-lg-2 col-form-label">Contacts:</label> -->
-                                                    <div data-repeater-list="" class="col-lg-12">
-
-                                                        {{--    Start loop                                                --}}
-
-
-
-
-                                                        {{--               End loop                                     --}}
-
-
-                                                        <div class="form-group row align-items-center"
-                                                             data-repeater-item>
-                                                            <input class="form-control {{$errors->has('name') ? 'is-invalid' : ''}}"
-                                                                   type="text" name="name" required
-                                                                   value="{{$customer->name}}">
+                                                    <div class="col-lg-12" id="repeat-content">
+                                                        @foreach($cPersons as $cPerson)
+                                                            <div class="form-group row align-items-center remove-content">
+                                                                <div class="col-md-3">
+                                                                    <div class="kt-form__group--inline">
+                                                                        <div class="kt-form__label">
+                                                                            <label>Contact Person Name:</label>
+                                                                        </div>
+                                                                        <div class="kt-form__control">
+                                                                            <input type="text" class="form-control"
+                                                                                   name="cName[]"
+                                                                                   value="{{$cPerson->name}}"
+                                                                                   required>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="d-md-none kt-margin-b-10"></div>
+                                                                </div>
+                                                                <div class="col-md-3">
+                                                                    <div class="kt-form__group--inline">
+                                                                        <div class="kt-form__label">
+                                                                            <label>Contact Person Designation:</label>
+                                                                        </div>
+                                                                        <div class="kt-form__control">
+                                                                            <input type="text" class="form-control"
+                                                                                   name="designation[]"
+                                                                                   value="{{$cPerson->designation}}"
+                                                                                   required>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="d-md-none kt-margin-b-10"></div>
+                                                                </div>
+                                                                <div class="col-md-3">
+                                                                    <div class="kt-form__group--inline">
+                                                                        <div class="kt-form__label">
+                                                                            <label class="kt-label m-label--single">Contact
+                                                                                Person Number:</label>
+                                                                        </div>
+                                                                        <div class="kt-form__control">
+                                                                            <input type="text" class="form-control"
+                                                                                   name="number[]" required
+                                                                                   value="{{$cPerson->number}}">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="d-md-none kt-margin-b-10"></div>
+                                                                </div>
+                                                                <div class="col-md-3">
+                                                                    <a href="javascript:;" data-repeater-delete=""
+                                                                       class="btn-sm btn btn-label-danger btn-bold delete-btn"
+                                                                       style="margin-top: 24px;">
+                                                                        <i class="la la-trash-o"></i>
+                                                                        Delete
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                        @endforeach
+                                                        <div class="form-group row align-items-center remove-content">
                                                             <div class="col-md-3">
                                                                 <div class="kt-form__group--inline">
                                                                     <div class="kt-form__label">
@@ -416,7 +453,7 @@
                                                                     </div>
                                                                     <div class="kt-form__control">
                                                                         <input type="text" class="form-control"
-                                                                               name="cName"
+                                                                               name="cName[]"
                                                                                placeholder="Enter full name" required>
                                                                     </div>
                                                                 </div>
@@ -451,21 +488,19 @@
                                                             </div>
                                                             <div class="col-md-3">
                                                                 <a href="javascript:;" data-repeater-delete=""
-                                                                   class="btn-sm btn btn-label-danger btn-bold"
+                                                                   class="btn-sm btn btn-label-danger btn-bold delete-btn"
                                                                    style="margin-top: 24px;">
                                                                     <i class="la la-trash-o"></i>
                                                                     Delete
                                                                 </a>
                                                             </div>
                                                         </div>
-
-
                                                     </div>
                                                 </div>
                                                 <div class="form-group form-group-last row">
                                                     <!-- <label class="col-lg-2 col-form-label"></label> -->
                                                     <div class="col-lg-4">
-                                                        <a href="javascript:;" data-repeater-create=""
+                                                        <a href="javascript:;" id="add-btn"
                                                            class="btn btn-bold btn-sm btn-label-brand">
                                                             <i class="la la-plus"></i> Add Another Contact Person
                                                         </a>
@@ -568,16 +603,69 @@
     {{--    <script src="{{asset('m/assets/js/pages/crud/file-upload/uppy.js')}}" type="text/javascript"></script>--}}
 
     {{--    <script src="{{asset('m/assets/js/pages/crud/forms/widgets/form-repeater.js')}}" type="text/javascript"></script>--}}
+
     <script>
-        jQuery(document).ready(function () {
-            $('#kt_repeater_1').repeater({
-                initEmpty: false,
-                show: function () {
-                    $(this).slideDown();
-                },
-                hide: function (deleteElement) {
-                    $(this).slideUp(deleteElement);
-                }
+        $(document).on('click', '#add-btn', function () {
+            var input = `
+                <div class="form-group row align-items-center remove-content">
+                    <div class="col-md-3">
+                        <div class="kt-form__group--inline">
+                            <div class="kt-form__label">
+                                <label>Contact Person Name:</label>
+                            </div>
+                            <div class="kt-form__control">
+                                <input type="text" class="form-control"
+                                       name="cName[]"
+                                       placeholder="Enter full name" required>
+                            </div>
+                        </div>
+                        <div class="d-md-none kt-margin-b-10"></div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="kt-form__group--inline">
+                            <div class="kt-form__label">
+                                <label>Contact Person Designation:</label>
+                            </div>
+                            <div class="kt-form__control">
+                                <input type="text" class="form-control"
+                                       name="designation[]"
+                                       placeholder="Enter Designation" required>
+                            </div>
+                        </div>
+                        <div class="d-md-none kt-margin-b-10"></div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="kt-form__group--inline">
+                            <div class="kt-form__label">
+                                <label class="kt-label m-label--single">Contact
+                                    Person Number:</label>
+                            </div>
+                            <div class="kt-form__control">
+                                <input type="text" class="form-control"
+                                       name="number[]" required
+                                       placeholder="Enter contact number">
+                            </div>
+                        </div>
+                        <div class="d-md-none kt-margin-b-10"></div>
+                    </div>
+                    <div class="col-md-3">
+                        <a href="javascript:;"
+                           class="btn-sm btn btn-label-danger btn-bold delete-btn"
+                           style="margin-top: 24px;" >
+                            <i class="la la-trash-o"></i>
+                            Delete
+                        </a>
+                    </div>
+                </div>
+            `;
+            $(input).slideUp(1, function () {
+                $('#repeat-content').append(this);
+                $(this).slideDown(500);
+            });
+        });
+        $(document).on('click', '.delete-btn', function (f) {
+            $(f.target).closest('.remove-content').slideUp(function () {
+                $(this).remove();
             });
         });
     </script>

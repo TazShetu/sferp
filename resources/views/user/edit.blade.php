@@ -203,7 +203,7 @@
                             @foreach($users as $i => $user)
                                 @if($i > 1)
                                     <tr>
-                                        <th scope="row">{{$i + 1}}</th>
+                                        <th scope="row">{{$i - 1}}</th>
                                         <td>{{$user->name}}</td>
                                         <td>{{$user->email}}</td>
                                         <td>

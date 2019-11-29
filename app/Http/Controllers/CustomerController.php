@@ -6,6 +6,7 @@ use App\Contactperson;
 use App\Customer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 
 class CustomerController extends Controller
@@ -103,8 +104,27 @@ class CustomerController extends Controller
     {
         if (Auth::user()->can('customer')) {
             $customer = Customer::find($cid);
-            // also get all the contact persons ////////////////////////////////////////
-            return view('customer.profile', compact('customer'));
+            $cPersons =  Contactperson::where('customer_id', $cid)->get();
+            $percentage = 100;
+            if (count($cPersons) == 0){
+                $percentage = $percentage - 20;
+            }
+            if ($customer->img == null){
+                $percentage = $percentage - 10;
+            }
+            if ($customer->bin_file == null){
+                $percentage = $percentage - 5;
+            }
+            if ($customer->nid_file == null){
+                $percentage = $percentage - 5;
+            }
+            if ($customer->business_telephone_2 == null){
+                $percentage = $percentage - 5;
+            }
+            if ($customer->business_email_2 == null){
+                $percentage = $percentage - 5;
+            }
+            return view('customer.profile', compact('customer', 'cPersons', 'percentage'));
         } else {
             abort(403);
         }
@@ -114,8 +134,8 @@ class CustomerController extends Controller
     {
         if (Auth::user()->can('customer')) {
             $customer = Customer::find($cid);
-            // also get all the contact persons //////////////////////////////
-            return view('customer.edit', compact('customer'));
+            $cPersons =  Contactperson::where('customer_id', $cid)->get();
+            return view('customer.edit', compact('customer', 'cPersons'));
         } else {
             abort(403);
         }
@@ -198,26 +218,39 @@ class CustomerController extends Controller
     public function updateContactPerson(Request $request, $cid)
     {
         if (Auth::user()->can('customer')) {
-//            dd($cid);
-            dd($request->name);
-            dd($request->cName);
             $request->validate([
                 'cName' => 'required',
                 'designation' => 'required',
                 'number' => 'required',
             ]);
-            $customer = Customer::find($cid);
-            Contactperson::where('customer_id', $cid)->delete();
-            foreach ($request->cName as $i => $name){
-                $cp = new Contactperson;
-                $cp->customer_id = $cid;
-                $cp->name = $name;
-                $cp->designation = $request->designation[$i];
-                $cp->number = $request->number[$i];
-                $cp->save();
+            if ((count($request->cName) != count($request->designation)) || (count($request->cName) != count($request->number)) || (count($request->designation) != count($request->number))){
+                Session::flash('unsuccess', "Please do not mess with the original code !!!");
+                return redirect()->back();
             }
-            Session::flash('Success', "Customer '$customer->name' has been updated successfully.");
-            return redirect()->back();
+            DB::beginTransaction();
+            try {
+                Contactperson::where('customer_id', $cid)->delete();
+                foreach ($request->cName as $i => $name){
+                    $c = new Contactperson;
+                    $c->customer_id = $cid;
+                    $c->name = $name;
+                    $c->designation = $request->designation[$i];
+                    $c->number = $request->number[$i];
+                    $c->save();
+                }
+                DB::commit();
+                $success = true;
+            } catch (\Exception $e) {
+                $success = false;
+                DB::rollback();
+            }
+            if ($success) {
+                Session::flash('Success', "The Contact Person for this Customer has been updated successfully.");
+                return redirect()->back();
+            } else {
+                Session::flash('unsuccess', "Something went wrong :(");
+                return redirect()->back();
+            }
         } else {
             abort(403);
         }
