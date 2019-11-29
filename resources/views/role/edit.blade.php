@@ -44,7 +44,7 @@
                     <div class="kt-portlet__head kt-portlet__head--lg">
                         <div class="kt-portlet__head-label">
                             <h3 class="kt-portlet__head-title">
-                                Role Create
+                                Role Edit
                             </h3>
                         </div>
                     </div>
@@ -167,13 +167,13 @@
                                         <td>{{$role->description}}</td>
                                         <td>
                                             @if($role->id != $redit->id)
-                                                <a href="{{route('role.edit', ['cid' => $role->id])}}" title="Edit"
+                                                <a href="{{route('role.edit', ['rid' => $role->id])}}" title="Edit"
                                                    class="btn btn-sm btn-clean btn-icon btn-icon-md">
                                                     <i class="la la-edit"></i>
                                                 </a>
                                                 <a href="{{route('role.delete', ['rid' => $role->id])}}" title="Delete"
                                                    class="btn btn-sm btn-clean btn-icon btn-icon-md"
-                                                   onclick="return confirm('Are you sure you want to delete the customer ?')">
+                                                   onclick="return confirm('Are you sure you want to delete the Role ?')">
                                                     <i class="la la-trash" style="color: #fd397a;"></i>
                                                 </a>
                                             @else
@@ -186,7 +186,6 @@
                                                     <i class="la la-trash" style="color: #fd397a;"></i>
                                                 </a>
                                             @endif
-
                                         </td>
                                     </tr>
                                 @endif

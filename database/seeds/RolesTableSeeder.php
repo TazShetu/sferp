@@ -11,7 +11,7 @@ class RolesTableSeeder extends Seeder
         $rs = [
             0 => ['super_admin', 'Super Admin'],
             1 => ['admin', 'Admin'],
-            2 => ['no_permission', 'No Permission'],
+            2 => ['No Permission', 'No Permission'],
         ];
         foreach ($rs as $r){
             $a = new Role;

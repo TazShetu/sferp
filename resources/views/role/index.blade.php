@@ -83,7 +83,7 @@
                                                     <div class="form-group form-group-last row">
                                                         <label class="col-3 col-form-label">Permissions</label>
                                                         <div class="col-9">
-                                                            @if($errors->has('name'))
+                                                            @if($errors->has('permissions'))
                                                                 <span class="invalid-feedback"><b>Please Select At Least One Permission</b></span>
                                                             @endif
                                                             <div class="kt-checkbox-list">
@@ -155,13 +155,13 @@
                                         <td>{{$role->name}}</td>
                                         <td>{{$role->description}}</td>
                                         <td>
-                                            <a href="{{route('role.edit', ['cid' => $role->id])}}" title="Edit"
+                                            <a href="{{route('role.edit', ['rid' => $role->id])}}" title="Edit"
                                                class="btn btn-sm btn-clean btn-icon btn-icon-md">
                                                 <i class="la la-edit"></i>
                                             </a>
                                             <a href="{{route('role.delete', ['rid' => $role->id])}}" title="Delete"
                                                class="btn btn-sm btn-clean btn-icon btn-icon-md"
-                                               onclick="return confirm('Are you sure you want to delete the customer ?')">
+                                               onclick="return confirm('Are you sure you want to delete the Role ?')">
                                                 <i class="la la-trash" style="color: #fd397a;"></i>
                                             </a>
                                         </td>

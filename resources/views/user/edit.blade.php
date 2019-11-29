@@ -1,11 +1,11 @@
 @extends('layouts.m')
-@section('title', 'Users')
+@section('title', 'Edit User')
 @section('content_head')
     <div class="kt-subheader   kt-grid__item" id="kt_subheader">
         <div class="kt-container  kt-container--fluid ">
             <div class="kt-subheader__main">
                 <h3 class="kt-subheader__title">
-                    Users
+                    Edit User
                 </h3>
                 <span class="kt-subheader__separator kt-subheader__separator--v"></span>
                 <div class="kt-subheader__breadcrumbs">
@@ -16,6 +16,10 @@
                     <a href="{{route('users')}}"
                        class="kt-subheader__breadcrumbs-link kt-subheader__breadcrumbs-link--active"
                        style="padding-right: 1rem;">Users</a>
+                    <span class="kt-subheader__breadcrumbs-separator"></span>
+                    <a href="javascript:void (0)"
+                       class="kt-subheader__breadcrumbs-link kt-subheader__breadcrumbs-link--active"
+                       style="padding-right: 1rem;">Edit</a>
                 </div>
             </div>
         </div>
@@ -40,7 +44,7 @@
                     <div class="kt-portlet__head kt-portlet__head--lg">
                         <div class="kt-portlet__head-label">
                             <h3 class="kt-portlet__head-title">
-                                User Create
+                                User Edit
                             </h3>
                         </div>
                     </div>
@@ -50,17 +54,18 @@
                                 <div class="kt-form kt-form--label-right">
                                     <div class="kt-form__body">
                                         <div class="kt-section kt-section--first">
-                                            <form action="{{route('user.store')}}" method="post">
+                                            <form action="{{route('user.update', ['uid' => $uedit->id])}}"
+                                                  method="post">
                                                 @csrf
                                                 <div class="kt-section__body">
                                                     <div class="form-group row">
                                                         <label class="col-xl-3 col-lg-3 col-form-label">
-                                                            Name
+                                                            Name*
                                                         </label>
                                                         <div class="col-lg-9 col-xl-6">
                                                             <input class="form-control {{$errors->has('name') ? 'is-invalid' : ''}}"
-                                                                   type="text" placeholder="Full Name" name="name"
-                                                                   required value="{{old('name')}}">
+                                                                   type="text" name="name"
+                                                                   required value="{{$uedit->name}}">
                                                             @if($errors->has('name'))
                                                                 <span class="invalid-feedback">{{$errors->first('name')}}</span>
                                                             @endif
@@ -68,7 +73,7 @@
                                                     </div>
                                                     <div class="form-group row">
                                                         <label class="col-xl-3 col-lg-3 col-form-label">
-                                                            Email
+                                                            Email*
                                                         </label>
                                                         <div class="col-lg-9 col-xl-6">
                                                             <div class="input-group">
@@ -76,8 +81,8 @@
                                                                             class="input-group-text"><i
                                                                                 class="la la-at"></i></span></div>
                                                                 <input class="form-control {{$errors->has('email') ? 'is-invalid' : ''}}"
-                                                                       type="email" placeholder="Email" required
-                                                                       name="email" value="{{old('email')}}">
+                                                                       type="email" required
+                                                                       name="email" value="{{$uedit->email}}">
                                                                 @if($errors->has('email'))
                                                                     <span class="invalid-feedback">{{$errors->first('email')}}</span>
                                                                 @endif
@@ -96,7 +101,7 @@
                                                                                 class="fa fa-unlock-alt"></i></span>
                                                                 </div>
                                                                 <input class="form-control {{$errors->has('password') ? 'is-invalid' : ''}}"
-                                                                       type="password" name="password" required>
+                                                                       type="password" name="password">
                                                                 @if($errors->has('password'))
                                                                     <span class="invalid-feedback">{{$errors->first('password')}}</span>
                                                                 @endif
@@ -114,8 +119,7 @@
                                                                                 class="fa fa-unlock-alt"></i></span>
                                                                 </div>
                                                                 <input class="form-control {{$errors->has('password') ? 'is-invalid' : ''}}"
-                                                                       type="password" name="password_confirmation"
-                                                                       required>
+                                                                       type="password" name="password_confirmation">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -130,7 +134,14 @@
                                                                     @if($i > 1)
                                                                         <label class="kt-checkbox">
                                                                             <input type="checkbox" name="roles[]"
-                                                                                   value="{{$role->id}}"> {{$role->name}}
+                                                                                   value="{{$role->id}}"
+                                                                                   @foreach($redits as $pe)
+                                                                                   @if(($pe->id * 1) == ($role->id * 1))
+                                                                                   checked
+                                                                                    @break
+                                                                                    @endif
+                                                                                    @endforeach
+                                                                            > {{$role->name}}
                                                                             <span></span>
                                                                         </label>
                                                                     @endif
@@ -145,7 +156,7 @@
                                                             <div class="col-lg-9 col-xl-6">
                                                                 <button type="submit"
                                                                         class="btn btn-label-brand btn-bold">
-                                                                    Create
+                                                                    Save Changes
                                                                 </button>
                                                                 <a href="javascript:void (0)"
                                                                    data-link="{{route('cancel')}}"
@@ -196,15 +207,27 @@
                                         <td>{{$user->name}}</td>
                                         <td>{{$user->email}}</td>
                                         <td>
-                                            <a href="{{route('user.edit', ['uid' => $user->id])}}" title="Edit"
-                                               class="btn btn-sm btn-clean btn-icon btn-icon-md">
-                                                <i class="la la-edit"></i>
-                                            </a>
-                                            <a href="{{route('user.delete', ['uid' => $user->id])}}" title="Delete"
-                                               class="btn btn-sm btn-clean btn-icon btn-icon-md"
-                                               onclick="return confirm('Are you sure you want to delete the User ?')">
-                                                <i class="la la-trash" style="color: #fd397a;"></i>
-                                            </a>
+                                            @if($user->id != $uedit->id)
+                                                <a href="{{route('user.edit', ['uid' => $user->id])}}" title="Edit"
+                                                   class="btn btn-sm btn-clean btn-icon btn-icon-md">
+                                                    <i class="la la-edit"></i>
+                                                </a>
+                                                <a href="{{route('user.delete', ['uid' => $user->id])}}" title="Delete"
+                                                   class="btn btn-sm btn-clean btn-icon btn-icon-md"
+                                                   onclick="return confirm('Are you sure you want to delete the User ?')">
+                                                    <i class="la la-trash" style="color: #fd397a;"></i>
+                                                </a>
+                                            @else
+                                                <a href="#" title="Edit"
+                                                   class="btn btn-sm btn-clean btn-icon btn-icon-md disabled">
+                                                    <i class="la la-edit"></i>
+                                                </a>
+                                                <a href="#" title="Delete"
+                                                   class="btn btn-sm btn-clean btn-icon btn-icon-md disabled">
+                                                    <i class="la la-trash" style="color: #fd397a;"></i>
+                                                </a>
+                                            @endif
+
                                         </td>
                                     </tr>
                                 @endif

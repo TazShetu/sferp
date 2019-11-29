@@ -23,6 +23,10 @@ Route::get('/role-delete/{rid}', 'AclController@roleDelete')->name('role.delete'
 Route::get('/role-edit/{rid}', 'AclController@roleEdit')->name('role.edit');
 Route::post('/role-update/{rid}', 'AclController@roleUpdate')->name('role.update');
 Route::get('/user', 'HomeController@user')->name('users');
+Route::post('/user-store', 'HomeController@userStore')->name('user.store');
+Route::get('/user-delete/{uid}', 'HomeController@userDelete')->name('user.delete');
+Route::get('/user-edit/{uid}', 'HomeController@userEdit')->name('user.edit');
+Route::post('/user-update/{uid}', 'HomeController@userUpdate')->name('user.update');
 Route::get('/user-permission', 'AclController@userPermission')->name('user.permission');
 
 Route::get('/customer-create', 'CustomerController@create')->name('customer.create');
