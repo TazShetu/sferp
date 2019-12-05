@@ -262,9 +262,9 @@
                                                 <div class="col-lg-9 col-xl-6">
                                                     <select class="form-control" name="customerType" required>
                                                         <option selected disabled hidden>Choose...</option>
-                                                        <option value="Dealer">Dealer</option>
-                                                        <option value="Sub Dealer">Sub Dealer</option>
-                                                        <option value="Individual">Individual</option>
+                                                        @foreach($customerTypes as $ct)
+                                                            <option value="{{$ct->id}}">{{$ct->title}}</option>
+                                                        @endforeach
                                                     </select>
                                                     @if($errors->has('customerType'))
                                                         <span class="invalid-feedback">{{$errors->first('customerType')}}</span>
@@ -320,6 +320,14 @@
 
     <script src="{{asset('m/assets/js/pages/crud/forms/widgets/bootstrap-datepicker.js')}}"
             type="text/javascript"></script>
+
+    <script>
+        $(function () {
+            $("#kt_datepicker_2").on('click', e => {
+                $("#kt_datepicker_2").datepicker("setDate", new Date());
+            });
+        });
+    </script>
 
 
     <!--end::Page Vendors -->

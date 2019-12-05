@@ -38,14 +38,14 @@
                 Please Do Not Mess With The Original Code !!!
             </div>
         @endif
-
         <div class="kt-portlet kt-portlet--tabs">
             <div class="kt-portlet__head">
                 <div class="kt-portlet__head-toolbar">
                     <ul class="nav nav-tabs nav-tabs-space-xl nav-tabs-line nav-tabs-bold nav-tabs-line-3x nav-tabs-line-brand"
                         role="tablist">
                         <li class="nav-item">
-                            <a class="nav-link active" data-toggle="tab" href="#kt_user_edit_tab_1"
+                            <a class="nav-link {{ ($is_edit) ? '' : 'active' }}" data-toggle="tab"
+                               href="#kt_user_edit_tab_1"
                                role="tab">
                                 <svg width="24px" height="24px"
                                      viewBox="0 0 24 24" version="1.1" class="kt-svg-icon">
@@ -61,7 +61,8 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" data-toggle="tab" href="#kt_user_edit_tab_2" role="tab">
+                            <a class="nav-link {{ ($is_edit) ? 'active' : '' }}" data-toggle="tab"
+                               href="#kt_user_edit_tab_2" role="tab">
                                 <svg width="24px" height="24px"
                                      viewBox="0 0 24 24" version="1.1" class="kt-svg-icon">
                                     <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -75,29 +76,31 @@
                                 Contact Person
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" data-toggle="tab" href="#kt_user_edit_tab_3" role="tab">
-                                <svg width="24px" height="24px"
-                                     viewBox="0 0 24 24" version="1.1" class="kt-svg-icon">
-                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                        <rect x="0" y="0" width="24" height="24"/>
-                                        <path d="M4,4 L11.6314229,2.5691082 C11.8750185,2.52343403 12.1249815,2.52343403 12.3685771,2.5691082 L20,4 L20,13.2830094 C20,16.2173861 18.4883464,18.9447835 16,20.5 L12.5299989,22.6687507 C12.2057287,22.8714196 11.7942713,22.8714196 11.4700011,22.6687507 L8,20.5 C5.51165358,18.9447835 4,16.2173861 4,13.2830094 L4,4 Z"
-                                              fill="#000000" opacity="0.3"/>
-                                        <path d="M12,11 C10.8954305,11 10,10.1045695 10,9 C10,7.8954305 10.8954305,7 12,7 C13.1045695,7 14,7.8954305 14,9 C14,10.1045695 13.1045695,11 12,11 Z"
-                                              fill="#000000" opacity="0.3"/>
-                                        <path d="M7.00036205,16.4995035 C7.21569918,13.5165724 9.36772908,12 11.9907452,12 C14.6506758,12 16.8360465,13.4332455 16.9988413,16.5 C17.0053266,16.6221713 16.9988413,17 16.5815,17 C14.5228466,17 11.463736,17 7.4041679,17 C7.26484009,17 6.98863236,16.6619875 7.00036205,16.4995035 Z"
-                                              fill="#000000" opacity="0.3"/>
-                                    </g>
-                                </svg>
-                                Map
-                            </a>
-                        </li>
+                        @if((($customer->customertype_id * 1) == 1) || (($customer->customertype_id * 1) == 2))
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#kt_user_edit_tab_3" role="tab">
+                                    <svg width="24px" height="24px"
+                                         viewBox="0 0 24 24" version="1.1" class="kt-svg-icon">
+                                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                            <rect x="0" y="0" width="24" height="24"/>
+                                            <path d="M4,4 L11.6314229,2.5691082 C11.8750185,2.52343403 12.1249815,2.52343403 12.3685771,2.5691082 L20,4 L20,13.2830094 C20,16.2173861 18.4883464,18.9447835 16,20.5 L12.5299989,22.6687507 C12.2057287,22.8714196 11.7942713,22.8714196 11.4700011,22.6687507 L8,20.5 C5.51165358,18.9447835 4,16.2173861 4,13.2830094 L4,4 Z"
+                                                  fill="#000000" opacity="0.3"/>
+                                            <path d="M12,11 C10.8954305,11 10,10.1045695 10,9 C10,7.8954305 10.8954305,7 12,7 C13.1045695,7 14,7.8954305 14,9 C14,10.1045695 13.1045695,11 12,11 Z"
+                                                  fill="#000000" opacity="0.3"/>
+                                            <path d="M7.00036205,16.4995035 C7.21569918,13.5165724 9.36772908,12 11.9907452,12 C14.6506758,12 16.8360465,13.4332455 16.9988413,16.5 C17.0053266,16.6221713 16.9988413,17 16.5815,17 C14.5228466,17 11.463736,17 7.4041679,17 C7.26484009,17 6.98863236,16.6619875 7.00036205,16.4995035 Z"
+                                                  fill="#000000" opacity="0.3"/>
+                                        </g>
+                                    </svg>
+                                    Hierarchy
+                                </a>
+                            </li>
+                        @endif
                     </ul>
                 </div>
             </div>
             <div class="kt-portlet__body">
                 <div class="tab-content">
-                    <div class="tab-pane active" id="kt_user_edit_tab_1" role="tabpanel">
+                    <div class="tab-pane {{ ($is_edit) ? '' : 'active' }}" id="kt_user_edit_tab_1" role="tabpanel" 8>
                         <div class="kt-form kt-form--label-right">
                             <div class="kt-form__body">
                                 <div class="kt-section kt-section--first">
@@ -333,11 +336,12 @@
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">
                                                     <select class="form-control" name="customerType" required>
-                                                        <option selected hidden
-                                                                value="{{$customer->type}}">{{$customer->type}}</option>
-                                                        <option value="Dealer">Dealer</option>
-                                                        <option value="Sub Dealer">Sub Dealer</option>
-                                                        <option value="Individual">Individual</option>
+                                                        <option selected hidden value="{{$customer->customertype_id}}">
+                                                            {{$customer->type}}
+                                                        </option>
+                                                        @foreach($customerTypes as $ct)
+                                                            <option value="{{$ct->id}}">{{$ct->title}}</option>
+                                                        @endforeach
                                                     </select>
                                                     @if($errors->has('customerType'))
                                                         <span class="invalid-feedback">{{$errors->first('customerType')}}</span>
@@ -379,7 +383,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="tab-pane" id="kt_user_edit_tab_2" role="tabpanel">
+                    <div class="tab-pane {{ ($is_edit) ? 'active' : '' }}" id="kt_user_edit_tab_2" role="tabpanel">
                         <div class="kt-form kt-form--label-right">
                             <div class="kt-form__body">
                                 <div class="kt-section kt-section--first">
@@ -527,30 +531,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="tab-pane" id="kt_user_edit_tab_3" role="tabpanel">
-                        <div class="kt-form kt-form--label-right">
-                            {{--Form Start--}}
-                            <div class="kt-form__body">
-                                <div class="kt-section kt-section--first">
-                                    <div class="kt-section__body">
-                                        <div id="kt_gmap_3" style="height:300px;"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="kt-separator kt-separator--space-lg kt-separator--fit kt-separator--border-solid"></div>
-                            <div class="kt-form__actions">
-                                <div class="row">
-                                    <div class="col-xl-3"></div>
-                                    <div class="col-lg-9 col-xl-6">
-                                        <a href="#" class="btn btn-label-brand btn-bold">Save
-                                            changes</a>
-                                        <a href="#" class="btn btn-clean btn-bold">Cancel</a>
-                                    </div>
-                                </div>
-                            </div>
-                            {{--Form End--}}
-                        </div>
-                    </div>
+                    @if((($customer->customertype_id * 1) == 1) || (($customer->customertype_id * 1) == 2))
+                        @include('include.m.customerEdit.hierarchy')
+                    @endif
                 </div>
             </div>
         </div>
@@ -561,113 +544,21 @@
 {{--@endsection--}}
 @section('script')
     <!--begin::Page Vendors(used by this page) -->
-    <script src="//maps.google.com/maps/api/js?key=AIzaSyCov7B-_iu45lPJn7iMSoh0--mDBtdBOOk"
-            type="text/javascript"></script>
     <!--end::Page Vendors -->
 
     <!--begin::Page Scripts(used by this page) -->
     <script src="{{asset('m/assets/js/pages/custom/user/edit-user.js')}}" type="text/javascript"></script>
     <script src="{{asset('m/assets/js/pages/crud/forms/widgets/bootstrap-datepicker.js')}}"
             type="text/javascript"></script>
-    <script>
-        var page_map = new GMaps({
-            div: '#kt_gmap_3',
-            lat: 23.724728,
-            lng: 90.410900,
-        });
-        page_map.addMarker({
-            lat: 23.724728,
-            lng: 90.410900,
-            title: 'Office',
-            details: {
-                database_id: 42,
-                author: 'HPNeo'
-            },
-            click: function (e) {
-                if (console.log) console.log(e);
-                alert('You clicked in this marker');
-            }
-        });
-        // map.addMarker({
-        //     lat: -12.042,
-        //     lng: -77.028333,
-        //     title: 'Marker with InfoWindow',
-        //     infoWindow: {
-        //         content: '<span style="color:#000">HTML Content!</span>'
-        //     }
-        // });
-        page_map.setZoom(5);
-        $('#kt_gmap_3').height('500px').width('auto');
 
-    </script>
+
     {{--    <script src="{{asset('m/assets/js/pages/crud/file-upload/uppy.js')}}" type="text/javascript"></script>--}}
 
     {{--    <script src="{{asset('m/assets/js/pages/crud/forms/widgets/form-repeater.js')}}" type="text/javascript"></script>--}}
+    {{--    <script src="{{asset('plugins/select2/select2.full.min.js')}}" type="text/javascript"></script>--}}
 
-    <script>
-        $(document).on('click', '#add-btn', function () {
-            var input = `
-                <div class="form-group row align-items-center remove-content">
-                    <div class="col-md-3">
-                        <div class="kt-form__group--inline">
-                            <div class="kt-form__label">
-                                <label>Contact Person Name:</label>
-                            </div>
-                            <div class="kt-form__control">
-                                <input type="text" class="form-control"
-                                       name="cName[]"
-                                       placeholder="Enter full name" required>
-                            </div>
-                        </div>
-                        <div class="d-md-none kt-margin-b-10"></div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="kt-form__group--inline">
-                            <div class="kt-form__label">
-                                <label>Contact Person Designation:</label>
-                            </div>
-                            <div class="kt-form__control">
-                                <input type="text" class="form-control"
-                                       name="designation[]"
-                                       placeholder="Enter Designation" required>
-                            </div>
-                        </div>
-                        <div class="d-md-none kt-margin-b-10"></div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="kt-form__group--inline">
-                            <div class="kt-form__label">
-                                <label class="kt-label m-label--single">Contact
-                                    Person Number:</label>
-                            </div>
-                            <div class="kt-form__control">
-                                <input type="text" class="form-control"
-                                       name="number[]" required
-                                       placeholder="Enter contact number">
-                            </div>
-                        </div>
-                        <div class="d-md-none kt-margin-b-10"></div>
-                    </div>
-                    <div class="col-md-3">
-                        <a href="javascript:;"
-                           class="btn-sm btn btn-label-danger btn-bold delete-btn"
-                           style="margin-top: 24px;" >
-                            <i class="la la-trash-o"></i>
-                            Delete
-                        </a>
-                    </div>
-                </div>
-            `;
-            $(input).slideUp(1, function () {
-                $('#repeat-content').append(this);
-                $(this).slideDown(500);
-            });
-        });
-        $(document).on('click', '.delete-btn', function (f) {
-            $(f.target).closest('.remove-content').slideUp(function () {
-                $(this).remove();
-            });
-        });
-    </script>
+    <script src="{{asset('m/assets/js/pages/crud/forms/widgets/bootstrap-select.js')}}" type="text/javascript"></script>
+
+    @include('include.m.customerEdit.js1')
     <!--end::Page Scripts -->
 @endsection

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Contactperson;
 use App\Customer;
+use App\Customerrelation;
+use App\Customertype;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -29,7 +31,8 @@ class CustomerController extends Controller
     public function create()
     {
         if (Auth::user()->can('customer')) {
-            return view('customer.create');
+            $customerTypes = Customertype::all();
+            return view('customer.create', compact('customerTypes'));
         } else {
             abort(403);
         }
@@ -62,7 +65,7 @@ class CustomerController extends Controller
             $customer->business_area = $request->businessArea;
             $customer->business_telephone = $request->businessTelephone;
             $customer->business_email = $request->businessEmail;
-            $customer->type = $request->customerType;
+            $customer->customertype_id = $request->customerType;
             $customer->company_site = $request->companySite;
             if ($request->hasFile('avatar')){
                 $img = $request->avatar;
@@ -93,6 +96,7 @@ class CustomerController extends Controller
             }
             $customer->save();
             Session::flash('Success', "Customer '$customer->name' has been created successfully. You can add Contact Person in Contact Person tab.");
+            session(['is_edit' => 1]);
             return redirect()->route('customer.edit', ['cid' => $customer->id]);
         } else {
             abort(403);
@@ -134,8 +138,35 @@ class CustomerController extends Controller
     {
         if (Auth::user()->can('customer')) {
             $customer = Customer::find($cid);
+            $customer['type'] = Customertype::find($customer->customertype_id)->title;
             $cPersons =  Contactperson::where('customer_id', $cid)->get();
-            return view('customer.edit', compact('customer', 'cPersons'));
+            $is_edit = false;
+            if (session()->has('is_edit')){
+                $is_edit = true;
+                session()->forget('is_edit');
+            }
+            $customerTypes = Customertype::all();
+            $subDealers = null;
+            $individuals = null;
+            if (($customer->customertype_id * 1) == 1){
+                $subDealers = Customerrelation::where('parent_id', $cid)->where('child_type_id', '2')->get();
+                if (count($subDealers) > 0){
+                    foreach ($subDealers as $s){
+                        $s['name'] = Customer::find($s->child_id)->name;
+                    }
+                }
+            }
+            if ((($customer->customertype_id * 1) == 1) || (($customer->customertype_id * 1) == 2) ){
+                $individuals = Customerrelation::where('parent_id', $cid)->where('child_type_id', '3')->get();
+                if (count($individuals) > 0){
+                    foreach ($individuals as $i){
+                        $i['name'] = Customer::find($i->child_id)->name;
+                    }
+                }
+            }
+            $allSubDealers = Customer::where('customertype_id', '2')->get();
+            $allIndividuals = Customer::where('customertype_id', '3')->get();
+            return view('customer.edit', compact('customer', 'cPersons', 'is_edit', 'customerTypes', 'subDealers', 'individuals', 'allSubDealers', 'allIndividuals'));
         } else {
             abort(403);
         }
@@ -168,7 +199,7 @@ class CustomerController extends Controller
             $customer->business_area = $request->businessArea;
             $customer->business_telephone = $request->businessTelephone;
             $customer->business_email = $request->businessEmail;
-            $customer->type = $request->customerType;
+            $customer->customertype_id = $request->customerType;
             $customer->company_site = $request->companySite;
             if ($request->hasFile('avatar')){
                 if ($customer->image){
@@ -279,6 +310,54 @@ class CustomerController extends Controller
         }
 
     }
+
+
+    public function subDealerUpdate(Request $request, $cid)
+    {
+        if (Auth::user()->can('customer')) {
+            Customerrelation::where('parent_id', $cid)->where('child_type_id', '2')->delete();
+            if ($request->filled('subDealer')){
+                $subdealers = array_unique($request->subDealer);
+                foreach ($subdealers as $sid){
+                    $c = new Customerrelation;
+                    $c->parent_id = $cid;
+                    $c->parent_type_id = 1;
+                    $c->child_id = $sid;
+                    $c->child_type_id = 2;
+                    $c->save();
+                }
+            }
+            Session::flash('Success', "The Sub-Dealer list has been updated successfully.");
+            return redirect()->back();
+        } else {
+            abort(403);
+        }
+    }
+
+
+    public function individualUpdate(Request $request, $cid)
+    {
+        if (Auth::user()->can('customer')) {
+            Customerrelation::where('parent_id', $cid)->where('child_type_id', '3')->delete();
+            if ($request->filled('individual')){
+                $C = Customer::find($cid);
+                $individuals = array_unique($request->individual);
+                foreach ($individuals as $id){
+                    $c = new Customerrelation;
+                    $c->parent_id = $cid;
+                    $c->parent_type_id = $C->customertype_id;
+                    $c->child_id = $id;
+                    $c->child_type_id = 3;
+                    $c->save();
+                }
+            }
+            Session::flash('Success', "The Individual list has been updated successfully.");
+            return redirect()->back();
+        } else {
+            abort(403);
+        }
+    }
+
 
     public function index()
     {

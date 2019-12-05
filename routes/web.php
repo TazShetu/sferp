@@ -33,6 +33,8 @@ Route::get('/user-permission', 'AclController@userPermission')->name('user.permi
 
 Route::get('/customer-create', 'CustomerController@create')->name('customer.create');
 Route::post('/customer-store', 'CustomerController@store')->name('customer.store');
+Route::post('/customer-sub-dealer-update/{cid}', 'CustomerController@subDealerUpdate')->name('customer.sub.dealer.update');
+Route::post('/customer-individual-update/{cid}', 'CustomerController@individualUpdate')->name('customer.individual.update');
 Route::get('/customers', 'CustomerController@list')->name('customer.list');
 Route::get('/customer-profile/{cid}', 'CustomerController@show')->name('customer.profile');
 Route::get('/customer-delete/{cid}', 'CustomerController@destroy')->name('customer.delete');

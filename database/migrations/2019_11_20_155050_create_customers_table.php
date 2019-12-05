@@ -28,7 +28,7 @@ class CreateCustomersTable extends Migration
             $table->string('business_telephone_2')->nullable();
             $table->string('business_email');
             $table->string('business_email_2')->nullable();
-            $table->string('type');
+            $table->string('customertype_id');
             $table->string('company_site');
             $table->string('image')->nullable();
             $table->timestamps();
