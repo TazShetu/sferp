@@ -31,15 +31,38 @@ Route::get('/user-edit/{uid}', 'HomeController@userEdit')->name('user.edit');
 Route::post('/user-update/{uid}', 'HomeController@userUpdate')->name('user.update');
 //Route::get('/user-permission', 'AclController@userPermission')->name('user.permission');
 
+Route::get('/customers', 'CustomerController@list')->name('customer.list');
 Route::get('/customer-create', 'CustomerController@create')->name('customer.create');
 Route::post('/customer-store', 'CustomerController@store')->name('customer.store');
 Route::post('/customer-sub-dealer-update/{cid}', 'CustomerController@subDealerUpdate')->name('customer.sub.dealer.update');
 Route::post('/customer-individual-update/{cid}', 'CustomerController@individualUpdate')->name('customer.individual.update');
-Route::get('/customers', 'CustomerController@list')->name('customer.list');
 Route::get('/customer-profile/{cid}', 'CustomerController@show')->name('customer.profile');
 Route::get('/customer-delete/{cid}', 'CustomerController@destroy')->name('customer.delete');
 
 Route::get('/customer-edit/{cid}', 'CustomerController@edit')->name('customer.edit');
 Route::post('/customer-update/{cid}', 'CustomerController@update')->name('customer.update');
 Route::post('/customer-update-contact-person/{cid}', 'CustomerController@updateContactPerson')->name('customer.update.contact.person');
+
+Route::get('/factories', 'FactoryController@list')->name('factory.list');
+Route::get('/factories/create', 'FactoryController@create')->name('factory.create');
+Route::post('/factories/store', 'FactoryController@store')->name('factory.store');
+Route::get('/factories/edit/{fid}', 'FactoryController@edit')->name('factory.edit');
+Route::post('/factories/update/{fid}', 'FactoryController@update')->name('factory.update');
+Route::get('/factories/delete/{fid}', 'FactoryController@destroy')->name('factory.delete');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
