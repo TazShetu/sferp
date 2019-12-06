@@ -5,12 +5,17 @@
         <div class="kt-container  kt-container--fluid ">
             <div class="kt-subheader__main">
                 <h3 class="kt-subheader__title">
-                    Edit User
+                    Edit Customer
                 </h3>
                 <span class="kt-subheader__separator kt-subheader__separator--v"></span>
-                <div class="kt-subheader__group" id="kt_subheader_search">
-										<span class="kt-subheader__desc" id="kt_subheader_total">
-											Alex Stone </span>
+                <div class="kt-subheader__breadcrumbs">
+                    <a href="{{route('home')}}" class="kt-subheader__breadcrumbs-home"><i class="flaticon2-shelter"></i></a>
+                    <span class="kt-subheader__breadcrumbs-separator"></span>
+                    <a href="{{route('customer.list')}}" class="kt-subheader__breadcrumbs-link">Customer</a>
+                    <span class="kt-subheader__breadcrumbs-separator"></span>
+                    <a href="javascript:void (0)"
+                       class="kt-subheader__breadcrumbs-link kt-subheader__breadcrumbs-link--active"
+                       style="padding-right: 1rem;">Edit</a>
                 </div>
             </div>
             <div class="kt-subheader__toolbar"></div>
@@ -19,16 +24,30 @@
 @endsection
 @section('content')
     <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
+        @if(session('Success'))
+            <div class="alert alert-success text-center">
+                {{session('Success')}}
+            </div>
+        @elseif(session('unsuccess'))
+            <div class="alert alert-warning text-center">
+                {{session('unsuccess')}}
+            </div>
+        @endif
+        @if($errors->has('cName') || $errors->has('designation') || $errors->has('number'))
+            <div class="alert alert-danger text-center">
+                Please Do Not Mess With The Original Code !!!
+            </div>
+        @endif
         <div class="kt-portlet kt-portlet--tabs">
             <div class="kt-portlet__head">
                 <div class="kt-portlet__head-toolbar">
                     <ul class="nav nav-tabs nav-tabs-space-xl nav-tabs-line nav-tabs-bold nav-tabs-line-3x nav-tabs-line-brand"
                         role="tablist">
                         <li class="nav-item">
-                            <a class="nav-link active" data-toggle="tab" href="#kt_user_edit_tab_1"
+                            <a class="nav-link {{ ($is_edit) ? '' : 'active' }}" data-toggle="tab"
+                               href="#kt_user_edit_tab_1"
                                role="tab">
-                                <svg xmlns="http://www.w3.org/2000/svg"
-                                     xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px"
+                                <svg width="24px" height="24px"
                                      viewBox="0 0 24 24" version="1.1" class="kt-svg-icon">
                                     <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                                         <polygon points="0 0 24 0 24 24 0 24"/>
@@ -42,9 +61,9 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" data-toggle="tab" href="#kt_user_edit_tab_2" role="tab">
-                                <svg xmlns="http://www.w3.org/2000/svg"
-                                     xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px"
+                            <a class="nav-link {{ ($is_edit) ? 'active' : '' }}" data-toggle="tab"
+                               href="#kt_user_edit_tab_2" role="tab">
+                                <svg width="24px" height="24px"
                                      viewBox="0 0 24 24" version="1.1" class="kt-svg-icon">
                                     <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                                         <polygon points="0 0 24 0 24 24 0 24"/>
@@ -57,79 +76,63 @@
                                 Contact Person
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" data-toggle="tab" href="#kt_user_edit_tab_3" role="tab">
-                                <svg xmlns="http://www.w3.org/2000/svg"
-                                     xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px"
-                                     viewBox="0 0 24 24" version="1.1" class="kt-svg-icon">
-                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                        <rect x="0" y="0" width="24" height="24"/>
-                                        <path d="M4,4 L11.6314229,2.5691082 C11.8750185,2.52343403 12.1249815,2.52343403 12.3685771,2.5691082 L20,4 L20,13.2830094 C20,16.2173861 18.4883464,18.9447835 16,20.5 L12.5299989,22.6687507 C12.2057287,22.8714196 11.7942713,22.8714196 11.4700011,22.6687507 L8,20.5 C5.51165358,18.9447835 4,16.2173861 4,13.2830094 L4,4 Z"
-                                              fill="#000000" opacity="0.3"/>
-                                        <path d="M12,11 C10.8954305,11 10,10.1045695 10,9 C10,7.8954305 10.8954305,7 12,7 C13.1045695,7 14,7.8954305 14,9 C14,10.1045695 13.1045695,11 12,11 Z"
-                                              fill="#000000" opacity="0.3"/>
-                                        <path d="M7.00036205,16.4995035 C7.21569918,13.5165724 9.36772908,12 11.9907452,12 C14.6506758,12 16.8360465,13.4332455 16.9988413,16.5 C17.0053266,16.6221713 16.9988413,17 16.5815,17 C14.5228466,17 11.463736,17 7.4041679,17 C7.26484009,17 6.98863236,16.6619875 7.00036205,16.4995035 Z"
-                                              fill="#000000" opacity="0.3"/>
-                                    </g>
-                                </svg>
-                                Map
-                            </a>
-                        </li>
-                        <!--                                    <li class="nav-item">-->
-                        <!--                                        <a class="nav-link" data-toggle="tab" href="#kt_user_edit_tab_4" role="tab">-->
-                        <!--                                            <svg xmlns="http://www.w3.org/2000/svg"-->
-                        <!--                                                 xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px"-->
-                        <!--                                                 viewBox="0 0 24 24" version="1.1" class="kt-svg-icon">-->
-                        <!--                                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">-->
-                        <!--                                                    <rect x="0" y="0" width="24" height="24"/>-->
-                        <!--                                                    <path d="M6,2 L18,2 C18.5522847,2 19,2.44771525 19,3 L19,12 C19,12.5522847 18.5522847,13 18,13 L6,13 C5.44771525,13 5,12.5522847 5,12 L5,3 C5,2.44771525 5.44771525,2 6,2 Z M7.5,5 C7.22385763,5 7,5.22385763 7,5.5 C7,5.77614237 7.22385763,6 7.5,6 L13.5,6 C13.7761424,6 14,5.77614237 14,5.5 C14,5.22385763 13.7761424,5 13.5,5 L7.5,5 Z M7.5,7 C7.22385763,7 7,7.22385763 7,7.5 C7,7.77614237 7.22385763,8 7.5,8 L10.5,8 C10.7761424,8 11,7.77614237 11,7.5 C11,7.22385763 10.7761424,7 10.5,7 L7.5,7 Z"-->
-                        <!--                                                          fill="#000000" opacity="0.3"/>-->
-                        <!--                                                    <path d="M3.79274528,6.57253826 L12,12.5 L20.2072547,6.57253826 C20.4311176,6.4108595 20.7436609,6.46126971 20.9053396,6.68513259 C20.9668779,6.77033951 21,6.87277228 21,6.97787787 L21,17 C21,18.1045695 20.1045695,19 19,19 L5,19 C3.8954305,19 3,18.1045695 3,17 L3,6.97787787 C3,6.70173549 3.22385763,6.47787787 3.5,6.47787787 C3.60510559,6.47787787 3.70753836,6.51099993 3.79274528,6.57253826 Z"-->
-                        <!--                                                          fill="#000000"/>-->
-                        <!--                                                </g>-->
-                        <!--                                            </svg>-->
-                        <!--                                            Settings-->
-                        <!--                                        </a>-->
-                        <!--                                    </li>-->
+                        @if((($customer->customertype_id * 1) == 1) || (($customer->customertype_id * 1) == 2))
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#kt_user_edit_tab_3" role="tab">
+                                    <svg width="24px" height="24px"
+                                         viewBox="0 0 24 24" version="1.1" class="kt-svg-icon">
+                                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                            <rect x="0" y="0" width="24" height="24"/>
+                                            <path d="M4,4 L11.6314229,2.5691082 C11.8750185,2.52343403 12.1249815,2.52343403 12.3685771,2.5691082 L20,4 L20,13.2830094 C20,16.2173861 18.4883464,18.9447835 16,20.5 L12.5299989,22.6687507 C12.2057287,22.8714196 11.7942713,22.8714196 11.4700011,22.6687507 L8,20.5 C5.51165358,18.9447835 4,16.2173861 4,13.2830094 L4,4 Z"
+                                                  fill="#000000" opacity="0.3"/>
+                                            <path d="M12,11 C10.8954305,11 10,10.1045695 10,9 C10,7.8954305 10.8954305,7 12,7 C13.1045695,7 14,7.8954305 14,9 C14,10.1045695 13.1045695,11 12,11 Z"
+                                                  fill="#000000" opacity="0.3"/>
+                                            <path d="M7.00036205,16.4995035 C7.21569918,13.5165724 9.36772908,12 11.9907452,12 C14.6506758,12 16.8360465,13.4332455 16.9988413,16.5 C17.0053266,16.6221713 16.9988413,17 16.5815,17 C14.5228466,17 11.463736,17 7.4041679,17 C7.26484009,17 6.98863236,16.6619875 7.00036205,16.4995035 Z"
+                                                  fill="#000000" opacity="0.3"/>
+                                        </g>
+                                    </svg>
+                                    Hierarchy
+                                </a>
+                            </li>
+                        @endif
                     </ul>
                 </div>
             </div>
-
-
             <div class="kt-portlet__body">
-                <form action="" method="">
-                    <div class="tab-content">
-                        <div class="tab-pane active" id="kt_user_edit_tab_1" role="tabpanel">
-                            <div class="kt-form kt-form--label-right">
-                                <div class="kt-form__body">
-                                    <div class="kt-section kt-section--first">
+                <div class="tab-content">
+                    <div class="tab-pane {{ ($is_edit) ? '' : 'active' }}" id="kt_user_edit_tab_1" role="tabpanel" 8>
+                        <div class="kt-form kt-form--label-right">
+                            <div class="kt-form__body">
+                                <div class="kt-section kt-section--first">
+                                    {{--      Form Start    --}}
+                                    <form action="{{route('customer.update', ['cid' => $customer->id])}}" method="post"
+                                          enctype="multipart/form-data">
+                                        @csrf
                                         <div class="kt-section__body">
-                                            <!-- <div class="row">
-                                                <label class="col-xl-3"></label>
-                                                <div class="col-lg-9 col-xl-6">
-                                                    <h3 class="kt-section__title kt-section__title-sm">
-                                                        Customer Info:</h3>
-                                                </div>
-                                            </div> -->
                                             <div class="form-group row">
                                                 <label class="col-xl-3 col-lg-3 col-form-label">Avatar</label>
                                                 <div class="col-lg-9 col-xl-6">
                                                     <div class="kt-avatar kt-avatar--outline kt-avatar--circle-"
                                                          id="kt_user_edit_avatar">
                                                         <div class="kt-avatar__holder"
-                                                             style="background-image: url('{{asset('m/assets/media/users/300_20.jpg')}}');"></div>
+                                                             @if($customer->image != null)
+                                                             style="background-image: url('{{asset($customer->image)}}');"
+                                                             @else
+                                                             style="background-image: url('{{asset('/avatar.png')}}');"
+                                                                @endif
+                                                        ></div>
                                                         <label class="kt-avatar__upload"
                                                                data-toggle="kt-tooltip" title=""
                                                                data-original-title="Change avatar">
                                                             <i class="fa fa-pen"></i>
-                                                            <input type="file" name="profile_avatar"
+                                                            <input type="file" name="avatar"
                                                                    accept=".png, .jpg, .jpeg">
                                                         </label>
-                                                        <span class="kt-avatar__cancel"
-                                                              data-toggle="kt-tooltip" title=""
+                                                        <span class="kt-avatar__cancel" data-toggle="kt-tooltip"
+                                                              title=""
                                                               data-original-title="Cancel avatar">
-																				<i class="fa fa-times"></i>
-																			</span>
+                                                            <i class="fa fa-times"></i>
+                                                        </span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -138,14 +141,32 @@
                                                     Name
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">
-                                                    <input class="form-control" type="text" value="Nick">
+                                                    <input class="form-control {{$errors->has('name') ? 'is-invalid' : ''}}"
+                                                           type="text" name="name" required
+                                                           value="{{$customer->name}}">
+                                                    @if($errors->has('name'))
+                                                        <span class="invalid-feedback">{{$errors->first('name')}}</span>
+                                                    @endif
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <label class="col-xl-3 col-lg-3 col-form-label">
                                                     Date Of Birth</label>
                                                 <div class="col-lg-9 col-xl-6">
-                                                    <input class="form-control" type="date" value="2011-08-19">
+                                                    <div class="input-group date">
+                                                        <input class="form-control {{$errors->has('dateOfBirth') ? 'is-invalid' : ''}}"
+                                                               type="text" name="dateOfBirth" required readonly
+                                                               id="kt_datepicker_2"
+                                                               value="{{$customer->dob}}">
+                                                        <div class="input-group-append">
+														<span class="input-group-text">
+															<i class="la la-calendar-check-o"></i>
+														</span>
+                                                        </div>
+                                                    </div>
+                                                    @if($errors->has('dateOfBirth'))
+                                                        <span class="invalid-feedback">{{$errors->first('dateOfBirth')}}</span>
+                                                    @endif
                                                 </div>
                                             </div>
                                             <div class="form-group row">
@@ -153,18 +174,25 @@
                                                     Company Name
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">
-                                                    <input class="form-control" type="text"
-                                                           value="Loop Inc.">
-                                                    <!--                                                                <span class="form-text text-muted">If you want your invoices addressed to a company. Leave blank to use your full name.</span>-->
+                                                    <input class="form-control {{$errors->has('companyName') ? 'is-invalid' : ''}}"
+                                                           type="text" name="companyName"
+                                                           required value="{{$customer->company_name}}">
+                                                    @if($errors->has('companyName'))
+                                                        <span class="invalid-feedback">{{$errors->first('companyName')}}</span>
+                                                    @endif
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <label class="col-xl-3 col-lg-3 col-form-label">
-                                                    NID Number
+                                                    VAT/BIN Number
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">
-                                                    <input class="form-control" type="text"
-                                                           value="Loop Inc.">
+                                                    <input class="form-control {{$errors->has('binNumber') ? 'is-invalid' : ''}}"
+                                                           type="text" name="binNumber"
+                                                           required value="{{$customer->bin}}">
+                                                    @if($errors->has('binNumber'))
+                                                        <span class="invalid-feedback">{{$errors->first('binNumber')}}</span>
+                                                    @endif
                                                 </div>
                                             </div>
                                             <div class="form-group row">
@@ -172,32 +200,51 @@
                                                 <div class="col-lg-9 col-xl-6">
                                                     <div></div>
                                                     <div class="custom-file">
-                                                        <input type="file" class="custom-file-input" id="customFile">
-                                                        <label class="custom-file-label" style="text-align: left;" for="customFile">Choose file</label>
+                                                        <input type="file" class="custom-file-input" id="customFile2"
+                                                               name="binFile">
+                                                        <label class="custom-file-label" style="text-align: left;"
+                                                               for="customFile2">Tax / Bin File</label>
                                                     </div>
-                                                    <span class="form-text text-muted">Max file size is 1MB and max number of files is 5.</span>
+                                                    <span class="form-text text-muted">Max file size is 10MB and max number of files is 1.</span>
                                                 </div>
                                             </div>
-                                            <!-- <div class="form-group form-group-last row">
-                                                <label class="col-lg-3 col-form-label">Upload File:</label>
-                                                <div class="col-lg-6">
-                                                    <input type="file">
-                                                    <div class="kt-uppy" id="kt_uppy_5">
-                                                        <div class="kt-uppy__wrapper"></div>
-                                                        <div class="kt-uppy__list"></div>
-                                                        <div class="kt-uppy__status"></div>
-                                                        <div class="kt-uppy__informer kt-uppy__informer&#45;&#45;min"></div>
-                                                    </div>
-                                                    <span class="form-text text-muted">Max file size is 1MB and max number of files is 5.</span>
+                                            <div class="form-group row">
+                                                <label class="col-xl-3 col-lg-3 col-form-label">
+                                                    NID Number
+                                                </label>
+                                                <div class="col-lg-9 col-xl-6">
+                                                    <input class="form-control {{$errors->has('nidNumber') ? 'is-invalid' : ''}}"
+                                                           type="text" name="nidNumber"
+                                                           required value="{{$customer->nid}}">
+                                                    @if($errors->has('nidNumber'))
+                                                        <span class="invalid-feedback">{{$errors->first('nidNumber')}}</span>
+                                                    @endif
                                                 </div>
-                                            </div> -->
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-xl-3 col-lg-3 col-form-label">Upload File:</label>
+                                                <div class="col-lg-9 col-xl-6">
+                                                    <div></div>
+                                                    <div class="custom-file">
+                                                        <input type="file" class="custom-file-input" id="customFile"
+                                                               name="nidFile">
+                                                        <label class="custom-file-label" style="text-align: left;"
+                                                               for="customFile">NID Card File</label>
+                                                    </div>
+                                                    <span class="form-text text-muted">Max file size is 10MB and max number of files is 1.</span>
+                                                </div>
+                                            </div>
                                             <div class="form-group row">
                                                 <label class="col-xl-3 col-lg-3 col-form-label">
                                                     Business Address
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">
-                                                    <input class="form-control" type="text"
-                                                           value="House 1, Road 1, Dhanmondi, Dhaka">
+                                                    <input class="form-control {{$errors->has('businessAddress') ? 'is-invalid' : ''}}"
+                                                           type="text" name="businessAddress" required
+                                                           value="{{$customer->business_address}}">
+                                                    @if($errors->has('businessAddress'))
+                                                        <span class="invalid-feedback">{{$errors->first('businessAddress')}}</span>
+                                                    @endif
                                                 </div>
                                             </div>
                                             <div class="form-group row">
@@ -205,8 +252,12 @@
                                                     Business Area/Zone
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">
-                                                    <input class="form-control" type="text"
-                                                           value="Mirpur Dhaka">
+                                                    <input class="form-control {{$errors->has('businessArea') ? 'is-invalid' : ''}}"
+                                                           type="text" name="businessArea"
+                                                           required value="{{$customer->business_area}}">
+                                                    @if($errors->has('businessArea'))
+                                                        <span class="invalid-feedback">{{$errors->first('businessArea')}}</span>
+                                                    @endif
                                                 </div>
                                             </div>
                                             <div class="form-group row">
@@ -217,9 +268,12 @@
                                                         <div class="input-group-prepend"><span
                                                                     class="input-group-text"><i
                                                                         class="la la-phone"></i></span></div>
-                                                        <input type="text" class="form-control"
-                                                               value="+35278953712" placeholder="Phone"
-                                                               aria-describedby="basic-addon1">
+                                                        <input class="form-control {{$errors->has('businessTelephone') ? 'is-invalid' : ''}}"
+                                                               type="text" name="businessTelephone" required
+                                                               value="{{$customer->business_telephone}}">
+                                                        @if($errors->has('businessTelephone'))
+                                                            <span class="invalid-feedback">{{$errors->first('businessTelephone')}}</span>
+                                                        @endif
                                                     </div>
                                                 </div>
                                             </div>
@@ -231,9 +285,12 @@
                                                         <div class="input-group-prepend"><span
                                                                     class="input-group-text"><i
                                                                         class="la la-phone"></i></span></div>
-                                                        <input type="text" class="form-control"
-                                                               value="+35278953712" placeholder="Phone"
-                                                               aria-describedby="basic-addon1">
+                                                        <input class="form-control {{$errors->has('businessTelephone2') ? 'is-invalid' : ''}}"
+                                                               type="text" name="businessTelephone2"
+                                                               value="{{$customer->business_telephone_2}}">
+                                                        @if($errors->has('businessTelephone2'))
+                                                            <span class="invalid-feedback">{{$errors->first('businessTelephone2')}}</span>
+                                                        @endif
                                                     </div>
                                                 </div>
                                             </div>
@@ -246,10 +303,12 @@
                                                         <div class="input-group-prepend"><span
                                                                     class="input-group-text"><i
                                                                         class="la la-at"></i></span></div>
-                                                        <input type="text" class="form-control"
-                                                               value="nick.bold@loop.com"
-                                                               placeholder="Email"
-                                                               aria-describedby="basic-addon1">
+                                                        <input class="form-control {{$errors->has('businessEmail') ? 'is-invalid' : ''}}"
+                                                               type="email" name="businessEmail" required
+                                                               value="{{$customer->business_email}}">
+                                                        @if($errors->has('businessEmail'))
+                                                            <span class="invalid-feedback">{{$errors->first('businessEmail')}}</span>
+                                                        @endif
                                                     </div>
                                                 </div>
                                             </div>
@@ -262,10 +321,12 @@
                                                         <div class="input-group-prepend"><span
                                                                     class="input-group-text"><i
                                                                         class="la la-at"></i></span></div>
-                                                        <input type="text" class="form-control"
-                                                               value="nick.bold@loop.com"
-                                                               placeholder="Email"
-                                                               aria-describedby="basic-addon1">
+                                                        <input class="form-control {{$errors->has('businessEmail2') ? 'is-invalid' : ''}}"
+                                                               type="email" name="businessEmail2"
+                                                               value="{{$customer->business_email_2}}">
+                                                        @if($errors->has('businessEmail2'))
+                                                            <span class="invalid-feedback">{{$errors->first('businessEmail2')}}</span>
+                                                        @endif
                                                     </div>
                                                 </div>
                                             </div>
@@ -274,21 +335,29 @@
                                                     Customer Type
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">
-                                                    <select class="form-control">
-                                                        <option selected disabled hidden>Choose...</option>
-                                                        <option value="id">Dealer</option>
-                                                        <option value="msa">Sub Dealer</option>
-                                                        <option value="ca">Individual</option>
+                                                    <select class="form-control" name="customerType" required>
+                                                        <option selected hidden value="{{$customer->customertype_id}}">
+                                                            {{$customer->type}}
+                                                        </option>
+                                                        @foreach($customerTypes as $ct)
+                                                            <option value="{{$ct->id}}">{{$ct->title}}</option>
+                                                        @endforeach
                                                     </select>
+                                                    @if($errors->has('customerType'))
+                                                        <span class="invalid-feedback">{{$errors->first('customerType')}}</span>
+                                                    @endif
                                                 </div>
                                             </div>
                                             <div class="form-group form-group-last row">
-                                                <label class="col-xl-3 col-lg-3 col-form-label">Company
-                                                    Site</label>
+                                                <label class="col-xl-3 col-lg-3 col-form-label">Company Site</label>
                                                 <div class="col-lg-9 col-xl-6">
                                                     <div class="input-group">
-                                                        <input type="text" class="form-control"
-                                                               placeholder="Username" value="loop">
+                                                        <input class="form-control {{$errors->has('companySite') ? 'is-invalid' : ''}}"
+                                                               type="text" name="companySite"
+                                                               required value="{{$customer->company_site}}">
+                                                        @if($errors->has('companySite'))
+                                                            <span class="invalid-feedback">{{$errors->first('companySite')}}</span>
+                                                        @endif
                                                         <div class="input-group-append"><span
                                                                     class="input-group-text">.com</span></div>
                                                     </div>
@@ -299,41 +368,97 @@
                                                 <div class="row">
                                                     <div class="col-xl-3"></div>
                                                     <div class="col-lg-9 col-xl-6">
-                                                        <a href="#" class="btn btn-label-brand btn-bold">Save
-                                                            changes</a>
-                                                        <a href="#" class="btn btn-clean btn-bold">Cancel</a>
+                                                        <button type="submit" class="btn btn-label-brand btn-bold">
+                                                            Save Changes
+                                                        </button>
+                                                        <a href="javascript:void (0)" data-link="{{route('cancel')}}"
+                                                           class="cancel btn btn-label-danger btn-bold float-right">Cancel</a>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </form>
+                                    {{--Form End--}}
                                 </div>
                             </div>
                         </div>
-                        <div class="tab-pane" id="kt_user_edit_tab_2" role="tabpanel">
-                            <div class="kt-form kt-form--label-right">
-                                <div class="kt-form__body">
-                                    <div class="kt-section kt-section--first">
-                                        <div class="kt-section__body">
-                                            <!-- <div class="row">
-                                                <label class="col-xl-3"></label>
-                                                <div class="col-lg-9 col-xl-6">
-                                                    <h3 class="kt-section__title kt-section__title-sm">
-                                                        Contact Person:</h3>
-                                                </div>
-                                            </div> -->
+                    </div>
+                    <div class="tab-pane {{ ($is_edit) ? 'active' : '' }}" id="kt_user_edit_tab_2" role="tabpanel">
+                        <div class="kt-form kt-form--label-right">
+                            <div class="kt-form__body">
+                                <div class="kt-section kt-section--first">
+                                    <div class="kt-section__body">
+                                        {{--Form Start--}}
+                                        <form action="{{route('customer.update.contact.person', ['cid' => $customer->id])}}"
+                                              method="post">
+                                            @csrf
                                             <div id="kt_repeater_1">
                                                 <div class="form-group form-group-last row" id="kt_repeater_1">
-                                                    <!-- <label class="col-lg-2 col-form-label">Contacts:</label> -->
-                                                    <div data-repeater-list="" class="col-lg-12">
-                                                        <div data-repeater-item class="form-group row align-items-center">
+                                                    <div class="col-lg-12" id="repeat-content">
+                                                        @foreach($cPersons as $cPerson)
+                                                            <div class="form-group row align-items-center remove-content">
+                                                                <div class="col-md-3">
+                                                                    <div class="kt-form__group--inline">
+                                                                        <div class="kt-form__label">
+                                                                            <label>Contact Person Name:</label>
+                                                                        </div>
+                                                                        <div class="kt-form__control">
+                                                                            <input type="text" class="form-control"
+                                                                                   name="cName[]"
+                                                                                   value="{{$cPerson->name}}"
+                                                                                   required>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="d-md-none kt-margin-b-10"></div>
+                                                                </div>
+                                                                <div class="col-md-3">
+                                                                    <div class="kt-form__group--inline">
+                                                                        <div class="kt-form__label">
+                                                                            <label>Contact Person Designation:</label>
+                                                                        </div>
+                                                                        <div class="kt-form__control">
+                                                                            <input type="text" class="form-control"
+                                                                                   name="designation[]"
+                                                                                   value="{{$cPerson->designation}}"
+                                                                                   required>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="d-md-none kt-margin-b-10"></div>
+                                                                </div>
+                                                                <div class="col-md-3">
+                                                                    <div class="kt-form__group--inline">
+                                                                        <div class="kt-form__label">
+                                                                            <label class="kt-label m-label--single">Contact
+                                                                                Person Number:</label>
+                                                                        </div>
+                                                                        <div class="kt-form__control">
+                                                                            <input type="text" class="form-control"
+                                                                                   name="number[]" required
+                                                                                   value="{{$cPerson->number}}">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="d-md-none kt-margin-b-10"></div>
+                                                                </div>
+                                                                <div class="col-md-3">
+                                                                    <a href="javascript:;" data-repeater-delete=""
+                                                                       class="btn-sm btn btn-label-danger btn-bold delete-btn"
+                                                                       style="margin-top: 24px;">
+                                                                        <i class="la la-trash-o"></i>
+                                                                        Delete
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                        @endforeach
+                                                        <div class="form-group row align-items-center remove-content">
                                                             <div class="col-md-3">
                                                                 <div class="kt-form__group--inline">
                                                                     <div class="kt-form__label">
                                                                         <label>Contact Person Name:</label>
                                                                     </div>
                                                                     <div class="kt-form__control">
-                                                                        <input type="text" class="form-control" placeholder="Enter full name">
+                                                                        <input type="text" class="form-control"
+                                                                               name="cName[]"
+                                                                               placeholder="Enter full name" required>
                                                                     </div>
                                                                 </div>
                                                                 <div class="d-md-none kt-margin-b-10"></div>
@@ -344,7 +469,9 @@
                                                                         <label>Contact Person Designation:</label>
                                                                     </div>
                                                                     <div class="kt-form__control">
-                                                                        <input type="text" class="form-control" placeholder="Enter Designation">
+                                                                        <input type="text" class="form-control"
+                                                                               name="designation[]"
+                                                                               placeholder="Enter Designation" required>
                                                                     </div>
                                                                 </div>
                                                                 <div class="d-md-none kt-margin-b-10"></div>
@@ -352,24 +479,21 @@
                                                             <div class="col-md-3">
                                                                 <div class="kt-form__group--inline">
                                                                     <div class="kt-form__label">
-                                                                        <label class="kt-label m-label--single">Contact Person Number:</label>
+                                                                        <label class="kt-label m-label--single">Contact
+                                                                            Person Number:</label>
                                                                     </div>
                                                                     <div class="kt-form__control">
-                                                                        <input type="text" class="form-control" placeholder="Enter contact number">
+                                                                        <input type="text" class="form-control"
+                                                                               name="number[]" required
+                                                                               placeholder="Enter contact number">
                                                                     </div>
                                                                 </div>
                                                                 <div class="d-md-none kt-margin-b-10"></div>
                                                             </div>
-                                                            <!--                                                                        <div class="col-md-2">-->
-                                                            <!--                                                                            <div class="kt-radio-inline">-->
-                                                            <!--                                                                                <label class="kt-checkbox kt-checkbox&#45;&#45;state-success">-->
-                                                            <!--                                                                                    <input type="checkbox"> Primary-->
-                                                            <!--                                                                                    <span></span>-->
-                                                            <!--                                                                                </label>-->
-                                                            <!--                                                                            </div>-->
-                                                            <!--                                                                        </div>-->
                                                             <div class="col-md-3">
-                                                                <a href="javascript:;" data-repeater-delete="" class="btn-sm btn btn-label-danger btn-bold" style="margin-top: 24px;">
+                                                                <a href="javascript:;" data-repeater-delete=""
+                                                                   class="btn-sm btn btn-label-danger btn-bold delete-btn"
+                                                                   style="margin-top: 24px;">
                                                                     <i class="la la-trash-o"></i>
                                                                     Delete
                                                                 </a>
@@ -380,8 +504,9 @@
                                                 <div class="form-group form-group-last row">
                                                     <!-- <label class="col-lg-2 col-form-label"></label> -->
                                                     <div class="col-lg-4">
-                                                        <a href="javascript:;" data-repeater-create="" class="btn btn-bold btn-sm btn-label-brand">
-                                                            <i class="la la-plus"></i> Add
+                                                        <a href="javascript:;" id="add-btn"
+                                                           class="btn btn-bold btn-sm btn-label-brand">
+                                                            <i class="la la-plus"></i> Add Another Contact Person
                                                         </a>
                                                     </div>
                                                 </div>
@@ -391,397 +516,25 @@
                                                 <div class="row">
                                                     <div class="col-xl-3"></div>
                                                     <div class="col-lg-9 col-xl-6">
-                                                        <a href="#" class="btn btn-label-brand btn-bold">Save
-                                                            changes</a>
-                                                        <a href="#" class="btn btn-clean btn-bold">Cancel</a>
+                                                        <button type="submit" class="btn btn-label-brand btn-bold">
+                                                            Save Changes
+                                                        </button>
+                                                        <a href="javascript:void (0)" data-link="{{route('cancel')}}"
+                                                           class="cancel btn btn-label-danger btn-bold float-right">Cancel</a>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <!--                                                        <div class="form-group row">-->
-                                            <!--                                                            <label class="col-xl-3 col-lg-3 col-form-label">Username</label>-->
-                                            <!--                                                            <div class="col-lg-9 col-xl-6">-->
-                                            <!--                                                                <div class="kt-spinner kt-spinner&#45;&#45;sm kt-spinner&#45;&#45;success kt-spinner&#45;&#45;right kt-spinner&#45;&#45;input">-->
-                                            <!--                                                                    <input class="form-control" type="text"-->
-                                            <!--                                                                           value="nick84">-->
-                                            <!--                                                                </div>-->
-                                            <!--                                                            </div>-->
-                                            <!--                                                        </div>-->
-                                            <!--                                                        <div class="form-group row">-->
-                                            <!--                                                            <label class="col-xl-3 col-lg-3 col-form-label">Email-->
-                                            <!--                                                                Address</label>-->
-                                            <!--                                                            <div class="col-lg-9 col-xl-6">-->
-                                            <!--                                                                <div class="input-group">-->
-                                            <!--                                                                    <div class="input-group-prepend"><span-->
-                                            <!--                                                                            class="input-group-text"><i-->
-                                            <!--                                                                            class="la la-at"></i></span></div>-->
-                                            <!--                                                                    <input type="text" class="form-control"-->
-                                            <!--                                                                           value="nick.watson@loop.com"-->
-                                            <!--                                                                           placeholder="Email"-->
-                                            <!--                                                                           aria-describedby="basic-addon1">-->
-                                            <!--                                                                </div>-->
-                                            <!--                                                                <span class="form-text text-muted">Email will not be publicly displayed. <a-->
-                                            <!--                                                                        href="#" class="kt-link">Learn more</a>.</span>-->
-                                            <!--                                                            </div>-->
-                                            <!--                                                        </div>-->
-                                            <!--                                                        <div class="form-group row">-->
-                                            <!--                                                            <label class="col-xl-3 col-lg-3 col-form-label">Language</label>-->
-                                            <!--                                                            <div class="col-lg-9 col-xl-6">-->
-                                            <!--                                                                <select class="form-control">-->
-                                            <!--                                                                    <option>Select Language...</option>-->
-                                            <!--                                                                    <option value="id">Bahasa Indonesia - Indonesian-->
-                                            <!--                                                                    </option>-->
-                                            <!--                                                                    <option value="msa">Bahasa Melayu - Malay</option>-->
-                                            <!--                                                                    <option value="ca">Català - Catalan</option>-->
-                                            <!--                                                                    <option value="cs">Čeština - Czech</option>-->
-                                            <!--                                                                  <option value="ro">Română - Romanian</option>-->
-                                            <!--                                                                    <option value="sk">Slovenčina - Slovak</option>-->
-                                            <!--                                                                    <option value="fi">Suomi - Finnish</option>-->
-                                            <!--                                                                    <option value="sv">Svenska - Swedish</option>-->
-                                            <!--                                                                    <option value="vi">Tiếng Việt - Vietnamese</option>-->
-                                            <!--                                                                    <option value="tr">Türkçe - Turkish</option>-->
-                                            <!--                                                                    <option value="el">Ελληνικά - Greek</option>-->
-                                            <!--                                                                    <option value="bg">Български език - Bulgarian-->
-                                            <!--                                                                    </option>-->
-                                            <!--                                                                    <option value="ru">Русский - Russian</option>-->
-                                            <!--                                                                    <option value="sr">Српски - Serbian</option>-->
-                                            <!--                                                                    <option value="uk">Українська мова - Ukrainian-->
-                                            <!--                                                                    </option>-->
-                                            <!--                                                                    <option value="he">עִבְרִית - Hebrew</option>-->
-                                            <!--                                                                    <option value="ur">اردو - Urdu (beta)</option>-->
-                                            <!--                                                                    <option value="ar">العربية - Arabic</option>-->
-                                            <!--                                                                    <option value="fa">فارسی - Persian</option>-->
-                                            <!--                                                                    <option value="mr">मराठी - Marathi</option>-->
-                                            <!--                                                                    <option value="hi">हिन्दी - Hindi</option>-->
-                                            <!--                                                                    <option value="bn">বাংলা - Bangla</option>-->
-                                            <!--                                                                    <option value="gu">ગુજરાતી - Gujarati</option>-->
-                                            <!--                                                                    <option value="ta">தமிழ் - Tamil</option>-->
-                                            <!--                                                                    <option value="kn">ಕನ್ನಡ - Kannada</option>-->
-                                            <!--                                                                    <option value="th">ภาษาไทย - Thai</option>-->
-                                            <!--                                                                    <option value="ko">한국어 - Korean</option>-->
-                                            <!--                                                                    <option value="ja">日本語 - Japanese</option>-->
-                                            <!--                                                                    <option value="zh-cn">简体中文 - Simplified Chinese-->
-                                            <!--                                                                    </option>-->
-                                            <!--                                                                    <option value="zh-tw">繁體中文 - Traditional Chinese-->
-                                            <!--                                                                    </option>-->
-                                            <!--                                                                </select>-->
-                                            <!--                                                            </div>-->
-                                            <!--                                                        </div>-->
-                                            <!--                                                        <div class="form-group row">-->
-                                            <!--                                                            <label class="col-xl-3 col-lg-3 col-form-label">Time-->
-                                            <!--                                                                Zone</label>-->
-                                            <!--                                                            <div class="col-lg-9 col-xl-6">-->
-                                            <!--                                                                <select class="form-control">-->
-                                            <!--                                                                    <option data-offset="-39600"-->
-                                            <!--                                                                            value="International Date Line West">-->
-                                            <!--                                                                        (GMT-11:00) International Date Line West-->
-                                            <!--                                                                    </option>-->
-                                            <!--                                                                    <option data-offset="-39600" value="Midway Island">-->
-                                            <!--                                                                        (GMT-11:00) Midway Island-->
-                                            <!--                                                                    </option>-->
-                                            <!--                                                                    <option data-offset="-39600" value="Samoa">-->
-                                            <!--                                                                        (GMT-11:00) Samoa-->
-                                            <!--                                                                    </option>-->
-                                            <!--                                                                    <option data-offset="-36000" value="Hawaii">-->
-                                            <!--                                                                        (GMT-10:00) Hawaii-->
-                                            <!--                                                                    </option>-->
-                                            <!--                                                                    <option data-offset="-28800" value="Alaska">-->
-                                            <!--                                                                        (GMT-08:00) Alaska-->
-                                            <!--                                                                    </option>-->
-                                            <!--                                                                    <option data-offset="-25200"-->
-                                            <!--                                                                            value="Pacific Time (US &amp; Canada)">-->
-                                            <!--                                                                        (GMT-07:00) Pacific Time (US &amp; Canada)-->
-                                            <!--                                                                    </option>-->
-                                            <!--                                                                    <option data-offset="-25200" value="Tijuana">-->
-                                            <!--                                                                        (GMT-07:00) Tijuana-->
-                                            <!--                                                                    </option>-->
-                                            <!--                                                                    <option data-offset="-25200" value="Arizona">-->
-                                            <!--                                                                        (GMT-07:00) Arizona-->
-                                            <!--                                                                    </option>-->
-                                            <!--                                                                    <option data-offset="-21600"-->
-                                            <!--                                                                            value="Mountain Time (US &amp; Canada)">-->
-                                            <!--                                                                        (GMT-06:00) Mountain Time (US &amp; Canada)-->
-                                            <!--                                                                    </option>-->
-                                            <!--                                                                    <option data-offset="-21600" value="Chihuahua">-->
-                                            <!--                                                                        (GMT-06:00) Chihuahua-->
-                                            <!--                                                                    </option>-->
-                                            <!--                                                                    <option data-offset="43200" value="Fiji">(GMT+12:00)-->
-                                            <!--                                                                        Fiji-->
-                                            <!--                                                                    </option>-->
-                                            <!--                                                                    <option data-offset="43200" value="Kamchatka">-->
-                                            <!--                                                                        (GMT+12:00) Kamchatka-->
-                                            <!--                                                                    </option>-->
-                                            <!--                                                                    <option data-offset="43200" value="Marshall Is.">-->
-                                            <!--                                                                        (GMT+12:00) Marshall Is.-->
-                                            <!--                                                                    </option>-->
-                                            <!--                                                                    <option data-offset="43200" value="Auckland">-->
-                                            <!--                                                                        (GMT+12:00) Auckland-->
-                                            <!--                                                                    </option>-->
-                                            <!--                                                                    <option data-offset="43200" value="Wellington">-->
-                                            <!--                                                                        (GMT+12:00) Wellington-->
-                                            <!--                                                                    </option>-->
-                                            <!--                                                                    <option data-offset="46800" value="Nuku'alofa">-->
-                                            <!--                                                                        (GMT+13:00) Nuku'alofa-->
-                                            <!--                                                                    </option>-->
-                                            <!--                                                                </select>-->
-                                            <!--                                                            </div>-->
-                                            <!--                                                        </div>-->
-                                            <!--                                                        <div class="form-group form-group-last row">-->
-                                            <!--                                                            <label class="col-xl-3 col-lg-3 col-form-label">Communication</label>-->
-                                            <!--                                                            <div class="col-lg-9 col-xl-6">-->
-                                            <!--                                                                <div class="kt-checkbox-inline">-->
-                                            <!--                                                                    <label class="kt-checkbox">-->
-                                            <!--                                                                        <input type="checkbox" checked=""> Email-->
-                                            <!--                                                                        <span></span>-->
-                                            <!--                                                                    </label>-->
-                                            <!--                                                                    <label class="kt-checkbox">-->
-                                            <!--                                                                        <input type="checkbox" checked=""> SMS-->
-                                            <!--                                                                        <span></span>-->
-                                            <!--                                                                    </label>-->
-                                            <!--                                                                    <label class="kt-checkbox">-->
-                                            <!--                                                                        <input type="checkbox"> Phone-->
-                                            <!--                                                                        <span></span>-->
-                                            <!--                                                                    </label>-->
-                                            <!--                                                                </div>-->
-                                            <!--                                                            </div>-->
-                                            <!--                                                        </div>-->
-
-
-
-                                        </div>
-                                    </div>
-                                    <!--                                                <div class="kt-separator kt-separator&#45;&#45;border-dashed kt-separator&#45;&#45;portlet-fit kt-separator&#45;&#45;space-lg"></div>-->
-                                    <!--                                                <div class="kt-section kt-section&#45;&#45;first">-->
-                                    <!--                                                    <div class="kt-section__body">-->
-                                    <!--                                                        <div class="row">-->
-                                    <!--                                                            <label class="col-xl-3"></label>-->
-                                    <!--                                                            <div class="col-lg-9 col-xl-6">-->
-                                    <!--                                                                <h3 class="kt-section__title kt-section__title-sm">-->
-                                    <!--                                                                    Security:</h3>-->
-                                    <!--                                                            </div>-->
-                                    <!--                                                        </div>-->
-                                    <!--                                                        <div class="form-group row">-->
-                                    <!--                                                            <label class="col-xl-3 col-lg-3 col-form-label">Login-->
-                                    <!--                                                                verification</label>-->
-                                    <!--                                                            <div class="col-lg-9 col-xl-6">-->
-                                    <!--                                                                <button type="button"-->
-                                    <!--                                                                        class="btn btn-label-brand btn-bold btn-sm kt-margin-t-5 kt-margin-b-5">-->
-                                    <!--                                                                    Setup login verification-->
-                                    <!--                                                                </button>-->
-                                    <!--                                                                <span class="form-text text-muted">-->
-                                    <!--																			After you log in, you will be asked for additional information to confirm your identity and protect your account from being compromised.-->
-                                    <!--																			<a href="#" class="kt-link">Learn more</a>.-->
-                                    <!--																		</span>-->
-                                    <!--                                                            </div>-->
-                                    <!--                                                        </div>-->
-                                    <!--                                                        <div class="form-group row">-->
-                                    <!--                                                            <label class="col-xl-3 col-lg-3 col-form-label">Password-->
-                                    <!--                                                                reset verification</label>-->
-                                    <!--                                                            <div class="col-lg-9 col-xl-6">-->
-                                    <!--                                                                <div class="kt-checkbox-single">-->
-                                    <!--                                                                    <label class="kt-checkbox">-->
-                                    <!--                                                                        <input type="checkbox"> Require personal-->
-                                    <!--                                                                        information to reset your password.-->
-                                    <!--                                                                        <span></span>-->
-                                    <!--                                                                    </label>-->
-                                    <!--                                                                </div>-->
-                                    <!--                                                                <span class="form-text text-muted">-->
-                                    <!--																			For extra security, this requires you to confirm your email or phone number when you reset your password.-->
-                                    <!--																			<a href="#" class="kt-link">Learn more</a>.-->
-                                    <!--																		</span>-->
-                                    <!--                                                            </div>-->
-                                    <!--                                                        </div>-->
-                                    <!--                                                        <div class="form-group row kt-margin-t-10 kt-margin-b-10">-->
-                                    <!--                                                            <label class="col-xl-3 col-lg-3 col-form-label"></label>-->
-                                    <!--                                                            <div class="col-lg-9 col-xl-6">-->
-                                    <!--                                                                <button type="button"-->
-                                    <!--                                                                        class="btn btn-label-danger btn-bold btn-sm kt-margin-t-5 kt-margin-b-5">-->
-                                    <!--                                                                    Deactivate your account ?-->
-                                    <!--                                                                </button>-->
-                                    <!--                                                            </div>-->
-                                    <!--                                                        </div>-->
-
-
-
-
-
-
-
-
-
-                                    <!--                                                    </div>-->
-                                    <!--                                                </div>-->
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tab-pane" id="kt_user_edit_tab_3" role="tabpanel">
-                            <div class="kt-form kt-form--label-right">
-                                <div class="kt-form__body">
-                                    <div class="kt-section kt-section--first">
-                                        <div class="kt-section__body">
-                                            <div id="kt_gmap_3" style="height:300px;"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="kt-separator kt-separator--space-lg kt-separator--fit kt-separator--border-solid"></div>
-                                <div class="kt-form__actions">
-                                    <div class="row">
-                                        <div class="col-xl-3"></div>
-                                        <div class="col-lg-9 col-xl-6">
-                                            <a href="#" class="btn btn-label-brand btn-bold">Save
-                                                changes</a>
-                                            <a href="#" class="btn btn-clean btn-bold">Cancel</a>
-                                        </div>
+                                        </form>
+                                        {{--Form End--}}
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <!--                                    <div class="tab-pane" id="kt_user_edit_tab_4" role="tabpanel">-->
-                        <!--                                        <div class="kt-form kt-form&#45;&#45;label-right">-->
-                        <!--                                            <div class="kt-form__body">-->
-                        <!--                                                <div class="kt-section kt-section&#45;&#45;first">-->
-                        <!--                                                    <div class="kt-section__body">-->
-                        <!--                                                        <div class="row">-->
-                        <!--                                                            <label class="col-xl-3"></label>-->
-                        <!--                                                            <div class="col-lg-9 col-xl-6">-->
-                        <!--                                                                <h3 class="kt-section__title kt-section__title-sm">Setup-->
-                        <!--                                                                    Email Notification:</h3>-->
-                        <!--                                                            </div>-->
-                        <!--                                                        </div>-->
-                        <!--                                                        <div class="form-group form-group-sm row">-->
-                        <!--                                                            <label class="col-xl-3 col-lg-3 col-form-label">Email-->
-                        <!--                                                                Notification</label>-->
-                        <!--                                                            <div class="col-lg-9 col-xl-6">-->
-                        <!--																		<span class="kt-switch">-->
-                        <!--																			<label>-->
-                        <!--																				<input type="checkbox" checked="checked"-->
-                        <!--                                                                                       name="email_notification_1">-->
-                        <!--																				<span></span>-->
-                        <!--																			</label>-->
-                        <!--																		</span>-->
-                        <!--                                                            </div>-->
-                        <!--                                                        </div>-->
-                        <!--                                                        <div class="form-group form-group-last row">-->
-                        <!--                                                            <label class="col-xl-3 col-lg-3 col-form-label">Send Copy To-->
-                        <!--                                                                Personal Email</label>-->
-                        <!--                                                            <div class="col-lg-9 col-xl-6">-->
-                        <!--																		<span class="kt-switch">-->
-                        <!--																			<label>-->
-                        <!--																				<input type="checkbox"-->
-                        <!--                                                                                       name="email_notification_2">-->
-                        <!--																				<span></span>-->
-                        <!--																			</label>-->
-                        <!--																		</span>-->
-                        <!--                                                            </div>-->
-                        <!--                                                        </div>-->
-                        <!--                                                    </div>-->
-                        <!--                                                </div>-->
-                        <!--                                                <div class="kt-separator kt-separator&#45;&#45;border-dashed kt-separator&#45;&#45;portlet-fit kt-separator&#45;&#45;space-lg"></div>-->
-                        <!--                                                <div class="kt-section kt-section&#45;&#45;first">-->
-                        <!--                                                    <div class="kt-section__body">-->
-                        <!--                                                        <div class="row">-->
-                        <!--                                                            <label class="col-xl-3"></label>-->
-                        <!--                                                            <div class="col-lg-9 col-xl-6">-->
-                        <!--                                                                <h3 class="kt-section__title kt-section__title-sm">-->
-                        <!--                                                                    Activity Related Emails:</h3>-->
-                        <!--                                                            </div>-->
-                        <!--                                                        </div>-->
-                        <!--                                                        <div class="form-group row">-->
-                        <!--                                                            <label class="col-xl-3 col-lg-3 col-form-label">When To-->
-                        <!--                                                                Email</label>-->
-                        <!--                                                            <div class="col-lg-9 col-xl-6">-->
-                        <!--                                                                <div class="kt-checkbox-list">-->
-                        <!--                                                                    <label class="kt-checkbox">-->
-                        <!--                                                                        <input type="checkbox"> You have new-->
-                        <!--                                                                        notifications.-->
-                        <!--                                                                        <span></span>-->
-                        <!--                                                                    </label>-->
-                        <!--                                                                    <label class="kt-checkbox">-->
-                        <!--                                                                        <input type="checkbox"> You're sent a direct-->
-                        <!--                                                                        message-->
-                        <!--                                                                        <span></span>-->
-                        <!--                                                                    </label>-->
-                        <!--                                                                    <label class="kt-checkbox">-->
-                        <!--                                                                        <input type="checkbox" checked="checked">-->
-                        <!--                                                                        Someone adds you as a connection-->
-                        <!--                                                                        <span></span>-->
-                        <!--                                                                    </label>-->
-                        <!--                                                                </div>-->
-                        <!--                                                            </div>-->
-                        <!--                                                        </div>-->
-                        <!--                                                        <div class="form-group form-group-last row">-->
-                        <!--                                                            <label class="col-xl-3 col-lg-3 col-form-label">When To-->
-                        <!--                                                                Escalate Emails</label>-->
-                        <!--                                                            <div class="col-lg-9 col-xl-6">-->
-                        <!--                                                                <div class="kt-checkbox-list">-->
-                        <!--                                                                    <label class="kt-checkbox kt-checkbox&#45;&#45;brand">-->
-                        <!--                                                                        <input type="checkbox"> Upon new order.-->
-                        <!--                                                                        <span></span>-->
-                        <!--                                                                    </label>-->
-                        <!--                                                                    <label class="kt-checkbox kt-checkbox&#45;&#45;brand">-->
-                        <!--                                                                        <input type="checkbox"> New membership approval-->
-                        <!--                                                                        <span></span>-->
-                        <!--                                                                    </label>-->
-                        <!--                                                                    <label class="kt-checkbox kt-checkbox&#45;&#45;brand">-->
-                        <!--                                                                        <input type="checkbox" checked="checked"> Member-->
-                        <!--                                                                        registration-->
-                        <!--                                                                        <span></span>-->
-                        <!--                                                                    </label>-->
-                        <!--                                                                </div>-->
-                        <!--                                                            </div>-->
-                        <!--                                                        </div>-->
-                        <!--                                                    </div>-->
-                        <!--                                                </div>-->
-                        <!--                                                <div class="kt-separator kt-separator&#45;&#45;border-dashed kt-separator&#45;&#45;portlet-fit kt-separator&#45;&#45;space-lg"></div>-->
-                        <!--                                                <div class="kt-section kt-section&#45;&#45;first">-->
-                        <!--                                                    <div class="kt-section__body">-->
-                        <!--                                                        <div class="row">-->
-                        <!--                                                            <label class="col-xl-3"></label>-->
-                        <!--                                                            <div class="col-lg-9 col-xl-6">-->
-                        <!--                                                                <h3 class="kt-section__title kt-section__title-sm">-->
-                        <!--                                                                    Updates From Keenthemes:</h3>-->
-                        <!--                                                            </div>-->
-                        <!--                                                        </div>-->
-                        <!--                                                        <div class="form-group row">-->
-                        <!--                                                            <label class="col-xl-3 col-lg-3 col-form-label">Email You-->
-                        <!--                                                                With</label>-->
-                        <!--                                                            <div class="col-lg-9 col-xl-6">-->
-                        <!--                                                                <div class="kt-checkbox-list">-->
-                        <!--                                                                    <label class="kt-checkbox">-->
-                        <!--                                                                        <input type="checkbox"> News about Metronic-->
-                        <!--                                                                        product and feature updates-->
-                        <!--                                                                        <span></span>-->
-                        <!--                                                                    </label>-->
-                        <!--                                                                    <label class="kt-checkbox">-->
-                        <!--                                                                        <input type="checkbox"> Tips on getting more out-->
-                        <!--                                                                        of Keen-->
-                        <!--                                                                        <span></span>-->
-                        <!--                                                                    </label>-->
-                        <!--                                                                    <label class="kt-checkbox">-->
-                        <!--                                                                        <input type="checkbox" checked="checked"> Things-->
-                        <!--                                                                        you missed since you last logged into Keen-->
-                        <!--                                                                        <span></span>-->
-                        <!--                                                                    </label>-->
-                        <!--                                                                    <label class="kt-checkbox">-->
-                        <!--                                                                        <input type="checkbox" checked="checked"> News-->
-                        <!--                                                                        about Metronic on partner products and other-->
-                        <!--                                                                        services-->
-                        <!--                                                                        <span></span>-->
-                        <!--                                                                    </label>-->
-                        <!--                                                                    <label class="kt-checkbox">-->
-                        <!--                                                                        <input type="checkbox" checked="checked"> Tips-->
-                        <!--                                                                        on Metronic business products-->
-                        <!--                                                                        <span></span>-->
-                        <!--                                                                    </label>-->
-                        <!--                                                                </div>-->
-                        <!--                                                            </div>-->
-                        <!--                                                        </div>-->
-                        <!--                                                    </div>-->
-                        <!--                                                </div>-->
-                        <!--                                            </div>-->
-                        <!--                                        </div>-->
-                        <!--                                    </div>-->
                     </div>
-                </form>
+                    @if((($customer->customertype_id * 1) == 1) || (($customer->customertype_id * 1) == 2))
+                        @include('include.m.customerEdit.hierarchy')
+                    @endif
+                </div>
             </div>
         </div>
     </div>
@@ -791,43 +544,21 @@
 {{--@endsection--}}
 @section('script')
     <!--begin::Page Vendors(used by this page) -->
-    <script src="//maps.google.com/maps/api/js?key=AIzaSyCov7B-_iu45lPJn7iMSoh0--mDBtdBOOk" type="text/javascript"></script>
     <!--end::Page Vendors -->
 
     <!--begin::Page Scripts(used by this page) -->
     <script src="{{asset('m/assets/js/pages/custom/user/edit-user.js')}}" type="text/javascript"></script>
-    <script src="{{asset('m/assets/js/pages/crud/forms/widgets/form-repeater.js')}}" type="text/javascript"></script>
-    <script>
-        var map = new GMaps({
-            div: '#kt_gmap_3',
-            lat: 23.724728,
-            lng: 90.410900,
-        });
-        map.addMarker({
-            lat: 23.724728,
-            lng: 90.410900,
-            title: 'Office',
-            details: {
-                database_id: 42,
-                author: 'HPNeo'
-            },
-            click: function(e) {
-                if (console.log) console.log(e);
-                alert('You clicked in this marker');
-            }
-        });
-        // map.addMarker({
-        //     lat: -12.042,
-        //     lng: -77.028333,
-        //     title: 'Marker with InfoWindow',
-        //     infoWindow: {
-        //         content: '<span style="color:#000">HTML Content!</span>'
-        //     }
-        // });
-        map.setZoom(5);
-        $('#kt_gmap_3').height('500px').width('auto');
-    </script>
-{{--    <script src="{{asset('m/assets/js/pages/crud/file-upload/uppy.js')}}" type="text/javascript"></script>--}}
+    <script src="{{asset('m/assets/js/pages/crud/forms/widgets/bootstrap-datepicker.js')}}"
+            type="text/javascript"></script>
 
+
+    {{--    <script src="{{asset('m/assets/js/pages/crud/file-upload/uppy.js')}}" type="text/javascript"></script>--}}
+
+    {{--    <script src="{{asset('m/assets/js/pages/crud/forms/widgets/form-repeater.js')}}" type="text/javascript"></script>--}}
+    {{--    <script src="{{asset('plugins/select2/select2.full.min.js')}}" type="text/javascript"></script>--}}
+
+    <script src="{{asset('m/assets/js/pages/crud/forms/widgets/bootstrap-select.js')}}" type="text/javascript"></script>
+
+    @include('include.m.customerEdit.js1')
     <!--end::Page Scripts -->
 @endsection

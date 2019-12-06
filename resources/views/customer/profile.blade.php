@@ -1,128 +1,90 @@
 @extends('layouts.m')
-@section('title', 'Customer Edit')
+@section('title', 'Customer Profile')
 @section('content_head')
     <div class="kt-subheader   kt-grid__item" id="kt_subheader">
         <div class="kt-container  kt-container--fluid ">
             <div class="kt-subheader__main">
                 <h3 class="kt-subheader__title">
-                    Profile 3 </h3>
-                <span class="kt-subheader__separator kt-hidden"></span>
+                    Customer Profile
+                </h3>
+                <span class="kt-subheader__separator kt-subheader__separator--v"></span>
                 <div class="kt-subheader__breadcrumbs">
-                    <a href="#" class="kt-subheader__breadcrumbs-home"><i class="flaticon2-shelter"></i></a>
+                    <a href="{{route('home')}}" class="kt-subheader__breadcrumbs-home"><i class="flaticon2-shelter"></i></a>
                     <span class="kt-subheader__breadcrumbs-separator"></span>
-                    <a href="" class="kt-subheader__breadcrumbs-link">
-                        Apps </a>
+                    <a href="{{route('customer.list')}}" class="kt-subheader__breadcrumbs-link">Customer</a>
                     <span class="kt-subheader__breadcrumbs-separator"></span>
-                    <a href="" class="kt-subheader__breadcrumbs-link">
-                        Users </a>
-                    <span class="kt-subheader__breadcrumbs-separator"></span>
-                    <a href="" class="kt-subheader__breadcrumbs-link">
-                        Profile 3 </a>
+                    <a href="javascript:void (0)"
+                       class="kt-subheader__breadcrumbs-link kt-subheader__breadcrumbs-link--active"
+                       style="padding-right: 1rem;">Profile</a>
                 </div>
             </div>
             <div class="kt-subheader__toolbar">
+                <a href="{{route('customer.edit', ['cid' => $customer->id])}}" class="btn btn-label-success btn-bold">Edit</a>
             </div>
         </div>
     </div>
 @endsection
 @section('content')
     <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
-
         <!--Begin::Section-->
         <div class="row">
             <div class="col-xl-12">
-
                 <!--begin:: Widgets/Applications/User/Profile3-->
                 <div class="kt-portlet kt-portlet--height-fluid">
                     <div class="kt-portlet__body">
                         <div class="kt-widget kt-widget--user-profile-3">
                             <div class="kt-widget__top">
                                 <div class="kt-widget__media kt-hidden-">
-                                    <img src="{{asset('m/assets/media/users/100_13.jpg')}}" alt="image">
+                                    <img alt="image"
+                                         @if($customer->image != null)
+                                         src="{{asset($customer->image)}}"
+                                         @else
+                                         src="{{asset('/avatar.png')}}"
+                                            @endif
+                                    >
                                 </div>
-                                <div class="kt-widget__pic kt-widget__pic--danger kt-font-danger kt-font-boldest kt-font-light kt-hidden">
-                                    JM
-                                </div>
+                                {{--                                <div class="kt-widget__pic kt-widget__pic--danger kt-font-danger kt-font-boldest kt-font-light kt-hidden">--}}
+                                {{--                                    JM--}}
+                                {{--                                </div>--}}
                                 <div class="kt-widget__content">
                                     <div class="kt-widget__head">
                                         <a href="#" class="kt-widget__username">
-                                            Jason Muller
-                                            <i class="flaticon2-correct"></i>
+                                            {{$customer->name}}
+                                            {{--                                            <i class="flaticon2-correct"></i>--}}
                                         </a>
                                     </div>
                                     <div class="kt-widget__subhead">
-                                        <a href="#"><i
-                                                    class="flaticon2-new-email"></i>jason@siastudio.com</a>
-                                        <a href="#"><i class="flaticon2-calendar-3"></i>PR Manager </a>
-                                        <a href="#"><i class="flaticon2-placeholder"></i>Melbourne</a>
+                                        <a href="mailto:{{$customer->business_email}}"><i
+                                                    class="flaticon2-new-email"></i>
+                                            {{$customer->business_email}}
+                                        </a>
+                                        {{--                                        <a href="#">--}}
+                                        {{--                                        </a>--}}
+                                        <span class="mr-4"><i class="flaticon2-calendar-3"></i>
+                                            <b>{{$customer->type}}</b></span>
+                                        {{--                                        <a href="#">--}}
+                                        {{--                                        </a>--}}
+                                        <span><i class="flaticon2-placeholder"></i>
+                                            {{$customer->business_area}}</span>
+
                                     </div>
                                     <div class="kt-widget__info">
-                                        <div class="kt-widget__desc">
-                                            I distinguish three main text objektive could be merely to
-                                            inform people.
-                                            <br> A second could be persuade people.You want people to bay
-                                            objective
-                                        </div>
+                                        {{--                                        <div class="kt-widget__desc">--}}
+                                        {{--Customer Details will go here--}}
+                                        {{--                                        </div>--}}
                                         <div class="kt-widget__progress">
                                             <div class="kt-widget__text">
                                                 Progress
                                             </div>
                                             <div class="progress" style="height: 5px;width: 100%;">
                                                 <div class="progress-bar kt-bg-success" role="progressbar"
-                                                     style="width: 65%;" aria-valuenow="65"
+                                                     style="width: {{$percentage}}%;" aria-valuenow="{{$percentage}}"
                                                      aria-valuemin="0" aria-valuemax="100"></div>
                                             </div>
                                             <div class="kt-widget__stats">
-                                                78%
+                                                {{$percentage}}%
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="kt-widget__bottom">
-                                <div class="kt-widget__item">
-                                    <div class="kt-widget__icon">
-                                        <i class="flaticon-piggy-bank"></i>
-                                    </div>
-                                    <div class="kt-widget__details">
-                                        <span class="kt-widget__title">Earnings</span>
-                                        <span class="kt-widget__value"><span>$</span>249,500</span>
-                                    </div>
-                                </div>
-                                <div class="kt-widget__item">
-                                    <div class="kt-widget__icon">
-                                        <i class="flaticon-confetti"></i>
-                                    </div>
-                                    <div class="kt-widget__details">
-                                        <span class="kt-widget__title">Expances</span>
-                                        <span class="kt-widget__value"><span>$</span>164,700</span>
-                                    </div>
-                                </div>
-                                <div class="kt-widget__item">
-                                    <div class="kt-widget__icon">
-                                        <i class="flaticon-pie-chart"></i>
-                                    </div>
-                                    <div class="kt-widget__details">
-                                        <span class="kt-widget__title">Net</span>
-                                        <span class="kt-widget__value"><span>$</span>164,700</span>
-                                    </div>
-                                </div>
-                                <div class="kt-widget__item">
-                                    <div class="kt-widget__icon">
-                                        <i class="flaticon-file-2"></i>
-                                    </div>
-                                    <div class="kt-widget__details">
-                                        <span class="kt-widget__title">73 Tasks</span>
-                                        <a href="#" class="kt-widget__value kt-font-brand">View</a>
-                                    </div>
-                                </div>
-                                <div class="kt-widget__item">
-                                    <div class="kt-widget__icon">
-                                        <i class="flaticon-chat-1"></i>
-                                    </div>
-                                    <div class="kt-widget__details">
-                                        <span class="kt-widget__title">648 Comments</span>
-                                        <a href="#" class="kt-widget__value kt-font-brand">View</a>
                                     </div>
                                 </div>
                             </div>
@@ -133,118 +95,286 @@
                 <!--end:: Widgets/Applications/User/Profile3-->
             </div>
         </div>
-
         <!--End::Section-->
 
         <!--Begin::Section-->
         <div class="row">
-            <div class="kt-portlet">
-                <div class="kt-portlet__body  kt-portlet__body--fit">
-                    <div class="row row-no-padding row-col-separator-xl">
-                        <div class="col-xl-4">
-
-                            <!--begin:: Widgets/Daily Sales-->
-                            <div class="kt-portlet kt-portlet--height-fluid">
-                                <div class="kt-widget14">
-                                    <div class="kt-widget14__header kt-margin-b-30">
-                                        <h3 class="kt-widget14__title">
-                                            Daily Sales
-                                        </h3>
-                                        <span class="kt-widget14__desc">
-																Check out each collumn for more details
-															</span>
-                                    </div>
-                                    <div class="kt-widget14__chart" style="height:120px;">
-                                        <canvas id="kt_chart_daily_sales"></canvas>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!--end:: Widgets/Daily Sales-->
+            <div class="col-xl-12">
+                <!--Begin:: Portlet-->
+                <div class="kt-portlet">
+                    <div class="kt-portlet__head">
+                        <div class="kt-portlet__head-label">
+                            <h3 class="kt-portlet__head-title">
+                                Customer
+                            </h3>
                         </div>
-                        <div class="col-xl-4">
-
-                            <!--begin:: Widgets/Profit Share-->
-                            <div class="kt-portlet kt-portlet--height-fluid">
-                                <div class="kt-widget14">
-                                    <div class="kt-widget14__header">
-                                        <h3 class="kt-widget14__title">
-                                            Profit Share
-                                        </h3>
-                                        <span class="kt-widget14__desc">
-																Profit Share between customers
-															</span>
-                                    </div>
-                                    <div class="kt-widget14__content">
-                                        <div class="kt-widget14__chart">
-                                            <div class="kt-widget14__stat">45</div>
-                                            <canvas id="kt_chart_profit_share"
-                                                    style="height: 140px; width: 140px;"></canvas>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="kt-form kt-form--label-right">
+                                <div class="kt-portlet__body">
+                                    <div class="form-group form-group-xs row">
+                                        <label class="col-4 col-form-label">Name:</label>
+                                        <div class="col-8">
+                                            <span class="form-control-plaintext kt-font-bolder">{{$customer->name}}</span>
                                         </div>
-                                        <div class="kt-widget14__legends">
-                                            <div class="kt-widget14__legend">
-                                                <span class="kt-widget14__bullet kt-bg-success"></span>
-                                                <span class="kt-widget14__stats">37% Sport Tickets</span>
-                                            </div>
-                                            <div class="kt-widget14__legend">
-                                                <span class="kt-widget14__bullet kt-bg-warning"></span>
-                                                <span class="kt-widget14__stats">47% Business Events</span>
-                                            </div>
-                                            <div class="kt-widget14__legend">
-                                                <span class="kt-widget14__bullet kt-bg-brand"></span>
-                                                <span class="kt-widget14__stats">19% Others</span>
-                                            </div>
+                                    </div>
+                                    <div class="form-group form-group-xs row">
+                                        <label class="col-4 col-form-label">Date OF Birth:</label>
+                                        <div class="col-8">
+                                            <span class="form-control-plaintext kt-font-bolder">{{$customer->dob}}</span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-group-xs row">
+                                        <label class="col-4 col-form-label">Company Name:</label>
+                                        <div class="col-8">
+                                            <span class="form-control-plaintext kt-font-bolder">{{$customer->company_name}}</span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-group-xs row">
+                                        <label class="col-4 col-form-label">Tax/BIN Number:</label>
+                                        <div class="col-8">
+                                            <span class="form-control-plaintext kt-font-bolder">{{$customer->bin}}</span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-group-xs row">
+                                        <label class="col-4 col-form-label">NID Number:</label>
+                                        <div class="col-8">
+                                            <span class="form-control-plaintext kt-font-bolder">{{$customer->nid}}</span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-group-xs row">
+                                        <label class="col-4 col-form-label">Business Address:</label>
+                                        <div class="col-8">
+                                            <span class="form-control-plaintext kt-font-bolder">{{$customer->business_address}}</span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
-                            <!--end:: Widgets/Profit Share-->
                         </div>
-                        <div class="col-xl-4">
-
-                            <!--begin:: Widgets/Revenue Change-->
-                            <div class="kt-portlet kt-portlet--height-fluid">
-                                <div class="kt-widget14">
-                                    <div class="kt-widget14__header">
-                                        <h3 class="kt-widget14__title">
-                                            Revenue Change
-                                        </h3>
-                                        <span class="kt-widget14__desc">
-																Revenue change breakdown by cities
-															</span>
-                                    </div>
-                                    <div class="kt-widget14__content">
-                                        <div class="kt-widget14__chart">
-                                            <div id="kt_chart_revenue_change"
-                                                 style="height: 150px; width: 150px;"></div>
+                        <div class="col-lg-6">
+                            <div class="kt-form kt-form--label-right">
+                                <div class="kt-portlet__body">
+                                    <div class="form-group form-group-xs row">
+                                        <label class="col-4 col-form-label">Business Telephone:</label>
+                                        <div class="col-8">
+                                            <span class="form-control-plaintext kt-font-bolder">{{$customer->business_telephone}}</span>
                                         </div>
-                                        <div class="kt-widget14__legends">
-                                            <div class="kt-widget14__legend">
-                                                <span class="kt-widget14__bullet kt-bg-success"></span>
-                                                <span class="kt-widget14__stats">+10% New York</span>
-                                            </div>
-                                            <div class="kt-widget14__legend">
-                                                <span class="kt-widget14__bullet kt-bg-warning"></span>
-                                                <span class="kt-widget14__stats">-7% London</span>
-                                            </div>
-                                            <div class="kt-widget14__legend">
-                                                <span class="kt-widget14__bullet kt-bg-brand"></span>
-                                                <span class="kt-widget14__stats">+20% California</span>
-                                            </div>
+                                    </div>
+                                    <div class="form-group form-group-xs row">
+                                        <label class="col-4 col-form-label">Business Telephone 2:</label>
+                                        <div class="col-8">
+                                            <span class="form-control-plaintext kt-font-bolder">
+                                                @if($customer->business_telephone_2)
+                                                    {{$customer->business_telephone_2}}
+                                                @else
+                                                    ----
+                                                @endif
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-group-xs row">
+                                        <label class="col-4 col-form-label">Business Email:</label>
+                                        <div class="col-8">
+                                            <span class="form-control-plaintext kt-font-bolder">
+                                                <a href="mailto:{{$customer->business_email}}">{{$customer->business_email}}</a>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-group-xs row">
+                                        <label class="col-4 col-form-label">Business Email 2:</label>
+                                        <div class="col-8">
+                                            <span class="form-control-plaintext kt-font-bolder">
+                                                @if($customer->business_email_2)
+                                                    <a href="mailto:{{$customer->business_email_2}}">{{$customer->business_email_2}}</a>
+                                                @else
+                                                    ----
+                                                @endif
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-group-xs row">
+                                        <label class="col-4 col-form-label">Customer Type:</label>
+                                        <div class="col-8">
+                                            <span class="form-control-plaintext kt-font-bolder">{{$customer->type}}</span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-group-xs row">
+                                        <label class="col-4 col-form-label">Website:</label>
+                                        <div class="col-8">
+                                            <span class="form-control-plaintext kt-font-bolder">
+                                                <a href="{{$customer->company_site}}">{{$customer->company_site}}</a>
+                                            </span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
-                            <!--end:: Widgets/Revenue Change-->
+                        </div>
+                    </div>
+
+
+                </div>
+                <!--End:: Portlet-->
+            </div>
+        </div>
+        <!--End::Section-->
+
+        <!--Begin::Section-->
+        <div class="row">
+            @if(count($cPersons) > 0)
+                @foreach($cPersons as $i => $cPerson)
+                    <div class="col-lg-4">
+                        <div class="kt-portlet">
+                            <div class="kt-portlet__head">
+                                <div class="kt-portlet__head-label">
+                                    <h3 class="kt-portlet__head-title">
+                                        Contact {{ (count($cPersons) > 1) ? 'People' : 'Person' }} {{$i + 1}}
+                                    </h3>
+                                </div>
+                            </div>
+                            <div class="kt-form kt-form--label-right">
+                                <div class="kt-portlet__body">
+                                    <div class="form-group form-group-xs row">
+                                        <label class="col-4 col-form-label">Name:</label>
+                                        <div class="col-8">
+                                            <span class="form-control-plaintext kt-font-bolder">{{$cPerson->name}}</span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-group-xs row">
+                                        <label class="col-4 col-form-label">Designation:</label>
+                                        <div class="col-8">
+                                            <span class="form-control-plaintext kt-font-bolder">{{$cPerson->designation}}</span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-group-xs row">
+                                        <label class="col-4 col-form-label">Phone:</label>
+                                        <div class="col-8">
+                                            <span class="form-control-plaintext kt-font-bolder">{{$cPerson->number}}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            @else
+                <div class="col-lg-12">
+                    <div class="kt-portlet">
+                        <div class="kt-portlet__head">
+                            <div class="kt-portlet__head-label">
+                                <h3 class="kt-portlet__head-title">
+                                    No Contact Person For This Customer
+                                </h3>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
+            @endif
 
+        </div>
         <!--End::Section-->
+        <!--Begin::Section-->
+        <div class="row">
+            @if(count($hierarchy) > 0)
+                @if(((($customer->customertype_id * 1) == 2) || (($customer->customertype_id * 1) == 3)) && (!empty($dealers)))
+                    <div class="col-lg-6">
+                        <div class="kt-portlet">
+                            <div class="kt-portlet__head">
+                                <div class="kt-portlet__head-label">
+                                    <h3 class="kt-portlet__head-title">
+                                        Dealer
+                                    </h3>
+                                </div>
+                            </div>
+                            <div class="kt-form kt-form--label-right">
+                                <div class="kt-portlet__body">
+                                    @foreach($dealers as $i => $d)
+                                        <div class="form-group form-group-xs row">
+                                            <label class="col-4 col-form-label">{{$i + 1}} :</label>
+                                            <div class="col-8">
+                                        <span class="form-control-plaintext kt-font-bolder">
+                                            <a href="{{route('customer.profile', ['cid' => $d->id])}}">{{$d->name}}</a>
+                                        </span>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endif
+                @if(((($customer->customertype_id * 1) == 1) || (($customer->customertype_id * 1) == 3)) && (!empty($subdealers)))
+                    <div class="col-lg-6">
+                        <div class="kt-portlet">
+                            <div class="kt-portlet__head">
+                                <div class="kt-portlet__head-label">
+                                    <h3 class="kt-portlet__head-title">
+                                        Sub Dealer
+                                    </h3>
+                                </div>
+                            </div>
+                            <div class="kt-form kt-form--label-right">
+                                <div class="kt-portlet__body">
+                                    @foreach($subdealers as $i => $sd)
+                                        <div class="form-group form-group-xs row">
+                                            <label class="col-4 col-form-label">{{$i + 1}} :</label>
+                                            <div class="col-8">
+                                        <span class="form-control-plaintext kt-font-bolder">
+                                            <a href="{{route('customer.profile', ['cid' => $sd->id])}}">{{$sd->name}}</a>
+                                        </span>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endif
+                @if(((($customer->customertype_id * 1) == 1) || (($customer->customertype_id * 1) == 2)) && (!empty($individuals)))
+                    <div class="col-lg-6">
+                        <div class="kt-portlet">
+                            <div class="kt-portlet__head">
+                                <div class="kt-portlet__head-label">
+                                    <h3 class="kt-portlet__head-title">
+                                        Individual
+                                    </h3>
+                                </div>
+                            </div>
+                            <div class="kt-form kt-form--label-right">
+                                <div class="kt-portlet__body">
+                                    @foreach($individuals as $i => $ind)
+                                        <div class="form-group form-group-xs row">
+                                            <label class="col-4 col-form-label">{{$i + 1}} :</label>
+                                            <div class="col-8">
+                                        <span class="form-control-plaintext kt-font-bolder">
+                                            <a href="{{route('customer.profile', ['cid' => $ind->id])}}">{{$ind->name}}</a>
+                                        </span>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endif
+            @else
+                <div class="col-lg-12">
+                    <div class="kt-portlet">
+                        <div class="kt-portlet__head">
+                            <div class="kt-portlet__head-label">
+                                <h3 class="kt-portlet__head-title">
+                                    No Hierarchy is set For This Customer
+                                </h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endif
+        </div>
+        <!--End::Section-->
+
 
     </div>
 @endsection

@@ -14,11 +14,12 @@ class PermissionsTableSeeder extends Seeder
             1 => ["role", "Role", "Role menu that goes under Access Control"],
             2 => ["user", "User", "User menu that goes under Access Control"],
             3 => ["user_permission", "User_Permission", "User Permission menu that goes under Access Control"],
-            4 => ["customer_create", "Customer_Create", "Customer Create menu that goes under Customer"],
-            5 => ["customer_edit", "Customer_Edit", "Customer Edit Permission"],
-            6 => ["customer_delete", "Customer_Delete", "Customer Delete Permission"],
-            7 => ["customer_list", "Customer_List", "Customer List menu that goes under Customer"],
-            8 => ["customer_profile", "Customer_Profile", "Customer Profile menu that goes under Customer"],
+            4 => ["customer", "Customer", "Customer menu"],
+//            4 => ["customer_create", "Customer_Create", "Customer Create menu that goes under Customer"],
+//            5 => ["customer_edit", "Customer_Edit", "Customer Edit Permission"],
+//            6 => ["customer_delete", "Customer_Delete", "Customer Delete Permission"],
+//            7 => ["customer_list", "Customer_List", "Customer List menu that goes under Customer"],
+//            8 => ["customer_profile", "Customer_Profile", "Customer Profile menu that goes under Customer"],
         ];
 
         $s = Role::find(1);
@@ -31,5 +32,8 @@ class PermissionsTableSeeder extends Seeder
             $a->save();
             $s->attachPermission($a);
         }
+
+        $r4 = Role::find(4);
+        $r4->attachPermission(5);
     }
 }

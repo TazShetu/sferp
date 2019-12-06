@@ -11,7 +11,7 @@
                 <div class="kt-subheader__breadcrumbs">
                     <a href="{{route('home')}}" class="kt-subheader__breadcrumbs-home"><i class="flaticon2-shelter"></i></a>
                     <span class="kt-subheader__breadcrumbs-separator"></span>
-                    <a href="javascript:void (0)" class="kt-subheader__breadcrumbs-link">Customer</a>
+                    <a href="{{route('customer.list')}}" class="kt-subheader__breadcrumbs-link">Customer</a>
                     <span class="kt-subheader__breadcrumbs-separator"></span>
                     <a href="{{route('customer.create')}}"
                        class="kt-subheader__breadcrumbs-link kt-subheader__breadcrumbs-link--active"
@@ -74,9 +74,17 @@
                                                 <label class="col-xl-3 col-lg-3 col-form-label">
                                                     Date Of Birth</label>
                                                 <div class="col-lg-9 col-xl-6">
-                                                    <input class="form-control {{$errors->has('dateOfBirth') ? 'is-invalid' : ''}}"
-                                                           type="date" name="dateOfBirth" required
-                                                           value="{{old('dateOfBirth')}}">
+                                                    <div class="input-group date">
+                                                        <input class="form-control {{$errors->has('dateOfBirth') ? 'is-invalid' : ''}}"
+                                                               type="text" name="dateOfBirth" required readonly
+                                                               placeholder="Select date" id="kt_datepicker_2"
+                                                               value="{{old('dateOfBirth')}}">
+                                                        <div class="input-group-append">
+														<span class="input-group-text">
+															<i class="la la-calendar-check-o"></i>
+														</span>
+                                                        </div>
+                                                    </div>
                                                     @if($errors->has('dateOfBirth'))
                                                         <span class="invalid-feedback">{{$errors->first('dateOfBirth')}}</span>
                                                     @endif
@@ -93,6 +101,32 @@
                                                     @if($errors->has('companyName'))
                                                         <span class="invalid-feedback">{{$errors->first('companyName')}}</span>
                                                     @endif
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-xl-3 col-lg-3 col-form-label">
+                                                    VAT/BIN Number
+                                                </label>
+                                                <div class="col-lg-9 col-xl-6">
+                                                    <input class="form-control {{$errors->has('binNumber') ? 'is-invalid' : ''}}"
+                                                           type="text" placeholder="VAT/BIN Number" name="binNumber"
+                                                           required value="{{old('binNumber')}}">
+                                                    @if($errors->has('binNumber'))
+                                                        <span class="invalid-feedback">{{$errors->first('binNumber')}}</span>
+                                                    @endif
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-xl-3 col-lg-3 col-form-label">Upload File:</label>
+                                                <div class="col-lg-9 col-xl-6">
+                                                    <div></div>
+                                                    <div class="custom-file">
+                                                        <input type="file" class="custom-file-input" id="customFile2"
+                                                               name="binFile">
+                                                        <label class="custom-file-label" style="text-align: left;"
+                                                               for="customFile2">Tax / Bin File</label>
+                                                    </div>
+                                                    <span class="form-text text-muted">Max file size is 10MB and max number of files is 1.</span>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
@@ -116,9 +150,9 @@
                                                         <input type="file" class="custom-file-input" id="customFile"
                                                                name="nidFile">
                                                         <label class="custom-file-label" style="text-align: left;"
-                                                               for="customFile">Choose file</label>
+                                                               for="customFile">NID Card File</label>
                                                     </div>
-                                                    <span class="form-text text-muted">Max file size is 1MB and max number of files is 5.</span>
+                                                    <span class="form-text text-muted">Max file size is 10MB and max number of files is 1.</span>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
@@ -228,9 +262,9 @@
                                                 <div class="col-lg-9 col-xl-6">
                                                     <select class="form-control" name="customerType" required>
                                                         <option selected disabled hidden>Choose...</option>
-                                                        <option value="Dealer">Dealer</option>
-                                                        <option value="Sub Dealer">Sub Dealer</option>
-                                                        <option value="Individual">Individual</option>
+                                                        @foreach($customerTypes as $ct)
+                                                            <option value="{{$ct->id}}">{{$ct->title}}</option>
+                                                        @endforeach
                                                     </select>
                                                     @if($errors->has('customerType'))
                                                         <span class="invalid-feedback">{{$errors->first('customerType')}}</span>
@@ -283,6 +317,18 @@
     <!--begin::Page Vendors(used by this page) -->
 
     <script src="{{asset('m/assets/js/pages/crud/file-upload/ktavatar.js')}}" type="text/javascript"></script>
+
+    <script src="{{asset('m/assets/js/pages/crud/forms/widgets/bootstrap-datepicker.js')}}"
+            type="text/javascript"></script>
+
+    <script>
+        $(function () {
+            $("#kt_datepicker_2").on('click', e => {
+                $("#kt_datepicker_2").datepicker("setDate", new Date());
+            });
+        });
+    </script>
+
 
     <!--end::Page Vendors -->
 

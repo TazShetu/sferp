@@ -10,7 +10,8 @@ class UsersTableSeeder extends Seeder
     {
         $users = [
             0 => ['Dummy', 'd@g.com', '123456'],
-            1 => ['Shagar', 'shagar@gmail.com', '123456'],
+            1 => ['Shagar', 'sagar@gmail.com', '123456'],
+            2 => ['John Doe', 'john@gmail.com', '123456'],
         ];
         foreach ($users as $u){
             $a = new User;

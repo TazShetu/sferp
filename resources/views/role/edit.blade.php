@@ -1,11 +1,11 @@
 @extends('layouts.m')
-@section('title', 'Users')
+@section('title', 'Edit Role')
 @section('content_head')
     <div class="kt-subheader   kt-grid__item" id="kt_subheader">
         <div class="kt-container  kt-container--fluid ">
             <div class="kt-subheader__main">
                 <h3 class="kt-subheader__title">
-                    Users
+                    Edit Role
                 </h3>
                 <span class="kt-subheader__separator kt-subheader__separator--v"></span>
                 <div class="kt-subheader__breadcrumbs">
@@ -13,9 +13,13 @@
                     <span class="kt-subheader__breadcrumbs-separator"></span>
                     <a href="javascript:void (0)" class="kt-subheader__breadcrumbs-link">Access Control</a>
                     <span class="kt-subheader__breadcrumbs-separator"></span>
-                    <a href="{{route('users')}}"
+                    <a href="{{route('role')}}"
                        class="kt-subheader__breadcrumbs-link kt-subheader__breadcrumbs-link--active"
-                       style="padding-right: 1rem;">Users</a>
+                       style="padding-right: 1rem;">Role</a>
+                    <span class="kt-subheader__breadcrumbs-separator"></span>
+                    <a href="javascript:void (0)"
+                       class="kt-subheader__breadcrumbs-link kt-subheader__breadcrumbs-link--active"
+                       style="padding-right: 1rem;">Edit</a>
                 </div>
             </div>
         </div>
@@ -40,7 +44,7 @@
                     <div class="kt-portlet__head kt-portlet__head--lg">
                         <div class="kt-portlet__head-label">
                             <h3 class="kt-portlet__head-title">
-                                User Create
+                                Role Edit
                             </h3>
                         </div>
                     </div>
@@ -50,7 +54,8 @@
                                 <div class="kt-form kt-form--label-right">
                                     <div class="kt-form__body">
                                         <div class="kt-section kt-section--first">
-                                            <form action="{{route('user.store')}}" method="post">
+                                            <form action="{{route('role.update', ['rid' => $redit->id])}}"
+                                                  method="post">
                                                 @csrf
                                                 <div class="kt-section__body">
                                                     <div class="form-group row">
@@ -59,8 +64,8 @@
                                                         </label>
                                                         <div class="col-lg-9 col-xl-6">
                                                             <input class="form-control {{$errors->has('name') ? 'is-invalid' : ''}}"
-                                                                   type="text" placeholder="Full Name" name="name"
-                                                                   required value="{{old('name')}}">
+                                                                   type="text" name="name"
+                                                                   required value="{{$redit->name}}">
                                                             @if($errors->has('name'))
                                                                 <span class="invalid-feedback">{{$errors->first('name')}}</span>
                                                             @endif
@@ -68,72 +73,37 @@
                                                     </div>
                                                     <div class="form-group row">
                                                         <label class="col-xl-3 col-lg-3 col-form-label">
-                                                            Email
+                                                            Description
                                                         </label>
                                                         <div class="col-lg-9 col-xl-6">
-                                                            <div class="input-group">
-                                                                <div class="input-group-prepend"><span
-                                                                            class="input-group-text"><i
-                                                                                class="la la-at"></i></span></div>
-                                                                <input class="form-control {{$errors->has('email') ? 'is-invalid' : ''}}"
-                                                                       type="email" placeholder="Email" required
-                                                                       name="email" value="{{old('email')}}">
-                                                                @if($errors->has('email'))
-                                                                    <span class="invalid-feedback">{{$errors->first('email')}}</span>
-                                                                @endif
-                                                            </div>
-                                                            <span class="form-text text-muted">Email has to be unique*</span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group row">
-                                                        <label class="col-xl-3 col-lg-3 col-form-label">
-                                                            Password
-                                                        </label>
-                                                        <div class="col-lg-9 col-xl-6">
-                                                            <div class="input-group">
-                                                                <div class="input-group-prepend"><span
-                                                                            class="input-group-text"><i
-                                                                                class="fa fa-unlock-alt"></i></span>
-                                                                </div>
-                                                                <input class="form-control {{$errors->has('password') ? 'is-invalid' : ''}}"
-                                                                       type="password" name="password" required>
-                                                                @if($errors->has('password'))
-                                                                    <span class="invalid-feedback">{{$errors->first('password')}}</span>
-                                                                @endif
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group row">
-                                                        <label class="col-xl-3 col-lg-3 col-form-label">
-                                                            Confirm Password
-                                                        </label>
-                                                        <div class="col-lg-9 col-xl-6">
-                                                            <div class="input-group">
-                                                                <div class="input-group-prepend"><span
-                                                                            class="input-group-text"><i
-                                                                                class="fa fa-unlock-alt"></i></span>
-                                                                </div>
-                                                                <input class="form-control {{$errors->has('password') ? 'is-invalid' : ''}}"
-                                                                       type="password" name="password_confirmation"
-                                                                       required>
-                                                            </div>
+                                                            <input class="form-control {{$errors->has('description') ? 'is-invalid' : ''}}"
+                                                                   type="text" name="description"
+                                                                   value="{{$redit->description}}">
+                                                            @if($errors->has('description'))
+                                                                <span class="invalid-feedback">{{$errors->first('description')}}</span>
+                                                            @endif
                                                         </div>
                                                     </div>
                                                     <div class="form-group form-group-last row">
-                                                        <label class="col-3 col-form-label">Roles</label>
+                                                        <label class="col-3 col-form-label">Permissions</label>
                                                         <div class="col-9">
-                                                            @if($errors->has('roles'))
-                                                                <span class="invalid-feedback"><b>Please Select At Least One Role</b></span>
+                                                            @if($errors->has('name'))
+                                                                <span class="invalid-feedback"><b>Please Select At Least One Permission</b></span>
                                                             @endif
                                                             <div class="kt-checkbox-list">
-                                                                @foreach($roles as $i => $role)
-                                                                    @if($i > 1)
-                                                                        <label class="kt-checkbox">
-                                                                            <input type="checkbox" name="roles[]"
-                                                                                   value="{{$role->id}}"> {{$role->name}}
-                                                                            <span></span>
-                                                                        </label>
-                                                                    @endif
+                                                                @foreach($permissions as $permission)
+                                                                    <label class="kt-checkbox">
+                                                                        <input type="checkbox" name="permissions[]"
+                                                                               value="{{$permission->id}}"
+                                                                               @foreach($pedits as $pe)
+                                                                               @if(($pe->id * 1) == ($permission->id * 1))
+                                                                               checked
+                                                                                @break
+                                                                                @endif
+                                                                                @endforeach
+                                                                        > {{$permission->display_name}}
+                                                                        <span></span>
+                                                                    </label>
                                                                 @endforeach
                                                             </div>
                                                         </div>
@@ -145,7 +115,7 @@
                                                             <div class="col-lg-9 col-xl-6">
                                                                 <button type="submit"
                                                                         class="btn btn-label-brand btn-bold">
-                                                                    Create
+                                                                    Save Changes
                                                                 </button>
                                                                 <a href="javascript:void (0)"
                                                                    data-link="{{route('cancel')}}"
@@ -172,7 +142,7 @@
                         <i class="kt-font-brand flaticon2-line-chart"></i>
                     </span>
                             <h3 class="kt-portlet__head-title">
-                                All Users
+                                All Roles
                             </h3>
                         </div>
                     </div>
@@ -184,27 +154,38 @@
                             <tr>
                                 <th scope="col">#</th>
                                 <th scope="col">Name</th>
-                                <th scope="col">Email</th>
+                                <th scope="col">Description</th>
                                 <th scope="col">Action</th>
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($users as $i => $user)
-                                @if($i > 1)
+                            @foreach($roles as $i => $role)
+                                @if($i > 2)
                                     <tr>
-                                        <th scope="row">{{$i - 1}}</th>
-                                        <td>{{$user->name}}</td>
-                                        <td>{{$user->email}}</td>
+                                        <th scope="row">{{$i - 2}}</th>
+                                        <td>{{$role->name}}</td>
+                                        <td>{{$role->description}}</td>
                                         <td>
-                                            <a href="{{route('user.edit', ['uid' => $user->id])}}" title="Edit"
-                                               class="btn btn-sm btn-clean btn-icon btn-icon-md">
-                                                <i class="la la-edit"></i>
-                                            </a>
-                                            <a href="{{route('user.delete', ['uid' => $user->id])}}" title="Delete"
-                                               class="btn btn-sm btn-clean btn-icon btn-icon-md"
-                                               onclick="return confirm('Are you sure you want to delete the User ?')">
-                                                <i class="la la-trash" style="color: #fd397a;"></i>
-                                            </a>
+                                            @if($role->id != $redit->id)
+                                                <a href="{{route('role.edit', ['rid' => $role->id])}}" title="Edit"
+                                                   class="btn btn-sm btn-clean btn-icon btn-icon-md">
+                                                    <i class="la la-edit"></i>
+                                                </a>
+                                                <a href="{{route('role.delete', ['rid' => $role->id])}}" title="Delete"
+                                                   class="btn btn-sm btn-clean btn-icon btn-icon-md"
+                                                   onclick="return confirm('Are you sure you want to delete the Role ?')">
+                                                    <i class="la la-trash" style="color: #fd397a;"></i>
+                                                </a>
+                                            @else
+                                                <a href="#" title="Edit"
+                                                   class="btn btn-sm btn-clean btn-icon btn-icon-md disabled">
+                                                    <i class="la la-edit"></i>
+                                                </a>
+                                                <a href="#" title="Delete"
+                                                   class="btn btn-sm btn-clean btn-icon btn-icon-md disabled">
+                                                    <i class="la la-trash" style="color: #fd397a;"></i>
+                                                </a>
+                                            @endif
                                         </td>
                                     </tr>
                                 @endif
