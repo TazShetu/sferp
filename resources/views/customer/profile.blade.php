@@ -61,7 +61,7 @@
                                         {{--                                        <a href="#">--}}
                                         {{--                                        </a>--}}
                                         <span class="mr-4"><i class="flaticon2-calendar-3"></i>
-                                            {{$customer->type}}</span>
+                                            <b>{{$customer->type}}</b></span>
                                         {{--                                        <a href="#">--}}
                                         {{--                                        </a>--}}
                                         <span><i class="flaticon2-placeholder"></i>
@@ -224,55 +224,154 @@
         <!--Begin::Section-->
         <div class="row">
             @if(count($cPersons) > 0)
-            @foreach($cPersons as $i => $cPerson)
-            <div class="col-lg-6">
-                <div class="kt-portlet">
-                    <div class="kt-portlet__head">
-                        <div class="kt-portlet__head-label">
-                            <h3 class="kt-portlet__head-title">
-                                Contact {{ (count($cPersons) > 1) ? 'People' : 'Person' }} {{$i + 1}}
-                            </h3>
+                @foreach($cPersons as $i => $cPerson)
+                    <div class="col-lg-4">
+                        <div class="kt-portlet">
+                            <div class="kt-portlet__head">
+                                <div class="kt-portlet__head-label">
+                                    <h3 class="kt-portlet__head-title">
+                                        Contact {{ (count($cPersons) > 1) ? 'People' : 'Person' }} {{$i + 1}}
+                                    </h3>
+                                </div>
+                            </div>
+                            <div class="kt-form kt-form--label-right">
+                                <div class="kt-portlet__body">
+                                    <div class="form-group form-group-xs row">
+                                        <label class="col-4 col-form-label">Name:</label>
+                                        <div class="col-8">
+                                            <span class="form-control-plaintext kt-font-bolder">{{$cPerson->name}}</span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-group-xs row">
+                                        <label class="col-4 col-form-label">Designation:</label>
+                                        <div class="col-8">
+                                            <span class="form-control-plaintext kt-font-bolder">{{$cPerson->designation}}</span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-group-xs row">
+                                        <label class="col-4 col-form-label">Phone:</label>
+                                        <div class="col-8">
+                                            <span class="form-control-plaintext kt-font-bolder">{{$cPerson->number}}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="kt-form kt-form--label-right">
-                        <div class="kt-portlet__body">
-                            <div class="form-group form-group-xs row">
-                                <label class="col-4 col-form-label">Name:</label>
-                                <div class="col-8">
-                                    <span class="form-control-plaintext kt-font-bolder">{{$cPerson->name}}</span>
-                                </div>
-                            </div>
-                            <div class="form-group form-group-xs row">
-                                <label class="col-4 col-form-label">Designation:</label>
-                                <div class="col-8">
-                                    <span class="form-control-plaintext kt-font-bolder">{{$cPerson->designation}}</span>
-                                </div>
-                            </div>
-                            <div class="form-group form-group-xs row">
-                                <label class="col-4 col-form-label">Phone:</label>
-                                <div class="col-8">
-                                    <span class="form-control-plaintext kt-font-bolder">{{$cPerson->number}}</span>
-                                </div>
+                @endforeach
+            @else
+                <div class="col-lg-12">
+                    <div class="kt-portlet">
+                        <div class="kt-portlet__head">
+                            <div class="kt-portlet__head-label">
+                                <h3 class="kt-portlet__head-title">
+                                    No Contact Person For This Customer
+                                </h3>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            @endforeach
-                @else
-            <div class="col-lg-12">
-                <div class="kt-portlet">
-                    <div class="kt-portlet__head">
-                        <div class="kt-portlet__head-label">
-                            <h3 class="kt-portlet__head-title">
-                                No Contact Person For This Customer
-                            </h3>
-                        </div>
-                    </div>
-                </div>
-            </div>
             @endif
 
+        </div>
+        <!--End::Section-->
+        <!--Begin::Section-->
+        <div class="row">
+            @if(count($hierarchy) > 0)
+                @if(((($customer->customertype_id * 1) == 2) || (($customer->customertype_id * 1) == 3)) && (!empty($dealers)))
+                    <div class="col-lg-6">
+                        <div class="kt-portlet">
+                            <div class="kt-portlet__head">
+                                <div class="kt-portlet__head-label">
+                                    <h3 class="kt-portlet__head-title">
+                                        Dealer
+                                    </h3>
+                                </div>
+                            </div>
+                            <div class="kt-form kt-form--label-right">
+                                <div class="kt-portlet__body">
+                                    @foreach($dealers as $i => $d)
+                                        <div class="form-group form-group-xs row">
+                                            <label class="col-4 col-form-label">{{$i + 1}} :</label>
+                                            <div class="col-8">
+                                        <span class="form-control-plaintext kt-font-bolder">
+                                            <a href="{{route('customer.profile', ['cid' => $d->id])}}">{{$d->name}}</a>
+                                        </span>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endif
+                @if(((($customer->customertype_id * 1) == 1) || (($customer->customertype_id * 1) == 3)) && (!empty($subdealers)))
+                    <div class="col-lg-6">
+                        <div class="kt-portlet">
+                            <div class="kt-portlet__head">
+                                <div class="kt-portlet__head-label">
+                                    <h3 class="kt-portlet__head-title">
+                                        Sub Dealer
+                                    </h3>
+                                </div>
+                            </div>
+                            <div class="kt-form kt-form--label-right">
+                                <div class="kt-portlet__body">
+                                    @foreach($subdealers as $i => $sd)
+                                        <div class="form-group form-group-xs row">
+                                            <label class="col-4 col-form-label">{{$i + 1}} :</label>
+                                            <div class="col-8">
+                                        <span class="form-control-plaintext kt-font-bolder">
+                                            <a href="{{route('customer.profile', ['cid' => $sd->id])}}">{{$sd->name}}</a>
+                                        </span>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endif
+                @if(((($customer->customertype_id * 1) == 1) || (($customer->customertype_id * 1) == 2)) && (!empty($individuals)))
+                    <div class="col-lg-6">
+                        <div class="kt-portlet">
+                            <div class="kt-portlet__head">
+                                <div class="kt-portlet__head-label">
+                                    <h3 class="kt-portlet__head-title">
+                                        Individual
+                                    </h3>
+                                </div>
+                            </div>
+                            <div class="kt-form kt-form--label-right">
+                                <div class="kt-portlet__body">
+                                    @foreach($individuals as $i => $ind)
+                                        <div class="form-group form-group-xs row">
+                                            <label class="col-4 col-form-label">{{$i + 1}} :</label>
+                                            <div class="col-8">
+                                        <span class="form-control-plaintext kt-font-bolder">
+                                            <a href="{{route('customer.profile', ['cid' => $ind->id])}}">{{$ind->name}}</a>
+                                        </span>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endif
+            @else
+                <div class="col-lg-12">
+                    <div class="kt-portlet">
+                        <div class="kt-portlet__head">
+                            <div class="kt-portlet__head-label">
+                                <h3 class="kt-portlet__head-title">
+                                    No Hierarchy is set For This Customer
+                                </h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endif
         </div>
         <!--End::Section-->
 
