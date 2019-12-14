@@ -16,6 +16,7 @@ class PermissionsTableSeeder extends Seeder
             3 => ["user_permission", "User_Permission", "User Permission menu that goes under Access Control"],
             4 => ["customer", "Customer", "Customer menu"],
             5 => ["factory", "Factory", "Factory menu"],
+            6 => ["machine", "Machine", "Machine menu"],
         ];
 
         $s = Role::find(1);

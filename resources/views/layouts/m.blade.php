@@ -119,6 +119,9 @@
     <link href="{{asset('m/assets/css/skins/brand/dark.css')}}" rel="stylesheet" type="text/css"/>
     <link href="{{asset('m/assets/css/skins/aside/dark.css')}}" rel="stylesheet" type="text/css"/>
 
+    <!--Custom CSS -->
+    <link href="{{asset('m/assets/css/custom.css')}}" rel="stylesheet" type="text/css"/>
+
     <!--end::Layout Skins -->
     <link rel="shortcut icon" href="{{asset('m/assets/media/logos/favicon.ico')}}"/>
 
@@ -130,6 +133,7 @@
 
 <!-- begin::Body -->
 <body class="kt-quick-panel--right kt-demo-panel--right kt-offcanvas-panel--right kt-header--fixed kt-header-mobile--fixed kt-subheader--enabled kt-subheader--fixed kt-subheader--solid kt-aside--enabled kt-aside--fixed kt-page--loading">
+<div id="loader" style="background: url('{{asset('loader.gif')}}') 50% 50% no-repeat rgb(255, 255, 255);"></div>
 
 <!-- begin:: Page -->
 
@@ -241,6 +245,9 @@
 <script src="{{asset('m/assets/plugins/general/jquery/dist/jquery.js')}}" type="text/javascript"></script>
 {{--side menu active--}}
 <script>
+    $(window).on('load', function () {
+        $("#loader").fadeOut("fast");
+    });
     $(function () {
         let url = location.href;
         if (url.includes('?')) {

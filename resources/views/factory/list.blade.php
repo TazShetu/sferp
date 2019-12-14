@@ -1,12 +1,5 @@
 @extends('layouts.m')
 @section('title', 'Factory List')
-{{--@section('style')--}}
-{{--    <style>--}}
-{{--        /*.kt-user-card-v2 .kt-user-card-v2__details {*/--}}
-{{--        /*    line-height: 0;*/--}}
-{{--        /*}*/--}}
-{{--    </style>--}}
-{{--@endsection--}}
 @section('content_head')
     <div class="kt-subheader   kt-grid__item" id="kt_subheader">
         <div class="kt-container  kt-container--fluid ">

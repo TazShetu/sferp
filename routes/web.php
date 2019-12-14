@@ -50,6 +50,8 @@ Route::get('/factories/edit/{fid}', 'FactoryController@edit')->name('factory.edi
 Route::post('/factories/update/{fid}', 'FactoryController@update')->name('factory.update');
 Route::get('/factories/delete/{fid}', 'FactoryController@destroy')->name('factory.delete');
 
+Route::get('/machines', 'MachineController@list')->name('machine.list');
+Route::get('/machine/create', 'MachineController@create')->name('machine.create');
 
 
 
