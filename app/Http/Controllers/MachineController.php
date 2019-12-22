@@ -33,6 +33,7 @@ class MachineController extends Controller
     public function create()
     {
         if (Auth::user()->can('machine')) {
+//            session()->forget('mcid');
             $factories = Factory::all();
             $machineCategories = Machinecategory::all();
             return view('machine.create', compact('machineCategories', 'factories'));
@@ -40,6 +41,43 @@ class MachineController extends Controller
             abort(403);
         }
     }
+
+
+
+    public function store(Request $request, $mcid)
+    {
+        if (Auth::user()->can('machine')) {
+            if (($mcid * 1) == 1){
+                // Fishing Net Machine
+
+            }elseif (($mcid * 1) == 2){
+                // Rope Making Machine
+                session(['mcid' => 2]);
+                $request->validate([
+                    'manufacturerName' => 'required',
+                    'typeOrModelNumber' => 'required',
+                    'manufacturerYear' => 'required',
+                    'ropeSizeStart' => 'required',
+                    'ropeSizeEnd' => 'required',
+                    'factory' => 'required',
+                ]);
+
+
+
+                // delete session
+                // redirect back to list page
+            }elseif (($mcid * 1) == 3){
+                // Twisting Machine
+
+            }elseif (($mcid * 1) == 4){
+                // Extruder
+
+            }
+        } else {
+            abort(403);
+        }
+    }
+
 
 
     public function index()
@@ -51,10 +89,7 @@ class MachineController extends Controller
 
 
 
-    public function store(Request $request)
-    {
-        //
-    }
+
 
 
     public function show(Machine $machine)

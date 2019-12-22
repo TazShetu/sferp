@@ -81,6 +81,7 @@
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col" width="25%">Customer</th>
+                        <th scope="col">Type</th>
                         <th scope="col">Company</th>
                         <th scope="col">Business Area</th>
                         <th scope="col">Business Telephone</th>
@@ -112,6 +113,7 @@
                                     </div>
                                 </div>
                             </td>
+                            <td>{{$customer->type}}</td>
                             <td>{{$customer->company_name}}</td>
                             <td>{{$customer->business_area}}</td>
                             <td>{{$customer->business_telephone}}</td>
