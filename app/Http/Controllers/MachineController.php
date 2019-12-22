@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Factory;
 use App\Machine;
 use App\Machinecategory;
 use Illuminate\Http\Request;
@@ -32,8 +33,9 @@ class MachineController extends Controller
     public function create()
     {
         if (Auth::user()->can('machine')) {
+            $factories = Factory::all();
             $machineCategories = Machinecategory::all();
-            return view('machine.create', compact('machineCategories'));
+            return view('machine.create', compact('machineCategories', 'factories'));
         } else {
             abort(403);
         }
