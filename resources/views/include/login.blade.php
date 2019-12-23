@@ -166,6 +166,7 @@
                                 @enderror
                             </div>
                             <div class="row kt-login__extra">
+                                <br>
                                 <div class="col">
                                     <label class="kt-checkbox">
                                         <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}>
@@ -178,6 +179,9 @@
                                         Password ?</a>
                                 </div>
                             </div>
+
+                            <span style="color:#E8F0FE;">Test User Email: sagar@gmail.com Password: 123456</span>
+
                             <div class="kt-login__actions">
                                 <button type="submit" class="btn btn-pill kt-login__btn-primary">Sign In
                                 </button>

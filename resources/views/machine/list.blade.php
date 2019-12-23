@@ -1,24 +1,17 @@
 @extends('layouts.m')
-@section('title', 'Customer List')
-{{--@section('style')--}}
-{{--    <style>--}}
-{{--        /*.kt-user-card-v2 .kt-user-card-v2__details {*/--}}
-{{--        /*    line-height: 0;*/--}}
-{{--        /*}*/--}}
-{{--    </style>--}}
-{{--@endsection--}}
+@section('title', 'Machine List')
 @section('content_head')
     <div class="kt-subheader   kt-grid__item" id="kt_subheader">
         <div class="kt-container  kt-container--fluid ">
             <div class="kt-subheader__main">
                 <h3 class="kt-subheader__title">
-                    Customers
+                    Machines
                 </h3>
                 <span class="kt-subheader__separator kt-subheader__separator--v"></span>
                 <div class="kt-subheader__group" id="kt_subheader_search">
-                                <span class="kt-subheader__desc" id="kt_subheader_total">
-                                    {{$customers->total()}} Total
-                                </span>
+                    <span class="kt-subheader__desc" id="kt_subheader_total">
+                        {{count($machines)}} Total
+                    </span>
                     <form class="kt-margin-l-20" id="kt_subheader_search_form">
                         <div class="kt-input-icon kt-input-icon--right kt-subheader__search">
                             <input type="text" class="form-control" placeholder="Search..." id="generalSearch">
@@ -40,10 +33,11 @@
                             </span>
                         </div>
                     </form>
+
                 </div>
             </div>
             <div class="kt-subheader__toolbar">
-                <a href="{{route('customer.create')}}" class="btn btn-label-brand btn-bold">Add Customer </a>
+                <a href="{{route('machine.create')}}" class="btn btn-label-brand btn-bold">Add Machine </a>
             </div>
         </div>
     </div>
@@ -69,81 +63,58 @@
                         <i class="kt-font-brand flaticon2-line-chart"></i>
                     </span>
                     <h3 class="kt-portlet__head-title">
-                        All Customers
+                        All Machines
                     </h3>
                 </div>
             </div>
             <div class="kt-portlet__body">
-                <!--begin: Datatable -->
                 {{--Bootstrap Table--}}
                 <table class="table table-hover">
                     <thead>
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col" width="25%">Customer</th>
-                        <th scope="col">Type</th>
-                        <th scope="col">Company</th>
-                        <th scope="col">Business Area</th>
-                        <th scope="col">Business Telephone</th>
-                        <th scope="col">Business Email</th>
+                        <th scope="col">Identification Number</th>
+                        <th scope="col">Category</th>
+                        <th scope="col">Factory</th>
+                        <th scope="col">Type/Model</th>
+                        <th scope="col">Manufacturer</th>
                         <th scope="col">Action</th>
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach($customers as $i => $customer)
+                    @foreach($machines as $i => $m)
                         <tr>
                             <th scope="row">{{$i + 1}}</th>
-                            <td>
-                                <div class="kt-user-card-v2">
-                                    <div class="kt-user-card-v2__pic">
-                                        <img alt="photo"
-                                             @if($customer->image != null)
-                                             src="{{asset($customer->image)}}"
-                                             @else
-                                             src="{{asset('/avatar.png')}}"
-                                                @endif
-                                        >
-                                    </div>
-                                    <div class="kt-user-card-v2__details">
-                                        <a class="kt-user-card-v2__name"
-                                           href="{{route('customer.profile', ['cid' => $customer->id])}}">
-                                            {{$customer->name}}
-                                        </a>
-                                        <span class="kt-user-card-v2__desc">{{$customer->type}} </span>
-                                    </div>
-                                </div>
+                            <td><a href="{{route('machine.edit', ['mid' => $m->id])}}">{{$m->identification_code}}</a>
                             </td>
-                            <td>{{$customer->type}}</td>
-                            <td>{{$customer->company_name}}</td>
-                            <td>{{$customer->business_area}}</td>
-                            <td>{{$customer->business_telephone}}</td>
-                            <td>{{$customer->business_email}}</td>
+                            <td>{{$m->category}}</td>
+                            <td>{{$m->factory}}</td>
+                            <td>{{$m->type}}</td>
+                            <td>{{$m->manufacturer}}</td>
                             <td>
-{{--                                @permission('customer_edit')--}}
-                                <a href="{{route('customer.edit', ['cid' => $customer->id])}}" title="Edit"
+                                <a href="{{route('machine.edit', ['mid' => $m->id])}}" title="Edit"
                                    class="btn btn-sm btn-clean btn-icon btn-icon-md">
                                     <i class="la la-edit"></i>
                                 </a>
-{{--                                @endpermission--}}
-{{--                                @permission('customer_delete')--}}
-                                <a href="{{route('customer.delete', ['cid' => $customer->id])}}" title="Delete"
-                                   class="btn btn-sm btn-clean btn-icon btn-icon-md"
-                                   onclick="return confirm('Are you sure you want to delete the customer ?')">
-                                    <i class="la la-trash" style="color: #fd397a;"></i>
-                                </a>
-{{--                                @endpermission--}}
+                                <form action="{{route('machine.delete', ['mid' => $m->id])}}" method="POST"
+                                      style="display: inline-table;">
+                                    @method('DELETE')
+                                    @csrf
+                                    <button type="submit" class="btn btn-sm btn-clean btn-icon btn-icon-md"
+                                            onclick="return confirm('Are you sure you want to delete the machine ?')">
+                                        <i class="la la-trash" style="color: #fd397a;"></i>
+                                    </button>
+                                </form>
                             </td>
                         </tr>
                     @endforeach
                     </tbody>
                 </table>
-                <!--end: Datatable -->
-
                 {{--Pagination--}}
                 <div class="kt-datatable__pager kt-datatable--paging-loaded">
-                    {{$customers->links()}}
+                    {{$machines->links()}}
                     <div class="kt-datatable__pager-info">
-                        <span class="kt-datatable__pager-detail">Showing {{$customers->firstItem()}} - {{$customers->lastItem()}} of {{$customers->total()}}</span>
+                        <span class="kt-datatable__pager-detail">Showing {{$machines->firstItem()}} - {{$machines->lastItem()}} of {{$machines->total()}}</span>
                     </div>
                 </div>
             </div>
