@@ -93,8 +93,8 @@
                                                     <div class="input-group date">
                                                         <input class="form-control {{$errors->has('establishedDate') ? 'is-invalid' : ''}}"
                                                                type="text" name="establishedDate" required readonly
-                                                               id="kt_datepicker_2"
-                                                               value="{{$fedit->established_date}}">
+                                                               id="kt_datepicker_3"
+                                                               value="{{date('m/d/Y',strtotime($fedit->established_date))}}">
                                                         <div class="input-group-append">
 														<span class="input-group-text">
 															<i class="la la-calendar-check-o"></i>
@@ -140,14 +140,6 @@
 
     <script src="{{asset('m/assets/js/pages/crud/forms/widgets/bootstrap-datepicker.js')}}"
             type="text/javascript"></script>
-
-    <script>
-        $(function () {
-            $("#kt_datepicker_2").on('click', e => {
-                $("#kt_datepicker_2").datepicker("setDate", new Date());
-            });
-        });
-    </script>
 
 
     <!--end::Page Vendors -->

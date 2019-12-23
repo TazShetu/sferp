@@ -156,8 +156,8 @@
                                                     <div class="input-group date">
                                                         <input class="form-control {{$errors->has('dateOfBirth') ? 'is-invalid' : ''}}"
                                                                type="text" name="dateOfBirth" required readonly
-                                                               id="kt_datepicker_2"
-                                                               value="{{$customer->dob}}">
+                                                               id="kt_datepicker_3"
+                                                               value="{{date('m/d/Y',strtotime($customer->dob))}}">
                                                         <div class="input-group-append">
 														<span class="input-group-text">
 															<i class="la la-calendar-check-o"></i>

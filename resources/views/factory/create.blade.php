@@ -89,13 +89,13 @@
                                                     Established Date</label>
                                                 <div class="col-lg-9 col-xl-6">
                                                     <div class="input-group date">
-                                                        <input class="form-control {{$errors->has('establishedDate') ? 'is-invalid' : ''}}"
-                                                               type="text" name="establishedDate" required readonly
-                                                               placeholder="Select date" id="kt_datepicker_2"
-                                                               value="{{old('establishedDate')}}">
+                                                        <input type="text" value="{{old('establishedDate')}}"
+                                                               class="form-control {{$errors->has('establishedDate') ? 'is-invalid' : ''}}"
+                                                               readonly placeholder="Select date" required
+                                                               id="kt_datepicker_3" name="establishedDate">
                                                         <div class="input-group-append">
 														<span class="input-group-text">
-															<i class="la la-calendar-check-o"></i>
+															<i class="la la-calendar"></i>
 														</span>
                                                         </div>
                                                     </div>
@@ -138,15 +138,6 @@
 
     <script src="{{asset('m/assets/js/pages/crud/forms/widgets/bootstrap-datepicker.js')}}"
             type="text/javascript"></script>
-
-    <script>
-        $(function () {
-            $("#kt_datepicker_2").on('click', e => {
-                $("#kt_datepicker_2").datepicker("setDate", new Date());
-            });
-        });
-    </script>
-
 
     <!--end::Page Vendors -->
 
