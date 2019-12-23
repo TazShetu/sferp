@@ -82,40 +82,32 @@
                     </tr>
                     </thead>
                     <tbody>
-{{--                    @foreach($factories as $i => $factory)--}}
-{{--                        <tr>--}}
-{{--                            <th scope="row">{{$i + 1}}</th>--}}
-{{--                            <td>--}}
-{{--                                <div class="kt-user-card-v2">--}}
-{{--                                    <div class="kt-user-card-v2__pic">--}}
-{{--                                        <img alt="photo"--}}
-{{--                                             @if($factory->image != null)--}}
-{{--                                             src="{{asset($factory->image)}}"--}}
-{{--                                             @else--}}
-{{--                                             src="{{asset('/factory.jpg')}}"--}}
-{{--                                                @endif--}}
-{{--                                        >--}}
-{{--                                    </div>--}}
-{{--                                    <div class="kt-user-card-v2__details">--}}
-{{--                                        {{$factory->name}}--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                            </td>--}}
-{{--                            <td>{{$factory->address}}</td>--}}
-{{--                            <td>{{$factory->established_date}}</td>--}}
-{{--                            <td>--}}
-{{--                                <a href="{{route('factory.edit', ['fid' => $factory->id])}}" title="Edit"--}}
-{{--                                   class="btn btn-sm btn-clean btn-icon btn-icon-md">--}}
-{{--                                    <i class="la la-edit"></i>--}}
-{{--                                </a>--}}
-{{--                                <a href="{{route('factory.delete', ['fid' => $factory->id])}}" title="Delete"--}}
-{{--                                   class="btn btn-sm btn-clean btn-icon btn-icon-md"--}}
-{{--                                   onclick="return confirm('Are you sure you want to delete the factory ?')">--}}
-{{--                                    <i class="la la-trash" style="color: #fd397a;"></i>--}}
-{{--                                </a>--}}
-{{--                            </td>--}}
-{{--                        </tr>--}}
-{{--                    @endforeach--}}
+                    @foreach($machines as $i => $m)
+                        <tr>
+                            <th scope="row">{{$i + 1}}</th>
+                            <td><a href="{{route('machine.edit', ['mid' => $m->id])}}">{{$m->identification_code}}</a>
+                            </td>
+                            <td>{{$m->category}}</td>
+                            <td>{{$m->factory}}</td>
+                            <td>{{$m->type}}</td>
+                            <td>{{$m->manufacturer}}</td>
+                            <td>
+                                <a href="{{route('machine.edit', ['mid' => $m->id])}}" title="Edit"
+                                   class="btn btn-sm btn-clean btn-icon btn-icon-md">
+                                    <i class="la la-edit"></i>
+                                </a>
+                                <form action="{{route('machine.delete', ['mid' => $m->id])}}" method="POST"
+                                      style="display: inline-table;">
+                                    @method('DELETE')
+                                    @csrf
+                                    <button type="submit" class="btn btn-sm btn-clean btn-icon btn-icon-md"
+                                            onclick="return confirm('Are you sure you want to delete the machine ?')">
+                                        <i class="la la-trash" style="color: #fd397a;"></i>
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    @endforeach
                     </tbody>
                 </table>
                 {{--Pagination--}}

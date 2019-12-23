@@ -53,6 +53,9 @@ Route::get('/factories/delete/{fid}', 'FactoryController@destroy')->name('factor
 Route::get('/machines', 'MachineController@list')->name('machine.list');
 Route::get('/machine/create', 'MachineController@create')->name('machine.create');
 Route::post('/machine/store/{mcid}', 'MachineController@store')->name('machine.store');
+Route::delete('/machine/delete/{mid}', 'MachineController@destroy')->name('machine.delete');
+Route::get('/machine/edit/{mid}', 'MachineController@edit')->name('machine.edit');
+Route::post('/machine/update/{mid}', 'MachineController@update')->name('machine.update');
 
 
 

@@ -79,12 +79,12 @@
                             <div class="kt-form__body">
                                 <div class="kt-section kt-section--first">
                                     {{--      Form Start    --}}
-                                    <form action="#" method="post">
+                                    <form action="{{route('machine.store', ['mcid' => $machineCategories[0]->id])}}" method="post">
                                         @csrf
                                         <div class="kt-section__body">
                                             <div class="form-group row">
                                                 <label class="col-xl-3 col-lg-3 col-form-label">
-                                                    [ Manufacturer Name ]
+                                                    Manufacturer Name
                                                     {{--    Auto Fill  use datalist       --}}
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">
@@ -98,7 +98,7 @@
                                             </div>
                                             <div class="form-group row">
                                                 <label class="col-xl-3 col-lg-3 col-form-label">
-                                                    [ Type / Model Number ]
+                                                    Type / Model Number
                                                     {{--    Auto Fill  use datalist       --}}
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">
@@ -157,7 +157,7 @@
                                                 <div class="col-lg-9 col-xl-6">
                                                     <select class="form-control {{($errors->has('skOrDk') && ((session('mcid') * 1) == 1)) ? 'is-invalid' : ''}}"
                                                             name="skOrDk" required>
-                                                        <option selected disabled hidden>Choose...</option>
+                                                        <option selected disabled hidden value="">Choose...</option>
                                                         <option value="S/K">S/K</option>
                                                         <option value="D/K">D/K</option>
                                                     </select>
@@ -214,7 +214,7 @@
                                                 <div class="col-lg-9 col-xl-6">
                                                     <select class="form-control {{($errors->has('factory') && ((session('mcid') * 1) == 1)) ? 'is-invalid' : ''}}"
                                                             name="factory" required>
-                                                        <option selected disabled hidden>Choose...</option>
+                                                        <option selected disabled hidden value="">Choose...</option>
                                                         @foreach($factories as $f)
                                                             <option value="{{$f->id}}">{{$f->name}}</option>
                                                         @endforeach
@@ -252,7 +252,7 @@
                                 <div class="kt-section__body">
                                     <div class="form-group row">
                                         <label class="col-xl-3 col-lg-3 col-form-label">
-                                            [ Manufacturer Name ]
+                                            Manufacturer Name
                                             {{--    Auto Fill  use datalist       --}}
                                         </label>
                                         <div class="col-lg-9 col-xl-6">
@@ -266,7 +266,7 @@
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-xl-3 col-lg-3 col-form-label">
-                                            [ Type / Model Number ]
+                                            Type / Model Number
                                             {{--    Auto Fill  use datalist       --}}
                                         </label>
                                         <div class="col-lg-9 col-xl-6">
@@ -279,6 +279,20 @@
                                         </div>
                                     </div>
                                     <div class="form-group row">
+                                        <label class="col-xl-3 col-lg-3 col-form-label">
+                                            Serial Number
+                                        </label>
+                                        <div class="col-lg-9 col-xl-6">
+                                            <input class="form-control {{($errors->has('serialNumber') && ((session('mcid') * 1) == 2)) ? 'is-invalid' : ''}}"
+                                                   type="text" name="serialNumber" required
+                                                   value="{{((session('mcid') * 1) == 2) ? (old('serialNumber')) : "" }}">
+                                            @if($errors->has('serialNumber') && ((session('mcid') * 1) == 2))
+                                                <span class="invalid-feedback">{{$errors->first('serialNumber')}}</span>
+                                            @endif
+                                            <span class="form-text text-muted">It has to be unique*</span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
                                         <label class="col-xl-3 col-lg-3 col-form-label"> Manufacturer Year</label>
                                         <div class="col-lg-9 col-xl-6">
                                             <input class="form-control datepickerYear {{($errors->has('manufacturerYear') && ((session('mcid') * 1) == 2)) ? 'is-invalid' : ''}}"
@@ -286,6 +300,19 @@
                                                    value="{{((session('mcid') * 1) == 2) ? (old('manufacturerYear')) : "" }}">
                                             @if($errors->has('manufacturerYear') && ((session('mcid') * 1) == 2))
                                                 <span class="invalid-feedback">{{$errors->first('manufacturerYear')}}</span>
+                                            @endif
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-xl-3 col-lg-3 col-form-label">
+                                            Country Of Origin
+                                        </label>
+                                        <div class="col-lg-9 col-xl-6">
+                                            <input class="form-control {{($errors->has('countryOfOrigin') && ((session('mcid') * 1) == 1)) ? 'is-invalid' : ''}}"
+                                                   type="text" name="countryOfOrigin" required
+                                                   value="{{((session('mcid') * 1) == 2) ? (old('countryOfOrigin')) : "" }}">
+                                            @if($errors->has('countryOfOrigin') && ((session('mcid') * 1) == 1))
+                                                <span class="invalid-feedback">{{$errors->first('countryOfOrigin')}}</span>
                                             @endif
                                         </div>
                                     </div>
@@ -321,7 +348,7 @@
                                         <div class="col-lg-9 col-xl-6">
                                             <select class="form-control {{($errors->has('factory') && ((session('mcid') * 1) == 2)) ? 'is-invalid' : ''}}"
                                                     name="factory" required>
-                                                <option selected disabled hidden>Choose...</option>
+                                                <option selected disabled hidden value="">Choose...</option>
                                                 @foreach($factories as $f)
                                                     <option value="{{$f->id}}">{{$f->name}}</option>
                                                 @endforeach
@@ -350,12 +377,12 @@
                     </div>
                     <div id="kt_user_edit_tab_3" class="tab-pane {{ ((session('mcid') * 1) == 3) ? "active" : "" }}">
                         <div class="kt-form kt-form--label-right">
-                            <form action="#" method="post">
+                            <form action="{{route('machine.store', ['mcid' => $machineCategories[2]->id])}}" method="post">
                                 @csrf
                                 <div class="kt-section__body">
                                     <div class="form-group row">
                                         <label class="col-xl-3 col-lg-3 col-form-label">
-                                            [ Manufacturer Name ]
+                                            Manufacturer Name
                                             {{--    Auto Fill  use datalist       --}}
                                         </label>
                                         <div class="col-lg-9 col-xl-6">
@@ -369,7 +396,7 @@
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-xl-3 col-lg-3 col-form-label">
-                                            [ Type / Model Number ]
+                                            Type / Model Number
                                             {{--    Auto Fill  use datalist       --}}
                                         </label>
                                         <div class="col-lg-9 col-xl-6">
@@ -451,7 +478,7 @@
                                         <div class="col-lg-9 col-xl-6">
                                             <select class="form-control {{($errors->has('factory') && ((session('mcid') * 1) == 3)) ? 'is-invalid' : ''}}"
                                                     name="factory" required>
-                                                <option selected disabled hidden>Choose...</option>
+                                                <option selected disabled hidden value="">Choose...</option>
                                                 @foreach($factories as $f)
                                                     <option value="{{$f->id}}">{{$f->name}}</option>
                                                 @endforeach
@@ -480,12 +507,12 @@
                     </div>
                     <div id="kt_user_edit_tab_4" class="tab-pane {{ ((session('mcid') * 1) == 4) ? "active" : "" }}">
                         <div class="kt-form kt-form--label-right">
-                            <form action="#" method="post">
+                            <form action="{{route('machine.store', ['mcid' => $machineCategories[3]->id])}}" method="post">
                                 @csrf
                                 <div class="kt-section__body">
                                     <div class="form-group row">
                                         <label class="col-xl-3 col-lg-3 col-form-label">
-                                            [ Manufacturer Name ]
+                                            Manufacturer Name
                                             {{--    Auto Fill  use datalist       --}}
                                         </label>
                                         <div class="col-lg-9 col-xl-6">
@@ -499,7 +526,7 @@
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-xl-3 col-lg-3 col-form-label">
-                                            [ Type / Model Number ]
+                                            Type / Model Number
                                             {{--    Auto Fill  use datalist       --}}
                                         </label>
                                         <div class="col-lg-9 col-xl-6">
@@ -509,6 +536,20 @@
                                             @if($errors->has('typeOrModelNumber') && ((session('mcid') * 1) == 4))
                                                 <span class="invalid-feedback">{{$errors->first('typeOrModelNumber')}}</span>
                                             @endif
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-xl-3 col-lg-3 col-form-label">
+                                            Serial Number
+                                        </label>
+                                        <div class="col-lg-9 col-xl-6">
+                                            <input class="form-control {{($errors->has('serialNumber') && ((session('mcid') * 1) == 4)) ? 'is-invalid' : ''}}"
+                                                   type="text" name="serialNumber" required
+                                                   value="{{((session('mcid') * 1) == 4) ? (old('serialNumber')) : "" }}">
+                                            @if($errors->has('serialNumber') && ((session('mcid') * 1) == 4))
+                                                <span class="invalid-feedback">{{$errors->first('serialNumber')}}</span>
+                                            @endif
+                                            <span class="form-text text-muted">It has to be unique*</span>
                                         </div>
                                     </div>
                                     <div class="form-group row">
@@ -569,7 +610,7 @@
                                         <div class="col-lg-9 col-xl-6">
                                             <select class="form-control {{($errors->has('factory') && ((session('mcid') * 1) == 4)) ? 'is-invalid' : ''}}"
                                                     name="factory" required>
-                                                <option selected disabled hidden>Choose...</option>
+                                                <option selected disabled hidden value="">Choose...</option>
                                                 @foreach($factories as $f)
                                                     <option value="{{$f->id}}">{{$f->name}}</option>
                                                 @endforeach
