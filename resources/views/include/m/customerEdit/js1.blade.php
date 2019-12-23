@@ -124,13 +124,6 @@
     });
 </script>
 <script>
-    $(function () {
-        $("#kt_datepicker_2").on('click', e => {
-            $("#kt_datepicker_2").datepicker("setDate", new Date());
-        });
-    });
-</script>
-<script>
     $(document).on('click', '#add-btn-subDealer', function () {
         var input = `
                 <div class="form-group row align-items-center remove-content">

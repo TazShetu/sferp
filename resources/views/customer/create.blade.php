@@ -77,7 +77,7 @@
                                                     <div class="input-group date">
                                                         <input class="form-control {{$errors->has('dateOfBirth') ? 'is-invalid' : ''}}"
                                                                type="text" name="dateOfBirth" required readonly
-                                                               placeholder="Select date" id="kt_datepicker_2"
+                                                               placeholder="Select date" id="kt_datepicker_3"
                                                                value="{{old('dateOfBirth')}}">
                                                         <div class="input-group-append">
 														<span class="input-group-text">
@@ -320,14 +320,6 @@
 
     <script src="{{asset('m/assets/js/pages/crud/forms/widgets/bootstrap-datepicker.js')}}"
             type="text/javascript"></script>
-
-    <script>
-        $(function () {
-            $("#kt_datepicker_2").on('click', e => {
-                $("#kt_datepicker_2").datepicker("setDate", new Date());
-            });
-        });
-    </script>
 
 
     <!--end::Page Vendors -->

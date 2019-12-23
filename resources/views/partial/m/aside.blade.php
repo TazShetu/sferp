@@ -121,6 +121,26 @@
                     </a>
                 </li>
                 @endpermission
+                @permission('factory')
+                <li class="kt-menu__item  " aria-haspopup="true">
+                    <a href="{{route('factory.list')}}" class="kt-menu__link ">
+                        <span class="kt-menu__link-icon">
+                            <i class="la la-industry"></i>
+                        </span>
+                        <span class="kt-menu__link-text">Factory</span>
+                    </a>
+                </li>
+                @endpermission
+                @permission('machine')
+                <li class="kt-menu__item  " aria-haspopup="true">
+                    <a href="{{route('machine.list')}}" class="kt-menu__link ">
+                        <span class="kt-menu__link-icon">
+                            <i class="flaticon-cogwheel"></i>
+                        </span>
+                        <span class="kt-menu__link-text">Machines</span>
+                    </a>
+                </li>
+                @endpermission
             </ul>
         </div>
     </div>
