@@ -41,8 +41,7 @@
                             <div class="kt-form__body">
                                 <div class="kt-section kt-section--first">
                                     {{--      Form Start    --}}
-                                    <form action="{{route('machine.store', ['mcid' => $machineCategories[0]->id])}}"
-                                          method="post">
+                                    <form action="{{route('machine.store')}}" method="post">
                                         @csrf
                                         <div class="kt-section__body">
                                             <div class="form-group row">
@@ -198,9 +197,9 @@
                                                     <input class="form-control {{($errors->has('numberOfShuttles')) ? 'is-invalid' : ''}}"
                                                            type="number" name="numberOfShuttles"
                                                            value="{{old('numberOfShuttles')}}">
-{{--                                                    @if($errors->has('numberOfShuttles'))--}}
-{{--                                                        <span class="invalid-feedback">{{$errors->first('numberOfShuttles')}}</span>--}}
-{{--                                                    @endif--}}
+                                                    {{--                                                    @if($errors->has('numberOfShuttles'))--}}
+                                                    {{--                                                        <span class="invalid-feedback">{{$errors->first('numberOfShuttles')}}</span>--}}
+                                                    {{--                                                    @endif--}}
                                                 </div>
                                             </div>
                                             <div class="form-group row">
@@ -228,14 +227,26 @@
                                             </div>
                                             <div class="form-group row">
                                                 <label class="col-xl-3 col-lg-3 col-form-label">
+                                                    Size Range
+                                                </label>
+                                                <div class="col-lg-9 col-xl-6">
+                                                    <input class="form-control  {{($errors->has('sizeRange')) ? 'is-invalid' : ''}}"
+                                                           type="number" name="sizeRange" value="{{old('sizeRange')}}">
+                                                    {{--                                                    @if($errors->has('screwSize'))--}}
+                                                    {{--                                                        <span class="invalid-feedback">{{$errors->first('screwSize')}}</span>--}}
+                                                    {{--                                                    @endif--}}
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-xl-3 col-lg-3 col-form-label">
                                                     Screw Size
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">
                                                     <input class="form-control  {{($errors->has('screwSize')) ? 'is-invalid' : ''}}"
                                                            type="number" name="screwSize" value="{{old('screwSize')}}">
-                                                    @if($errors->has('screwSize'))
-                                                        <span class="invalid-feedback">{{$errors->first('screwSize')}}</span>
-                                                    @endif
+                                                    {{--                                                    @if($errors->has('screwSize'))--}}
+                                                    {{--                                                        <span class="invalid-feedback">{{$errors->first('screwSize')}}</span>--}}
+                                                    {{--                                                    @endif--}}
                                                 </div>
                                             </div>
                                             <div class="form-group row">
@@ -246,10 +257,23 @@
                                                     <input class="form-control  {{($errors->has('productionCapacity')) ? 'is-invalid' : ''}}"
                                                            type="number" name="productionCapacity"
                                                            value="{{old('productionCapacity')}}">
-                                                    @if($errors->has('productionCapacity'))
-                                                        <span class="invalid-feedback">{{$errors->first('productionCapacity')}}</span>
-                                                    @endif
+                                                    {{--                                                    @if($errors->has('productionCapacity'))--}}
+                                                    {{--                                                        <span class="invalid-feedback">{{$errors->first('productionCapacity')}}</span>--}}
+                                                    {{--                                                    @endif--}}
                                                     <span class="form-text text-muted">Write the number in hgs/hr</span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-xl-3 col-lg-3 col-form-label">
+                                                    L / D Ratio
+                                                </label>
+                                                <div class="col-lg-9 col-xl-6">
+                                                    <input class="form-control  {{($errors->has('LDRatio')) ? 'is-invalid' : ''}}"
+                                                           type="number" name="LDRatio"
+                                                           value="{{old('LDRatio')}}">
+                                                    {{--                                                    @if($errors->has('productionCapacity'))--}}
+                                                    {{--                                                        <span class="invalid-feedback">{{$errors->first('productionCapacity')}}</span>--}}
+                                                    {{--                                                    @endif--}}
                                                 </div>
                                             </div>
                                             <div class="kt-separator kt-separator--space-lg kt-separator--fit kt-separator--border-solid"></div>
