@@ -57,7 +57,12 @@ Route::delete('/machine/delete/{mid}', 'MachineController@destroy')->name('machi
 Route::get('/machine/edit/{mid}', 'MachineController@edit')->name('machine.edit');
 Route::post('/machine/update/{mid}', 'MachineController@update')->name('machine.update');
 
-
+Route::get('/spare-parts', 'SparepartsController@list')->name('spareParts.list');
+Route::get('/spare-parts/create', 'SparepartsController@create')->name('spareParts.create');
+//Route::post('/machine/store', 'MachineController@store')->name('machine.store');
+//Route::delete('/machine/delete/{mid}', 'MachineController@destroy')->name('machine.delete');
+//Route::get('/machine/edit/{mid}', 'MachineController@edit')->name('machine.edit');
+//Route::post('/machine/update/{mid}', 'MachineController@update')->name('machine.update');
 
 
 

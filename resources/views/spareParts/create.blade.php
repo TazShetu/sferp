@@ -1,17 +1,17 @@
 @extends('layouts.m')
-@section('title', 'Machine Create')
+@section('title', 'Spare Parts Create')
 @section('content_head')
     <div class="kt-subheader   kt-grid__item" id="kt_subheader">
         <div class="kt-container  kt-container--fluid ">
             <div class="kt-subheader__main">
                 <h3 class="kt-subheader__title">
-                    Machine Create
+                    Spare Parts Create
                 </h3>
                 <span class="kt-subheader__separator kt-subheader__separator--v"></span>
                 <div class="kt-subheader__breadcrumbs">
                     <a href="{{route('home')}}" class="kt-subheader__breadcrumbs-home"><i class="flaticon2-shelter"></i></a>
                     <span class="kt-subheader__breadcrumbs-separator"></span>
-                    <a href="{{route('machine.list')}}" class="kt-subheader__breadcrumbs-link">Machine</a>
+                    <a href="{{route('spareParts.list')}}" class="kt-subheader__breadcrumbs-link">Spare Parts</a>
                     <span class="kt-subheader__breadcrumbs-separator"></span>
                     <a href="javascript:void (0)"
                        class="kt-subheader__breadcrumbs-link kt-subheader__breadcrumbs-link--active"
@@ -46,35 +46,29 @@
                                         <div class="kt-section__body">
                                             <div class="form-group row">
                                                 <label class="col-xl-3 col-lg-3 col-form-label">
-                                                    Select Category
+                                                    Country Of Origin
+                                                    {{--    Auto Fill  use datalist       --}}
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">
-                                                    <select class="form-control {{($errors->has('category')) ? 'is-invalid' : ''}}"
-                                                            name="category" required>
-                                                        <option selected disabled hidden value="">Choose...</option>
-                                                        @foreach($machineCategories as $mc)
-                                                            <option value="{{$mc->id}}">{{$mc->name}}</option>
-                                                        @endforeach
-                                                    </select>
-                                                    @if($errors->has('category'))
-                                                        <span class="invalid-feedback">{{$errors->first('category')}}</span>
+                                                    <input class="form-control {{($errors->has('countryOfOrigin')) ? 'is-invalid' : ''}}"
+                                                           type="text" name="countryOfOrigin" required
+                                                           value="{{old('countryOfOrigin')}}">
+                                                    @if($errors->has('countryOfOrigin'))
+                                                        <span class="invalid-feedback">{{$errors->first('countryOfOrigin')}}</span>
                                                     @endif
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <label class="col-xl-3 col-lg-3 col-form-label">
-                                                    Select Factory
+                                                    Country Of Purchase
+                                                    {{--    Auto Fill  use datalist       --}}
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">
-                                                    <select class="form-control {{($errors->has('factory')) ? 'is-invalid' : ''}}"
-                                                            name="factory" required>
-                                                        <option selected disabled hidden value="">Choose...</option>
-                                                        @foreach($factories as $f)
-                                                            <option value="{{$f->id}}">{{$f->name}}</option>
-                                                        @endforeach
-                                                    </select>
-                                                    @if($errors->has('factory'))
-                                                        <span class="invalid-feedback">{{$errors->first('factory')}}</span>
+                                                    <input class="form-control {{($errors->has('countryOfPurchase')) ? 'is-invalid' : ''}}"
+                                                           type="text" name="countryOfPurchase" required
+                                                           value="{{old('countryOfPurchase')}}">
+                                                    @if($errors->has('countryOfPurchase'))
+                                                        <span class="invalid-feedback">{{$errors->first('countryOfPurchase')}}</span>
                                                     @endif
                                                 </div>
                                             </div>
@@ -92,6 +86,13 @@
                                                     @endif
                                                 </div>
                                             </div>
+
+
+
+
+
+
+
                                             <div class="form-group row">
                                                 <label class="col-xl-3 col-lg-3 col-form-label">
                                                     Type / Model Number

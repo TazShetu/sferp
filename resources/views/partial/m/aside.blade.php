@@ -141,6 +141,16 @@
                     </a>
                 </li>
                 @endpermission
+                @permission('spare_parts')
+                <li class="kt-menu__item  " aria-haspopup="true">
+                    <a href="{{route('spareParts.list')}}" class="kt-menu__link ">
+                        <span class="kt-menu__link-icon">
+                            <i class="flaticon-settings"></i>
+                        </span>
+                        <span class="kt-menu__link-text">Spare Parts</span>
+                    </a>
+                </li>
+                @endpermission
             </ul>
         </div>
     </div>
