@@ -20,6 +20,8 @@ class CreateCustomersTable extends Migration
             $table->string('company_name');
             $table->string('bin');
             $table->string('bin_file')->nullable();
+            $table->string('tin');
+            $table->string('tin_file')->nullable();
             $table->string('nid');
             $table->string('nid_file')->nullable();
             $table->string('business_address');
