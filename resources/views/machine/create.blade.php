@@ -81,12 +81,11 @@
                                             <div class="form-group row">
                                                 <label class="col-xl-3 col-lg-3 col-form-label">
                                                     Manufacturer Name
-                                                    {{--    Auto Fill  use datalist       --}}
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">
                                                     <input class="form-control {{($errors->has('manufacturerName')) ? 'is-invalid' : ''}}"
                                                            type="text" name="manufacturerName" required
-                                                           value="{{old('manufacturerName')}}">
+                                                           value="{{old('manufacturerName')}}" list="manufacturer">
                                                     @if($errors->has('manufacturerName'))
                                                         <span class="invalid-feedback">{{$errors->first('manufacturerName')}}</span>
                                                     @endif
@@ -95,12 +94,11 @@
                                             <div class="form-group row">
                                                 <label class="col-xl-3 col-lg-3 col-form-label">
                                                     Type / Model Number
-                                                    {{--    Auto Fill  use datalist       --}}
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">
                                                     <input class="form-control {{($errors->has('typeOrModelNumber')) ? 'is-invalid' : ''}}"
                                                            type="text" name="typeOrModelNumber" required
-                                                           value="{{old('typeOrModelNumber')}}">
+                                                           value="{{old('typeOrModelNumber')}}" list="type">
                                                     @if($errors->has('typeOrModelNumber'))
                                                         <span class="invalid-feedback">{{$errors->first('typeOrModelNumber')}}</span>
                                                     @endif
@@ -301,6 +299,18 @@
         </div>
     </div>
 
+    <datalist id="manufacturer">
+        @forelse($datalist['manufacturer'] as $m)
+            <option value="{{$m->manufacturer}}">
+        @empty
+        @endforelse
+    </datalist>
+    <datalist id="type">
+        @forelse($datalist['type'] as $t)
+            <option value="{{$t->type}}">
+        @empty
+        @endforelse
+    </datalist>
 @endsection
 {{--@section('stickyToolbar')    --}}
 {{--@endsection--}}

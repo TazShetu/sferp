@@ -5,7 +5,7 @@
         <div class="kt-container  kt-container--fluid ">
             <div class="kt-subheader__main">
                 <h3 class="kt-subheader__title">
-                    Spare Parts Create
+                    Spare Parts Edit
                 </h3>
                 <span class="kt-subheader__separator kt-subheader__separator--v"></span>
                 <div class="kt-subheader__breadcrumbs">
@@ -15,7 +15,7 @@
                     <span class="kt-subheader__breadcrumbs-separator"></span>
                     <a href="javascript:void (0)"
                        class="kt-subheader__breadcrumbs-link kt-subheader__breadcrumbs-link--active"
-                       style="padding-right: 1rem;">Create</a>
+                       style="padding-right: 1rem;">Edit</a>
                 </div>
             </div>
             <div class="kt-subheader__toolbar"></div>

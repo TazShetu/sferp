@@ -16,11 +16,11 @@ class CreateSparepartsTable extends Migration
             $table->string('manufacturer');
             $table->string('manufacture_year');
             $table->string('currency');
-            $table->string('unit_price');
-            $table->string('unit_price_cnf');
-            $table->string('unit_price_fob');
-            $table->string('unit_price_dhaka')->nullable();
-            $table->string('unit_price_chittagong')->nullable();
+            $table->float('unit_price');
+            $table->float('unit_price_cnf');
+            $table->float('unit_price_fob');
+            $table->float('cnf_price_dhaka')->nullable();
+            $table->float('cnf_price_chittagong')->nullable();
             $table->date('purchase_date');
             $table->date('arrival_date');
             $table->string('shipped_by');

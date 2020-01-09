@@ -151,6 +151,19 @@
                                             </div>
                                             <div class="form-group row">
                                                 <label class="col-xl-3 col-lg-3 col-form-label">
+                                                    Company Name
+                                                </label>
+                                                <div class="col-lg-9 col-xl-6">
+                                                    <input class="form-control {{$errors->has('companyName') ? 'is-invalid' : ''}}"
+                                                           type="text" name="companyName"
+                                                           required value="{{$customer->company_name}}">
+                                                    @if($errors->has('companyName'))
+                                                        <span class="invalid-feedback">{{$errors->first('companyName')}}</span>
+                                                    @endif
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-xl-3 col-lg-3 col-form-label">
                                                     Date Of Birth</label>
                                                 <div class="col-lg-9 col-xl-6">
                                                     <div class="input-group date">
@@ -166,19 +179,6 @@
                                                     </div>
                                                     @if($errors->has('dateOfBirth'))
                                                         <span class="invalid-feedback">{{$errors->first('dateOfBirth')}}</span>
-                                                    @endif
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label class="col-xl-3 col-lg-3 col-form-label">
-                                                    Company Name
-                                                </label>
-                                                <div class="col-lg-9 col-xl-6">
-                                                    <input class="form-control {{$errors->has('companyName') ? 'is-invalid' : ''}}"
-                                                           type="text" name="companyName"
-                                                           required value="{{$customer->company_name}}">
-                                                    @if($errors->has('companyName'))
-                                                        <span class="invalid-feedback">{{$errors->first('companyName')}}</span>
                                                     @endif
                                                 </div>
                                             </div>

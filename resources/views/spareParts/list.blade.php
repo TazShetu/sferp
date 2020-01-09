@@ -74,10 +74,10 @@
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Identification Number</th>
-                        <th scope="col">Category</th>
-                        <th scope="col">Factory</th>
-                        <th scope="col">Type/Model</th>
                         <th scope="col">Manufacturer</th>
+                        <th scope="col">Date of Purchase</th>
+                        <th scope="col">Date of Arrival</th>
+                        <th scope="col">Unit Price</th>
                         <th scope="col">Action</th>
                     </tr>
                     </thead>
@@ -85,23 +85,23 @@
                     @foreach($spareParts as $i => $m)
                         <tr>
                             <th scope="row">{{$i + 1}}</th>
-                            <td><a href="{{route('machine.edit', ['mid' => $m->id])}}">{{$m->identification_code}}</a>
+                            <td><a href="{{route('spareParts.edit', ['spid' => $m->id])}}">{{$m->identity_number}}</a>
                             </td>
-                            <td>{{$m->category}}</td>
-                            <td>{{$m->factory}}</td>
-                            <td>{{$m->type}}</td>
                             <td>{{$m->manufacturer}}</td>
+                            <td>{{$m->purchase_date}}</td>
+                            <td>{{$m->arrival_date}}</td>
+                            <td>{{$m->unit_price}} in {{$m->currency}}</td>
                             <td>
-                                <a href="{{route('machine.edit', ['mid' => $m->id])}}" title="Edit"
+                                <a href="{{route('spareParts.edit', ['spid' => $m->id])}}" title="Edit"
                                    class="btn btn-sm btn-clean btn-icon btn-icon-md">
                                     <i class="la la-edit"></i>
                                 </a>
-                                <form action="{{route('machine.delete', ['mid' => $m->id])}}" method="POST"
+                                <form action="{{route('spareParts.delete', ['spid' => $m->id])}}" method="POST"
                                       style="display: inline-table;">
                                     @method('DELETE')
                                     @csrf
                                     <button type="submit" class="btn btn-sm btn-clean btn-icon btn-icon-md"
-                                            onclick="return confirm('Are you sure you want to delete the machine ?')">
+                                            onclick="return confirm('Are you sure you want to delete the spare part ?')">
                                         <i class="la la-trash" style="color: #fd397a;"></i>
                                     </button>
                                 </form>

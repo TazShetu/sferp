@@ -37,10 +37,11 @@ class MachineController extends Controller
     public function create()
     {
         if (Auth::user()->can('machine')) {
-//            session()->forget('mcid');
             $factories = Factory::all();
             $machineCategories = Machinecategory::all();
-            return view('machine.create', compact('machineCategories', 'factories'));
+            $datalist['manufacturer'] = DB::select(DB::raw('SELECT manufacturer FROM machines GROUP BY manufacturer'));
+            $datalist['type'] = DB::select(DB::raw('SELECT type FROM machines GROUP BY type'));
+            return view('machine.create', compact('machineCategories', 'factories', 'datalist'));
         } else {
             abort(403);
         }
@@ -119,7 +120,9 @@ class MachineController extends Controller
             $medit['categoryName'] = Machinecategory::find($medit->machinecategory_id)->name;
             $factories = Factory::all();
             $machineCategories = Machinecategory::all();
-            return view('machine.edit', compact('medit','factories', 'machineCategories'));
+            $datalist['manufacturer'] = DB::select(DB::raw('SELECT manufacturer FROM machines GROUP BY manufacturer'));
+            $datalist['type'] = DB::select(DB::raw('SELECT type FROM machines GROUP BY type'));
+            return view('machine.edit', compact('medit','factories', 'machineCategories', 'datalist'));
         } else {
             abort(403);
         }

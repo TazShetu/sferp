@@ -21,7 +21,6 @@ class SparepartsController extends Controller
     {
         if (Auth::user()->can('spare_parts')) {
             $spareParts = Spareparts::paginate(10);
-
             return view('spareParts.list', compact('spareParts'));
         } else {
             abort(403);
@@ -32,7 +31,72 @@ class SparepartsController extends Controller
     public function create()
     {
         if (Auth::user()->can('spare_parts')) {
-           return view('spareParts.create');
+            $datalist['countryOfOrigin'] = DB::select(DB::raw('SELECT country_origin FROM spareparts GROUP BY country_origin'));
+            $datalist['countryOfPurchase'] = DB::select(DB::raw('SELECT country_purchase FROM spareparts GROUP BY country_purchase'));
+            $datalist['manufacturer'] = DB::select(DB::raw('SELECT manufacturer FROM spareparts GROUP BY manufacturer'));
+            $datalist['currency'] = DB::select(DB::raw('SELECT currency FROM spareparts GROUP BY currency'));
+           return view('spareParts.create', compact('datalist'));
+        } else {
+            abort(403);
+        }
+    }
+
+
+    public function store(Request $request)
+    {
+        if (Auth::user()->can('spare_parts')) {
+            $request->validate([
+                'countryOfOrigin' => 'required',
+                'countryOfPurchase' => 'required',
+                'manufacturerName' => 'required',
+                'manufacturerYear' => 'required',
+                'currency' => 'required',
+                'unitPrice' => 'required',
+                'priceInCnf' => 'required',
+                'priceInFob' => 'required',
+                'dateOfPurchase' => 'required',
+                'dateOfArrival' => 'required',
+                'shippedBy' => 'required',
+                'name' => 'required',
+                'description' => 'required',
+                'codeNumber' => 'required',
+                'partNumber' => 'required',
+                'identityNumber' => 'required|unique:spareparts,identity_number',
+                'invoiceNumber' => 'required',
+                'lcNumber' => 'required',
+                'note' => 'required',
+                'minimumStorage' => 'required',
+            ]);
+            $s = new Spareparts;
+            $s->country_origin = $request->countryOfOrigin;
+            $s->country_purchase = $request->countryOfPurchase;
+            $s->manufacturer = $request->manufacturerName;
+            $s->manufacture_year = $request->manufacturerYear;
+            $s->currency = $request->currency;
+            $s->unit_price = $request->unitPrice;
+            $s->unit_price_cnf = $request->priceInCnf;
+            $s->unit_price_fob = $request->priceInFob;
+            if ($request->filled('priceInDhaka')){
+                $s->cnf_price_dhaka = $request->priceInDhaka;
+            }
+            if ($request->filled('priceInChittagong')){
+                $s->cnf_price_chittagong = $request->priceInChittagong;
+            }
+            $s->purchase_date = date('Y-m-d',strtotime($request->dateOfPurchase));
+            $s->arrival_date = date('Y-m-d',strtotime($request->dateOfArrival));
+            $s->shipped_by = $request->shippedBy;
+            $s->name = $request->name;
+            $s->description = $request->description;
+            $s->code_number = $request->codeNumber;
+            $s->part_number = $request->partNumber;
+            $s->identity_number = $request->identityNumber;
+            $s->invoice_number = $request->invoiceNumber;
+            $s->lc_number = $request->lcNumber;
+            $s->note = $request->note;
+            $s->minimum_storage = $request->minimumStorage;
+            $s->save();
+            Session::flash('Success', "The Spare Parts has been created successfully.");
+            return redirect()->route('spareParts.list');
         } else {
             abort(403);
         }
@@ -40,31 +104,14 @@ class SparepartsController extends Controller
 
 
 
-
-    public function index()
+    public function edit($spid)
     {
-        //
-    }
-
-
-
-
-
-    public function store(Request $request)
-    {
-        //
-    }
-
-
-    public function show(Spareparts $spareparts)
-    {
-        //
-    }
-
-
-    public function edit(Spareparts $spareparts)
-    {
-        //
+        $spedit = Spareparts::find($spid);
+        $datalist['countryOfOrigin'] = DB::select(DB::raw('SELECT country_origin FROM spareparts GROUP BY country_origin'));
+        $datalist['countryOfPurchase'] = DB::select(DB::raw('SELECT country_purchase FROM spareparts GROUP BY country_purchase'));
+        $datalist['manufacturer'] = DB::select(DB::raw('SELECT manufacturer FROM spareparts GROUP BY manufacturer'));
+        $datalist['currency'] = DB::select(DB::raw('SELECT currency FROM spareparts GROUP BY currency'));
+        return view('spareParts.edit', compact('spedit', 'datalist'));
     }
 
 
@@ -74,8 +121,15 @@ class SparepartsController extends Controller
     }
 
 
-    public function destroy(Spareparts $spareparts)
+    public function destroy($spid)
     {
-        //
+        if (Auth::user()->can('spare_parts')) {
+            Spareparts::find($spid)->delete();
+            Session::flash('Success', "The Spare Part has been deleted successfully.");
+            return redirect()->back();
+        } else {
+            abort(403);
+        }
     }
+
 }
