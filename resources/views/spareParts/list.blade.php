@@ -111,10 +111,12 @@
                     </tbody>
                 </table>
                 {{--Pagination--}}
-                <div class="kt-datatable__pager kt-datatable--paging-loaded">
-                    {{$spareParts->links()}}
-                    <div class="kt-datatable__pager-info">
-                        <span class="kt-datatable__pager-detail">Showing {{$spareParts->firstItem()}} - {{$spareParts->lastItem()}} of {{$spareParts->total()}}</span>
+                <div class="kt-section">
+                    <div class="kt-pagination  kt-pagination--brand">
+                        {{$spareParts->links()}}
+                        <div class="kt-datatable__pager-info">
+                            <span class="kt-datatable__pager-detail">Showing {{$spareParts->firstItem()}} - {{$spareParts->lastItem()}} of {{$spareParts->total()}}</span>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -151,6 +151,36 @@
                     </a>
                 </li>
                 @endpermission
+                @permission('raw_material')
+                <li class="kt-menu__item  " aria-haspopup="true">
+                    <a href="{{route('rawMaterial.list')}}" class="kt-menu__link ">
+                        <span class="kt-menu__link-icon">
+                            <i class="flaticon-car"></i>
+                        </span>
+                        <span class="kt-menu__link-text">Raw Material</span>
+                    </a>
+                </li>
+                @endpermission
+                @permission('product')
+                <li class="kt-menu__item  " aria-haspopup="true">
+                    <a href="{{route('product.list')}}" class="kt-menu__link ">
+                        <span class="kt-menu__link-icon">
+                            <i class="flaticon-bag"></i>
+                        </span>
+                        <span class="kt-menu__link-text">Product</span>
+                    </a>
+                </li>
+                @endpermission
+                @permission('ware_house')
+                <li class="kt-menu__item  " aria-haspopup="true">
+                    <a href="{{route('warehouse.index')}}" class="kt-menu__link ">
+                        <span class="kt-menu__link-icon">
+                            <i class="flaticon-home"></i>
+                        </span>
+                        <span class="kt-menu__link-text">Warehouse</span>
+                    </a>
+                </li>
+                @endpermission
             </ul>
         </div>
     </div>

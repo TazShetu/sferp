@@ -212,14 +212,6 @@
                             </tbody>
                         </table>
                         <!--end: Datatable -->
-
-                        {{--Pagination--}}
-                        <div class="kt-datatable__pager kt-datatable--paging-loaded">
-                            {{--                            {{$customers->links()}}--}}
-                            {{--                            <div class="kt-datatable__pager-info">--}}
-                            {{--                                <span class="kt-datatable__pager-detail">Showing {{$customers->firstItem()}} - {{$customers->lastItem()}} of {{$customers->total()}}</span>--}}
-                            {{--                            </div>--}}
-                        </div>
                     </div>
                 </div>
 

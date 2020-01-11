@@ -1,16 +1,16 @@
 @extends('layouts.m')
-@section('title', 'Machine List')
+@section('title', 'Raw Materials List')
 @section('content_head')
     <div class="kt-subheader   kt-grid__item" id="kt_subheader">
         <div class="kt-container  kt-container--fluid ">
             <div class="kt-subheader__main">
                 <h3 class="kt-subheader__title">
-                    Machines
+                    Raw Materials
                 </h3>
                 <span class="kt-subheader__separator kt-subheader__separator--v"></span>
                 <div class="kt-subheader__group" id="kt_subheader_search">
                     <span class="kt-subheader__desc" id="kt_subheader_total">
-                        {{count($machines)}} Total
+                        {{count($rawMaterials)}} Total
                     </span>
                     <form class="kt-margin-l-20" id="kt_subheader_search_form">
                         <div class="kt-input-icon kt-input-icon--right kt-subheader__search">
@@ -37,7 +37,7 @@
                 </div>
             </div>
             <div class="kt-subheader__toolbar">
-                <a href="{{route('machine.create')}}" class="btn btn-label-brand btn-bold">Add Machine </a>
+                <a href="{{route('rawMaterial.create')}}" class="btn btn-label-brand btn-bold">Add Raw Material</a>
             </div>
         </div>
     </div>
@@ -63,7 +63,7 @@
                         <i class="kt-font-brand flaticon2-line-chart"></i>
                     </span>
                     <h3 class="kt-portlet__head-title">
-                        All Machines
+                        All Raw Materials
                     </h3>
                 </div>
             </div>
@@ -74,34 +74,30 @@
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Identification Number</th>
-                        <th scope="col">Category</th>
-                        <th scope="col">Factory</th>
-                        <th scope="col">Type/Model</th>
-                        <th scope="col">Manufacturer</th>
+                        <th scope="col">Country Of Origin</th>
+                        <th scope="col">Minimum Storage Amount</th>
                         <th scope="col">Action</th>
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach($machines as $i => $m)
+                    @foreach($rawMaterials as $i => $m)
                         <tr>
                             <th scope="row">{{$i + 1}}</th>
-                            <td><a href="{{route('machine.edit', ['mid' => $m->id])}}">{{$m->identification_code}}</a>
+                            <td><a href="{{route('rawMaterial.edit', ['rmid' => $m->id])}}">{{$m->auto_id}}</a>
                             </td>
-                            <td>{{$m->category}}</td>
-                            <td>{{$m->factory}}</td>
-                            <td>{{$m->type}}</td>
-                            <td>{{$m->manufacturer}}</td>
+                            <td>{{$m->country_origin}}</td>
+                            <td>{{$m->minimum_storage}}</td>
                             <td>
-                                <a href="{{route('machine.edit', ['mid' => $m->id])}}" title="Edit"
+                                <a href="{{route('rawMaterial.edit', ['rmid' => $m->id])}}" title="Edit"
                                    class="btn btn-sm btn-clean btn-icon btn-icon-md">
                                     <i class="la la-edit"></i>
                                 </a>
-                                <form action="{{route('machine.delete', ['mid' => $m->id])}}" method="POST"
+                                <form action="{{route('rawMaterial.delete', ['rmid' => $m->id])}}" method="POST"
                                       style="display: inline-table;">
                                     @method('DELETE')
                                     @csrf
                                     <button type="submit" class="btn btn-sm btn-clean btn-icon btn-icon-md"
-                                            onclick="return confirm('Are you sure you want to delete the machine ?')">
+                                            onclick="return confirm('Are you sure you want to delete the raw material ?')">
                                         <i class="la la-trash" style="color: #fd397a;"></i>
                                     </button>
                                 </form>
@@ -113,9 +109,9 @@
                 {{--Pagination--}}
                 <div class="kt-section">
                     <div class="kt-pagination  kt-pagination--brand">
-                        {{$machines->links()}}
+                        {{$rawMaterials->links()}}
                         <div class="kt-datatable__pager-info">
-                            <span class="kt-datatable__pager-detail">Showing {{$machines->firstItem()}} - {{$machines->lastItem()}} of {{$machines->total()}}</span>
+                            <span class="kt-datatable__pager-detail">Showing {{$rawMaterials->firstItem()}} - {{$rawMaterials->lastItem()}} of {{$rawMaterials->total()}}</span>
                         </div>
                     </div>
                 </div>

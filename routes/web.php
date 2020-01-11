@@ -62,11 +62,29 @@ Route::get('/spare-parts/create', 'SparepartsController@create')->name('sparePar
 Route::post('/spare-parts/store', 'SparepartsController@store')->name('spareParts.store');
 Route::delete('/spare-parts/delete/{spid}', 'SparepartsController@destroy')->name('spareParts.delete');
 Route::get('/spare-parts/edit/{spid}', 'SparepartsController@edit')->name('spareParts.edit');
-//Route::post('/machine/update/{spid}', 'MachineController@update')->name('machine.update');
+Route::post('/spare-parts/update/{spid}', 'SparepartsController@update')->name('spareParts.update');
+
+Route::get('/raw-material', 'RawmaterialController@list')->name('rawMaterial.list');
+Route::get('/raw-material/create', 'RawmaterialController@create')->name('rawMaterial.create');
+Route::post('/raw-material/store', 'RawmaterialController@store')->name('rawMaterial.store');
+Route::delete('/raw-material/delete/{rmid}', 'RawmaterialController@destroy')->name('rawMaterial.delete');
+Route::get('/raw-material/edit/{rmid}', 'RawmaterialController@edit')->name('rawMaterial.edit');
+Route::post('/raw-material/update/{rmid}', 'RawmaterialController@update')->name('rawMaterial.update');
+
+Route::get('/product', 'ProductController@list')->name('product.list');
+Route::get('/product/create', 'ProductController@create')->name('product.create');
+Route::post('/product/store', 'ProductController@store')->name('product.store');
+Route::delete('/product/delete/{pid}', 'ProductController@destroy')->name('product.delete');
+Route::get('/product/edit/{pid}', 'ProductController@edit')->name('product.edit');
+Route::post('/product/update/{pid}', 'ProductController@update')->name('product.update');
 
 
-
-
+Route::get('/warehouse', 'WarehouseController@index')->name('warehouse.index');
+Route::post('/warehouse/store', 'WarehouseController@store')->name('warehouse.store');
+Route::delete('/warehouse/delete/{wid}', 'WarehouseController@destroy')->name('warehouse.delete');
+Route::get('/warehouse/edit/{wid}', 'WarehouseController@edit')->name('warehouse.edit');
+Route::post('/warehouse/update/{wid}', 'WarehouseController@update')->name('warehouse.update');
+Route::post('/floor/update/{wid}', 'WarehouseController@floorUpdate')->name('floor.update');
 
 
 

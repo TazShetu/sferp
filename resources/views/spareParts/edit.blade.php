@@ -1,5 +1,5 @@
 @extends('layouts.m')
-@section('title', 'Spare Parts Create')
+@section('title', 'Spare Parts Edit')
 @section('content_head')
     <div class="kt-subheader   kt-grid__item" id="kt_subheader">
         <div class="kt-container  kt-container--fluid ">
@@ -41,7 +41,7 @@
                             <div class="kt-form__body">
                                 <div class="kt-section kt-section--first">
                                     {{--      Form Start    --}}
-                                    <form action="{{route('spareParts.store')}}" method="post">
+                                    <form action="{{route('spareParts.update', ['spid' => $spedit->id])}}" method="post">
                                         @csrf
                                         <div class="kt-section__body">
                                             <div class="form-group row">
@@ -51,7 +51,7 @@
                                                 <div class="col-lg-9 col-xl-6">
                                                     <input class="form-control {{($errors->has('countryOfOrigin')) ? 'is-invalid' : ''}}"
                                                            type="text" name="countryOfOrigin" required
-                                                           value="{{old('countryOfOrigin')}}" list="countryOfOrigin">
+                                                           value="{{$spedit->country_origin}}" list="countryOfOrigin">
                                                     @if($errors->has('countryOfOrigin'))
                                                         <span class="invalid-feedback">{{$errors->first('countryOfOrigin')}}</span>
                                                     @endif
@@ -64,7 +64,8 @@
                                                 <div class="col-lg-9 col-xl-6">
                                                     <input class="form-control {{($errors->has('countryOfPurchase')) ? 'is-invalid' : ''}}"
                                                            type="text" name="countryOfPurchase" required
-                                                           value="{{old('countryOfPurchase')}}" list="countryOfPurchase">
+                                                           value="{{$spedit->country_purchase}}"
+                                                           list="countryOfPurchase">
                                                     @if($errors->has('countryOfPurchase'))
                                                         <span class="invalid-feedback">{{$errors->first('countryOfPurchase')}}</span>
                                                     @endif
@@ -77,7 +78,7 @@
                                                 <div class="col-lg-9 col-xl-6">
                                                     <input class="form-control {{($errors->has('manufacturerName')) ? 'is-invalid' : ''}}"
                                                            type="text" name="manufacturerName" required
-                                                           value="{{old('manufacturerName')}}" list="manufacturer">
+                                                           value="{{$spedit->manufacturer}}" list="manufacturer">
                                                     @if($errors->has('manufacturerName'))
                                                         <span class="invalid-feedback">{{$errors->first('manufacturerName')}}</span>
                                                     @endif
@@ -90,7 +91,7 @@
                                                 <div class="col-lg-9 col-xl-6">
                                                     <input class="form-control datepickerYear {{($errors->has('manufacturerYear')) ? 'is-invalid' : ''}}"
                                                            type="text" name="manufacturerYear" required
-                                                           value="{{old('manufacturerYear')}}">
+                                                           value="{{$spedit->manufacture_year}}">
                                                     @if($errors->has('manufacturerYear'))
                                                         <span class="invalid-feedback">{{$errors->first('manufacturerYear')}}</span>
                                                     @endif
@@ -103,7 +104,7 @@
                                                 <div class="col-lg-9 col-xl-6">
                                                     <input class="form-control {{($errors->has('currency')) ? 'is-invalid' : ''}}"
                                                            type="text" name="currency" required
-                                                           value="{{old('currency')}}" list="currency">
+                                                           value="{{$spedit->currency}}" list="currency">
                                                     @if($errors->has('currency'))
                                                         <span class="invalid-feedback">{{$errors->first('currency')}}</span>
                                                     @endif
@@ -115,8 +116,8 @@
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">
                                                     <input class="form-control {{($errors->has('unitPrice')) ? 'is-invalid' : ''}}"
-                                                           type="number" name="unitPrice" required
-                                                           value="{{old('unitPrice')}}">
+                                                           type="number" name="unitPrice" required min="0"
+                                                           value="{{$spedit->unit_price}}">
                                                     @if($errors->has('unitPrice'))
                                                         <span class="invalid-feedback">{{$errors->first('unitPrice')}}</span>
                                                     @endif
@@ -128,8 +129,8 @@
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">
                                                     <input class="form-control {{($errors->has('priceInCnf')) ? 'is-invalid' : ''}}"
-                                                           type="number" name="priceInCnf" required
-                                                           value="{{old('priceInCnf')}}">
+                                                           type="number" name="priceInCnf" required min="0"
+                                                           value="{{$spedit->unit_price_cnf}}">
                                                     @if($errors->has('priceInCnf'))
                                                         <span class="invalid-feedback">{{$errors->first('priceInCnf')}}</span>
                                                     @endif
@@ -141,8 +142,8 @@
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">
                                                     <input class="form-control {{($errors->has('priceInFob')) ? 'is-invalid' : ''}}"
-                                                           type="number" name="priceInFob" required
-                                                           value="{{old('priceInFob')}}">
+                                                           type="number" name="priceInFob" required min="0"
+                                                           value="{{$spedit->unit_price_fob}}">
                                                     @if($errors->has('priceInFob'))
                                                         <span class="invalid-feedback">{{$errors->first('priceInFob')}}</span>
                                                     @endif
@@ -154,8 +155,8 @@
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">
                                                     <input class="form-control {{($errors->has('priceInDhaka')) ? 'is-invalid' : ''}}"
-                                                           type="number" name="priceInDhaka"
-                                                           value="{{old('priceInDhaka')}}">
+                                                           type="number" name="priceInDhaka" min="0"
+                                                           value="{{$spedit->cnf_price_dhaka}}">
                                                     {{--                                                    @if($errors->has('priceInDhaka'))--}}
                                                     {{--                                                        <span class="invalid-feedback">{{$errors->first('priceInDhaka')}}</span>--}}
                                                     {{--                                                    @endif--}}
@@ -167,8 +168,8 @@
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">
                                                     <input class="form-control {{($errors->has('priceInChittagong')) ? 'is-invalid' : ''}}"
-                                                           type="number" name="priceInChittagong"
-                                                           value="{{old('priceInChittagong')}}">
+                                                           type="number" name="priceInChittagong" min="0"
+                                                           value="{{$spedit->cnf_price_chittagong}}">
                                                     {{--                                                    @if($errors->has('priceInChittagong'))--}}
                                                     {{--                                                        <span class="invalid-feedback">{{$errors->first('priceInChittagong')}}</span>--}}
                                                     {{--                                                    @endif--}}
@@ -183,7 +184,7 @@
                                                         <input class="form-control {{$errors->has('dateOfPurchase') ? 'is-invalid' : ''}}"
                                                                type="text" name="dateOfPurchase" required readonly
                                                                placeholder="Select date" id="kt_datepicker_3"
-                                                               value="{{old('dateOfPurchase')}}">
+                                                               value="{{date('m/d/Y',strtotime($spedit->purchase_date))}}">
                                                         <div class="input-group-append">
 														<span class="input-group-text">
 															<i class="la la-calendar-check-o"></i>
@@ -204,7 +205,7 @@
                                                         <input class="form-control {{$errors->has('dateOfArrival') ? 'is-invalid' : ''}}"
                                                                type="text" name="dateOfArrival" required readonly
                                                                placeholder="Select date" id="kt_datepicker_3"
-                                                               value="{{old('dateOfArrival')}}">
+                                                               value="{{date('m/d/Y',strtotime($spedit->arrival_date))}}">
                                                         <div class="input-group-append">
 														<span class="input-group-text">
 															<i class="la la-calendar-check-o"></i>
@@ -223,7 +224,8 @@
                                                 <div class="col-lg-9 col-xl-6">
                                                     <select class="form-control {{($errors->has('shippedBy')) ? 'is-invalid' : ''}}"
                                                             name="shippedBy" required>
-                                                        <option selected disabled hidden value="">Choose...</option>
+                                                        <option selected hidden
+                                                                value="{{$spedit->shipped_by}}">{{$spedit->shipped_by}}</option>
                                                         <option value="Air">Air</option>
                                                         <option value="Ship">Ship</option>
                                                     </select>
@@ -239,7 +241,7 @@
                                                 <div class="col-lg-9 col-xl-6">
                                                     <input class="form-control {{($errors->has('name')) ? 'is-invalid' : ''}}"
                                                            type="text" name="name" required
-                                                           value="{{old('name')}}">
+                                                           value="{{$spedit->name}}">
                                                     @if($errors->has('name'))
                                                         <span class="invalid-feedback">{{$errors->first('name')}}</span>
                                                     @endif
@@ -252,7 +254,7 @@
                                                 <div class="col-lg-9 col-xl-6">
                                                     <input class="form-control {{($errors->has('description')) ? 'is-invalid' : ''}}"
                                                            type="text" name="description" required
-                                                           value="{{old('description')}}">
+                                                           value="{{$spedit->description}}">
                                                     @if($errors->has('description'))
                                                         <span class="invalid-feedback">{{$errors->first('description')}}</span>
                                                     @endif
@@ -265,7 +267,7 @@
                                                 <div class="col-lg-9 col-xl-6">
                                                     <input class="form-control {{($errors->has('codeNumber')) ? 'is-invalid' : ''}}"
                                                            type="text" name="codeNumber" required
-                                                           value="{{old('codeNumber')}}">
+                                                           value="{{$spedit->code_number}}">
                                                     @if($errors->has('codeNumber'))
                                                         <span class="invalid-feedback">{{$errors->first('codeNumber')}}</span>
                                                     @endif
@@ -278,7 +280,7 @@
                                                 <div class="col-lg-9 col-xl-6">
                                                     <input class="form-control {{($errors->has('partNumber')) ? 'is-invalid' : ''}}"
                                                            type="text" name="partNumber" required
-                                                           value="{{old('partNumber')}}">
+                                                           value="{{$spedit->part_number}}">
                                                     @if($errors->has('partNumber'))
                                                         <span class="invalid-feedback">{{$errors->first('partNumber')}}</span>
                                                     @endif
@@ -291,7 +293,7 @@
                                                 <div class="col-lg-9 col-xl-6">
                                                     <input class="form-control {{($errors->has('identityNumber')) ? 'is-invalid' : ''}}"
                                                            type="text" name="identityNumber" required
-                                                           value="{{old('identityNumber')}}">
+                                                           value="{{$spedit->identity_number}}">
                                                     @if($errors->has('identityNumber'))
                                                         <span class="invalid-feedback">{{$errors->first('identityNumber')}}</span>
                                                     @endif
@@ -305,7 +307,7 @@
                                                 <div class="col-lg-9 col-xl-6">
                                                     <input class="form-control {{($errors->has('invoiceNumber')) ? 'is-invalid' : ''}}"
                                                            type="text" name="invoiceNumber" required
-                                                           value="{{old('invoiceNumber')}}">
+                                                           value="{{$spedit->invoice_number}}">
                                                     @if($errors->has('invoiceNumber'))
                                                         <span class="invalid-feedback">{{$errors->first('invoiceNumber')}}</span>
                                                     @endif
@@ -318,7 +320,7 @@
                                                 <div class="col-lg-9 col-xl-6">
                                                     <input class="form-control {{($errors->has('lcNumber')) ? 'is-invalid' : ''}}"
                                                            type="text" name="lcNumber" required
-                                                           value="{{old('lcNumber')}}">
+                                                           value="{{$spedit->lc_number}}">
                                                     @if($errors->has('lcNumber'))
                                                         <span class="invalid-feedback">{{$errors->first('lcNumber')}}</span>
                                                     @endif
@@ -331,7 +333,7 @@
                                                 <div class="col-lg-9 col-xl-6">
                                                     <input class="form-control {{($errors->has('note')) ? 'is-invalid' : ''}}"
                                                            type="text" name="note" required
-                                                           value="{{old('note')}}">
+                                                           value="{{$spedit->note}}">
                                                     @if($errors->has('note'))
                                                         <span class="invalid-feedback">{{$errors->first('note')}}</span>
                                                     @endif
@@ -343,8 +345,8 @@
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">
                                                     <input class="form-control {{($errors->has('minimumStorage')) ? 'is-invalid' : ''}}"
-                                                           type="number" name="minimumStorage" required
-                                                           value="{{old('minimumStorage')}}">
+                                                           type="number" name="minimumStorage" required min="0"
+                                                           value="{{$spedit->minimum_storage}}">
                                                     @if($errors->has('minimumStorage'))
                                                         <span class="invalid-feedback">{{$errors->first('minimumStorage')}}</span>
                                                     @endif

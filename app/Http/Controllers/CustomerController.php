@@ -21,7 +21,7 @@ class CustomerController extends Controller
     public function list()
     {
         if (Auth::user()->can('customer')) {
-            $customers = Customer::paginate(10);
+            $customers = Customer::paginate(4);
             foreach ($customers as $c){
                 $c['type'] = Customertype::find($c->customertype_id)->title;
             }
