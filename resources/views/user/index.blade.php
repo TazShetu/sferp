@@ -200,11 +200,15 @@
                                                class="btn btn-sm btn-clean btn-icon btn-icon-md">
                                                 <i class="la la-edit"></i>
                                             </a>
-                                            <a href="{{route('user.delete', ['uid' => $user->id])}}" title="Delete"
-                                               class="btn btn-sm btn-clean btn-icon btn-icon-md"
-                                               onclick="return confirm('Are you sure you want to delete the User ?')">
-                                                <i class="la la-trash" style="color: #fd397a;"></i>
-                                            </a>
+                                            <form action="{{route('user.delete', ['uid' => $user->id])}}" method="POST"
+                                                  style="display: inline-table;">
+                                                @method('DELETE')
+                                                @csrf
+                                                <button type="submit" class="btn btn-sm btn-clean btn-icon btn-icon-md"
+                                                        onclick="return confirm('Are you sure you want to delete the user ?')">
+                                                    <i class="la la-trash" style="color: #fd397a;"></i>
+                                                </button>
+                                            </form>
                                         </td>
                                     </tr>
                                 @endif

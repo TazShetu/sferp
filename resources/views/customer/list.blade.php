@@ -122,11 +122,16 @@
                                 </a>
                                 {{--                                @endpermission--}}
                                 {{--                                @permission('customer_delete')--}}
-                                <a href="{{route('customer.delete', ['cid' => $customer->id])}}" title="Delete"
-                                   class="btn btn-sm btn-clean btn-icon btn-icon-md"
-                                   onclick="return confirm('Are you sure you want to delete the customer ?')">
-                                    <i class="la la-trash" style="color: #fd397a;"></i>
-                                </a>
+                                <form action="{{route('customer.delete', ['cid' => $customer->id])}}" method="POST"
+                                      style="display: inline-table;">
+                                    @method('DELETE')
+                                    @csrf
+                                    <button type="submit" class="btn btn-sm btn-clean btn-icon btn-icon-md"
+                                            onclick="return confirm('Are you sure you want to delete the customer ?')">
+                                        <i class="la la-trash" style="color: #fd397a;"></i>
+                                    </button>
+                                </form>
+
                                 {{--                                @endpermission--}}
                             </td>
                         </tr>

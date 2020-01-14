@@ -21,12 +21,12 @@ Route::get('/permission-edit/{pid}', 'AclController@permissionEdit')->name('perm
 Route::post('/permission-update/{pid}', 'AclController@permissionUpdate')->name('permission.update');
 Route::get('/role', 'AclController@role')->name('role');
 Route::post('/role-store', 'AclController@roleStore')->name('role.store');
-Route::get('/role-delete/{rid}', 'AclController@roleDelete')->name('role.delete');
+Route::delete('/role-delete/{rid}', 'AclController@roleDelete')->name('role.delete');
 Route::get('/role-edit/{rid}', 'AclController@roleEdit')->name('role.edit');
 Route::post('/role-update/{rid}', 'AclController@roleUpdate')->name('role.update');
 Route::get('/user', 'HomeController@user')->name('users');
 Route::post('/user-store', 'HomeController@userStore')->name('user.store');
-Route::get('/user-delete/{uid}', 'HomeController@userDelete')->name('user.delete');
+Route::delete('/user-delete/{uid}', 'HomeController@userDelete')->name('user.delete');
 Route::get('/user-edit/{uid}', 'HomeController@userEdit')->name('user.edit');
 Route::post('/user-update/{uid}', 'HomeController@userUpdate')->name('user.update');
 //Route::get('/user-permission', 'AclController@userPermission')->name('user.permission');
@@ -37,7 +37,7 @@ Route::post('/customer-store', 'CustomerController@store')->name('customer.store
 Route::post('/customer-sub-dealer-update/{cid}', 'CustomerController@subDealerUpdate')->name('customer.sub.dealer.update');
 Route::post('/customer-individual-update/{cid}', 'CustomerController@individualUpdate')->name('customer.individual.update');
 Route::get('/customer-profile/{cid}', 'CustomerController@show')->name('customer.profile');
-Route::get('/customer-delete/{cid}', 'CustomerController@destroy')->name('customer.delete');
+Route::delete('/customer-delete/{cid}', 'CustomerController@destroy')->name('customer.delete');
 
 Route::get('/customer-edit/{cid}', 'CustomerController@edit')->name('customer.edit');
 Route::post('/customer-update/{cid}', 'CustomerController@update')->name('customer.update');
@@ -48,7 +48,7 @@ Route::get('/factories/create', 'FactoryController@create')->name('factory.creat
 Route::post('/factories/store', 'FactoryController@store')->name('factory.store');
 Route::get('/factories/edit/{fid}', 'FactoryController@edit')->name('factory.edit');
 Route::post('/factories/update/{fid}', 'FactoryController@update')->name('factory.update');
-Route::get('/factories/delete/{fid}', 'FactoryController@destroy')->name('factory.delete');
+Route::delete('/factories/delete/{fid}', 'FactoryController@destroy')->name('factory.delete');
 
 Route::get('/machines', 'MachineController@list')->name('machine.list');
 Route::get('/machine/create', 'MachineController@create')->name('machine.create');
@@ -85,6 +85,7 @@ Route::delete('/warehouse/delete/{wid}', 'WarehouseController@destroy')->name('w
 Route::get('/warehouse/edit/{wid}', 'WarehouseController@edit')->name('warehouse.edit');
 Route::post('/warehouse/update/{wid}', 'WarehouseController@update')->name('warehouse.update');
 Route::post('/floor/update/{wid}', 'WarehouseController@floorUpdate')->name('floor.update');
+Route::post('/rack/update/{wid}', 'WarehouseController@rackUpdate')->name('rack.update');
 
 
 

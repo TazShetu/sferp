@@ -33,11 +33,6 @@
                 {{session('unsuccess')}}
             </div>
         @endif
-        @if($errors->has('floorName') || $errors->has('designation') || $errors->has('number'))
-            <div class="alert alert-danger text-center">
-                Please Do Not Mess With The Original Code !!!
-            </div>
-        @endif
         <div class="kt-portlet kt-portlet--tabs">
             <div class="kt-portlet__head">
                 <div class="kt-portlet__head-toolbar">
@@ -150,7 +145,7 @@
                                             <div id="kt_repeater_1">
                                                 <div class="form-group form-group-last row" id="kt_repeater_1">
                                                     <div class="col-lg-12" id="repeat-content">
-                                                        @foreach($floors as $f)
+                                                        @forelse($floors as $f)
                                                             <div class="form-group row align-items-center remove-content">
                                                                 <div class="col-md-3">
                                                                     <div class="kt-form__group--inline">
@@ -174,8 +169,7 @@
                                                                     </a>
                                                                 </div>
                                                             </div>
-                                                        @endforeach
-                                                        @if(count($floors) == 0)
+                                                        @empty
                                                             <div class="form-group row align-items-center remove-content">
                                                                 <div class="col-md-3">
                                                                     <div class="kt-form__group--inline">
@@ -200,7 +194,7 @@
                                                                     </a>
                                                                 </div>
                                                             </div>
-                                                        @endif
+                                                        @endforelse
                                                     </div>
                                                 </div>
                                                 <div class="form-group form-group-last row">
@@ -234,7 +228,152 @@
                         </div>
                     </div>
                     @if(count($floors) > 0)
-                        {{--                        @include('include.m.customerEdit.hierarchy')--}}
+                        <div class="tab-pane" id="kt_user_edit_tab_3" role="tabpanel">
+                            <div class="kt-form kt-form--label-right">
+                                <div class="kt-form__body">
+                                    <div class="kt-section kt-section--first">
+                                        <div class="kt-section__body">
+                                            {{--Form Start--}}
+                                            <form action="{{route('rack.update', ['wid' => $warehouse->id ])}}"
+                                                  method="post">
+                                                @csrf
+                                                <div id="kt_repeater_1">
+                                                    <div class="form-group form-group-last row"
+                                                         id="kt_repeater_1">
+                                                        <div class="col-lg-12" id="repeat-content-rack">
+                                                            @forelse($racks as $r)
+                                                                <div class="form-group row align-items-center remove-content">
+                                                                    <div class="col-md-3">
+                                                                        <div class="kt-form__group--inline">
+                                                                            <div class="kt-form__label">
+                                                                                <label>Floor:</label>
+                                                                            </div>
+                                                                            <div class="kt-form__control">
+                                                                                <select class="form-control kt-selectpicker"
+                                                                                        name="floor[]" required
+                                                                                        data-live-search="true"
+                                                                                        data-size="7">
+                                                                                    <option selected hidden
+                                                                                            value="{{$r->floor_id}}">
+                                                                                        {{$r->floor_name}}
+                                                                                    </option>
+                                                                                    @foreach($floors as $f)
+                                                                                        <option value="{{$f->id}}">{{$f->name}}</option>
+                                                                                    @endforeach
+                                                                                </select>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="d-md-none kt-margin-b-10"></div>
+                                                                    </div>
+                                                                    <div class="col-md-3">
+                                                                        <div class="kt-form__group--inline">
+                                                                            <div class="kt-form__label">
+                                                                                <label>Rack Name:</label>
+                                                                            </div>
+                                                                            <div class="kt-form__control">
+                                                                                <input type="text" class="form-control"
+                                                                                       name="rackName[]"
+                                                                                       value="{{$r->name}}"
+                                                                                       required>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="d-md-none kt-margin-b-10"></div>
+                                                                    </div>
+                                                                    <div class="col-md-3">
+                                                                        <a href="javascript:;"
+                                                                           data-repeater-delete=""
+                                                                           class="btn-sm btn btn-label-danger btn-bold delete-btn"
+                                                                           style="margin-top: 24px;">
+                                                                            <i class="la la-trash-o"></i>
+                                                                            Delete
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                            @empty
+                                                                <div class="form-group row align-items-center remove-content">
+                                                                    <div class="col-md-3">
+                                                                        <div class="kt-form__group--inline">
+                                                                            <div class="kt-form__label">
+                                                                                <label>Floor:</label>
+                                                                            </div>
+                                                                            <div class="kt-form__control">
+                                                                                <select class="form-control kt-selectpicker"
+                                                                                        name="floor[]" required
+                                                                                        data-live-search="true"
+                                                                                        data-size="7">
+                                                                                    <option selected hidden disabled
+                                                                                            value="">
+                                                                                        Choose..
+                                                                                    </option>
+                                                                                    @foreach($floors as $f)
+                                                                                        <option value="{{$f->id}}">{{$f->name}}</option>
+                                                                                    @endforeach
+                                                                                </select>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="d-md-none kt-margin-b-10"></div>
+                                                                    </div>
+                                                                    <div class="col-md-3">
+                                                                        <div class="kt-form__group--inline">
+                                                                            <div class="kt-form__label">
+                                                                                <label>Rack Name:</label>
+                                                                            </div>
+                                                                            <div class="kt-form__control">
+                                                                                <input type="text" class="form-control"
+                                                                                       name="rackName[]"
+                                                                                       placeholder="Enter rack name"
+                                                                                       required>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="d-md-none kt-margin-b-10"></div>
+                                                                    </div>
+                                                                    <div class="col-md-3">
+                                                                        <a href="javascript:;"
+                                                                           data-repeater-delete=""
+                                                                           class="btn-sm btn btn-label-danger btn-bold delete-btn"
+                                                                           style="margin-top: 24px;">
+                                                                            <i class="la la-trash-o"></i>
+                                                                            Delete
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                            @endforelse
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group form-group-last row">
+                                                        <!-- <label class="col-lg-2 col-form-label"></label> -->
+                                                        <div class="col-lg-4">
+                                                            <a href="javascript:;" id="add-btn-floor"
+                                                               class="btn btn-bold btn-sm btn-label-brand">
+                                                                <i class="la la-plus"></i> Add Another Floor
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="kt-separator kt-separator--space-lg kt-separator--fit kt-separator--border-solid"></div>
+                                                <div class="kt-form__actions">
+                                                    <div class="row">
+                                                        <div class="col-xl-3"></div>
+                                                        <div class="col-lg-9 col-xl-6">
+                                                            <button type="submit"
+                                                                    class="btn btn-label-brand btn-bold">
+                                                                Save Changes
+                                                            </button>
+                                                            <a href="javascript:void (0)"
+                                                               data-link="{{route('cancel')}}"
+                                                               class="cancel btn btn-label-danger btn-bold float-right">Cancel</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                            {{--Form End--}}
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
                     @endif
                 </div>
             </div>
@@ -250,16 +389,6 @@
 
     <!--begin::Page Scripts(used by this page) -->
     <script src="{{asset('m/assets/js/pages/custom/user/edit-user.js')}}" type="text/javascript"></script>
-    {{--    <script src="{{asset('m/assets/js/pages/crud/forms/widgets/bootstrap-datepicker.js')}}"--}}
-    {{--            type="text/javascript"></script>--}}
-
-
-    {{--    <script src="{{asset('m/assets/js/pages/crud/file-upload/uppy.js')}}" type="text/javascript"></script>--}}
-
-    {{--    <script src="{{asset('m/assets/js/pages/crud/forms/widgets/form-repeater.js')}}" type="text/javascript"></script>--}}
-    {{--    <script src="{{asset('plugins/select2/select2.full.min.js')}}" type="text/javascript"></script>--}}
-
-    {{--    <script src="{{asset('m/assets/js/pages/crud/forms/widgets/bootstrap-select.js')}}" type="text/javascript"></script>--}}
 
     {{--    @include('include.m.customerEdit.js1')--}}
     <!--end::Page Scripts -->
@@ -300,6 +429,63 @@
         $(document).on('click', '.delete-btn', function (f) {
             $(f.target).closest('.remove-content').slideUp(function () {
                 $(this).remove();
+            });
+        });
+    </script>
+    <script>
+        $(document).on('click', '#add-btn-floor', function () {
+            var input = `
+                <div class="form-group row align-items-center remove-content">
+                    <div class="col-md-3">
+                        <div class="kt-form__group--inline">
+                            <div class="kt-form__label">
+                                <label>Floor:</label>
+                            </div>
+                            <div class="kt-form__control">
+                                <select class="form-control kt-selectpicker"
+                                        name="floor[]" required
+                                        data-live-search="true"
+                                        data-size="7">
+                                    <option selected hidden disabled
+                                            value="">
+                                        Choose..
+                                    </option>
+                                    @foreach($floors as $f)
+                                        <option value="{{$f->id}}">{{$f->name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="d-md-none kt-margin-b-10"></div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="kt-form__group--inline">
+                            <div class="kt-form__label">
+                                <label>Rack Name:</label>
+                            </div>
+                            <div class="kt-form__control">
+                                <input type="text" class="form-control"
+                                       name="rackName[]"
+                                       placeholder="Enter rack name"
+                                       required>
+                            </div>
+                        </div>
+                        <div class="d-md-none kt-margin-b-10"></div>
+                    </div>
+                    <div class="col-md-3">
+                        <a href="javascript:;"
+                           data-repeater-delete=""
+                           class="btn-sm btn btn-label-danger btn-bold delete-btn"
+                           style="margin-top: 24px;">
+                            <i class="la la-trash-o"></i>
+                            Delete
+                        </a>
+                    </div>
+                </div>
+            `;
+            $(input).slideUp(1, function () {
+                $('#repeat-content-rack').append(this);
+                $(this).slideDown(500);
             });
         });
     </script>
