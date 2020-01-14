@@ -81,7 +81,7 @@
                                                   fill="#000000" opacity="0.3"/>
                                         </g>
                                     </svg>
-                                    Rack
+                                    Room
                                 </a>
                             </li>
                         @endif
@@ -234,14 +234,14 @@
                                     <div class="kt-section kt-section--first">
                                         <div class="kt-section__body">
                                             {{--Form Start--}}
-                                            <form action="{{route('rack.update', ['wid' => $warehouse->id ])}}"
+                                            <form action="{{route('room.update', ['wid' => $warehouse->id ])}}"
                                                   method="post">
                                                 @csrf
                                                 <div id="kt_repeater_1">
                                                     <div class="form-group form-group-last row"
                                                          id="kt_repeater_1">
-                                                        <div class="col-lg-12" id="repeat-content-rack">
-                                                            @forelse($racks as $r)
+                                                        <div class="col-lg-12" id="repeat-content-room">
+                                                            @forelse($rooms as $r)
                                                                 <div class="form-group row align-items-center remove-content">
                                                                     <div class="col-md-3">
                                                                         <div class="kt-form__group--inline">
@@ -268,11 +268,11 @@
                                                                     <div class="col-md-3">
                                                                         <div class="kt-form__group--inline">
                                                                             <div class="kt-form__label">
-                                                                                <label>Rack Name:</label>
+                                                                                <label>Room Name:</label>
                                                                             </div>
                                                                             <div class="kt-form__control">
                                                                                 <input type="text" class="form-control"
-                                                                                       name="rackName[]"
+                                                                                       name="roomName[]"
                                                                                        value="{{$r->name}}"
                                                                                        required>
                                                                             </div>
@@ -316,12 +316,12 @@
                                                                     <div class="col-md-3">
                                                                         <div class="kt-form__group--inline">
                                                                             <div class="kt-form__label">
-                                                                                <label>Rack Name:</label>
+                                                                                <label>Room Name:</label>
                                                                             </div>
                                                                             <div class="kt-form__control">
                                                                                 <input type="text" class="form-control"
-                                                                                       name="rackName[]"
-                                                                                       placeholder="Enter rack name"
+                                                                                       name="roomName[]"
+                                                                                       placeholder="Enter room name"
                                                                                        required>
                                                                             </div>
                                                                         </div>
@@ -345,7 +345,7 @@
                                                         <div class="col-lg-4">
                                                             <a href="javascript:;" id="add-btn-floor"
                                                                class="btn btn-bold btn-sm btn-label-brand">
-                                                                <i class="la la-plus"></i> Add Another Floor
+                                                                <i class="la la-plus"></i> Add Another Room
                                                             </a>
                                                         </div>
                                                     </div>
@@ -461,12 +461,12 @@
                     <div class="col-md-3">
                         <div class="kt-form__group--inline">
                             <div class="kt-form__label">
-                                <label>Rack Name:</label>
+                                <label>Room Name:</label>
                             </div>
                             <div class="kt-form__control">
                                 <input type="text" class="form-control"
-                                       name="rackName[]"
-                                       placeholder="Enter rack name"
+                                       name="roomName[]"
+                                       placeholder="Enter room name"
                                        required>
                             </div>
                         </div>
@@ -484,7 +484,7 @@
                 </div>
             `;
             $(input).slideUp(1, function () {
-                $('#repeat-content-rack').append(this);
+                $('#repeat-content-room').append(this);
                 $(this).slideDown(500);
             });
         });

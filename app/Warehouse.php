@@ -10,8 +10,8 @@ class Warehouse extends Model
         return $this->hasMany('App\Floor');
     }
 
-    public function racks() {
-        return $this->hasMany('App\Rack');
+    public function rooms() {
+        return $this->hasMany('App\Room');
     }
 
 }

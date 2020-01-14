@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Rack extends Model
+class Room extends Model
 {
     public function warehouse() {
         return $this->belongsTo('App\Warehouse');

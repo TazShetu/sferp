@@ -6,10 +6,9 @@
 <button class="kt-header-menu-wrapper-close" id="kt_header_menu_mobile_close_btn"><i class="la la-close"></i></button>
 -->
     <div class="kt-header-menu-wrapper" id="kt_header_menu_wrapper">
-        <div id="kt_header_menu"
-             class="kt-header-menu kt-header-menu-mobile  kt-header-menu--layout-default ">
-{{--            --}}
-        </div>
+        {{--        <div id="kt_header_menu"--}}
+        {{--             class="kt-header-menu kt-header-menu-mobile  kt-header-menu--layout-default ">--}}
+        {{--        </div>--}}
     </div>
 
     <!-- end:: Header Menu -->
@@ -18,8 +17,8 @@
     <div class="kt-header__topbar">
 
         <!--begin: Search -->
-        {{----}}
-        <!--end: Search -->
+    {{----}}
+    <!--end: Search -->
 
         <!--begin: Notifications -->
         <div class="kt-header__topbar-item dropdown">
@@ -51,7 +50,7 @@
                     <div class="kt-head kt-head--skin-dark kt-head--fit-x kt-head--fit-b"
                          style="background-image: url({{asset('m/assets/media/misc/bg-1.jpg')}})">
                         <h3 class="kt-head__title">
-                            User Notifications                            &nbsp;
+                            User Notifications &nbsp;
                             <span class="btn btn-success btn-sm btn-bold btn-font-md">23 new</span>
                         </h3>
                         <ul class="nav nav-tabs nav-tabs-line nav-tabs-bold nav-tabs-line-3x nav-tabs-line-success kt-notification-item-padding-x"
@@ -70,20 +69,20 @@
         <!--end: Notifications -->
 
         <!--begin: Quick Actions -->
-        {{----}}
-        <!--end: Quick Actions -->
+    {{----}}
+    <!--end: Quick Actions -->
 
         <!--begin: My Cart -->
-        {{----}}
-        <!--end: My Cart -->
+    {{----}}
+    <!--end: My Cart -->
 
         <!--begin: Quick panel toggler -->
-        {{----}}
-        <!--end: Quick panel toggler -->
+    {{----}}
+    <!--end: Quick panel toggler -->
 
         <!--begin: Language bar -->
-        {{----}}
-        <!--end: Language bar -->
+    {{----}}
+    <!--end: Language bar -->
 
         <!--begin: User Bar -->
         <div class="kt-header__topbar-item kt-header__topbar-item--user">

@@ -25,7 +25,7 @@
                                                   transform="translate(15.999997, 11.999999) scale(-1, 1) rotate(-270.000000) translate(-15.999997, -11.999999) "/>
 										</g>
 									</svg></span>
-                                    <span><svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" class="kt-svg-icon">
+                <span><svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" class="kt-svg-icon">
 										<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
 											<polygon points="0 0 24 0 24 24 0 24"/>
 											<path d="M12.2928955,6.70710318 C11.9023712,6.31657888 11.9023712,5.68341391 12.2928955,5.29288961 C12.6834198,4.90236532 13.3165848,4.90236532 13.7071091,5.29288961 L19.7071091,11.2928896 C20.085688,11.6714686 20.0989336,12.281055 19.7371564,12.675721 L14.2371564,18.675721 C13.863964,19.08284 13.2313966,19.1103429 12.8242777,18.7371505 C12.4171587,18.3639581 12.3896557,17.7313908 12.7628481,17.3242718 L17.6158645,12.0300721 L12.2928955,6.70710318 Z"
@@ -99,14 +99,14 @@
                                 </a>
                             </li>
                             @endpermission
-{{--                            @permission('user_permission')--}}
-{{--                            <li class="kt-menu__item " aria-haspopup="true">--}}
-{{--                                <a href="{{route('user.permission')}}" class="kt-menu__link ">--}}
-{{--                                    <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>--}}
-{{--                                    <span class="kt-menu__link-text">[[User Permission]]</span>--}}
-{{--                                </a>--}}
-{{--                            </li>--}}
-{{--                            @endpermission--}}
+                            {{--                            @permission('user_permission')--}}
+                            {{--                            <li class="kt-menu__item " aria-haspopup="true">--}}
+                            {{--                                <a href="{{route('user.permission')}}" class="kt-menu__link ">--}}
+                            {{--                                    <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>--}}
+                            {{--                                    <span class="kt-menu__link-text">[[User Permission]]</span>--}}
+                            {{--                                </a>--}}
+                            {{--                            </li>--}}
+                            {{--                            @endpermission--}}
                         </ul>
                     </div>
                 </li>
@@ -121,64 +121,94 @@
                     </a>
                 </li>
                 @endpermission
-                @permission('factory')
-                <li class="kt-menu__item  " aria-haspopup="true">
-                    <a href="{{route('factory.list')}}" class="kt-menu__link ">
+                @permission('factory|machine|spare_parts|raw_material|product')
+                <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"
+                    data-ktmenu-submenu-toggle="hover">
+                    <a href="javascript:;" class="kt-menu__link kt-menu__toggle">
                         <span class="kt-menu__link-icon">
-                            <i class="la la-industry"></i>
+                           <i class="la la-industry"></i>
                         </span>
-                        <span class="kt-menu__link-text">Factory</span>
+                        <span class="kt-menu__link-text">Production Setup</span>
+                        <i class="kt-menu__ver-arrow la la-angle-right"></i>
                     </a>
+                    <div class="kt-menu__submenu "><span class="kt-menu__arrow"></span>
+                        <ul class="kt-menu__subnav">
+                            <li class="kt-menu__item  kt-menu__item--parent" aria-haspopup="true">
+                                <span class="kt-menu__link">
+                                    <span class="kt-menu__link-text">Production Setup</span>
+                                </span>
+                            </li>
+                            @permission('factory')
+                            <li class="kt-menu__item  " aria-haspopup="true">
+                                <a href="{{route('factory.list')}}" class="kt-menu__link ">
+                                    <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>
+                                    <span class="kt-menu__link-text">Factory</span>
+                                </a>
+                            </li>
+                            @endpermission
+                            @permission('machine')
+                            <li class="kt-menu__item  " aria-haspopup="true">
+                                <a href="{{route('machine.list')}}" class="kt-menu__link ">
+                                    <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>
+                                    <span class="kt-menu__link-text">Machines</span>
+                                </a>
+                            </li>
+                            @endpermission
+                            @permission('spare_parts')
+                            <li class="kt-menu__item  " aria-haspopup="true">
+                                <a href="{{route('spareParts.list')}}" class="kt-menu__link ">
+                                    <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>
+                                    <span class="kt-menu__link-text">Spare Parts</span>
+                                </a>
+                            </li>
+                            @endpermission
+                            @permission('raw_material')
+                            <li class="kt-menu__item  " aria-haspopup="true">
+                                <a href="{{route('rawMaterial.list')}}" class="kt-menu__link ">
+                                    <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>
+                                    <span class="kt-menu__link-text">Raw Materials</span>
+                                </a>
+                            </li>
+                            @endpermission
+                            @permission('product')
+                            <li class="kt-menu__item  " aria-haspopup="true">
+                                <a href="{{route('product.list')}}" class="kt-menu__link ">
+                                    <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>
+                                    <span class="kt-menu__link-text">Products</span>
+                                </a>
+                            </li>
+                            @endpermission
+                        </ul>
+                    </div>
                 </li>
                 @endpermission
-                @permission('machine')
-                <li class="kt-menu__item  " aria-haspopup="true">
-                    <a href="{{route('machine.list')}}" class="kt-menu__link ">
-                        <span class="kt-menu__link-icon">
-                            <i class="flaticon-cogwheel"></i>
-                        </span>
-                        <span class="kt-menu__link-text">Machines</span>
-                    </a>
-                </li>
-                @endpermission
-                @permission('spare_parts')
-                <li class="kt-menu__item  " aria-haspopup="true">
-                    <a href="{{route('spareParts.list')}}" class="kt-menu__link ">
-                        <span class="kt-menu__link-icon">
-                            <i class="flaticon-settings"></i>
-                        </span>
-                        <span class="kt-menu__link-text">Spare Parts</span>
-                    </a>
-                </li>
-                @endpermission
-                @permission('raw_material')
-                <li class="kt-menu__item  " aria-haspopup="true">
-                    <a href="{{route('rawMaterial.list')}}" class="kt-menu__link ">
-                        <span class="kt-menu__link-icon">
-                            <i class="flaticon-car"></i>
-                        </span>
-                        <span class="kt-menu__link-text">Raw Material</span>
-                    </a>
-                </li>
-                @endpermission
-                @permission('product')
-                <li class="kt-menu__item  " aria-haspopup="true">
-                    <a href="{{route('product.list')}}" class="kt-menu__link ">
-                        <span class="kt-menu__link-icon">
-                            <i class="flaticon-bag"></i>
-                        </span>
-                        <span class="kt-menu__link-text">Product</span>
-                    </a>
-                </li>
-                @endpermission
-                @permission('ware_house')
-                <li class="kt-menu__item  " aria-haspopup="true">
-                    <a href="{{route('warehouse.index')}}" class="kt-menu__link ">
+                @permission('ware_house|xxxx')
+                <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"
+                    data-ktmenu-submenu-toggle="hover">
+                    <a href="javascript:;" class="kt-menu__link kt-menu__toggle">
                         <span class="kt-menu__link-icon">
                             <i class="flaticon-home"></i>
                         </span>
                         <span class="kt-menu__link-text">Warehouse</span>
+                        <i class="kt-menu__ver-arrow la la-angle-right"></i>
                     </a>
+                    <div class="kt-menu__submenu "><span class="kt-menu__arrow"></span>
+                        <ul class="kt-menu__subnav">
+                            <li class="kt-menu__item  kt-menu__item--parent" aria-haspopup="true">
+                                <span class="kt-menu__link">
+                                    <span class="kt-menu__link-text">Warehouse</span>
+                                </span>
+                            </li>
+                            @permission('ware_house')
+                            <li class="kt-menu__item  " aria-haspopup="true">
+                                <a href="{{route('warehouse.index')}}" class="kt-menu__link ">
+                                    <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>
+                                    <span class="kt-menu__link-text">Warehouse</span>
+                                </a>
+                            </li>
+                            @endpermission
+                        </ul>
+                    </div>
                 </li>
                 @endpermission
             </ul>

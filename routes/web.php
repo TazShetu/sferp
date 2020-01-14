@@ -85,7 +85,7 @@ Route::delete('/warehouse/delete/{wid}', 'WarehouseController@destroy')->name('w
 Route::get('/warehouse/edit/{wid}', 'WarehouseController@edit')->name('warehouse.edit');
 Route::post('/warehouse/update/{wid}', 'WarehouseController@update')->name('warehouse.update');
 Route::post('/floor/update/{wid}', 'WarehouseController@floorUpdate')->name('floor.update');
-Route::post('/rack/update/{wid}', 'WarehouseController@rackUpdate')->name('rack.update');
+Route::post('/rack/update/{wid}', 'WarehouseController@roomUpdate')->name('room.update');
 
 
 

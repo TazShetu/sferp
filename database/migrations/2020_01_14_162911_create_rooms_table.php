@@ -4,17 +4,12 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateRacksTable extends Migration
+class CreateRoomsTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
-        Schema::create('racks', function (Blueprint $table) {
-            $table->bigIncrements('id')->index();
+        Schema::create('rooms', function (Blueprint $table) {
+            $table->bigIncrements('id');
             $table->integer('warehouse_id')->index();
             $table->integer('floor_id')->index();
             $table->string('name');
@@ -22,13 +17,8 @@ class CreateRacksTable extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
-        Schema::dropIfExists('racks');
+        Schema::dropIfExists('rooms');
     }
 }
