@@ -32,6 +32,10 @@
             <div class="alert alert-warning text-center">
                 {{session('unsuccess')}}
             </div>
+        @elseif(count($errors) > 0)
+            <div class="alert alert-danger text-center">
+                Error in input fields. Please Check
+            </div>
         @endif
         <div class="kt-portlet kt-portlet--tabs">
             <div class="kt-portlet__body">
@@ -227,16 +231,26 @@
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label class="col-xl-3 col-lg-3 col-form-label">
-                                                    Size Range
-                                                </label>
+                                                <label class="col-xl-3 col-lg-3 col-form-label">Size Range</label>
                                                 <div class="col-lg-9 col-xl-6">
-                                                    <input class="form-control  {{($errors->has('sizeRange')) ? 'is-invalid' : ''}}"
-                                                           type="number" name="sizeRange"
-                                                           value="{{$medit->size_range}}">
-                                                    {{--                                                    @if($errors->has('screwSize'))--}}
-                                                    {{--                                                        <span class="invalid-feedback">{{$errors->first('screwSize')}}</span>--}}
-                                                    {{--                                                    @endif--}}
+                                                    <div class="input-daterange input-group">
+                                                        <input type="number"
+                                                               class="form-control {{($errors->has('sizeRangeStart')) ? 'is-invalid' : ''}}"
+                                                               name="sizeRangeStart" value="{{$medit->size_range_from}}">
+                                                        @if($errors->has('sizeRangeStart'))
+                                                            <span class="invalid-feedback">{{$errors->first('sizeRangeStart')}}</span>
+                                                        @endif
+                                                        <div class="input-group-append">
+                                                            <span class="input-group-text">to</span>
+                                                        </div>
+                                                        <input type="number"
+                                                               class="form-control {{($errors->has('sizeRangeEnd')) ? 'is-invalid' : ''}}"
+                                                               name="sizeRangeEnd" value="{{$medit->size_range_to}}">
+                                                        @if($errors->has('sizeRangeEnd'))
+                                                            <span class="invalid-feedback">{{$errors->first('sizeRangeEnd')}}</span>
+                                                        @endif
+                                                    </div>
+                                                    <span class="form-text text-muted">Write the number in mm</span>
                                                 </div>
                                             </div>
                                             <div class="form-group row">

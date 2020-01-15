@@ -19,7 +19,8 @@ class CreateMachinesTable extends Migration
             $table->string('type');
             $table->float('rope_size_from')->nullable();
             $table->float('rope_size_to')->nullable();
-            $table->float('size_range')->nullable();
+            $table->float('size_range_from')->nullable();
+            $table->float('size_range_to')->nullable();
             $table->string('sk_dk')->nullable();
             $table->float('pitch_size')->nullable();
             $table->float('spool_diameter')->nullable();

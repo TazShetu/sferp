@@ -89,8 +89,13 @@ class MachineController extends Controller
                 $m->rope_size_from = $request->ropeSizeStart;
                 $m->rope_size_to = $request->ropeSizeEnd;
             }
-            if ($request->filled('sizeRange')){
-                $m->size_range = $request->sizeRange;
+            if (($request->filled('sizeRangeStart')) || ($request->filled('sizeRangeEnd')) ){
+                $request->validate([
+                    'sizeRangeStart' => 'required',
+                    'sizeRangeEnd' => 'required',
+                ]);
+                $m->size_range_from = $request->sizeRangeStart;
+                $m->size_range_to = $request->sizeRangeEnd;
             }
             if ($request->filled('screwSize')){
                 $m->screw_size = $request->screwSize;
@@ -176,8 +181,13 @@ class MachineController extends Controller
                 $m->rope_size_from = $request->ropeSizeStart;
                 $m->rope_size_to = $request->ropeSizeEnd;
             }
-            if ($request->filled('sizeRange')){
-                $m->size_range = $request->sizeRange;
+            if (($request->filled('sizeRangeStart')) || ($request->filled('sizeRangeEnd')) ){
+                $request->validate([
+                    'sizeRangeStart' => 'required',
+                    'sizeRangeEnd' => 'required',
+                ]);
+                $m->size_range_from = $request->sizeRangeStart;
+                $m->size_range_to = $request->sizeRangeEnd;
             }
             if ($request->filled('screwSize')){
                 $m->screw_size = $request->screwSize;
