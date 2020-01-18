@@ -17,14 +17,17 @@ class CreateMachinesTable extends Migration
             $table->string('manufacture_year');
             $table->string('manufacture_country');
             $table->string('type');
-            $table->string('rope_size_from')->nullable();
-            $table->string('rope_size_to')->nullable();
+            $table->float('rope_size_from')->nullable();
+            $table->float('rope_size_to')->nullable();
+            $table->float('size_range_from')->nullable();
+            $table->float('size_range_to')->nullable();
             $table->string('sk_dk')->nullable();
-            $table->string('pitch_size')->nullable();
-            $table->string('spool_diameter')->nullable();
-            $table->string('number_of_shuttles')->nullable();
-            $table->string('screw_size')->nullable();
-            $table->string('production_capacity')->nullable();
+            $table->float('pitch_size')->nullable();
+            $table->float('spool_diameter')->nullable();
+            $table->integer('number_of_shuttles')->nullable();
+            $table->float('screw_size')->nullable();
+            $table->float('production_capacity')->nullable();
+            $table->float('ld_ratio')->nullable();
             $table->timestamps();
         });
     }

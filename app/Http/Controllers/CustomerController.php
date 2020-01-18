@@ -21,7 +21,7 @@ class CustomerController extends Controller
     public function list()
     {
         if (Auth::user()->can('customer')) {
-            $customers = Customer::paginate(10);
+            $customers = Customer::paginate(4);
             foreach ($customers as $c){
                 $c['type'] = Customertype::find($c->customertype_id)->title;
             }
@@ -50,6 +50,7 @@ class CustomerController extends Controller
                 'dateOfBirth' => 'required',
                 'companyName' => 'required',
                 'binNumber' => 'required',
+                'tinNumber' => 'required',
                 'nidNumber' => 'required',
                 'businessAddress' => 'required',
                 'businessArea' => 'required',
@@ -63,6 +64,7 @@ class CustomerController extends Controller
             $customer->dob = date('Y-m-d',strtotime($request->dateOfBirth));
             $customer->company_name = $request->companyName;
             $customer->bin = $request->binNumber;
+            $customer->tin = $request->tinNumber;
             $customer->nid = $request->nidNumber;
             $customer->business_address = $request->businessAddress;
             $customer->business_area = $request->businessArea;
@@ -77,19 +79,26 @@ class CustomerController extends Controller
                 $d = 'uploads/Customers/Image/' . $img_name;
                 $customer->image = $d;
             }
-            if ($request->hasFile('nidFile')){
-                $img = $request->nidFile;
-                $img_name = time() . $img->getClientOriginalName();
-                $img->move('uploads/Customers/NID', $img_name);
-                $d = 'uploads/Customers/NID/' . $img_name;
-                $customer->nid_file = $d;
-            }
             if ($request->hasFile('binFile')){
                 $img = $request->binFile;
                 $img_name = time() . $img->getClientOriginalName();
                 $img->move('uploads/Customers/BIN', $img_name);
                 $d = 'uploads/Customers/BIN/' . $img_name;
                 $customer->bin_file = $d;
+            }
+            if ($request->hasFile('tinFile')){
+                $img = $request->tinFile;
+                $img_name = time() . $img->getClientOriginalName();
+                $img->move('uploads/Customers/TIN', $img_name);
+                $d = 'uploads/Customers/TIN/' . $img_name;
+                $customer->tin_file = $d;
+            }
+            if ($request->hasFile('nidFile')){
+                $img = $request->nidFile;
+                $img_name = time() . $img->getClientOriginalName();
+                $img->move('uploads/Customers/NID', $img_name);
+                $d = 'uploads/Customers/NID/' . $img_name;
+                $customer->nid_file = $d;
             }
             if ($request->filled('businessTelephone2')){
                 $customer->business_telephone_2 = $request->businessTelephone2;
@@ -229,6 +238,7 @@ class CustomerController extends Controller
                 'dateOfBirth' => 'required',
                 'companyName' => 'required',
                 'binNumber' => 'required',
+                'tinNumber' => 'required',
                 'nidNumber' => 'required',
                 'businessAddress' => 'required',
                 'businessArea' => 'required',
@@ -244,6 +254,7 @@ class CustomerController extends Controller
                 $customer->dob = date('Y-m-d',strtotime($request->dateOfBirth));
                 $customer->company_name = $request->companyName;
                 $customer->bin = $request->binNumber;
+                $customer->tin = $request->tinNumber;
                 $customer->nid = $request->nidNumber;
                 $customer->business_address = $request->businessAddress;
                 $customer->business_area = $request->businessArea;
@@ -260,16 +271,6 @@ class CustomerController extends Controller
                     $d = 'uploads/Customers/Image/' . $img_name;
                     $customer->image = $d;
                 }
-                if ($request->hasFile('nidFile')){
-                    if ($customer->nid_file){
-                        unlink($customer->nid_file);
-                    }
-                    $img = $request->nidFile;
-                    $img_name = time() . $img->getClientOriginalName();
-                    $img->move('uploads/Customers/NID', $img_name);
-                    $d = 'uploads/Customers/NID/' . $img_name;
-                    $customer->nid_file = $d;
-                }
                 if ($request->hasFile('binFile')){
                     if ($customer->bin_file){
                         unlink($customer->bin_file);
@@ -279,6 +280,26 @@ class CustomerController extends Controller
                     $img->move('uploads/Customers/BIN', $img_name);
                     $d = 'uploads/Customers/BIN/' . $img_name;
                     $customer->bin_file = $d;
+                }
+                if ($request->hasFile('tinFile')){
+                    if ($customer->tin_file){
+                        unlink($customer->tin_file);
+                    }
+                    $img = $request->tinFile;
+                    $img_name = time() . $img->getClientOriginalName();
+                    $img->move('uploads/Customers/TIN', $img_name);
+                    $d = 'uploads/Customers/TIN/' . $img_name;
+                    $customer->tin_file = $d;
+                }
+                if ($request->hasFile('nidFile')){
+                    if ($customer->nid_file){
+                        unlink($customer->nid_file);
+                    }
+                    $img = $request->nidFile;
+                    $img_name = time() . $img->getClientOriginalName();
+                    $img->move('uploads/Customers/NID', $img_name);
+                    $d = 'uploads/Customers/NID/' . $img_name;
+                    $customer->nid_file = $d;
                 }
                 if ($request->filled('businessTelephone2')){
                     $customer->business_telephone_2 = $request->businessTelephone2;

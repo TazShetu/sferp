@@ -17,6 +17,10 @@ class PermissionsTableSeeder extends Seeder
             4 => ["customer", "Customer", "Customer menu"],
             5 => ["factory", "Factory", "Factory menu"],
             6 => ["machine", "Machine", "Machine menu"],
+            7 => ["spare_parts", "Spare Parts", "Spare Parts menu"],
+            8 => ["raw_material", "Raw Material", "Raw Material menu"],
+            9 => ["product", "Product", "Product menu"],
+            10 => ["ware_house", "Ware House", "Ware House menu"],
         ];
 
         $s = Role::find(1);

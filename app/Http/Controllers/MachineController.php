@@ -37,10 +37,11 @@ class MachineController extends Controller
     public function create()
     {
         if (Auth::user()->can('machine')) {
-//            session()->forget('mcid');
             $factories = Factory::all();
             $machineCategories = Machinecategory::all();
-            return view('machine.create', compact('machineCategories', 'factories'));
+            $datalist['manufacturer'] = DB::select(DB::raw('SELECT manufacturer FROM machines GROUP BY manufacturer'));
+            $datalist['type'] = DB::select(DB::raw('SELECT type FROM machines GROUP BY type'));
+            return view('machine.create', compact('machineCategories', 'factories', 'datalist'));
         } else {
             abort(403);
         }
@@ -48,111 +49,82 @@ class MachineController extends Controller
 
 
 
-    public function store(Request $request, $mcid)
+    public function store(Request $request)
     {
         if (Auth::user()->can('machine')) {
-            if (($mcid * 1) == 1){
-                // Fishing Net Machine
-                session(['mcid' => 1]);
-                $request->validate([
-                    'manufacturerName' => 'required',
-                    'typeOrModelNumber' => 'required',
-                    'serialNumber' => 'required|unique:machines,identification_code',
-                    'manufacturerYear' => 'required',
-                    'countryOfOrigin' => 'required',
-                    'skOrDk' => 'required',
-                    'pitchSize' => 'required',
-                    'spoolDiameter' => 'required',
-                    'numberOfShuttles' => 'required',
-                    'factory' => 'required',
-                ]);
-                $m = new Machine;
-                $m->identification_code = $request->serialNumber;
-                $m->machinecategory_id = $mcid;
-                $m->factory_id = $request->factory;
-                $m->manufacturer = $request->manufacturerName;
-                $m->manufacture_year = $request->manufacturerYear;
-                $m->manufacture_country = $request->countryOfOrigin;
-                $m->type = $request->typeOrModelNumber;
+            $request->validate([
+                'category' => 'required',
+                'factory' => 'required',
+                'manufacturerName' => 'required',
+                'typeOrModelNumber' => 'required',
+                'serialNumber' => 'required|unique:machines,identification_code',
+                'manufacturerYear' => 'required',
+                'countryOfOrigin' => 'required',
+            ]);
+            $m = new Machine;
+            $m->machinecategory_id = $request->category;
+            $m->factory_id = $request->factory;
+            $m->manufacturer = $request->manufacturerName;
+            $m->type = $request->typeOrModelNumber;
+            $m->identification_code = $request->serialNumber;
+            $m->manufacture_year = $request->manufacturerYear;
+            $m->manufacture_country = $request->countryOfOrigin;
+            if ($request->filled('skOrDk')){
                 $m->sk_dk = $request->skOrDk;
-                $m->pitch_size = $request->pitchSize;
-                $m->spool_diameter = $request->spoolDiameter;
-                $m->number_of_shuttles = $request->numberOfShuttles;
-                $m->save();
-            }elseif (($mcid * 1) == 2){
-                // Rope Making Machine
-                session(['mcid' => 2]);
-                $request->validate([
-                    'manufacturerName' => 'required',
-                    'typeOrModelNumber' => 'required',
-                    'serialNumber' => 'required|unique:machines,identification_code',
-                    'manufacturerYear' => 'required',
-                    'countryOfOrigin' => 'required',
-                    'ropeSizeStart' => 'required',
-                    'ropeSizeEnd' => 'required',
-                    'factory' => 'required',
-                ]);
-                $m = new Machine;
-                $m->identification_code = $request->serialNumber;
-                $m->machinecategory_id = $mcid;
-                $m->factory_id = $request->factory;
-                $m->manufacturer = $request->manufacturerName;
-                $m->manufacture_year = $request->manufacturerYear;
-                $m->manufacture_country = $request->countryOfOrigin;
-                $m->type = $request->typeOrModelNumber;
-                $m->rope_size_from = $request->ropeSizeStart;
-                $m->rope_size_to = $request->ropeSizeEnd;
-                $m->save();
-            }elseif (($mcid * 1) == 3){
-                // Twisting Machine
-                session(['mcid' => 3]);
-                $request->validate([
-                    'manufacturerName' => 'required',
-                    'typeOrModelNumber' => 'required',
-                    'serialNumber' => 'required|unique:machines,identification_code',
-                    'manufacturerYear' => 'required',
-                    'countryOfOrigin' => 'required',
-                    'ropeSizeStart' => 'required',
-                    'ropeSizeEnd' => 'required',
-                    'factory' => 'required',
-                ]);
-                $m = new Machine;
-                $m->identification_code = $request->serialNumber;
-                $m->machinecategory_id = $mcid;
-                $m->factory_id = $request->factory;
-                $m->manufacturer = $request->manufacturerName;
-                $m->manufacture_year = $request->manufacturerYear;
-                $m->manufacture_country = $request->countryOfOrigin;
-                $m->type = $request->typeOrModelNumber;
-                $m->rope_size_from = $request->ropeSizeStart;
-                $m->rope_size_to = $request->ropeSizeEnd;
-                $m->save();
-            }elseif (($mcid * 1) == 4){
-                // Extruder
-                session(['mcid' => 4]);
-                $request->validate([
-                    'manufacturerName' => 'required',
-                    'typeOrModelNumber' => 'required',
-                    'serialNumber' => 'required|unique:machines,identification_code',
-                    'manufacturerYear' => 'required',
-                    'countryOfOrigin' => 'required',
-                    'screwSize' => 'required',
-                    'productionCapacity' => 'required',
-                    'factory' => 'required',
-                ]);
-                $m = new Machine;
-                $m->identification_code = $request->serialNumber;
-                $m->machinecategory_id = $mcid;
-                $m->factory_id = $request->factory;
-                $m->manufacturer = $request->manufacturerName;
-                $m->manufacture_year = $request->manufacturerYear;
-                $m->manufacture_country = $request->countryOfOrigin;
-                $m->type = $request->typeOrModelNumber;
-                $m->screw_size = $request->screwSize;
-                $m->production_capacity = $request->productionCapacity;
-                $m->save();
             }
-            session()->forget('mcid');
+            if ($request->filled('pitchSize')){
+                $request->validate([
+                    'pitchSize' => 'min:0',
+                ]);
+                $m->pitch_size = $request->pitchSize;
+            }
+            if ($request->filled('spoolDiameter')){
+                $request->validate([
+                    'spoolDiameter' => 'min:0',
+                ]);
+                $m->spool_diameter = $request->spoolDiameter;
+            }
+            if ($request->filled('numberOfShuttles')){
+                $request->validate([
+                    'numberOfShuttles' => 'min:0',
+                ]);
+                $m->number_of_shuttles = $request->numberOfShuttles;
+            }
+            if (($request->filled('ropeSizeStart')) || ($request->filled('ropeSizeEnd')) ){
+                $request->validate([
+                    'ropeSizeStart' => 'required|min:0',
+                    'ropeSizeEnd' => 'required|min:0',
+                ]);
+                $m->rope_size_from = $request->ropeSizeStart;
+                $m->rope_size_to = $request->ropeSizeEnd;
+            }
+            if (($request->filled('sizeRangeStart')) || ($request->filled('sizeRangeEnd')) ){
+                $request->validate([
+                    'sizeRangeStart' => 'required|min:0',
+                    'sizeRangeEnd' => 'required|min:0',
+                ]);
+                $m->size_range_from = $request->sizeRangeStart;
+                $m->size_range_to = $request->sizeRangeEnd;
+            }
+            if ($request->filled('screwSize')){
+                 $request->validate([
+                    'screwSize' => 'min:0',
+                ]);
+                $m->screw_size = $request->screwSize;
+            }
+            if ($request->filled('productionCapacity')){
+                 $request->validate([
+                    'productionCapacity' => 'min:0',
+                ]);
+                $m->production_capacity = $request->productionCapacity;
+            }
+            if ($request->filled('LDRatio')){
+                 $request->validate([
+                    'LDRatio' => 'min:0',
+                ]);
+                $m->ld_ratio = $request->LDRatio;
+            }
+            $m->save();
             Session::flash('Success', "The Machine has been created successfully.");
             return redirect()->route('machine.list');
         } else {
@@ -167,8 +139,13 @@ class MachineController extends Controller
     {
         if (Auth::user()->can('machine')) {
             $medit = Machine::find($mid);
+            $medit['factoryName'] = Factory::find($medit->factory_id)->name;
+            $medit['categoryName'] = Machinecategory::find($medit->machinecategory_id)->name;
             $factories = Factory::all();
-            return view('machine.edit', compact('medit','factories'));
+            $machineCategories = Machinecategory::all();
+            $datalist['manufacturer'] = DB::select(DB::raw('SELECT manufacturer FROM machines GROUP BY manufacturer'));
+            $datalist['type'] = DB::select(DB::raw('SELECT type FROM machines GROUP BY type'));
+            return view('machine.edit', compact('medit','factories', 'machineCategories', 'datalist'));
         } else {
             abort(403);
         }
@@ -181,12 +158,13 @@ class MachineController extends Controller
     {
         if (Auth::user()->can('machine')) {
             $request->validate([
+                'category' => 'required',
+                'factory' => 'required',
                 'manufacturerName' => 'required',
                 'typeOrModelNumber' => 'required',
                 'serialNumber' => 'required',
                 'manufacturerYear' => 'required',
                 'countryOfOrigin' => 'required',
-                'factory' => 'required',
             ]);
             $m = Machine::find($mid);
             if ($m->identification_code != $request->serialNumber){
@@ -194,71 +172,69 @@ class MachineController extends Controller
                     'serialNumber' => 'unique:machines,identification_code',
                 ]);
             }
-            if (($m->machinecategory_id * 1) == 1){
-                // Fishing Net Machine
-                $request->validate([
-                    'skOrDk' => 'required',
-                    'pitchSize' => 'required',
-                    'spoolDiameter' => 'required',
-                    'numberOfShuttles' => 'required',
-                ]);
-                $m->identification_code = $request->serialNumber;
-                $m->factory_id = $request->factory;
-                $m->manufacturer = $request->manufacturerName;
-                $m->manufacture_year = $request->manufacturerYear;
-                $m->manufacture_country = $request->countryOfOrigin;
-                $m->type = $request->typeOrModelNumber;
+            $m->machinecategory_id = $request->category;
+            $m->factory_id = $request->factory;
+            $m->manufacturer = $request->manufacturerName;
+            $m->type = $request->typeOrModelNumber;
+            $m->identification_code = $request->serialNumber;
+            $m->manufacture_year = $request->manufacturerYear;
+            $m->manufacture_country = $request->countryOfOrigin;
+            if ($request->filled('skOrDk')){
                 $m->sk_dk = $request->skOrDk;
-                $m->pitch_size = $request->pitchSize;
-                $m->spool_diameter = $request->spoolDiameter;
-                $m->number_of_shuttles = $request->numberOfShuttles;
-                $m->update();
-            }elseif (($m->machinecategory_id * 1) == 2){
-                // Rope Making Machine
-                $request->validate([
-                    'ropeSizeStart' => 'required',
-                    'ropeSizeEnd' => 'required',
-                ]);
-                $m->identification_code = $request->serialNumber;
-                $m->factory_id = $request->factory;
-                $m->manufacturer = $request->manufacturerName;
-                $m->manufacture_year = $request->manufacturerYear;
-                $m->manufacture_country = $request->countryOfOrigin;
-                $m->type = $request->typeOrModelNumber;
-                $m->rope_size_from = $request->ropeSizeStart;
-                $m->rope_size_to = $request->ropeSizeEnd;
-                $m->update();
-            }elseif (($m->machinecategory_id * 1) == 3){
-                // Twisting Machine
-                $request->validate([
-                    'ropeSizeStart' => 'required',
-                    'ropeSizeEnd' => 'required',
-                ]);
-                $m->identification_code = $request->serialNumber;
-                $m->factory_id = $request->factory;
-                $m->manufacturer = $request->manufacturerName;
-                $m->manufacture_year = $request->manufacturerYear;
-                $m->manufacture_country = $request->countryOfOrigin;
-                $m->type = $request->typeOrModelNumber;
-                $m->rope_size_from = $request->ropeSizeStart;
-                $m->rope_size_to = $request->ropeSizeEnd;
-                $m->update();
-            }elseif (($m->machinecategory_id * 1) == 4){
-                // Extruder
-                $request->validate([
-                    'screwSize' => 'required',
-                    'productionCapacity' => 'required',
-                ]);
-                $m->identification_code = $request->serialNumber;
-                $m->factory_id = $request->factory;
-                $m->manufacturer = $request->manufacturerName;
-                $m->manufacture_year = $request->manufacturerYear;
-                $m->manufacture_country = $request->countryOfOrigin;
-                $m->type = $request->typeOrModelNumber;
-                $m->screw_size = $request->screwSize;
-                $m->production_capacity = $request->productionCapacity;
-                $m->update();
             }
+            if ($request->filled('pitchSize')){
+                $request->validate([
+                    'pitchSize' => 'min:0',
+                ]);
+                $m->pitch_size = $request->pitchSize;
+            }
+            if ($request->filled('spoolDiameter')){
+                $request->validate([
+                    'spoolDiameter' => 'min:0',
+                ]);
+                $m->spool_diameter = $request->spoolDiameter;
+            }
+            if ($request->filled('numberOfShuttles')){
+                $request->validate([
+                    'numberOfShuttles' => 'min:0',
+                ]);
+                $m->number_of_shuttles = $request->numberOfShuttles;
+            }
+            if (($request->filled('ropeSizeStart')) || ($request->filled('ropeSizeEnd')) ){
+                $request->validate([
+                    'ropeSizeStart' => 'required|min:0',
+                    'ropeSizeEnd' => 'required|min:0',
+                ]);
+                $m->rope_size_from = $request->ropeSizeStart;
+                $m->rope_size_to = $request->ropeSizeEnd;
+            }
+            if (($request->filled('sizeRangeStart')) || ($request->filled('sizeRangeEnd')) ){
+                $request->validate([
+                    'sizeRangeStart' => 'required|min:0',
+                    'sizeRangeEnd' => 'required|min:0',
+                ]);
+                $m->size_range_from = $request->sizeRangeStart;
+                $m->size_range_to = $request->sizeRangeEnd;
+            }
+            if ($request->filled('screwSize')){
+                $request->validate([
+                    'screwSize' => 'min:0',
+                ]);
+                $m->screw_size = $request->screwSize;
+            }
+            if ($request->filled('productionCapacity')){
+                $request->validate([
+                    'productionCapacity' => 'min:0',
+                ]);
+                $m->production_capacity = $request->productionCapacity;
+            }
+            if ($request->filled('LDRatio')){
+                $request->validate([
+                    'LDRatio' => 'min:0',
+                ]);
+                $m->ld_ratio = $request->LDRatio;
+            }
+            $m->update();
             Session::flash('Success', "The Machine has been updated successfully.");
             return redirect()->back();
         } else {
