@@ -170,7 +170,8 @@
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">
                                                     <input class="form-control {{($errors->has('pitchSize')) ? 'is-invalid' : ''}}"
-                                                           type="number" name="pitchSize" value="{{old('pitchSize')}}">
+                                                           type="number" name="pitchSize" value="{{old('pitchSize')}}"
+                                                           step="0.01" min="0">
                                                     {{--                                                    @if($errors->has('pitchSize'))--}}
                                                     {{--                                                        <span class="invalid-feedback">{{$errors->first('pitchSize')}}</span>--}}
                                                     {{--                                                    @endif--}}
@@ -183,7 +184,7 @@
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">
                                                     <input class="form-control {{($errors->has('spoolDiameter')) ? 'is-invalid' : ''}}"
-                                                           type="number" name="spoolDiameter"
+                                                           type="number" name="spoolDiameter" step="0.01" min="0"
                                                            value="{{old('spoolDiameter')}}">
                                                     {{--                                                    @if($errors->has('spoolDiameter'))--}}
                                                     {{--                                                        <span class="invalid-feedback">{{$errors->first('spoolDiameter')}}</span>--}}
@@ -197,7 +198,7 @@
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">
                                                     <input class="form-control {{($errors->has('numberOfShuttles')) ? 'is-invalid' : ''}}"
-                                                           type="number" name="numberOfShuttles"
+                                                           type="number" name="numberOfShuttles" min="0"
                                                            value="{{old('numberOfShuttles')}}">
                                                     {{--                                                    @if($errors->has('numberOfShuttles'))--}}
                                                     {{--                                                        <span class="invalid-feedback">{{$errors->first('numberOfShuttles')}}</span>--}}
@@ -210,7 +211,8 @@
                                                     <div class="input-daterange input-group">
                                                         <input type="number"
                                                                class="form-control {{($errors->has('ropeSizeStart')) ? 'is-invalid' : ''}}"
-                                                               name="ropeSizeStart" value="{{old('ropeSizeStart')}}">
+                                                               name="ropeSizeStart" value="{{old('ropeSizeStart')}}"
+                                                               step="0.01" min="0">
                                                         @if($errors->has('ropeSizeStart'))
                                                             <span class="invalid-feedback">{{$errors->first('ropeSizeStart')}}</span>
                                                         @endif
@@ -219,7 +221,8 @@
                                                         </div>
                                                         <input type="number"
                                                                class="form-control {{($errors->has('ropeSizeEnd')) ? 'is-invalid' : ''}}"
-                                                               name="ropeSizeEnd" value="{{old('ropeSizeEnd')}}">
+                                                               name="ropeSizeEnd" value="{{old('ropeSizeEnd')}}"
+                                                               step="0.01" min="0">
                                                         @if($errors->has('ropeSizeEnd'))
                                                             <span class="invalid-feedback">{{$errors->first('ropeSizeEnd')}}</span>
                                                         @endif
@@ -233,7 +236,8 @@
                                                     <div class="input-daterange input-group">
                                                         <input type="number"
                                                                class="form-control {{($errors->has('sizeRangeStart')) ? 'is-invalid' : ''}}"
-                                                               name="sizeRangeStart" value="{{old('sizeRangeStart')}}">
+                                                               name="sizeRangeStart" value="{{old('sizeRangeStart')}}"
+                                                               step="0.01" min="0">
                                                         @if($errors->has('sizeRangeStart'))
                                                             <span class="invalid-feedback">{{$errors->first('sizeRangeStart')}}</span>
                                                         @endif
@@ -242,7 +246,8 @@
                                                         </div>
                                                         <input type="number"
                                                                class="form-control {{($errors->has('sizeRangeEnd')) ? 'is-invalid' : ''}}"
-                                                               name="sizeRangeEnd" value="{{old('sizeRangeEnd')}}">
+                                                               name="sizeRangeEnd" value="{{old('sizeRangeEnd')}}"
+                                                               step="0.01" min="0">
                                                         @if($errors->has('sizeRangeEnd'))
                                                             <span class="invalid-feedback">{{$errors->first('sizeRangeEnd')}}</span>
                                                         @endif
@@ -256,7 +261,8 @@
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">
                                                     <input class="form-control  {{($errors->has('screwSize')) ? 'is-invalid' : ''}}"
-                                                           type="number" name="screwSize" value="{{old('screwSize')}}">
+                                                           type="number" name="screwSize" value="{{old('screwSize')}}"
+                                                           step="0.01" min="0">
                                                     {{--                                                    @if($errors->has('screwSize'))--}}
                                                     {{--                                                        <span class="invalid-feedback">{{$errors->first('screwSize')}}</span>--}}
                                                     {{--                                                    @endif--}}
@@ -268,7 +274,7 @@
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">
                                                     <input class="form-control  {{($errors->has('productionCapacity')) ? 'is-invalid' : ''}}"
-                                                           type="number" name="productionCapacity"
+                                                           type="number" name="productionCapacity" step="0.01" min="0"
                                                            value="{{old('productionCapacity')}}">
                                                     {{--                                                    @if($errors->has('productionCapacity'))--}}
                                                     {{--                                                        <span class="invalid-feedback">{{$errors->first('productionCapacity')}}</span>--}}
@@ -282,7 +288,7 @@
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">
                                                     <input class="form-control  {{($errors->has('LDRatio')) ? 'is-invalid' : ''}}"
-                                                           type="number" name="LDRatio"
+                                                           type="number" name="LDRatio" step="0.01" min="0"
                                                            value="{{old('LDRatio')}}">
                                                     {{--                                                    @if($errors->has('productionCapacity'))--}}
                                                     {{--                                                        <span class="invalid-feedback">{{$errors->first('productionCapacity')}}</span>--}}
@@ -334,7 +340,7 @@
     <!--end::Page Vendors -->
 
     <!--begin::Page Scripts(used by this page) -->
-{{--    <script src="{{asset('m/assets/js/pages/custom/user/edit-user.js')}}" type="text/javascript"></script>--}}
+    {{--    <script src="{{asset('m/assets/js/pages/custom/user/edit-user.js')}}" type="text/javascript"></script>--}}
     <script src="{{asset('m/assets/js/pages/crud/forms/widgets/bootstrap-datepicker.js')}}"
             type="text/javascript"></script>
     <script>

@@ -16,9 +16,9 @@ class CreateProductsTable extends Migration
             $table->float('size_denier')->nullable();
             $table->float('size_mm')->nullable();
             $table->string('plys');
-            $table->string('mesh_size');
-            $table->string('depth');
-            $table->string('twin_size');
+            $table->float('mesh_size');
+            $table->float('depth');
+            $table->float('twin_size');
             $table->string('twist_type');
             $table->string('twist_condition');
             $table->integer('minimum_storage');

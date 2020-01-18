@@ -41,7 +41,8 @@
                             <div class="kt-form__body">
                                 <div class="kt-section kt-section--first">
                                     {{--      Form Start    --}}
-                                    <form action="{{route('rawMaterial.update', ['rmid' => $rmedit->id])}}" method="post">
+                                    <form action="{{route('rawMaterial.update', ['rmid' => $rmedit->id])}}"
+                                          method="post">
                                         @csrf
                                         <div class="kt-section__body">
 
@@ -103,7 +104,8 @@
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">
                                                     <input class="form-control {{($errors->has('mfi')) ? 'is-invalid' : ''}}"
-                                                           type="number" name="mfi" value="{{$rmedit->melting_flow_index}}">
+                                                           type="number" name="mfi" step="0.01" min="0"
+                                                           value="{{$rmedit->melting_flow_index}}">
                                                     {{--                                                    @if($errors->has('mfi'))--}}
                                                     {{--                                                        <span class="invalid-feedback">{{$errors->first('mfi')}}</span>--}}
                                                     {{--                                                    @endif--}}
@@ -128,7 +130,8 @@
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">
                                                     <input class="form-control {{($errors->has('viscosity')) ? 'is-invalid' : ''}}"
-                                                           type="number" name="mfi" value="{{$rmedit->viscosity}}">
+                                                           type="number" name="mfi" value="{{$rmedit->viscosity}}"
+                                                           step="0.01" min="0">
                                                     {{--                                                    @if($errors->has('viscosity'))--}}
                                                     {{--                                                        <span class="invalid-feedback">{{$errors->first('viscosity')}}</span>--}}
                                                     {{--                                                    @endif--}}

@@ -55,12 +55,18 @@ class RawmaterialController extends Controller
             $r->grade_number = $request->gradeNumber;
             $r->auto_id = str_replace(" ", "-", $request->name) . "_" . str_replace(" ", "-", $request->manufacturerName) . "_" . str_replace(" ", "", $request->gradeNumber);
             if ($request->filled('mfi')) {
+                $request->validate([
+                    'nmfi' => 'min:0',
+                ]);
                 $r->melting_flow_index = $request->mfi;
             }
             if ($request->filled('meltingPoint')) {
                 $r->melting_point = $request->meltingPoint;
             }
             if ($request->filled('viscosity')) {
+                $request->validate([
+                    'viscosity' => 'min:0',
+                ]);
                 $r->viscosity = $request->viscosity;
             }
             if ($request->filled('relativeDensity')) {
@@ -109,12 +115,18 @@ class RawmaterialController extends Controller
             $r->grade_number = $request->gradeNumber;
             $r->auto_id = str_replace(" ", "-", $request->name) . "_" . str_replace(" ", "-", $request->manufacturerName) . "_" . str_replace(" ", "", $request->gradeNumber);
             if ($request->filled('mfi')) {
+                $request->validate([
+                    'nmfi' => 'min:0',
+                ]);
                 $r->melting_flow_index = $request->mfi;
             }
             if ($request->filled('meltingPoint')) {
                 $r->melting_point = $request->meltingPoint;
             }
             if ($request->filled('viscosity')) {
+                $request->validate([
+                    'viscosity' => 'min:0',
+                ]);
                 $r->viscosity = $request->viscosity;
             }
             if ($request->filled('relativeDensity')) {

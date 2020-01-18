@@ -115,7 +115,7 @@
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">
                                                     <input class="form-control {{($errors->has('unitPrice')) ? 'is-invalid' : ''}}"
-                                                           type="number" name="unitPrice" required min="0"
+                                                           type="number" name="unitPrice" required min="0" step="0.01"
                                                            value="{{old('unitPrice')}}">
                                                     @if($errors->has('unitPrice'))
                                                         <span class="invalid-feedback">{{$errors->first('unitPrice')}}</span>
@@ -128,7 +128,7 @@
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">
                                                     <input class="form-control {{($errors->has('priceInCnf')) ? 'is-invalid' : ''}}"
-                                                           type="number" name="priceInCnf" required min="0"
+                                                           type="number" name="priceInCnf" required min="0" step="0.01"
                                                            value="{{old('priceInCnf')}}">
                                                     @if($errors->has('priceInCnf'))
                                                         <span class="invalid-feedback">{{$errors->first('priceInCnf')}}</span>
@@ -141,7 +141,7 @@
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">
                                                     <input class="form-control {{($errors->has('priceInFob')) ? 'is-invalid' : ''}}"
-                                                           type="number" name="priceInFob" required min="0"
+                                                           type="number" name="priceInFob" required min="0" step="0.01"
                                                            value="{{old('priceInFob')}}">
                                                     @if($errors->has('priceInFob'))
                                                         <span class="invalid-feedback">{{$errors->first('priceInFob')}}</span>
@@ -154,7 +154,7 @@
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">
                                                     <input class="form-control {{($errors->has('priceInDhaka')) ? 'is-invalid' : ''}}"
-                                                           type="number" name="priceInDhaka" min="0"
+                                                           type="number" name="priceInDhaka" min="0" step="0.01"
                                                            value="{{old('priceInDhaka')}}">
                                                     {{--                                                    @if($errors->has('priceInDhaka'))--}}
                                                     {{--                                                        <span class="invalid-feedback">{{$errors->first('priceInDhaka')}}</span>--}}
@@ -167,7 +167,7 @@
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">
                                                     <input class="form-control {{($errors->has('priceInChittagong')) ? 'is-invalid' : ''}}"
-                                                           type="number" name="priceInChittagong" min="0"
+                                                           type="number" name="priceInChittagong" min="0" step="0.01"
                                                            value="{{old('priceInChittagong')}}">
                                                     {{--                                                    @if($errors->has('priceInChittagong'))--}}
                                                     {{--                                                        <span class="invalid-feedback">{{$errors->first('priceInChittagong')}}</span>--}}

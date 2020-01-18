@@ -73,37 +73,55 @@ class MachineController extends Controller
                 $m->sk_dk = $request->skOrDk;
             }
             if ($request->filled('pitchSize')){
+                $request->validate([
+                    'pitchSize' => 'min:0',
+                ]);
                 $m->pitch_size = $request->pitchSize;
             }
             if ($request->filled('spoolDiameter')){
+                $request->validate([
+                    'spoolDiameter' => 'min:0',
+                ]);
                 $m->spool_diameter = $request->spoolDiameter;
             }
             if ($request->filled('numberOfShuttles')){
+                $request->validate([
+                    'numberOfShuttles' => 'min:0',
+                ]);
                 $m->number_of_shuttles = $request->numberOfShuttles;
             }
             if (($request->filled('ropeSizeStart')) || ($request->filled('ropeSizeEnd')) ){
                 $request->validate([
-                    'ropeSizeStart' => 'required',
-                    'ropeSizeEnd' => 'required',
+                    'ropeSizeStart' => 'required|min:0',
+                    'ropeSizeEnd' => 'required|min:0',
                 ]);
                 $m->rope_size_from = $request->ropeSizeStart;
                 $m->rope_size_to = $request->ropeSizeEnd;
             }
             if (($request->filled('sizeRangeStart')) || ($request->filled('sizeRangeEnd')) ){
                 $request->validate([
-                    'sizeRangeStart' => 'required',
-                    'sizeRangeEnd' => 'required',
+                    'sizeRangeStart' => 'required|min:0',
+                    'sizeRangeEnd' => 'required|min:0',
                 ]);
                 $m->size_range_from = $request->sizeRangeStart;
                 $m->size_range_to = $request->sizeRangeEnd;
             }
             if ($request->filled('screwSize')){
+                 $request->validate([
+                    'screwSize' => 'min:0',
+                ]);
                 $m->screw_size = $request->screwSize;
             }
             if ($request->filled('productionCapacity')){
+                 $request->validate([
+                    'productionCapacity' => 'min:0',
+                ]);
                 $m->production_capacity = $request->productionCapacity;
             }
             if ($request->filled('LDRatio')){
+                 $request->validate([
+                    'LDRatio' => 'min:0',
+                ]);
                 $m->ld_ratio = $request->LDRatio;
             }
             $m->save();
@@ -165,37 +183,55 @@ class MachineController extends Controller
                 $m->sk_dk = $request->skOrDk;
             }
             if ($request->filled('pitchSize')){
+                $request->validate([
+                    'pitchSize' => 'min:0',
+                ]);
                 $m->pitch_size = $request->pitchSize;
             }
             if ($request->filled('spoolDiameter')){
+                $request->validate([
+                    'spoolDiameter' => 'min:0',
+                ]);
                 $m->spool_diameter = $request->spoolDiameter;
             }
             if ($request->filled('numberOfShuttles')){
+                $request->validate([
+                    'numberOfShuttles' => 'min:0',
+                ]);
                 $m->number_of_shuttles = $request->numberOfShuttles;
             }
             if (($request->filled('ropeSizeStart')) || ($request->filled('ropeSizeEnd')) ){
                 $request->validate([
-                    'ropeSizeStart' => 'required',
-                    'ropeSizeEnd' => 'required',
+                    'ropeSizeStart' => 'required|min:0',
+                    'ropeSizeEnd' => 'required|min:0',
                 ]);
                 $m->rope_size_from = $request->ropeSizeStart;
                 $m->rope_size_to = $request->ropeSizeEnd;
             }
             if (($request->filled('sizeRangeStart')) || ($request->filled('sizeRangeEnd')) ){
                 $request->validate([
-                    'sizeRangeStart' => 'required',
-                    'sizeRangeEnd' => 'required',
+                    'sizeRangeStart' => 'required|min:0',
+                    'sizeRangeEnd' => 'required|min:0',
                 ]);
                 $m->size_range_from = $request->sizeRangeStart;
                 $m->size_range_to = $request->sizeRangeEnd;
             }
             if ($request->filled('screwSize')){
+                $request->validate([
+                    'screwSize' => 'min:0',
+                ]);
                 $m->screw_size = $request->screwSize;
             }
             if ($request->filled('productionCapacity')){
+                $request->validate([
+                    'productionCapacity' => 'min:0',
+                ]);
                 $m->production_capacity = $request->productionCapacity;
             }
             if ($request->filled('LDRatio')){
+                $request->validate([
+                    'LDRatio' => 'min:0',
+                ]);
                 $m->ld_ratio = $request->LDRatio;
             }
             $m->update();

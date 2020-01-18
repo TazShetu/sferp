@@ -77,7 +77,7 @@
                                                 <div class="col-lg-9 col-xl-6">
                                                     <input class="form-control {{($errors->has('sizeDenier')) ? 'is-invalid' : ''}}"
                                                            type="number" name="sizeDenier" id="size_denier"
-                                                           value="{{$pedit->size_denier}}">
+                                                           value="{{$pedit->size_denier}}" step="0.01" min="0">
                                                     {{--                                                    @if($errors->has('mfi'))--}}
                                                     {{--                                                        <span class="invalid-feedback">{{$errors->first('mfi')}}</span>--}}
                                                     {{--                                                    @endif--}}
@@ -90,7 +90,7 @@
                                                 <div class="col-lg-9 col-xl-6">
                                                     <input class="form-control {{($errors->has('sizeMm')) ? 'is-invalid' : ''}}"
                                                            type="number" name="sizeMm" value="{{$pedit->size_mm}}"
-                                                           id="size_mm">
+                                                           id="size_mm" step="0.01" min="0">
                                                     {{--                                                    @if($errors->has('mfi'))--}}
                                                     {{--                                                        <span class="invalid-feedback">{{$errors->first('mfi')}}</span>--}}
                                                     {{--                                                    @endif--}}
@@ -115,8 +115,8 @@
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">
                                                     <input class="form-control {{($errors->has('meshSize')) ? 'is-invalid' : ''}}"
-                                                           type="text" name="meshSize" required
-                                                           value="{{$pedit->mesh_size}}">
+                                                           type="number" name="meshSize" required
+                                                           value="{{$pedit->mesh_size}}" step="0.01" min="0">
                                                     @if($errors->has('meshSize'))
                                                         <span class="invalid-feedback">{{$errors->first('meshSize')}}</span>
                                                     @endif
@@ -128,7 +128,7 @@
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">
                                                     <input class="form-control {{($errors->has('depth')) ? 'is-invalid' : ''}}"
-                                                           type="text" name="depth" required
+                                                           type="number" name="depth" required step="0.01" min="0"
                                                            value="{{$pedit->depth}}">
                                                     @if($errors->has('depth'))
                                                         <span class="invalid-feedback">{{$errors->first('depth')}}</span>
@@ -141,8 +141,8 @@
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">
                                                     <input class="form-control {{($errors->has('twinSize')) ? 'is-invalid' : ''}}"
-                                                           type="text" name="twinSize" required
-                                                           value="{{$pedit->twin_size}}">
+                                                           type="number" name="twinSize" required
+                                                           value="{{$pedit->twin_size}}" step="0.01" min="0">
                                                     @if($errors->has('twinSize'))
                                                         <span class="invalid-feedback">{{$errors->first('twinSize')}}</span>
                                                     @endif

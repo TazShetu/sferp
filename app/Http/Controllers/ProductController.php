@@ -41,9 +41,9 @@ class ProductController extends Controller
                 'name' => 'required',
                 'type' => 'required',
                 'plys' => 'required',
-                'meshSize' => 'required',
-                'depth' => 'required',
-                'twinSize' => 'required',
+                'meshSize' => 'required|min:0',
+                'depth' => 'required|min:0',
+                'twinSize' => 'required|min:0',
                 'twistType' => 'required',
                 'twistCondition' => 'required',
                 'minimumStorage' => 'required|min:0',
@@ -52,9 +52,15 @@ class ProductController extends Controller
             $p->name = $request->name;
             $p->type = $request->type;
             if ($request->filled('sizeDenier')) {
+                $request->validate([
+                    'sizeDenier' => 'min:0',
+                ]);
                 $p->size_denier = $request->sizeDenier;
             }
             if ($request->filled('sizeMm')) {
+                $request->validate([
+                    'sizeMm' => 'min:0',
+                ]);
                 $p->size_mm = $request->sizeMm;
             }
             $p->plys = $request->plys;
@@ -93,9 +99,9 @@ class ProductController extends Controller
                 'name' => 'required',
                 'type' => 'required',
                 'plys' => 'required',
-                'meshSize' => 'required',
-                'depth' => 'required',
-                'twinSize' => 'required',
+                'meshSize' => 'required|min:0',
+                'depth' => 'required|min:0',
+                'twinSize' => 'required|min:0',
                 'twistType' => 'required',
                 'twistCondition' => 'required',
                 'minimumStorage' => 'required|min:0',
@@ -104,10 +110,16 @@ class ProductController extends Controller
             $p->name = $request->name;
             $p->type = $request->type;
             if ($request->filled('sizeDenier')) {
+                $request->validate([
+                    'sizeDenier' => 'min:0',
+                ]);
                 $p->size_denier = $request->sizeDenier;
                 $p->size_mm = null;
             }
             if ($request->filled('sizeMm')) {
+                $request->validate([
+                    'sizeMm' => 'min:0',
+                ]);
                 $p->size_mm = $request->sizeMm;
                 $p->size_denier = null;
             }

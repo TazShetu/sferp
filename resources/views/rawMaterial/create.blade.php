@@ -103,7 +103,8 @@
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">
                                                     <input class="form-control {{($errors->has('mfi')) ? 'is-invalid' : ''}}"
-                                                           type="number" name="mfi" value="{{old('mfi')}}">
+                                                           type="number" name="mfi" value="{{old('mfi')}}"
+                                                           step="0.01" min="0">
                                                     {{--                                                    @if($errors->has('mfi'))--}}
                                                     {{--                                                        <span class="invalid-feedback">{{$errors->first('mfi')}}</span>--}}
                                                     {{--                                                    @endif--}}
@@ -128,7 +129,8 @@
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">
                                                     <input class="form-control {{($errors->has('viscosity')) ? 'is-invalid' : ''}}"
-                                                           type="number" name="mfi" value="{{old('viscosity')}}">
+                                                           type="number" name="viscosity" value="{{old('viscosity')}}"
+                                                           step="0.01" min="0">
                                                     {{--                                                    @if($errors->has('viscosity'))--}}
                                                     {{--                                                        <span class="invalid-feedback">{{$errors->first('viscosity')}}</span>--}}
                                                     {{--                                                    @endif--}}
