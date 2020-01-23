@@ -77,7 +77,7 @@
                                                                 </button>
                                                                 <a href="javascript:void (0)"
                                                                    data-link="{{route('cancel')}}"
-                                                                   class="cancel btn btn-label-danger btn-bold float-right">Cancel</a>
+                                                                   class="cancel btn btn-label-danger btn-bold float-right">Reset</a>
                                                             </div>
                                                         </div>
                                                     </div>

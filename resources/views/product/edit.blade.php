@@ -102,11 +102,10 @@
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">
                                                     <input class="form-control {{($errors->has('plys')) ? 'is-invalid' : ''}}"
-                                                           type="text" name="plys" required
-                                                           value="{{$pedit->plys}}">
-                                                    @if($errors->has('plys'))
-                                                        <span class="invalid-feedback">{{$errors->first('plys')}}</span>
-                                                    @endif
+                                                           type="text" name="plys" value="{{$pedit->plys}}">
+                                                    {{--                                                    @if($errors->has('plys'))--}}
+                                                    {{--                                                        <span class="invalid-feedback">{{$errors->first('plys')}}</span>--}}
+                                                    {{--                                                    @endif--}}
                                                 </div>
                                             </div>
                                             <div class="form-group row">
@@ -115,8 +114,8 @@
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">
                                                     <input class="form-control {{($errors->has('meshSize')) ? 'is-invalid' : ''}}"
-                                                           type="number" name="meshSize" required
-                                                           value="{{$pedit->mesh_size}}" step="0.01" min="0">
+                                                           type="number" name="meshSize" value="{{$pedit->mesh_size}}"
+                                                           step="0.01" min="0">
                                                     @if($errors->has('meshSize'))
                                                         <span class="invalid-feedback">{{$errors->first('meshSize')}}</span>
                                                     @endif
@@ -128,7 +127,7 @@
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">
                                                     <input class="form-control {{($errors->has('depth')) ? 'is-invalid' : ''}}"
-                                                           type="number" name="depth" required step="0.01" min="0"
+                                                           type="number" name="depth" step="0.01" min="0"
                                                            value="{{$pedit->depth}}">
                                                     @if($errors->has('depth'))
                                                         <span class="invalid-feedback">{{$errors->first('depth')}}</span>
@@ -141,8 +140,8 @@
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">
                                                     <input class="form-control {{($errors->has('twinSize')) ? 'is-invalid' : ''}}"
-                                                           type="number" name="twinSize" required
-                                                           value="{{$pedit->twin_size}}" step="0.01" min="0">
+                                                           type="number" name="twinSize" value="{{$pedit->twin_size}}"
+                                                           step="0.01" min="0">
                                                     @if($errors->has('twinSize'))
                                                         <span class="invalid-feedback">{{$errors->first('twinSize')}}</span>
                                                     @endif
@@ -154,11 +153,10 @@
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">
                                                     <input class="form-control {{($errors->has('twistType')) ? 'is-invalid' : ''}}"
-                                                           type="text" name="twistType" required
-                                                           value="{{$pedit->twist_type}}">
-                                                    @if($errors->has('twistType'))
-                                                        <span class="invalid-feedback">{{$errors->first('twistType')}}</span>
-                                                    @endif
+                                                           type="text" name="twistType" value="{{$pedit->twist_type}}">
+                                                    {{--                                                    @if($errors->has('twistType'))--}}
+                                                    {{--                                                        <span class="invalid-feedback">{{$errors->first('twistType')}}</span>--}}
+                                                    {{--                                                    @endif--}}
                                                 </div>
                                             </div>
                                             <div class="form-group row">
@@ -167,16 +165,33 @@
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">
                                                     <select class="form-control {{($errors->has('twistCondition')) ? 'is-invalid' : ''}}"
-                                                            name="twistCondition" required>
+                                                            name="twistCondition">
                                                         <option selected hidden
                                                                 value="{{$pedit->twist_condition}}">{{$pedit->twist_condition}}</option>
                                                         <option value="Twisted">Twisted</option>
                                                         <option value="Untwisted">Untwisted</option>
                                                         <option value="none">none</option>
                                                     </select>
-                                                    @if($errors->has('twistCondition'))
-                                                        <span class="invalid-feedback">{{$errors->first('twistCondition')}}</span>
-                                                    @endif
+                                                    {{--                                                    @if($errors->has('twistCondition'))--}}
+                                                    {{--                                                        <span class="invalid-feedback">{{$errors->first('twistCondition')}}</span>--}}
+                                                    {{--                                                    @endif--}}
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-xl-3 col-lg-3 col-form-label">
+                                                    Strand
+                                                </label>
+                                                <div class="col-lg-9 col-xl-6">
+                                                    <select class="form-control {{($errors->has('strand')) ? 'is-invalid' : ''}}"
+                                                            name="strand">
+                                                        <option selected hidden
+                                                                value="{{$pedit->strand}}">{{$pedit->strand}}</option>
+                                                        <option value="3">3</option>
+                                                        <option value="4">4</option>
+                                                    </select>
+                                                    {{--                                                    @if($errors->has('twistCondition'))--}}
+                                                    {{--                                                        <span class="invalid-feedback">{{$errors->first('twistCondition')}}</span>--}}
+                                                    {{--                                                    @endif--}}
                                                 </div>
                                             </div>
                                             <div class="form-group row">
@@ -201,7 +216,7 @@
                                                             Save Changes
                                                         </button>
                                                         <a href="javascript:void (0)" data-link="{{route('cancel')}}"
-                                                           class="cancel btn btn-label-danger btn-bold float-right">Cancel</a>
+                                                           class="cancel btn btn-label-danger btn-bold float-right">Reset</a>
                                                     </div>
                                                 </div>
                                             </div>

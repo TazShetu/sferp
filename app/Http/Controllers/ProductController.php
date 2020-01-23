@@ -40,12 +40,6 @@ class ProductController extends Controller
             $request->validate([
                 'name' => 'required',
                 'type' => 'required',
-                'plys' => 'required',
-                'meshSize' => 'required|min:0',
-                'depth' => 'required|min:0',
-                'twinSize' => 'required|min:0',
-                'twistType' => 'required',
-                'twistCondition' => 'required',
                 'minimumStorage' => 'required|min:0',
             ]);
             $p = new Product;
@@ -63,12 +57,36 @@ class ProductController extends Controller
                 ]);
                 $p->size_mm = $request->sizeMm;
             }
-            $p->plys = $request->plys;
-            $p->mesh_size = $request->meshSize;
-            $p->depth = $request->depth;
-            $p->twin_size = $request->twinSize;
-            $p->twist_type = $request->twistType;
-            $p->twist_condition = $request->twistCondition;
+            if ($request->filled('plys')) {
+                $p->plys = $request->plys;
+            }
+            if ($request->filled('meshSize')) {
+                $request->validate([
+                    'meshSize' => 'min:0',
+                ]);
+                $p->mesh_size = $request->meshSize;
+            }
+            if ($request->filled('depth')) {
+                $request->validate([
+                    'depth' => 'min:0',
+                ]);
+                $p->depth = $request->depth;
+            }
+            if ($request->filled('twinSize')) {
+                $request->validate([
+                    'twinSize' => 'min:0',
+                ]);
+                $p->twin_size = $request->twinSize;
+            }
+            if ($request->filled('twistType')) {
+                $p->twist_type = $request->twistType;
+            }
+            if ($request->filled('twistCondition')) {
+                $p->twist_condition = $request->twistCondition;
+            }
+            if ($request->filled('strand')) {
+                $p->strand = $request->strand;
+            }
             $p->minimum_storage = $request->minimumStorage;
             $p->save();
             Session::flash('Success', "The Product has been created successfully.");
@@ -98,12 +116,6 @@ class ProductController extends Controller
             $request->validate([
                 'name' => 'required',
                 'type' => 'required',
-                'plys' => 'required',
-                'meshSize' => 'required|min:0',
-                'depth' => 'required|min:0',
-                'twinSize' => 'required|min:0',
-                'twistType' => 'required',
-                'twistCondition' => 'required',
                 'minimumStorage' => 'required|min:0',
             ]);
             $p = Product::find($pid);
@@ -123,12 +135,36 @@ class ProductController extends Controller
                 $p->size_mm = $request->sizeMm;
                 $p->size_denier = null;
             }
-            $p->plys = $request->plys;
-            $p->mesh_size = $request->meshSize;
-            $p->depth = $request->depth;
-            $p->twin_size = $request->twinSize;
-            $p->twist_type = $request->twistType;
-            $p->twist_condition = $request->twistCondition;
+            if ($request->filled('plys')) {
+                $p->plys = $request->plys;
+            }
+            if ($request->filled('meshSize')) {
+                $request->validate([
+                    'meshSize' => 'min:0',
+                ]);
+                $p->mesh_size = $request->meshSize;
+            }
+            if ($request->filled('depth')) {
+                $request->validate([
+                    'depth' => 'min:0',
+                ]);
+                $p->depth = $request->depth;
+            }
+            if ($request->filled('twinSize')) {
+                $request->validate([
+                    'twinSize' => 'min:0',
+                ]);
+                $p->twin_size = $request->twinSize;
+            }
+            if ($request->filled('twistType')) {
+                $p->twist_type = $request->twistType;
+            }
+            if ($request->filled('twistCondition')) {
+                $p->twist_condition = $request->twistCondition;
+            }
+            if ($request->filled('strand')) {
+                $p->strand = $request->strand;
+            }
             $p->minimum_storage = $request->minimumStorage;
             $p->update();
             Session::flash('Success', "The Product has been updated successfully.");
