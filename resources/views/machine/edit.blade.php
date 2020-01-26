@@ -50,17 +50,12 @@
                                         <div class="kt-section__body">
                                             <div class="form-group row">
                                                 <label class="col-xl-3 col-lg-3 col-form-label">
-                                                    Select Category
+                                                    Category
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">
-                                                    <select class="form-control {{($errors->has('category')) ? 'is-invalid' : ''}}"
-                                                            name="category" required>
-                                                        <option selected hidden
-                                                                value="{{$medit->machinecategory_id}}">{{$medit->categoryName}}</option>
-                                                        @foreach($machineCategories as $mc)
-                                                            <option value="{{$mc->id}}">{{$mc->name}}</option>
-                                                        @endforeach
-                                                    </select>
+                                                    <input class="form-control {{($errors->has('category')) ? 'is-invalid' : ''}}"
+                                                           type="text" name="category" required
+                                                           value="{{$medit->category}}" list="category">
                                                     @if($errors->has('category'))
                                                         <span class="invalid-feedback">{{$errors->first('category')}}</span>
                                                     @endif
@@ -322,6 +317,12 @@
         </div>
     </div>
 
+    <datalist id="category">
+        @forelse($datalist['category'] as $t)
+            <option value="{{$t->category}}">
+        @empty
+        @endforelse
+    </datalist>
     <datalist id="manufacturer">
         @forelse($datalist['manufacturer'] as $m)
             <option value="{{$m->manufacturer}}">

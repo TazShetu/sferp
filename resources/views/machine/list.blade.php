@@ -74,10 +74,10 @@
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Identification Number</th>
+                        <th scope="col">Manufacturer</th>
                         <th scope="col">Category</th>
                         <th scope="col">Factory</th>
                         <th scope="col">Type/Model</th>
-                        <th scope="col">Manufacturer</th>
                         <th scope="col">Action</th>
                     </tr>
                     </thead>
@@ -87,10 +87,10 @@
                             <th scope="row">{{$i + 1}}</th>
                             <td><a href="{{route('machine.edit', ['mid' => $m->id])}}">{{$m->identification_code}}</a>
                             </td>
+                            <td>{{$m->manufacturer}}</td>
                             <td>{{$m->category}}</td>
                             <td>{{$m->factory}}</td>
                             <td>{{$m->type}}</td>
-                            <td>{{$m->manufacturer}}</td>
                             <td>
                                 <a href="{{route('machine.edit', ['mid' => $m->id])}}" title="Edit"
                                    class="btn btn-sm btn-clean btn-icon btn-icon-md">
