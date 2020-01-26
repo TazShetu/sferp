@@ -17,6 +17,32 @@ class SparepartsController extends Controller
     }
 
 
+    public function list()
+    {
+        if (Auth::user()->can('spare_parts')) {
+            $spareParts = Spareparts::paginate(10);
+            return view('spareParts.list', compact('spareParts'));
+        } else {
+            abort(403);
+        }
+    }
+
+        public function create()
+    {
+        if (Auth::user()->can('spare_parts')) {
+            $machines = DB::select(DB::raw('SELECT tag FROM machines GROUP BY tag'));
+            $datalist['manufacturer'] = DB::select(DB::raw('SELECT manufacturer FROM spareparts GROUP BY manufacturer'));
+            $datalist['model'] = DB::select(DB::raw('SELECT model FROM spareparts GROUP BY model'));
+            $datalist['type'] = DB::select(DB::raw('SELECT type FROM spareparts GROUP BY type'));
+            $datalist['unit'] = DB::select(DB::raw('SELECT unit FROM spareparts GROUP BY unit'));
+           return view('spareParts.create', compact('machines','datalist'));
+        } else {
+            abort(403);
+        }
+    }
+
+
+
 //    public function list()
 //    {
 //        if (Auth::user()->can('spare_parts')) {
