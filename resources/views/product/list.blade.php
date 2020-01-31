@@ -82,7 +82,7 @@
                     <tbody>
                     @foreach($products as $i => $m)
                         <tr>
-                            <th scope="row">{{$i + 1}}</th>
+                            <th scope="row">{{$products->firstItem() + $i}}</th>
                             <td><a href="{{route('product.edit', ['pid' => $m->id])}}">{{$m->name}}</a>
                             </td>
                             <td>{{$m->type}}</td>

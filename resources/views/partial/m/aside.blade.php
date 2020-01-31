@@ -146,19 +146,19 @@
                                 </a>
                             </li>
                             @endpermission
-                            @permission('machine')
-                            <li class="kt-menu__item  " aria-haspopup="true">
-                                <a href="{{route('machine.list')}}" class="kt-menu__link ">
-                                    <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>
-                                    <span class="kt-menu__link-text">Machines</span>
-                                </a>
-                            </li>
-                            @endpermission
                             @permission('spare_parts')
                             <li class="kt-menu__item  " aria-haspopup="true">
                                 <a href="{{route('spareParts.list')}}" class="kt-menu__link ">
                                     <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>
                                     <span class="kt-menu__link-text">Spare Parts</span>
+                                </a>
+                            </li>
+                            @endpermission
+                            @permission('machine')
+                            <li class="kt-menu__item  " aria-haspopup="true">
+                                <a href="{{route('machine.list')}}" class="kt-menu__link ">
+                                    <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>
+                                    <span class="kt-menu__link-text">Machines</span>
                                 </a>
                             </li>
                             @endpermission

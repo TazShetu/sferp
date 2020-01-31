@@ -74,23 +74,23 @@
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Identification Number</th>
-                        <th scope="col">Manufacturer</th>
-                        <th scope="col">Date of Purchase</th>
-                        <th scope="col">Date of Arrival</th>
-                        <th scope="col">Unit Price</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Part Number</th>
+                        <th scope="col">Code Number</th>
+                        <th scope="col">Minimum Storage Amount</th>
                         <th scope="col">Action</th>
                     </tr>
                     </thead>
                     <tbody>
                     @foreach($spareParts as $i => $m)
                         <tr>
-                            <th scope="row">{{$i + 1}}</th>
+                            <th scope="row">{{$spareParts->firstItem() + $i}}</th>
                             <td><a href="{{route('spareParts.edit', ['spid' => $m->id])}}">{{$m->identity_number}}</a>
                             </td>
-                            <td>{{$m->manufacturer}}</td>
-                            <td>{{$m->purchase_date}}</td>
-                            <td>{{$m->arrival_date}}</td>
-                            <td>{{$m->unit_price}} in {{$m->currency}}</td>
+                            <td>{{$m->description}}</td>
+                            <td>{{$m->part_number}}</td>
+                            <td>{{$m->code_number}}</td>
+                            <td>{{$m->minimum_storage}} {{$m->unit}}</td>
                             <td>
                                 <a href="{{route('spareParts.edit', ['spid' => $m->id])}}" title="Edit"
                                    class="btn btn-sm btn-clean btn-icon btn-icon-md">

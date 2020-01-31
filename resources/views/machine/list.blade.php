@@ -84,7 +84,7 @@
                     <tbody>
                     @foreach($machines as $i => $m)
                         <tr>
-                            <th scope="row">{{$i + 1}}</th>
+                            <th scope="row">{{$machines->firstItem() + $i}}</th>
                             <td><a href="{{route('machine.edit', ['mid' => $m->id])}}">{{$m->identification_code}}</a>
                             </td>
                             <td>{{$m->manufacturer}}</td>

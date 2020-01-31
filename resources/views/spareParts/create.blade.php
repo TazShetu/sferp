@@ -40,154 +40,154 @@
                         <div class="kt-form kt-form--label-right">
                             <div class="kt-form__body">
                                 <div class="kt-section kt-section--first">
-                                    @if(!empty($machines))
-                                        {{--      Form Start    --}}
-                                        <form action="{{route('spareParts.store')}}" method="post">
-                                            @csrf
-                                            <div class="kt-section__body">
-                                                <div class="form-group row">
-                                                    <label class="col-xl-3 col-lg-3 col-form-label">
-                                                        Manufacturer Name
-                                                    </label>
-                                                    <div class="col-lg-9 col-xl-6">
-                                                        <input class="form-control {{($errors->has('manufacturerName')) ? 'is-invalid' : ''}}"
-                                                               type="text" name="manufacturerName" required
-                                                               value="{{old('manufacturerName')}}" list="manufacturer">
-                                                        @if($errors->has('manufacturerName'))
-                                                            <span class="invalid-feedback">{{$errors->first('manufacturerName')}}</span>
-                                                        @endif
-                                                    </div>
+                                    {{--                                    @if(!empty($machines))--}}
+                                    {{--      Form Start    --}}
+                                    <form action="{{route('spareParts.store')}}" method="post">
+                                        @csrf
+                                        <div class="kt-section__body">
+                                            <div class="form-group row">
+                                                <label class="col-xl-3 col-lg-3 col-form-label">
+                                                    Manufacturer Name
+                                                </label>
+                                                <div class="col-lg-9 col-xl-6">
+                                                    <input class="form-control {{($errors->has('manufacturerName')) ? 'is-invalid' : ''}}"
+                                                           type="text" name="manufacturerName" required
+                                                           value="{{old('manufacturerName')}}" list="manufacturer">
+                                                    @if($errors->has('manufacturerName'))
+                                                        <span class="invalid-feedback">{{$errors->first('manufacturerName')}}</span>
+                                                    @endif
                                                 </div>
-                                                <div class="form-group row">
-                                                    <label class="col-xl-3 col-lg-3 col-form-label">
-                                                        Model
-                                                    </label>
-                                                    <div class="col-lg-9 col-xl-6">
-                                                        <input class="form-control {{($errors->has('model')) ? 'is-invalid' : ''}}"
-                                                               type="text" name="model" required
-                                                               value="{{old('model')}}" list="model">
-                                                        @if($errors->has('model'))
-                                                            <span class="invalid-feedback">{{$errors->first('model')}}</span>
-                                                        @endif
-                                                    </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-xl-3 col-lg-3 col-form-label">
+                                                    Model
+                                                </label>
+                                                <div class="col-lg-9 col-xl-6">
+                                                    <input class="form-control {{($errors->has('model')) ? 'is-invalid' : ''}}"
+                                                           type="text" name="model" required
+                                                           value="{{old('model')}}" list="model">
+                                                    @if($errors->has('model'))
+                                                        <span class="invalid-feedback">{{$errors->first('model')}}</span>
+                                                    @endif
                                                 </div>
-                                                <div class="form-group row">
-                                                    <label class="col-xl-3 col-lg-3 col-form-label">
-                                                        Type
-                                                    </label>
-                                                    <div class="col-lg-9 col-xl-6">
-                                                        <input class="form-control {{($errors->has('type')) ? 'is-invalid' : ''}}"
-                                                               type="text" name="type" required
-                                                               value="{{old('type')}}" list="type">
-                                                        @if($errors->has('type'))
-                                                            <span class="invalid-feedback">{{$errors->first('type')}}</span>
-                                                        @endif
-                                                    </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-xl-3 col-lg-3 col-form-label">
+                                                    Type
+                                                </label>
+                                                <div class="col-lg-9 col-xl-6">
+                                                    <input class="form-control {{($errors->has('type')) ? 'is-invalid' : ''}}"
+                                                           type="text" name="type" required
+                                                           value="{{old('type')}}" list="type">
+                                                    @if($errors->has('type'))
+                                                        <span class="invalid-feedback">{{$errors->first('type')}}</span>
+                                                    @endif
                                                 </div>
-                                                <div class="form-group row">
-                                                    <label class="col-xl-3 col-lg-3 col-form-label">
-                                                        For which machine
-                                                    </label>
-                                                    <div class="col-lg-9 col-xl-6">
-                                                        <select class="form-control {{($errors->has('machines')) ? 'is-invalid' : ''}}"
-                                                                name="machines" required>
-                                                            <option selected disabled hidden value="">Choose...</option>
-                                                            @foreach($machines as $m)
-                                                                <option value="{{$m->tag}}">{{str_replace(';.;', '_', $m->tag)}}</option>
-                                                            @endforeach
-                                                        </select>
-                                                        @if($errors->has('machines'))
-                                                            <span class="invalid-feedback">{{$errors->first('machines')}}</span>
-                                                        @endif
-                                                    </div>
+                                            </div>
+                                            {{--                                                <div class="form-group row">--}}
+                                            {{--                                                    <label class="col-xl-3 col-lg-3 col-form-label">--}}
+                                            {{--                                                        For which machine--}}
+                                            {{--                                                    </label>--}}
+                                            {{--                                                    <div class="col-lg-9 col-xl-6">--}}
+                                            {{--                                                        <select class="form-control {{($errors->has('machines')) ? 'is-invalid' : ''}}"--}}
+                                            {{--                                                                name="machines" required>--}}
+                                            {{--                                                            <option selected disabled hidden value="">Choose...</option>--}}
+                                            {{--                                                            @foreach($machines as $m)--}}
+                                            {{--                                                                <option value="{{$m->tag}}">{{str_replace(';.;', '_', $m->tag)}}</option>--}}
+                                            {{--                                                            @endforeach--}}
+                                            {{--                                                        </select>--}}
+                                            {{--                                                        @if($errors->has('machines'))--}}
+                                            {{--                                                            <span class="invalid-feedback">{{$errors->first('machines')}}</span>--}}
+                                            {{--                                                        @endif--}}
+                                            {{--                                                    </div>--}}
+                                            {{--                                                </div>--}}
+                                            <div class="form-group row">
+                                                <label class="col-xl-3 col-lg-3 col-form-label">
+                                                    Part Number
+                                                </label>
+                                                <div class="col-lg-9 col-xl-6">
+                                                    <input class="form-control {{($errors->has('partNumber')) ? 'is-invalid' : ''}}"
+                                                           type="text" name="partNumber" required
+                                                           value="{{old('partNumber')}}">
+                                                    @if($errors->has('partNumber'))
+                                                        <span class="invalid-feedback">{{$errors->first('partNumber')}}</span>
+                                                    @endif
                                                 </div>
-                                                <div class="form-group row">
-                                                    <label class="col-xl-3 col-lg-3 col-form-label">
-                                                        Part Number
-                                                    </label>
-                                                    <div class="col-lg-9 col-xl-6">
-                                                        <input class="form-control {{($errors->has('partNumber')) ? 'is-invalid' : ''}}"
-                                                               type="text" name="partNumber" required
-                                                               value="{{old('partNumber')}}">
-                                                        @if($errors->has('partNumber'))
-                                                            <span class="invalid-feedback">{{$errors->first('partNumber')}}</span>
-                                                        @endif
-                                                    </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-xl-3 col-lg-3 col-form-label">
+                                                    Identity Number
+                                                </label>
+                                                <div class="col-lg-9 col-xl-6">
+                                                    <input class="form-control {{($errors->has('identityNumber')) ? 'is-invalid' : ''}}"
+                                                           type="text" name="identityNumber" required
+                                                           value="{{old('identityNumber')}}">
+                                                    @if($errors->has('identityNumber'))
+                                                        <span class="invalid-feedback">{{$errors->first('identityNumber')}}</span>
+                                                    @endif
+                                                    <span class="form-text text-muted">It has to be unique*</span>
                                                 </div>
-                                                <div class="form-group row">
-                                                    <label class="col-xl-3 col-lg-3 col-form-label">
-                                                        Identity Number
-                                                    </label>
-                                                    <div class="col-lg-9 col-xl-6">
-                                                        <input class="form-control {{($errors->has('identityNumber')) ? 'is-invalid' : ''}}"
-                                                               type="text" name="identityNumber" required
-                                                               value="{{old('identityNumber')}}">
-                                                        @if($errors->has('identityNumber'))
-                                                            <span class="invalid-feedback">{{$errors->first('identityNumber')}}</span>
-                                                        @endif
-                                                        <span class="form-text text-muted">It has to be unique*</span>
-                                                    </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-xl-3 col-lg-3 col-form-label">
+                                                    Code Number
+                                                </label>
+                                                <div class="col-lg-9 col-xl-6">
+                                                    <input class="form-control {{($errors->has('codeNumber')) ? 'is-invalid' : ''}}"
+                                                           type="text" name="codeNumber" required
+                                                           value="{{old('codeNumber')}}">
+                                                    @if($errors->has('codeNumber'))
+                                                        <span class="invalid-feedback">{{$errors->first('codeNumber')}}</span>
+                                                    @endif
                                                 </div>
-                                                <div class="form-group row">
-                                                    <label class="col-xl-3 col-lg-3 col-form-label">
-                                                        Code Number
-                                                    </label>
-                                                    <div class="col-lg-9 col-xl-6">
-                                                        <input class="form-control {{($errors->has('codeNumber')) ? 'is-invalid' : ''}}"
-                                                               type="text" name="codeNumber" required
-                                                               value="{{old('codeNumber')}}">
-                                                        @if($errors->has('codeNumber'))
-                                                            <span class="invalid-feedback">{{$errors->first('codeNumber')}}</span>
-                                                        @endif
-                                                    </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-xl-3 col-lg-3 col-form-label">
+                                                    Minimum Storage Amount
+                                                </label>
+                                                <div class="col-lg-9 col-xl-6">
+                                                    <input class="form-control {{($errors->has('minimumStorage')) ? 'is-invalid' : ''}}"
+                                                           type="number" name="minimumStorage" required min="0"
+                                                           value="{{old('minimumStorage')}}">
+                                                    @if($errors->has('minimumStorage'))
+                                                        <span class="invalid-feedback">{{$errors->first('minimumStorage')}}</span>
+                                                    @endif
                                                 </div>
-                                                <div class="form-group row">
-                                                    <label class="col-xl-3 col-lg-3 col-form-label">
-                                                        Minimum Storage Amount
-                                                    </label>
-                                                    <div class="col-lg-9 col-xl-6">
-                                                        <input class="form-control {{($errors->has('minimumStorage')) ? 'is-invalid' : ''}}"
-                                                               type="number" name="minimumStorage" required min="0"
-                                                               value="{{old('minimumStorage')}}">
-                                                        @if($errors->has('minimumStorage'))
-                                                            <span class="invalid-feedback">{{$errors->first('minimumStorage')}}</span>
-                                                        @endif
-                                                    </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-xl-3 col-lg-3 col-form-label">
+                                                    Unit
+                                                </label>
+                                                <div class="col-lg-9 col-xl-6">
+                                                    <input class="form-control {{($errors->has('unit')) ? 'is-invalid' : ''}}"
+                                                           type="text" name="unit" required
+                                                           placeholder="Kg Litre etc"
+                                                           value="{{old('unit')}}" list="unit">
+                                                    @if($errors->has('unit'))
+                                                        <span class="invalid-feedback">{{$errors->first('unit')}}</span>
+                                                    @endif
                                                 </div>
-                                                <div class="form-group row">
-                                                    <label class="col-xl-3 col-lg-3 col-form-label">
-                                                        Unit
-                                                    </label>
+                                            </div>
+                                            <div class="kt-separator kt-separator--space-lg kt-separator--fit kt-separator--border-solid"></div>
+                                            <div class="kt-form__actions">
+                                                <div class="row">
+                                                    <div class="col-xl-3"></div>
                                                     <div class="col-lg-9 col-xl-6">
-                                                        <input class="form-control {{($errors->has('unit')) ? 'is-invalid' : ''}}"
-                                                               type="text" name="unit" required
-                                                               placeholder="Kg Litre etc"
-                                                               value="{{old('unit')}}" list="unit">
-                                                        @if($errors->has('unit'))
-                                                            <span class="invalid-feedback">{{$errors->first('unit')}}</span>
-                                                        @endif
-                                                    </div>
-                                                </div>
-                                                <div class="kt-separator kt-separator--space-lg kt-separator--fit kt-separator--border-solid"></div>
-                                                <div class="kt-form__actions">
-                                                    <div class="row">
-                                                        <div class="col-xl-3"></div>
-                                                        <div class="col-lg-9 col-xl-6">
-                                                            <button type="submit" class="btn btn-label-brand btn-bold">
-                                                                Save Changes
-                                                            </button>
-                                                            <a href="javascript:void (0)"
-                                                               data-link="{{route('cancel')}}"
-                                                               class="cancel btn btn-label-danger btn-bold float-right">Reset</a>
-                                                        </div>
+                                                        <button type="submit" class="btn btn-label-brand btn-bold">
+                                                            Save Changes
+                                                        </button>
+                                                        <a href="javascript:void (0)"
+                                                           data-link="{{route('cancel')}}"
+                                                           class="cancel btn btn-label-danger btn-bold float-right">Reset</a>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </form>
-                                        {{--Form End--}}
-                                    @else
-                                        <p class="text-danger">First create machine then create spare-part.</p>
-                                    @endif
+                                        </div>
+                                    </form>
+                                    {{--Form End--}}
+                                    {{--                                    @else--}}
+                                    {{--                                        <p class="text-danger">First create machine then create spare-part.</p>--}}
+                                    {{--                                    @endif--}}
                                 </div>
                             </div>
                         </div>
