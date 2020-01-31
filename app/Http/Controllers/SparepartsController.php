@@ -27,7 +27,7 @@ class SparepartsController extends Controller
         }
     }
 
-        public function create()
+    public function create()
     {
         if (Auth::user()->can('spare_parts')) {
 //            $machines = DB::select(DB::raw('SELECT tag FROM machines GROUP BY tag'));
@@ -35,7 +35,7 @@ class SparepartsController extends Controller
             $datalist['model'] = DB::select(DB::raw('SELECT model FROM spareparts GROUP BY model'));
             $datalist['type'] = DB::select(DB::raw('SELECT type FROM spareparts GROUP BY type'));
             $datalist['unit'] = DB::select(DB::raw('SELECT unit FROM spareparts GROUP BY unit'));
-           return view('spareParts.create', compact('datalist'));
+            return view('spareParts.create', compact('datalist'));
         } else {
             abort(403);
         }
@@ -53,13 +53,13 @@ class SparepartsController extends Controller
                 'identityNumber' => 'required|unique:spareparts,identity_number',
                 'codeNumber' => 'required',
                 'minimumStorage' => 'required|min:0',
-                'unit' => 'required|min:0',
+                'unit' => 'required',
             ]);
             $s = new Spareparts;
             $s->manufacturer = $request->manufacturerName;
             $s->model = $request->model;
             $s->type = $request->type;
-            $s->description = $request->manufacturerName.'_'.$request->model.'_'.$request->type;
+            $s->description = $request->manufacturerName . '_' . $request->model . '_' . $request->type;
             $s->part_number = $request->partNumber;
             $s->identity_number = $request->identityNumber;
             $s->code_number = $request->codeNumber;
@@ -74,23 +74,71 @@ class SparepartsController extends Controller
     }
 
 
+    public function destroy($spid)
+    {
+        if (Auth::user()->can('spare_parts')) {
+            Spareparts::find($spid)->delete();
+            // also check if the relation with machine is deleted or not
+            Session::flash('Success', "The Spare Part has been deleted successfully.");
+            return redirect()->back();
+        } else {
+            abort(403);
+        }
+    }
 
 
-//
-//
-//    public function edit($spid)
-//    {
-//        if (Auth::user()->can('spare_parts')) {
-//            $spedit = Spareparts::find($spid);
-//            $datalist['countryOfOrigin'] = DB::select(DB::raw('SELECT country_origin FROM spareparts GROUP BY country_origin'));
-//            $datalist['countryOfPurchase'] = DB::select(DB::raw('SELECT country_purchase FROM spareparts GROUP BY country_purchase'));
-//            $datalist['manufacturer'] = DB::select(DB::raw('SELECT manufacturer FROM spareparts GROUP BY manufacturer'));
-//            $datalist['currency'] = DB::select(DB::raw('SELECT currency FROM spareparts GROUP BY currency'));
-//            return view('spareParts.edit', compact('spedit', 'datalist'));
-//        } else {
-//            abort(403);
-//        }
-//    }
+    public function edit($spid)
+    {
+        if (Auth::user()->can('spare_parts')) {
+            $spedit = Spareparts::find($spid);
+            $datalist['manufacturer'] = DB::select(DB::raw('SELECT manufacturer FROM spareparts GROUP BY manufacturer'));
+            $datalist['model'] = DB::select(DB::raw('SELECT model FROM spareparts GROUP BY model'));
+            $datalist['type'] = DB::select(DB::raw('SELECT type FROM spareparts GROUP BY type'));
+            $datalist['unit'] = DB::select(DB::raw('SELECT unit FROM spareparts GROUP BY unit'));
+            return view('spareParts.edit', compact('spedit', 'datalist'));
+        } else {
+            abort(403);
+        }
+    }
+
+
+    public function update(Request $request, $spid)
+    {
+        if (Auth::user()->can('spare_parts')) {
+            $request->validate([
+                'manufacturerName' => 'required',
+                'model' => 'required',
+                'type' => 'required',
+                'partNumber' => 'required',
+                'identityNumber' => 'required',
+                'codeNumber' => 'required',
+                'minimumStorage' => 'required|min:0',
+                'unit' => 'required',
+            ]);
+            $s = Spareparts::find($spid);
+            if ($s->identity_number != $request->identityNumber) {
+                $request->validate([
+                    'identityNumber' => 'unique:spareparts,identity_number',
+                ]);
+            }
+            $s->manufacturer = $request->manufacturerName;
+            $s->model = $request->model;
+            $s->type = $request->type;
+            $s->description = $request->manufacturerName . '_' . $request->model . '_' . $request->type;
+            $s->part_number = $request->partNumber;
+            $s->identity_number = $request->identityNumber;
+            $s->code_number = $request->codeNumber;
+            $s->minimum_storage = $request->minimumStorage;
+            $s->unit = $request->unit;
+            $s->update();
+            Session::flash('Success', "The Spare Parts has been updated successfully.");
+            return redirect()->back();
+        } else {
+            abort(403);
+        }
+    }
+
+
 //
 //
 //    public function update(Request $request, $spid)
@@ -165,17 +213,21 @@ class SparepartsController extends Controller
 //    }
 //
 //
-//    public function destroy($spid)
+//
+//
+//    public function edit($spid)
 //    {
 //        if (Auth::user()->can('spare_parts')) {
-//            Spareparts::find($spid)->delete();
-//            Session::flash('Success', "The Spare Part has been deleted successfully.");
-//            return redirect()->back();
+//            $spedit = Spareparts::find($spid);
+//            $datalist['countryOfOrigin'] = DB::select(DB::raw('SELECT country_origin FROM spareparts GROUP BY country_origin'));
+//            $datalist['countryOfPurchase'] = DB::select(DB::raw('SELECT country_purchase FROM spareparts GROUP BY country_purchase'));
+//            $datalist['manufacturer'] = DB::select(DB::raw('SELECT manufacturer FROM spareparts GROUP BY manufacturer'));
+//            $datalist['currency'] = DB::select(DB::raw('SELECT currency FROM spareparts GROUP BY currency'));
+//            return view('spareParts.edit', compact('spedit', 'datalist'));
 //        } else {
 //            abort(403);
 //        }
 //    }
-
 
 //    public function list()
 //    {
@@ -269,4 +321,14 @@ class SparepartsController extends Controller
 //        }
 //    }
 //
+//    public function destroy($spid)
+//    {
+//        if (Auth::user()->can('spare_parts')) {
+//            Spareparts::find($spid)->delete();
+//            Session::flash('Success', "The Spare Part has been deleted successfully.");
+//            return redirect()->back();
+//        } else {
+//            abort(403);
+//        }
+//    }
 }
