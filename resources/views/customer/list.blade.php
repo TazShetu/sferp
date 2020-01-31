@@ -88,7 +88,7 @@
                     <tbody>
                     @foreach($customers as $i => $customer)
                         <tr>
-                            <th scope="row">{{$i + 1}}</th>
+                            <th scope="row">{{$customers->firstItem() + $i}}</th>
                             <td>
                                 <div class="kt-user-card-v2">
                                     <div class="kt-user-card-v2__pic">
@@ -150,28 +150,6 @@
                     </div>
                 </div>
             </div>
-        </div>
-
-
-        <div class="kt-section">
-            <p class="kt-section__desc">Basic pagination example:</p>
-            <p class="kt-section__content">
-
-                <!--begin: Pagination-->
-            </p>
-            <div class="kt-pagination  kt-pagination--brand">
-                <ul class="kt-pagination__links">
-
-                </ul>
-                <div class="kt-pagination__toolbar">
-                        <span class="pagination__desc">
-															Displaying 10 of 230 records
-														</span>
-                </div>
-            </div>
-
-            <!--end: Pagination-->
-            <p></p>
         </div>
 
 

@@ -11,9 +11,10 @@ class CreateMachinesTable extends Migration
         Schema::create('machines', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('identification_code')->unique();
-            $table->integer('machinecategory_id');
+            $table->string('category');
             $table->string('factory_id');
             $table->string('manufacturer');
+            $table->string('tag');
             $table->string('manufacture_year');
             $table->string('manufacture_country');
             $table->string('type');

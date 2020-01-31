@@ -100,7 +100,7 @@
                                 {{--                                </td>--}}
                                 <td class="kt-datatable__cell">
                                 <span style="width: 18px;">
-                                    {{$i + 1}}
+                                    {{$permissions->firstItem() + $i}}
                                 </span>
                                 </td>
                                 <td class="kt-datatable__cell">

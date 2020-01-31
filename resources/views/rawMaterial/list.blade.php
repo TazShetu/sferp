@@ -82,7 +82,7 @@
                     <tbody>
                     @foreach($rawMaterials as $i => $m)
                         <tr>
-                            <th scope="row">{{$i + 1}}</th>
+                            <th scope="row">{{$rawMaterials->firstItem() + $i}}</th>
                             <td><a href="{{route('rawMaterial.edit', ['rmid' => $m->id])}}">{{$m->auto_id}}</a>
                             </td>
                             <td>{{$m->country_origin}}</td>

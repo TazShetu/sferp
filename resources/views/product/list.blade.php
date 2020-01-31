@@ -75,8 +75,6 @@
                         <th scope="col">#</th>
                         <th scope="col">Name</th>
                         <th scope="col">Type</th>
-                        <th scope="col">PLYS</th>
-                        <th scope="col">Depth</th>
                         <th scope="col">Minimum Storage Amount</th>
                         <th scope="col">Action</th>
                     </tr>
@@ -84,12 +82,10 @@
                     <tbody>
                     @foreach($products as $i => $m)
                         <tr>
-                            <th scope="row">{{$i + 1}}</th>
+                            <th scope="row">{{$products->firstItem() + $i}}</th>
                             <td><a href="{{route('product.edit', ['pid' => $m->id])}}">{{$m->name}}</a>
                             </td>
                             <td>{{$m->type}}</td>
-                            <td>{{$m->plys}}</td>
-                            <td>{{$m->depth}}</td>
                             <td>{{$m->minimum_storage}}</td>
                             <td>
                                 <a href="{{route('product.edit', ['pid' => $m->id])}}" title="Edit"
