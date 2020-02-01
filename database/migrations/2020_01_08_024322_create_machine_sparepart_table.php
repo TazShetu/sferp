@@ -9,10 +9,10 @@ class CreateMachineSparepartTable extends Migration
 
     public function up()
     {
-        Schema::create('machine_sparepart', function (Blueprint $table) {
+        Schema::create('machine_spareparts', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('machine_id');
-            $table->integer('sparepart_id');
+            $table->integer('spareparts_id');
             $table->timestamps();
         });
     }
@@ -20,6 +20,6 @@ class CreateMachineSparepartTable extends Migration
 
     public function down()
     {
-        Schema::dropIfExists('machine_sparepart');
+        Schema::dropIfExists('machine_spareparts');
     }
 }

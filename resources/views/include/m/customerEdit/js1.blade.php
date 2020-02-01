@@ -102,6 +102,7 @@
             $('#repeat-content-subdealer').append(this);
             $(this).slideDown(500);
         });
+        $('.kt-selectpicker').selectpicker();
     });
 </script>
 <script>
@@ -141,5 +142,6 @@
             $('#repeat-content-individual').append(this);
             $(this).slideDown(500);
         });
+        $('.kt-selectpicker').selectpicker();
     });
 </script>

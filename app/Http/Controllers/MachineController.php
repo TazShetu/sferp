@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Factory;
 use App\Machine;
 use App\Machinecategory;
+use App\Spareparts;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -136,12 +137,17 @@ class MachineController extends Controller
     {
         if (Auth::user()->can('machine')) {
             $medit = Machine::find($mid);
+            $spareParts = $medit->spareparts()->get();
+            $allSpareParts = Spareparts::all();
+//            foreach ($allSpareParts as $asp){
+//                dd($asp->description);
+//            }
             $medit['factoryName'] = Factory::find($medit->factory_id)->name;
             $factories = Factory::all();
             $datalist['category'] = DB::select(DB::raw('SELECT category FROM machines GROUP BY category'));
             $datalist['manufacturer'] = DB::select(DB::raw('SELECT manufacturer FROM machines GROUP BY manufacturer'));
             $datalist['type'] = DB::select(DB::raw('SELECT type FROM machines GROUP BY type'));
-            return view('machine.edit', compact('medit', 'factories', 'datalist'));
+            return view('machine.edit', compact('medit', 'spareParts', 'allSpareParts', 'factories', 'datalist'));
         } else {
             abort(403);
         }
@@ -242,6 +248,24 @@ class MachineController extends Controller
         if (Auth::user()->can('machine')) {
             Machine::find($mid)->delete();
             Session::flash('Success', "The Machine has been deleted successfully.");
+            return redirect()->back();
+        } else {
+            abort(403);
+        }
+    }
+
+
+    public function updateMachineSparePart(Request $request, $mid)
+    {
+        if (Auth::user()->can('machine')) {
+            $machine = Machine::find($mid);
+            if ($request->filled('sparePart')){
+                $spareparts = array_unique($request->sparePart);
+                $machine->spareparts()->sync($spareparts);
+            } else {
+                $machine->spareparts()->detach();
+            }
+            Session::flash('Success', "The Machine has been successfully updated with spare parts.");
             return redirect()->back();
         } else {
             abort(403);
