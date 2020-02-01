@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Product;
+use App\Rawmaterial;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -104,10 +105,12 @@ class ProductController extends Controller
     {
         if (Auth::user()->can('product')) {
             $pedit = Product::find($pid);
+            $rawMaterial = $pedit->rawMaterials()->get();
+            $allRawMaterials = Rawmaterial::all();
             $datalist['name'] = DB::select(DB::raw('SELECT name FROM products GROUP BY name'));
             $datalist['type'] = DB::select(DB::raw('SELECT type FROM products GROUP BY type'));
             $datalist['unit'] = DB::select(DB::raw('SELECT unit FROM products GROUP BY unit'));
-            return view('product.edit', compact('datalist', 'pedit'));
+            return view('product.edit', compact('datalist', 'pedit', 'rawMaterial', 'allRawMaterials'));
         } else {
             abort(403);
         }
@@ -193,4 +196,24 @@ class ProductController extends Controller
             abort(403);
         }
     }
+
+
+    public function updateProductRawmaterial(Request $request, $pid)
+    {
+        if (Auth::user()->can('product')) {
+            $product = Product::find($pid);
+            if ($request->filled('rawMaterial')){
+                $rawMaterials = array_unique($request->rawMaterial);
+                $product->rawMaterials()->sync($rawMaterials);
+            } else {
+                $product->rawMaterials()->detach();
+            }
+            Session::flash('Success', "The Product has been successfully updated with raw material.");
+            return redirect()->back();
+        } else {
+            abort(403);
+        }
+    }
+
+
 }

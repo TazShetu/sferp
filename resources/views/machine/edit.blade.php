@@ -575,7 +575,9 @@
                 $(this).slideDown(500);
             });
             {{--$.getScript("{{asset('m/assets/js/pages/crud/forms/widgets/bootstrap-select.js')}}");--}}
-            $('.kt-selectpicker').selectpicker();
+            setTimeout(() => {
+                $('.kt-selectpicker').selectpicker();
+            }, 50);
         });
     </script>
 

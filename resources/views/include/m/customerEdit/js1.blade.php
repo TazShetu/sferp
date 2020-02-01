@@ -102,7 +102,9 @@
             $('#repeat-content-subdealer').append(this);
             $(this).slideDown(500);
         });
-        $('.kt-selectpicker').selectpicker();
+        setTimeout(() => {
+            $('.kt-selectpicker').selectpicker();
+        }, 50);
     });
 </script>
 <script>
@@ -142,6 +144,8 @@
             $('#repeat-content-individual').append(this);
             $(this).slideDown(500);
         });
-        $('.kt-selectpicker').selectpicker();
+        setTimeout(() => {
+            $('.kt-selectpicker').selectpicker();
+        }, 50);
     });
 </script>

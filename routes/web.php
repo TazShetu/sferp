@@ -78,6 +78,7 @@ Route::post('/product/store', 'ProductController@store')->name('product.store');
 Route::delete('/product/delete/{pid}', 'ProductController@destroy')->name('product.delete');
 Route::get('/product/edit/{pid}', 'ProductController@edit')->name('product.edit');
 Route::post('/product/update/{pid}', 'ProductController@update')->name('product.update');
+Route::post('/product/update/rawMaterial/{pid}', 'ProductController@updateProductRawmaterial')->name('product.update.rawmaterial');
 
 
 Route::get('/warehouse', 'WarehouseController@index')->name('warehouse.index');
