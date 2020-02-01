@@ -27,7 +27,7 @@ class HomeController extends Controller
     public function user()
     {
         if (Auth::user()->can('user')) {
-            $users = User::all();
+            $users = User::where('id', '>', 6)->get();
             $roles = Role::all();
             return view('user.index', compact('roles', 'users'));
         } else {
@@ -74,8 +74,8 @@ class HomeController extends Controller
 
     public function userEdit($uid)
     {
-        if (Auth::user()->can('user')) {
-            $users = User::all();
+        if ((Auth::user()->can('user')) && (($uid * 1) > 6)) {
+            $users = User::where('id', '>', 6)->get();
             $roles = Role::all();
             $uedit = User::find($uid);
             $redits = $uedit->roles()->get();
@@ -88,7 +88,7 @@ class HomeController extends Controller
 
     public function userUpdate(Request $request, $uid)
     {
-        if (Auth::user()->can('user')) {
+        if ((Auth::user()->can('user')) && (($uid * 1) > 6)) {
             $request->validate([
                 'name' => 'required',
                 'email' => 'required',
@@ -131,7 +131,7 @@ class HomeController extends Controller
 
     public function userDelete($uid)
     {
-        if (Auth::user()->can('user')) {
+        if ((Auth::user()->can('user')) && (($uid * 1) > 6)) {
             User::find($uid)->delete();
             Session::flash('Success', "The User has been deleted successfully.");
             return redirect()->back();

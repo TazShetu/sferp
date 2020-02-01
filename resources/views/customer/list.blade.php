@@ -1,11 +1,7 @@
 @extends('layouts.m')
 @section('title', 'Customer List')
-{{--@section('style')--}}
-{{--    <style>--}}
-{{--        /*.kt-user-card-v2 .kt-user-card-v2__details {*/--}}
-{{--        /*    line-height: 0;*/--}}
-{{--        /*}*/--}}
-{{--    </style>--}}
+{{--@section('link')--}}
+
 {{--@endsection--}}
 @section('content_head')
     <div class="kt-subheader   kt-grid__item" id="kt_subheader">
@@ -76,7 +72,7 @@
             <div class="kt-portlet__body">
                 <!--begin: Datatable -->
                 {{--Bootstrap Table--}}
-                <table class="table table-hover">
+                <table class="table table-hover" id="dataTable">
                     <thead>
                     <tr>
                         <th scope="col">#</th>
@@ -92,7 +88,7 @@
                     <tbody>
                     @foreach($customers as $i => $customer)
                         <tr>
-                            <th scope="row">{{$i + 1}}</th>
+                            <th scope="row">{{$customers->firstItem() + $i}}</th>
                             <td>
                                 <div class="kt-user-card-v2">
                                     <div class="kt-user-card-v2__pic">
@@ -119,31 +115,38 @@
                             <td>{{$customer->business_telephone}}</td>
                             <td>{{$customer->business_email}}</td>
                             <td>
-{{--                                @permission('customer_edit')--}}
+                                {{--                                @permission('customer_edit')--}}
                                 <a href="{{route('customer.edit', ['cid' => $customer->id])}}" title="Edit"
                                    class="btn btn-sm btn-clean btn-icon btn-icon-md">
                                     <i class="la la-edit"></i>
                                 </a>
-{{--                                @endpermission--}}
-{{--                                @permission('customer_delete')--}}
-                                <a href="{{route('customer.delete', ['cid' => $customer->id])}}" title="Delete"
-                                   class="btn btn-sm btn-clean btn-icon btn-icon-md"
-                                   onclick="return confirm('Are you sure you want to delete the customer ?')">
-                                    <i class="la la-trash" style="color: #fd397a;"></i>
-                                </a>
-{{--                                @endpermission--}}
+                                {{--                                @endpermission--}}
+                                {{--                                @permission('customer_delete')--}}
+                                <form action="{{route('customer.delete', ['cid' => $customer->id])}}" method="POST"
+                                      style="display: inline-table;">
+                                    @method('DELETE')
+                                    @csrf
+                                    <button type="submit" class="btn btn-sm btn-clean btn-icon btn-icon-md"
+                                            onclick="return confirm('Are you sure you want to delete the customer ?')">
+                                        <i class="la la-trash" style="color: #fd397a;"></i>
+                                    </button>
+                                </form>
+
+                                {{--                                @endpermission--}}
                             </td>
                         </tr>
                     @endforeach
                     </tbody>
                 </table>
-                <!--end: Datatable -->
+                <!--end: table -->
 
                 {{--Pagination--}}
-                <div class="kt-datatable__pager kt-datatable--paging-loaded">
-                    {{$customers->links()}}
-                    <div class="kt-datatable__pager-info">
-                        <span class="kt-datatable__pager-detail">Showing {{$customers->firstItem()}} - {{$customers->lastItem()}} of {{$customers->total()}}</span>
+                <div class="kt-section">
+                    <div class="kt-pagination  kt-pagination--brand">
+                        {{$customers->links()}}
+                        <div class="kt-datatable__pager-info">
+                            <span class="kt-datatable__pager-detail">Showing {{$customers->firstItem()}} - {{$customers->lastItem()}} of {{$customers->total()}}</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -168,4 +171,15 @@
     <!--begin::Page Scripts(used by this page) -->
 
     <!--end::Page Scripts -->
+    {{--    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" type="text/javascript"></script>--}}
+    {{--    <script>--}}
+    {{--        $(document).ready(function() {--}}
+    {{--            $('#dataTable').DataTable({--}}
+    {{--                // "paging":   false,--}}
+    {{--                "ordering": false,--}}
+    {{--                "info":     false--}}
+    {{--            } );--}}
+    {{--        } );--}}
+    {{--    </script>--}}
+
 @endsection

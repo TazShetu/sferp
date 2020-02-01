@@ -85,11 +85,16 @@
                                    class="btn btn-sm btn-clean btn-icon btn-icon-md">
                                     <i class="la la-edit"></i>
                                 </a>
-                                <a href="{{route('factory.delete', ['fid' => $factory->id])}}" title="Delete"
-                                   class="btn btn-sm btn-clean btn-icon btn-icon-md"
-                                   onclick="return confirm('Are you sure you want to delete the factory ?')">
-                                    <i class="la la-trash" style="color: #fd397a;"></i>
-                                </a>
+                                <form action="{{route('factory.delete', ['fid' => $factory->id])}}" method="POST"
+                                      style="display: inline-table;">
+                                    @method('DELETE')
+                                    @csrf
+                                    <button type="submit" class="btn btn-sm btn-clean btn-icon btn-icon-md"
+                                            onclick="return confirm('Are you sure you want to delete the factory ?')">
+                                        <i class="la la-trash" style="color: #fd397a;"></i>
+                                    </button>
+                                </form>
+
                             </td>
                         </tr>
                     @endforeach

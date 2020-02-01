@@ -100,7 +100,7 @@
                                 {{--                                </td>--}}
                                 <td class="kt-datatable__cell">
                                 <span style="width: 18px;">
-                                    {{$i + 1}}
+                                    {{$permissions->firstItem() + $i}}
                                 </span>
                                 </td>
                                 <td class="kt-datatable__cell">
@@ -127,12 +127,16 @@
                         @endforeach
                         </tbody>
                     </table>
-                    <div class="kt-datatable__pager kt-datatable--paging-loaded">
-                        {{$permissions->links()}}
-                        <div class="kt-datatable__pager-info">
-                            <span class="kt-datatable__pager-detail">Showing {{$permissions->firstItem()}} - {{$permissions->lastItem()}} of {{$permissions->total()}}</span>
+                    <hr>
+                    <div class="kt-section">
+                        <div class="kt-pagination  kt-pagination--brand">
+                            {{$permissions->links()}}
+                            <div class="kt-datatable__pager-info">
+                                <span class="kt-datatable__pager-detail">Showing {{$permissions->firstItem()}} - {{$permissions->lastItem()}} of {{$permissions->total()}}</span>
+                            </div>
                         </div>
                     </div>
+
                 </div>
                 <!--end: Datatable -->
             </div>

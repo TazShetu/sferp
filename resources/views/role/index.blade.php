@@ -108,7 +108,7 @@
                                                                 </button>
                                                                 <a href="javascript:void (0)"
                                                                    data-link="{{route('cancel')}}"
-                                                                   class="cancel btn btn-label-danger btn-bold float-right">Cancel</a>
+                                                                   class="cancel btn btn-label-danger btn-bold float-right">Reset</a>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -159,11 +159,15 @@
                                                class="btn btn-sm btn-clean btn-icon btn-icon-md">
                                                 <i class="la la-edit"></i>
                                             </a>
-                                            <a href="{{route('role.delete', ['rid' => $role->id])}}" title="Delete"
-                                               class="btn btn-sm btn-clean btn-icon btn-icon-md"
-                                               onclick="return confirm('Are you sure you want to delete the Role ?')">
-                                                <i class="la la-trash" style="color: #fd397a;"></i>
-                                            </a>
+                                            <form action="{{route('role.delete', ['rid' => $role->id])}}" method="POST"
+                                                  style="display: inline-table;">
+                                                @method('DELETE')
+                                                @csrf
+                                                <button type="submit" class="btn btn-sm btn-clean btn-icon btn-icon-md"
+                                                        onclick="return confirm('Are you sure you want to delete the Role ?')">
+                                                    <i class="la la-trash" style="color: #fd397a;"></i>
+                                                </button>
+                                            </form>
                                         </td>
                                     </tr>
                                 @endif

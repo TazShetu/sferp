@@ -32,66 +32,61 @@
             <div class="alert alert-warning text-center">
                 {{session('unsuccess')}}
             </div>
+        @elseif(count($errors) > 0)
+            <div class="alert alert-danger text-center">
+                Error in input fields. Please Check
+            </div>
         @endif
         <div class="kt-portlet kt-portlet--tabs">
-            <div class="kt-portlet__head">
-                <div class="kt-portlet__head-toolbar">
-                    <ul class="nav nav-tabs nav-tabs-space-xl nav-tabs-line nav-tabs-bold nav-tabs-line-3x nav-tabs-line-brand"
-                        role="tablist">
-                        <li class="nav-item">
-                            <a class="nav-link {{ (session()->has('mcid')) ? (((session('mcid') * 1) == 1) ? "active" : "") : "active" }}"
-                               data-toggle="tab"
-                               href="#kt_user_edit_tab_1"
-                               role="tab">
-                                <i class="flaticon-cogwheel"></i>
-                                Fishing Net Machine
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link {{ ((session('mcid') * 1) == 2) ? "active" : "" }}" data-toggle="tab"
-                               href="#kt_user_edit_tab_2" role="tab">
-                                <i class="flaticon-cogwheel"></i>
-                                Rope Making Machine
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link {{ ((session('mcid') * 1) == 3) ? "active" : "" }}" data-toggle="tab"
-                               href="#kt_user_edit_tab_3" role="tab">
-                                <i class="flaticon-cogwheel"></i>
-                                Twisting Machine
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link  {{ ((session('mcid') * 1) == 4) ? "active" : "" }}" data-toggle="tab"
-                               href="#kt_user_edit_tab_4" role="tab">
-                                <i class="flaticon-cogwheel"></i>
-                                Extruder Machine
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
             <div class="kt-portlet__body">
                 <div class="tab-content">
-                    <div id="kt_user_edit_tab_1"
-                         class="tab-pane {{ (session()->has('mcid')) ? (((session('mcid') * 1) == 1) ? "active" : "") : "active" }}">
+                    <div id="kt_user_edit_tab_1" class="tab-pane active">
                         <div class="kt-form kt-form--label-right">
                             <div class="kt-form__body">
                                 <div class="kt-section kt-section--first">
                                     {{--      Form Start    --}}
-                                    <form action="{{route('machine.store', ['mcid' => $machineCategories[0]->id])}}" method="post">
+                                    <form action="{{route('machine.store')}}" method="post">
                                         @csrf
                                         <div class="kt-section__body">
                                             <div class="form-group row">
                                                 <label class="col-xl-3 col-lg-3 col-form-label">
-                                                    Manufacturer Name
-                                                    {{--    Auto Fill  use datalist       --}}
+                                                    Category
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">
-                                                    <input class="form-control {{($errors->has('manufacturerName') && ((session('mcid') * 1) == 1)) ? 'is-invalid' : ''}}"
+                                                    <input class="form-control {{($errors->has('category')) ? 'is-invalid' : ''}}"
+                                                           type="text" name="category" required
+                                                           value="{{old('category')}}" list="category">
+                                                    @if($errors->has('category'))
+                                                        <span class="invalid-feedback">{{$errors->first('category')}}</span>
+                                                    @endif
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-xl-3 col-lg-3 col-form-label">
+                                                    Select Factory
+                                                </label>
+                                                <div class="col-lg-9 col-xl-6">
+                                                    <select class="form-control {{($errors->has('factory')) ? 'is-invalid' : ''}}"
+                                                            name="factory" required>
+                                                        <option selected disabled hidden value="">Choose...</option>
+                                                        @foreach($factories as $f)
+                                                            <option value="{{$f->id}}">{{$f->name}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                    @if($errors->has('factory'))
+                                                        <span class="invalid-feedback">{{$errors->first('factory')}}</span>
+                                                    @endif
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-xl-3 col-lg-3 col-form-label">
+                                                    Manufacturer Name
+                                                </label>
+                                                <div class="col-lg-9 col-xl-6">
+                                                    <input class="form-control {{($errors->has('manufacturerName')) ? 'is-invalid' : ''}}"
                                                            type="text" name="manufacturerName" required
-                                                           value="{{((session('mcid') * 1) == 1) ? (old('manufacturerName')) : "" }}">
-                                                    @if($errors->has('manufacturerName') && ((session('mcid') * 1) == 1))
+                                                           value="{{old('manufacturerName')}}" list="manufacturer">
+                                                    @if($errors->has('manufacturerName'))
                                                         <span class="invalid-feedback">{{$errors->first('manufacturerName')}}</span>
                                                     @endif
                                                 </div>
@@ -99,13 +94,12 @@
                                             <div class="form-group row">
                                                 <label class="col-xl-3 col-lg-3 col-form-label">
                                                     Type / Model Number
-                                                    {{--    Auto Fill  use datalist       --}}
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">
-                                                    <input class="form-control {{($errors->has('typeOrModelNumber') && ((session('mcid') * 1) == 1)) ? 'is-invalid' : ''}}"
+                                                    <input class="form-control {{($errors->has('typeOrModelNumber')) ? 'is-invalid' : ''}}"
                                                            type="text" name="typeOrModelNumber" required
-                                                           value="{{((session('mcid') * 1) == 1) ? (old('typeOrModelNumber')) : "" }}">
-                                                    @if($errors->has('typeOrModelNumber') && ((session('mcid') * 1) == 1))
+                                                           value="{{old('typeOrModelNumber')}}" list="type">
+                                                    @if($errors->has('typeOrModelNumber'))
                                                         <span class="invalid-feedback">{{$errors->first('typeOrModelNumber')}}</span>
                                                     @endif
                                                 </div>
@@ -115,10 +109,10 @@
                                                     Serial Number
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">
-                                                    <input class="form-control {{($errors->has('serialNumber') && ((session('mcid') * 1) == 1)) ? 'is-invalid' : ''}}"
+                                                    <input class="form-control {{($errors->has('serialNumber')) ? 'is-invalid' : ''}}"
                                                            type="text" name="serialNumber" required
-                                                           value="{{((session('mcid') * 1) == 1) ? (old('serialNumber')) : "" }}">
-                                                    @if($errors->has('serialNumber') && ((session('mcid') * 1) == 1))
+                                                           value="{{old('serialNumber')}}">
+                                                    @if($errors->has('serialNumber'))
                                                         <span class="invalid-feedback">{{$errors->first('serialNumber')}}</span>
                                                     @endif
                                                     <span class="form-text text-muted">It has to be unique*</span>
@@ -128,11 +122,11 @@
                                                 <label class="col-xl-3 col-lg-3 col-form-label"> Manufacturer
                                                     Year</label>
                                                 <div class="col-lg-9 col-xl-6">
-                                                    <input class="form-control datepickerYear {{($errors->has('manufacturerYear') && ((session('mcid') * 1) == 1)) ? 'is-invalid' : ''}}"
+                                                    <input class="form-control datepickerYear {{($errors->has('manufacturerYear')) ? 'is-invalid' : ''}}"
                                                            type="text" name="manufacturerYear" required
                                                            {{--                                                           id="datepickerYear"--}}
-                                                           value="{{((session('mcid') * 1) == 1) ? (old('manufacturerYear')) : "" }}">
-                                                    @if($errors->has('manufacturerYear') && ((session('mcid') * 1) == 1))
+                                                           value="{{old('manufacturerYear')}}">
+                                                    @if($errors->has('manufacturerYear'))
                                                         <span class="invalid-feedback">{{$errors->first('manufacturerYear')}}</span>
                                                     @endif
                                                 </div>
@@ -142,10 +136,10 @@
                                                     Country Of Origin
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">
-                                                    <input class="form-control {{($errors->has('countryOfOrigin') && ((session('mcid') * 1) == 1)) ? 'is-invalid' : ''}}"
+                                                    <input class="form-control {{($errors->has('countryOfOrigin')) ? 'is-invalid' : ''}}"
                                                            type="text" name="countryOfOrigin" required
-                                                           value="{{((session('mcid') * 1) == 1) ? (old('countryOfOrigin')) : "" }}">
-                                                    @if($errors->has('countryOfOrigin') && ((session('mcid') * 1) == 1))
+                                                           value="{{old('countryOfOrigin')}}">
+                                                    @if($errors->has('countryOfOrigin'))
                                                         <span class="invalid-feedback">{{$errors->first('countryOfOrigin')}}</span>
                                                     @endif
                                                 </div>
@@ -155,15 +149,15 @@
                                                     S/K or D/K
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">
-                                                    <select class="form-control {{($errors->has('skOrDk') && ((session('mcid') * 1) == 1)) ? 'is-invalid' : ''}}"
-                                                            name="skOrDk" required>
+                                                    <select class="form-control {{($errors->has('skOrDk')) ? 'is-invalid' : ''}}"
+                                                            name="skOrDk">
                                                         <option selected disabled hidden value="">Choose...</option>
                                                         <option value="S/K">S/K</option>
                                                         <option value="D/K">D/K</option>
                                                     </select>
-                                                    @if($errors->has('skOrDk') && ((session('mcid') * 1) == 1))
-                                                        <span class="invalid-feedback">{{$errors->first('skOrDk')}}</span>
-                                                    @endif
+                                                    {{--                                                    @if($errors->has('skOrDk'))--}}
+                                                    {{--                                                        <span class="invalid-feedback">{{$errors->first('skOrDk')}}</span>--}}
+                                                    {{--                                                    @endif--}}
                                                 </div>
                                             </div>
                                             <div class="form-group row">
@@ -171,12 +165,12 @@
                                                     Pitch Size
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">
-                                                    <input class="form-control {{($errors->has('pitchSize') && ((session('mcid') * 1) == 1)) ? 'is-invalid' : ''}}"
-                                                           type="number" name="pitchSize" required
-                                                           value="{{((session('mcid') * 1) == 1) ? (old('pitchSize')) : "" }}">
-                                                    @if($errors->has('pitchSize') && ((session('mcid') * 1) == 1))
-                                                        <span class="invalid-feedback">{{$errors->first('pitchSize')}}</span>
-                                                    @endif
+                                                    <input class="form-control {{($errors->has('pitchSize')) ? 'is-invalid' : ''}}"
+                                                           type="number" name="pitchSize" value="{{old('pitchSize')}}"
+                                                           step="0.01" min="0">
+                                                    {{--                                                    @if($errors->has('pitchSize'))--}}
+                                                    {{--                                                        <span class="invalid-feedback">{{$errors->first('pitchSize')}}</span>--}}
+                                                    {{--                                                    @endif--}}
                                                     <span class="form-text text-muted">Write the number in mm</span>
                                                 </div>
                                             </div>
@@ -185,12 +179,12 @@
                                                     Spool Diameter
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">
-                                                    <input class="form-control {{($errors->has('spoolDiameter') && ((session('mcid') * 1) == 1)) ? 'is-invalid' : ''}}"
-                                                           type="number" name="spoolDiameter" required
-                                                           value="{{((session('mcid') * 1) == 1) ? (old('spoolDiameter')) : "" }}">
-                                                    @if($errors->has('spoolDiameter') && ((session('mcid') * 1) == 1))
-                                                        <span class="invalid-feedback">{{$errors->first('spoolDiameter')}}</span>
-                                                    @endif
+                                                    <input class="form-control {{($errors->has('spoolDiameter')) ? 'is-invalid' : ''}}"
+                                                           type="number" name="spoolDiameter" step="0.01" min="0"
+                                                           value="{{old('spoolDiameter')}}">
+                                                    {{--                                                    @if($errors->has('spoolDiameter'))--}}
+                                                    {{--                                                        <span class="invalid-feedback">{{$errors->first('spoolDiameter')}}</span>--}}
+                                                    {{--                                                    @endif--}}
                                                     <span class="form-text text-muted">Write the number in mm</span>
                                                 </div>
                                             </div>
@@ -199,29 +193,102 @@
                                                     Number Of Shuttles
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">
-                                                    <input class="form-control {{($errors->has('numberOfShuttles') && ((session('mcid') * 1) == 1)) ? 'is-invalid' : ''}}"
-                                                           type="number" name="numberOfShuttles" required
-                                                           value="{{((session('mcid') * 1) == 1) ? (old('numberOfShuttles')) : "" }}">
-                                                    @if($errors->has('numberOfShuttles') && ((session('mcid') * 1) == 1))
-                                                        <span class="invalid-feedback">{{$errors->first('numberOfShuttles')}}</span>
-                                                    @endif
+                                                    <input class="form-control {{($errors->has('numberOfShuttles')) ? 'is-invalid' : ''}}"
+                                                           type="number" name="numberOfShuttles" min="0"
+                                                           value="{{old('numberOfShuttles')}}">
+                                                    {{--                                                    @if($errors->has('numberOfShuttles'))--}}
+                                                    {{--                                                        <span class="invalid-feedback">{{$errors->first('numberOfShuttles')}}</span>--}}
+                                                    {{--                                                    @endif--}}
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-xl-3 col-lg-3 col-form-label">Rope Size</label>
+                                                <div class="col-lg-9 col-xl-6">
+                                                    <div class="input-daterange input-group">
+                                                        <input type="number"
+                                                               class="form-control {{($errors->has('ropeSizeStart')) ? 'is-invalid' : ''}}"
+                                                               name="ropeSizeStart" value="{{old('ropeSizeStart')}}"
+                                                               step="0.01" min="0">
+                                                        @if($errors->has('ropeSizeStart'))
+                                                            <span class="invalid-feedback">{{$errors->first('ropeSizeStart')}}</span>
+                                                        @endif
+                                                        <div class="input-group-append">
+                                                            <span class="input-group-text">to</span>
+                                                        </div>
+                                                        <input type="number"
+                                                               class="form-control {{($errors->has('ropeSizeEnd')) ? 'is-invalid' : ''}}"
+                                                               name="ropeSizeEnd" value="{{old('ropeSizeEnd')}}"
+                                                               step="0.01" min="0">
+                                                        @if($errors->has('ropeSizeEnd'))
+                                                            <span class="invalid-feedback">{{$errors->first('ropeSizeEnd')}}</span>
+                                                        @endif
+                                                    </div>
+                                                    <span class="form-text text-muted">Write the number in mm</span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-xl-3 col-lg-3 col-form-label">Size Range</label>
+                                                <div class="col-lg-9 col-xl-6">
+                                                    <div class="input-daterange input-group">
+                                                        <input type="number"
+                                                               class="form-control {{($errors->has('sizeRangeStart')) ? 'is-invalid' : ''}}"
+                                                               name="sizeRangeStart" value="{{old('sizeRangeStart')}}"
+                                                               step="0.01" min="0">
+                                                        @if($errors->has('sizeRangeStart'))
+                                                            <span class="invalid-feedback">{{$errors->first('sizeRangeStart')}}</span>
+                                                        @endif
+                                                        <div class="input-group-append">
+                                                            <span class="input-group-text">to</span>
+                                                        </div>
+                                                        <input type="number"
+                                                               class="form-control {{($errors->has('sizeRangeEnd')) ? 'is-invalid' : ''}}"
+                                                               name="sizeRangeEnd" value="{{old('sizeRangeEnd')}}"
+                                                               step="0.01" min="0">
+                                                        @if($errors->has('sizeRangeEnd'))
+                                                            <span class="invalid-feedback">{{$errors->first('sizeRangeEnd')}}</span>
+                                                        @endif
+                                                    </div>
+                                                    <span class="form-text text-muted">Write the number in mm</span>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <label class="col-xl-3 col-lg-3 col-form-label">
-                                                    Select Factory
+                                                    Screw Size
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">
-                                                    <select class="form-control {{($errors->has('factory') && ((session('mcid') * 1) == 1)) ? 'is-invalid' : ''}}"
-                                                            name="factory" required>
-                                                        <option selected disabled hidden value="">Choose...</option>
-                                                        @foreach($factories as $f)
-                                                            <option value="{{$f->id}}">{{$f->name}}</option>
-                                                        @endforeach
-                                                    </select>
-                                                    @if($errors->has('factory') && ((session('mcid') * 1) == 1))
-                                                        <span class="invalid-feedback">{{$errors->first('factory')}}</span>
-                                                    @endif
+                                                    <input class="form-control  {{($errors->has('screwSize')) ? 'is-invalid' : ''}}"
+                                                           type="number" name="screwSize" value="{{old('screwSize')}}"
+                                                           step="0.01" min="0">
+                                                    {{--                                                    @if($errors->has('screwSize'))--}}
+                                                    {{--                                                        <span class="invalid-feedback">{{$errors->first('screwSize')}}</span>--}}
+                                                    {{--                                                    @endif--}}
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-xl-3 col-lg-3 col-form-label">
+                                                    Production Capacity
+                                                </label>
+                                                <div class="col-lg-9 col-xl-6">
+                                                    <input class="form-control  {{($errors->has('productionCapacity')) ? 'is-invalid' : ''}}"
+                                                           type="number" name="productionCapacity" step="0.01" min="0"
+                                                           value="{{old('productionCapacity')}}">
+                                                    {{--                                                    @if($errors->has('productionCapacity'))--}}
+                                                    {{--                                                        <span class="invalid-feedback">{{$errors->first('productionCapacity')}}</span>--}}
+                                                    {{--                                                    @endif--}}
+                                                    <span class="form-text text-muted">Write the number in hgs/hr</span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-xl-3 col-lg-3 col-form-label">
+                                                    L / D Ratio
+                                                </label>
+                                                <div class="col-lg-9 col-xl-6">
+                                                    <input class="form-control  {{($errors->has('LDRatio')) ? 'is-invalid' : ''}}"
+                                                           type="number" name="LDRatio" step="0.01" min="0"
+                                                           value="{{old('LDRatio')}}">
+                                                    {{--                                                    @if($errors->has('productionCapacity'))--}}
+                                                    {{--                                                        <span class="invalid-feedback">{{$errors->first('productionCapacity')}}</span>--}}
+                                                    {{--                                                    @endif--}}
                                                 </div>
                                             </div>
                                             <div class="kt-separator kt-separator--space-lg kt-separator--fit kt-separator--border-solid"></div>
@@ -233,7 +300,7 @@
                                                             Save Changes
                                                         </button>
                                                         <a href="javascript:void (0)" data-link="{{route('cancel')}}"
-                                                           class="cancel btn btn-label-danger btn-bold float-right">Cancel</a>
+                                                           class="cancel btn btn-label-danger btn-bold float-right">Reset</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -244,403 +311,29 @@
                             </div>
                         </div>
                     </div>
-                    <div id="kt_user_edit_tab_2" class="tab-pane {{ ((session('mcid') * 1) == 2) ? "active" : "" }}">
-                        <div class="kt-form kt-form--label-right">
-                            <form action="{{route('machine.store', ['mcid' => $machineCategories[1]->id])}}"
-                                  method="post">
-                                @csrf
-                                <div class="kt-section__body">
-                                    <div class="form-group row">
-                                        <label class="col-xl-3 col-lg-3 col-form-label">
-                                            Manufacturer Name
-                                            {{--    Auto Fill  use datalist       --}}
-                                        </label>
-                                        <div class="col-lg-9 col-xl-6">
-                                            <input class="form-control {{($errors->has('manufacturerName') && ((session('mcid') * 1) == 2)) ? 'is-invalid' : ''}}"
-                                                   type="text" name="manufacturerName" required
-                                                   value="{{((session('mcid') * 1) == 2) ? (old('manufacturerName')) : "" }}">
-                                            @if($errors->has('manufacturerName') && ((session('mcid') * 1) == 2))
-                                                <span class="invalid-feedback">{{$errors->first('manufacturerName')}}</span>
-                                            @endif
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-xl-3 col-lg-3 col-form-label">
-                                            Type / Model Number
-                                            {{--    Auto Fill  use datalist       --}}
-                                        </label>
-                                        <div class="col-lg-9 col-xl-6">
-                                            <input class="form-control {{($errors->has('typeOrModelNumber') && ((session('mcid') * 1) == 2)) ? 'is-invalid' : ''}}"
-                                                   type="text" name="typeOrModelNumber" required
-                                                   value="{{((session('mcid') * 1) == 2) ? (old('typeOrModelNumber')) : "" }}">
-                                            @if($errors->has('typeOrModelNumber') && ((session('mcid') * 1) == 2))
-                                                <span class="invalid-feedback">{{$errors->first('typeOrModelNumber')}}</span>
-                                            @endif
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-xl-3 col-lg-3 col-form-label">
-                                            Serial Number
-                                        </label>
-                                        <div class="col-lg-9 col-xl-6">
-                                            <input class="form-control {{($errors->has('serialNumber') && ((session('mcid') * 1) == 2)) ? 'is-invalid' : ''}}"
-                                                   type="text" name="serialNumber" required
-                                                   value="{{((session('mcid') * 1) == 2) ? (old('serialNumber')) : "" }}">
-                                            @if($errors->has('serialNumber') && ((session('mcid') * 1) == 2))
-                                                <span class="invalid-feedback">{{$errors->first('serialNumber')}}</span>
-                                            @endif
-                                            <span class="form-text text-muted">It has to be unique*</span>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-xl-3 col-lg-3 col-form-label"> Manufacturer Year</label>
-                                        <div class="col-lg-9 col-xl-6">
-                                            <input class="form-control datepickerYear {{($errors->has('manufacturerYear') && ((session('mcid') * 1) == 2)) ? 'is-invalid' : ''}}"
-                                                   type="text" name="manufacturerYear" required id="datepickerYear"
-                                                   value="{{((session('mcid') * 1) == 2) ? (old('manufacturerYear')) : "" }}">
-                                            @if($errors->has('manufacturerYear') && ((session('mcid') * 1) == 2))
-                                                <span class="invalid-feedback">{{$errors->first('manufacturerYear')}}</span>
-                                            @endif
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-xl-3 col-lg-3 col-form-label">
-                                            Country Of Origin
-                                        </label>
-                                        <div class="col-lg-9 col-xl-6">
-                                            <input class="form-control {{($errors->has('countryOfOrigin') && ((session('mcid') * 1) == 1)) ? 'is-invalid' : ''}}"
-                                                   type="text" name="countryOfOrigin" required
-                                                   value="{{((session('mcid') * 1) == 2) ? (old('countryOfOrigin')) : "" }}">
-                                            @if($errors->has('countryOfOrigin') && ((session('mcid') * 1) == 1))
-                                                <span class="invalid-feedback">{{$errors->first('countryOfOrigin')}}</span>
-                                            @endif
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-xl-3 col-lg-3 col-form-label">Rope Size</label>
-                                        <div class="col-lg-9 col-xl-6">
-                                            <div class="input-daterange input-group">
-                                                <input type="number"
-                                                       class="form-control {{($errors->has('ropeSizeStart') && ((session('mcid') * 1) == 2)) ? 'is-invalid' : ''}}"
-                                                       name="ropeSizeStart" required
-                                                       value="{{((session('mcid') * 1) == 2) ? (old('ropeSizeStart')) : "" }}">
-                                                @if($errors->has('ropeSizeStart') && ((session('mcid') * 1) == 2))
-                                                    <span class="invalid-feedback">{{$errors->first('ropeSizeStart')}}</span>
-                                                @endif
-                                                <div class="input-group-append">
-                                                    <span class="input-group-text">to</span>
-                                                </div>
-                                                <input type="number"
-                                                       class="form-control {{($errors->has('ropeSizeEnd') && ((session('mcid') * 1) == 2)) ? 'is-invalid' : ''}}"
-                                                       name="ropeSizeEnd" required
-                                                       value="{{((session('mcid') * 1) == 2) ? (old('ropeSizeEnd')) : "" }}">
-                                                @if($errors->has('ropeSizeEnd') && ((session('mcid') * 1) == 2))
-                                                    <span class="invalid-feedback">{{$errors->first('ropeSizeEnd')}}</span>
-                                                @endif
-                                            </div>
-                                            <span class="form-text text-muted">Write the number in mm</span>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-xl-3 col-lg-3 col-form-label">
-                                            Select Factory
-                                        </label>
-                                        <div class="col-lg-9 col-xl-6">
-                                            <select class="form-control {{($errors->has('factory') && ((session('mcid') * 1) == 2)) ? 'is-invalid' : ''}}"
-                                                    name="factory" required>
-                                                <option selected disabled hidden value="">Choose...</option>
-                                                @foreach($factories as $f)
-                                                    <option value="{{$f->id}}">{{$f->name}}</option>
-                                                @endforeach
-                                            </select>
-                                            @if($errors->has('factory') && ((session('mcid') * 1) == 2))
-                                                <span class="invalid-feedback">{{$errors->first('factory')}}</span>
-                                            @endif
-                                        </div>
-                                    </div>
-                                    <div class="kt-separator kt-separator--space-lg kt-separator--fit kt-separator--border-solid"></div>
-                                    <div class="kt-form__actions">
-                                        <div class="row">
-                                            <div class="col-xl-3"></div>
-                                            <div class="col-lg-9 col-xl-6">
-                                                <button type="submit" class="btn btn-label-brand btn-bold">
-                                                    Save Changes
-                                                </button>
-                                                <a href="javascript:void (0)" data-link="{{route('cancel')}}"
-                                                   class="cancel btn btn-label-danger btn-bold float-right">Cancel</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                    <div id="kt_user_edit_tab_3" class="tab-pane {{ ((session('mcid') * 1) == 3) ? "active" : "" }}">
-                        <div class="kt-form kt-form--label-right">
-                            <form action="{{route('machine.store', ['mcid' => $machineCategories[2]->id])}}" method="post">
-                                @csrf
-                                <div class="kt-section__body">
-                                    <div class="form-group row">
-                                        <label class="col-xl-3 col-lg-3 col-form-label">
-                                            Manufacturer Name
-                                            {{--    Auto Fill  use datalist       --}}
-                                        </label>
-                                        <div class="col-lg-9 col-xl-6">
-                                            <input class="form-control {{($errors->has('manufacturerName') && ((session('mcid') * 1) == 3)) ? 'is-invalid' : ''}}"
-                                                   type="text" name="manufacturerName" required
-                                                   value="{{((session('mcid') * 1) == 3) ? (old('manufacturerName')) : "" }}">
-                                            @if($errors->has('manufacturerName') && ((session('mcid') * 1) == 3))
-                                                <span class="invalid-feedback">{{$errors->first('manufacturerName')}}</span>
-                                            @endif
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-xl-3 col-lg-3 col-form-label">
-                                            Type / Model Number
-                                            {{--    Auto Fill  use datalist       --}}
-                                        </label>
-                                        <div class="col-lg-9 col-xl-6">
-                                            <input class="form-control {{($errors->has('typeOrModelNumber') && ((session('mcid') * 1) == 3)) ? 'is-invalid' : ''}}"
-                                                   type="text" name="typeOrModelNumber" required
-                                                   value="{{((session('mcid') * 1) == 3) ? (old('typeOrModelNumber')) : "" }}">
-                                            @if($errors->has('typeOrModelNumber') && ((session('mcid') * 1) == 3))
-                                                <span class="invalid-feedback">{{$errors->first('typeOrModelNumber')}}</span>
-                                            @endif
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-xl-3 col-lg-3 col-form-label">
-                                            Serial Number
-                                        </label>
-                                        <div class="col-lg-9 col-xl-6">
-                                            <input class="form-control {{($errors->has('serialNumber') && ((session('mcid') * 1) == 3)) ? 'is-invalid' : ''}}"
-                                                   type="text" name="serialNumber" required
-                                                   value="{{((session('mcid') * 1) == 3) ? (old('serialNumber')) : "" }}">
-                                            @if($errors->has('serialNumber') && ((session('mcid') * 1) == 3))
-                                                <span class="invalid-feedback">{{$errors->first('serialNumber')}}</span>
-                                            @endif
-                                            <span class="form-text text-muted">It has to be unique*</span>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-xl-3 col-lg-3 col-form-label"> Manufacturer Year</label>
-                                        <div class="col-lg-9 col-xl-6">
-                                            <input class="form-control datepickerYear {{($errors->has('manufacturerYear') && ((session('mcid') * 1) == 3)) ? 'is-invalid' : ''}}"
-                                                   type="text" name="manufacturerYear" required id="datepickerYear"
-                                                   value="{{((session('mcid') * 1) == 3) ? (old('manufacturerYear')) : "" }}">
-                                            @if($errors->has('manufacturerYear') && ((session('mcid') * 1) == 3))
-                                                <span class="invalid-feedback">{{$errors->first('manufacturerYear')}}</span>
-                                            @endif
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-xl-3 col-lg-3 col-form-label">
-                                            Country Of Origin
-                                        </label>
-                                        <div class="col-lg-9 col-xl-6">
-                                            <input class="form-control {{($errors->has('countryOfOrigin') && ((session('mcid') * 1) == 3)) ? 'is-invalid' : ''}}"
-                                                   type="text" name="countryOfOrigin" required
-                                                   value="{{((session('mcid') * 1) == 3) ? (old('countryOfOrigin')) : "" }}">
-                                            @if($errors->has('countryOfOrigin') && ((session('mcid') * 1) == 3))
-                                                <span class="invalid-feedback">{{$errors->first('countryOfOrigin')}}</span>
-                                            @endif
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-xl-3 col-lg-3 col-form-label">Rope Size</label>
-                                        <div class="col-lg-9 col-xl-6">
-                                            <div class="input-daterange input-group">
-                                                <input type="number"
-                                                       class="form-control {{($errors->has('ropeSizeStart') && ((session('mcid') * 1) == 3)) ? 'is-invalid' : ''}}"
-                                                       name="ropeSizeStart" required
-                                                       value="{{((session('mcid') * 1) == 3) ? (old('ropeSizeStart')) : "" }}">
-                                                @if($errors->has('ropeSizeStart') && ((session('mcid') * 1) == 3))
-                                                    <span class="invalid-feedback">{{$errors->first('ropeSizeStart')}}</span>
-                                                @endif
-                                                <div class="input-group-append">
-                                                    <span class="input-group-text">to</span>
-                                                </div>
-                                                <input type="number"
-                                                       class="form-control {{($errors->has('ropeSizeEnd') && ((session('mcid') * 1) == 3)) ? 'is-invalid' : ''}}"
-                                                       name="ropeSizeEnd" required
-                                                       value="{{((session('mcid') * 1) == 3) ? (old('ropeSizeEnd')) : "" }}">
-                                                @if($errors->has('ropeSizeEnd') && ((session('mcid') * 1) == 3))
-                                                    <span class="invalid-feedback">{{$errors->first('ropeSizeEnd')}}</span>
-                                                @endif
-                                            </div>
-                                            <span class="form-text text-muted">Write the number in mm</span>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-xl-3 col-lg-3 col-form-label">
-                                            Select Factory
-                                        </label>
-                                        <div class="col-lg-9 col-xl-6">
-                                            <select class="form-control {{($errors->has('factory') && ((session('mcid') * 1) == 3)) ? 'is-invalid' : ''}}"
-                                                    name="factory" required>
-                                                <option selected disabled hidden value="">Choose...</option>
-                                                @foreach($factories as $f)
-                                                    <option value="{{$f->id}}">{{$f->name}}</option>
-                                                @endforeach
-                                            </select>
-                                            @if($errors->has('factory') && ((session('mcid') * 1) == 3))
-                                                <span class="invalid-feedback">{{$errors->first('factory')}}</span>
-                                            @endif
-                                        </div>
-                                    </div>
-                                    <div class="kt-separator kt-separator--space-lg kt-separator--fit kt-separator--border-solid"></div>
-                                    <div class="kt-form__actions">
-                                        <div class="row">
-                                            <div class="col-xl-3"></div>
-                                            <div class="col-lg-9 col-xl-6">
-                                                <button type="submit" class="btn btn-label-brand btn-bold">
-                                                    Save Changes
-                                                </button>
-                                                <a href="javascript:void (0)" data-link="{{route('cancel')}}"
-                                                   class="cancel btn btn-label-danger btn-bold float-right">Cancel</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                    <div id="kt_user_edit_tab_4" class="tab-pane {{ ((session('mcid') * 1) == 4) ? "active" : "" }}">
-                        <div class="kt-form kt-form--label-right">
-                            <form action="{{route('machine.store', ['mcid' => $machineCategories[3]->id])}}" method="post">
-                                @csrf
-                                <div class="kt-section__body">
-                                    <div class="form-group row">
-                                        <label class="col-xl-3 col-lg-3 col-form-label">
-                                            Manufacturer Name
-                                            {{--    Auto Fill  use datalist       --}}
-                                        </label>
-                                        <div class="col-lg-9 col-xl-6">
-                                            <input class="form-control {{($errors->has('manufacturerName') && ((session('mcid') * 1) == 4)) ? 'is-invalid' : ''}}"
-                                                   type="text" name="manufacturerName" required
-                                                   value="{{((session('mcid') * 1) == 4) ? (old('manufacturerName')) : "" }}">
-                                            @if($errors->has('manufacturerName') && ((session('mcid') * 1) == 4))
-                                                <span class="invalid-feedback">{{$errors->first('manufacturerName')}}</span>
-                                            @endif
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-xl-3 col-lg-3 col-form-label">
-                                            Type / Model Number
-                                            {{--    Auto Fill  use datalist       --}}
-                                        </label>
-                                        <div class="col-lg-9 col-xl-6">
-                                            <input class="form-control {{($errors->has('typeOrModelNumber') && ((session('mcid') * 1) == 4)) ? 'is-invalid' : ''}}"
-                                                   type="text" name="typeOrModelNumber" required
-                                                   value="{{((session('mcid') * 1) == 4) ? (old('typeOrModelNumber')) : "" }}">
-                                            @if($errors->has('typeOrModelNumber') && ((session('mcid') * 1) == 4))
-                                                <span class="invalid-feedback">{{$errors->first('typeOrModelNumber')}}</span>
-                                            @endif
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-xl-3 col-lg-3 col-form-label">
-                                            Serial Number
-                                        </label>
-                                        <div class="col-lg-9 col-xl-6">
-                                            <input class="form-control {{($errors->has('serialNumber') && ((session('mcid') * 1) == 4)) ? 'is-invalid' : ''}}"
-                                                   type="text" name="serialNumber" required
-                                                   value="{{((session('mcid') * 1) == 4) ? (old('serialNumber')) : "" }}">
-                                            @if($errors->has('serialNumber') && ((session('mcid') * 1) == 4))
-                                                <span class="invalid-feedback">{{$errors->first('serialNumber')}}</span>
-                                            @endif
-                                            <span class="form-text text-muted">It has to be unique*</span>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-xl-3 col-lg-3 col-form-label"> Manufacturer Year</label>
-                                        <div class="col-lg-9 col-xl-6">
-                                            <input class="form-control datepickerYear {{($errors->has('manufacturerYear') && ((session('mcid') * 1) == 4)) ? 'is-invalid' : ''}}"
-                                                   type="text" name="manufacturerYear" required id="datepickerYear"
-                                                   value="{{((session('mcid') * 1) == 4) ? (old('manufacturerYear')) : "" }}">
-                                            @if($errors->has('manufacturerYear') && ((session('mcid') * 1) == 4))
-                                                <span class="invalid-feedback">{{$errors->first('manufacturerYear')}}</span>
-                                            @endif
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-xl-3 col-lg-3 col-form-label">
-                                            Country Of Origin
-                                        </label>
-                                        <div class="col-lg-9 col-xl-6">
-                                            <input class="form-control {{($errors->has('countryOfOrigin') && ((session('mcid') * 1) == 4)) ? 'is-invalid' : ''}}"
-                                                   type="text" name="countryOfOrigin" required
-                                                   value="{{((session('mcid') * 1) == 4) ? (old('countryOfOrigin')) : "" }}">
-                                            @if($errors->has('countryOfOrigin') && ((session('mcid') * 1) == 4))
-                                                <span class="invalid-feedback">{{$errors->first('countryOfOrigin')}}</span>
-                                            @endif
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-xl-3 col-lg-3 col-form-label">
-                                            Screw Size
-                                        </label>
-                                        <div class="col-lg-9 col-xl-6">
-                                            <input class="form-control  {{($errors->has('screwSize') && ((session('mcid') * 1) == 4)) ? 'is-invalid' : ''}}"
-                                                   type="number" name="screwSize" required
-                                                   value="{{((session('mcid') * 1) == 4) ? (old('screwSize')) : "" }}">
-                                            @if($errors->has('screwSize') && ((session('mcid') * 1) == 4))
-                                                <span class="invalid-feedback">{{$errors->first('screwSize')}}</span>
-                                            @endif
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-xl-3 col-lg-3 col-form-label">
-                                            Production Capacity
-                                        </label>
-                                        <div class="col-lg-9 col-xl-6">
-                                            <input class="form-control  {{($errors->has('productionCapacity') && ((session('mcid') * 1) == 4)) ? 'is-invalid' : ''}}"
-                                                   type="number" name="productionCapacity" required
-                                                   value="{{((session('mcid') * 1) == 4) ? (old('productionCapacity')) : "" }}">
-                                            @if($errors->has('productionCapacity') && ((session('mcid') * 1) == 4))
-                                                <span class="invalid-feedback">{{$errors->first('productionCapacity')}}</span>
-                                            @endif
-                                            <span class="form-text text-muted">Write the number in hgs/hr</span>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-xl-3 col-lg-3 col-form-label">
-                                            Select Factory
-                                        </label>
-                                        <div class="col-lg-9 col-xl-6">
-                                            <select class="form-control {{($errors->has('factory') && ((session('mcid') * 1) == 4)) ? 'is-invalid' : ''}}"
-                                                    name="factory" required>
-                                                <option selected disabled hidden value="">Choose...</option>
-                                                @foreach($factories as $f)
-                                                    <option value="{{$f->id}}">{{$f->name}}</option>
-                                                @endforeach
-                                            </select>
-                                            @if($errors->has('factory') && ((session('mcid') * 1) == 4))
-                                                <span class="invalid-feedback">{{$errors->first('factory')}}</span>
-                                            @endif
-                                        </div>
-                                    </div>
-                                    <div class="kt-separator kt-separator--space-lg kt-separator--fit kt-separator--border-solid"></div>
-                                    <div class="kt-form__actions">
-                                        <div class="row">
-                                            <div class="col-xl-3"></div>
-                                            <div class="col-lg-9 col-xl-6">
-                                                <button type="submit" class="btn btn-label-brand btn-bold">
-                                                    Save Changes
-                                                </button>
-                                                <a href="javascript:void (0)" data-link="{{route('cancel')}}"
-                                                   class="cancel btn btn-label-danger btn-bold float-right">Cancel</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <datalist id="category">
+        @forelse($datalist['category'] as $t)
+            <option value="{{$t->category}}">
+        @empty
+        @endforelse
+    </datalist>
+    <datalist id="manufacturer">
+        @forelse($datalist['manufacturer'] as $m)
+            <option value="{{$m->manufacturer}}">
+        @empty
+        @endforelse
+    </datalist>
+    <datalist id="type">
+        @forelse($datalist['type'] as $t)
+            <option value="{{$t->type}}">
+        @empty
+        @endforelse
+    </datalist>
 
 @endsection
 {{--@section('stickyToolbar')    --}}
@@ -650,7 +343,7 @@
     <!--end::Page Vendors -->
 
     <!--begin::Page Scripts(used by this page) -->
-    <script src="{{asset('m/assets/js/pages/custom/user/edit-user.js')}}" type="text/javascript"></script>
+    {{--    <script src="{{asset('m/assets/js/pages/custom/user/edit-user.js')}}" type="text/javascript"></script>--}}
     <script src="{{asset('m/assets/js/pages/crud/forms/widgets/bootstrap-datepicker.js')}}"
             type="text/javascript"></script>
     <script>

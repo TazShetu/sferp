@@ -2,7 +2,7 @@
 <html lang="en">
 <!-- begin::Head -->
 <head>
-{{--    <base href="">--}}
+    {{--    <base href="">--}}
     <meta charset="utf-8"/>
     <title>
         @yield('title', 'Sagar Fisheries')
@@ -16,9 +16,6 @@
 
     <!--end::Fonts -->
 
-    <!--begin::Page Custom Styles(used by this page) -->
-    @yield('link')
-    <!--end::Page Custom Styles -->
 
     <!--begin::Global Theme Styles(used by all pages) -->
 
@@ -69,8 +66,12 @@
     <link href="{{asset('m/assets/plugins/general/plugins/flaticon2/flaticon.css')}}" rel="stylesheet" type="text/css"/>
     <link href="{{asset('m/assets/plugins/general/@fortawesome/fontawesome-free/css/all.min.css')}}" rel="stylesheet"
           type="text/css"/>
-
     <!--end:: Vendor Plugins -->
+
+    <!--begin::Page Custom Styles(used by this page) -->
+    @yield('link')
+    <!--end::Page Custom Styles -->
+
     <link href="{{asset('m/assets/css/style.bundle.css')}}" rel="stylesheet" type="text/css"/>
 
     <!--begin:: Vendor Plugins for custom pages -->
@@ -80,30 +81,30 @@
     <link href="{{asset('m/assets/plugins/custom/@fullcalendar/daygrid/main.css')}}" rel="stylesheet" type="text/css"/>
     <link href="{{asset('m/assets/plugins/custom/@fullcalendar/list/main.css')}}" rel="stylesheet" type="text/css"/>
     <link href="{{asset('m/assets/plugins/custom/@fullcalendar/timegrid/main.css')}}" rel="stylesheet" type="text/css"/>
-    <link href="{{asset('m/assets/plugins/custom/datatables.net-bs4/css/dataTables.bootstrap4.css')}}" rel="stylesheet"
-          type="text/css"/>
-    <link href="{{asset('m/assets/plugins/custom/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css')}}"
-          rel="stylesheet" type="text/css"/>
-    <link href="{{asset('m/assets/plugins/custom/datatables.net-autofill-bs4/css/autoFill.bootstrap4.min.css')}}"
-          rel="stylesheet" type="text/css"/>
-    <link href="{{asset('m/assets/plugins/custom/datatables.net-colreorder-bs4/css/colReorder.bootstrap4.min.css')}}"
-          rel="stylesheet" type="text/css"/>
-    <link href="{{asset('m/assets/plugins/custom/datatables.net-fixedcolumns-bs4/css/fixedColumns.bootstrap4.min.css')}}"
-          rel="stylesheet" type="text/css"/>
-    <link href="{{asset('m/assets/plugins/custom/datatables.net-fixedheader-bs4/css/fixedHeader.bootstrap4.min.css')}}"
-          rel="stylesheet" type="text/css"/>
-    <link href="{{asset('m/assets/plugins/custom/datatables.net-keytable-bs4/css/keyTable.bootstrap4.min.css')}}"
-          rel="stylesheet" type="text/css"/>
-    <link href="{{asset('m/assets/plugins/custom/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css')}}"
-          rel="stylesheet" type="text/css"/>
-    <link href="{{asset('m/assets/plugins/custom/datatables.net-rowgroup-bs4/css/rowGroup.bootstrap4.min.css')}}"
-          rel="stylesheet" type="text/css"/>
-    <link href="{{asset('m/assets/plugins/custom/datatables.net-rowreorder-bs4/css/rowReorder.bootstrap4.min.css')}}"
-          rel="stylesheet" type="text/css"/>
-    <link href="{{asset('m/assets/plugins/custom/datatables.net-scroller-bs4/css/scroller.bootstrap4.min.css')}}"
-          rel="stylesheet" type="text/css"/>
-    <link href="{{asset('m/assets/plugins/custom/datatables.net-select-bs4/css/select.bootstrap4.min.css')}}"
-          rel="stylesheet" type="text/css"/>
+    {{--    <link href="{{asset('m/assets/plugins/custom/datatables.net-bs4/css/dataTables.bootstrap4.css')}}" rel="stylesheet"--}}
+    {{--          type="text/css"/>--}}
+    {{--    <link href="{{asset('m/assets/plugins/custom/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css')}}"--}}
+    {{--          rel="stylesheet" type="text/css"/>--}}
+    {{--    <link href="{{asset('m/assets/plugins/custom/datatables.net-autofill-bs4/css/autoFill.bootstrap4.min.css')}}"--}}
+    {{--          rel="stylesheet" type="text/css"/>--}}
+    {{--    <link href="{{asset('m/assets/plugins/custom/datatables.net-colreorder-bs4/css/colReorder.bootstrap4.min.css')}}"--}}
+    {{--          rel="stylesheet" type="text/css"/>--}}
+    {{--    <link href="{{asset('m/assets/plugins/custom/datatables.net-fixedcolumns-bs4/css/fixedColumns.bootstrap4.min.css')}}"--}}
+    {{--          rel="stylesheet" type="text/css"/>--}}
+    {{--    <link href="{{asset('m/assets/plugins/custom/datatables.net-fixedheader-bs4/css/fixedHeader.bootstrap4.min.css')}}"--}}
+    {{--          rel="stylesheet" type="text/css"/>--}}
+    {{--    <link href="{{asset('m/assets/plugins/custom/datatables.net-keytable-bs4/css/keyTable.bootstrap4.min.css')}}"--}}
+    {{--          rel="stylesheet" type="text/css"/>--}}
+    {{--    <link href="{{asset('m/assets/plugins/custom/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css')}}"--}}
+    {{--          rel="stylesheet" type="text/css"/>--}}
+    {{--    <link href="{{asset('m/assets/plugins/custom/datatables.net-rowgroup-bs4/css/rowGroup.bootstrap4.min.css')}}"--}}
+    {{--          rel="stylesheet" type="text/css"/>--}}
+    {{--    <link href="{{asset('m/assets/plugins/custom/datatables.net-rowreorder-bs4/css/rowReorder.bootstrap4.min.css')}}"--}}
+    {{--          rel="stylesheet" type="text/css"/>--}}
+    {{--    <link href="{{asset('m/assets/plugins/custom/datatables.net-scroller-bs4/css/scroller.bootstrap4.min.css')}}"--}}
+    {{--          rel="stylesheet" type="text/css"/>--}}
+    {{--    <link href="{{asset('m/assets/plugins/custom/datatables.net-select-bs4/css/select.bootstrap4.min.css')}}"--}}
+    {{--          rel="stylesheet" type="text/css"/>--}}
     <link href="{{asset('m/assets/plugins/custom/jstree/dist/themes/default/style.css')}}" rel="stylesheet"
           type="text/css"/>
     <link href="{{asset('m/assets/plugins/custom/jqvmap/dist/jqvmap.css')}}" rel="stylesheet" type="text/css"/>
@@ -146,37 +147,37 @@
 
         <!-- begin:: Aside -->
 
-       @include('partial.m.aside')
+    @include('partial.m.aside')
 
-        <!-- end:: Aside -->
+    <!-- end:: Aside -->
 
         <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor kt-wrapper" id="kt_wrapper">
 
             <!-- begin:: Header -->
 
-            @include('partial.m.header')
+        @include('partial.m.header')
 
-            <!-- end:: Header -->
+        <!-- end:: Header -->
 
             <div class="kt-content  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">
 
                 <!-- begin:: Content Head -->
                 <!-- begin:: Subheader -->
 
-                @yield('content_head')
+            @yield('content_head')
 
-                <!-- end:: Content Head -->
+            <!-- end:: Content Head -->
 
                 <!-- begin:: Content -->
 
-                @yield('content')
+            @yield('content')
 
-                <!-- end:: Content -->
+            <!-- end:: Content -->
 
             </div>
             <!-- begin:: Footer -->
-            @include('partial.m.footer')
-            <!-- end:: Footer -->
+        @include('partial.m.footer')
+        <!-- end:: Footer -->
         </div>
     </div>
 </div>
@@ -253,8 +254,7 @@
         if (url.includes('?')) {
             // only take the url before ?
             var check = url.substr(0, url.indexOf('?'));
-        }
-        else {
+        } else {
             var check = url;
         }
         $('.kt-menu__nav li a').filter(function () {
@@ -385,51 +385,51 @@
 <script src="{{asset('m/assets/plugins/custom/flot/source/jquery.flot.crosshair.js')}}" type="text/javascript"></script>
 <script src="{{asset('m/assets/plugins/custom/flot/source/jquery.flot.axislabels.js')}}"
         type="text/javascript"></script>
-<script src="{{asset('m/assets/plugins/custom/datatables.net/js/jquery.dataTables.js')}}"
-        type="text/javascript"></script>
-<script src="{{asset('m/assets/plugins/custom/datatables.net-bs4/js/dataTables.bootstrap4.js')}}"
-        type="text/javascript"></script>
-<script src="{{asset('m/assets/plugins/custom/js/global/integration/plugins/datatables.init.js')}}"
-        type="text/javascript"></script>
-<script src="{{asset('m/assets/plugins/custom/datatables.net-autofill/js/dataTables.autoFill.min.js')}}"
-        type="text/javascript"></script>
-<script src="{{asset('m/assets/plugins/custom/datatables.net-autofill-bs4/js/autoFill.bootstrap4.min.js')}}"
-        type="text/javascript"></script>
-<script src="{{asset('m/assets/plugins/custom/jszip/dist/jszip.min.js')}}" type="text/javascript"></script>
-<script src="{{asset('m/assets/plugins/custom/pdfmake/build/pdfmake.min.js')}}" type="text/javascript"></script>
-<script src="{{asset('m/assets/plugins/custom/pdfmake/build/vfs_fonts.js')}}" type="text/javascript"></script>
-<script src="{{asset('m/assets/plugins/custom/datatables.net-buttons/js/dataTables.buttons.min.js')}}"
-        type="text/javascript"></script>
-<script src="{{asset('m/assets/plugins/custom/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js')}}"
-        type="text/javascript"></script>
-<script src="{{asset('m/assets/plugins/custom/datatables.net-buttons/js/buttons.colVis.js')}}"
-        type="text/javascript"></script>
-<script src="{{asset('m/assets/plugins/custom/datatables.net-buttons/js/buttons.flash.js')}}"
-        type="text/javascript"></script>
-<script src="{{asset('m/assets/plugins/custom/datatables.net-buttons/js/buttons.html5.js')}}"
-        type="text/javascript"></script>
-<script src="{{asset('m/assets/plugins/custom/datatables.net-buttons/js/buttons.print.js')}}"
-        type="text/javascript"></script>
-<script src="{{asset('m/assets/plugins/custom/datatables.net-colreorder/js/dataTables.colReorder.min.js')}}"
-        type="text/javascript"></script>
-<script src="{{asset('m/assets/plugins/custom/datatables.net-fixedcolumns/js/dataTables.fixedColumns.min.js')}}"
-        type="text/javascript"></script>
-<script src="{{asset('m/assets/plugins/custom/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js')}}"
-        type="text/javascript"></script>
-<script src="{{asset('m/assets/plugins/custom/datatables.net-keytable/js/dataTables.keyTable.min.js')}}"
-        type="text/javascript"></script>
-<script src="{{asset('m/assets/plugins/custom/datatables.net-responsive/js/dataTables.responsive.min.js')}}"
-        type="text/javascript"></script>
-<script src="{{asset('m/assets/plugins/custom/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js')}}"
-        type="text/javascript"></script>
-<script src="{{asset('m/assets/plugins/custom/datatables.net-rowgroup/js/dataTables.rowGroup.min.js')}}"
-        type="text/javascript"></script>
-<script src="{{asset('m/assets/plugins/custom/datatables.net-rowreorder/js/dataTables.rowReorder.min.js')}}"
-        type="text/javascript"></script>
-<script src="{{asset('m/assets/plugins/custom/datatables.net-scroller/js/dataTables.scroller.min.js')}}"
-        type="text/javascript"></script>
-<script src="{{asset('m/assets/plugins/custom/datatables.net-select/js/dataTables.select.min.js')}}"
-        type="text/javascript"></script>
+{{--<script src="{{asset('m/assets/plugins/custom/datatables.net/js/jquery.dataTables.js')}}"--}}
+{{--        type="text/javascript"></script>--}}
+{{--<script src="{{asset('m/assets/plugins/custom/datatables.net-bs4/js/dataTables.bootstrap4.js')}}"--}}
+{{--        type="text/javascript"></script>--}}
+{{--<script src="{{asset('m/assets/plugins/custom/js/global/integration/plugins/datatables.init.js')}}"--}}
+{{--        type="text/javascript"></script>--}}
+{{--<script src="{{asset('m/assets/plugins/custom/datatables.net-autofill/js/dataTables.autoFill.min.js')}}"--}}
+{{--        type="text/javascript"></script>--}}
+{{--<script src="{{asset('m/assets/plugins/custom/datatables.net-autofill-bs4/js/autoFill.bootstrap4.min.js')}}"--}}
+{{--        type="text/javascript"></script>--}}
+{{--<script src="{{asset('m/assets/plugins/custom/jszip/dist/jszip.min.js')}}" type="text/javascript"></script>--}}
+{{--<script src="{{asset('m/assets/plugins/custom/pdfmake/build/pdfmake.min.js')}}" type="text/javascript"></script>--}}
+{{--<script src="{{asset('m/assets/plugins/custom/pdfmake/build/vfs_fonts.js')}}" type="text/javascript"></script>--}}
+{{--<script src="{{asset('m/assets/plugins/custom/datatables.net-buttons/js/dataTables.buttons.min.js')}}"--}}
+{{--        type="text/javascript"></script>--}}
+{{--<script src="{{asset('m/assets/plugins/custom/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js')}}"--}}
+{{--        type="text/javascript"></script>--}}
+{{--<script src="{{asset('m/assets/plugins/custom/datatables.net-buttons/js/buttons.colVis.js')}}"--}}
+{{--        type="text/javascript"></script>--}}
+{{--<script src="{{asset('m/assets/plugins/custom/datatables.net-buttons/js/buttons.flash.js')}}"--}}
+{{--        type="text/javascript"></script>--}}
+{{--<script src="{{asset('m/assets/plugins/custom/datatables.net-buttons/js/buttons.html5.js')}}"--}}
+{{--        type="text/javascript"></script>--}}
+{{--<script src="{{asset('m/assets/plugins/custom/datatables.net-buttons/js/buttons.print.js')}}"--}}
+{{--        type="text/javascript"></script>--}}
+{{--<script src="{{asset('m/assets/plugins/custom/datatables.net-colreorder/js/dataTables.colReorder.min.js')}}"--}}
+{{--        type="text/javascript"></script>--}}
+{{--<script src="{{asset('m/assets/plugins/custom/datatables.net-fixedcolumns/js/dataTables.fixedColumns.min.js')}}"--}}
+{{--        type="text/javascript"></script>--}}
+{{--<script src="{{asset('m/assets/plugins/custom/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js')}}"--}}
+{{--        type="text/javascript"></script>--}}
+{{--<script src="{{asset('m/assets/plugins/custom/datatables.net-keytable/js/dataTables.keyTable.min.js')}}"--}}
+{{--        type="text/javascript"></script>--}}
+{{--<script src="{{asset('m/assets/plugins/custom/datatables.net-responsive/js/dataTables.responsive.min.js')}}"--}}
+{{--        type="text/javascript"></script>--}}
+{{--<script src="{{asset('m/assets/plugins/custom/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js')}}"--}}
+{{--        type="text/javascript"></script>--}}
+{{--<script src="{{asset('m/assets/plugins/custom/datatables.net-rowgroup/js/dataTables.rowGroup.min.js')}}"--}}
+{{--        type="text/javascript"></script>--}}
+{{--<script src="{{asset('m/assets/plugins/custom/datatables.net-rowreorder/js/dataTables.rowReorder.min.js')}}"--}}
+{{--        type="text/javascript"></script>--}}
+{{--<script src="{{asset('m/assets/plugins/custom/datatables.net-scroller/js/dataTables.scroller.min.js')}}"--}}
+{{--        type="text/javascript"></script>--}}
+{{--<script src="{{asset('m/assets/plugins/custom/datatables.net-select/js/dataTables.select.min.js')}}"--}}
+{{--        type="text/javascript"></script>--}}
 <script src="{{asset('m/assets/plugins/custom/jstree/dist/jstree.js')}}" type="text/javascript"></script>
 <script src="{{asset('m/assets/plugins/custom/jqvmap/dist/jquery.vmap.js')}}" type="text/javascript"></script>
 <script src="{{asset('m/assets/plugins/custom/jqvmap/dist/maps/jquery.vmap.world.js')}}"

@@ -72,6 +72,19 @@
                                             </div>
                                             <div class="form-group row">
                                                 <label class="col-xl-3 col-lg-3 col-form-label">
+                                                    Company Name
+                                                </label>
+                                                <div class="col-lg-9 col-xl-6">
+                                                    <input class="form-control {{$errors->has('companyName') ? 'is-invalid' : ''}}"
+                                                           type="text" placeholder="Company Name" name="companyName"
+                                                           required value="{{old('companyName')}}">
+                                                    @if($errors->has('companyName'))
+                                                        <span class="invalid-feedback">{{$errors->first('companyName')}}</span>
+                                                    @endif
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-xl-3 col-lg-3 col-form-label">
                                                     Date Of Birth</label>
                                                 <div class="col-lg-9 col-xl-6">
                                                     <div class="input-group date">
@@ -92,24 +105,11 @@
                                             </div>
                                             <div class="form-group row">
                                                 <label class="col-xl-3 col-lg-3 col-form-label">
-                                                    Company Name
-                                                </label>
-                                                <div class="col-lg-9 col-xl-6">
-                                                    <input class="form-control {{$errors->has('companyName') ? 'is-invalid' : ''}}"
-                                                           type="text" placeholder="Company Name" name="companyName"
-                                                           required value="{{old('companyName')}}">
-                                                    @if($errors->has('companyName'))
-                                                        <span class="invalid-feedback">{{$errors->first('companyName')}}</span>
-                                                    @endif
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label class="col-xl-3 col-lg-3 col-form-label">
-                                                    VAT/BIN Number
+                                                    BIN Certificate
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">
                                                     <input class="form-control {{$errors->has('binNumber') ? 'is-invalid' : ''}}"
-                                                           type="text" placeholder="VAT/BIN Number" name="binNumber"
+                                                           type="text" placeholder="BIN Certificate" name="binNumber"
                                                            required value="{{old('binNumber')}}">
                                                     @if($errors->has('binNumber'))
                                                         <span class="invalid-feedback">{{$errors->first('binNumber')}}</span>
@@ -124,7 +124,33 @@
                                                         <input type="file" class="custom-file-input" id="customFile2"
                                                                name="binFile">
                                                         <label class="custom-file-label" style="text-align: left;"
-                                                               for="customFile2">Tax / Bin File</label>
+                                                               for="customFile2">BIN Certificate File</label>
+                                                    </div>
+                                                    <span class="form-text text-muted">Max file size is 10MB and max number of files is 1.</span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-xl-3 col-lg-3 col-form-label">
+                                                    TIN Number
+                                                </label>
+                                                <div class="col-lg-9 col-xl-6">
+                                                    <input class="form-control {{$errors->has('tinNumber') ? 'is-invalid' : ''}}"
+                                                           type="text" placeholder="TIN Number" name="tinNumber"
+                                                           required value="{{old('tinNumber')}}">
+                                                    @if($errors->has('tinNumber'))
+                                                        <span class="invalid-feedback">{{$errors->first('tinNumber')}}</span>
+                                                    @endif
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-xl-3 col-lg-3 col-form-label">Upload File:</label>
+                                                <div class="col-lg-9 col-xl-6">
+                                                    <div></div>
+                                                    <div class="custom-file">
+                                                        <input type="file" class="custom-file-input" id="customFile2"
+                                                               name="tinFile">
+                                                        <label class="custom-file-label" style="text-align: left;"
+                                                               for="customFile2">TIN File</label>
                                                     </div>
                                                     <span class="form-text text-muted">Max file size is 10MB and max number of files is 1.</span>
                                                 </div>
@@ -295,7 +321,7 @@
                                                             Create
                                                         </button>
                                                         <a href="javascript:void (0)" data-link="{{route('cancel')}}"
-                                                           class="cancel btn btn-label-danger btn-bold float-right">Cancel</a>
+                                                           class="cancel btn btn-label-danger btn-bold float-right">Reset</a>
                                                     </div>
                                                 </div>
                                             </div>

@@ -14,6 +14,7 @@ class CustomersTableSeeder extends Seeder
         $c1->company_name = 'Doe Enterprise';
         $c1->nid = '0123456789';
         $c1->bin = 'xx01255xx255xxx0';
+        $c1->tin = '00012xx55xx2x0';
         $c1->business_address = 'Mohakhali, Dhaka';
         $c1->business_area = 'Mohakhali';
         $c1->business_telephone = '+8802152635';
@@ -28,6 +29,7 @@ class CustomersTableSeeder extends Seeder
         $c2->company_name = 'Doe Enterprise Sub';
         $c2->nid = '0123456789';
         $c2->bin = 'xx01255xx255xxx0';
+        $c2->tin = '00012xx55xx2x0';
         $c2->business_address = 'Mohakhali, Dhaka';
         $c2->business_area = 'Mohakhali';
         $c2->business_telephone = '+8802152635';
@@ -42,6 +44,7 @@ class CustomersTableSeeder extends Seeder
         $c3->company_name = 'Doe Enterprise Individual';
         $c3->nid = '0123456789';
         $c3->bin = 'xx01255xx255xxx0';
+        $c3->tin = '00012xx55xx2x0';
         $c3->business_address = 'Mohakhali, Dhaka';
         $c3->business_area = 'Mohakhali';
         $c3->business_telephone = '+8802152635';
@@ -57,6 +60,7 @@ class CustomersTableSeeder extends Seeder
         $c2->company_name = 'Doe Enterprise Sub 2';
         $c2->nid = '0123456789';
         $c2->bin = 'xx01255xx255xxx0';
+        $c2->tin = '00012xx55xx2x0';
         $c2->business_address = 'Mohakhali, Dhaka';
         $c2->business_area = 'Mohakhali';
         $c2->business_telephone = '+8802152635';
@@ -72,6 +76,7 @@ class CustomersTableSeeder extends Seeder
         $c3->company_name = 'Doe Enterprise Individual 2';
         $c3->nid = '0123456789';
         $c3->bin = 'xx01255xx255xxx0';
+        $c3->tin = '00012xx55xx2x0';
         $c3->business_address = 'Mohakhali, Dhaka';
         $c3->business_area = 'Mohakhali';
         $c3->business_telephone = '+8802152635';

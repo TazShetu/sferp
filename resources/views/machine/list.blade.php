@@ -74,23 +74,23 @@
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Identification Number</th>
+                        <th scope="col">Manufacturer</th>
                         <th scope="col">Category</th>
                         <th scope="col">Factory</th>
                         <th scope="col">Type/Model</th>
-                        <th scope="col">Manufacturer</th>
                         <th scope="col">Action</th>
                     </tr>
                     </thead>
                     <tbody>
                     @foreach($machines as $i => $m)
                         <tr>
-                            <th scope="row">{{$i + 1}}</th>
+                            <th scope="row">{{$machines->firstItem() + $i}}</th>
                             <td><a href="{{route('machine.edit', ['mid' => $m->id])}}">{{$m->identification_code}}</a>
                             </td>
+                            <td>{{$m->manufacturer}}</td>
                             <td>{{$m->category}}</td>
                             <td>{{$m->factory}}</td>
                             <td>{{$m->type}}</td>
-                            <td>{{$m->manufacturer}}</td>
                             <td>
                                 <a href="{{route('machine.edit', ['mid' => $m->id])}}" title="Edit"
                                    class="btn btn-sm btn-clean btn-icon btn-icon-md">
@@ -111,10 +111,12 @@
                     </tbody>
                 </table>
                 {{--Pagination--}}
-                <div class="kt-datatable__pager kt-datatable--paging-loaded">
-                    {{$machines->links()}}
-                    <div class="kt-datatable__pager-info">
-                        <span class="kt-datatable__pager-detail">Showing {{$machines->firstItem()}} - {{$machines->lastItem()}} of {{$machines->total()}}</span>
+                <div class="kt-section">
+                    <div class="kt-pagination  kt-pagination--brand">
+                        {{$machines->links()}}
+                        <div class="kt-datatable__pager-info">
+                            <span class="kt-datatable__pager-detail">Showing {{$machines->firstItem()}} - {{$machines->lastItem()}} of {{$machines->total()}}</span>
+                        </div>
                     </div>
                 </div>
             </div>

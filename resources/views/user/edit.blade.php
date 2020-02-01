@@ -160,7 +160,7 @@
                                                                 </button>
                                                                 <a href="javascript:void (0)"
                                                                    data-link="{{route('cancel')}}"
-                                                                   class="cancel btn btn-label-danger btn-bold float-right">Cancel</a>
+                                                                   class="cancel btn btn-label-danger btn-bold float-right">Reset</a>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -201,36 +201,37 @@
                             </thead>
                             <tbody>
                             @foreach($users as $i => $user)
-                                @if($i > 1)
-                                    <tr>
-                                        <th scope="row">{{$i - 1}}</th>
-                                        <td>{{$user->name}}</td>
-                                        <td>{{$user->email}}</td>
-                                        <td>
-                                            @if($user->id != $uedit->id)
-                                                <a href="{{route('user.edit', ['uid' => $user->id])}}" title="Edit"
-                                                   class="btn btn-sm btn-clean btn-icon btn-icon-md">
-                                                    <i class="la la-edit"></i>
-                                                </a>
-                                                <a href="{{route('user.delete', ['uid' => $user->id])}}" title="Delete"
-                                                   class="btn btn-sm btn-clean btn-icon btn-icon-md"
-                                                   onclick="return confirm('Are you sure you want to delete the User ?')">
+                                <tr>
+                                    <th scope="row">{{$i + 1}}</th>
+                                    <td>{{$user->name}}</td>
+                                    <td>{{$user->email}}</td>
+                                    <td>
+                                        @if($user->id != $uedit->id)
+                                            <a href="{{route('user.edit', ['uid' => $user->id])}}" title="Edit"
+                                               class="btn btn-sm btn-clean btn-icon btn-icon-md">
+                                                <i class="la la-edit"></i>
+                                            </a>
+                                            <form action="{{route('user.delete', ['uid' => $user->id])}}" method="POST"
+                                                  style="display: inline-table;">
+                                                @method('DELETE')
+                                                @csrf
+                                                <button type="submit" class="btn btn-sm btn-clean btn-icon btn-icon-md"
+                                                        onclick="return confirm('Are you sure you want to delete the user ?')">
                                                     <i class="la la-trash" style="color: #fd397a;"></i>
-                                                </a>
-                                            @else
-                                                <a href="#" title="Edit"
-                                                   class="btn btn-sm btn-clean btn-icon btn-icon-md disabled">
-                                                    <i class="la la-edit"></i>
-                                                </a>
-                                                <a href="#" title="Delete"
-                                                   class="btn btn-sm btn-clean btn-icon btn-icon-md disabled">
-                                                    <i class="la la-trash" style="color: #fd397a;"></i>
-                                                </a>
-                                            @endif
-
-                                        </td>
-                                    </tr>
-                                @endif
+                                                </button>
+                                            </form>
+                                        @else
+                                            <a href="#" title="Edit"
+                                               class="btn btn-sm btn-clean btn-icon btn-icon-md disabled">
+                                                <i class="la la-edit"></i>
+                                            </a>
+                                            <a href="#" title="Delete"
+                                               class="btn btn-sm btn-clean btn-icon btn-icon-md disabled">
+                                                <i class="la la-trash" style="color: #fd397a;"></i>
+                                            </a>
+                                        @endif
+                                    </td>
+                                </tr>
                             @endforeach
                             </tbody>
                         </table>
