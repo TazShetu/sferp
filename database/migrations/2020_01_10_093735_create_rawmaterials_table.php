@@ -22,6 +22,7 @@ class CreateRawmaterialsTable extends Migration
             $table->string('relative_density')->nullable();
             $table->string('density')->nullable();
             $table->integer('minimum_storage');
+            $table->string('unit');
             $table->timestamps();
         });
     }

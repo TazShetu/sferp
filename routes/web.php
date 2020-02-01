@@ -63,6 +63,7 @@ Route::post('/machine/store', 'MachineController@store')->name('machine.store');
 Route::delete('/machine/delete/{mid}', 'MachineController@destroy')->name('machine.delete');
 Route::get('/machine/edit/{mid}', 'MachineController@edit')->name('machine.edit');
 Route::post('/machine/update/{mid}', 'MachineController@update')->name('machine.update');
+Route::post('/machine/update/sparepart/{mid}', 'MachineController@updateMachineSparePart')->name('machine.update.sparepart');
 
 Route::get('/raw-material', 'RawmaterialController@list')->name('rawMaterial.list');
 Route::get('/raw-material/create', 'RawmaterialController@create')->name('rawMaterial.create');

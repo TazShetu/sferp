@@ -23,6 +23,7 @@ class CreateProductsTable extends Migration
             $table->string('twist_condition')->nullable();
             $table->string('strand')->nullable();
             $table->integer('minimum_storage');
+            $table->string('unit');
             $table->timestamps();
         });
     }
