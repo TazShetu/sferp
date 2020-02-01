@@ -207,6 +207,19 @@
                                                     @endif
                                                 </div>
                                             </div>
+                                            <div class="form-group row">
+                                                <label class="col-xl-3 col-lg-3 col-form-label">
+                                                    Unit
+                                                </label>
+                                                <div class="col-lg-9 col-xl-6">
+                                                    <input class="form-control {{($errors->has('unit')) ? 'is-invalid' : ''}}"
+                                                           type="text" name="unit" required
+                                                           value="{{$pedit->unit}}" list="unit">
+                                                    @if($errors->has('unit'))
+                                                        <span class="invalid-feedback">{{$errors->first('unit')}}</span>
+                                                    @endif
+                                                </div>
+                                            </div>
                                             <div class="kt-separator kt-separator--space-lg kt-separator--fit kt-separator--border-solid"></div>
                                             <div class="kt-form__actions">
                                                 <div class="row">
@@ -241,6 +254,12 @@
     <datalist id="type">
         @forelse($datalist['type'] as $m)
             <option value="{{$m->type}}">
+        @empty
+        @endforelse
+    </datalist>
+    <datalist id="unit">
+        @forelse($datalist['unit'] as $c)
+            <option value="{{$c->unit}}">
         @empty
         @endforelse
     </datalist>

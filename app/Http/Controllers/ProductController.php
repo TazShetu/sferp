@@ -27,6 +27,7 @@ class ProductController extends Controller
         if (Auth::user()->can('product')) {
             $datalist['name'] = DB::select(DB::raw('SELECT name FROM products GROUP BY name'));
             $datalist['type'] = DB::select(DB::raw('SELECT type FROM products GROUP BY type'));
+            $datalist['unit'] = DB::select(DB::raw('SELECT unit FROM products GROUP BY unit'));
             return view('product.create', compact('datalist'));
         } else {
             abort(403);
@@ -41,6 +42,7 @@ class ProductController extends Controller
                 'name' => 'required',
                 'type' => 'required',
                 'minimumStorage' => 'required|min:0',
+                'unit' => 'required',
             ]);
             $p = new Product;
             $p->name = $request->name;
@@ -88,6 +90,7 @@ class ProductController extends Controller
                 $p->strand = $request->strand;
             }
             $p->minimum_storage = $request->minimumStorage;
+            $p->unit = $request->unit;
             $p->save();
             Session::flash('Success', "The Product has been created successfully.");
             return redirect()->route('product.list');
@@ -103,6 +106,7 @@ class ProductController extends Controller
             $pedit = Product::find($pid);
             $datalist['name'] = DB::select(DB::raw('SELECT name FROM products GROUP BY name'));
             $datalist['type'] = DB::select(DB::raw('SELECT type FROM products GROUP BY type'));
+            $datalist['unit'] = DB::select(DB::raw('SELECT unit FROM products GROUP BY unit'));
             return view('product.edit', compact('datalist', 'pedit'));
         } else {
             abort(403);
@@ -117,6 +121,7 @@ class ProductController extends Controller
                 'name' => 'required',
                 'type' => 'required',
                 'minimumStorage' => 'required|min:0',
+                'unit' => 'required',
             ]);
             $p = Product::find($pid);
             $p->name = $request->name;
@@ -166,6 +171,7 @@ class ProductController extends Controller
                 $p->strand = $request->strand;
             }
             $p->minimum_storage = $request->minimumStorage;
+            $p->unit = $request->unit;
             $p->update();
             Session::flash('Success', "The Product has been updated successfully.");
             return redirect()->back();

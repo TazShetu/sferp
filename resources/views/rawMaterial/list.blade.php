@@ -86,7 +86,7 @@
                             <td><a href="{{route('rawMaterial.edit', ['rmid' => $m->id])}}">{{$m->auto_id}}</a>
                             </td>
                             <td>{{$m->country_origin}}</td>
-                            <td>{{$m->minimum_storage}}</td>
+                            <td>{{$m->minimum_storage}} {{$m->unit}}</td>
                             <td>
                                 <a href="{{route('rawMaterial.edit', ['rmid' => $m->id])}}" title="Edit"
                                    class="btn btn-sm btn-clean btn-icon btn-icon-md">

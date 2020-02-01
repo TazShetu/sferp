@@ -86,7 +86,7 @@
                             <td><a href="{{route('product.edit', ['pid' => $m->id])}}">{{$m->name}}</a>
                             </td>
                             <td>{{$m->type}}</td>
-                            <td>{{$m->minimum_storage}}</td>
+                            <td>{{$m->minimum_storage}} {{$m->unit}}</td>
                             <td>
                                 <a href="{{route('product.edit', ['pid' => $m->id])}}" title="Edit"
                                    class="btn btn-sm btn-clean btn-icon btn-icon-md">
