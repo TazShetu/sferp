@@ -55,7 +55,7 @@ class RawmaterialController extends Controller
             $r->manufacturer = $request->manufacturerName;
             $r->country_origin = $request->countryOfOrigin;
             $r->grade_number = $request->gradeNumber;
-            $r->auto_id = str_replace(" ", "-", $request->name) . "_" . str_replace(" ", "-", $request->manufacturerName) . "_" . str_replace(" ", "", $request->gradeNumber);
+            $r->auto_id = $request->name . "_" . $request->manufacturerName . "_" . $request->gradeNumber;
             if ($request->filled('mfi')) {
                 $request->validate([
                     'nmfi' => 'min:0',
@@ -118,7 +118,7 @@ class RawmaterialController extends Controller
             $r->manufacturer = $request->manufacturerName;
             $r->country_origin = $request->countryOfOrigin;
             $r->grade_number = $request->gradeNumber;
-            $r->auto_id = str_replace(" ", "-", $request->name) . "_" . str_replace(" ", "-", $request->manufacturerName) . "_" . str_replace(" ", "", $request->gradeNumber);
+            $r->auto_id = $request->name . "_" . $request->manufacturerName . "_" . $request->gradeNumber;
             if ($request->filled('mfi')) {
                 $request->validate([
                     'nmfi' => 'min:0',

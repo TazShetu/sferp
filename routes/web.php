@@ -80,16 +80,21 @@ Route::get('/product/edit/{pid}', 'ProductController@edit')->name('product.edit'
 Route::post('/product/update/{pid}', 'ProductController@update')->name('product.update');
 Route::post('/product/update/rawMaterial/{pid}', 'ProductController@updateProductRawmaterial')->name('product.update.rawmaterial');
 
-
 Route::get('/warehouse', 'WarehouseController@index')->name('warehouse.index');
 Route::post('/warehouse/store', 'WarehouseController@store')->name('warehouse.store');
 Route::delete('/warehouse/delete/{wid}', 'WarehouseController@destroy')->name('warehouse.delete');
 Route::get('/warehouse/edit/{wid}', 'WarehouseController@edit')->name('warehouse.edit');
 Route::post('/warehouse/update/{wid}', 'WarehouseController@update')->name('warehouse.update');
 Route::post('/floor/update/{wid}', 'WarehouseController@floorUpdate')->name('floor.update');
-Route::post('/rack/update/{wid}', 'WarehouseController@roomUpdate')->name('room.update');
+Route::post('/room/update/{wid}', 'WarehouseController@roomUpdate')->name('room.update');
 
-
+Route::get('/spare-part-room', 'SroomController@index')->name('sroom.index');
+Route::post('/spare-part-room/store', 'SroomController@store')->name('sroom.store');
+Route::delete('/spare-part-room/delete/{srid}', 'SroomController@destroy')->name('sroom.delete');
+Route::get('/spare-part-room/edit/{srid}', 'SroomController@edit')->name('sroom.edit');
+Route::post('/spare-part-room/update/{srid}', 'SroomController@update')->name('sroom.update');
+Route::post('/row/update/{srid}', 'SroomController@rowUpdate')->name('row.update');
+Route::post('/rack/update/{srid}', 'SroomController@rackUpdate')->name('rack.update');
 
 
 

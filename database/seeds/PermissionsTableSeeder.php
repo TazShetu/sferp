@@ -21,6 +21,7 @@ class PermissionsTableSeeder extends Seeder
             8 => ["raw_material", "Raw Material", "Raw Material menu"],
             9 => ["product", "Product", "Product menu"],
             10 => ["ware_house", "Ware House", "Ware House menu"],
+            11 => ["sparepart_room", "Spare Part Room", "Spare Part Room menu"],
         ];
 
         $s = Role::find(1);

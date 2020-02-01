@@ -182,7 +182,7 @@
                     </div>
                 </li>
                 @endpermission
-                @permission('ware_house|xxxx')
+                @permission('ware_house|sparepart_room')
                 <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"
                     data-ktmenu-submenu-toggle="hover">
                     <a href="javascript:;" class="kt-menu__link kt-menu__toggle">
@@ -204,6 +204,14 @@
                                 <a href="{{route('warehouse.index')}}" class="kt-menu__link ">
                                     <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>
                                     <span class="kt-menu__link-text">Warehouse</span>
+                                </a>
+                            </li>
+                            @endpermission
+                            @permission('sparepart_room')
+                            <li class="kt-menu__item  " aria-haspopup="true">
+                                <a href="{{route('sroom.index')}}" class="kt-menu__link ">
+                                    <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>
+                                    <span class="kt-menu__link-text">Sparepart Room</span>
                                 </a>
                             </li>
                             @endpermission
