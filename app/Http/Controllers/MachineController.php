@@ -246,6 +246,8 @@ class MachineController extends Controller
     public function destroy($mid)
     {
         if (Auth::user()->can('machine')) {
+            $m = Machine::find($mid);
+            $m->spareparts()->detach();
             Machine::find($mid)->delete();
             Session::flash('Success', "The Machine has been deleted successfully.");
             return redirect()->back();

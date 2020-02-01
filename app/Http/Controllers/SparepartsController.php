@@ -77,8 +77,9 @@ class SparepartsController extends Controller
     public function destroy($spid)
     {
         if (Auth::user()->can('spare_parts')) {
-            Spareparts::find($spid)->delete();
-            // also check if the relation with machine is deleted or not
+            $s = Spareparts::find($spid);
+            $s->machines()->detach();
+            $s->delete();
             Session::flash('Success', "The Spare Part has been deleted successfully.");
             return redirect()->back();
         } else {

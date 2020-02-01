@@ -184,7 +184,9 @@ class ProductController extends Controller
     public function destroy($pid)
     {
         if (Auth::user()->can('product')) {
-            Product::find($pid)->delete();
+            $p = Product::find($pid);
+            $p->rawMaterials()->detach();
+            $p->delete();
             Session::flash('Success', "The Product has been deleted successfully.");
             return redirect()->back();
         } else {

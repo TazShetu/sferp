@@ -154,7 +154,9 @@ class RawmaterialController extends Controller
     public function destroy($rmid)
     {
         if (Auth::user()->can('raw_material')) {
-            Rawmaterial::find($rmid)->delete();
+            $r = Rawmaterial::find($rmid);
+            $r->products()->detach();
+            $r->delete();
             Session::flash('Success', "The Raw Material has been deleted successfully.");
             return redirect()->back();
         } else {
