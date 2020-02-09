@@ -96,6 +96,13 @@ Route::post('/spare-part-room/update/{srid}', 'SroomController@update')->name('s
 Route::post('/row/update/{srid}', 'SroomController@rowUpdate')->name('row.update');
 Route::post('/rack/update/{srid}', 'SroomController@rackUpdate')->name('rack.update');
 
+Route::get('/raw-material-purchase/history', 'RawmaterialpurchaseController@history')->name('raw-material.purchase.history');
+Route::get('/raw-material-purchase', 'RawmaterialpurchaseController@index')->name('raw-material.purchase');
+Route::get('ajax/raw-material-purchase/ridToUnit', 'RawmaterialpurchaseController@ajaxRidToUnit');
+Route::post('/raw-material-purchase/store', 'RawmaterialpurchaseController@store')->name('raw-material.purchase.store');
+Route::delete('/raw-material-purchase/delete/{rpid}', 'RawmaterialpurchaseController@destroy')->name('rawmaterial.purchase.delete');
+Route::get('/raw-material-purchase/edit/{rpid}', 'RawmaterialpurchaseController@edit')->name('raw-material.purchase.edit');
+Route::post('/raw-material-purchase/update/{rpid}', 'RawmaterialpurchaseController@update')->name('raw-material.purchase.update');
 
 
 
