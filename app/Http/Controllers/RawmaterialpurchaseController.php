@@ -200,8 +200,8 @@ class RawmaterialpurchaseController extends Controller
             $p->imported_by = $request->importedBy;
             $p->lc_number = $request->lcNumber;
             $p->port_of_landing = $request->portOfLanding;
-            $p->save();
-            Session::flash('Success', "The Raw Material has been updated successfully.");
+            $p->update();
+            Session::flash('Success', "The Raw Material Purchase has been updated successfully.");
             return redirect()->back();
         } else {
             abort(403);

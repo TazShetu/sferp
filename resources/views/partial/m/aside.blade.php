@@ -242,9 +242,9 @@
                             </li>
                             @permission('sparepart_purchase')
                             <li class="kt-menu__item  " aria-haspopup="true">
-                                <a href="{{route('warehouse.index')}}" class="kt-menu__link ">
+                                <a href="{{route('spare-part.purchase')}}" class="kt-menu__link ">
                                     <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>
-                                    <span class="kt-menu__link-text">[[ Spare Part ]]</span>
+                                    <span class="kt-menu__link-text">Spare Part</span>
                                 </a>
                             </li>
                             @endpermission
@@ -256,8 +256,6 @@
                                 </a>
                             </li>
                             @endpermission
-
-
                             <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"
                                 data-ktmenu-submenu-toggle="hover">
                                 <a href="javascript:;" class="kt-menu__link kt-menu__toggle">
@@ -276,9 +274,9 @@
                                         </li>
                                         @permission('sparepart_purchase')
                                         <li class="kt-menu__item  " aria-haspopup="true">
-                                            <a href="#" class="kt-menu__link ">
+                                            <a href="{{route('spare-part.purchase.history')}}" class="kt-menu__link ">
                                                 <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>
-                                                <span class="kt-menu__link-text">[[ Spare Part ]]</span>
+                                                <span class="kt-menu__link-text">Spare Part</span>
                                             </a>
                                         </li>
                                         @endpermission
@@ -293,16 +291,10 @@
                                     </ul>
                                 </div>
                             </li>
-
-
-
-
                         </ul>
                     </div>
                 </li>
                 @endpermission
-
-
             </ul>
         </div>
     </div>

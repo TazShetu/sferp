@@ -104,6 +104,13 @@ Route::delete('/raw-material-purchase/delete/{rpid}', 'RawmaterialpurchaseContro
 Route::get('/raw-material-purchase/edit/{rpid}', 'RawmaterialpurchaseController@edit')->name('raw-material.purchase.edit');
 Route::post('/raw-material-purchase/update/{rpid}', 'RawmaterialpurchaseController@update')->name('raw-material.purchase.update');
 
+Route::get('/spare-part-purchase/history', 'SparepartspurchaseController@history')->name('spare-part.purchase.history');
+Route::get('/spare-part-purchase', 'SparepartspurchaseController@index')->name('spare-part.purchase');
+Route::get('ajax/spare-part-purchase/spidToUnit', 'SparepartspurchaseController@ajaxSpidToUnit');
+Route::post('/spare-part-purchase/store', 'SparepartspurchaseController@store')->name('spare-part.purchase.store');
+Route::delete('/spare-part-purchase/delete/{spid}', 'SparepartspurchaseController@destroy')->name('spare-part.purchase.delete');
+Route::get('/spare-part-purchase/edit/{spid}', 'SparepartspurchaseController@edit')->name('spare-part.purchase.edit');
+Route::post('/spare-part-purchase/update/{spid}', 'SparepartspurchaseController@update')->name('spare-part.purchase.update');
 
 
 

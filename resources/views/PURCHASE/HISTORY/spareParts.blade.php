@@ -1,17 +1,20 @@
 @extends('layouts.m')
-@section('title', 'Spare Parts List')
+@section('title', 'Spare Parts Purchase History')
+{{--@section('link')--}}
+
+{{--@endsection--}}
 @section('content_head')
     <div class="kt-subheader   kt-grid__item" id="kt_subheader">
         <div class="kt-container  kt-container--fluid ">
             <div class="kt-subheader__main">
                 <h3 class="kt-subheader__title">
-                    Spare Parts
+                    Spare Parts Purchase History
                 </h3>
                 <span class="kt-subheader__separator kt-subheader__separator--v"></span>
                 <div class="kt-subheader__group" id="kt_subheader_search">
-                    <span class="kt-subheader__desc" id="kt_subheader_total">
-                        {{count($spareParts)}} Total
-                    </span>
+                    {{--                                <span class="kt-subheader__desc" id="kt_subheader_total">--}}
+                    {{--                                    {{$customers->total()}} Total--}}
+                    {{--                                </span>--}}
                     <form class="kt-margin-l-20" id="kt_subheader_search_form">
                         <div class="kt-input-icon kt-input-icon--right kt-subheader__search">
                             <input type="text" class="form-control" placeholder="Search..." id="generalSearch">
@@ -33,11 +36,10 @@
                             </span>
                         </div>
                     </form>
-
                 </div>
             </div>
             <div class="kt-subheader__toolbar">
-                <a href="{{route('spareParts.create')}}" class="btn btn-label-brand btn-bold">Add Spare Parts</a>
+                <a href="{{route('spare-part.purchase')}}" class="btn btn-label-brand btn-bold">Purchase </a>
             </div>
         </div>
     </div>
@@ -63,62 +65,71 @@
                         <i class="kt-font-brand flaticon2-line-chart"></i>
                     </span>
                     <h3 class="kt-portlet__head-title">
-                        All Spare Parts
+                        Spare Parts Purchase History
                     </h3>
                 </div>
             </div>
             <div class="kt-portlet__body">
+                <!--begin: Datatable -->
                 {{--Bootstrap Table--}}
-                <table class="table table-hover">
+                <table class="table table-hover" id="dataTable">
                     <thead>
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Identification Number</th>
-                        <th scope="col">Manufacturer</th>
-                        <th scope="col">Date of Purchase</th>
-                        <th scope="col">Date of Arrival</th>
-                        <th scope="col">Unit Price</th>
+                        <th scope="col">Spare Part</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Country Of Purchase</th>
+                        <th scope="col">Total Price</th>
+                        <th scope="col">Invoice Number</th>
+                        <th scope="col">LC Number</th>
                         <th scope="col">Action</th>
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach($spareParts as $i => $m)
+                    @foreach($histories as $i => $h)
                         <tr>
                             <th scope="row">{{$i + 1}}</th>
-                            <td><a href="{{route('spareParts.edit', ['spid' => $m->id])}}">{{$m->identity_number}}</a>
-                            </td>
-                            <td>{{$m->manufacturer}}</td>
-                            <td>{{$m->purchase_date}}</td>
-                            <td>{{$m->arrival_date}}</td>
-                            <td>{{$m->unit_price}} in {{$m->currency}}</td>
+                            <td>{{$h->spare_part}}</td>
+                            <td>{{$h->quantity}} {{$h->unit}}</td>
+                            <td>{{$h->country_purchase}}</td>
+                            <td>{{$h->total_price}} {{$h->currency}}</td>
+                            <td>{{$h->invoice_number}}</td>
+                            <td>{{$h->lc_number}}</td>
                             <td>
-                                <a href="{{route('spareParts.edit', ['spid' => $m->id])}}" title="Edit"
+                                {{--                                @permission('customer_edit')--}}
+                                <a href="{{route('spare-part.purchase.edit', ['spid' => $h->id])}}" title="Edit"
                                    class="btn btn-sm btn-clean btn-icon btn-icon-md">
                                     <i class="la la-edit"></i>
                                 </a>
-                                <form action="{{route('spareParts.delete', ['spid' => $m->id])}}" method="POST"
+                                {{--                                @endpermission--}}
+                                {{--                                @permission('customer_delete')--}}
+                                <form action="{{route('spare-part.purchase.delete', ['spid' => $h->id])}}" method="POST"
                                       style="display: inline-table;">
                                     @method('DELETE')
                                     @csrf
                                     <button type="submit" class="btn btn-sm btn-clean btn-icon btn-icon-md"
-                                            onclick="return confirm('Are you sure you want to delete the spare part ?')">
+                                            onclick="return confirm('Are you sure you want to delete the customer ?')">
                                         <i class="la la-trash" style="color: #fd397a;"></i>
                                     </button>
                                 </form>
+
+                                {{--                                @endpermission--}}
                             </td>
                         </tr>
                     @endforeach
                     </tbody>
                 </table>
+                <!--end: table -->
+
                 {{--Pagination--}}
-                <div class="kt-section">
-                    <div class="kt-pagination  kt-pagination--brand">
-                        {{$spareParts->links()}}
-                        <div class="kt-datatable__pager-info">
-                            <span class="kt-datatable__pager-detail">Showing {{$spareParts->firstItem()}} - {{$spareParts->lastItem()}} of {{$spareParts->total()}}</span>
-                        </div>
-                    </div>
-                </div>
+                {{--                <div class="kt-section">--}}
+                {{--                    <div class="kt-pagination  kt-pagination--brand">--}}
+                {{--                        {{$customers->links()}}--}}
+                {{--                        <div class="kt-datatable__pager-info">--}}
+                {{--                            <span class="kt-datatable__pager-detail">Showing {{$customers->firstItem()}} - {{$customers->lastItem()}} of {{$customers->total()}}</span>--}}
+                {{--                        </div>--}}
+                {{--                    </div>--}}
+                {{--                </div>--}}
             </div>
         </div>
 
@@ -141,4 +152,15 @@
     <!--begin::Page Scripts(used by this page) -->
 
     <!--end::Page Scripts -->
+    {{--    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" type="text/javascript"></script>--}}
+    {{--    <script>--}}
+    {{--        $(document).ready(function() {--}}
+    {{--            $('#dataTable').DataTable({--}}
+    {{--                // "paging":   false,--}}
+    {{--                "ordering": false,--}}
+    {{--                "info":     false--}}
+    {{--            } );--}}
+    {{--        } );--}}
+    {{--    </script>--}}
+
 @endsection
