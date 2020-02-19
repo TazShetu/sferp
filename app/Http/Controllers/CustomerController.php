@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Contactperson;
 use App\Customer;
+use App\Customerproductdiscount;
 use App\Customerrelation;
 use App\Customertype;
+use App\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -223,7 +225,12 @@ class CustomerController extends Controller
             }
             $allSubDealers = Customer::where('customertype_id', '2')->get();
             $allIndividuals = Customer::where('customertype_id', '3')->get();
-            return view('customer.edit', compact('customer', 'cPersons', 'is_edit', 'customerTypes', 'subDealers', 'individuals', 'allSubDealers', 'allIndividuals'));
+            $products = Product::all();
+            $aps = Customerproductdiscount::where('customer_id', $cid)->get();
+            foreach ($aps as $ap){
+                $ap['product_name'] = Product::find($ap->product_id)->name;
+            }
+            return view('customer.edit', compact('customer', 'cPersons', 'is_edit', 'customerTypes', 'subDealers', 'individuals', 'allSubDealers', 'allIndividuals', 'products', 'aps'));
         } else {
             abort(403);
         }
@@ -377,19 +384,33 @@ class CustomerController extends Controller
     {
         if (Auth::user()->can('customer')) {
             // first check for all connections, if exist then can not delete //////////////////////////////////////////////
-            $customer = Customer::find($cid);
-            if ($customer->bin_file){
-                unlink($customer->bin_file);
+            DB::beginTransaction();
+            try {
+                $customer = Customer::find($cid);
+                if ($customer->bin_file){
+                    unlink($customer->bin_file);
+                }
+                if ($customer->nid_file){
+                    unlink($customer->nid_file);
+                }
+                if ($customer->image){
+                    unlink($customer->image);
+                }
+                Customerproductdiscount::where('customer_id', $cid)->delete();
+                $customer->delete();
+                DB::commit();
+                $success = true;
+            } catch (\Exception $e) {
+                $success = false;
+                DB::rollback();
             }
-            if ($customer->nid_file){
-                unlink($customer->nid_file);
+            if ($success) {
+                Session::flash('Success', "The Customer has been deleted successfully.");
+                return redirect()->back();
+            } else {
+                Session::flash('unsuccess', "Something went wrong :(");
+                return redirect()->back();
             }
-            if ($customer->image){
-                unlink($customer->image);
-            }
-            $customer->delete();
-            Session::flash('Success', "The Customer has been deleted successfully.");
-            return redirect()->back();
         } else {
             abort(403);
         }
@@ -470,9 +491,48 @@ class CustomerController extends Controller
     }
 
 
-    public function index()
+    public function productDiscountUpdate(Request $request, $cid)
     {
-        //
+        if (Auth::user()->can('customer')) {
+            if (($request->filled('product')) || ($request->filled('discount'))){
+                $request->validate([
+                    'product.*' => 'required',
+                    'discount.*' => 'required|min:0',
+                ]);
+                if (count($request->product) != count($request->discount)){
+                    Session::flash('unsuccess', "Please do not mess with the original code !!!");
+                    return redirect()->back();
+                }
+            }
+            DB::beginTransaction();
+            try {
+                Customerproductdiscount::where('customer_id', $cid)->delete();
+                if (($request->filled('product')) || ($request->filled('discount'))){
+                    $products = array_unique($request->product);
+                    foreach ($products as $i => $p){
+                        $c = new Customerproductdiscount;
+                        $c->customer_id = $cid;
+                        $c->product_id = $p;
+                        $c->discount = $request->discount[$i];
+                        $c->save();
+                    }
+                }
+                DB::commit();
+                $success = true;
+            } catch (\Exception $e) {
+                $success = false;
+                DB::rollback();
+            }
+            if ($success) {
+                Session::flash('Success', "The Customer Product Discount has been updated successfully.");
+                return redirect()->back();
+            } else {
+                Session::flash('unsuccess', "Something went wrong :(");
+                return redirect()->back();
+            }
+        } else {
+            abort(403);
+        }
     }
 
 

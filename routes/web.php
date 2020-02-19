@@ -36,6 +36,7 @@ Route::get('/customer-create', 'CustomerController@create')->name('customer.crea
 Route::post('/customer-store', 'CustomerController@store')->name('customer.store');
 Route::post('/customer-sub-dealer-update/{cid}', 'CustomerController@subDealerUpdate')->name('customer.sub.dealer.update');
 Route::post('/customer-individual-update/{cid}', 'CustomerController@individualUpdate')->name('customer.individual.update');
+Route::post('/customer-product-discount-update/{cid}', 'CustomerController@productDiscountUpdate')->name('customer.product.discount.update');
 Route::get('/customer-profile/{cid}', 'CustomerController@show')->name('customer.profile');
 Route::delete('/customer-delete/{cid}', 'CustomerController@destroy')->name('customer.delete');
 

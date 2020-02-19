@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Customerproductdiscount;
 use App\Product;
 use App\Rawmaterial;
 use Illuminate\Http\Request;
@@ -187,11 +188,25 @@ class ProductController extends Controller
     public function destroy($pid)
     {
         if (Auth::user()->can('product')) {
-            $p = Product::find($pid);
-            $p->rawMaterials()->detach();
-            $p->delete();
-            Session::flash('Success', "The Product has been deleted successfully.");
-            return redirect()->back();
+            DB::beginTransaction();
+            try {
+                $p = Product::find($pid);
+                $p->rawMaterials()->detach();
+                $p->delete();
+                Customerproductdiscount::where('product_id', $pid)->delete();
+                DB::commit();
+                $success = true;
+            } catch (\Exception $e) {
+                $success = false;
+                DB::rollback();
+            }
+            if ($success) {
+                Session::flash('Success', "The Product has been deleted successfully.");
+                return redirect()->back();
+            } else {
+                Session::flash('unsuccess', "Something went wrong :(");
+                return redirect()->back();
+            }
         } else {
             abort(403);
         }

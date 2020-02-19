@@ -297,6 +297,7 @@
                                                             <option selected hidden value="{{$spedit->shipped_by}}">{{$spedit->shipped_by}}</option>
                                                             <option value="Air">Air</option>
                                                             <option value="Ship">Ship</option>
+                                                            <option value="Local">Local</option>
                                                         </select>
                                                         @if($errors->has('shippedBy'))
                                                             <span
