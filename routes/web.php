@@ -36,6 +36,7 @@ Route::get('/customer-create', 'CustomerController@create')->name('customer.crea
 Route::post('/customer-store', 'CustomerController@store')->name('customer.store');
 Route::post('/customer-sub-dealer-update/{cid}', 'CustomerController@subDealerUpdate')->name('customer.sub.dealer.update');
 Route::post('/customer-individual-update/{cid}', 'CustomerController@individualUpdate')->name('customer.individual.update');
+Route::post('/customer-product-discount-update/{cid}', 'CustomerController@productDiscountUpdate')->name('customer.product.discount.update');
 Route::get('/customer-profile/{cid}', 'CustomerController@show')->name('customer.profile');
 Route::delete('/customer-delete/{cid}', 'CustomerController@destroy')->name('customer.delete');
 
@@ -78,7 +79,7 @@ Route::post('/product/store', 'ProductController@store')->name('product.store');
 Route::delete('/product/delete/{pid}', 'ProductController@destroy')->name('product.delete');
 Route::get('/product/edit/{pid}', 'ProductController@edit')->name('product.edit');
 Route::post('/product/update/{pid}', 'ProductController@update')->name('product.update');
-
+Route::post('/product/update/rawMaterial/{pid}', 'ProductController@updateProductRawmaterial')->name('product.update.rawmaterial');
 
 Route::get('/warehouse', 'WarehouseController@index')->name('warehouse.index');
 Route::post('/warehouse/store', 'WarehouseController@store')->name('warehouse.store');
@@ -86,13 +87,39 @@ Route::delete('/warehouse/delete/{wid}', 'WarehouseController@destroy')->name('w
 Route::get('/warehouse/edit/{wid}', 'WarehouseController@edit')->name('warehouse.edit');
 Route::post('/warehouse/update/{wid}', 'WarehouseController@update')->name('warehouse.update');
 Route::post('/floor/update/{wid}', 'WarehouseController@floorUpdate')->name('floor.update');
-Route::post('/rack/update/{wid}', 'WarehouseController@roomUpdate')->name('room.update');
+Route::post('/room/update/{wid}', 'WarehouseController@roomUpdate')->name('room.update');
 
+Route::get('/spare-part-room', 'SroomController@index')->name('sroom.index');
+Route::post('/spare-part-room/store', 'SroomController@store')->name('sroom.store');
+Route::delete('/spare-part-room/delete/{srid}', 'SroomController@destroy')->name('sroom.delete');
+Route::get('/spare-part-room/edit/{srid}', 'SroomController@edit')->name('sroom.edit');
+Route::post('/spare-part-room/update/{srid}', 'SroomController@update')->name('sroom.update');
+Route::post('/row/update/{srid}', 'SroomController@rowUpdate')->name('row.update');
+Route::post('/rack/update/{srid}', 'SroomController@rackUpdate')->name('rack.update');
 
+Route::get('/raw-material-purchase/history', 'RawmaterialpurchaseController@history')->name('raw-material.purchase.history');
+Route::get('/raw-material-purchase', 'RawmaterialpurchaseController@index')->name('raw-material.purchase');
+Route::get('ajax/raw-material-purchase/ridToUnit', 'RawmaterialpurchaseController@ajaxRidToUnit');
+Route::post('/raw-material-purchase/store', 'RawmaterialpurchaseController@store')->name('raw-material.purchase.store');
+Route::delete('/raw-material-purchase/delete/{rpid}', 'RawmaterialpurchaseController@destroy')->name('rawmaterial.purchase.delete');
+Route::get('/raw-material-purchase/edit/{rpid}', 'RawmaterialpurchaseController@edit')->name('raw-material.purchase.edit');
+Route::post('/raw-material-purchase/update/{rpid}', 'RawmaterialpurchaseController@update')->name('raw-material.purchase.update');
 
+Route::get('/raw-material-purchase/receive', 'RawmaterialpurchaseController@receiveIndex')->name('raw-material.purchase.receive');
+Route::post('/raw-material-purchase/received/{rpid}', 'RawmaterialpurchaseController@received')->name('raw-material.purchase.received');
+Route::post('/raw-material-purchase/not-received/{rpid}', 'RawmaterialpurchaseController@notReceived')->name('raw-material.purchase.received.not');
 
+Route::get('/spare-part-purchase/history', 'SparepartspurchaseController@history')->name('spare-part.purchase.history');
+Route::get('/spare-part-purchase', 'SparepartspurchaseController@index')->name('spare-part.purchase');
+Route::get('ajax/spare-part-purchase/spidToUnit', 'SparepartspurchaseController@ajaxSpidToUnit');
+Route::post('/spare-part-purchase/store', 'SparepartspurchaseController@store')->name('spare-part.purchase.store');
+Route::delete('/spare-part-purchase/delete/{spid}', 'SparepartspurchaseController@destroy')->name('spare-part.purchase.delete');
+Route::get('/spare-part-purchase/edit/{spid}', 'SparepartspurchaseController@edit')->name('spare-part.purchase.edit');
+Route::post('/spare-part-purchase/update/{spid}', 'SparepartspurchaseController@update')->name('spare-part.purchase.update');
 
-
+Route::get('/spare-part-purchase/receive', 'SparepartspurchaseController@receiveIndex')->name('spare-part.purchase.receive');
+Route::post('/spare-part-purchase/received/{spid}', 'SparepartspurchaseController@received')->name('spare-part.purchase.received');
+Route::post('/spare-part-purchase/not-received/{spid}', 'SparepartspurchaseController@notReceived')->name('spare-part.purchase.received.not');
 
 
 

@@ -139,9 +139,6 @@ class MachineController extends Controller
             $medit = Machine::find($mid);
             $spareParts = $medit->spareparts()->get();
             $allSpareParts = Spareparts::all();
-//            foreach ($allSpareParts as $asp){
-//                dd($asp->description);
-//            }
             $medit['factoryName'] = Factory::find($medit->factory_id)->name;
             $factories = Factory::all();
             $datalist['category'] = DB::select(DB::raw('SELECT category FROM machines GROUP BY category'));
@@ -246,6 +243,8 @@ class MachineController extends Controller
     public function destroy($mid)
     {
         if (Auth::user()->can('machine')) {
+            $m = Machine::find($mid);
+            $m->spareparts()->detach();
             Machine::find($mid)->delete();
             Session::flash('Success', "The Machine has been deleted successfully.");
             return redirect()->back();

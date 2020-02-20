@@ -1,4 +1,11 @@
 <script>
+    // delete btn
+    $(document).on('click', '.delete-btn', function (f) {
+        $(f.target).closest('.remove-content').slideUp(function () {
+            $(this).remove();
+        });
+    });
+    // add btn contact Person
     $(document).on('click', '#add-btn', function () {
         var input = `
                 <div class="form-group row align-items-center remove-content">
@@ -57,15 +64,7 @@
             $(this).slideDown(500);
         });
     });
-</script>
-<script>
-    $(document).on('click', '.delete-btn', function (f) {
-        $(f.target).closest('.remove-content').slideUp(function () {
-            $(this).remove();
-        });
-    });
-</script>
-<script>
+    // add btn sub-dealer
     $(document).on('click', '#add-btn-subDealer', function () {
         var input = `
                 <div class="form-group row align-items-center remove-content">
@@ -80,21 +79,21 @@
                                         data-live-search="true" data-size="7">
                                     <option selected disabled hidden>Choose</option>
                                      @foreach($allSubDealers as $asd)
-            <option value="{{$asd->id}}">{{$asd->name}}</option>
+        <option value="{{$asd->id}}">{{$asd->name}}</option>
                                     @endforeach
-            </select>
-        </div>
+        </select>
     </div>
-    <div class="d-md-none kt-margin-b-10"></div>
+</div>
+<div class="d-md-none kt-margin-b-10"></div>
 </div>
 <div class="col-md-3">
-    <a href="javascript:;"
-       data-repeater-delete=""
-       class="btn-sm btn btn-label-danger btn-bold delete-btn"
-       style="margin-top: 24px;">
-        <i class="la la-trash-o"></i>
-        Delete
-    </a>
+<a href="javascript:;"
+   data-repeater-delete=""
+   class="btn-sm btn btn-label-danger btn-bold delete-btn"
+   style="margin-top: 24px;">
+    <i class="la la-trash-o"></i>
+    Delete
+</a>
 </div>
 </div>
 `;
@@ -102,10 +101,11 @@
             $('#repeat-content-subdealer').append(this);
             $(this).slideDown(500);
         });
-        $('.kt-selectpicker').selectpicker();
+        setTimeout(() => {
+            $('.kt-selectpicker').selectpicker();
+        }, 50);
     });
-</script>
-<script>
+    // add btn individual
     $(document).on('click', '#add-btn-individual', function () {
         var input = `
                  <div class="form-group row align-items-center remove-content">
@@ -120,21 +120,21 @@
                                         data-live-search="true" data-size="7">
                                     <option selected disabled hidden>Choose</option>
                                     @foreach($allIndividuals as $ai)
-            <option value="{{$ai->id}}">{{$ai->name}}</option>
+        <option value="{{$ai->id}}">{{$ai->name}}</option>
                                     @endforeach
-            </select>
-        </div>
+        </select>
     </div>
-    <div class="d-md-none kt-margin-b-10"></div>
+</div>
+<div class="d-md-none kt-margin-b-10"></div>
 </div>
 <div class="col-md-3">
-    <a href="javascript:;"
-       data-repeater-delete=""
-       class="btn-sm btn btn-label-danger btn-bold delete-btn"
-       style="margin-top: 24px;">
-        <i class="la la-trash-o"></i>
-        Delete
-    </a>
+<a href="javascript:;"
+   data-repeater-delete=""
+   class="btn-sm btn btn-label-danger btn-bold delete-btn"
+   style="margin-top: 24px;">
+    <i class="la la-trash-o"></i>
+    Delete
+</a>
 </div>
 </div>
 `;
@@ -142,6 +142,69 @@
             $('#repeat-content-individual').append(this);
             $(this).slideDown(500);
         });
-        $('.kt-selectpicker').selectpicker();
+        setTimeout(() => {
+            $('.kt-selectpicker').selectpicker();
+        }, 50);
+    });
+    // add btn customer product discount
+    $(document).on('click', '#add-btn-product-discount', function () {
+        var input = `<div
+            class="form-group row align-items-center remove-content">
+            <div class="col-md-3">
+                <div class="kt-form__group--inline">
+                    <div class="kt-form__label">
+                        <label>Product:</label>
+                    </div>
+                    <div class="kt-form__control">
+                        <select
+                            class="form-control kt-selectpicker"
+                            name="product[]"
+                            data-live-search="true"
+                            data-size="7">
+                            <option selected hidden disabled
+                                    value="">
+                                Choose...
+                            </option>
+                            @foreach($products as $p)
+                                <option
+                                    value="{{$p->id}}">{{$p->name}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                <div class="d-md-none kt-margin-b-10"></div>
+                </div>
+                <div class="col-md-3">
+                <div class="kt-form__group--inline">
+                    <div class="kt-form__label">
+                        <label>Discount:</label>
+                    </div>
+                    <div class="kt-form__control">
+                        <input type="number"
+                               class="form-control"
+                               name="discount[]" required
+                               step="0.01" min="0">
+                    </div>
+                </div>
+                <div class="d-md-none kt-margin-b-10"></div>
+                </div>
+                <div class="col-md-3">
+                <a href="javascript:;"
+                   data-repeater-delete=""
+                   class="btn-sm btn btn-label-danger btn-bold delete-btn"
+                   style="margin-top: 24px;">
+                    <i class="la la-trash-o"></i>
+                    Delete
+                </a>
+                </div>
+                </div>
+        `;
+        $(input).slideUp(1, function () {
+            $('#repeat-content-product-discount').append(this);
+            $(this).slideDown(500);
+        });
+        setTimeout(() => {
+            $('.kt-selectpicker').selectpicker();
+        }, 50);
     });
 </script>

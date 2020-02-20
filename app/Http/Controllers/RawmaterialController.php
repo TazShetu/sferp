@@ -31,6 +31,7 @@ class RawmaterialController extends Controller
         if (Auth::user()->can('raw_material')) {
             $datalist['countryOfOrigin'] = DB::select(DB::raw('SELECT country_origin FROM rawmaterials GROUP BY country_origin'));
             $datalist['manufacturer'] = DB::select(DB::raw('SELECT manufacturer FROM rawmaterials GROUP BY manufacturer'));
+            $datalist['unit'] = DB::select(DB::raw('SELECT unit FROM rawmaterials GROUP BY unit'));
             return view('rawMaterial.create', compact('datalist'));
         } else {
             abort(403);
@@ -47,13 +48,14 @@ class RawmaterialController extends Controller
                 'countryOfOrigin' => 'required',
                 'gradeNumber' => 'required',
                 'minimumStorage' => 'required|min:0',
+                'unit' => 'required',
             ]);
             $r = new Rawmaterial;
             $r->name = $request->name;
             $r->manufacturer = $request->manufacturerName;
             $r->country_origin = $request->countryOfOrigin;
             $r->grade_number = $request->gradeNumber;
-            $r->auto_id = str_replace(" ", "-", $request->name) . "_" . str_replace(" ", "-", $request->manufacturerName) . "_" . str_replace(" ", "", $request->gradeNumber);
+            $r->auto_id = $request->name . "_" . $request->manufacturerName . "_" . $request->gradeNumber;
             if ($request->filled('mfi')) {
                 $request->validate([
                     'nmfi' => 'min:0',
@@ -76,6 +78,7 @@ class RawmaterialController extends Controller
                 $r->density = $request->density;
             }
             $r->minimum_storage = $request->minimumStorage;
+            $r->unit = $request->unit;
             $r->save();
             Session::flash('Success', "The Raw Material has been created successfully.");
             return redirect()->route('rawMaterial.list');
@@ -91,6 +94,7 @@ class RawmaterialController extends Controller
             $rmedit = Rawmaterial::find($rmid);
             $datalist['countryOfOrigin'] = DB::select(DB::raw('SELECT country_origin FROM rawmaterials GROUP BY country_origin'));
             $datalist['manufacturer'] = DB::select(DB::raw('SELECT manufacturer FROM rawmaterials GROUP BY manufacturer'));
+            $datalist['unit'] = DB::select(DB::raw('SELECT unit FROM rawmaterials GROUP BY unit'));
             return view('rawMaterial.edit', compact('datalist', 'rmedit'));
         } else {
             abort(403);
@@ -107,13 +111,14 @@ class RawmaterialController extends Controller
                 'countryOfOrigin' => 'required',
                 'gradeNumber' => 'required',
                 'minimumStorage' => 'required|min:0',
+                'unit' => 'required',
             ]);
             $r = Rawmaterial::find($rmid);
             $r->name = $request->name;
             $r->manufacturer = $request->manufacturerName;
             $r->country_origin = $request->countryOfOrigin;
             $r->grade_number = $request->gradeNumber;
-            $r->auto_id = str_replace(" ", "-", $request->name) . "_" . str_replace(" ", "-", $request->manufacturerName) . "_" . str_replace(" ", "", $request->gradeNumber);
+            $r->auto_id = $request->name . "_" . $request->manufacturerName . "_" . $request->gradeNumber;
             if ($request->filled('mfi')) {
                 $request->validate([
                     'nmfi' => 'min:0',
@@ -136,6 +141,7 @@ class RawmaterialController extends Controller
                 $r->density = $request->density;
             }
             $r->minimum_storage = $request->minimumStorage;
+            $r->unit = $request->unit;
             $r->update();
             Session::flash('Success', "The Raw Material has been updated successfully.");
             return redirect()->back();
@@ -148,7 +154,9 @@ class RawmaterialController extends Controller
     public function destroy($rmid)
     {
         if (Auth::user()->can('raw_material')) {
-            Rawmaterial::find($rmid)->delete();
+            $r = Rawmaterial::find($rmid);
+            $r->products()->detach();
+            $r->delete();
             Session::flash('Success', "The Raw Material has been deleted successfully.");
             return redirect()->back();
         } else {
