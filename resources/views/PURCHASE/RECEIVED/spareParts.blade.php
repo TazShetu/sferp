@@ -40,9 +40,9 @@
                     </form>
                 </div>
             </div>
-            <div class="kt-subheader__toolbar">
-                <a href="{{route('spare-part.purchase')}}" class="btn btn-label-brand btn-bold">Purchase </a>
-            </div>
+            {{--            <div class="kt-subheader__toolbar">--}}
+            {{--                <a href="{{route('spare-part.purchase')}}" class="btn btn-label-brand btn-bold">Purchase </a>--}}
+            {{--            </div>--}}
         </div>
     </div>
 @endsection
@@ -67,7 +67,7 @@
                         <i class="kt-font-brand flaticon2-line-chart"></i>
                     </span>
                     <h3 class="kt-portlet__head-title">
-                        Spare Parts Purchase History
+                        Spare Parts (Purchase) Received
                     </h3>
                 </div>
             </div>
@@ -83,8 +83,8 @@
                         <th scope="col">Quantity</th>
                         <th scope="col">Country Of Purchase</th>
                         <th scope="col">Total Price</th>
-                        <th scope="col">Invoice Number</th>
                         <th scope="col">LC Number</th>
+                        <th scope="col">Invoice Number</th>
                         <th scope="col">Action</th>
                     </tr>
                     </thead>
@@ -93,31 +93,32 @@
                         <tr>
                             <th scope="row">{{$histories->firstItem() + $i}}</th>
                             <td>{{$h->spare_part}}</td>
-                            <td>{{$h->status}}</td>
+                            <th>{{$h->status}}</th>
                             <td>{{$h->quantity}} {{$h->unit}}</td>
                             <td>{{$h->country_purchase}}</td>
                             <td>{{$h->total_price}} {{$h->currency}}</td>
-                            <td>{{$h->invoice_number}}</td>
                             <td>{{$h->lc_number}}</td>
+                            <td>{{$h->invoice_number}}</td>
                             <td>
-                                {{--                                @permission('customer_edit')--}}
-                                <a href="{{route('spare-part.purchase.edit', ['spid' => $h->id])}}" title="Edit"
-                                   class="btn btn-sm btn-clean btn-icon btn-icon-md">
-                                    <i class="la la-edit"></i>
-                                </a>
-                                {{--                                @endpermission--}}
-                                {{--                                @permission('customer_delete')--}}
-                                <form action="{{route('spare-part.purchase.delete', ['spid' => $h->id])}}" method="POST"
-                                      style="display: inline-table;">
-                                    @method('DELETE')
-                                    @csrf
-                                    <button type="submit" class="btn btn-sm btn-clean btn-icon btn-icon-md"
-                                            onclick="return confirm('Are you sure you want to delete the Purchase history ?')">
-                                        <i class="la la-trash" style="color: #fd397a;"></i>
-                                    </button>
-                                </form>
-
-                                {{--                                @endpermission--}}
+                                @if($h->status == 'pending')
+                                    <form action="{{route('spare-part.purchase.received', ['spid' => $h->id])}}"
+                                          method="POST" style="display: inline-table;">
+                                        @csrf
+                                        <button type="submit" class="btn btn-sm btn-success"
+                                                onclick="return confirm('Are you sure you have received the Spare Parts ?')">
+                                            Received
+                                        </button>
+                                    </form>
+                                @else
+                                    <form action="{{route('spare-part.purchase.received.not', ['spid' => $h->id])}}"
+                                          method="POST" style="display: inline-table;">
+                                        @csrf
+                                        <button type="submit" class="btn btn-sm btn-danger"
+                                                onclick="return confirm('Are you sure you have not received the Spare Parts ?')">
+                                            Not Received
+                                        </button>
+                                    </form>
+                                @endif
                             </td>
                         </tr>
                     @endforeach
@@ -125,7 +126,7 @@
                 </table>
                 <!--end: table -->
 
-{{--                Pagination--}}
+                {{--                Pagination--}}
                 <div class="kt-section">
                     <div class="kt-pagination  kt-pagination--brand">
                         {{$histories->links()}}

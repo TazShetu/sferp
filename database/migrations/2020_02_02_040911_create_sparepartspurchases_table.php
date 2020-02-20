@@ -42,6 +42,7 @@ class CreateSparepartspurchasesTable extends Migration
             $table->string('invoice_number');
             $table->string('lc_number');
             $table->string('note');
+            $table->string('status')->default('pending');
 //            $table->integer('minimum_storage');
             $table->timestamps();
         });

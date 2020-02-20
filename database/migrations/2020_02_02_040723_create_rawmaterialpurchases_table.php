@@ -33,6 +33,7 @@ class CreateRawmaterialpurchasesTable extends Migration
             $table->string('imported_by');
             $table->string('lc_number');
             $table->string('port_of_landing');
+            $table->string('status')->default('pending');
 //            $table->integer('warehouse_id')->index();
 //            $table->integer('floor_id')->nullable();
 //            $table->integer('room_id')->nullable();

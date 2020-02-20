@@ -20,7 +20,7 @@ class SparepartspurchaseController extends Controller
     public function history()
     {
         if (Auth::user()->can('sparepart_purchase')) {
-            $histories = Sparepartspurchase::all();
+            $histories = Sparepartspurchase::orderBy('created_at', 'DESC')->paginate(10);
             foreach ($histories as $h){
                 $h['spare_part'] = Spareparts::find($h->spareparts_id)->description;
             }
@@ -200,6 +200,51 @@ class SparepartspurchaseController extends Controller
             $s->note = $request->note;
             $s->update();
             Session::flash('Success', "The Spare Parts purchase has been updated successfully.");
+            return redirect()->back();
+        } else {
+            abort(403);
+        }
+    }
+
+
+
+    public function receiveIndex()
+    {
+        if (Auth::user()->can('sparepart_receive')) {
+            $histories = Sparepartspurchase::where('status', 'pending')->orWhere('status', 'received')->orderBy('status', 'ASC')->orderBy('created_at', 'DESC')->paginate(10);
+            foreach ($histories as $h){
+                $h['spare_part'] = Spareparts::find($h->spareparts_id)->description;
+            }
+            return view('PURCHASE.RECEIVED.spareParts', compact('histories'));
+        } else {
+            abort(403);
+        }
+    }
+
+
+
+    public function received(Request $request, $spid)
+    {
+        if (Auth::user()->can('sparepart_receive')) {
+            $h = Sparepartspurchase::find($spid);
+            $h->status = 'received';
+            $h->update();
+            Session::flash('Success', "The Spare Parts has been received successfully.");
+            return redirect()->back();
+        } else {
+            abort(403);
+        }
+    }
+
+
+
+    public function notReceived(Request $request, $spid)
+    {
+        if (Auth::user()->can('sparepart_receive')) {
+            $h = Sparepartspurchase::find($spid);
+            $h->status = 'pending';
+            $h->update();
+            Session::flash('Success', "The Spare Parts purchase history status is pending now.");
             return redirect()->back();
         } else {
             abort(403);

@@ -1,5 +1,5 @@
 @extends('layouts.m')
-@section('title', 'Spare Parts Purchase History')
+@section('title', 'Raw Material Purchase History')
 {{--@section('link')--}}
 
 {{--@endsection--}}
@@ -8,7 +8,7 @@
         <div class="kt-container  kt-container--fluid ">
             <div class="kt-subheader__main">
                 <h3 class="kt-subheader__title">
-                    Spare Parts Purchase History
+                    Raw Material Purchase History
                 </h3>
                 <span class="kt-subheader__separator kt-subheader__separator--v"></span>
                 <div class="kt-subheader__group" id="kt_subheader_search">
@@ -25,12 +25,10 @@
                                         <g stroke="none" stroke-width="1" fill="none"
                                            fill-rule="evenodd">
                                             <rect x="0" y="0" width="24" height="24"/>
-                                            <path
-                                                d="M14.2928932,16.7071068 C13.9023689,16.3165825 13.9023689,15.6834175 14.2928932,15.2928932 C14.6834175,14.9023689 15.3165825,14.9023689 15.7071068,15.2928932 L19.7071068,19.2928932 C20.0976311,19.6834175 20.0976311,20.3165825 19.7071068,20.7071068 C19.3165825,21.0976311 18.6834175,21.0976311 18.2928932,20.7071068 L14.2928932,16.7071068 Z"
-                                                fill="#000000" fill-rule="nonzero" opacity="0.3"/>
-                                            <path
-                                                d="M11,16 C13.7614237,16 16,13.7614237 16,11 C16,8.23857625 13.7614237,6 11,6 C8.23857625,6 6,8.23857625 6,11 C6,13.7614237 8.23857625,16 11,16 Z M11,18 C7.13400675,18 4,14.8659932 4,11 C4,7.13400675 7.13400675,4 11,4 C14.8659932,4 18,7.13400675 18,11 C18,14.8659932 14.8659932,18 11,18 Z"
-                                                fill="#000000" fill-rule="nonzero"/>
+                                            <path d="M14.2928932,16.7071068 C13.9023689,16.3165825 13.9023689,15.6834175 14.2928932,15.2928932 C14.6834175,14.9023689 15.3165825,14.9023689 15.7071068,15.2928932 L19.7071068,19.2928932 C20.0976311,19.6834175 20.0976311,20.3165825 19.7071068,20.7071068 C19.3165825,21.0976311 18.6834175,21.0976311 18.2928932,20.7071068 L14.2928932,16.7071068 Z"
+                                                  fill="#000000" fill-rule="nonzero" opacity="0.3"/>
+                                            <path d="M11,16 C13.7614237,16 16,13.7614237 16,11 C16,8.23857625 13.7614237,6 11,6 C8.23857625,6 6,8.23857625 6,11 C6,13.7614237 8.23857625,16 11,16 Z M11,18 C7.13400675,18 4,14.8659932 4,11 C4,7.13400675 7.13400675,4 11,4 C14.8659932,4 18,7.13400675 18,11 C18,14.8659932 14.8659932,18 11,18 Z"
+                                                  fill="#000000" fill-rule="nonzero"/>
                                         </g>
                                     </svg>]]
                                     <!--<i class="flaticon2-search-1"></i>-->
@@ -40,9 +38,9 @@
                     </form>
                 </div>
             </div>
-            <div class="kt-subheader__toolbar">
-                <a href="{{route('spare-part.purchase')}}" class="btn btn-label-brand btn-bold">Purchase </a>
-            </div>
+{{--            <div class="kt-subheader__toolbar">--}}
+{{--                <a href="{{route('raw-material.purchase')}}" class="btn btn-label-brand btn-bold">Purchase </a>--}}
+{{--            </div>--}}
         </div>
     </div>
 @endsection
@@ -67,7 +65,7 @@
                         <i class="kt-font-brand flaticon2-line-chart"></i>
                     </span>
                     <h3 class="kt-portlet__head-title">
-                        Spare Parts Purchase History
+                        Raw Material (Purchase) Received
                     </h3>
                 </div>
             </div>
@@ -78,13 +76,13 @@
                     <thead>
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Spare Part</th>
+                        <th scope="col">Raw Material</th>
                         <th scope="col">Status</th>
                         <th scope="col">Quantity</th>
-                        <th scope="col">Country Of Purchase</th>
                         <th scope="col">Total Price</th>
-                        <th scope="col">Invoice Number</th>
+                        <th scope="col">Purchased From</th>
                         <th scope="col">LC Number</th>
+                        <th scope="col">Invoice Number</th>
                         <th scope="col">Action</th>
                     </tr>
                     </thead>
@@ -92,32 +90,33 @@
                     @foreach($histories as $i => $h)
                         <tr>
                             <th scope="row">{{$histories->firstItem() + $i}}</th>
-                            <td>{{$h->spare_part}}</td>
-                            <td>{{$h->status}}</td>
+                            <td>{{$h->raw_material}}</td>
+                            <th>{{$h->status}}</th>
                             <td>{{$h->quantity}} {{$h->unit}}</td>
-                            <td>{{$h->country_purchase}}</td>
                             <td>{{$h->total_price}} {{$h->currency}}</td>
-                            <td>{{$h->invoice_number}}</td>
+                            <td>{{$h->purchase_from}}</td>
                             <td>{{$h->lc_number}}</td>
+                            <td>{{$h->invoice_number}}</td>
                             <td>
-                                {{--                                @permission('customer_edit')--}}
-                                <a href="{{route('spare-part.purchase.edit', ['spid' => $h->id])}}" title="Edit"
-                                   class="btn btn-sm btn-clean btn-icon btn-icon-md">
-                                    <i class="la la-edit"></i>
-                                </a>
-                                {{--                                @endpermission--}}
-                                {{--                                @permission('customer_delete')--}}
-                                <form action="{{route('spare-part.purchase.delete', ['spid' => $h->id])}}" method="POST"
-                                      style="display: inline-table;">
-                                    @method('DELETE')
-                                    @csrf
-                                    <button type="submit" class="btn btn-sm btn-clean btn-icon btn-icon-md"
-                                            onclick="return confirm('Are you sure you want to delete the Purchase history ?')">
-                                        <i class="la la-trash" style="color: #fd397a;"></i>
-                                    </button>
-                                </form>
-
-                                {{--                                @endpermission--}}
+                                @if($h->status == 'pending')
+                                    <form action="{{route('raw-material.purchase.received', ['rpid' => $h->id])}}"
+                                          method="POST" style="display: inline-table;">
+                                        @csrf
+                                        <button type="submit" class="btn btn-sm btn-success"
+                                                onclick="return confirm('Are you sure you have received the Raw Material ?')">
+                                            Received
+                                        </button>
+                                    </form>
+                                @else
+                                    <form action="{{route('raw-material.purchase.received.not', ['rpid' => $h->id])}}"
+                                          method="POST" style="display: inline-table;">
+                                        @csrf
+                                        <button type="submit" class="btn btn-sm btn-danger"
+                                                onclick="return confirm('Are you sure you have not received the Raw Material ?')">
+                                            Not Received
+                                        </button>
+                                    </form>
+                                @endif
                             </td>
                         </tr>
                     @endforeach
@@ -125,7 +124,7 @@
                 </table>
                 <!--end: table -->
 
-{{--                Pagination--}}
+                {{--Pagination--}}
                 <div class="kt-section">
                     <div class="kt-pagination  kt-pagination--brand">
                         {{$histories->links()}}

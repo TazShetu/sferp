@@ -77,6 +77,7 @@
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Raw Material</th>
+                        <th scope="col">Status</th>
                         <th scope="col">Invoice Number</th>
                         <th scope="col">Quantity</th>
                         <th scope="col">Total Price</th>
@@ -88,8 +89,9 @@
                     <tbody>
                     @foreach($histories as $i => $h)
                         <tr>
-                            <th scope="row">{{$i + 1}}</th>
+                            <th scope="row">{{$histories->firstItem() + $i}}</th>
                             <td>{{$h->raw_material}}</td>
+                            <td>{{$h->status}}</td>
                             <td>{{$h->invoice_number}}</td>
                             <td>{{$h->quantity}} {{$h->unit}}</td>
                             <td>{{$h->total_price}} {{$h->currency}}</td>
@@ -108,7 +110,7 @@
                                     @method('DELETE')
                                     @csrf
                                     <button type="submit" class="btn btn-sm btn-clean btn-icon btn-icon-md"
-                                            onclick="return confirm('Are you sure you want to delete the customer ?')">
+                                            onclick="return confirm('Are you sure you want to delete the Purchase history ?')">
                                         <i class="la la-trash" style="color: #fd397a;"></i>
                                     </button>
                                 </form>
@@ -122,14 +124,14 @@
                 <!--end: table -->
 
                 {{--Pagination--}}
-{{--                <div class="kt-section">--}}
-{{--                    <div class="kt-pagination  kt-pagination--brand">--}}
-{{--                        {{$customers->links()}}--}}
-{{--                        <div class="kt-datatable__pager-info">--}}
-{{--                            <span class="kt-datatable__pager-detail">Showing {{$customers->firstItem()}} - {{$customers->lastItem()}} of {{$customers->total()}}</span>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
+                <div class="kt-section">
+                    <div class="kt-pagination  kt-pagination--brand">
+                        {{$histories->links()}}
+                        <div class="kt-datatable__pager-info">
+                            <span class="kt-datatable__pager-detail">Showing {{$histories->firstItem()}} - {{$histories->lastItem()}} of {{$histories->total()}}</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 

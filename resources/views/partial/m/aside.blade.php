@@ -223,7 +223,11 @@
                     </div>
                 </li>
                 @endpermission
-                @permission('sparepart_purchase|raw_material_purchase')
+                <li class="kt-menu__section ">
+                    <h4 class="kt-menu__section-text">Main</h4>
+                    <i class="kt-menu__section-icon flaticon-more-v2"></i>
+                </li>
+                @permission('sparepart_purchase|raw_material_purchase|sparepart_receive|raw_material_receive|sparepart_stock|raw_material_stock')
                 <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"
                     data-ktmenu-submenu-toggle="hover">
                     <a href="javascript:;" class="kt-menu__link kt-menu__toggle">
@@ -256,20 +260,21 @@
                                 </a>
                             </li>
                             @endpermission
+                            @permission('sparepart_purchase|raw_material_purchase')
                             <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"
                                 data-ktmenu-submenu-toggle="hover">
                                 <a href="javascript:;" class="kt-menu__link kt-menu__toggle">
                                     <span class="kt-menu__link-icon">
                                         <i class="flaticon-book"></i>
                                     </span>
-                                    <span class="kt-menu__link-text">History</span>
+                                    <span class="kt-menu__link-text">Purchase History</span>
                                     <i class="kt-menu__ver-arrow la la-angle-right"></i>
                                 </a>
                                 <div class="kt-menu__submenu "><span class="kt-menu__arrow"></span>
                                     <ul class="kt-menu__subnav">
                                         <li class="kt-menu__item  kt-menu__item--parent" aria-haspopup="true">
                                             <span class="kt-menu__link">
-                                                <span class="kt-menu__link-text">History</span>
+                                                <span class="kt-menu__link-text">Purchase History</span>
                                             </span>
                                         </li>
                                         @permission('sparepart_purchase')
@@ -291,6 +296,84 @@
                                     </ul>
                                 </div>
                             </li>
+                            @endpermission
+                            @permission('sparepart_receive|raw_material_receive')
+                            <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"
+                                data-ktmenu-submenu-toggle="hover">
+                                <a href="javascript:;" class="kt-menu__link kt-menu__toggle">
+                                    <span class="kt-menu__link-icon">
+                                        <i class="flaticon-book"></i>
+                                    </span>
+                                    <span class="kt-menu__link-text">Receive</span>
+                                    <i class="kt-menu__ver-arrow la la-angle-right"></i>
+                                </a>
+                                <div class="kt-menu__submenu "><span class="kt-menu__arrow"></span>
+                                    <ul class="kt-menu__subnav">
+                                        <li class="kt-menu__item  kt-menu__item--parent" aria-haspopup="true">
+                                            <span class="kt-menu__link">
+                                                <span class="kt-menu__link-text">Receive</span>
+                                            </span>
+                                        </li>
+                                        @permission('sparepart_receive')
+                                        <li class="kt-menu__item  " aria-haspopup="true">
+                                            <a href="{{route('spare-part.purchase.receive')}}" class="kt-menu__link ">
+                                                <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>
+                                                <span class="kt-menu__link-text">Spare Part</span>
+                                            </a>
+                                        </li>
+                                        @endpermission
+                                        @permission('raw_material_receive')
+                                        <li class="kt-menu__item  " aria-haspopup="true">
+                                            <a href="{{route('raw-material.purchase.receive')}}" class="kt-menu__link ">
+                                                <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>
+                                                <span class="kt-menu__link-text">Raw Material</span>
+                                            </a>
+                                        </li>
+                                        @endpermission
+                                    </ul>
+                                </div>
+                            </li>
+                            @endpermission
+                            @permission('sparepart_stock|raw_material_stock')
+                            <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"
+                                data-ktmenu-submenu-toggle="hover">
+                                <a href="javascript:;" class="kt-menu__link kt-menu__toggle">
+                                    <span class="kt-menu__link-icon">
+                                        <i class="flaticon-book"></i>
+                                    </span>
+                                    <span class="kt-menu__link-text">Store</span>
+                                    <i class="kt-menu__ver-arrow la la-angle-right"></i>
+                                </a>
+                                <div class="kt-menu__submenu "><span class="kt-menu__arrow"></span>
+                                    <ul class="kt-menu__subnav">
+                                        <li class="kt-menu__item  kt-menu__item--parent" aria-haspopup="true">
+                                            <span class="kt-menu__link">
+                                                <span class="kt-menu__link-text">Store</span>
+                                            </span>
+                                        </li>
+                                        @permission('sparepart_stock')
+                                        <li class="kt-menu__item  " aria-haspopup="true">
+                                            <a href="#" class="kt-menu__link ">
+                                                <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>
+                                                <span class="kt-menu__link-text">[[ Spare Part ]]</span>
+                                            </a>
+                                        </li>
+                                        @endpermission
+                                        @permission('raw_material_stock')
+                                        <li class="kt-menu__item  " aria-haspopup="true">
+                                            <a href="#" class="kt-menu__link ">
+                                                <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>
+                                                <span class="kt-menu__link-text">[[ Raw Material ]]</span>
+                                            </a>
+                                        </li>
+                                        @endpermission
+                                    </ul>
+                                </div>
+                            </li>
+                            @endpermission
+
+
+
                         </ul>
                     </div>
                 </li>

@@ -20,7 +20,7 @@ class RawmaterialpurchaseController extends Controller
     public function history()
     {
         if (Auth::user()->can('raw_material_purchase')) {
-           $histories = Rawmaterialpurchase::all();
+           $histories = Rawmaterialpurchase::orderBy('created_at', 'DESC')->paginate(10);
            foreach ($histories as $h){
                $h['raw_material'] = Rawmaterial::find($h->rawmaterial_id)->auto_id;
            }
@@ -202,6 +202,50 @@ class RawmaterialpurchaseController extends Controller
             $p->port_of_landing = $request->portOfLanding;
             $p->update();
             Session::flash('Success', "The Raw Material Purchase has been updated successfully.");
+            return redirect()->back();
+        } else {
+            abort(403);
+        }
+    }
+
+
+
+    public function receiveIndex()
+    {
+        if (Auth::user()->can('raw_material_purchase')) {
+            $histories = Rawmaterialpurchase::where('status', 'pending')->orWhere('status', 'received')->orderBy('status', 'ASC')->orderBy('created_at', 'DESC')->paginate(10);
+            foreach ($histories as $h){
+                $h['raw_material'] = Rawmaterial::find($h->rawmaterial_id)->auto_id;
+            }
+            return view('PURCHASE.RECEIVED.rawMaterial', compact('histories'));
+        } else {
+            abort(403);
+        }
+    }
+
+
+
+    public function received(Request $request, $rpid)
+    {
+        if (Auth::user()->can('raw_material_purchase')) {
+            $h = Rawmaterialpurchase::find($rpid);
+            $h->status = 'received';
+            $h->update();
+            Session::flash('Success', "The Raw material has been received successfully.");
+            return redirect()->back();
+        } else {
+            abort(403);
+        }
+    }
+
+
+    public function notReceived(Request $request, $rpid)
+    {
+        if (Auth::user()->can('raw_material_purchase')) {
+            $h = Rawmaterialpurchase::find($rpid);
+            $h->status = 'pending';
+            $h->update();
+            Session::flash('Success', "The Raw material purchase history status is pending now.");
             return redirect()->back();
         } else {
             abort(403);
