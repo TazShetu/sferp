@@ -353,9 +353,9 @@
                                         </li>
                                         @permission('sparepart_stock')
                                         <li class="kt-menu__item  " aria-haspopup="true">
-                                            <a href="#" class="kt-menu__link ">
+                                            <a href="{{route('spare-part.purchase.store')}}" class="kt-menu__link ">
                                                 <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>
-                                                <span class="kt-menu__link-text">[[ Spare Part ]]</span>
+                                                <span class="kt-menu__link-text">Spare Part</span>
                                             </a>
                                         </li>
                                         @endpermission

@@ -507,7 +507,7 @@
                             </div>
                             <div class="kt-iconbox__desc">
                                 <h3 class="kt-iconbox__title">
-                                    <a class="kt-link" href="{{route('spare-part.purchase.history')}}">[[ Spare Part ]]</a>
+                                    <a class="kt-link" href="{{route('spare-part.purchase.store')}}">Spare Part</a>
                                 </h3>
                                 <div class="kt-iconbox__content">
                                     (Purchase) Store

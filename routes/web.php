@@ -121,6 +121,11 @@ Route::get('/spare-part-purchase/receive', 'SparepartspurchaseController@receive
 Route::post('/spare-part-purchase/received/{spid}', 'SparepartspurchaseController@received')->name('spare-part.purchase.received');
 Route::post('/spare-part-purchase/not-received/{spid}', 'SparepartspurchaseController@notReceived')->name('spare-part.purchase.received.not');
 
-
+Route::get('/spare-part-purchase/store', 'SparepartsstoreController@storeIndex')->name('spare-part.purchase.store');
+Route::get('/spare-part-purchase/store/{sphid}', 'SparepartsstoreController@storeSinglePurchase')->name('spare-part.purchase.store.singlePurchase');
+Route::get('/ajax/spare-part-store/sridToRooms', 'SparepartsstoreController@ajaxSridToRooms');
+Route::get('/ajax/spare-part-store/ridToRacks', 'SparepartsstoreController@ajaxRidToRacks');
+//Route::post('/spare-part-purchase/received/{spid}', 'SparepartsstoreController@received')->name('spare-part.purchase.received');
+//Route::post('/spare-part-purchase/not-received/{spid}', 'SparepartsstoreController@notReceived')->name('spare-part.purchase.received.not');
 
 
