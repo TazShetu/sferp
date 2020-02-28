@@ -12,7 +12,7 @@ class CreateSparepartspurchasesTable extends Migration
         Schema::create('sparepartspurchases', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('spareparts_id')->index();
-            $table->integer('quantity')->index();
+            $table->integer('quantity');
             $table->string('unit');
             $table->string('country_origin');
             $table->string('country_purchase');

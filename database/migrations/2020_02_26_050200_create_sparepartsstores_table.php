@@ -6,24 +6,21 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreateSparepartsstoresTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
+
     public function up()
     {
         Schema::create('sparepartsstores', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->integer('spareparts_id')->index();
+            $table->integer('quantity');
+            $table->integer('sroom_id')->index();
+            $table->integer('row_id')->nullable();
+            $table->integer('rack_id')->nullable();
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
+
     public function down()
     {
         Schema::dropIfExists('sparepartsstores');

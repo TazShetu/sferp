@@ -3,9 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="72b65107-1734-42e2-a0ce-dd862e20aa6b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/SparepartspurchaseController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/SparepartspurchaseController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/home.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/partial/m/aside.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/partial/m/aside.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/SparepartsstoreController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/SparepartsstoreController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_02_02_040911_create_sparepartspurchases_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_02_02_040911_create_sparepartspurchases_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_02_26_050200_create_sparepartsstores_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_02_26_050200_create_sparepartsstores_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/PURCHASE/STORE/sparePartStore.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/PURCHASE/STORE/sparePartStore.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -238,6 +239,7 @@
       <workItem from="1582520479665" duration="3785000" />
       <workItem from="1582691330725" duration="5218000" />
       <workItem from="1582779680558" duration="2438000" />
+      <workItem from="1582862140580" duration="3927000" />
     </task>
     <servers />
   </component>
@@ -269,10 +271,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="656" y="345" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1582081652309" />
-    <state x="646" y="236" width="627" height="568" key="find.popup" timestamp="1582694714042">
+    <state x="646" y="236" width="627" height="568" key="find.popup" timestamp="1582865089350">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="646" y="236" width="627" height="568" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1582694714042" />
+    <state x="646" y="236" width="627" height="568" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1582865089350" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -361,21 +363,6 @@
           <url>file://$PROJECT_DIR$/resources/views/home.blade.php</url>
           <line>573</line>
           <option name="timeStamp" value="179" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/resources/views/PURCHASE/STORE/sparePartStore.blade.php</url>
-          <line>45</line>
-          <option name="timeStamp" value="184" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/resources/views/PURCHASE/STORE/sparePartStore.blade.php</url>
-          <line>138</line>
-          <option name="timeStamp" value="192" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/resources/views/PURCHASE/STORE/sparePartStore.blade.php</url>
-          <line>137</line>
-          <option name="timeStamp" value="193" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/Theme/metronic/demo1/assets/js/pages/crud/datatables/basic/basic.js</url>

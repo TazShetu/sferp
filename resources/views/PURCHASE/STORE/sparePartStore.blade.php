@@ -43,7 +43,7 @@
                                 <div class="kt-section kt-section--first">
                                     @if(count($srooms) > 0)
                                         {{--      Form Start    --}}
-                                        <form action="{{route('spare-part.purchase.store')}}" method="post">
+                                        <form action="{{route('spare-part.purchase.stock', ['sphid' => $sph->id])}}" method="post">
                                             @csrf
                                             <div class="kt-section__body">
                                                 <div class="form-group row">
@@ -54,7 +54,7 @@
                                                         <select class="form-control kt-selectpicker" name="sparePart"
                                                                 required>
                                                             <option selected hidden
-                                                                    value="{{$sph->id}}">{{$sph->spare_part}}</option>
+                                                                    value="{{$sph->spareparts_id}}">{{$sph->spare_part}}</option>
                                                             <option disabled>{{$sph->spare_part}}</option>
                                                         </select>
                                                     </div>
@@ -68,7 +68,6 @@
                                                                class="form-control" readonly required>
                                                     </div>
                                                 </div>
-
                                                 <div class="form-group row">
                                                     <label class="col-xl-3 col-lg-3 col-form-label">
                                                         Spare Part Room
@@ -85,8 +84,6 @@
                                                 </div>
                                                 <div id="sroom-row-main-div"></div>
                                                 <div id="sroom-row-rack-main-div"></div>
-
-
                                                 <div
                                                     class="kt-separator kt-separator--space-lg kt-separator--fit kt-separator--border-solid"></div>
                                                 <div class="kt-form__actions">
@@ -121,7 +118,6 @@
 {{--@section('stickyToolbar')    --}}
 {{--@endsection--}}
 @section('script')
-
     <script>
         $(function () {
             $("#sroom").on('change', function () {
@@ -135,23 +131,17 @@
                     }
                 });
             });
-            // this is not getting called
-            $("#sroom-row").on('change', function () {
-                console.log('aaaa');
-                var rid = $(this).val();
-                console.log(rid);
-                $.ajax({
-                    url: '{{URL::to('/ajax/spare-part-store/ridToRacks')}}',
-                    data: {rid: rid},
-                    method: "GET",
-                    success: function (r) {
-                        console.log(r);
-                        $("#sroom-row-rack-main-div").html(r);
-                    }
-                });
+        });
+        $(document).on('change', '#sroom-row', function () {
+            var rid = $(this).val();
+            $.ajax({
+                url: '{{URL::to('/ajax/spare-part-store/ridToRacks')}}',
+                data: {rid: rid},
+                method: "GET",
+                success: function (r) {
+                    $("#sroom-row-rack-main-div").html(r);
+                }
             });
-
-
         });
     </script>
 @endsection
