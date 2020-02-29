@@ -52,6 +52,14 @@ class SroomController extends Controller
         if (Auth::user()->can('sparepart_room')) {
             $sroom = Sroom::find($srid);
             $rows = $sroom->rows()->get();
+            foreach ($rows as $r){
+                $rs = $r->racks()->get();
+                if (count($rs) > 0){
+                    $r['x'] = 1;
+                }else {
+                    $r['x'] = null;
+                }
+            }
             $racks = $sroom->racks()->get();
             foreach ($racks as $r) {
                 $r['row_name'] = $r->row->name;
@@ -89,6 +97,9 @@ class SroomController extends Controller
     {
         if (Auth::user()->can('sparepart_room')) {
             $sroom = Sroom::find($srid);
+            // check it has stock or not
+            // if it, has then can not delete
+            // no need to check floor or room
             $rows = $sroom->rows()->get();
             $racks = $sroom->racks()->get();
             if ((count($rows) > 0) || (count($racks) > 0)) {
@@ -110,16 +121,67 @@ class SroomController extends Controller
         if (Auth::user()->can('sparepart_room')) {
             DB::beginTransaction();
             try {
-                Row::where('sroom_id', $srid)->delete();
                 if ($request->filled('rowName')) {
-                    foreach ($request->rowName as $f) {
-                        if ($f != "") {
-                            $ff = new Row;
-                            $ff->sroom_id = $srid;
-                            $ff->name = $f;
-                            $ff->save();
+                    if ($request->filled('oldRowId')) {
+                        $rs = Row::where('sroom_id', $srid)->get();
+                        if (count($rs) != count($request->oldRowId)) {
+                            foreach ($rs as $row) {
+                                $x = 0;
+                                foreach ($request->oldRowId as $fid1) {
+                                    if ($row->id == $fid1) {
+                                        $x = 1;
+                                        break;
+                                    }
+                                }
+                                if ($x == 0) {
+                                    // check it has stock or not
+                                    // if it, has make the room id null
+                                    Rack::where('row_id', $row->id)->delete();
+                                    // check it has stock or not
+                                    // if it, has make the floor id null
+                                    $row->delete();
+                                }
+                            }
+                        }
+                        foreach ($request->rowName as $i => $f) {
+                            foreach ($request->oldRowId as $ii => $fid) {
+                                if (($i == $ii) && ($f != "")) {
+                                    $ff = Row::find($fid);
+                                    $ff->name = $f;
+                                    $ff->update();
+                                } else {
+                                    if ($f != "") {
+                                        $ff = new Row;
+                                        $ff->sroom_id = $srid;
+                                        $ff->name = $f;
+                                        $ff->save();
+                                    }
+                                }
+                            }
+                        }
+                    } else {
+                        // check it has stock or not
+                        // if it, has make the floor id null
+                        Row::where('sroom_id', $srid)->delete();
+                        // check it has stock or not
+                        // if it, has make the room id null
+                        Rack::where('sroom_id', $srid)->delete();
+                        foreach ($request->rowName as $f) {
+                            if ($f != "") {
+                                $ff = new Row;
+                                $ff->sroom_id = $srid;
+                                $ff->name = $f;
+                                $ff->save();
+                            }
                         }
                     }
+                } else {
+                    // check it has stock or not
+                    // if it, has make the floor id null
+                    Row::where('sroom_id', $srid)->delete();
+                    // check it has stock or not
+                    // if it, has make the room id null
+                    Rack::where('sroom_id', $srid)->delete();
                 }
                 DB::commit();
                 $success = true;
@@ -138,7 +200,6 @@ class SroomController extends Controller
             abort(403);
         }
     }
-
 
 
     public function rackUpdate(Request $request, $srid)
@@ -201,7 +262,6 @@ class SroomController extends Controller
             abort(403);
         }
     }
-
 
 
 }

@@ -100,24 +100,30 @@
                             <td>{{$h->invoice_number}}</td>
                             <td>{{$h->lc_number}}</td>
                             <td>
-                                {{--                                @permission('customer_edit')--}}
-                                <a href="{{route('spare-part.purchase.edit', ['spid' => $h->id])}}" title="Edit"
-                                   class="btn btn-sm btn-clean btn-icon btn-icon-md">
-                                    <i class="la la-edit"></i>
-                                </a>
-                                {{--                                @endpermission--}}
-                                {{--                                @permission('customer_delete')--}}
-                                <form action="{{route('spare-part.purchase.delete', ['spid' => $h->id])}}" method="POST"
-                                      style="display: inline-table;">
-                                    @method('DELETE')
-                                    @csrf
-                                    <button type="submit" class="btn btn-sm btn-clean btn-icon btn-icon-md"
-                                            onclick="return confirm('Are you sure you want to delete the Purchase history ?')">
+                                @if($h->status == 'pending')
+                                    <a href="{{route('spare-part.purchase.edit', ['spid' => $h->id])}}" title="Edit"
+                                       class="btn btn-sm btn-clean btn-icon btn-icon-md">
+                                        <i class="la la-edit"></i>
+                                    </a>
+                                    <form action="{{route('spare-part.purchase.delete', ['spid' => $h->id])}}" method="POST"
+                                          style="display: inline-table;">
+                                        @method('DELETE')
+                                        @csrf
+                                        <button type="submit" class="btn btn-sm btn-clean btn-icon btn-icon-md"
+                                                onclick="return confirm('Are you sure you want to delete the Purchase history ?')">
+                                            <i class="la la-trash" style="color: #fd397a;"></i>
+                                        </button>
+                                    </form>
+                                @else
+                                    <a href="javascript: void(0)"
+                                       class="btn btn-sm btn-clean btn-icon btn-icon-md disabled">
+                                        <i class="la la-edit"></i>
+                                    </a>
+                                    <a href="javascript: void(0)"
+                                       class="btn btn-sm btn-clean btn-icon btn-icon-md disabled">
                                         <i class="la la-trash" style="color: #fd397a;"></i>
-                                    </button>
-                                </form>
-
-                                {{--                                @endpermission--}}
+                                    </a>
+                                @endif
                             </td>
                         </tr>
                     @endforeach
@@ -125,7 +131,7 @@
                 </table>
                 <!--end: table -->
 
-{{--                Pagination--}}
+                {{--                Pagination--}}
                 <div class="kt-section">
                     <div class="kt-pagination  kt-pagination--brand">
                         {{$histories->links()}}

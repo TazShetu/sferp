@@ -61,13 +61,10 @@ class SparepartsstoreController extends Controller
             $rows = Row::where('sroom_id', $request->srid)->get();
             if (count($rows) > 0) {
                 $html = ' <div class="form-group row">
-                            <label class="col-xl-3 col-lg-3 col-form-label">
-                                Row
-                            </label>
+                            <label class="col-xl-3 col-lg-3 col-form-label">Row</label>
                             <div class="col-lg-9 col-xl-6">
                                 <select class="form-control kt-selectpicker" id="sroom-row" name="row">
-                                    <option selected disabled hidden value="">Choose...
-                                    </option>';
+                                    <option selected disabled hidden value="">Choose...</option>';
                 foreach ($rows as $r) {
                     $html .= "<option value='$r->id'>'$r->name'</option>";
                 }
@@ -97,9 +94,7 @@ class SparepartsstoreController extends Controller
             $racks = Rack::where('row_id', $request->rid)->get();
             if (count($racks) > 0) {
                 $html = ' <div class="form-group row">
-                            <label class="col-xl-3 col-lg-3 col-form-label">
-                                Rack
-                            </label>
+                            <label class="col-xl-3 col-lg-3 col-form-label">Rack</label>
                             <div class="col-lg-9 col-xl-6">
                                 <select class="form-control kt-selectpicker" name="rack">
                                     <option selected disabled hidden value="">Choose...

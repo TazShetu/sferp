@@ -109,6 +109,12 @@ Route::get('/raw-material-purchase/receive', 'RawmaterialpurchaseController@rece
 Route::post('/raw-material-purchase/received/{rpid}', 'RawmaterialpurchaseController@received')->name('raw-material.purchase.received');
 Route::post('/raw-material-purchase/not-received/{rpid}', 'RawmaterialpurchaseController@notReceived')->name('raw-material.purchase.received.not');
 
+Route::get('/raw-material-purchase/store', 'RawmaterialstoreController@storeIndex')->name('raw-material.purchase.store');
+Route::get('/raw-material-purchase/store/{rmpid}', 'RawmaterialstoreController@storeSinglePurchase')->name('raw-material.purchase.store.singlePurchase');
+Route::get('/ajax/raw-material-store/widToFloor', 'RawmaterialstoreController@ajaxWidToFloor');
+Route::get('/ajax/raw-material-store/fidToRoom', 'RawmaterialstoreController@ajaxFidToRoom');
+//Route::post('/raw-material-purchase/stock/{rmpid}', 'RawmaterialstoreController@stock')->name('raw-material.purchase.stock');
+
 Route::get('/spare-part-purchase/history', 'SparepartspurchaseController@history')->name('spare-part.purchase.history');
 Route::get('/spare-part-purchase', 'SparepartspurchaseController@index')->name('spare-part.purchase');
 Route::get('ajax/spare-part-purchase/spidToUnit', 'SparepartspurchaseController@ajaxSpidToUnit');
