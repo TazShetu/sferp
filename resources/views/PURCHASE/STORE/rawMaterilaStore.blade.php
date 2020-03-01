@@ -43,7 +43,7 @@
                                 <div class="kt-section kt-section--first">
                                     @if(count($warehouses) > 0)
                                         {{--      Form Start    --}}
-                                        <form action="{{route('spare-part.purchase.stock', ['rmpid' => $rmp->id])}}"
+                                        <form action="{{route('raw-material.purchase.stock', ['rmpid' => $rmp->id])}}"
                                               method="post">
                                             @csrf
                                             <div class="kt-section__body">

@@ -113,7 +113,7 @@ Route::get('/raw-material-purchase/store', 'RawmaterialstoreController@storeInde
 Route::get('/raw-material-purchase/store/{rmpid}', 'RawmaterialstoreController@storeSinglePurchase')->name('raw-material.purchase.store.singlePurchase');
 Route::get('/ajax/raw-material-store/widToFloor', 'RawmaterialstoreController@ajaxWidToFloor');
 Route::get('/ajax/raw-material-store/fidToRoom', 'RawmaterialstoreController@ajaxFidToRoom');
-//Route::post('/raw-material-purchase/stock/{rmpid}', 'RawmaterialstoreController@stock')->name('raw-material.purchase.stock');
+Route::post('/raw-material-purchase/stock/{rmpid}', 'RawmaterialstoreController@stock')->name('raw-material.purchase.stock');
 
 Route::get('/spare-part-purchase/history', 'SparepartspurchaseController@history')->name('spare-part.purchase.history');
 Route::get('/spare-part-purchase', 'SparepartspurchaseController@index')->name('spare-part.purchase');

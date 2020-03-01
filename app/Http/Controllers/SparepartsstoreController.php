@@ -162,8 +162,6 @@ class SparepartsstoreController extends Controller
         } else {
             abort(403);
         }
-
-
     }
 
 

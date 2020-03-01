@@ -93,7 +93,7 @@ class RawmaterialstoreController extends Controller
                 $html = ' <div class="form-group row">
                             <label class="col-xl-3 col-lg-3 col-form-label">Room</label>
                             <div class="col-lg-9 col-xl-6">
-                                <select class="form-control kt-selectpicker" id="warehouse-floor" name="floor">
+                                <select class="form-control kt-selectpicker" name="room">
                                     <option selected disabled hidden value="">Choose...</option>';
                 foreach ($rooms as $r) {
                     $html .= "<option value='$r->id'>'$r->name'</option>";
@@ -114,6 +114,49 @@ class RawmaterialstoreController extends Controller
             return $html;
         } else {
             return json_encode(['success' => false]);
+        }
+    }
+
+
+    public function stock(Request $request, $rmpid)
+    {
+        if (Auth::user()->can('raw_material_stock')) {
+            $request->validate([
+                'rawMaterial' => 'required',
+                'quantity' => 'required',
+                'warehouse' => 'required',
+            ]);
+            DB::beginTransaction();
+            try {
+                $rmp = Rawmaterialpurchase::find($rmpid);
+                $rmp->status = 'stored';
+                $rmp->update();
+                $r = new Rawmaterialstore;
+                $r->rawmaterial_id = $request->rawMaterial;
+                $r->quantity = $request->quantity;
+                $r->warehouse_id = $request->warehouse;
+                if ($request->filled('floor')) {
+                    $r->floor_id = $request->floor;
+                }
+                if ($request->filled('room')) {
+                    $r->room_id = $request->room;
+                }
+                $r->save();
+                DB::commit();
+                $success = true;
+            } catch (\Exception $e) {
+                $success = false;
+                DB::rollback();
+            }
+            if ($success) {
+                Session::flash('Success', "The Raw Material has been stored successfully.");
+                return redirect()->route('spare-part.purchase.store');
+            } else {
+                Session::flash('unsuccess', "Something went wrong :(");
+                return redirect()->back();
+            }
+        } else {
+            abort(403);
         }
     }
 

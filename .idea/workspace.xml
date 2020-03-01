@@ -3,15 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="72b65107-1734-42e2-a0ce-dd862e20aa6b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/RawmaterialstoreController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/RawmaterialstoreController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/SparepartsstoreController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/SparepartsstoreController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/SroomController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/SroomController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/WarehouseController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/WarehouseController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/PURCHASE/HISTORY/rawMaterial.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/PURCHASE/HISTORY/rawMaterial.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/PURCHASE/HISTORY/spareParts.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/PURCHASE/HISTORY/spareParts.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/home.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/partial/m/aside.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/partial/m/aside.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/sroom/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/sroom/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/warehouse/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/warehouse/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/PURCHASE/STORE/rawMaterilaStore.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/PURCHASE/STORE/rawMaterilaStore.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -248,7 +242,8 @@
       <workItem from="1582950772208" duration="5578000" />
       <workItem from="1582965537108" duration="3320000" />
       <workItem from="1582969256853" duration="27000" />
-      <workItem from="1582992248579" duration="2227000" />
+      <workItem from="1582992248579" duration="2514000" />
+      <workItem from="1583037699827" duration="2546000" />
     </task>
     <servers />
   </component>
@@ -264,10 +259,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="640" y="257" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1581160276731" />
-    <state x="690" y="276" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1582968671131">
+    <state x="690" y="276" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1583043482714">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="690" y="276" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1582968671131" />
+    <state x="690" y="276" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1583043482714" />
     <state x="740" y="276" key="FileChooserDialogImpl" timestamp="1581946107385">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -362,16 +357,6 @@
           <url>file://$PROJECT_DIR$/resources/views/home.blade.php</url>
           <line>573</line>
           <option name="timeStamp" value="179" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/resources/views/PURCHASE/STORE/rawMaterilaStore.blade.php</url>
-          <line>45</line>
-          <option name="timeStamp" value="205" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/routes/web.php</url>
-          <line>115</line>
-          <option name="timeStamp" value="227" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/app/Http/Controllers/WarehouseController.php</url>
