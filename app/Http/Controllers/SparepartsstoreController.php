@@ -145,6 +145,7 @@ class SparepartsstoreController extends Controller
                 if ($request->filled('rack')) {
                     $s->rack_id = $request->rack;
                 }
+                $s->user_id = Auth::id();
                 $s->save();
                 DB::commit();
                 $success = true;

@@ -16,6 +16,8 @@ class CreateSparepartsstoresTable extends Migration
             $table->integer('sroom_id')->index();
             $table->integer('row_id')->nullable();
             $table->integer('rack_id')->nullable();
+            $table->integer('user_id');
+//            $table->integer('edit_user_id')->nullable();
             $table->timestamps();
         });
     }

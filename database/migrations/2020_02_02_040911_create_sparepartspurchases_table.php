@@ -44,6 +44,9 @@ class CreateSparepartspurchasesTable extends Migration
             $table->string('note');
             $table->string('status')->default('pending');
 //            $table->integer('minimum_storage');
+            $table->integer('user_id');
+            $table->integer('edit_user_id')->nullable();
+            $table->integer('receive_user_id')->nullable();
             $table->timestamps();
         });
     }

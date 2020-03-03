@@ -110,6 +110,7 @@ class SparepartspurchaseController extends Controller
             $s->invoice_number = $request->invoiceNumber;
             $s->lc_number = $request->lcNumber;
             $s->note = $request->note;
+            $s->user_id = Auth::id();
             $s->save();
             Session::flash('Success', "The Spare Parts has been purchased successfully.");
             return redirect()->route('spare-part.purchase.history');
@@ -199,6 +200,7 @@ class SparepartspurchaseController extends Controller
             $s->invoice_number = $request->invoiceNumber;
             $s->lc_number = $request->lcNumber;
             $s->note = $request->note;
+            $s->edit_user_id = Auth::id();
             $s->update();
             Session::flash('Success', "The Spare Parts purchase has been updated successfully.");
             return redirect()->back();
@@ -229,6 +231,7 @@ class SparepartspurchaseController extends Controller
         if (Auth::user()->can('sparepart_receive')) {
             $h = Sparepartspurchase::find($spid);
             $h->status = 'received';
+            $h->receive_user_id = Auth::id();
             $h->update();
             Session::flash('Success', "The Spare Parts has been received successfully.");
             return redirect()->back();
@@ -244,6 +247,7 @@ class SparepartspurchaseController extends Controller
         if (Auth::user()->can('sparepart_receive')) {
             $h = Sparepartspurchase::find($spid);
             $h->status = 'pending';
+            $h->receive_user_id = null;
             $h->update();
             Session::flash('Success', "The Spare Parts purchase history status is pending now.");
             return redirect()->back();

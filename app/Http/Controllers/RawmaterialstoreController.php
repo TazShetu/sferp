@@ -141,6 +141,7 @@ class RawmaterialstoreController extends Controller
                 if ($request->filled('room')) {
                     $r->room_id = $request->room;
                 }
+                $r->user_id = Auth::id();
                 $r->save();
                 DB::commit();
                 $success = true;

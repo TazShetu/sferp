@@ -16,6 +16,8 @@ class CreateRawmaterialstoresTable extends Migration
             $table->integer('warehouse_id')->index();
             $table->integer('floor_id')->nullable();
             $table->integer('room_id')->nullable();
+            $table->integer('user_id');
+//            $table->integer('edit_user_id')->nullable();
             $table->timestamps();
         });
     }

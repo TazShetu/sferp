@@ -24,10 +24,18 @@ class PermissionsTableSeeder extends Seeder
             11 => ["sparepart_room", "Spare Part Room", "Spare Part Room menu"],
             12 => ["sparepart_purchase", "Spare Part Purchase", "Spare Part Purchase menu"],
             13 => ["raw_material_purchase", "Raw Material Purchase", "Raw Material Purchase menu"],
-            14 => ["sparepart_receive", "Spare Part Receive", "Spare Part Purchase menu"],
-            15 => ["raw_material_receive", "Raw Material Receive", "Raw Material Purchase menu"],
-            16 => ["sparepart_stock", "Spare Part Stock", "Spare Part Purchase menu"],
-            17 => ["raw_material_stock", "Raw Material Stock", "Raw Material Purchase menu"],
+            14 => ["sparepart_receive", "Spare Part Receive", "Spare Part Receive under Purchase menu"],
+            15 => ["raw_material_receive", "Raw Material Receive", "Raw Material Receive under Purchase menu"],
+            16 => ["sparepart_stock", "Spare Part Stock", "Spare Part Stock under Purchase menu"],
+            17 => ["raw_material_stock", "Raw Material Stock", "Raw Material Stock under Purchase menu"],
+            18 => ["stock_out_raw_material", "Raw Material Stock Out", "Raw Material Stock Out Store"],
+            19 => ["stock_in_raw_material", "Raw Material Stock In", "Raw Material Stock In Store"],
+            20 => ["stock_out_spare_part", "Spare Part Stock Out", "Spare Part Stock Out Store"],
+            21 => ["stock_in_spare_part", "Spare Part Stock In", "Spare Part Stock In Store"],
+            22 => ["stock_out_product", "Product Stock Out", "Product Stock Out Store"],
+            23 => ["stock_in_product", "Product Stock In", "Product Stock In Store"],
+            24 => ["production_stock_in_raw_material", "Raw Material Stock In Production", "Raw Material Stock In Production"],
+            25 => ["production_stock_out_Product", "Raw Material Stock Out Production", "Raw Material Stock Out Production"],
         ];
 
         $s = Role::find(1);
