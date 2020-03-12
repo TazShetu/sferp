@@ -43,7 +43,7 @@ class RawmaterialController extends Controller
     {
         if (Auth::user()->can('raw_material')) {
             $request->validate([
-                'name' => 'required',
+                'type' => 'required',
                 'manufacturerName' => 'required',
                 'countryOfOrigin' => 'required',
                 'gradeNumber' => 'required',
@@ -51,11 +51,11 @@ class RawmaterialController extends Controller
                 'unit' => 'required',
             ]);
             $r = new Rawmaterial;
-            $r->name = $request->name;
+            $r->type = $request->type;
             $r->manufacturer = $request->manufacturerName;
             $r->country_origin = $request->countryOfOrigin;
             $r->grade_number = $request->gradeNumber;
-            $r->auto_id = $request->name . "_" . $request->manufacturerName . "_" . $request->gradeNumber;
+            $r->auto_id = $request->type . "_" . $request->manufacturerName . "_" . $request->gradeNumber;
             if ($request->filled('mfi')) {
                 $request->validate([
                     'nmfi' => 'min:0',
@@ -106,7 +106,7 @@ class RawmaterialController extends Controller
     {
         if (Auth::user()->can('raw_material')) {
             $request->validate([
-                'name' => 'required',
+                'type' => 'required',
                 'manufacturerName' => 'required',
                 'countryOfOrigin' => 'required',
                 'gradeNumber' => 'required',
@@ -114,11 +114,11 @@ class RawmaterialController extends Controller
                 'unit' => 'required',
             ]);
             $r = Rawmaterial::find($rmid);
-            $r->name = $request->name;
+            $r->type = $request->type;
             $r->manufacturer = $request->manufacturerName;
             $r->country_origin = $request->countryOfOrigin;
             $r->grade_number = $request->gradeNumber;
-            $r->auto_id = $request->name . "_" . $request->manufacturerName . "_" . $request->gradeNumber;
+            $r->auto_id = $request->type . "_" . $request->manufacturerName . "_" . $request->gradeNumber;
             if ($request->filled('mfi')) {
                 $request->validate([
                     'nmfi' => 'min:0',

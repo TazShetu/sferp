@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Floor;
 use App\Rawmaterial;
 use App\Rawmaterialpurchase;
+use App\Rawmaterialstock;
 use App\Rawmaterialstore;
 use App\Room;
 use App\Warehouse;
@@ -132,17 +133,27 @@ class RawmaterialstoreController extends Controller
                 $rmp->status = 'stored';
                 $rmp->update();
                 $r = new Rawmaterialstore;
+                $rr = Rawmaterialstock::where('rawmaterial_id', $request->rawMaterial)->where('warehouse_id', $request->warehouse)->where('floor_id', $request->floor)->where('room_id', $request->room)->first();
+                if (!$rr){
+                    $rr = new Rawmaterialstock;
+                }
                 $r->rawmaterial_id = $request->rawMaterial;
+                $rr->rawmaterial_id = $request->rawMaterial;
                 $r->quantity = $request->quantity;
+                $rr->quantity = $rr->quantity + $request->quantity;
                 $r->warehouse_id = $request->warehouse;
+                $rr->warehouse_id = $request->warehouse;
                 if ($request->filled('floor')) {
                     $r->floor_id = $request->floor;
+                    $rr->floor_id = $request->floor;
                 }
                 if ($request->filled('room')) {
                     $r->room_id = $request->room;
+                    $rr->room_id = $request->room;
                 }
                 $r->user_id = Auth::id();
                 $r->save();
+                $rr->save();
                 DB::commit();
                 $success = true;
             } catch (\Exception $e) {

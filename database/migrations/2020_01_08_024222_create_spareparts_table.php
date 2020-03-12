@@ -16,7 +16,7 @@ class CreateSparepartsTable extends Migration
             $table->string('type');
             $table->string('description');
             $table->string('part_number');
-            $table->string('identity_number')->unique();
+            $table->string('identity_number');
             $table->string('code_number');
             $table->integer('minimum_storage');
             $table->string('unit');

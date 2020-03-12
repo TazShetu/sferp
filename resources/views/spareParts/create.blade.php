@@ -125,7 +125,7 @@
                                                     @if($errors->has('identityNumber'))
                                                         <span class="invalid-feedback">{{$errors->first('identityNumber')}}</span>
                                                     @endif
-                                                    <span class="form-text text-muted">It has to be unique*</span>
+{{--                                                    <span class="form-text text-muted">It has to be unique*</span>--}}
                                                 </div>
                                             </div>
                                             <div class="form-group row">

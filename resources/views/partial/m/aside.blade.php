@@ -146,7 +146,7 @@
                             <li class="kt-menu__item  " aria-haspopup="true">
                                 <a href="{{route('factory.list')}}" class="kt-menu__link ">
                                     <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>
-                                    <span class="kt-menu__link-text">Factory</span>
+                                    <span class="kt-menu__link-text">Factory Setup</span>
                                 </a>
                             </li>
                             @endpermission
@@ -154,7 +154,7 @@
                             <li class="kt-menu__item  " aria-haspopup="true">
                                 <a href="{{route('spareParts.list')}}" class="kt-menu__link ">
                                     <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>
-                                    <span class="kt-menu__link-text">Spare Parts</span>
+                                    <span class="kt-menu__link-text">Spare Parts Setup</span>
                                 </a>
                             </li>
                             @endpermission
@@ -162,7 +162,7 @@
                             <li class="kt-menu__item  " aria-haspopup="true">
                                 <a href="{{route('machine.list')}}" class="kt-menu__link ">
                                     <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>
-                                    <span class="kt-menu__link-text">Machines</span>
+                                    <span class="kt-menu__link-text">Machines Setup</span>
                                 </a>
                             </li>
                             @endpermission
@@ -170,7 +170,7 @@
                             <li class="kt-menu__item  " aria-haspopup="true">
                                 <a href="{{route('rawMaterial.list')}}" class="kt-menu__link ">
                                     <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>
-                                    <span class="kt-menu__link-text">Raw Materials</span>
+                                    <span class="kt-menu__link-text">Raw Materials Setup</span>
                                 </a>
                             </li>
                             @endpermission
@@ -178,7 +178,7 @@
                             <li class="kt-menu__item  " aria-haspopup="true">
                                 <a href="{{route('product.list')}}" class="kt-menu__link ">
                                     <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>
-                                    <span class="kt-menu__link-text">Products</span>
+                                    <span class="kt-menu__link-text">Products Setup</span>
                                 </a>
                             </li>
                             @endpermission
@@ -193,21 +193,21 @@
                         <span class="kt-menu__link-icon">
                             <i class="flaticon-home"></i>
                         </span>
-                        <span class="kt-menu__link-text">Warehouse</span>
+                        <span class="kt-menu__link-text">Warehouse Setup</span>
                         <i class="kt-menu__ver-arrow la la-angle-right"></i>
                     </a>
                     <div class="kt-menu__submenu "><span class="kt-menu__arrow"></span>
                         <ul class="kt-menu__subnav">
                             <li class="kt-menu__item  kt-menu__item--parent" aria-haspopup="true">
                                 <span class="kt-menu__link">
-                                    <span class="kt-menu__link-text">Warehouse</span>
+                                    <span class="kt-menu__link-text">Warehouse Setup</span>
                                 </span>
                             </li>
                             @permission('ware_house')
                             <li class="kt-menu__item  " aria-haspopup="true">
                                 <a href="{{route('warehouse.index')}}" class="kt-menu__link ">
                                     <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>
-                                    <span class="kt-menu__link-text">Warehouse</span>
+                                    <span class="kt-menu__link-text">Warehouse Setup</span>
                                 </a>
                             </li>
                             @endpermission
@@ -215,7 +215,7 @@
                             <li class="kt-menu__item  " aria-haspopup="true">
                                 <a href="{{route('sroom.index')}}" class="kt-menu__link ">
                                     <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>
-                                    <span class="kt-menu__link-text">Sparepart Room</span>
+                                    <span class="kt-menu__link-text">Sparepart Room Setup</span>
                                 </a>
                             </li>
                             @endpermission

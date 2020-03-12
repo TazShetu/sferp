@@ -11,7 +11,7 @@ class CreateRawmaterialsTable extends Migration
     {
         Schema::create('rawmaterials', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
+            $table->string('type');
             $table->string('manufacturer');
             $table->string('country_origin');
             $table->string('grade_number');

@@ -172,21 +172,6 @@
                                             </div>
                                             <div class="form-group row">
                                                 <label class="col-xl-3 col-lg-3 col-form-label">
-                                                    Company Name
-                                                </label>
-                                                <div class="col-lg-9 col-xl-6">
-                                                    <input
-                                                        class="form-control {{$errors->has('companyName') ? 'is-invalid' : ''}}"
-                                                        type="text" name="companyName"
-                                                        required value="{{$customer->company_name}}">
-                                                    @if($errors->has('companyName'))
-                                                        <span
-                                                            class="invalid-feedback">{{$errors->first('companyName')}}</span>
-                                                    @endif
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label class="col-xl-3 col-lg-3 col-form-label">
                                                     Date Of Birth</label>
                                                 <div class="col-lg-9 col-xl-6">
                                                     <div class="input-group date">
@@ -209,7 +194,23 @@
                                             </div>
                                             <div class="form-group row">
                                                 <label class="col-xl-3 col-lg-3 col-form-label">
-                                                    BIN Certificate
+                                                    Business Organization's Name
+                                                </label>
+                                                <div class="col-lg-9 col-xl-6">
+                                                    <input
+                                                        class="form-control {{$errors->has('companyName') ? 'is-invalid' : ''}}"
+                                                        type="text" name="companyName"
+                                                        required value="{{$customer->company_name}}">
+                                                    @if($errors->has('companyName'))
+                                                        <span
+                                                            class="invalid-feedback">{{$errors->first('companyName')}}</span>
+                                                    @endif
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label class="col-xl-3 col-lg-3 col-form-label">
+                                                    VAT registration / BIN Certificate
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">
                                                     <input
@@ -230,7 +231,7 @@
                                                         <input type="file" class="custom-file-input" id="customFile2"
                                                                name="binFile">
                                                         <label class="custom-file-label" style="text-align: left;"
-                                                               for="customFile2">BIN Certificate File</label>
+                                                               for="customFile2">VAT registration / BIN Certificate File</label>
                                                     </div>
                                                     <span class="form-text text-muted">Max file size is 10MB and max number of files is 1.</span>
                                                 </div>
@@ -430,8 +431,8 @@
                                                             <span
                                                                 class="invalid-feedback">{{$errors->first('companySite')}}</span>
                                                         @endif
-                                                        <div class="input-group-append"><span
-                                                                class="input-group-text">.com</span></div>
+{{--                                                        <div class="input-group-append"><span--}}
+{{--                                                                class="input-group-text">.com</span></div>--}}
                                                     </div>
                                                 </div>
                                             </div>

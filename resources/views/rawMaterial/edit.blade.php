@@ -48,20 +48,20 @@
 
                                             <div class="form-group row">
                                                 <label class="col-xl-3 col-lg-3 col-form-label">
-                                                    Name
+                                                    Type*
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">
-                                                    <input class="form-control {{($errors->has('name')) ? 'is-invalid' : ''}}"
-                                                           type="text" name="name" required
-                                                           value="{{$rmedit->name}}">
-                                                    @if($errors->has('name'))
-                                                        <span class="invalid-feedback">{{$errors->first('name')}}</span>
+                                                    <input class="form-control {{($errors->has('type')) ? 'is-invalid' : ''}}"
+                                                           type="text" name="type" required
+                                                           value="{{$rmedit->type}}">
+                                                    @if($errors->has('type'))
+                                                        <span class="invalid-feedback">{{$errors->first('type')}}</span>
                                                     @endif
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <label class="col-xl-3 col-lg-3 col-form-label">
-                                                    Manufacturer Name
+                                                    Manufacturer Name*
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">
                                                     <input class="form-control {{($errors->has('manufacturerName')) ? 'is-invalid' : ''}}"
@@ -74,7 +74,7 @@
                                             </div>
                                             <div class="form-group row">
                                                 <label class="col-xl-3 col-lg-3 col-form-label">
-                                                    Country Of Origin
+                                                    Country Of Origin*
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">
                                                     <input class="form-control {{($errors->has('countryOfOrigin')) ? 'is-invalid' : ''}}"
@@ -87,7 +87,7 @@
                                             </div>
                                             <div class="form-group row">
                                                 <label class="col-xl-3 col-lg-3 col-form-label">
-                                                    Grade Number
+                                                    Grade Number*
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">
                                                     <input class="form-control {{($errors->has('gradeNumber')) ? 'is-invalid' : ''}}"
@@ -165,7 +165,7 @@
                                             </div>
                                             <div class="form-group row">
                                                 <label class="col-xl-3 col-lg-3 col-form-label">
-                                                    Minimum Storage Amount
+                                                    Minimum Storage Amount*
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">
                                                     <input class="form-control {{($errors->has('minimumStorage')) ? 'is-invalid' : ''}}"
@@ -178,7 +178,7 @@
                                             </div>
                                             <div class="form-group row">
                                                 <label class="col-xl-3 col-lg-3 col-form-label">
-                                                    Unit
+                                                    Unit*
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">
                                                     <input class="form-control {{($errors->has('unit')) ? 'is-invalid' : ''}}"
