@@ -3,17 +3,19 @@
   <component name="ChangeListManager">
     <list default="true" id="72b65107-1734-42e2-a0ce-dd862e20aa6b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/RawmaterialpurchaseController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/RawmaterialpurchaseController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/SparepartspurchaseController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/SparepartspurchaseController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_02_02_040723_create_rawmaterialpurchases_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_02_02_040723_create_rawmaterialpurchases_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_02_02_040911_create_sparepartspurchases_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_02_02_040911_create_sparepartspurchases_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_02_16_060428_create_customerproductdiscounts_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/PermissionsTableSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/PermissionsTableSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/PURCHASE/HISTORY/rawMaterial.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/PURCHASE/HISTORY/rawMaterial.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/PURCHASE/HISTORY/spareParts.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/PURCHASE/HISTORY/spareParts.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/home.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/RawmaterialController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/RawmaterialController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/RawmaterialstoreController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/RawmaterialstoreController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/SparepartsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/SparepartsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/SparepartsstoreController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/SparepartsstoreController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_01_08_024222_create_spareparts_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_01_08_024222_create_spareparts_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_01_10_093735_create_rawmaterials_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_01_10_093735_create_rawmaterials_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/customer/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/customer/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/customer/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/customer/edit.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/partial/m/aside.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/partial/m/aside.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/rawMaterial/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/rawMaterial/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/rawMaterial/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/rawMaterial/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/spareParts/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/spareParts/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/spareParts/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/spareParts/edit.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -240,7 +242,19 @@
       <workItem from="1581948799819" duration="834000" />
       <workItem from="1582081649498" duration="353000" />
       <workItem from="1582082020291" duration="5129000" />
-      <workItem from="1582163905576" duration="7648000" />
+      <workItem from="1582163905576" duration="8451000" />
+      <workItem from="1582263558806" duration="1943000" />
+      <workItem from="1582520479665" duration="3785000" />
+      <workItem from="1582691330725" duration="5218000" />
+      <workItem from="1582779680558" duration="2438000" />
+      <workItem from="1582862140580" duration="6957000" />
+      <workItem from="1582950772208" duration="5578000" />
+      <workItem from="1582965537108" duration="3320000" />
+      <workItem from="1582969256853" duration="27000" />
+      <workItem from="1582992248579" duration="2514000" />
+      <workItem from="1583037699827" duration="2546000" />
+      <workItem from="1583122806659" duration="5123000" />
+      <workItem from="1583991076646" duration="8023000" />
     </task>
     <servers />
   </component>
@@ -256,10 +270,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="640" y="257" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1581160276731" />
-    <state x="690" y="276" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1582172649231">
+    <state x="690" y="276" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1584024652448">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="690" y="276" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1582172649231" />
+    <state x="690" y="276" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1584024652448" />
     <state x="740" y="276" key="FileChooserDialogImpl" timestamp="1581946107385">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -272,10 +286,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="656" y="345" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1582081652309" />
-    <state x="646" y="236" width="627" height="568" key="find.popup" timestamp="1582165415207">
+    <state x="646" y="236" width="627" height="568" key="find.popup" timestamp="1584022592247">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="646" y="236" width="627" height="568" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1582165415207" />
+    <state x="646" y="236" width="627" height="568" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1584022592247" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -336,26 +350,6 @@
           <option name="timeStamp" value="156" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/resources/views/partial/m/aside.blade.php</url>
-          <line>355</line>
-          <option name="timeStamp" value="171" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/resources/views/partial/m/aside.blade.php</url>
-          <line>363</line>
-          <option name="timeStamp" value="172" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/resources/views/home.blade.php</url>
-          <line>509</line>
-          <option name="timeStamp" value="174" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/resources/views/home.blade.php</url>
-          <line>536</line>
-          <option name="timeStamp" value="175" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/resources/views/home.blade.php</url>
           <line>547</line>
           <option name="timeStamp" value="176" />
@@ -374,6 +368,21 @@
           <url>file://$PROJECT_DIR$/resources/views/home.blade.php</url>
           <line>573</line>
           <option name="timeStamp" value="179" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/app/Http/Controllers/WarehouseController.php</url>
+          <line>99</line>
+          <option name="timeStamp" value="240" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/app/Http/Controllers/SroomController.php</url>
+          <line>99</line>
+          <option name="timeStamp" value="253" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/resources/views/partial/m/aside.blade.php</url>
+          <line>567</line>
+          <option name="timeStamp" value="256" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/Theme/metronic/demo1/assets/js/pages/crud/datatables/basic/basic.js</url>

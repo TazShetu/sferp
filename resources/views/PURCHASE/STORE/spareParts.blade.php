@@ -1,5 +1,5 @@
 @extends('layouts.m')
-@section('title', 'Raw Material Purchase History')
+@section('title', 'Spare Parts Received History')
 {{--@section('link')--}}
 
 {{--@endsection--}}
@@ -8,7 +8,7 @@
         <div class="kt-container  kt-container--fluid ">
             <div class="kt-subheader__main">
                 <h3 class="kt-subheader__title">
-                    Raw Material Purchase History
+                    Spare Parts Received History
                 </h3>
                 <span class="kt-subheader__separator kt-subheader__separator--v"></span>
                 <div class="kt-subheader__group" id="kt_subheader_search">
@@ -40,9 +40,9 @@
                     </form>
                 </div>
             </div>
-            <div class="kt-subheader__toolbar">
-                <a href="{{route('raw-material.purchase')}}" class="btn btn-label-brand btn-bold">Purchase </a>
-            </div>
+            {{--            <div class="kt-subheader__toolbar">--}}
+            {{--                <a href="{{route('spare-part.purchase')}}" class="btn btn-label-brand btn-bold">Purchase </a>--}}
+            {{--            </div>--}}
         </div>
     </div>
 @endsection
@@ -67,7 +67,7 @@
                         <i class="kt-font-brand flaticon2-line-chart"></i>
                     </span>
                     <h3 class="kt-portlet__head-title">
-                        Raw Material Purchase History
+                        Spare Parts (Purchase) Store
                     </h3>
                 </div>
             </div>
@@ -78,53 +78,30 @@
                     <thead>
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Raw Material</th>
+                        <th scope="col">Spare Part</th>
                         <th scope="col">Status</th>
-                        <th scope="col">Invoice Number</th>
                         <th scope="col">Quantity</th>
+                        {{--                        <th scope="col">Country Of Purchase</th>--}}
                         <th scope="col">Total Price</th>
-                        <th scope="col">Purchased From</th>
                         <th scope="col">LC Number</th>
+                        <th scope="col">Invoice Number</th>
                         <th scope="col">Action</th>
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach($histories as $i => $h)
+                    @foreach($receives as $i => $r)
                         <tr>
-                            <th scope="row">{{$histories->firstItem() + $i}}</th>
-                            <td>{{$h->raw_material}}</td>
-                            <td>{{$h->status}}</td>
-                            <td>{{$h->invoice_number}}</td>
-                            <td>{{$h->quantity}} {{$h->unit}}</td>
-                            <td>{{$h->total_price}} {{$h->currency}}</td>
-                            <td>{{$h->purchase_from}}</td>
-                            <td>{{$h->lc_number}}</td>
+                            <th scope="row">{{$i + 1}}</th>
+                            <td>{{$r->spare_part}}</td>
+                            <th>{{$r->status}}</th>
+                            <td>{{$r->quantity}} {{$r->unit}}</td>
+                            {{--                            <td>{{$h->country_purchase}}</td>--}}
+                            <td>{{$r->total_price}} {{$r->currency}}</td>
+                            <td>{{$r->lc_number}}</td>
+                            <td>{{$r->invoice_number}}</td>
                             <td>
-                                @if($h->status == 'pending')
-                                    <a href="{{route('raw-material.purchase.edit', ['rpid' => $h->id])}}" title="Edit"
-                                       class="btn btn-sm btn-clean btn-icon btn-icon-md">
-                                        <i class="la la-edit"></i>
-                                    </a>
-                                    <form action="{{route('rawmaterial.purchase.delete', ['rpid' => $h->id])}}"
-                                          method="POST"
-                                          style="display: inline-table;">
-                                        @method('DELETE')
-                                        @csrf
-                                        <button type="submit" class="btn btn-sm btn-clean btn-icon btn-icon-md"
-                                                onclick="return confirm('Are you sure you want to delete the Purchase history ?')">
-                                            <i class="la la-trash" style="color: #fd397a;"></i>
-                                        </button>
-                                    </form>
-                                @else
-                                    <a href="javascript: void(0)"
-                                       class="btn btn-sm btn-clean btn-icon btn-icon-md disabled">
-                                        <i class="la la-edit"></i>
-                                    </a>
-                                    <a href="javascript: void(0)"
-                                       class="btn btn-sm btn-clean btn-icon btn-icon-md disabled">
-                                        <i class="la la-trash" style="color: #fd397a;"></i>
-                                    </a>
-                                @endif
+                                <a href="{{route('spare-part.purchase.store.singlePurchase', ['sphid' => $r->id])}}" class="btn btn-sm btn-success"
+                                   onclick="return confirm('Are you sure you want to store the spare part ?')">Store</a>
                             </td>
                         </tr>
                     @endforeach
@@ -132,15 +109,15 @@
                 </table>
                 <!--end: table -->
 
-                {{--Pagination--}}
-                <div class="kt-section">
-                    <div class="kt-pagination  kt-pagination--brand">
-                        {{$histories->links()}}
-                        <div class="kt-datatable__pager-info">
-                            <span class="kt-datatable__pager-detail">Showing {{$histories->firstItem()}} - {{$histories->lastItem()}} of {{$histories->total()}}</span>
-                        </div>
-                    </div>
-                </div>
+                {{--                Pagination--}}
+                {{--                <div class="kt-section">--}}
+                {{--                    <div class="kt-pagination  kt-pagination--brand">--}}
+                {{--                        {{$histories->links()}}--}}
+                {{--                        <div class="kt-datatable__pager-info">--}}
+                {{--                            <span class="kt-datatable__pager-detail">Showing {{$histories->firstItem()}} - {{$histories->lastItem()}} of {{$histories->total()}}</span>--}}
+                {{--                        </div>--}}
+                {{--                    </div>--}}
+                {{--                </div>--}}
             </div>
         </div>
 

@@ -109,6 +109,12 @@ Route::get('/raw-material-purchase/receive', 'RawmaterialpurchaseController@rece
 Route::post('/raw-material-purchase/received/{rpid}', 'RawmaterialpurchaseController@received')->name('raw-material.purchase.received');
 Route::post('/raw-material-purchase/not-received/{rpid}', 'RawmaterialpurchaseController@notReceived')->name('raw-material.purchase.received.not');
 
+Route::get('/raw-material-purchase/store', 'RawmaterialstoreController@storeIndex')->name('raw-material.purchase.store');
+Route::get('/raw-material-purchase/store/{rmpid}', 'RawmaterialstoreController@storeSinglePurchase')->name('raw-material.purchase.store.singlePurchase');
+Route::get('/ajax/raw-material-store/widToFloor', 'RawmaterialstoreController@ajaxWidToFloor');
+Route::get('/ajax/raw-material-store/fidToRoom', 'RawmaterialstoreController@ajaxFidToRoom');
+Route::post('/raw-material-purchase/stock/{rmpid}', 'RawmaterialstoreController@stock')->name('raw-material.purchase.stock');
+
 Route::get('/spare-part-purchase/history', 'SparepartspurchaseController@history')->name('spare-part.purchase.history');
 Route::get('/spare-part-purchase', 'SparepartspurchaseController@index')->name('spare-part.purchase');
 Route::get('ajax/spare-part-purchase/spidToUnit', 'SparepartspurchaseController@ajaxSpidToUnit');
@@ -120,6 +126,12 @@ Route::post('/spare-part-purchase/update/{spid}', 'SparepartspurchaseController@
 Route::get('/spare-part-purchase/receive', 'SparepartspurchaseController@receiveIndex')->name('spare-part.purchase.receive');
 Route::post('/spare-part-purchase/received/{spid}', 'SparepartspurchaseController@received')->name('spare-part.purchase.received');
 Route::post('/spare-part-purchase/not-received/{spid}', 'SparepartspurchaseController@notReceived')->name('spare-part.purchase.received.not');
+
+Route::get('/spare-part-purchase/store', 'SparepartsstoreController@storeIndex')->name('spare-part.purchase.store');
+Route::get('/spare-part-purchase/store/{sphid}', 'SparepartsstoreController@storeSinglePurchase')->name('spare-part.purchase.store.singlePurchase');
+Route::get('/ajax/spare-part-store/sridToRooms', 'SparepartsstoreController@ajaxSridToRooms');
+Route::get('/ajax/spare-part-store/ridToRacks', 'SparepartsstoreController@ajaxRidToRacks');
+Route::post('/spare-part-purchase/stock/{sphid}', 'SparepartsstoreController@stock')->name('spare-part.purchase.stock');
 
 
 

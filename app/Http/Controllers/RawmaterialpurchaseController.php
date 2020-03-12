@@ -111,6 +111,7 @@ class RawmaterialpurchaseController extends Controller
             $p->imported_by = $request->importedBy;
             $p->lc_number = $request->lcNumber;
             $p->port_of_landing = $request->portOfLanding;
+            $p->user_id = Auth::id();
             $p->save();
             Session::flash('Success', "The Raw Material has been purchased successfully.");
             return redirect()->route('raw-material.purchase.history');
@@ -200,6 +201,7 @@ class RawmaterialpurchaseController extends Controller
             $p->imported_by = $request->importedBy;
             $p->lc_number = $request->lcNumber;
             $p->port_of_landing = $request->portOfLanding;
+            $p->edit_user_id = Auth::id();
             $p->update();
             Session::flash('Success', "The Raw Material Purchase has been updated successfully.");
             return redirect()->back();
@@ -230,6 +232,7 @@ class RawmaterialpurchaseController extends Controller
         if (Auth::user()->can('raw_material_purchase')) {
             $h = Rawmaterialpurchase::find($rpid);
             $h->status = 'received';
+            $h->receive_user_id = Auth::id();
             $h->update();
             Session::flash('Success', "The Raw material has been received successfully.");
             return redirect()->back();
@@ -244,6 +247,7 @@ class RawmaterialpurchaseController extends Controller
         if (Auth::user()->can('raw_material_purchase')) {
             $h = Rawmaterialpurchase::find($rpid);
             $h->status = 'pending';
+            $h->receive_user_id = null;
             $h->update();
             Session::flash('Success', "The Raw material purchase history status is pending now.");
             return redirect()->back();

@@ -12,7 +12,7 @@ class CreateSparepartspurchasesTable extends Migration
         Schema::create('sparepartspurchases', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('spareparts_id')->index();
-            $table->integer('quantity')->index();
+            $table->integer('quantity');
             $table->string('unit');
             $table->string('country_origin');
             $table->string('country_purchase');
@@ -44,6 +44,9 @@ class CreateSparepartspurchasesTable extends Migration
             $table->string('note');
             $table->string('status')->default('pending');
 //            $table->integer('minimum_storage');
+            $table->integer('user_id');
+            $table->integer('edit_user_id')->nullable();
+            $table->integer('receive_user_id')->nullable();
             $table->timestamps();
         });
     }

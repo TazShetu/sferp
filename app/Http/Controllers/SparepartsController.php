@@ -50,7 +50,8 @@ class SparepartsController extends Controller
                 'model' => 'required',
                 'type' => 'required',
                 'partNumber' => 'required',
-                'identityNumber' => 'required|unique:spareparts,identity_number',
+//                'identityNumber' => 'required|unique:spareparts,identity_number',
+                'identityNumber' => 'required',
                 'codeNumber' => 'required',
                 'minimumStorage' => 'required|min:0',
                 'unit' => 'required',
@@ -117,11 +118,11 @@ class SparepartsController extends Controller
                 'unit' => 'required',
             ]);
             $s = Spareparts::find($spid);
-            if ($s->identity_number != $request->identityNumber) {
-                $request->validate([
-                    'identityNumber' => 'unique:spareparts,identity_number',
-                ]);
-            }
+//            if ($s->identity_number != $request->identityNumber) {
+//                $request->validate([
+//                    'identityNumber' => 'unique:spareparts,identity_number',
+//                ]);
+//            }
             $s->manufacturer = $request->manufacturerName;
             $s->model = $request->model;
             $s->type = $request->type;

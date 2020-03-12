@@ -52,6 +52,14 @@ class WarehouseController extends Controller
         if (Auth::user()->can('ware_house')) {
             $warehouse = Warehouse::find($wid);
             $floors = $warehouse->floors()->get();
+            foreach ($floors as $f){
+                $r = $f->rooms()->get();
+                if (count($r) > 0){
+                    $f['x'] = 1;
+                }else {
+                    $f['x'] = null;
+                }
+            }
             $rooms = $warehouse->rooms()->get();
             foreach ($rooms as $r) {
                 $r['floor_name'] = $r->floor->name;
@@ -89,6 +97,9 @@ class WarehouseController extends Controller
     {
         if (Auth::user()->can('ware_house')) {
             $warehouse = Warehouse::find($wid);
+            // check it has stock or not
+            // if it, has then can not delete
+            // no need to check floor or room
             $floors = $warehouse->floors;
             $rooms = $warehouse->rooms;
             if ((count($floors) > 0) || (count($rooms) > 0)) {
@@ -110,16 +121,67 @@ class WarehouseController extends Controller
         if (Auth::user()->can('ware_house')) {
             DB::beginTransaction();
             try {
-                Floor::where('warehouse_id', $wid)->delete();
                 if ($request->filled('floorName')) {
-                    foreach ($request->floorName as $f) {
-                        if ($f != "") {
-                            $ff = new Floor;
-                            $ff->warehouse_id = $wid;
-                            $ff->name = $f;
-                            $ff->save();
+                    if ($request->filled('oldFloorId')) {
+                        $fs = Floor::where('warehouse_id', $wid)->get();
+                        if (count($fs) != count($request->oldFloorId)){
+                            foreach ($fs as $floor) {
+                                $x = 0;
+                                foreach ($request->oldFloorId as $fid1){
+                                    if ($floor->id == $fid1){
+                                        $x = 1;
+                                        break;
+                                    }
+                                }
+                                if ($x == 0){
+                                    // check it has stock or not
+                                    // if it, has make the room id null
+                                    Room::where('floor_id', $floor->id)->delete();
+                                    // check it has stock or not
+                                    // if it, has make the floor id null
+                                    $floor->delete();
+                                }
+                            }
+                        }
+                        foreach ($request->floorName as $i => $f) {
+                            foreach ($request->oldFloorId as $ii => $fid) {
+                                if (($i == $ii) && ($f != "")) {
+                                    $ff = Floor::find($fid);
+                                    $ff->name = $f;
+                                    $ff->update();
+                                } else {
+                                    if ($f != "") {
+                                        $ff = new Floor;
+                                        $ff->warehouse_id = $wid;
+                                        $ff->name = $f;
+                                        $ff->save();
+                                    }
+                                }
+                            }
+                        }
+                    } else {
+                        // check it has stock or not
+                        // if it, has make the floor id null
+                        Floor::where('warehouse_id', $wid)->delete();
+                        // check it has stock or not
+                        // if it, has make the room id null
+                        Room::where('warehouse_id', $wid)->delete();
+                        foreach ($request->floorName as $i => $f) {
+                            if ($f != "") {
+                                $ff = new Floor;
+                                $ff->warehouse_id = $wid;
+                                $ff->name = $f;
+                                $ff->save();
+                            }
                         }
                     }
+                } else {
+                    // check it has stock or not
+                    // if it, has make the floor id null
+                    Floor::where('warehouse_id', $wid)->delete();
+                    // check it has stock or not
+                    // if it, has make the room id null
+                    Room::where('warehouse_id', $wid)->delete();
                 }
                 DB::commit();
                 $success = true;
