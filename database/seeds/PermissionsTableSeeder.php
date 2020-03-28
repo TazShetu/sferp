@@ -28,14 +28,17 @@ class PermissionsTableSeeder extends Seeder
             15 => ["raw_material_receive", "Raw Material Receive", "Raw Material Receive under Purchase menu"],
             16 => ["sparepart_stock", "Spare Part Stock", "Spare Part Stock under Purchase menu"],
             17 => ["raw_material_stock", "Raw Material Stock", "Raw Material Stock under Purchase menu"],
-            18 => ["stock_out_raw_material", "Raw Material Stock Out", "Raw Material Stock Out Store"],
-            19 => ["stock_in_raw_material", "Raw Material Stock In", "Raw Material Stock In Store"],
-            20 => ["stock_out_spare_part", "Spare Part Stock Out", "Spare Part Stock Out Store"],
-            21 => ["stock_in_spare_part", "Spare Part Stock In", "Spare Part Stock In Store"],
-            22 => ["stock_out_product", "Product Stock Out", "Product Stock Out Store"],
-            23 => ["stock_in_product", "Product Stock In", "Product Stock In Store"],
-            24 => ["production_stock_in_raw_material", "Raw Material Stock In Production", "Raw Material Stock In Production"],
-            25 => ["production_stock_out_Product", "Raw Material Stock Out Production", "Raw Material Stock Out Production"],
+
+            18 => ["stock_out_raw_material", "Raw Material Stock Out", "Raw Material Stock Out under Stock"],
+            19 => ["stock_in_raw_material", "Raw Material Stock In", "Raw Material Stock In under Stock"],
+            20 => ["stock_out_spare_part", "Spare Part Stock Out", "Spare Part Stock Out under Stock"],
+            21 => ["stock_in_spare_part", "Spare Part Stock In", "Spare Part Stock In under Stock"],
+            22 => ["stock_out_product", "Product Stock Out", "Product Stock Out under Stock"],
+            23 => ["stock_in_product", "Product Stock In", "Product Stock In under Stock"],
+
+            24 => ["raw_material_in_production", "Raw Material In for Production", "Raw Material In for Production"],
+            25 => ["product_out_production", "Product Out From Production", "Product Out From Production"],
+
         ];
 
         $s = Role::find(1);

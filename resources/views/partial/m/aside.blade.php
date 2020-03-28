@@ -375,8 +375,7 @@
                     </div>
                 </li>
                 @endpermission
-
-                @permission('sparepart_purchase|raw_material_purchase|sparepart_receive|raw_material_receive|sparepart_stock|raw_material_stock')
+                @permission('stock_out_raw_material|stock_out_spare_part|stock_out_product|stock_in_raw_material|stock_in_spare_part|stock_in_product')
                 <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"
                     data-ktmenu-submenu-toggle="hover">
                     <a href="javascript:;" class="kt-menu__link kt-menu__toggle">
@@ -393,7 +392,7 @@
                                     <span class="kt-menu__link-text">Stock</span>
                                 </span>
                             </li>
-                            @permission('sparepart_purchase|raw_material_purchase')
+                            @permission('stock_out_raw_material|stock_out_spare_part|stock_out_product')
                             <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"
                                 data-ktmenu-submenu-toggle="hover">
                                 <a href="javascript:;" class="kt-menu__link kt-menu__toggle">
@@ -410,25 +409,25 @@
                                                 <span class="kt-menu__link-text">Out</span>
                                             </span>
                                         </li>
-                                        @permission('sparepart_purchase')
+                                        @permission('stock_out_spare_part')
                                         <li class="kt-menu__item  " aria-haspopup="true">
-                                            <a href="{{route('spare-part.purchase.history')}}" class="kt-menu__link ">
+                                            <a href="#" class="kt-menu__link ">
                                                 <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>
                                                 <span class="kt-menu__link-text">[[ Spare Part ]]</span>
                                             </a>
                                         </li>
                                         @endpermission
-                                        @permission('raw_material_purchase')
+                                        @permission('stock_out_raw_material')
                                         <li class="kt-menu__item  " aria-haspopup="true">
-                                            <a href="{{route('raw-material.purchase.history')}}" class="kt-menu__link ">
+                                            <a href="#" class="kt-menu__link ">
                                                 <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>
                                                 <span class="kt-menu__link-text">[[ Raw Material ]]</span>
                                             </a>
                                         </li>
                                         @endpermission
-                                        @permission('raw_material_purchase')
+                                        @permission('stock_out_product')
                                         <li class="kt-menu__item  " aria-haspopup="true">
-                                            <a href="{{route('raw-material.purchase.history')}}" class="kt-menu__link ">
+                                            <a href="#" class="kt-menu__link ">
                                                 <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>
                                                 <span class="kt-menu__link-text">[[ Product ]]</span>
                                             </a>
@@ -438,7 +437,7 @@
                                 </div>
                             </li>
                             @endpermission
-                            @permission('sparepart_purchase|raw_material_purchase')
+                            @permission('stock_in_raw_material|stock_in_spare_part|stock_in_product')
                             <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"
                                 data-ktmenu-submenu-toggle="hover">
                                 <a href="javascript:;" class="kt-menu__link kt-menu__toggle">
@@ -455,25 +454,25 @@
                                                 <span class="kt-menu__link-text">In</span>
                                             </span>
                                         </li>
-                                        @permission('sparepart_purchase')
+                                        @permission('stock_in_spare_part')
                                         <li class="kt-menu__item  " aria-haspopup="true">
-                                            <a href="{{route('spare-part.purchase.history')}}" class="kt-menu__link ">
+                                            <a href="#" class="kt-menu__link ">
                                                 <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>
                                                 <span class="kt-menu__link-text">[[ Spare Part ]]</span>
                                             </a>
                                         </li>
                                         @endpermission
-                                        @permission('raw_material_purchase')
+                                        @permission('stock_in_raw_material')
                                         <li class="kt-menu__item  " aria-haspopup="true">
-                                            <a href="{{route('raw-material.purchase.history')}}" class="kt-menu__link ">
+                                            <a href="#" class="kt-menu__link ">
                                                 <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>
                                                 <span class="kt-menu__link-text">[[ Raw Material ]]</span>
                                             </a>
                                         </li>
                                         @endpermission
-                                        @permission('raw_material_purchase')
+                                        @permission('stock_in_product')
                                         <li class="kt-menu__item  " aria-haspopup="true">
-                                            <a href="{{route('raw-material.purchase.history')}}" class="kt-menu__link ">
+                                            <a href="#" class="kt-menu__link ">
                                                 <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>
                                                 <span class="kt-menu__link-text">[[ Product ]]</span>
                                             </a>
@@ -487,8 +486,7 @@
                     </div>
                 </li>
                 @endpermission
-
-                @permission('sparepart_purchase|raw_material_purchase|sparepart_receive|raw_material_receive|sparepart_stock|raw_material_stock')
+                @permission('raw_material_in_production|product_out_production')
                 <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"
                     data-ktmenu-submenu-toggle="hover">
                     <a href="javascript:;" class="kt-menu__link kt-menu__toggle">
@@ -505,62 +503,20 @@
                                     <span class="kt-menu__link-text">Production</span>
                                 </span>
                             </li>
-                            @permission('sparepart_purchase|raw_material_purchase')
-                            <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"
-                                data-ktmenu-submenu-toggle="hover">
-                                <a href="javascript:;" class="kt-menu__link kt-menu__toggle">
-                                    <span class="kt-menu__link-icon">
-                                        <i class="flaticon-book"></i>
-                                    </span>
-                                    <span class="kt-menu__link-text">Out</span>
-                                    <i class="kt-menu__ver-arrow la la-angle-right"></i>
+                            @permission('raw_material_in_production')
+                            <li class="kt-menu__item  " aria-haspopup="true">
+                                <a href="#" class="kt-menu__link ">
+                                    <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>
+                                    <span class="kt-menu__link-text">[[ Raw Material In ]]</span>
                                 </a>
-                                <div class="kt-menu__submenu "><span class="kt-menu__arrow"></span>
-                                    <ul class="kt-menu__subnav">
-                                        <li class="kt-menu__item  kt-menu__item--parent" aria-haspopup="true">
-                                            <span class="kt-menu__link">
-                                                <span class="kt-menu__link-text">Out</span>
-                                            </span>
-                                        </li>
-                                        @permission('raw_material_purchase')
-                                        <li class="kt-menu__item  " aria-haspopup="true">
-                                            <a href="{{route('raw-material.purchase.history')}}" class="kt-menu__link ">
-                                                <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>
-                                                <span class="kt-menu__link-text">[[ Raw Material ]]</span>
-                                            </a>
-                                        </li>
-                                        @endpermission
-                                    </ul>
-                                </div>
                             </li>
                             @endpermission
-                            @permission('sparepart_purchase|raw_material_purchase')
-                            <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"
-                                data-ktmenu-submenu-toggle="hover">
-                                <a href="javascript:;" class="kt-menu__link kt-menu__toggle">
-                                    <span class="kt-menu__link-icon">
-                                        <i class="flaticon-book"></i>
-                                    </span>
-                                    <span class="kt-menu__link-text">In</span>
-                                    <i class="kt-menu__ver-arrow la la-angle-right"></i>
+                            @permission('product_out_production')
+                            <li class="kt-menu__item  " aria-haspopup="true">
+                                <a href="#" class="kt-menu__link ">
+                                    <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>
+                                    <span class="kt-menu__link-text">[[ Product Out ]]</span>
                                 </a>
-                                <div class="kt-menu__submenu "><span class="kt-menu__arrow"></span>
-                                    <ul class="kt-menu__subnav">
-                                        <li class="kt-menu__item  kt-menu__item--parent" aria-haspopup="true">
-                                            <span class="kt-menu__link">
-                                                <span class="kt-menu__link-text">In</span>
-                                            </span>
-                                        </li>
-                                        @permission('raw_material_purchase')
-                                        <li class="kt-menu__item  " aria-haspopup="true">
-                                            <a href="{{route('raw-material.purchase.history')}}" class="kt-menu__link ">
-                                                <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>
-                                                <span class="kt-menu__link-text">[[ Product ]]</span>
-                                            </a>
-                                        </li>
-                                        @endpermission
-                                    </ul>
-                                </div>
                             </li>
                             @endpermission
                         </ul>
