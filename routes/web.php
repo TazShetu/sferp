@@ -136,8 +136,13 @@ Route::post('/spare-part-purchase/stock/{sphid}', 'SparepartsstoreController@sto
 Route::get('/spare-part/stock/out', 'SparepartsstockoutController@out')->name('spare-part.stock.out');
 Route::post('/spare-part/stock/out/{spsid}', 'SparepartsstockoutController@outStore')->name('spare-part.stock.out.store');
 Route::get('/spare-part/stock/out/history', 'SparepartsstockoutController@history')->name('spare-part.stock.out.history');
+Route::get('/spare-part/stock/in', 'SparepartsstockinController@in')->name('spare-part.stock.in');
+Route::post('/spare-part/stock/in', 'SparepartsstockinController@inStore')->name('spare-part.stock.in.store');
+Route::get('/spare-part/stock/in/history', 'SparepartsstockinController@history')->name('spare-part.stock.in.history');
 
 Route::get('/raw-material/stock/out', 'RawmaterialstockoutController@out')->name('raw-material.stock.out');
 Route::post('/raw-material/stock/out/{rmsid}', 'RawmaterialstockoutController@outStore')->name('raw-material.stock.out.store');
 Route::get('/raw-material/stock/out/history', 'RawmaterialstockoutController@history')->name('raw-material.stock.out.history');
-
+Route::get('/raw-material/stock/in', 'RawmaterialstockinController@in')->name('raw-material.stock.in');
+Route::post('/raw-material/stock/in', 'RawmaterialstockinController@inStore')->name('raw-material.stock.in.store');
+Route::get('/raw-material/stock/in/history', 'RawmaterialstockinController@history')->name('raw-material.stock.in.history');

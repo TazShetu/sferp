@@ -45,15 +45,15 @@
 @endsection
 @section('content')
     <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
-        @if(session('Success'))
-            <div class="alert alert-success text-center">
-                {{session('Success')}}
-            </div>
-        @elseif(session('unsuccess'))
-            <div class="alert alert-warning text-center">
-                {{session('unsuccess')}}
-            </div>
-    @endif
+{{--        @if(session('Success'))--}}
+{{--            <div class="alert alert-success text-center">--}}
+{{--                {{session('Success')}}--}}
+{{--            </div>--}}
+{{--        @elseif(session('unsuccess'))--}}
+{{--            <div class="alert alert-warning text-center">--}}
+{{--                {{session('unsuccess')}}--}}
+{{--            </div>--}}
+{{--    @endif--}}
 
     <!--begin::Portlet-->
         <div class="kt-portlet kt-portlet--mobile">

@@ -49,7 +49,7 @@ class RawmaterialstockoutController extends Controller
     {
         if (Auth::user()->can('stock_out_raw_material')) {
             $request->validate([
-                'outQuantity' => 'required',
+                'outQuantity' => 'required|min:1',
             ]);
             $sps = Rawmaterialstock::find($rmsid);
             if (($request->outQuantity * 1) > ($sps->quantity * 1)){
@@ -94,7 +94,7 @@ class RawmaterialstockoutController extends Controller
     public function history()
     {
         if (Auth::user()->can('stock_out_raw_material')) {
-            $rmsos = Rawmaterialstockout::paginate(20);
+            $rmsos = Rawmaterialstockout::orderBy('created_at', 'DESC')->paginate(20);
             foreach ($rmsos as $sp){
                 $s = Rawmaterial::find($sp->rawmaterial_id);
                 $sp['rm'] = $s->auto_id;

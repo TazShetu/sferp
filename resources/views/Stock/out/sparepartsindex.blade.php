@@ -100,7 +100,7 @@
                             <form action="{{route('spare-part.stock.out.store', ['spsid' => $sp->id])}}" method="post">
                                 @csrf
                                 <td>
-                                    <input type="number" name="outQuantity" required min="0" max="{{$sp->quantity}}"
+                                    <input type="number" name="outQuantity" required min="1" max="{{$sp->quantity}}"
                                            class="form-control {{$errors->has('quantity') ? 'is-invalid' : ''}}">
                                 </td>
                                 <td>

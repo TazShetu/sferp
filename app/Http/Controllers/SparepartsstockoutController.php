@@ -49,7 +49,7 @@ class SparepartsstockoutController extends Controller
     {
         if (Auth::user()->can('stock_out_spare_part')) {
             $request->validate([
-                'outQuantity' => 'required',
+                'outQuantity' => 'required|min:1',
             ]);
             $sps = Sparepartsstock::find($spsid);
             if (($request->outQuantity * 1) > ($sps->quantity * 1)){
@@ -94,7 +94,7 @@ class SparepartsstockoutController extends Controller
     public function history()
     {
         if (Auth::user()->can('stock_out_spare_part')) {
-            $spsos = Sparepartsstockout::paginate(20);
+            $spsos = Sparepartsstockout::orderBy('created_at', 'DESC')->paginate(20);
             foreach ($spsos as $sp){
                 $s = Spareparts::find($sp->spareparts_id);
                 $sp['sp'] = $s->description;
