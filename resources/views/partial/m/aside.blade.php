@@ -411,17 +411,17 @@
                                         </li>
                                         @permission('stock_out_spare_part')
                                         <li class="kt-menu__item  " aria-haspopup="true">
-                                            <a href="#" class="kt-menu__link ">
+                                            <a href="{{route('spare-part.stock.out')}}" class="kt-menu__link ">
                                                 <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>
-                                                <span class="kt-menu__link-text">[[ Spare Part ]]</span>
+                                                <span class="kt-menu__link-text">Spare Part</span>
                                             </a>
                                         </li>
                                         @endpermission
                                         @permission('stock_out_raw_material')
                                         <li class="kt-menu__item  " aria-haspopup="true">
-                                            <a href="#" class="kt-menu__link ">
+                                            <a href="{{route('raw-material.stock.out')}}" class="kt-menu__link ">
                                                 <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>
-                                                <span class="kt-menu__link-text">[[ Raw Material ]]</span>
+                                                <span class="kt-menu__link-text">Raw Material</span>
                                             </a>
                                         </li>
                                         @endpermission

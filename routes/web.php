@@ -133,6 +133,11 @@ Route::get('/ajax/spare-part-store/sridToRooms', 'SparepartsstoreController@ajax
 Route::get('/ajax/spare-part-store/ridToRacks', 'SparepartsstoreController@ajaxRidToRacks');
 Route::post('/spare-part-purchase/stock/{sphid}', 'SparepartsstoreController@stock')->name('spare-part.purchase.stock');
 
+Route::get('/spare-part/stock/out', 'SparepartsstockoutController@out')->name('spare-part.stock.out');
+Route::post('/spare-part/stock/out/{spsid}', 'SparepartsstockoutController@outStore')->name('spare-part.stock.out.store');
+Route::get('/spare-part/stock/out/history', 'SparepartsstockoutController@history')->name('spare-part.stock.out.history');
 
-
+Route::get('/raw-material/stock/out', 'RawmaterialstockoutController@out')->name('raw-material.stock.out');
+Route::post('/raw-material/stock/out/{rmsid}', 'RawmaterialstockoutController@outStore')->name('raw-material.stock.out.store');
+Route::get('/raw-material/stock/out/history', 'RawmaterialstockoutController@history')->name('raw-material.stock.out.history');
 

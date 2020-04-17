@@ -643,7 +643,7 @@
                             </div>
                             <div class="kt-iconbox__desc">
                                 <h3 class="kt-iconbox__title">
-                                    <a class="kt-link" href="#">[[ Spare Part ]]</a>
+                                    <a class="kt-link" href="{{route('spare-part.stock.out')}}">Spare Part</a>
                                 </h3>
                                 <div class="kt-iconbox__content">
                                     (Out) Stock
@@ -674,7 +674,7 @@
                             </div>
                             <div class="kt-iconbox__desc">
                                 <h3 class="kt-iconbox__title">
-                                    <a class="kt-link" href="#">[[ Raw Material ]]</a>
+                                    <a class="kt-link" href="{{route('raw-material.stock.out')}}">Raw Material</a>
                                 </h3>
                                 <div class="kt-iconbox__content">
                                     (Out) Stock

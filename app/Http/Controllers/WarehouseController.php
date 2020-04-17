@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Floor;
+use App\Productstock;
+use App\Rawmaterialstock;
 use App\Room;
 use App\Warehouse;
 use Illuminate\Http\Request;
@@ -97,13 +99,16 @@ class WarehouseController extends Controller
     {
         if (Auth::user()->can('ware_house')) {
             $warehouse = Warehouse::find($wid);
-            // check it has stock or not
+            // check it has stock history or not
             // if it, has then can not delete
+
             // no need to check floor or room
-            $floors = $warehouse->floors;
-            $rooms = $warehouse->rooms;
-            if ((count($floors) > 0) || (count($rooms) > 0)) {
-                Session::flash('unsuccess', "Warehouse '$warehouse->name' has data in them. Can not delete :(");
+//            $floors = $warehouse->floors;
+//            $rooms = $warehouse->rooms;
+            $rm = Rawmaterialstock::where('warehouse_id', $wid)->get();
+            $p = Productstock::where('warehouse_id', $wid)->get();
+            if ((count($rm) > 0) || (count($p) > 0)) {
+                Session::flash('unsuccess', "Warehouse '$warehouse->name' has things in it. Can not delete :(");
                 return redirect()->back();
             } else {
                 $warehouse->delete();
