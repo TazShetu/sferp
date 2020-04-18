@@ -160,9 +160,9 @@ Route::get('/product/production/out/history', 'ProductproductionoutController@hi
 Route::get('/product/stock/in', 'ProductstockinController@in')->name('product.stock.in');
 Route::post('/product/stock/in', 'ProductstockinController@inStore')->name('product.stock.in.store');
 Route::get('/product/stock/in/history', 'ProductstockinController@history')->name('product.stock.in.history');
-//Route::get('/product/stock/out', 'ProductstockoutController@out')->name('product.stock.out');
-//Route::post('/product/stock/out/{psid}', 'ProductstockoutController@outStore')->name('product.stock.out.store');
-//Route::get('/product/stock/out/history', 'ProductstockoutController@history')->name('product.stock.out.history');
+Route::get('/product/stock/out', 'ProductstockoutController@out')->name('product.stock.out');
+Route::post('/product/stock/out/{psid}', 'ProductstockoutController@outStore')->name('product.stock.out.store');
+Route::get('/product/stock/out/history', 'ProductstockoutController@history')->name('product.stock.out.history');
 
 
 
