@@ -1,17 +1,17 @@
 @extends('layouts.m')
-@section('title', 'Spare Parts Store')
+@section('title', 'Raw Material Store')
 @section('content_head')
     <div class="kt-subheader   kt-grid__item" id="kt_subheader">
         <div class="kt-container  kt-container--fluid ">
             <div class="kt-subheader__main">
                 <h3 class="kt-subheader__title">
-                    Spare Parts Store
+                    Raw Material Store
                 </h3>
                 <span class="kt-subheader__separator kt-subheader__separator--v"></span>
                 <div class="kt-subheader__breadcrumbs">
                     <a href="{{route('home')}}" class="kt-subheader__breadcrumbs-home"><i class="flaticon2-shelter"></i></a>
                     <span class="kt-subheader__breadcrumbs-separator"></span>
-                    <a href="{{route('spare-part.purchase')}}" class="kt-subheader__breadcrumbs-link">Spare Parts
+                    <a href="{{route('raw-material.purchase')}}" class="kt-subheader__breadcrumbs-link">Raw Material
                         Purchase</a>
                     <span class="kt-subheader__breadcrumbs-separator"></span>
                     <a href="javascript:void (0)"

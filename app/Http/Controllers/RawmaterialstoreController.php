@@ -55,7 +55,7 @@ class RawmaterialstoreController extends Controller
 
     public function ajaxWidToFloor(Request $request)
     {
-        if (request()->ajax() && Auth::user()->can('raw_material_stock')) {
+        if (request()->ajax()) {
             $floors = Floor::where('warehouse_id', $request->wid)->get();
             if (count($floors) > 0) {
                 $html = ' <div class="form-group row">
@@ -88,7 +88,7 @@ class RawmaterialstoreController extends Controller
 
     public function ajaxFidToRoom(Request $request)
     {
-        if (request()->ajax() && Auth::user()->can('raw_material_stock')) {
+        if (request()->ajax()) {
             $rooms = Room::where('floor_id', $request->fid)->get();
             if (count($rooms) > 0) {
                 $html = ' <div class="form-group row">

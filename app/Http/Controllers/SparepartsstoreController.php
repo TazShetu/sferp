@@ -58,7 +58,7 @@ class SparepartsstoreController extends Controller
 
     public function ajaxSridToRooms(Request $request)
     {
-        if (request()->ajax() && Auth::user()->can('sparepart_stock')) {
+        if (request()->ajax()) {
             $rows = Row::where('sroom_id', $request->srid)->get();
             if (count($rows) > 0) {
                 $html = ' <div class="form-group row">
@@ -91,7 +91,7 @@ class SparepartsstoreController extends Controller
 
     public function ajaxRidToRacks(Request $request)
     {
-        if (request()->ajax() && Auth::user()->can('sparepart_stock')) {
+        if (request()->ajax()) {
             $racks = Rack::where('row_id', $request->rid)->get();
             if (count($racks) > 0) {
                 $html = ' <div class="form-group row">

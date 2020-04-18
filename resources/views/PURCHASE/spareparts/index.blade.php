@@ -414,7 +414,7 @@
             $("#sparePart").on('change', function () {
                 var spid = $(this).val();
                 $.ajax({
-                    url: 'ajax/spare-part-purchase/spidToUnit',
+                    url: '/ajax/spare-part-purchase/spidToUnit',
                     method: "GET",
                     data: {spid: spid},
                     success: function (r) {

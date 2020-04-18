@@ -380,7 +380,7 @@
             $("#rawMaterial").on('change', function () {
                 var rid = $(this).val();
                 $.ajax({
-                    url: 'ajax/raw-material-purchase/ridToUnit',
+                    url: '/ajax/raw-material-purchase/ridToUnit',
                     method: "GET",
                     data: {rid: rid},
                     success: function (r) {

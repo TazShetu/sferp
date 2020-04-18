@@ -16,7 +16,7 @@ class CreateRawmaterialpurchasesTable extends Migration
             $table->string('invoice_number');
             $table->string('description');
             $table->string('hs_code');
-            $table->integer('quantity')->index();
+            $table->integer('quantity');
             $table->string('unit');
             $table->float('cnf_dhaka')->nullable();
             $table->float('cnf_dhaka_2')->nullable();

@@ -3,19 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="72b65107-1734-42e2-a0ce-dd862e20aa6b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/RawmaterialController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/RawmaterialController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/RawmaterialstoreController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/RawmaterialstoreController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/SparepartsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/SparepartsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/SparepartsstoreController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/SparepartsstoreController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_01_08_024222_create_spareparts_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_01_08_024222_create_spareparts_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_01_10_093735_create_rawmaterials_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_01_10_093735_create_rawmaterials_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/customer/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/customer/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/customer/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/customer/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/home.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/partial/m/aside.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/partial/m/aside.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/rawMaterial/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/rawMaterial/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/rawMaterial/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/rawMaterial/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/spareParts/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/spareParts/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/spareParts/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/spareParts/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -135,6 +125,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -254,7 +245,18 @@
       <workItem from="1582992248579" duration="2514000" />
       <workItem from="1583037699827" duration="2546000" />
       <workItem from="1583122806659" duration="5123000" />
-      <workItem from="1583991076646" duration="8023000" />
+      <workItem from="1583991076646" duration="8671000" />
+      <workItem from="1584422591277" duration="593000" />
+      <workItem from="1584605733232" duration="26000" />
+      <workItem from="1585371223838" duration="9970000" />
+      <workItem from="1585541266448" duration="1185000" />
+      <workItem from="1585800002289" duration="2250000" />
+      <workItem from="1585971006525" duration="594000" />
+      <workItem from="1586670303823" duration="23000" />
+      <workItem from="1586949178929" duration="600000" />
+      <workItem from="1587008982517" duration="645000" />
+      <workItem from="1587118336254" duration="11844000" />
+      <workItem from="1587183362384" duration="14179000" />
     </task>
     <servers />
   </component>
@@ -270,14 +272,14 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="640" y="257" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1581160276731" />
-    <state x="690" y="276" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1584024652448">
+    <state x="690" y="276" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1587204675724">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="690" y="276" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1584024652448" />
-    <state x="740" y="276" key="FileChooserDialogImpl" timestamp="1581946107385">
+    <state x="690" y="276" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1587204675724" />
+    <state x="740" y="276" key="FileChooserDialogImpl" timestamp="1587022007695">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="276" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1581946107385" />
+    <state x="740" y="276" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1587022007695" />
     <state x="425" y="174" key="SettingsEditor" timestamp="1582083992092">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -286,10 +288,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="656" y="345" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1582081652309" />
-    <state x="646" y="236" width="627" height="568" key="find.popup" timestamp="1584022592247">
+    <state x="646" y="236" width="627" height="568" key="find.popup" timestamp="1587202338947">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="646" y="236" width="627" height="568" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1584022592247" />
+    <state x="646" y="236" width="627" height="568" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1587202338947" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -350,39 +352,44 @@
           <option name="timeStamp" value="156" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/resources/views/home.blade.php</url>
-          <line>547</line>
-          <option name="timeStamp" value="176" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/resources/views/home.blade.php</url>
-          <line>563</line>
-          <option name="timeStamp" value="177" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/resources/views/home.blade.php</url>
-          <line>566</line>
-          <option name="timeStamp" value="178" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/resources/views/home.blade.php</url>
-          <line>573</line>
-          <option name="timeStamp" value="179" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/app/Http/Controllers/WarehouseController.php</url>
-          <line>99</line>
+          <line>101</line>
           <option name="timeStamp" value="240" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/app/Http/Controllers/SroomController.php</url>
-          <line>99</line>
+          <line>100</line>
           <option name="timeStamp" value="253" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/resources/views/partial/m/aside.blade.php</url>
-          <line>567</line>
-          <option name="timeStamp" value="256" />
+          <url>file://$PROJECT_DIR$/resources/views/home.blade.php</url>
+          <line>873</line>
+          <option name="timeStamp" value="264" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/resources/views/home.blade.php</url>
+          <line>893</line>
+          <option name="timeStamp" value="265" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/resources/views/home.blade.php</url>
+          <line>896</line>
+          <option name="timeStamp" value="267" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/app/Http/Controllers/SparepartsstockoutController.php</url>
+          <line>95</line>
+          <option name="timeStamp" value="278" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/app/Http/Controllers/RawmaterialstockoutController.php</url>
+          <line>95</line>
+          <option name="timeStamp" value="280" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/app/Http/Controllers/SparepartsstockinController.php</url>
+          <line>91</line>
+          <option name="timeStamp" value="283" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/Theme/metronic/demo1/assets/js/pages/crud/datatables/basic/basic.js</url>

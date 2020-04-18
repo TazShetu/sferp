@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Rack;
 use App\Row;
+use App\Sparepartsstock;
 use App\Sroom;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -97,13 +98,15 @@ class SroomController extends Controller
     {
         if (Auth::user()->can('sparepart_room')) {
             $sroom = Sroom::find($srid);
-            // check it has stock or not
+            // check it has stock history or not
             // if it, has then can not delete
+
             // no need to check floor or room
-            $rows = $sroom->rows()->get();
-            $racks = $sroom->racks()->get();
-            if ((count($rows) > 0) || (count($racks) > 0)) {
-                Session::flash('unsuccess', "Spare Part Room '$sroom->name' has data in them. Can not delete :(");
+//            $rows = $sroom->rows()->get();
+//            $racks = $sroom->racks()->get();
+            $sp = Sparepartsstock::where('sroom_id', $srid)->get();
+            if (count($sp) > 0) {
+                Session::flash('unsuccess', "Spare Part Room '$sroom->name' has things in it. Can not delete :(");
                 return redirect()->back();
             } else {
                 $sroom->delete();

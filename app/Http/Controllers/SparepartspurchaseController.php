@@ -48,7 +48,7 @@ class SparepartspurchaseController extends Controller
 
     public function ajaxSpidToUnit()
     {
-        if (request()->ajax() && Auth::user()->can('sparepart_purchase')) {
+        if (request()->ajax()) {
             $spid = $_GET['spid'];
             $sp = Spareparts::find($spid);
             return $sp->unit;

@@ -99,7 +99,7 @@ Route::post('/rack/update/{srid}', 'SroomController@rackUpdate')->name('rack.upd
 
 Route::get('/raw-material-purchase/history', 'RawmaterialpurchaseController@history')->name('raw-material.purchase.history');
 Route::get('/raw-material-purchase', 'RawmaterialpurchaseController@index')->name('raw-material.purchase');
-Route::get('ajax/raw-material-purchase/ridToUnit', 'RawmaterialpurchaseController@ajaxRidToUnit');
+Route::get('/ajax/raw-material-purchase/ridToUnit', 'RawmaterialpurchaseController@ajaxRidToUnit');
 Route::post('/raw-material-purchase/store', 'RawmaterialpurchaseController@store')->name('raw-material.purchase.store');
 Route::delete('/raw-material-purchase/delete/{rpid}', 'RawmaterialpurchaseController@destroy')->name('rawmaterial.purchase.delete');
 Route::get('/raw-material-purchase/edit/{rpid}', 'RawmaterialpurchaseController@edit')->name('raw-material.purchase.edit');
@@ -117,7 +117,7 @@ Route::post('/raw-material-purchase/stock/{rmpid}', 'RawmaterialstoreController@
 
 Route::get('/spare-part-purchase/history', 'SparepartspurchaseController@history')->name('spare-part.purchase.history');
 Route::get('/spare-part-purchase', 'SparepartspurchaseController@index')->name('spare-part.purchase');
-Route::get('ajax/spare-part-purchase/spidToUnit', 'SparepartspurchaseController@ajaxSpidToUnit');
+Route::get('/ajax/spare-part-purchase/spidToUnit', 'SparepartspurchaseController@ajaxSpidToUnit');
 Route::post('/spare-part-purchase/store', 'SparepartspurchaseController@store')->name('spare-part.purchase.store');
 Route::delete('/spare-part-purchase/delete/{spid}', 'SparepartspurchaseController@destroy')->name('spare-part.purchase.delete');
 Route::get('/spare-part-purchase/edit/{spid}', 'SparepartspurchaseController@edit')->name('spare-part.purchase.edit');
@@ -132,6 +132,42 @@ Route::get('/spare-part-purchase/store/{sphid}', 'SparepartsstoreController@stor
 Route::get('/ajax/spare-part-store/sridToRooms', 'SparepartsstoreController@ajaxSridToRooms');
 Route::get('/ajax/spare-part-store/ridToRacks', 'SparepartsstoreController@ajaxRidToRacks');
 Route::post('/spare-part-purchase/stock/{sphid}', 'SparepartsstoreController@stock')->name('spare-part.purchase.stock');
+
+Route::get('/spare-part/stock/out', 'SparepartsstockoutController@out')->name('spare-part.stock.out');
+Route::post('/spare-part/stock/out/{spsid}', 'SparepartsstockoutController@outStore')->name('spare-part.stock.out.store');
+Route::get('/spare-part/stock/out/history', 'SparepartsstockoutController@history')->name('spare-part.stock.out.history');
+Route::get('/spare-part/stock/in', 'SparepartsstockinController@in')->name('spare-part.stock.in');
+Route::post('/spare-part/stock/in', 'SparepartsstockinController@inStore')->name('spare-part.stock.in.store');
+Route::get('/spare-part/stock/in/history', 'SparepartsstockinController@history')->name('spare-part.stock.in.history');
+
+Route::get('/raw-material/stock/out', 'RawmaterialstockoutController@out')->name('raw-material.stock.out');
+Route::post('/raw-material/stock/out/{rmsid}', 'RawmaterialstockoutController@outStore')->name('raw-material.stock.out.store');
+Route::get('/raw-material/stock/out/history', 'RawmaterialstockoutController@history')->name('raw-material.stock.out.history');
+Route::get('/raw-material/stock/in', 'RawmaterialstockinController@in')->name('raw-material.stock.in');
+Route::post('/raw-material/stock/in', 'RawmaterialstockinController@inStore')->name('raw-material.stock.in.store');
+Route::get('/raw-material/stock/in/history', 'RawmaterialstockinController@history')->name('raw-material.stock.in.history');
+
+Route::get('/raw-material/production/in', 'RawmaterialproductioninController@in')->name('raw-material.production.in');
+Route::get('/ajax/raw-material-production-in/fidToMachine', 'RawmaterialproductioninController@ajaxFidToMachine');
+Route::post('/raw-material/production/in', 'RawmaterialproductioninController@inStore')->name('raw-material.production.in.store');
+Route::get('/raw-material/production/in/history', 'RawmaterialproductioninController@history')->name('raw-material.production.in.history');
+
+Route::get('/product/production/out', 'ProductproductionoutController@in')->name('product.production.out');
+Route::get('/ajax/product-production-out/pidToUnit', 'ProductproductionoutController@ajaxPidToUnit');
+Route::post('/product/production/out', 'ProductproductionoutController@inStore')->name('product.production.out.store');
+Route::get('/product/production/out/history', 'ProductproductionoutController@history')->name('product.production.out.history');
+
+Route::get('/product/stock/in', 'ProductstockinController@in')->name('product.stock.in');
+Route::post('/product/stock/in', 'ProductstockinController@inStore')->name('product.stock.in.store');
+Route::get('/product/stock/in/history', 'ProductstockinController@history')->name('product.stock.in.history');
+Route::get('/product/stock/out', 'ProductstockoutController@out')->name('product.stock.out');
+Route::post('/product/stock/out/{psid}', 'ProductstockoutController@outStore')->name('product.stock.out.store');
+Route::get('/product/stock/out/history', 'ProductstockoutController@history')->name('product.stock.out.history');
+
+
+
+
+
 
 
 
