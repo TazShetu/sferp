@@ -75,7 +75,7 @@
                                                         </label>
                                                         <div class="col-lg-9 col-xl-6">
                                                             <select class="form-control kt-selectpicker"
-                                                                    name="sparePart" required
+                                                                    name="sparePart" required id="sparePart"
                                                                     data-live-search="true" data-size="7">
                                                                 <option selected disabled hidden value="">Choose
                                                                 </option>
@@ -90,9 +90,12 @@
                                                         <label class="col-xl-3 col-lg-3 col-form-label">
                                                             Quantity
                                                         </label>
-                                                        <div class="col-lg-9 col-xl-6">
-                                                            <input type="number" min="1" name="quantity"
+                                                        <div class="input-group col-lg-9 col-xl-6">
+                                                            <input type="number" name="quantity" min="1"
                                                                    class="form-control" required>
+                                                            <div class="input-group-append"><span
+                                                                    class="input-group-text" id="unit">.</span>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
@@ -154,6 +157,17 @@
     <script src="{{asset('m/assets/js/pages/crud/forms/widgets/bootstrap-select.js')}}" type="text/javascript"></script>
     <script>
         $(function () {
+            $("#sparePart").on('change', function () {
+                var spid = $(this).val();
+                $.ajax({
+                    url: '/ajax/spare-part-purchase/spidToUnit',
+                    method: "GET",
+                    data: {spid: spid},
+                    success: function (r) {
+                        $('#unit').html(r);
+                    }
+                });
+            });
             $("#sroom").on('change', function () {
                 var srid = $(this).val();
                 $.ajax({

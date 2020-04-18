@@ -3,11 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="72b65107-1734-42e2-a0ce-dd862e20aa6b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/RawmaterialproductioninController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/RawmaterialproductioninController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/RawmaterialpurchaseController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/RawmaterialpurchaseController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/PURCHASE/rawmaterial/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/PURCHASE/rawmaterial/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/PURCHASE/rawmaterial/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/PURCHASE/rawmaterial/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Production/direct/rawmaterialin.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Production/direct/rawmaterialin.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/SparepartspurchaseController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/SparepartspurchaseController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/PURCHASE/spareparts/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/PURCHASE/spareparts/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/PURCHASE/spareparts/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/PURCHASE/spareparts/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Stock/in/rawmaterialindex.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Stock/in/rawmaterialindex.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Stock/in/sparepartsindex.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Stock/in/sparepartsindex.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/home.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/partial/m/aside.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/partial/m/aside.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
@@ -261,7 +261,7 @@
       <workItem from="1586949178929" duration="600000" />
       <workItem from="1587008982517" duration="645000" />
       <workItem from="1587118336254" duration="11844000" />
-      <workItem from="1587183362384" duration="10216000" />
+      <workItem from="1587183362384" duration="12284000" />
     </task>
     <servers />
   </component>
@@ -277,10 +277,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="640" y="257" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1581160276731" />
-    <state x="690" y="276" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1587200869233">
+    <state x="690" y="276" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1587203015859">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="690" y="276" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1587200869233" />
+    <state x="690" y="276" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1587203015859" />
     <state x="740" y="276" key="FileChooserDialogImpl" timestamp="1587022007695">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -293,10 +293,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="656" y="345" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1582081652309" />
-    <state x="646" y="236" width="627" height="568" key="find.popup" timestamp="1587192968097">
+    <state x="646" y="236" width="627" height="568" key="find.popup" timestamp="1587202338947">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="646" y="236" width="627" height="568" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1587192968097" />
+    <state x="646" y="236" width="627" height="568" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1587202338947" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -373,11 +373,6 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/resources/views/home.blade.php</url>
-          <line>800</line>
-          <option name="timeStamp" value="261" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/resources/views/home.blade.php</url>
           <line>873</line>
           <option name="timeStamp" value="264" />
         </line-breakpoint>
@@ -390,11 +385,6 @@
           <url>file://$PROJECT_DIR$/resources/views/home.blade.php</url>
           <line>896</line>
           <option name="timeStamp" value="267" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/resources/views/partial/m/aside.blade.php</url>
-          <line>474</line>
-          <option name="timeStamp" value="270" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/resources/views/partial/m/aside.blade.php</url>

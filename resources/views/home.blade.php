@@ -798,7 +798,7 @@
                             </div>
                             <div class="kt-iconbox__desc">
                                 <h3 class="kt-iconbox__title">
-                                    <a class="kt-link" href="#">[[ Product ]]</a>
+                                    <a class="kt-link" href="{{route('product.stock.in')}}">Product</a>
                                 </h3>
                                 <div class="kt-iconbox__content">
                                     (In) Stock
