@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Product;
+use App\Rawmaterial;
 use App\Role;
+use App\Spareparts;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -20,7 +23,38 @@ class HomeController extends Controller
 
     public function index()
     {
-        return view('home');
+        $n = null;
+        $products = Product::all();
+        $sps = Spareparts::all();
+        $rms = Rawmaterial::all();
+        if (compact($products) > 0){
+            foreach ($products as $p) {
+                $stock = DB::table('productstocks')->where('product_id', $p->id)->sum('quantity');
+                if (($p->minimum_storage * 1) > $stock) {
+                    $n = 1;
+                    break;
+                }
+            }
+        }
+        if (($n == null) && (compact($sps) > 0)) {
+            foreach ($sps as $s) {
+                $ss = DB::table('sparepartsstocks')->where('spareparts_id', $s->id)->sum('quantity');
+                if (($s->minimum_storage * 1) > $ss) {
+                    $n = 1;
+                    break;
+                }
+            }
+        }
+        if (($n == null) && (compact($rms) > 0)) {
+            foreach ($rms as $r) {
+                $sss = DB::table('rawmaterialstocks')->where('rawmaterial_id', $r->id)->sum('quantity');
+                if (($r->minimum_storage * 1) > $sss) {
+                    $n = 1;
+                    break;
+                }
+            }
+        }
+        return view('home', compact('n'));
     }
 
 
@@ -94,18 +128,18 @@ class HomeController extends Controller
                 'email' => 'required',
                 'roles' => 'required',
             ]);
-            if ($request->filled('password')){
+            if ($request->filled('password')) {
                 $request->validate(['password' => 'required|confirmed']);
             }
             $u = User::find($uid);
-            if ($u->email != $request->email){
+            if ($u->email != $request->email) {
                 $request->validate(['email' => 'unique:users,email',]);
             }
             DB::beginTransaction();
             try {
                 $u->name = $request->name;
                 $u->email = $request->email;
-                if ($request->filled('password')){
+                if ($request->filled('password')) {
                     $u->password = bcrypt($request->password);
                 }
                 $u->update();
@@ -138,6 +172,41 @@ class HomeController extends Controller
         } else {
             abort(403);
         }
+    }
+
+
+    public function minimumStorage()
+    {
+        $products = [];
+        $ps = Product::all();
+        $spareparts = [];
+        $sps = Spareparts::all();
+        $rawmaterials = [];
+        $rms = Rawmaterial::all();
+        foreach ($ps as $p) {
+            $stock = DB::table('productstocks')->where('product_id', $p->id)->sum('quantity');
+            if (($p->minimum_storage * 1) > $stock) {
+                $p['stock'] = $stock;
+                $products[] = $p;
+            }
+        }
+        foreach ($sps as $s) {
+            $ss = DB::table('sparepartsstocks')->where('spareparts_id', $s->id)->sum('quantity');
+            if (($s->minimum_storage * 1) > $ss) {
+                $s['stock'] = $ss;
+                $spareparts[] = $s;
+            }
+        }
+
+        foreach ($rms as $r) {
+            $sss = DB::table('rawmaterialstocks')->where('rawmaterial_id', $r->id)->sum('quantity');
+            if (($r->minimum_storage * 1) > $sss) {
+                $r['stock'] = $sss;
+                $rawmaterials[] = $r;
+            }
+        }
+//        dd($spareparts);
+        return view('Notifications.minimumStorage', compact('products', 'rawmaterials', 'spareparts'));
     }
 
 

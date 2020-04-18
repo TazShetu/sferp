@@ -1,17 +1,20 @@
 @extends('layouts.m')
-@section('title', 'Spare Parts List')
+@section('title', 'Raw Material Purchase History')
+{{--@section('link')--}}
+
+{{--@endsection--}}
 @section('content_head')
     <div class="kt-subheader   kt-grid__item" id="kt_subheader">
         <div class="kt-container  kt-container--fluid ">
             <div class="kt-subheader__main">
                 <h3 class="kt-subheader__title">
-                    Spare Parts
+                    Raw Material Purchase History
                 </h3>
                 <span class="kt-subheader__separator kt-subheader__separator--v"></span>
                 <div class="kt-subheader__group" id="kt_subheader_search">
-                    <span class="kt-subheader__desc" id="kt_subheader_total">
-                        {{count($spareParts)}} Total
-                    </span>
+                    {{--                                <span class="kt-subheader__desc" id="kt_subheader_total">--}}
+                    {{--                                    {{$customers->total()}} Total--}}
+                    {{--                                </span>--}}
                     <form class="kt-margin-l-20" id="kt_subheader_search_form">
                         <div class="kt-input-icon kt-input-icon--right kt-subheader__search">
                             <input type="text" class="form-control" placeholder="Search..." id="generalSearch">
@@ -33,12 +36,11 @@
                             </span>
                         </div>
                     </form>
-
                 </div>
             </div>
-            <div class="kt-subheader__toolbar">
-                <a href="{{route('spareParts.create')}}" class="btn btn-label-brand btn-bold">Add Spare Parts</a>
-            </div>
+{{--            <div class="kt-subheader__toolbar">--}}
+{{--                <a href="{{route('raw-material.purchase')}}" class="btn btn-label-brand btn-bold">Purchase </a>--}}
+{{--            </div>--}}
         </div>
     </div>
 @endsection
@@ -63,59 +65,71 @@
                         <i class="kt-font-brand flaticon2-line-chart"></i>
                     </span>
                     <h3 class="kt-portlet__head-title">
-                        All Spare Parts
+                        Raw Material (Purchase) Received
                     </h3>
                 </div>
             </div>
             <div class="kt-portlet__body">
+                <!--begin: Datatable -->
                 {{--Bootstrap Table--}}
-                <table class="table table-hover">
+                <table class="table table-hover" id="dataTable">
                     <thead>
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Identification Number</th>
-                        <th scope="col">Manufacturer</th>
-                        <th scope="col">Date of Purchase</th>
-                        <th scope="col">Date of Arrival</th>
-                        <th scope="col">Unit Price</th>
+                        <th scope="col">Raw Material</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Total Price</th>
+                        <th scope="col">Purchased From</th>
+                        <th scope="col">LC Number</th>
+                        <th scope="col">Invoice Number</th>
                         <th scope="col">Action</th>
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach($spareParts as $i => $m)
+                    @foreach($histories as $i => $h)
                         <tr>
-                            <th scope="row">{{$i + 1}}</th>
-                            <td><a href="{{route('spareParts.edit', ['spid' => $m->id])}}">{{$m->identity_number}}</a>
-                            </td>
-                            <td>{{$m->manufacturer}}</td>
-                            <td>{{$m->purchase_date}}</td>
-                            <td>{{$m->arrival_date}}</td>
-                            <td>{{$m->unit_price}} in {{$m->currency}}</td>
+                            <th scope="row">{{$histories->firstItem() + $i}}</th>
+                            <td>{{$h->raw_material}}</td>
+                            <th>{{$h->status}}</th>
+                            <td>{{$h->quantity}} {{$h->unit}}</td>
+                            <td>{{$h->total_price}} {{$h->currency}}</td>
+                            <td>{{$h->purchase_from}}</td>
+                            <td>{{$h->lc_number}}</td>
+                            <td>{{$h->invoice_number}}</td>
                             <td>
-                                <a href="{{route('spareParts.edit', ['spid' => $m->id])}}" title="Edit"
-                                   class="btn btn-sm btn-clean btn-icon btn-icon-md">
-                                    <i class="la la-edit"></i>
-                                </a>
-                                <form action="{{route('spareParts.delete', ['spid' => $m->id])}}" method="POST"
-                                      style="display: inline-table;">
-                                    @method('DELETE')
-                                    @csrf
-                                    <button type="submit" class="btn btn-sm btn-clean btn-icon btn-icon-md"
-                                            onclick="return confirm('Are you sure you want to delete the spare part ?')">
-                                        <i class="la la-trash" style="color: #fd397a;"></i>
-                                    </button>
-                                </form>
+                                @if($h->status == 'pending')
+                                    <form action="{{route('raw-material.purchase.received', ['rpid' => $h->id])}}"
+                                          method="POST" style="display: inline-table;">
+                                        @csrf
+                                        <button type="submit" class="btn btn-sm btn-success"
+                                                onclick="return confirm('Are you sure you have received the Raw Material ?')">
+                                            Received
+                                        </button>
+                                    </form>
+                                @else
+                                    <form action="{{route('raw-material.purchase.received.not', ['rpid' => $h->id])}}"
+                                          method="POST" style="display: inline-table;">
+                                        @csrf
+                                        <button type="submit" class="btn btn-sm btn-danger"
+                                                onclick="return confirm('Are you sure you have not received the Raw Material ?')">
+                                            Not Received
+                                        </button>
+                                    </form>
+                                @endif
                             </td>
                         </tr>
                     @endforeach
                     </tbody>
                 </table>
+                <!--end: table -->
+
                 {{--Pagination--}}
                 <div class="kt-section">
                     <div class="kt-pagination  kt-pagination--brand">
-                        {{$spareParts->links()}}
+                        {{$histories->links()}}
                         <div class="kt-datatable__pager-info">
-                            <span class="kt-datatable__pager-detail">Showing {{$spareParts->firstItem()}} - {{$spareParts->lastItem()}} of {{$spareParts->total()}}</span>
+                            <span class="kt-datatable__pager-detail">Showing {{$histories->firstItem()}} - {{$histories->lastItem()}} of {{$histories->total()}}</span>
                         </div>
                     </div>
                 </div>
@@ -141,4 +155,15 @@
     <!--begin::Page Scripts(used by this page) -->
 
     <!--end::Page Scripts -->
+    {{--    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" type="text/javascript"></script>--}}
+    {{--    <script>--}}
+    {{--        $(document).ready(function() {--}}
+    {{--            $('#dataTable').DataTable({--}}
+    {{--                // "paging":   false,--}}
+    {{--                "ordering": false,--}}
+    {{--                "info":     false--}}
+    {{--            } );--}}
+    {{--        } );--}}
+    {{--    </script>--}}
+
 @endsection
