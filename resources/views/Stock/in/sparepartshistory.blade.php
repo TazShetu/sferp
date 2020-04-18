@@ -80,6 +80,7 @@
                         <th scope="col">Row</th>
                         <th scope="col">Rack</th>
                         <th scope="col">Stocked By</th>
+                        <th scope="col">Date</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -92,6 +93,7 @@
                             <td>{{$sp->row}}</td>
                             <td>{{$sp->rack}}</td>
                             <td>{{$sp->user}}</td>
+                            <td>{{$sp->created_at->format('jS M, Y g:ia')}}</td>
                         </tr>
                     @endforeach
                     </tbody>

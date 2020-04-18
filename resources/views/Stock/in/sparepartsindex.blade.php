@@ -75,7 +75,8 @@
                                                         </label>
                                                         <div class="col-lg-9 col-xl-6">
                                                             <select class="form-control kt-selectpicker"
-                                                                    name="sparePart" required>
+                                                                    name="sparePart" required
+                                                                    data-live-search="true" data-size="7">
                                                                 <option selected disabled hidden value="">Choose
                                                                 </option>
                                                                 @foreach($spareparts as $sp)
@@ -150,6 +151,7 @@
 {{--@section('stickyToolbar')    --}}
 {{--@endsection--}}
 @section('script')
+    <script src="{{asset('m/assets/js/pages/crud/forms/widgets/bootstrap-select.js')}}" type="text/javascript"></script>
     <script>
         $(function () {
             $("#sroom").on('change', function () {

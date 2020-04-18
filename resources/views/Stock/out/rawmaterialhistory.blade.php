@@ -80,6 +80,7 @@
                         <th scope="col">Floor</th>
                         <th scope="col">Room</th>
                         <th scope="col">Out By</th>
+                        <th scope="col">Date</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -92,6 +93,7 @@
                             <td>{{$sp->floor}}</td>
                             <td>{{$sp->room}}</td>
                             <td>{{$sp->user}}</td>
+                            <td>{{$sp->created_at->format('jS M, Y g:ia')}}</td>
                         </tr>
                     @endforeach
                     </tbody>

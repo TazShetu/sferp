@@ -3,15 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="72b65107-1734-42e2-a0ce-dd862e20aa6b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/RawmaterialstockoutController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/RawmaterialstockoutController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/SparepartsstockoutController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/SparepartsstockoutController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/PURCHASE/STORE/rawMaterilaStore.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/PURCHASE/STORE/rawMaterilaStore.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Stock/in/rawmaterialhistory.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Stock/in/rawmaterialhistory.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Stock/in/sparepartshistory.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Stock/in/sparepartshistory.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Stock/in/sparepartsindex.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Stock/in/sparepartsindex.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/Stock/out/rawmaterialhistory.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Stock/out/rawmaterialhistory.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Stock/out/rawmaterialindex.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Stock/out/rawmaterialindex.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Stock/out/sparepartsindex.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Stock/out/sparepartsindex.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/home.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/partial/m/aside.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/partial/m/aside.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Stock/out/sparepartshistory.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Stock/out/sparepartshistory.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -261,7 +258,8 @@
       <workItem from="1586670303823" duration="23000" />
       <workItem from="1586949178929" duration="600000" />
       <workItem from="1587008982517" duration="645000" />
-      <workItem from="1587118336254" duration="11498000" />
+      <workItem from="1587118336254" duration="11844000" />
+      <workItem from="1587183362384" duration="2196000" />
     </task>
     <servers />
   </component>
