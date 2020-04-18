@@ -1,11 +1,11 @@
 @extends('layouts.m')
-@section('title', 'Raw Material Stock In')
+@section('title', 'Raw Material Production In')
 @section('content_head')
     <div class="kt-subheader   kt-grid__item" id="kt_subheader">
         <div class="kt-container  kt-container--fluid ">
             <div class="kt-subheader__main">
                 <h3 class="kt-subheader__title">
-                    Raw Material Stock In
+                    Raw Material Production In
                 </h3>
                 <span class="kt-subheader__separator kt-subheader__separator--v"></span>
                 <div class="kt-subheader__group" id="kt_subheader_search">
@@ -39,7 +39,7 @@
             </div>
             {{--            --}}
             <div class="kt-subheader__toolbar">
-                <a href="{{route('raw-material.stock.in.history')}}" class="btn btn-label-brand btn-bold">History</a>
+                <a href="{{route('raw-material.production.in.history')}}" class="btn btn-label-brand btn-bold">History</a>
             </div>
             {{--            --}}
         </div>
@@ -63,10 +63,10 @@
                         <div class="kt-form kt-form--label-right">
                             <div class="kt-form__body">
                                 <div class="kt-section kt-section--first">
-                                    @if(count($warehouses) > 0)
+                                    @if(count($factories) > 0)
                                         @if(count($rawmaterials) > 0)
                                             {{--      Form Start    --}}
-                                            <form action="{{route('raw-material.stock.in.store')}}" method="post">
+                                            <form action="{{route('raw-material.production.in.store')}}" method="post">
                                                 @csrf
                                                 <div class="kt-section__body">
                                                     <div class="form-group row">
@@ -94,23 +94,33 @@
                                                                    class="form-control" required>
                                                         </div>
                                                     </div>
+
+
+
+
+
+
+                                                    
+
+
+
+
                                                     <div class="form-group row">
                                                         <label class="col-xl-3 col-lg-3 col-form-label">
-                                                            Warehouse
+                                                            Factory
                                                         </label>
                                                         <div class="col-lg-9 col-xl-6">
-                                                            <select class="form-control kt-selectpicker" id="warehouse"
-                                                                    name="warehouse" required>
+                                                            <select class="form-control kt-selectpicker" id="factory"
+                                                                    name="factory" required>
                                                                 <option selected disabled hidden value="">Choose...
                                                                 </option>
-                                                                @foreach($warehouses as $w)
-                                                                    <option value="{{$w->id}}">{{$w->name}}</option>
+                                                                @foreach($factories as $f)
+                                                                    <option value="{{$f->id}}">{{$f->name}}</option>
                                                                 @endforeach
                                                             </select>
                                                         </div>
                                                     </div>
-                                                    <div id="warehouse-floor-main-div"></div>
-                                                    <div id="warehouse-floor-room-main-div"></div>
+                                                    <div id="factory-machine-main-div"></div>
                                                     <div
                                                         class="kt-separator kt-separator--space-lg kt-separator--fit kt-separator--border-solid"></div>
                                                     <div class="kt-form__actions">
@@ -135,7 +145,7 @@
                                             . Then stock raw material.
                                         @endif
                                     @else
-                                        First create Warehouse <a href="{{route('warehouse.index')}}">here</a>. Then
+                                        First create Factory <a href="{{route('factory.create')}}">here</a>. Then
                                         stock raw material.
                                     @endif
                                 </div>
@@ -153,27 +163,16 @@
     <script src="{{asset('m/assets/js/pages/crud/forms/widgets/bootstrap-select.js')}}" type="text/javascript"></script>
     <script>
         $(function () {
-            $("#warehouse").on('change', function () {
-                var wid = $(this).val();
+            $("#factory").on('change', function () {
+                var fid = $(this).val();
                 $.ajax({
-                    url: '{{URL::to('/ajax/raw-material-store/widToFloor')}}',
-                    data: {wid: wid},
+                    url: '{{URL::to('/ajax/raw-material-production-in/fidToMachine')}}',
+                    data: {fid: fid},
                     method: "GET",
                     success: function (r) {
-                        $("#warehouse-floor-main-div").html(r);
+                        $("#factory-machine-main-div").html(r);
                     }
                 });
-            });
-        });
-        $(document).on('change', '#warehouse-floor', function () {
-            var fid = $(this).val();
-            $.ajax({
-                url: '{{URL::to('/ajax/raw-material-store/fidToRoom')}}',
-                data: {fid: fid},
-                method: "GET",
-                success: function (r) {
-                    $("#warehouse-floor-room-main-div").html(r);
-                }
             });
         });
     </script>

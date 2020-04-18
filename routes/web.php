@@ -146,3 +146,20 @@ Route::get('/raw-material/stock/out/history', 'RawmaterialstockoutController@his
 Route::get('/raw-material/stock/in', 'RawmaterialstockinController@in')->name('raw-material.stock.in');
 Route::post('/raw-material/stock/in', 'RawmaterialstockinController@inStore')->name('raw-material.stock.in.store');
 Route::get('/raw-material/stock/in/history', 'RawmaterialstockinController@history')->name('raw-material.stock.in.history');
+
+Route::get('/raw-material/production/in', 'RawmaterialproductioninController@in')->name('raw-material.production.in');
+Route::get('/ajax/raw-material-production-in/fidToMachine', 'RawmaterialproductioninController@ajaxFidToMachine');
+Route::post('/raw-material/production/in', 'RawmaterialproductioninController@inStore')->name('raw-material.production.in.store');
+Route::get('/raw-material/production/in/history', 'RawmaterialproductioninController@history')->name('raw-material.production.in.history');
+
+
+
+
+
+
+
+
+
+
+
+

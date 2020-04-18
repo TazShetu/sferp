@@ -505,9 +505,9 @@
                             </li>
                             @permission('raw_material_in_production')
                             <li class="kt-menu__item  " aria-haspopup="true">
-                                <a href="#" class="kt-menu__link ">
+                                <a href="{{route('raw-material.production.in')}}" class="kt-menu__link ">
                                     <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>
-                                    <span class="kt-menu__link-text">[[ Raw Material In ]]</span>
+                                    <span class="kt-menu__link-text">Raw Material In</span>
                                 </a>
                             </li>
                             @endpermission
