@@ -33,7 +33,7 @@ class RawmaterialproductioninController extends Controller
 
     public function ajaxFidToMachine(Request $request)
     {
-        if (request()->ajax() && Auth::user()->can('raw_material_in_production')) {
+        if (request()->ajax()) {
             $machines = Machine::where('factory_id', $request->fid)->get();
             if (count($machines) > 0) {
                 $html = ' <div class="form-group row">

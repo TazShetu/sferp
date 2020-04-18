@@ -1,11 +1,11 @@
 @extends('layouts.m')
-@section('title', 'Raw Material Production In')
+@section('title', 'Product Production Out')
 @section('content_head')
     <div class="kt-subheader   kt-grid__item" id="kt_subheader">
         <div class="kt-container  kt-container--fluid ">
             <div class="kt-subheader__main">
                 <h3 class="kt-subheader__title">
-                    Raw Material Production In
+                    Product Production Out
                 </h3>
                 <span class="kt-subheader__separator kt-subheader__separator--v"></span>
                 <div class="kt-subheader__group" id="kt_subheader_search">
@@ -39,7 +39,7 @@
             </div>
             {{--            --}}
             <div class="kt-subheader__toolbar">
-                <a href="{{route('raw-material.production.in.history')}}"
+                <a href="{{route('product.production.out.history')}}"
                    class="btn btn-label-brand btn-bold">History</a>
             </div>
             {{--            --}}
@@ -65,23 +65,23 @@
                             <div class="kt-form__body">
                                 <div class="kt-section kt-section--first">
                                     @if(count($factories) > 0)
-                                        @if(count($rawmaterials) > 0)
+                                        @if(count($products) > 0)
                                             {{--      Form Start    --}}
-                                            <form action="{{route('raw-material.production.in.store')}}" method="post">
+                                            <form action="{{route('product.production.out.store')}}" method="post">
                                                 @csrf
                                                 <div class="kt-section__body">
                                                     <div class="form-group row">
                                                         <label class="col-xl-3 col-lg-3 col-form-label">
-                                                            Raw Material
+                                                            Products
                                                         </label>
                                                         <div class="col-lg-9 col-xl-6">
                                                             <select class="form-control kt-selectpicker"
-                                                                    name="rawMaterial" required id="rawMaterial"
+                                                                    name="product" required id="product"
                                                                     data-live-search="true" data-size="7">
                                                                 <option selected disabled hidden value="">Choose...
                                                                 </option>
-                                                                @foreach($rawmaterials as $r)
-                                                                    <option value="{{$r->id}}">{{$r->auto_id}}</option>
+                                                                @foreach($products as $p)
+                                                                    <option value="{{$p->id}}">{{$p->name}}</option>
                                                                 @endforeach
                                                             </select>
                                                         </div>
@@ -134,12 +134,12 @@
                                             </form>
                                             {{--Form End--}}
                                         @else
-                                            First create Raw Material <a href="{{route('rawMaterial.create')}}">here</a>
-                                            . Then stock raw material.
+                                            First create Product <a href="{{route('product.create')}}">here</a>
+                                            . Then stock out Product from production.
                                         @endif
                                     @else
                                         First create Factory <a href="{{route('factory.create')}}">here</a>. Then
-                                        stock raw material.
+                                        stock out Product from production.
                                     @endif
                                 </div>
                             </div>
@@ -156,12 +156,12 @@
     <script src="{{asset('m/assets/js/pages/crud/forms/widgets/bootstrap-select.js')}}" type="text/javascript"></script>
     <script>
         $(function () {
-            $("#rawMaterial").on('change', function () {
-                var rid = $(this).val();
+            $("#product").on('change', function () {
+                var pid = $(this).val();
                 $.ajax({
-                    url: '/ajax/raw-material-purchase/ridToUnit',
+                    url: '{{URL::to('/ajax/product-production-out/pidToUnit')}}',
                     method: "GET",
-                    data: {rid: rid},
+                    data: {pid: pid},
                     success: function (r) {
                         $('#unit').html(r);
                     }

@@ -513,9 +513,9 @@
                             @endpermission
                             @permission('product_out_production')
                             <li class="kt-menu__item  " aria-haspopup="true">
-                                <a href="#" class="kt-menu__link ">
+                                <a href="{{route('product.production.out')}}" class="kt-menu__link ">
                                     <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>
-                                    <span class="kt-menu__link-text">[[ Product Out ]]</span>
+                                    <span class="kt-menu__link-text">Product Out</span>
                                 </a>
                             </li>
                             @endpermission

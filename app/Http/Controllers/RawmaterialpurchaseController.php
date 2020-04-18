@@ -50,7 +50,7 @@ class RawmaterialpurchaseController extends Controller
 
     public function ajaxRidToUnit()
     {
-        if (request()->ajax() && Auth::user()->can('raw_material_purchase')) {
+        if (request()->ajax()) {
             $rid = $_GET['rid'];
             $r = Rawmaterial::find($rid);
             return $r->unit;

@@ -99,7 +99,7 @@ Route::post('/rack/update/{srid}', 'SroomController@rackUpdate')->name('rack.upd
 
 Route::get('/raw-material-purchase/history', 'RawmaterialpurchaseController@history')->name('raw-material.purchase.history');
 Route::get('/raw-material-purchase', 'RawmaterialpurchaseController@index')->name('raw-material.purchase');
-Route::get('ajax/raw-material-purchase/ridToUnit', 'RawmaterialpurchaseController@ajaxRidToUnit');
+Route::get('/ajax/raw-material-purchase/ridToUnit', 'RawmaterialpurchaseController@ajaxRidToUnit');
 Route::post('/raw-material-purchase/store', 'RawmaterialpurchaseController@store')->name('raw-material.purchase.store');
 Route::delete('/raw-material-purchase/delete/{rpid}', 'RawmaterialpurchaseController@destroy')->name('rawmaterial.purchase.delete');
 Route::get('/raw-material-purchase/edit/{rpid}', 'RawmaterialpurchaseController@edit')->name('raw-material.purchase.edit');
@@ -152,7 +152,10 @@ Route::get('/ajax/raw-material-production-in/fidToMachine', 'Rawmaterialproducti
 Route::post('/raw-material/production/in', 'RawmaterialproductioninController@inStore')->name('raw-material.production.in.store');
 Route::get('/raw-material/production/in/history', 'RawmaterialproductioninController@history')->name('raw-material.production.in.history');
 
-
+Route::get('/product/production/out', 'ProductproductionoutController@in')->name('product.production.out');
+Route::get('/ajax/product-production-out/pidToUnit', 'ProductproductionoutController@ajaxPidToUnit');
+Route::post('/product/production/out', 'ProductproductionoutController@inStore')->name('product.production.out.store');
+Route::get('/product/production/out/history', 'ProductproductionoutController@history')->name('product.production.out.history');
 
 
 
