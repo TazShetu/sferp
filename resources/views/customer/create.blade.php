@@ -62,11 +62,29 @@
                                                     Name
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">
-                                                    <input class="form-control {{$errors->has('name') ? 'is-invalid' : ''}}"
-                                                           type="text" placeholder="Full Name" name="name" required
-                                                           value="{{old('name')}}">
+                                                    <input
+                                                        class="form-control {{$errors->has('name') ? 'is-invalid' : ''}}"
+                                                        type="text" placeholder="Full Name" name="name" required
+                                                        value="{{old('name')}}">
                                                     @if($errors->has('name'))
                                                         <span class="invalid-feedback">{{$errors->first('name')}}</span>
+                                                    @endif
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label class="col-xl-3 col-lg-3 col-form-label">
+                                                    Business Organization's Name
+                                                </label>
+                                                <div class="col-lg-9 col-xl-6">
+                                                    <input
+                                                        class="form-control {{$errors->has('companyName') ? 'is-invalid' : ''}}"
+                                                        type="text" placeholder="Business Organization's Name"
+                                                        name="companyName"
+                                                        required value="{{old('companyName')}}">
+                                                    @if($errors->has('companyName'))
+                                                        <span
+                                                            class="invalid-feedback">{{$errors->first('companyName')}}</span>
                                                     @endif
                                                 </div>
                                             </div>
@@ -75,10 +93,11 @@
                                                     Date Of Birth</label>
                                                 <div class="col-lg-9 col-xl-6">
                                                     <div class="input-group date">
-                                                        <input class="form-control {{$errors->has('dateOfBirth') ? 'is-invalid' : ''}}"
-                                                               type="text" name="dateOfBirth" required readonly
-                                                               placeholder="Select date" id="kt_datepicker_3"
-                                                               value="{{old('dateOfBirth')}}">
+                                                        <input
+                                                            class="form-control {{$errors->has('dateOfBirth') ? 'is-invalid' : ''}}"
+                                                            type="text" name="dateOfBirth" required readonly
+                                                            placeholder="Select date" id="kt_datepicker_3"
+                                                            value="{{old('dateOfBirth')}}">
                                                         <div class="input-group-append">
 														<span class="input-group-text">
 															<i class="la la-calendar-check-o"></i>
@@ -86,34 +105,23 @@
                                                         </div>
                                                     </div>
                                                     @if($errors->has('dateOfBirth'))
-                                                        <span class="invalid-feedback">{{$errors->first('dateOfBirth')}}</span>
+                                                        <span
+                                                            class="invalid-feedback">{{$errors->first('dateOfBirth')}}</span>
                                                     @endif
                                                 </div>
                                             </div>
-                                            <div class="form-group row">
-                                                <label class="col-xl-3 col-lg-3 col-form-label">
-                                                    Business Organization's Name
-                                                </label>
-                                                <div class="col-lg-9 col-xl-6">
-                                                    <input class="form-control {{$errors->has('companyName') ? 'is-invalid' : ''}}"
-                                                           type="text" placeholder="Business Organization's Name" name="companyName"
-                                                           required value="{{old('companyName')}}">
-                                                    @if($errors->has('companyName'))
-                                                        <span class="invalid-feedback">{{$errors->first('companyName')}}</span>
-                                                    @endif
-                                                </div>
-                                            </div>
-
                                             <div class="form-group row">
                                                 <label class="col-xl-3 col-lg-3 col-form-label">
                                                     VAT registration / BIN Certificate
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">
-                                                    <input class="form-control {{$errors->has('binNumber') ? 'is-invalid' : ''}}"
-                                                           type="text" placeholder="VAT registration / BIN Certificate" name="binNumber"
-                                                           required value="{{old('binNumber')}}">
+                                                    <input
+                                                        class="form-control {{$errors->has('binNumber') ? 'is-invalid' : ''}}"
+                                                        type="text" placeholder="VAT registration / BIN Certificate"
+                                                        name="binNumber" value="{{old('binNumber')}}">
                                                     @if($errors->has('binNumber'))
-                                                        <span class="invalid-feedback">{{$errors->first('binNumber')}}</span>
+                                                        <span
+                                                            class="invalid-feedback">{{$errors->first('binNumber')}}</span>
                                                     @endif
                                                 </div>
                                             </div>
@@ -125,7 +133,8 @@
                                                         <input type="file" class="custom-file-input" id="customFile2"
                                                                name="binFile">
                                                         <label class="custom-file-label" style="text-align: left;"
-                                                               for="customFile2">VAT registration / BIN Certificate File</label>
+                                                               for="customFile2">VAT registration / BIN Certificate
+                                                            File</label>
                                                     </div>
                                                     <span class="form-text text-muted">Max file size is 10MB and max number of files is 1.</span>
                                                 </div>
@@ -135,11 +144,13 @@
                                                     TIN Number
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">
-                                                    <input class="form-control {{$errors->has('tinNumber') ? 'is-invalid' : ''}}"
-                                                           type="text" placeholder="TIN Number" name="tinNumber"
-                                                           required value="{{old('tinNumber')}}">
+                                                    <input
+                                                        class="form-control {{$errors->has('tinNumber') ? 'is-invalid' : ''}}"
+                                                        type="text" placeholder="TIN Number" name="tinNumber"
+                                                        value="{{old('tinNumber')}}">
                                                     @if($errors->has('tinNumber'))
-                                                        <span class="invalid-feedback">{{$errors->first('tinNumber')}}</span>
+                                                        <span
+                                                            class="invalid-feedback">{{$errors->first('tinNumber')}}</span>
                                                     @endif
                                                 </div>
                                             </div>
@@ -161,11 +172,13 @@
                                                     NID Number
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">
-                                                    <input class="form-control {{$errors->has('nidNumber') ? 'is-invalid' : ''}}"
-                                                           type="text" placeholder="NID Number" name="nidNumber"
-                                                           required value="{{old('nidNumber')}}">
+                                                    <input
+                                                        class="form-control {{$errors->has('nidNumber') ? 'is-invalid' : ''}}"
+                                                        type="text" placeholder="NID Number" name="nidNumber"
+                                                        value="{{old('nidNumber')}}">
                                                     @if($errors->has('nidNumber'))
-                                                        <span class="invalid-feedback">{{$errors->first('nidNumber')}}</span>
+                                                        <span
+                                                            class="invalid-feedback">{{$errors->first('nidNumber')}}</span>
                                                     @endif
                                                 </div>
                                             </div>
@@ -187,12 +200,14 @@
                                                     Business Address
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">
-                                                    <input class="form-control {{$errors->has('businessAddress') ? 'is-invalid' : ''}}"
-                                                           type="text" placeholder="Business Address"
-                                                           name="businessAddress" required
-                                                           value="{{old('businessAddress')}}">
+                                                    <input
+                                                        class="form-control {{$errors->has('businessAddress') ? 'is-invalid' : ''}}"
+                                                        type="text" placeholder="Business Address"
+                                                        name="businessAddress" required
+                                                        value="{{old('businessAddress')}}">
                                                     @if($errors->has('businessAddress'))
-                                                        <span class="invalid-feedback">{{$errors->first('businessAddress')}}</span>
+                                                        <span
+                                                            class="invalid-feedback">{{$errors->first('businessAddress')}}</span>
                                                     @endif
                                                 </div>
                                             </div>
@@ -201,11 +216,13 @@
                                                     Business Area/Zone
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">
-                                                    <input class="form-control {{$errors->has('businessArea') ? 'is-invalid' : ''}}"
-                                                           type="text" placeholder="Business Area" name="businessArea"
-                                                           required value="{{old('businessArea')}}">
+                                                    <input
+                                                        class="form-control {{$errors->has('businessArea') ? 'is-invalid' : ''}}"
+                                                        type="text" placeholder="Business Area" name="businessArea"
+                                                        required value="{{old('businessArea')}}">
                                                     @if($errors->has('businessArea'))
-                                                        <span class="invalid-feedback">{{$errors->first('businessArea')}}</span>
+                                                        <span
+                                                            class="invalid-feedback">{{$errors->first('businessArea')}}</span>
                                                     @endif
                                                 </div>
                                             </div>
@@ -215,14 +232,16 @@
                                                 <div class="col-lg-9 col-xl-6">
                                                     <div class="input-group">
                                                         <div class="input-group-prepend"><span
-                                                                    class="input-group-text"><i
-                                                                        class="la la-phone"></i></span></div>
-                                                        <input class="form-control {{$errors->has('businessTelephone') ? 'is-invalid' : ''}}"
-                                                               type="text" placeholder="Business Telephone"
-                                                               name="businessTelephone" required
-                                                               value="{{old('businessTelephone')}}">
+                                                                class="input-group-text"><i
+                                                                    class="la la-phone"></i></span></div>
+                                                        <input
+                                                            class="form-control {{$errors->has('businessTelephone') ? 'is-invalid' : ''}}"
+                                                            type="text" placeholder="Business Telephone"
+                                                            name="businessTelephone" required
+                                                            value="{{old('businessTelephone')}}">
                                                         @if($errors->has('businessTelephone'))
-                                                            <span class="invalid-feedback">{{$errors->first('businessTelephone')}}</span>
+                                                            <span
+                                                                class="invalid-feedback">{{$errors->first('businessTelephone')}}</span>
                                                         @endif
                                                     </div>
                                                 </div>
@@ -233,14 +252,16 @@
                                                 <div class="col-lg-9 col-xl-6">
                                                     <div class="input-group">
                                                         <div class="input-group-prepend"><span
-                                                                    class="input-group-text"><i
-                                                                        class="la la-phone"></i></span></div>
-                                                        <input class="form-control {{$errors->has('businessTelephone2') ? 'is-invalid' : ''}}"
-                                                               type="text" placeholder="Business Telephone 2"
-                                                               name="businessTelephone2"
-                                                               value="{{old('businessTelephone2')}}">
+                                                                class="input-group-text"><i
+                                                                    class="la la-phone"></i></span></div>
+                                                        <input
+                                                            class="form-control {{$errors->has('businessTelephone2') ? 'is-invalid' : ''}}"
+                                                            type="text" placeholder="Business Telephone 2"
+                                                            name="businessTelephone2"
+                                                            value="{{old('businessTelephone2')}}">
                                                         @if($errors->has('businessTelephone2'))
-                                                            <span class="invalid-feedback">{{$errors->first('businessTelephone2')}}</span>
+                                                            <span
+                                                                class="invalid-feedback">{{$errors->first('businessTelephone2')}}</span>
                                                         @endif
                                                     </div>
                                                 </div>
@@ -252,14 +273,15 @@
                                                 <div class="col-lg-9 col-xl-6">
                                                     <div class="input-group">
                                                         <div class="input-group-prepend"><span
-                                                                    class="input-group-text"><i
-                                                                        class="la la-at"></i></span></div>
-                                                        <input class="form-control {{$errors->has('businessEmail') ? 'is-invalid' : ''}}"
-                                                               type="email" placeholder="Business Email"
-                                                               name="businessEmail" required
-                                                               value="{{old('businessEmail')}}">
+                                                                class="input-group-text"><i
+                                                                    class="la la-at"></i></span></div>
+                                                        <input
+                                                            class="form-control {{$errors->has('businessEmail') ? 'is-invalid' : ''}}"
+                                                            type="email" placeholder="Business Email"
+                                                            name="businessEmail" value="{{old('businessEmail')}}">
                                                         @if($errors->has('businessEmail'))
-                                                            <span class="invalid-feedback">{{$errors->first('businessEmail')}}</span>
+                                                            <span
+                                                                class="invalid-feedback">{{$errors->first('businessEmail')}}</span>
                                                         @endif
                                                     </div>
                                                 </div>
@@ -271,13 +293,15 @@
                                                 <div class="col-lg-9 col-xl-6">
                                                     <div class="input-group">
                                                         <div class="input-group-prepend"><span
-                                                                    class="input-group-text"><i
-                                                                        class="la la-at"></i></span></div>
-                                                        <input class="form-control {{$errors->has('businessEmail2') ? 'is-invalid' : ''}}"
-                                                               type="email" placeholder="Business Alternative Email"
-                                                               name="businessEmail2" value="{{old('businessEmail2')}}">
+                                                                class="input-group-text"><i
+                                                                    class="la la-at"></i></span></div>
+                                                        <input
+                                                            class="form-control {{$errors->has('businessEmail2') ? 'is-invalid' : ''}}"
+                                                            type="email" placeholder="Business Alternative Email"
+                                                            name="businessEmail2" value="{{old('businessEmail2')}}">
                                                         @if($errors->has('businessEmail2'))
-                                                            <span class="invalid-feedback">{{$errors->first('businessEmail2')}}</span>
+                                                            <span
+                                                                class="invalid-feedback">{{$errors->first('businessEmail2')}}</span>
                                                         @endif
                                                     </div>
                                                 </div>
@@ -294,7 +318,8 @@
                                                         @endforeach
                                                     </select>
                                                     @if($errors->has('customerType'))
-                                                        <span class="invalid-feedback">{{$errors->first('customerType')}}</span>
+                                                        <span
+                                                            class="invalid-feedback">{{$errors->first('customerType')}}</span>
                                                     @endif
                                                 </div>
                                             </div>
@@ -302,18 +327,21 @@
                                                 <label class="col-xl-3 col-lg-3 col-form-label">Company Site</label>
                                                 <div class="col-lg-9 col-xl-6">
                                                     <div class="input-group">
-                                                        <input class="form-control {{$errors->has('companySite') ? 'is-invalid' : ''}}"
-                                                               type="text" placeholder="Company Site" name="companySite"
-                                                               required value="{{old('companySite')}}">
+                                                        <input
+                                                            class="form-control {{$errors->has('companySite') ? 'is-invalid' : ''}}"
+                                                            type="text" placeholder="Company Site" name="companySite"
+                                                            required value="{{old('companySite')}}">
                                                         @if($errors->has('companySite'))
-                                                            <span class="invalid-feedback">{{$errors->first('companySite')}}</span>
+                                                            <span
+                                                                class="invalid-feedback">{{$errors->first('companySite')}}</span>
                                                         @endif
-{{--                                                        <div class="input-group-append"><span--}}
-{{--                                                                    class="input-group-text">.com</span></div>--}}
+                                                        {{--                                                        <div class="input-group-append"><span--}}
+                                                        {{--                                                                    class="input-group-text">.com</span></div>--}}
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="kt-separator kt-separator--space-lg kt-separator--fit kt-separator--border-solid"></div>
+                                            <div
+                                                class="kt-separator kt-separator--space-lg kt-separator--fit kt-separator--border-solid"></div>
                                             <div class="kt-form__actions">
                                                 <div class="row">
                                                     <div class="col-xl-3"></div>

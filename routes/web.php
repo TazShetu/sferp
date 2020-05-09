@@ -16,6 +16,9 @@ Route::get('/forbidden', 'HomeController@test')->name('test');
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/notification/minimum-storage', 'HomeController@minimumStorage')->name('minimum.storage');
+Route::get('/home-production', 'HomeController@dashboardProduction')->name('home.production');
+Route::get('/home-inventory', 'HomeController@dashboardInventory')->name('home.inventory');
+Route::get('/home-sells', 'HomeController@dashboardSells')->name('home.sells');
 
 Route::get('/permission', 'AclController@permission')->name('permission');
 Route::get('/permission-edit/{pid}', 'AclController@permissionEdit')->name('permission.edit');

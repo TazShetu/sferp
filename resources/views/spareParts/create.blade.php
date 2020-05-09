@@ -60,6 +60,19 @@
                                             </div>
                                             <div class="form-group row">
                                                 <label class="col-xl-3 col-lg-3 col-form-label">
+                                                    Type / Category
+                                                </label>
+                                                <div class="col-lg-9 col-xl-6">
+                                                    <input class="form-control {{($errors->has('type')) ? 'is-invalid' : ''}}"
+                                                           type="text" name="type" required
+                                                           value="{{old('type')}}" list="type">
+                                                    @if($errors->has('type'))
+                                                        <span class="invalid-feedback">{{$errors->first('type')}}</span>
+                                                    @endif
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-xl-3 col-lg-3 col-form-label">
                                                     Model
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">
@@ -68,19 +81,6 @@
                                                            value="{{old('model')}}" list="model">
                                                     @if($errors->has('model'))
                                                         <span class="invalid-feedback">{{$errors->first('model')}}</span>
-                                                    @endif
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label class="col-xl-3 col-lg-3 col-form-label">
-                                                    Type
-                                                </label>
-                                                <div class="col-lg-9 col-xl-6">
-                                                    <input class="form-control {{($errors->has('type')) ? 'is-invalid' : ''}}"
-                                                           type="text" name="type" required
-                                                           value="{{old('type')}}" list="type">
-                                                    @if($errors->has('type'))
-                                                        <span class="invalid-feedback">{{$errors->first('type')}}</span>
                                                     @endif
                                                 </div>
                                             </div>

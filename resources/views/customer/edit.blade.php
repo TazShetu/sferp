@@ -108,7 +108,9 @@
                                 <svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" class="kt-svg-icon">
                                     <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                                         <rect x="0" y="0" width="24" height="24"/>
-                                        <path d="M5.5,6 C6.32842712,6 7,6.67157288 7,7.5 L7,18.5 C7,19.3284271 6.32842712,20 5.5,20 C4.67157288,20 4,19.3284271 4,18.5 L4,7.5 C4,6.67157288 4.67157288,6 5.5,6 Z M11.5,11 C12.3284271,11 13,11.6715729 13,12.5 L13,18.5 C13,19.3284271 12.3284271,20 11.5,20 C10.6715729,20 10,19.3284271 10,18.5 L10,12.5 C10,11.6715729 10.6715729,11 11.5,11 Z M17.5,15 C18.3284271,15 19,15.6715729 19,16.5 L19,18.5 C19,19.3284271 18.3284271,20 17.5,20 C16.6715729,20 16,19.3284271 16,18.5 L16,16.5 C16,15.6715729 16.6715729,15 17.5,15 Z" fill="#000000"/>
+                                        <path
+                                            d="M5.5,6 C6.32842712,6 7,6.67157288 7,7.5 L7,18.5 C7,19.3284271 6.32842712,20 5.5,20 C4.67157288,20 4,19.3284271 4,18.5 L4,7.5 C4,6.67157288 4.67157288,6 5.5,6 Z M11.5,11 C12.3284271,11 13,11.6715729 13,12.5 L13,18.5 C13,19.3284271 12.3284271,20 11.5,20 C10.6715729,20 10,19.3284271 10,18.5 L10,12.5 C10,11.6715729 10.6715729,11 11.5,11 Z M17.5,15 C18.3284271,15 19,15.6715729 19,16.5 L19,18.5 C19,19.3284271 18.3284271,20 17.5,20 C16.6715729,20 16,19.3284271 16,18.5 L16,16.5 C16,15.6715729 16.6715729,15 17.5,15 Z"
+                                            fill="#000000"/>
                                     </g>
                                 </svg>
                                 Product Discount
@@ -215,8 +217,7 @@
                                                 <div class="col-lg-9 col-xl-6">
                                                     <input
                                                         class="form-control {{$errors->has('binNumber') ? 'is-invalid' : ''}}"
-                                                        type="text" name="binNumber"
-                                                        required value="{{$customer->bin}}">
+                                                        type="text" name="binNumber" value="{{$customer->bin}}">
                                                     @if($errors->has('binNumber'))
                                                         <span
                                                             class="invalid-feedback">{{$errors->first('binNumber')}}</span>
@@ -231,7 +232,8 @@
                                                         <input type="file" class="custom-file-input" id="customFile2"
                                                                name="binFile">
                                                         <label class="custom-file-label" style="text-align: left;"
-                                                               for="customFile2">VAT registration / BIN Certificate File</label>
+                                                               for="customFile2">VAT registration / BIN Certificate
+                                                            File</label>
                                                     </div>
                                                     <span class="form-text text-muted">Max file size is 10MB and max number of files is 1.</span>
                                                 </div>
@@ -244,7 +246,7 @@
                                                     <input
                                                         class="form-control {{$errors->has('tinNumber') ? 'is-invalid' : ''}}"
                                                         type="text" placeholder="TIN Number" name="tinNumber"
-                                                        required value="{{$customer->tin}}">
+                                                        value="{{$customer->tin}}">
                                                     @if($errors->has('tinNumber'))
                                                         <span
                                                             class="invalid-feedback">{{$errors->first('tinNumber')}}</span>
@@ -272,7 +274,7 @@
                                                     <input
                                                         class="form-control {{$errors->has('nidNumber') ? 'is-invalid' : ''}}"
                                                         type="text" name="nidNumber"
-                                                        required value="{{$customer->nid}}">
+                                                        value="{{$customer->nid}}">
                                                     @if($errors->has('nidNumber'))
                                                         <span
                                                             class="invalid-feedback">{{$errors->first('nidNumber')}}</span>
@@ -371,7 +373,7 @@
                                                                     class="la la-at"></i></span></div>
                                                         <input
                                                             class="form-control {{$errors->has('businessEmail') ? 'is-invalid' : ''}}"
-                                                            type="email" name="businessEmail" required
+                                                            type="email" name="businessEmail"
                                                             value="{{$customer->business_email}}">
                                                         @if($errors->has('businessEmail'))
                                                             <span
@@ -431,8 +433,8 @@
                                                             <span
                                                                 class="invalid-feedback">{{$errors->first('companySite')}}</span>
                                                         @endif
-{{--                                                        <div class="input-group-append"><span--}}
-{{--                                                                class="input-group-text">.com</span></div>--}}
+                                                        {{--                                                        <div class="input-group-append"><span--}}
+                                                        {{--                                                                class="input-group-text">.com</span></div>--}}
                                                     </div>
                                                 </div>
                                             </div>
