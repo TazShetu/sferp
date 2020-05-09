@@ -10,14 +10,14 @@ class CreateMachinesTable extends Migration
     {
         Schema::create('machines', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('identification_code')->unique();
+            $table->string('identification_code')->nullable();
             $table->string('category');
             $table->string('factory_id');
             $table->string('manufacturer');
             $table->string('tag');
-            $table->string('manufacture_year');
+            $table->string('manufacture_year')->nullable();
             $table->string('manufacture_country');
-            $table->string('type');
+            $table->string('type')->nullable();
             $table->float('rope_size_from')->nullable();
             $table->float('rope_size_to')->nullable();
             $table->float('size_range_from')->nullable();

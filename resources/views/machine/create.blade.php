@@ -50,7 +50,7 @@
                                         <div class="kt-section__body">
                                             <div class="form-group row">
                                                 <label class="col-xl-3 col-lg-3 col-form-label">
-                                                    Category
+                                                    Category*
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">
                                                     <input class="form-control {{($errors->has('category')) ? 'is-invalid' : ''}}"
@@ -63,7 +63,7 @@
                                             </div>
                                             <div class="form-group row">
                                                 <label class="col-xl-3 col-lg-3 col-form-label">
-                                                    Select Factory
+                                                    Select Factory*
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">
                                                     <select class="form-control {{($errors->has('factory')) ? 'is-invalid' : ''}}"
@@ -80,7 +80,20 @@
                                             </div>
                                             <div class="form-group row">
                                                 <label class="col-xl-3 col-lg-3 col-form-label">
-                                                    Manufacturer Name
+                                                    Country Of Origin*
+                                                </label>
+                                                <div class="col-lg-9 col-xl-6">
+                                                    <input class="form-control {{($errors->has('countryOfOrigin')) ? 'is-invalid' : ''}}"
+                                                           type="text" name="countryOfOrigin" required
+                                                           value="{{old('countryOfOrigin')}}">
+                                                    @if($errors->has('countryOfOrigin'))
+                                                        <span class="invalid-feedback">{{$errors->first('countryOfOrigin')}}</span>
+                                                    @endif
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-xl-3 col-lg-3 col-form-label">
+                                                    Manufacturer Name*
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">
                                                     <input class="form-control {{($errors->has('manufacturerName')) ? 'is-invalid' : ''}}"
@@ -97,7 +110,7 @@
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">
                                                     <input class="form-control {{($errors->has('typeOrModelNumber')) ? 'is-invalid' : ''}}"
-                                                           type="text" name="typeOrModelNumber" required
+                                                           type="text" name="typeOrModelNumber"
                                                            value="{{old('typeOrModelNumber')}}" list="type">
                                                     @if($errors->has('typeOrModelNumber'))
                                                         <span class="invalid-feedback">{{$errors->first('typeOrModelNumber')}}</span>
@@ -110,12 +123,11 @@
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">
                                                     <input class="form-control {{($errors->has('serialNumber')) ? 'is-invalid' : ''}}"
-                                                           type="text" name="serialNumber" required
+                                                           type="text" name="serialNumber"
                                                            value="{{old('serialNumber')}}">
                                                     @if($errors->has('serialNumber'))
                                                         <span class="invalid-feedback">{{$errors->first('serialNumber')}}</span>
                                                     @endif
-                                                    <span class="form-text text-muted">It has to be unique*</span>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
@@ -123,7 +135,7 @@
                                                     Year</label>
                                                 <div class="col-lg-9 col-xl-6">
                                                     <input class="form-control datepickerYear {{($errors->has('manufacturerYear')) ? 'is-invalid' : ''}}"
-                                                           type="text" name="manufacturerYear" required
+                                                           type="text" name="manufacturerYear"
                                                            {{--                                                           id="datepickerYear"--}}
                                                            value="{{old('manufacturerYear')}}">
                                                     @if($errors->has('manufacturerYear'))
@@ -131,19 +143,7 @@
                                                     @endif
                                                 </div>
                                             </div>
-                                            <div class="form-group row">
-                                                <label class="col-xl-3 col-lg-3 col-form-label">
-                                                    Country Of Origin
-                                                </label>
-                                                <div class="col-lg-9 col-xl-6">
-                                                    <input class="form-control {{($errors->has('countryOfOrigin')) ? 'is-invalid' : ''}}"
-                                                           type="text" name="countryOfOrigin" required
-                                                           value="{{old('countryOfOrigin')}}">
-                                                    @if($errors->has('countryOfOrigin'))
-                                                        <span class="invalid-feedback">{{$errors->first('countryOfOrigin')}}</span>
-                                                    @endif
-                                                </div>
-                                            </div>
+
                                             <div class="form-group row">
                                                 <label class="col-xl-3 col-lg-3 col-form-label">
                                                     S/K or D/K

@@ -50,11 +50,13 @@
                                                     Manufacturer Name
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">
-                                                    <input class="form-control {{($errors->has('manufacturerName')) ? 'is-invalid' : ''}}"
-                                                           type="text" name="manufacturerName" required
-                                                           value="{{old('manufacturerName')}}" list="manufacturer">
+                                                    <input
+                                                        class="form-control {{($errors->has('manufacturerName')) ? 'is-invalid' : ''}}"
+                                                        type="text" name="manufacturerName" required
+                                                        value="{{old('manufacturerName')}}" list="manufacturer">
                                                     @if($errors->has('manufacturerName'))
-                                                        <span class="invalid-feedback">{{$errors->first('manufacturerName')}}</span>
+                                                        <span
+                                                            class="invalid-feedback">{{$errors->first('manufacturerName')}}</span>
                                                     @endif
                                                 </div>
                                             </div>
@@ -63,9 +65,10 @@
                                                     Type / Category
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">
-                                                    <input class="form-control {{($errors->has('type')) ? 'is-invalid' : ''}}"
-                                                           type="text" name="type" required
-                                                           value="{{old('type')}}" list="type">
+                                                    <input
+                                                        class="form-control {{($errors->has('type')) ? 'is-invalid' : ''}}"
+                                                        type="text" name="type" required
+                                                        value="{{old('type')}}" list="type">
                                                     @if($errors->has('type'))
                                                         <span class="invalid-feedback">{{$errors->first('type')}}</span>
                                                     @endif
@@ -76,11 +79,13 @@
                                                     Model
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">
-                                                    <input class="form-control {{($errors->has('model')) ? 'is-invalid' : ''}}"
-                                                           type="text" name="model" required
-                                                           value="{{old('model')}}" list="model">
+                                                    <input
+                                                        class="form-control {{($errors->has('model')) ? 'is-invalid' : ''}}"
+                                                        type="text" name="model" required
+                                                        value="{{old('model')}}" list="model">
                                                     @if($errors->has('model'))
-                                                        <span class="invalid-feedback">{{$errors->first('model')}}</span>
+                                                        <span
+                                                            class="invalid-feedback">{{$errors->first('model')}}</span>
                                                     @endif
                                                 </div>
                                             </div>
@@ -106,11 +111,12 @@
                                                     Part Number
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">
-                                                    <input class="form-control {{($errors->has('partNumber')) ? 'is-invalid' : ''}}"
-                                                           type="text" name="partNumber" required
-                                                           value="{{old('partNumber')}}">
+                                                    <input
+                                                        class="form-control {{($errors->has('partNumber')) ? 'is-invalid' : ''}}"
+                                                        type="text" name="partNumber" value="{{old('partNumber')}}">
                                                     @if($errors->has('partNumber'))
-                                                        <span class="invalid-feedback">{{$errors->first('partNumber')}}</span>
+                                                        <span
+                                                            class="invalid-feedback">{{$errors->first('partNumber')}}</span>
                                                     @endif
                                                 </div>
                                             </div>
@@ -119,13 +125,15 @@
                                                     Identity Number
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">
-                                                    <input class="form-control {{($errors->has('identityNumber')) ? 'is-invalid' : ''}}"
-                                                           type="text" name="identityNumber" required
-                                                           value="{{old('identityNumber')}}">
+                                                    <input
+                                                        class="form-control {{($errors->has('identityNumber')) ? 'is-invalid' : ''}}"
+                                                        type="text" name="identityNumber"
+                                                        value="{{old('identityNumber')}}">
                                                     @if($errors->has('identityNumber'))
-                                                        <span class="invalid-feedback">{{$errors->first('identityNumber')}}</span>
+                                                        <span
+                                                            class="invalid-feedback">{{$errors->first('identityNumber')}}</span>
                                                     @endif
-{{--                                                    <span class="form-text text-muted">It has to be unique*</span>--}}
+                                                    {{--                                                    <span class="form-text text-muted">It has to be unique*</span>--}}
                                                 </div>
                                             </div>
                                             <div class="form-group row">
@@ -133,11 +141,12 @@
                                                     Code Number
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">
-                                                    <input class="form-control {{($errors->has('codeNumber')) ? 'is-invalid' : ''}}"
-                                                           type="text" name="codeNumber" required
-                                                           value="{{old('codeNumber')}}">
+                                                    <input
+                                                        class="form-control {{($errors->has('codeNumber')) ? 'is-invalid' : ''}}"
+                                                        type="text" name="codeNumber" value="{{old('codeNumber')}}">
                                                     @if($errors->has('codeNumber'))
-                                                        <span class="invalid-feedback">{{$errors->first('codeNumber')}}</span>
+                                                        <span
+                                                            class="invalid-feedback">{{$errors->first('codeNumber')}}</span>
                                                     @endif
                                                 </div>
                                             </div>
@@ -146,11 +155,13 @@
                                                     Minimum Storage Amount
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">
-                                                    <input class="form-control {{($errors->has('minimumStorage')) ? 'is-invalid' : ''}}"
-                                                           type="number" name="minimumStorage" required min="0"
-                                                           value="{{old('minimumStorage')}}">
+                                                    <input
+                                                        class="form-control {{($errors->has('minimumStorage')) ? 'is-invalid' : ''}}"
+                                                        type="number" name="minimumStorage" required min="0"
+                                                        value="{{old('minimumStorage')}}">
                                                     @if($errors->has('minimumStorage'))
-                                                        <span class="invalid-feedback">{{$errors->first('minimumStorage')}}</span>
+                                                        <span
+                                                            class="invalid-feedback">{{$errors->first('minimumStorage')}}</span>
                                                     @endif
                                                 </div>
                                             </div>
@@ -159,16 +170,18 @@
                                                     Unit
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">
-                                                    <input class="form-control {{($errors->has('unit')) ? 'is-invalid' : ''}}"
-                                                           type="text" name="unit" required
-                                                           placeholder="Kg Litre etc"
-                                                           value="{{old('unit')}}" list="unit">
+                                                    <input
+                                                        class="form-control {{($errors->has('unit')) ? 'is-invalid' : ''}}"
+                                                        type="text" name="unit" required
+                                                        placeholder="Kg Litre etc"
+                                                        value="{{old('unit')}}" list="unit">
                                                     @if($errors->has('unit'))
                                                         <span class="invalid-feedback">{{$errors->first('unit')}}</span>
                                                     @endif
                                                 </div>
                                             </div>
-                                            <div class="kt-separator kt-separator--space-lg kt-separator--fit kt-separator--border-solid"></div>
+                                            <div
+                                                class="kt-separator kt-separator--space-lg kt-separator--fit kt-separator--border-solid"></div>
                                             <div class="kt-form__actions">
                                                 <div class="row">
                                                     <div class="col-xl-3"></div>

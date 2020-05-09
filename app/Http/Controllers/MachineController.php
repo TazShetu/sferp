@@ -55,9 +55,9 @@ class MachineController extends Controller
                 'category' => 'required',
                 'factory' => 'required',
                 'manufacturerName' => 'required',
-                'typeOrModelNumber' => 'required',
-                'serialNumber' => 'required|unique:machines,identification_code',
-                'manufacturerYear' => 'required',
+//                'typeOrModelNumber' => 'required',
+//                'serialNumber' => 'required|unique:machines,identification_code',
+//                'manufacturerYear' => 'required',
                 'countryOfOrigin' => 'required',
             ]);
             $m = new Machine;
@@ -158,17 +158,12 @@ class MachineController extends Controller
                 'category' => 'required',
                 'factory' => 'required',
                 'manufacturerName' => 'required',
-                'typeOrModelNumber' => 'required',
-                'serialNumber' => 'required',
-                'manufacturerYear' => 'required',
+//                'typeOrModelNumber' => 'required',
+//                'serialNumber' => 'required',
+//                'manufacturerYear' => 'required',
                 'countryOfOrigin' => 'required',
             ]);
             $m = Machine::find($mid);
-            if ($m->identification_code != $request->serialNumber) {
-                $request->validate([
-                    'serialNumber' => 'unique:machines,identification_code',
-                ]);
-            }
             $m->category = $request->category;
             $m->factory_id = $request->factory;
             $m->manufacturer = $request->manufacturerName;

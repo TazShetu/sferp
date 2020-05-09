@@ -3,17 +3,21 @@
   <component name="ChangeListManager">
     <list default="true" id="72b65107-1734-42e2-a0ce-dd862e20aa6b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CustomerController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CustomerController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_11_20_155050_create_customers_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_11_20_155050_create_customers_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/customer/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/customer/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/customer/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/customer/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/include/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/include/login.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/partial/m/aside.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/partial/m/aside.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/partial/m/headerMobile.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/partial/m/headerMobile.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MachineController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MachineController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/SparepartsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/SparepartsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/SparepartspurchaseController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/SparepartspurchaseController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_12_09_164519_create_machines_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_12_09_164519_create_machines_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_01_08_024222_create_spareparts_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_01_08_024222_create_spareparts_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_02_02_040911_create_sparepartspurchases_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_02_02_040911_create_sparepartspurchases_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/PURCHASE/spareparts/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/PURCHASE/spareparts/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/PURCHASE/spareparts/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/PURCHASE/spareparts/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/machine/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/machine/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/machine/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/machine/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/machine/list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/machine/list.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/product/list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/product/list.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/spareParts/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/spareParts/create.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/spareParts/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/spareParts/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/spareParts/list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/spareParts/list.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -138,7 +142,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="add_unversioned_files" value="$PROJECT_DIR$/Theme/metronic/demo1/components/custom/iconbox.html" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="C:/xampp_5.6.3/htdocs/kidokingdom" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -271,7 +275,7 @@
       <workItem from="1588067033789" duration="169000" />
       <workItem from="1588067278814" duration="182000" />
       <workItem from="1588068566021" duration="42000" />
-      <workItem from="1589000181233" duration="3935000" />
+      <workItem from="1589000181233" duration="8486000" />
     </task>
     <servers />
   </component>
@@ -291,10 +295,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="276" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1587204675724" />
-    <state x="740" y="276" key="FileChooserDialogImpl" timestamp="1588068606228">
+    <state x="740" y="276" key="FileChooserDialogImpl" timestamp="1589014317559">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="276" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1588068606228" />
+    <state x="740" y="276" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1589014317559" />
     <state x="425" y="174" key="SettingsEditor" timestamp="1582083992092">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

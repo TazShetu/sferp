@@ -73,10 +73,10 @@
                     <thead>
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Identification Number</th>
+                        <th scope="col">Type / Category</th>
                         <th scope="col">Description</th>
-                        <th scope="col">Part Number</th>
-                        <th scope="col">Code Number</th>
+{{--                        <th scope="col">Part Number</th>--}}
+{{--                        <th scope="col">Code Number</th>--}}
                         <th scope="col">Minimum Storage Amount</th>
                         <th scope="col">Action</th>
                     </tr>
@@ -85,11 +85,10 @@
                     @foreach($spareParts as $i => $m)
                         <tr>
                             <th scope="row">{{$spareParts->firstItem() + $i}}</th>
-                            <td><a href="{{route('spareParts.edit', ['spid' => $m->id])}}">{{$m->identity_number}}</a>
-                            </td>
+                            <td>{{$m->type}}</td>
                             <td>{{$m->description}}</td>
-                            <td>{{$m->part_number}}</td>
-                            <td>{{$m->code_number}}</td>
+{{--                            <td>{{$m->part_number}}</td>--}}
+{{--                            <td>{{$m->code_number}}</td>--}}
                             <td>{{$m->minimum_storage}} {{$m->unit}}</td>
                             <td>
                                 <a href="{{route('spareParts.edit', ['spid' => $m->id])}}" title="Edit"
