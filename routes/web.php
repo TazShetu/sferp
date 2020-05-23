@@ -43,10 +43,10 @@ Route::post('/customer-individual-update/{cid}', 'CustomerController@individualU
 Route::post('/customer-product-discount-update/{cid}', 'CustomerController@productDiscountUpdate')->name('customer.product.discount.update');
 Route::get('/customer-profile/{cid}', 'CustomerController@show')->name('customer.profile');
 Route::delete('/customer-delete/{cid}', 'CustomerController@destroy')->name('customer.delete');
-
 Route::get('/customer-edit/{cid}', 'CustomerController@edit')->name('customer.edit');
 Route::post('/customer-update/{cid}', 'CustomerController@update')->name('customer.update');
 Route::post('/customer-update-contact-person/{cid}', 'CustomerController@updateContactPerson')->name('customer.update.contact.person');
+Route::post('/customer-update-extra/{cid}', 'CustomerController@updateExtra')->name('customer.update.extra');
 
 Route::get('/factories', 'FactoryController@list')->name('factory.list');
 Route::get('/factories/create', 'FactoryController@create')->name('factory.create');

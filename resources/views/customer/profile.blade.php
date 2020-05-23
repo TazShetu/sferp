@@ -40,7 +40,7 @@
                                          src="{{asset($customer->image)}}"
                                          @else
                                          src="{{asset('/avatar.png')}}"
-                                            @endif
+                                        @endif
                                     >
                                 </div>
                                 {{--                                <div class="kt-widget__pic kt-widget__pic--danger kt-font-danger kt-font-boldest kt-font-light kt-hidden">--}}
@@ -55,7 +55,7 @@
                                     </div>
                                     <div class="kt-widget__subhead">
                                         <a href="mailto:{{$customer->business_email}}"><i
-                                                    class="flaticon2-new-email"></i>
+                                                class="flaticon2-new-email"></i>
                                             {{$customer->business_email}}
                                         </a>
                                         {{--                                        <a href="#">--}}
@@ -116,37 +116,43 @@
                                     <div class="form-group form-group-xs row">
                                         <label class="col-4 col-form-label">Name:</label>
                                         <div class="col-8">
-                                            <span class="form-control-plaintext kt-font-bolder">{{$customer->name}}</span>
+                                            <span
+                                                class="form-control-plaintext kt-font-bolder">{{$customer->name}}</span>
                                         </div>
                                     </div>
                                     <div class="form-group form-group-xs row">
                                         <label class="col-4 col-form-label">Date OF Birth:</label>
                                         <div class="col-8">
-                                            <span class="form-control-plaintext kt-font-bolder">{{$customer->dob}}</span>
+                                            <span
+                                                class="form-control-plaintext kt-font-bolder">{{$customer->dob}}</span>
                                         </div>
                                     </div>
                                     <div class="form-group form-group-xs row">
                                         <label class="col-4 col-form-label">Company Name:</label>
                                         <div class="col-8">
-                                            <span class="form-control-plaintext kt-font-bolder">{{$customer->company_name}}</span>
+                                            <span
+                                                class="form-control-plaintext kt-font-bolder">{{$customer->company_name}}</span>
                                         </div>
                                     </div>
                                     <div class="form-group form-group-xs row">
                                         <label class="col-4 col-form-label">BIN Certificate:</label>
                                         <div class="col-8">
-                                            <span class="form-control-plaintext kt-font-bolder">{{$customer->bin}}</span>
+                                            <span
+                                                class="form-control-plaintext kt-font-bolder">{{$customer->bin}}</span>
                                         </div>
                                     </div>
                                     <div class="form-group form-group-xs row">
                                         <label class="col-4 col-form-label">TIN Number:</label>
                                         <div class="col-8">
-                                            <span class="form-control-plaintext kt-font-bolder">{{$customer->tin}}</span>
+                                            <span
+                                                class="form-control-plaintext kt-font-bolder">{{$customer->tin}}</span>
                                         </div>
                                     </div>
                                     <div class="form-group form-group-xs row">
                                         <label class="col-4 col-form-label">NID Number:</label>
                                         <div class="col-8">
-                                            <span class="form-control-plaintext kt-font-bolder">{{$customer->nid}}</span>
+                                            <span
+                                                class="form-control-plaintext kt-font-bolder">{{$customer->nid}}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -159,13 +165,15 @@
                                     <div class="form-group form-group-xs row">
                                         <label class="col-4 col-form-label">Business Address:</label>
                                         <div class="col-8">
-                                            <span class="form-control-plaintext kt-font-bolder">{{$customer->business_address}}</span>
+                                            <span
+                                                class="form-control-plaintext kt-font-bolder">{{$customer->business_address}}</span>
                                         </div>
                                     </div>
                                     <div class="form-group form-group-xs row">
                                         <label class="col-4 col-form-label">Business Telephone:</label>
                                         <div class="col-8">
-                                            <span class="form-control-plaintext kt-font-bolder">{{$customer->business_telephone}}</span>
+                                            <span
+                                                class="form-control-plaintext kt-font-bolder">{{$customer->business_telephone}}</span>
                                         </div>
                                     </div>
                                     <div class="form-group form-group-xs row">
@@ -212,9 +220,37 @@
                             </div>
 
                         </div>
+                        @if(count($extras) > 0)
+                            <div class="col-lg-6" style="margin-left: 9vmax;">
+                                <div class="kt-form kt-form--label-right">
+                                    <div class="kt-portlet__body">
+                                        @foreach($extras as $e)
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <div class="form-group form-group-xs row">
+                                                        <label class="col-4 col-form-label">Type:</label>
+                                                        <div class="col-8">
+                                                            <span
+                                                                class="form-control-plaintext kt-font-bolder">{{$e->type}}</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <div class="form-group form-group-xs row">
+                                                        <label class="col-4 col-form-label">Details:</label>
+                                                        <div class="col-8">
+                                                            <span
+                                                                class="form-control-plaintext kt-font-bolder">{{$e->details}}</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
                     </div>
-
-
                 </div>
                 <!--End:: Portlet-->
             </div>
@@ -239,19 +275,22 @@
                                     <div class="form-group form-group-xs row">
                                         <label class="col-4 col-form-label">Name:</label>
                                         <div class="col-8">
-                                            <span class="form-control-plaintext kt-font-bolder">{{$cPerson->name}}</span>
+                                            <span
+                                                class="form-control-plaintext kt-font-bolder">{{$cPerson->name}}</span>
                                         </div>
                                     </div>
                                     <div class="form-group form-group-xs row">
                                         <label class="col-4 col-form-label">Designation:</label>
                                         <div class="col-8">
-                                            <span class="form-control-plaintext kt-font-bolder">{{$cPerson->designation}}</span>
+                                            <span
+                                                class="form-control-plaintext kt-font-bolder">{{$cPerson->designation}}</span>
                                         </div>
                                     </div>
                                     <div class="form-group form-group-xs row">
                                         <label class="col-4 col-form-label">Phone:</label>
                                         <div class="col-8">
-                                            <span class="form-control-plaintext kt-font-bolder">{{$cPerson->number}}</span>
+                                            <span
+                                                class="form-control-plaintext kt-font-bolder">{{$cPerson->number}}</span>
                                         </div>
                                     </div>
                                 </div>
