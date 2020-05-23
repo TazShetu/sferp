@@ -29,6 +29,9 @@ class CreateMachinesTable extends Migration
             $table->float('screw_size')->nullable();
             $table->float('production_capacity')->nullable();
             $table->float('ld_ratio')->nullable();
+            $table->float('ring_size')->nullable();
+            $table->string('manual')->nullable();
+            $table->string('manual_location')->nullable();
             $table->timestamps();
         });
     }

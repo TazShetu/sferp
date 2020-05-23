@@ -67,6 +67,7 @@ Route::get('/machine/create', 'MachineController@create')->name('machine.create'
 Route::post('/machine/store', 'MachineController@store')->name('machine.store');
 Route::delete('/machine/delete/{mid}', 'MachineController@destroy')->name('machine.delete');
 Route::get('/machine/edit/{mid}', 'MachineController@edit')->name('machine.edit');
+Route::get('/machine/manual/download/{mid}', 'MachineController@mmd')->name('machine.manual.download');
 Route::post('/machine/update/{mid}', 'MachineController@update')->name('machine.update');
 Route::post('/machine/update/sparepart/{mid}', 'MachineController@updateMachineSparePart')->name('machine.update.sparepart');
 
