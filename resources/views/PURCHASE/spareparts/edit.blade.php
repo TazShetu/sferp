@@ -99,7 +99,7 @@
                                                     <div class="col-lg-9 col-xl-6">
                                                         <input
                                                             class="form-control {{($errors->has('countryOfOrigin')) ? 'is-invalid' : ''}}"
-                                                            type="text" name="countryOfOrigin" required
+                                                            type="text" name="countryOfOrigin"
                                                             value="{{$spedit->country_origin}}" list="countryOfOrigin">
                                                         @if($errors->has('countryOfOrigin'))
                                                             <span
@@ -175,7 +175,7 @@
                                                     <div class="col-lg-9 col-xl-6">
                                                         <input
                                                             class="form-control {{($errors->has('priceInCnf')) ? 'is-invalid' : ''}}"
-                                                            type="number" name="priceInCnf" required min="0" step="0.01"
+                                                            type="number" name="priceInCnf" min="0" step="0.01"
                                                             value="{{$spedit->unit_price_cnf}}">
                                                         @if($errors->has('priceInCnf'))
                                                             <span
@@ -190,7 +190,7 @@
                                                     <div class="col-lg-9 col-xl-6">
                                                         <input
                                                             class="form-control {{($errors->has('priceInFob')) ? 'is-invalid' : ''}}"
-                                                            type="number" name="priceInFob" required min="0" step="0.01"
+                                                            type="number" name="priceInFob" min="0" step="0.01"
                                                             value="{{$spedit->unit_price_fob}}">
                                                         @if($errors->has('priceInFob'))
                                                             <span

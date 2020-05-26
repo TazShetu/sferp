@@ -73,8 +73,8 @@
                     <thead>
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Type</th>
+                        <th scope="col">Name Of The Product</th>
+                        <th scope="col">Type / Category</th>
                         <th scope="col">Minimum Storage Amount</th>
                         <th scope="col">Action</th>
                     </tr>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Contactperson;
 use App\Customer;
+use App\Customerextra;
 use App\Customerproductdiscount;
 use App\Customerrelation;
 use App\Customertype;
@@ -51,13 +52,13 @@ class CustomerController extends Controller
                 'name' => 'required',
                 'dateOfBirth' => 'required',
                 'companyName' => 'required',
-                'binNumber' => 'required',
-                'tinNumber' => 'required',
-                'nidNumber' => 'required',
+//                'binNumber' => 'required',
+//                'tinNumber' => 'required',
+//                'nidNumber' => 'required',
                 'businessAddress' => 'required',
                 'businessArea' => 'required',
                 'businessTelephone' => 'required',
-                'businessEmail' => 'required',
+//                'businessEmail' => 'required',
                 'customerType' => 'required',
                 'companySite' => 'required',
             ]);
@@ -187,7 +188,8 @@ class CustomerController extends Controller
                     }
                 }
             }
-            return view('customer.profile', compact('customer', 'cPersons', 'percentage', 'hierarchy', 'dealers', 'subdealers', 'individuals'));
+            $extras = Customerextra::where('customer_id', $cid)->get();
+            return view('customer.profile', compact('customer', 'cPersons', 'percentage', 'hierarchy', 'dealers', 'subdealers', 'individuals', 'extras'));
         } else {
             abort(403);
         }
@@ -230,7 +232,8 @@ class CustomerController extends Controller
             foreach ($aps as $ap){
                 $ap['product_name'] = Product::find($ap->product_id)->name;
             }
-            return view('customer.edit', compact('customer', 'cPersons', 'is_edit', 'customerTypes', 'subDealers', 'individuals', 'allSubDealers', 'allIndividuals', 'products', 'aps'));
+            $extras = Customerextra::where('customer_id', $cid)->get();
+            return view('customer.edit', compact('customer', 'cPersons', 'is_edit', 'customerTypes', 'subDealers', 'individuals', 'allSubDealers', 'allIndividuals', 'products', 'aps', 'extras'));
         } else {
             abort(403);
         }
@@ -244,13 +247,13 @@ class CustomerController extends Controller
                 'name' => 'required',
                 'dateOfBirth' => 'required',
                 'companyName' => 'required',
-                'binNumber' => 'required',
-                'tinNumber' => 'required',
-                'nidNumber' => 'required',
+//                'binNumber' => 'required',
+//                'tinNumber' => 'required',
+//                'nidNumber' => 'required',
                 'businessAddress' => 'required',
                 'businessArea' => 'required',
                 'businessTelephone' => 'required',
-                'businessEmail' => 'required',
+//                'businessEmail' => 'required',
                 'customerType' => 'required',
                 'companySite' => 'required',
             ]);
@@ -525,6 +528,46 @@ class CustomerController extends Controller
             }
             if ($success) {
                 Session::flash('Success', "The Customer Product Discount has been updated successfully.");
+                return redirect()->back();
+            } else {
+                Session::flash('unsuccess', "Something went wrong :(");
+                return redirect()->back();
+            }
+        } else {
+            abort(403);
+        }
+    }
+
+
+    public function updateExtra(Request $request, $cid)
+    {
+        if (Auth::user()->can('customer')) {
+            $request->validate([
+                'type' => 'required',
+                'details' => 'required',
+            ]);
+            if (count($request->type) != count($request->details)){
+                Session::flash('unsuccess', "Please do not mess with the original code !!!");
+                return redirect()->back();
+            }
+            DB::beginTransaction();
+            try {
+                Customerextra::where('customer_id', $cid)->delete();
+                foreach ($request->type as $i => $type){
+                    $c = new Customerextra;
+                    $c->customer_id = $cid;
+                    $c->type = $request->type[$i];
+                    $c->details = $request->details[$i];
+                    $c->save();
+                }
+                DB::commit();
+                $success = true;
+            } catch (\Exception $e) {
+                $success = false;
+                DB::rollback();
+            }
+            if ($success) {
+                Session::flash('Success', "The Extra Info for this Customer has been updated successfully.");
                 return redirect()->back();
             } else {
                 Session::flash('unsuccess', "Something went wrong :(");
