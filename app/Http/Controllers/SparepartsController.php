@@ -21,6 +21,15 @@ class SparepartsController extends Controller
     {
         if (Auth::user()->can('spare_parts')) {
             $spareParts = Spareparts::paginate(10);
+            foreach ($spareParts as $s) {
+                $ms = $s->machines()->get();
+                $machines = [];
+                foreach ($ms as $m) {
+                    $t = str_replace(';.;', ' ', $m->tag);
+                    $machines[] = $t;
+                }
+                $s['machines'] = $machines;
+            }
             return view('spareParts.list', compact('spareParts'));
         } else {
             abort(403);
@@ -65,6 +74,7 @@ class SparepartsController extends Controller
             $s->code_number = $request->codeNumber;
             $s->minimum_storage = $request->minimumStorage;
             $s->unit = $request->unit;
+            $s->description_2 = $request->description_2;
             $s->save();
             Session::flash('Success', "The Spare Parts has been created successfully.");
             return redirect()->route('spareParts.list');
@@ -131,6 +141,7 @@ class SparepartsController extends Controller
             $s->code_number = $request->codeNumber;
             $s->minimum_storage = $request->minimumStorage;
             $s->unit = $request->unit;
+            $s->description_2 = $request->description_2;
             $s->update();
             Session::flash('Success', "The Spare Parts has been updated successfully.");
             return redirect()->back();

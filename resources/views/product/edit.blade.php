@@ -1,5 +1,8 @@
 @extends('layouts.m')
 @section('title', 'Product Edit')
+@section('link')
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+@endsection
 @section('content_head')
     <div class="kt-subheader   kt-grid__item" id="kt_subheader">
         <div class="kt-container  kt-container--fluid ">
@@ -258,6 +261,14 @@
                                                     @endif
                                                 </div>
                                             </div>
+                                            <div class="form-group row">
+                                                <label class="col-xl-3 col-lg-3 col-form-label">Description</label>
+                                                <div class="col-lg-9 col-xl-6">
+                                                    <textarea id="summernote" name="description">
+                                                        {!! $pedit->description !!}
+                                                    </textarea>
+                                                </div>
+                                            </div>
                                             <div class="kt-separator kt-separator--space-lg kt-separator--fit kt-separator--border-solid"></div>
                                             <div class="kt-form__actions">
                                                 <div class="row">
@@ -278,7 +289,7 @@
                             </div>
                         </div>
                     </div>
-                    <div id="kt_product_edit_tab_2" class="tab-pane active">
+                    <div id="kt_product_edit_tab_2" class="tab-pane">
                         @if(count($allRawMaterials) > 0)
                             <div class="kt-form kt-form--label-right">
                                 <div class="kt-form__body">
@@ -451,6 +462,8 @@
     {{--    <script src="{{asset('plugins/select2/select2.full.min.js')}}" type="text/javascript"></script>--}}
 
     <!--end::Page Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+
     <script>
         $(function () {
             $("#size_denier").on('keyup change', function () {
@@ -474,6 +487,12 @@
             } else {
                 $("#size_denier").prop('disabled', true);
             }
+            $('#summernote').summernote({
+                height: 200,                 // set editor height
+                // minHeight: null,             // set minimum height of editor
+                // maxHeight: null,             // set maximum height of editor
+                // focus: true                  // set focus to editable area after initializing summernote
+            });
         });
     </script>
     <script>

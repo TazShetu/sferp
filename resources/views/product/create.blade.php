@@ -1,5 +1,8 @@
 @extends('layouts.m')
 @section('title', 'Product Create')
+@section('link')
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+@endsection
 @section('content_head')
     <div class="kt-subheader   kt-grid__item" id="kt_subheader">
         <div class="kt-container  kt-container--fluid ">
@@ -49,9 +52,10 @@
                                                     Name
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">
-                                                    <input class="form-control {{($errors->has('name')) ? 'is-invalid' : ''}}"
-                                                           type="text" name="name" required list="name"
-                                                           value="{{old('name')}}">
+                                                    <input
+                                                        class="form-control {{($errors->has('name')) ? 'is-invalid' : ''}}"
+                                                        type="text" name="name" required list="name"
+                                                        value="{{old('name')}}">
                                                     @if($errors->has('name'))
                                                         <span class="invalid-feedback">{{$errors->first('name')}}</span>
                                                     @endif
@@ -62,9 +66,10 @@
                                                     Type
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">
-                                                    <input class="form-control {{($errors->has('type')) ? 'is-invalid' : ''}}"
-                                                           type="text" name="type" required list="type"
-                                                           value="{{old('type')}}">
+                                                    <input
+                                                        class="form-control {{($errors->has('type')) ? 'is-invalid' : ''}}"
+                                                        type="text" name="type" required list="type"
+                                                        value="{{old('type')}}">
                                                     @if($errors->has('type'))
                                                         <span class="invalid-feedback">{{$errors->first('type')}}</span>
                                                     @endif
@@ -75,9 +80,10 @@
                                                     Size (denier)
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">
-                                                    <input class="form-control {{($errors->has('sizeDenier')) ? 'is-invalid' : ''}}"
-                                                           type="number" name="sizeDenier" id="size_denier"
-                                                           value="{{old('sizeDenier')}}" step="0.01" min="0">
+                                                    <input
+                                                        class="form-control {{($errors->has('sizeDenier')) ? 'is-invalid' : ''}}"
+                                                        type="number" name="sizeDenier" id="size_denier"
+                                                        value="{{old('sizeDenier')}}" step="0.01" min="0">
                                                     {{--                                                    @if($errors->has('mfi'))--}}
                                                     {{--                                                        <span class="invalid-feedback">{{$errors->first('mfi')}}</span>--}}
                                                     {{--                                                    @endif--}}
@@ -88,9 +94,10 @@
                                                     Size (mm)
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">
-                                                    <input class="form-control {{($errors->has('sizeMm')) ? 'is-invalid' : ''}}"
-                                                           type="number" name="sizeMm" value="{{old('sizeMm')}}"
-                                                           id="size_mm" step="0.01" min="0">
+                                                    <input
+                                                        class="form-control {{($errors->has('sizeMm')) ? 'is-invalid' : ''}}"
+                                                        type="number" name="sizeMm" value="{{old('sizeMm')}}"
+                                                        id="size_mm" step="0.01" min="0">
                                                     {{--                                                    @if($errors->has('mfi'))--}}
                                                     {{--                                                        <span class="invalid-feedback">{{$errors->first('mfi')}}</span>--}}
                                                     {{--                                                    @endif--}}
@@ -101,8 +108,9 @@
                                                     PLYS
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">
-                                                    <input class="form-control {{($errors->has('plys')) ? 'is-invalid' : ''}}"
-                                                           type="text" name="plys" value="{{old('plys')}}">
+                                                    <input
+                                                        class="form-control {{($errors->has('plys')) ? 'is-invalid' : ''}}"
+                                                        type="text" name="plys" value="{{old('plys')}}">
                                                     {{--                                                    @if($errors->has('plys'))--}}
                                                     {{--                                                        <span class="invalid-feedback">{{$errors->first('plys')}}</span>--}}
                                                     {{--                                                    @endif--}}
@@ -113,11 +121,13 @@
                                                     Mesh Size
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">
-                                                    <input class="form-control {{($errors->has('meshSize')) ? 'is-invalid' : ''}}"
-                                                           type="number" name="meshSize" value="{{old('meshSize')}}"
-                                                           step="0.01" min="0">
+                                                    <input
+                                                        class="form-control {{($errors->has('meshSize')) ? 'is-invalid' : ''}}"
+                                                        type="number" name="meshSize" value="{{old('meshSize')}}"
+                                                        step="0.01" min="0">
                                                     @if($errors->has('meshSize'))
-                                                        <span class="invalid-feedback">{{$errors->first('meshSize')}}</span>
+                                                        <span
+                                                            class="invalid-feedback">{{$errors->first('meshSize')}}</span>
                                                     @endif
                                                 </div>
                                             </div>
@@ -126,11 +136,13 @@
                                                     Depth
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">
-                                                    <input class="form-control {{($errors->has('depth')) ? 'is-invalid' : ''}}"
-                                                           type="number" name="depth" value="{{old('depth')}}"
-                                                           step="0.01" min="0">
+                                                    <input
+                                                        class="form-control {{($errors->has('depth')) ? 'is-invalid' : ''}}"
+                                                        type="number" name="depth" value="{{old('depth')}}"
+                                                        step="0.01" min="0">
                                                     @if($errors->has('depth'))
-                                                        <span class="invalid-feedback">{{$errors->first('depth')}}</span>
+                                                        <span
+                                                            class="invalid-feedback">{{$errors->first('depth')}}</span>
                                                     @endif
                                                 </div>
                                             </div>
@@ -139,11 +151,13 @@
                                                     Twin Size
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">
-                                                    <input class="form-control {{($errors->has('twinSize')) ? 'is-invalid' : ''}}"
-                                                           type="number" name="twinSize" value="{{old('twinSize')}}"
-                                                           step="0.01" min="0">
+                                                    <input
+                                                        class="form-control {{($errors->has('twinSize')) ? 'is-invalid' : ''}}"
+                                                        type="number" name="twinSize" value="{{old('twinSize')}}"
+                                                        step="0.01" min="0">
                                                     @if($errors->has('twinSize'))
-                                                        <span class="invalid-feedback">{{$errors->first('twinSize')}}</span>
+                                                        <span
+                                                            class="invalid-feedback">{{$errors->first('twinSize')}}</span>
                                                     @endif
                                                 </div>
                                             </div>
@@ -152,8 +166,9 @@
                                                     Twist Type
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">
-                                                    <input class="form-control {{($errors->has('twistType')) ? 'is-invalid' : ''}}"
-                                                           type="text" name="twistType" value="{{old('twistType')}}">
+                                                    <input
+                                                        class="form-control {{($errors->has('twistType')) ? 'is-invalid' : ''}}"
+                                                        type="text" name="twistType" value="{{old('twistType')}}">
                                                     {{--                                                    @if($errors->has('twistType'))--}}
                                                     {{--                                                        <span class="invalid-feedback">{{$errors->first('twistType')}}</span>--}}
                                                     {{--                                                    @endif--}}
@@ -164,8 +179,9 @@
                                                     Twist Condition
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">
-                                                    <select class="form-control {{($errors->has('twistCondition')) ? 'is-invalid' : ''}}"
-                                                            name="twistCondition">
+                                                    <select
+                                                        class="form-control {{($errors->has('twistCondition')) ? 'is-invalid' : ''}}"
+                                                        name="twistCondition">
                                                         <option selected disabled hidden value="">Choose...</option>
                                                         <option value="Twisted">Twisted</option>
                                                         <option value="Untwisted">Untwisted</option>
@@ -181,8 +197,9 @@
                                                     Strand
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">
-                                                    <select class="form-control {{($errors->has('strand')) ? 'is-invalid' : ''}}"
-                                                            name="strand">
+                                                    <select
+                                                        class="form-control {{($errors->has('strand')) ? 'is-invalid' : ''}}"
+                                                        name="strand">
                                                         <option selected disabled hidden value="">Choose...</option>
                                                         <option value="3">3</option>
                                                         <option value="4">4</option>
@@ -197,11 +214,13 @@
                                                     Minimum Storage Amount
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">
-                                                    <input class="form-control {{($errors->has('minimumStorage')) ? 'is-invalid' : ''}}"
-                                                           type="number" name="minimumStorage" required min="0"
-                                                           value="{{old('minimumStorage')}}">
+                                                    <input
+                                                        class="form-control {{($errors->has('minimumStorage')) ? 'is-invalid' : ''}}"
+                                                        type="number" name="minimumStorage" required min="0"
+                                                        value="{{old('minimumStorage')}}">
                                                     @if($errors->has('minimumStorage'))
-                                                        <span class="invalid-feedback">{{$errors->first('minimumStorage')}}</span>
+                                                        <span
+                                                            class="invalid-feedback">{{$errors->first('minimumStorage')}}</span>
                                                     @endif
                                                 </div>
                                             </div>
@@ -210,16 +229,24 @@
                                                     Unit
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">
-                                                    <input class="form-control {{($errors->has('unit')) ? 'is-invalid' : ''}}"
-                                                           type="text" name="unit" required
-                                                           placeholder="Piece Carton etc"
-                                                           value="{{old('unit')}}" list="unit">
+                                                    <input
+                                                        class="form-control {{($errors->has('unit')) ? 'is-invalid' : ''}}"
+                                                        type="text" name="unit" required
+                                                        placeholder="Piece Carton etc"
+                                                        value="{{old('unit')}}" list="unit">
                                                     @if($errors->has('unit'))
                                                         <span class="invalid-feedback">{{$errors->first('unit')}}</span>
                                                     @endif
                                                 </div>
                                             </div>
-                                            <div class="kt-separator kt-separator--space-lg kt-separator--fit kt-separator--border-solid"></div>
+                                            <div class="form-group row">
+                                                <label class="col-xl-3 col-lg-3 col-form-label">Description</label>
+                                                <div class="col-lg-9 col-xl-6">
+                                                    <textarea id="summernote" name="description"></textarea>
+                                                </div>
+                                            </div>
+                                            <div
+                                                class="kt-separator kt-separator--space-lg kt-separator--fit kt-separator--border-solid"></div>
                                             <div class="kt-form__actions">
                                                 <div class="row">
                                                     <div class="col-xl-3"></div>
@@ -287,6 +314,8 @@
     {{--    <script src="{{asset('m/assets/js/pages/crud/forms/widgets/form-repeater.js')}}" type="text/javascript"></script>--}}
     {{--    <script src="{{asset('plugins/select2/select2.full.min.js')}}" type="text/javascript"></script>--}}
 
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+
     <!--end::Page Scripts -->
     <script>
         $(function () {
@@ -305,6 +334,12 @@
                 } else {
                     $("#size_denier").prop('disabled', false);
                 }
+            });
+            $('#summernote').summernote({
+                height: 200,                 // set editor height
+                // minHeight: null,             // set minimum height of editor
+                // maxHeight: null,             // set maximum height of editor
+                // focus: true                  // set focus to editable area after initializing summernote
             });
         });
     </script>

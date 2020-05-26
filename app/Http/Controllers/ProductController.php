@@ -93,6 +93,7 @@ class ProductController extends Controller
             }
             $p->minimum_storage = $request->minimumStorage;
             $p->unit = $request->unit;
+            $p->description = $request->description;
             $p->save();
             Session::flash('Success', "The Product has been created successfully.");
             return redirect()->route('product.list');
@@ -176,6 +177,7 @@ class ProductController extends Controller
             }
             $p->minimum_storage = $request->minimumStorage;
             $p->unit = $request->unit;
+            $p->description = $request->description;
             $p->update();
             Session::flash('Success', "The Product has been updated successfully.");
             return redirect()->back();

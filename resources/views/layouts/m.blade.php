@@ -49,7 +49,7 @@
     <link href="{{asset('m/assets/plugins/general/dropzone/dist/dropzone.css')}}" rel="stylesheet" type="text/css"/>
     <link href="{{asset('m/assets/plugins/general/quill/dist/quill.snow.css')}}" rel="stylesheet" type="text/css"/>
     <link href="{{asset('m/assets/plugins/general/@yaireo/tagify/dist/tagify.css')}}" rel="stylesheet" type="text/css"/>
-    <link href="{{asset('m/assets/plugins/general/summernote/dist/summernote.css')}}" rel="stylesheet" type="text/css"/>
+{{--    <link href="{{asset('m/assets/plugins/general/summernote/dist/summernote.css')}}" rel="stylesheet" type="text/css"/>--}}
     <link href="{{asset('m/assets/plugins/general/bootstrap-markdown/css/bootstrap-markdown.min.css')}}"
           rel="stylesheet" type="text/css"/>
     <link href="{{asset('m/assets/plugins/general/animate.css/animate.css')}}" rel="stylesheet" type="text/css"/>
@@ -327,7 +327,7 @@
 <script src="{{asset('m/assets/plugins/general/@yaireo/tagify/dist/tagify.polyfills.min.js')}}"
         type="text/javascript"></script>
 <script src="{{asset('m/assets/plugins/general/@yaireo/tagify/dist/tagify.min.js')}}" type="text/javascript"></script>
-<script src="{{asset('m/assets/plugins/general/summernote/dist/summernote.js')}}" type="text/javascript"></script>
+{{--<script src="{{asset('m/assets/plugins/general/summernote/dist/summernote.js')}}" type="text/javascript"></script>--}}
 <script src="{{asset('m/assets/plugins/general/markdown/lib/markdown.js')}}" type="text/javascript"></script>
 <script src="{{asset('m/assets/plugins/general/bootstrap-markdown/js/bootstrap-markdown.js')}}"
         type="text/javascript"></script>

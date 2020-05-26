@@ -20,6 +20,7 @@ class CreateSparepartsTable extends Migration
             $table->string('code_number')->nullable();
             $table->integer('minimum_storage');
             $table->string('unit');
+            $table->text('description_2')->nullable();
             $table->timestamps();
         });
     }

@@ -3,11 +3,21 @@
   <component name="ChangeListManager">
     <list default="true" id="72b65107-1734-42e2-a0ce-dd862e20aa6b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CustomerController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CustomerController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/customer/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/customer/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/customer/profile.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/customer/profile.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/include/m/customerEdit/js1.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/include/m/customerEdit/js1.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ProductController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ProductController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/SparepartsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/SparepartsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_01_08_024222_create_spareparts_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_01_08_024222_create_spareparts_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_01_11_090542_create_products_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_01_11_090542_create_products_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Production/direct/productout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Production/direct/productout.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Production/direct/rawmaterialin.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Production/direct/rawmaterialin.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Stock/in/productindex.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Stock/in/productindex.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Stock/in/rawmaterialindex.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Stock/in/rawmaterialindex.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Stock/in/sparepartsindex.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Stock/in/sparepartsindex.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/m.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/m.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/product/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/product/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/product/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/product/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/spareParts/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/spareParts/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/spareParts/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/spareParts/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/spareParts/list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/spareParts/list.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -132,7 +142,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="add_unversioned_files" value="$PROJECT_DIR$/Theme/metronic/demo1/components/custom/iconbox.html" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="C:/xampp_5.6.3/htdocs/bulksms" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -268,7 +278,9 @@
       <workItem from="1589000181233" duration="9315000" />
       <workItem from="1589023406705" duration="17000" />
       <workItem from="1589026098875" duration="100000" />
-      <workItem from="1590232230983" duration="6599000" />
+      <workItem from="1590232230983" duration="7300000" />
+      <workItem from="1590294458234" duration="1217000" />
+      <workItem from="1590469024308" duration="9096000" />
     </task>
     <servers />
   </component>
@@ -280,18 +292,14 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="600" y="290" key="#com.intellij.ide.fileTemplates.ui.ConfigureTemplatesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1582168880121" />
-    <state x="640" y="257" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1581160276731">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="640" y="257" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1581160276731" />
     <state x="690" y="276" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1587204675724">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="276" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1587204675724" />
-    <state x="740" y="276" key="FileChooserDialogImpl" timestamp="1589014317559">
+    <state x="740" y="276" key="FileChooserDialogImpl" timestamp="1590300784300">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="276" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1589014317559" />
+    <state x="740" y="276" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1590300784300" />
     <state x="425" y="174" key="SettingsEditor" timestamp="1582083992092">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -300,10 +308,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="656" y="345" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1582081652309" />
-    <state x="646" y="236" width="627" height="568" key="find.popup" timestamp="1589004497227">
+    <state x="646" y="236" width="627" height="568" key="find.popup" timestamp="1590474891709">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="646" y="236" width="627" height="568" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1589004497227" />
+    <state x="646" y="236" width="627" height="568" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1590474891709" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

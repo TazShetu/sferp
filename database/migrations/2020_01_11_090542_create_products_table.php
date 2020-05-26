@@ -24,6 +24,7 @@ class CreateProductsTable extends Migration
             $table->string('strand')->nullable();
             $table->integer('minimum_storage');
             $table->string('unit');
+            $table->text('description')->nullable();
             $table->timestamps();
         });
     }
