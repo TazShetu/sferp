@@ -20,14 +20,24 @@ class MachineController extends Controller
     }
 
 
-    public function list()
+    public function list(Request $request)
     {
         if (Auth::user()->can('machine')) {
-            $machines = Machine::paginate(10);
+            $machines = Machine::where('manufacturer', 'LIKE', "%{$request->manufacturer}%")
+                ->orWhere('category', 'LIKE', "%{$request->category}%")
+                ->orWhere('factory_id', 'LIKE', "$request->factoryId")
+                ->orWhere('manufacture_country', 'LIKE', "%{$request->country}%")
+                ->paginate(10);
             foreach ($machines as $m) {
                 $m['factory'] = Factory::find($m->factory_id)->name;
             }
-            return view('machine.list', compact('machines'));
+            $factories = Factory::all();
+            $machines->appends(['manufacturer' => $request->manufacturer, 'category' => $request->category, 'factory' => $request->factoryId, 'CountryOfOrigin' => $request->country]);
+            $query = $request->all();
+            if ((count($query) > 0) && array_key_exists("factoryId", $query)){
+                $query['factoryName'] = Factory::find($query['factoryId'])->name;
+            }
+            return view('machine.list', compact('machines', 'factories', 'query'));
         } else {
             abort(403);
         }
