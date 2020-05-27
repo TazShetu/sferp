@@ -18,14 +18,42 @@ class SparepartspurchaseController extends Controller
     }
 
 
-    public function history()
+    public function history(Request $request)
     {
         if (Auth::user()->can('sparepart_purchase')) {
-            $histories = Sparepartspurchase::orderBy('created_at', 'DESC')->paginate(10);
+
+            if ($request->spid){
+                $histories = Sparepartspurchase::Where('spareparts_id', 'LIKE', "$request->spid")
+                    ->where('status', 'LIKE', "%{$request->status}%")
+                    ->Where('quantity', 'LIKE', "%{$request->quantity}%")
+                    ->Where('country_purchase', 'LIKE', "%{$request->country}%")
+                    ->Where('total_price', 'LIKE', "%{$request->price}%")
+                    ->Where('invoice_number', 'LIKE', "%{$request->invoice}%")
+                    ->Where('lc_number', 'LIKE', "%{$request->lc}%")
+                    ->paginate(10);
+            }else {
+                $histories = Sparepartspurchase::where('status', 'LIKE', "%{$request->status}%")
+                    ->Where('quantity', 'LIKE', "%{$request->quantity}%")
+                    ->Where('country_purchase', 'LIKE', "%{$request->country}%")
+                    ->Where('total_price', 'LIKE', "%{$request->price}%")
+                    ->Where('invoice_number', 'LIKE', "%{$request->invoice}%")
+                    ->Where('lc_number', 'LIKE', "%{$request->lc}%")
+                    ->paginate(10);
+            }
             foreach ($histories as $h){
                 $h['spare_part'] = Spareparts::find($h->spareparts_id)->description;
             }
-            return view('PURCHASE.HISTORY.spareParts', compact('histories'));
+            $spareparts = Spareparts::all();
+            if ($request->spid){
+                $histories->appends(['spid' => "$request->spid", 'status' => "$request->status", 'quantity' => "$request->quantity", 'country' => "$request->country", 'price' => "$request->price", 'invoice' => "$request->invoice", 'lc' => "$request->lc"]);
+            } else {
+                $histories->appends(['status' => "$request->status", 'quantity' => "$request->quantity", 'country' => "$request->country", 'price' => "$request->price", 'invoice' => "$request->invoice", 'lc' => "$request->lc"]);
+            }
+            $query = $request->all();
+            if ((count($query) > 0) && array_key_exists("spid", $query)){
+                $query['sparePartD'] = Spareparts::find($query['spid'])->description;
+            }
+            return view('PURCHASE.HISTORY.spareParts', compact('histories', 'query', 'spareparts'));
         } else {
             abort(403);
         }

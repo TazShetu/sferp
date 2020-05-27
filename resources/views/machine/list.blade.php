@@ -28,10 +28,7 @@
             {{--            </div>--}}
         @endif
 
-
-
     <!--begin::Portlet-->
-        {{--            @if(($search * 1) == 0)--}}
         <div class="kt-portlet ">
             <div class="kt-portlet__body">
                 <!--begin::Accordion-->
@@ -82,8 +79,6 @@
                 <!--end::Accordion-->
             </div>
         </div>
-    {{--        @endif--}}
-
     <!--end::Portlet-->
 
         <!--begin::Portlet-->

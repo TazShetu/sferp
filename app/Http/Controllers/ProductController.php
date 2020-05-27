@@ -13,11 +13,13 @@ use Illuminate\Support\Facades\Session;
 class ProductController extends Controller
 {
 
-    public function list()
+    public function list(Request $request)
     {
         if (Auth::user()->can('product')) {
-            $products = Product::paginate(10);
-            return view('product.list', compact('products'));
+            $products = Product::where('name', 'LIKE', "%{$request->name}%")->Where('type', 'LIKE', "%{$request->type}%")->paginate(10);
+            $products->appends(['name' => "$request->name", 'type' => "$request->type"]);
+            $query = $request->all();
+            return view('product.list', compact('products', 'query'));
         } else {
             abort(403);
         }
