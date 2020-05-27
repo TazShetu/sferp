@@ -5,8 +5,9 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MachineController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MachineController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/SparepartsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/SparepartsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/machine/list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/machine/list.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/spareParts/list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/spareParts/list.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_12_09_164519_create_machines_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_12_09_164519_create_machines_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/FactoriesTableSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/FactoriesTableSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/MachinesTableSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/MachinesTableSeeder.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -131,7 +132,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="add_unversioned_files" value="$PROJECT_DIR$/Theme/metronic/demo1/components/custom/iconbox.html" />
-    <property name="last_opened_file_path" value="C:/xampp_5.6.3/htdocs/bulksms" />
+    <property name="last_opened_file_path" value="C:/xampp_5.6.3/htdocs/crickstar" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -269,7 +270,9 @@
       <workItem from="1589026098875" duration="100000" />
       <workItem from="1590232230983" duration="7300000" />
       <workItem from="1590294458234" duration="1217000" />
-      <workItem from="1590469024308" duration="18691000" />
+      <workItem from="1590469024308" duration="19349000" />
+      <workItem from="1590560609925" duration="14000" />
+      <workItem from="1590563873415" duration="4175000" />
     </task>
     <servers />
   </component>
@@ -285,10 +288,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="276" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1587204675724" />
-    <state x="740" y="276" key="FileChooserDialogImpl" timestamp="1590300784300">
+    <state x="740" y="276" key="FileChooserDialogImpl" timestamp="1590570439002">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="276" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1590300784300" />
+    <state x="740" y="276" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1590570439002" />
     <state x="425" y="174" key="SettingsEditor" timestamp="1582083992092">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -399,6 +402,16 @@
           <url>file://$PROJECT_DIR$/app/Http/Controllers/SparepartsstockinController.php</url>
           <line>91</line>
           <option name="timeStamp" value="283" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/app/Http/Controllers/MachineController.php</url>
+          <line>35</line>
+          <option name="timeStamp" value="286" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/app/Http/Controllers/MachineController.php</url>
+          <line>30</line>
+          <option name="timeStamp" value="287" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/Theme/metronic/demo1/assets/js/pages/crud/datatables/basic/basic.js</url>

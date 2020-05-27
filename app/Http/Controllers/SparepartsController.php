@@ -20,7 +20,6 @@ class SparepartsController extends Controller
     public function list(Request $request)
     {
         if (Auth::user()->can('spare_parts')) {
-//            $spareParts = Spareparts::paginate(10);
             $spareParts = Spareparts::where('type', 'LIKE', "%{$request->type}%")->Where('description', 'LIKE', "%{$request->tag}%")->paginate(10);
             foreach ($spareParts as $s) {
                 $ms = $s->machines()->get();
@@ -31,7 +30,7 @@ class SparepartsController extends Controller
                 }
                 $s['machines'] = $machines;
             }
-            $spareParts->appends(['type' => $request->type, 'tag' => $request->tag]);
+            $spareParts->appends(['type' => "$request->type", 'tag' => "$request->tag"]);
             $query = $request->all();
             return view('spareParts.list', compact('spareParts', 'query'));
         } else {

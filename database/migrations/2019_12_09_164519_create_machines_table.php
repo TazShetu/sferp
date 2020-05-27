@@ -12,7 +12,7 @@ class CreateMachinesTable extends Migration
             $table->bigIncrements('id');
             $table->string('identification_code')->nullable();
             $table->string('category');
-            $table->string('factory_id');
+            $table->integer('factory_id');
             $table->string('manufacturer');
             $table->string('tag');
             $table->string('manufacture_year')->nullable();
