@@ -19,11 +19,11 @@
 @section('content')
     <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
         @if(session('Success'))
-            <div class="alert alert-success text-center">
+            <div class="alert alert-success text-center" id="toaster">
                 {{session('Success')}}
             </div>
             {{--        @elseif(session('Cannotdelete'))--}}
-            {{--            <div class="alert alert-warning text-center">--}}
+            {{--            <div class="alert alert-warning text-center" id="toaster">--}}
             {{--                {{session('Cannotdelete')}}--}}
             {{--            </div>--}}
         @endif

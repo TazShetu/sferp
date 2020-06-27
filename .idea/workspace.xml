@@ -3,22 +3,68 @@
   <component name="ChangeListManager">
     <list default="true" id="72b65107-1734-42e2-a0ce-dd862e20aa6b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ProductController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ProductController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/RawmaterialController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/RawmaterialController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/RawmaterialpurchaseController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/RawmaterialpurchaseController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/SparepartspurchaseController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/SparepartspurchaseController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/PermissionsTableSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/PermissionsTableSeeder.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/PURCHASE/HISTORY/rawMaterial.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/PURCHASE/HISTORY/rawMaterial.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/PURCHASE/HISTORY/spareParts.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/PURCHASE/HISTORY/spareParts.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/PURCHASE/RECEIVED/rawMaterial.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/PURCHASE/RECEIVED/rawMaterial.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/PURCHASE/RECEIVED/spareParts.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/PURCHASE/RECEIVED/spareParts.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/PURCHASE/STORE/rawMaterials.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/PURCHASE/STORE/rawMaterials.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/PURCHASE/STORE/rawMaterilaStore.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/PURCHASE/STORE/rawMaterilaStore.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/PURCHASE/STORE/sparePartStore.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/PURCHASE/STORE/sparePartStore.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/PURCHASE/STORE/spareParts.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/PURCHASE/STORE/spareParts.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/PURCHASE/rawmaterial/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/PURCHASE/rawmaterial/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/PURCHASE/rawmaterial/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/PURCHASE/rawmaterial/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/PURCHASE/spareparts/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/PURCHASE/spareparts/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/PURCHASE/spareparts/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/PURCHASE/spareparts/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Production/direct/productout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Production/direct/productout.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Production/direct/productouthistory.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Production/direct/productouthistory.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Production/direct/rawmaterialin.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Production/direct/rawmaterialin.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Production/direct/rawmaterialinHistory.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Production/direct/rawmaterialinHistory.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Stock/in/producthistory.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Stock/in/producthistory.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Stock/in/productindex.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Stock/in/productindex.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Stock/in/rawmaterialhistory.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Stock/in/rawmaterialhistory.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Stock/in/rawmaterialindex.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Stock/in/rawmaterialindex.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Stock/in/sparepartshistory.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Stock/in/sparepartshistory.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Stock/in/sparepartsindex.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Stock/in/sparepartsindex.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Stock/out/producthistory.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Stock/out/producthistory.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/Stock/out/productindex.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Stock/out/productindex.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Stock/out/rawmaterialhistory.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Stock/out/rawmaterialhistory.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/Stock/out/rawmaterialindex.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Stock/out/rawmaterialindex.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Stock/out/sparepartshistory.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Stock/out/sparepartshistory.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/Stock/out/sparepartsindex.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Stock/out/sparepartsindex.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/customer/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/customer/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/customer/list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/customer/list.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/inventory.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/inventory.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/production.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/production.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/sells.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/sells.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/factory/list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/factory/list.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/home.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/m.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/m.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/machine/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/machine/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/machine/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/machine/edit.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/machine/list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/machine/list.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/partial/m/aside.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/partial/m/aside.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/permission/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/permission/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/permission/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/permission/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/product/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/product/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/product/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/product/edit.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/product/list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/product/list.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/rawMaterial/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/rawMaterial/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/rawMaterial/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/rawMaterial/edit.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/rawMaterial/list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/rawMaterial/list.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/role/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/role/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/role/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/role/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/spareParts/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/spareParts/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/spareParts/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/spareParts/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/spareParts/list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/spareParts/list.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/sroom/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/sroom/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/sroom/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/sroom/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/user/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/user/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/user/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/user/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/warehouse/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/warehouse/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/warehouse/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/warehouse/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -143,7 +189,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="add_unversioned_files" value="$PROJECT_DIR$/Theme/metronic/demo1/components/custom/iconbox.html" />
-    <property name="last_opened_file_path" value="C:/xampp_5.6.3/htdocs/sp1" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../HR_Management" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -283,7 +329,13 @@
       <workItem from="1590294458234" duration="1217000" />
       <workItem from="1590469024308" duration="19349000" />
       <workItem from="1590560609925" duration="14000" />
-      <workItem from="1590563873415" duration="14581000" />
+      <workItem from="1590563873415" duration="14715000" />
+      <workItem from="1590591517125" duration="356000" />
+      <workItem from="1590591896105" duration="254000" />
+      <workItem from="1590730915589" duration="622000" />
+      <workItem from="1590743482788" duration="617000" />
+      <workItem from="1592142873560" duration="1787000" />
+      <workItem from="1593234602550" duration="8408000" />
     </task>
     <servers />
   </component>
@@ -291,30 +343,18 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="600" y="290" key="#com.intellij.ide.fileTemplates.ui.ConfigureTemplatesDialog" timestamp="1582168880121">
+    <state x="690" y="276" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1593243562207">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="600" y="290" key="#com.intellij.ide.fileTemplates.ui.ConfigureTemplatesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1582168880121" />
-    <state x="690" y="276" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1590589159098">
+    <state x="690" y="276" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1593243562207" />
+    <state x="740" y="276" key="FileChooserDialogImpl" timestamp="1593240532928">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="690" y="276" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1590589159098" />
-    <state x="740" y="276" key="FileChooserDialogImpl" timestamp="1590576201860">
+    <state x="740" y="276" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1593240532928" />
+    <state x="646" y="236" width="758" height="638" key="find.popup" timestamp="1593245132634">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="276" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1590576201860" />
-    <state x="425" y="174" key="SettingsEditor" timestamp="1582083992092">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="425" y="174" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1582083992092" />
-    <state x="656" y="345" key="com.intellij.ide.util.TipDialog" timestamp="1582081652309">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="656" y="345" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1582081652309" />
-    <state x="646" y="236" width="627" height="568" key="find.popup" timestamp="1590474891709">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="646" y="236" width="627" height="568" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1590474891709" />
+    <state x="646" y="236" width="758" height="638" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1593245132634" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -383,21 +423,6 @@
           <url>file://$PROJECT_DIR$/app/Http/Controllers/SroomController.php</url>
           <line>100</line>
           <option name="timeStamp" value="253" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/resources/views/home.blade.php</url>
-          <line>904</line>
-          <option name="timeStamp" value="264" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/resources/views/home.blade.php</url>
-          <line>924</line>
-          <option name="timeStamp" value="265" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/resources/views/home.blade.php</url>
-          <line>927</line>
-          <option name="timeStamp" value="267" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/app/Http/Controllers/SparepartsstockoutController.php</url>

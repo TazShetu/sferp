@@ -454,7 +454,13 @@
 @yield('script')
 <!--end::Page Scripts(used by this page) -->
 
-
+<script>
+    $(function () {
+        setTimeout(function () {
+            $('#toaster').hide(10000);
+        }, 3000);
+    });
+</script>
 </body>
 
 <!-- end::Body -->

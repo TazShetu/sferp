@@ -39,6 +39,9 @@ class PermissionsTableSeeder extends Seeder
             24 => ["raw_material_in_production", "Raw Material In for Production", "Raw Material In for Production"],
             25 => ["product_out_production", "Product Out From Production", "Product Out From Production"],
 
+            26 => ["hr_designation", "Designation in HR", "Designation in HR"],
+            27 => ["hr_employee", "Employee in HR", "Employee in HR"],
+
         ];
 
         $s = Role::find(1);

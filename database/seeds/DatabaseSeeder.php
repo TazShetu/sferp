@@ -18,5 +18,6 @@ class DatabaseSeeder extends Seeder
         $this->call(RawmaterialsTableSeeder::class);
         $this->call(SparepartspurchasesTableSeeder::class);
         $this->call(RawmaterialpurchasesTableSeeder::class);
+        $this->call(Hrseeder::class);
     }
 }

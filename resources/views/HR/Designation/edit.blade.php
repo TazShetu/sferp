@@ -1,21 +1,29 @@
 @extends('layouts.m')
-@section('title', 'Warehouse')
+@section('title', 'Designation Edit')
 @section('content_head')
     <div class="kt-subheader   kt-grid__item" id="kt_subheader">
         <div class="kt-container  kt-container--fluid ">
             <div class="kt-subheader__main">
                 <h3 class="kt-subheader__title">
-                    Warehouse
+                    Designation Edit
                 </h3>
                 <span class="kt-subheader__separator kt-subheader__separator--v"></span>
                 <div class="kt-subheader__breadcrumbs">
-                    <a href="{{route('home')}}" class="kt-subheader__breadcrumbs-home"><i class="flaticon2-shelter"></i></a>
+                    <a href="{{route('home')}}" class="kt-subheader__breadcrumbs-home">
+                        <i class="flaticon2-shelter"></i>
+                    </a>
                     <span class="kt-subheader__breadcrumbs-separator"></span>
-                    {{--                    <a href="javascript:void (0)" class="kt-subheader__breadcrumbs-link">Access Control</a>--}}
-                    {{--                    <span class="kt-subheader__breadcrumbs-separator"></span>--}}
-                    <a href="{{route('warehouse.index')}}"
-                       class="kt-subheader__breadcrumbs-link kt-subheader__breadcrumbs-link--active"
-                       style="padding-right: 1rem;">Warehouse</a>
+                    <a href="javascript:void (0)" class="kt-subheader__breadcrumbs-link">
+                        Office Management
+                    </a>
+                    <span class="kt-subheader__breadcrumbs-separator"></span>
+                    <a href="{{route('designation')}}"
+                       class="kt-subheader__breadcrumbs-link kt-subheader__breadcrumbs-link"
+                       style="padding-right: 1rem;">Designation</a>
+                    <span class="kt-subheader__breadcrumbs-separator"></span>
+                    <a href="javascript:void (0)" class="kt-subheader__breadcrumbs-link--active">
+                        Edit
+                    </a>
                 </div>
             </div>
         </div>
@@ -40,7 +48,7 @@
                     <div class="kt-portlet__head kt-portlet__head--lg">
                         <div class="kt-portlet__head-label">
                             <h3 class="kt-portlet__head-title">
-                                Warehouse Create
+                                Designation Edit
                             </h3>
                         </div>
                     </div>
@@ -50,30 +58,36 @@
                                 <div class="kt-form kt-form--label-right">
                                     <div class="kt-form__body">
                                         <div class="kt-section kt-section--first">
-                                            <form action="{{route('warehouse.store')}}" method="post">
+                                            <form action="{{route('designation.update', ['did' => $dedit->id])}}" method="post">
                                                 @csrf
                                                 <div class="kt-section__body">
                                                     <div class="form-group row">
                                                         <label class="col-xl-3 col-lg-3 col-form-label">
-                                                            Name
+                                                            Title
                                                         </label>
                                                         <div class="col-lg-9 col-xl-6">
-                                                            <input class="form-control {{$errors->has('name') ? 'is-invalid' : ''}}"
-                                                                   type="text" placeholder="Name" name="name"
-                                                                   required value="{{old('name')}}">
-                                                            @if($errors->has('name'))
-                                                                <span class="invalid-feedback">{{$errors->first('name')}}</span>
+                                                            <input
+                                                                class="form-control {{$errors->has('title') ? 'is-invalid' : ''}}"
+                                                                type="text" name="title"
+                                                                required value="{{$dedit->title}}">
+                                                            <span class="form-text text-muted">Has to be unique.</span>
+                                                            @if($errors->has('title'))
+                                                                <span
+                                                                    class="invalid-feedback">{{$errors->first('title')}}</span>
                                                             @endif
                                                         </div>
                                                     </div>
-                                                    <div class="kt-separator kt-separator--space-lg kt-separator--fit kt-separator--border-solid"></div>
+                                                    {{--                                                    <div class="form-group form-group-last row">--}}
+                                                    {{--                                                    </div>--}}
+                                                    <div
+                                                        class="kt-separator kt-separator--space-lg kt-separator--fit kt-separator--border-solid"></div>
                                                     <div class="kt-form__actions">
                                                         <div class="row">
                                                             <div class="col-xl-3"></div>
                                                             <div class="col-lg-9 col-xl-6">
                                                                 <button type="submit"
                                                                         class="btn btn-label-brand btn-bold">
-                                                                    Create
+                                                                    Update
                                                                 </button>
                                                                 <a href="javascript:void (0)"
                                                                    data-link="{{route('cancel')}}"
@@ -100,7 +114,7 @@
                         <i class="kt-font-brand flaticon2-line-chart"></i>
                     </span>
                             <h3 class="kt-portlet__head-title">
-                                All Warehouses
+                                All Designations
                             </h3>
                         </div>
                     </div>
@@ -111,29 +125,43 @@
                             <thead>
                             <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">Name</th>
+                                <th scope="col">Title</th>
                                 <th scope="col">Action</th>
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($warehouses as $i => $w)
+                            @foreach($designations as $i => $designation)
                                 <tr>
                                     <th scope="row">{{$i + 1}}</th>
-                                    <td>{{$w->name}}</td>
+                                    <td>{{$designation->title}}</td>
                                     <td>
-                                        <a href="{{route('warehouse.edit', ['wid' => $w->id])}}" title="Edit"
-                                           class="btn btn-sm btn-clean btn-icon btn-icon-md">
-                                            <i class="la la-edit"></i>
-                                        </a>
-                                        <form action="{{route('warehouse.delete', ['wid' => $w->id])}}" method="POST"
-                                              style="display: inline-table;">
-                                            @method('DELETE')
-                                            @csrf
-                                            <button type="submit" class="btn btn-sm btn-clean btn-icon btn-icon-md"
-                                                    onclick="return confirm('Are you sure you want to delete the warehouse ?')">
+                                        @if($designation->id != $dedit->id)
+                                            <a href="{{route('designation.edit', ['did' => $designation->id])}}"
+                                               title="Edit"
+                                               class="btn btn-sm btn-clean btn-icon btn-icon-md">
+                                                <i class="la la-edit"></i>
+                                            </a>
+                                            <form action="{{route('designation.delete', ['did' => $designation->id])}}"
+                                                  method="POST"
+                                                  style="display: inline-table;">
+                                                @method('DELETE')
+                                                @csrf
+                                                <button type="submit" class="btn btn-sm btn-clean btn-icon btn-icon-md"
+                                                        onclick="return confirm('Are you sure you want to delete the Designation ?')">
+                                                    <i class="la la-trash" style="color: #fd397a;"></i>
+                                                </button>
+                                            </form>
+                                        @else
+                                            <a href="{{route('designation.edit', ['did' => $designation->id])}}"
+                                               title="Edit"
+                                               class="btn btn-sm btn-clean btn-icon btn-icon-md disabled">
+                                                <i class="la la-edit"></i>
+                                            </a>
+                                            <a href="#" title="Delete"
+                                               class="btn btn-sm btn-clean btn-icon btn-icon-md disabled">
                                                 <i class="la la-trash" style="color: #fd397a;"></i>
-                                            </button>
-                                        </form>
+                                            </a>
+                                        @endif
                                     </td>
                                 </tr>
                             @endforeach
@@ -158,4 +186,5 @@
     <!--begin::Page Scripts(used by this page) -->
 
     <!--end::Page Scripts -->
+
 @endsection

@@ -169,6 +169,11 @@ Route::get('/product/stock/out', 'ProductstockoutController@out')->name('product
 Route::post('/product/stock/out/{psid}', 'ProductstockoutController@outStore')->name('product.stock.out.store');
 Route::get('/product/stock/out/history', 'ProductstockoutController@history')->name('product.stock.out.history');
 
+Route::get('/Designation/setup', 'DesignationController@index')->name('designation');
+Route::post('/Designation/store', 'DesignationController@store')->name('designation.store');
+Route::delete('/Designation/delete/{did}', 'DesignationController@destroy')->name('designation.delete');
+Route::get('/Designation/edit/{did}', 'DesignationController@edit')->name('designation.edit');
+Route::post('/Designation/update/{did}', 'DesignationController@update')->name('designation.update');
 
 
 

@@ -19,11 +19,11 @@
     <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
 
         {{--        @if(session('Success'))--}}
-        {{--            <div class="alert alert-success text-center">--}}
+        {{--            <div class="alert alert-success text-center" id="toaster">--}}
         {{--                {{session('Success')}}--}}
         {{--            </div>--}}
         {{--        @elseif(session('Cannotdelete'))--}}
-        {{--            <div class="alert alert-warning text-center">--}}
+        {{--            <div class="alert alert-warning text-center" id="toaster">--}}
         {{--                {{session('Cannotdelete')}}--}}
         {{--            </div>--}}
         {{--    @endif--}}
@@ -902,7 +902,7 @@
                 </div>
             </div>
             @endpermission
-            @permission('stock_in_raw_material')
+            @permission('hr_designation')
             <div class="col-lg-3">
                 <div class="kt-portlet kt-iconbox kt-iconbox--danger kt-iconbox--animate-slower">
                     <div class="kt-portlet__body">
@@ -922,10 +922,10 @@
                             </div>
                             <div class="kt-iconbox__desc">
                                 <h3 class="kt-iconbox__title">
-                                    <a class="kt-link" href="#">[[  ]]</a>
+                                    <a class="kt-link" href="{{route('designation')}}">Designation</a>
                                 </h3>
                                 <div class="kt-iconbox__content">
-                                    [[  ]]
+                                    HR Designation
                                 </div>
                             </div>
                         </div>
