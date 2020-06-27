@@ -76,9 +76,16 @@ class DesignationController extends Controller
     public function destroy($did)
     {
         if (Auth::user()->can('hr_designation')) {
-            Designation::find($did)->delete();
-            Session::flash('Success', "The Designation has been deleted successfully.");
-            return redirect()->back();
+            $d = Designation::find($did);
+            $es = $d->employees()->get();
+            if (count($es) > 0){
+                Session::flash('unsuccess', "The Designation has assigned employee and can not be deleted.");
+                return redirect()->back();
+            } else {
+                $d->delete();
+                Session::flash('Success', "The Designation has has been deleted successfully.");
+                return redirect()->back();
+            }
         } else {
             abort(403);
         }

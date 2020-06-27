@@ -175,6 +175,15 @@ Route::delete('/Designation/delete/{did}', 'DesignationController@destroy')->nam
 Route::get('/Designation/edit/{did}', 'DesignationController@edit')->name('designation.edit');
 Route::post('/Designation/update/{did}', 'DesignationController@update')->name('designation.update');
 
+Route::get('/Employee/list', 'EmployeeController@index')->name('employee.list');
+Route::get('/Employee/create', 'EmployeeController@create')->name('employee.create');
+Route::post('/Employee/store', 'EmployeeController@store')->name('employee.store');
+Route::get('/Employee/edit/{eid}', 'EmployeeController@edit')->name('employee.edit');
+Route::post('/Employee/update/{eid}', 'EmployeeController@update')->name('employee.update');
+Route::delete('/Employee/delete/{eid}', 'EmployeeController@destroy')->name('employee.delete');
+
+
+
 
 
 
