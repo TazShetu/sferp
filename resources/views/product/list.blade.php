@@ -46,16 +46,29 @@
                                     {{--                                    <form action="{{route('spareParts.search')}}" class="form-inline" method="get">--}}
                                     <form action="" class="form-inline" method="get">
                                         @csrf
-                                        <div class="form-group mx-sm-3 mb-2">
+                                        <div class="form-group mx-sm-4 mb-2">
+                                            <input type="text" name="identity" class="form-control"
+                                                   placeholder="Identity"
+                                                   value="{{$query ? ($query['identity'] ? $query['identity'] : '') : ''}}">
+                                        </div>
+                                        <div class="form-group mx-sm-4 mb-2">
+                                            <select class="form-control" name="ptid">
+                                                @if((count($query) > 0) && array_key_exists("ptid", $query))
+                                                    <option selected hidden value="{{$query['ptid']}}">{{$query['ptname']}}</option>
+                                                @else
+                                                    <option selected disabled hidden value="">Type / Category</option>
+                                                @endif
+                                                @foreach($producttypes as $p)
+                                                    <option value="{{$p->id}}">{{$p->name}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                        <div class="form-group mx-sm-4 mb-2">
                                             <input type="text" name="name" class="form-control"
                                                    placeholder="Name Of The Product"
                                                    value="{{$query ? ($query['name'] ? $query['name'] : '') : ''}}">
                                         </div>
-                                        <div class="form-group mx-sm-3 mb-2">
-                                            <input type="text" name="type" class="form-control"
-                                                   placeholder="Type / Category"
-                                                   value="{{$query ? ($query['type'] ? $query['type'] : '') : ''}}">
-                                        </div>
+
                                         <button type="submit" class="btn btn-primary mb-2">Confirm Search</button>
                                     </form>
                                 </div>
@@ -84,8 +97,9 @@
                     <thead>
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Name Of The Product</th>
+                        <th scope="col">Identity</th>
                         <th scope="col">Type / Category</th>
+                        <th scope="col">Name Of The Product</th>
                         <th scope="col">Minimum Storage Amount</th>
                         <th scope="col">Action</th>
                     </tr>
@@ -94,9 +108,9 @@
                     @foreach($products as $i => $m)
                         <tr>
                             <th scope="row">{{$products->firstItem() + $i}}</th>
-                            <td><a href="{{route('product.edit', ['pid' => $m->id])}}">{{$m->name}}</a>
-                            </td>
+                            <td>{{$m->identification}}</td>
                             <td>{{$m->type}}</td>
+                            <td>{{$m->name}}</td>
                             <td>{{$m->minimum_storage}} {{$m->unit}}</td>
                             <td>
                                 <a href="{{route('product.edit', ['pid' => $m->id])}}" title="Edit"
