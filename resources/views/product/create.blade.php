@@ -35,7 +35,7 @@
             <div class="alert alert-warning text-center" id="toaster">
                 {{session('unsuccess')}}
             </div>
-            @elseif(count($errors) > 0)
+        @elseif(count($errors) > 0)
             <div class="alert alert-warning text-center" id="toaster">
                 Data could not be saved :(
             </div>
@@ -61,7 +61,8 @@
                                                         type="text" name="identification" required
                                                         value="{{old('identification')}}">
                                                     @if($errors->has('identification'))
-                                                        <span class="invalid-feedback">{{$errors->first('identification')}}</span>
+                                                        <span
+                                                            class="invalid-feedback">{{$errors->first('identification')}}</span>
                                                     @endif
                                                 </div>
                                             </div>
@@ -71,7 +72,7 @@
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">
                                                     <select name="type" required id="type"
-                                                        class="form-control {{($errors->has('type')) ? 'is-invalid' : ''}}">
+                                                            class="form-control {{($errors->has('type')) ? 'is-invalid' : ''}}">
                                                         <option selected disabled hidden value="">Choose...</option>
                                                         @foreach($pts as $d)
                                                             <option value="{{$d->id}}">{{$d->name}}</option>
@@ -83,6 +84,7 @@
                                                     @endif
                                                 </div>
                                             </div>
+
                                             <div class="form-group row hideFirst" id="nameType">
                                                 <label class="col-xl-3 col-lg-3 col-form-label">
                                                     Name*
@@ -105,19 +107,44 @@
                                                         class="Name form-control {{($errors->has('name')) ? 'is-invalid' : ''}}"
                                                         name="name" id="NameSelect">
                                                         <option selected disabled hidden value="">Choose...</option>
-                                                        <option class="hideFirst tid1" value="Nylon Multifilament">Nylon Multifilament</option>
-                                                        <option class="hideFirst tid1" value="Nylon Monomulti">Nylon Monomulti</option>
-                                                        <option class="hideFirst tid2" value="Danline Rope">Danline Rope</option>
-                                                        <option class="hideFirst tid2" value="hanks D">hanks D</option>
-                                                        <option class="hideFirst tid3" value="Rong Pata">Rong Pata</option>
-                                                        <option class="hideFirst tid4" value="White Knotless">White Knotless</option>
-                                                        <option class="hideFirst tid4" value="Green HDPE Knotless">Green HDPE Knotless</option>
-                                                        <option class="hideFirst tid4" value="Black HDPE Knotless">Black HDPE Knotless</option>
-                                                        <option class="hideFirst tid5" value="Nylon Multifilament Fishingnet">Nylon Multifilament Fishingnet</option>
-                                                        <option class="hideFirst tid5" value="Nylon Mono Multi Fishingnet">Nylon Mono Multi Fishingnet</option>
-                                                        <option class="hideFirst tid5" value="HT Fishingnet">HT Fishingnet</option>
-                                                        <option class="hideFirst tid5" value="HDPE Fishingnet">HDPE Fishingnet</option>
-                                                        <option class="hideFirst tid5" value="HDPE Cage Net">HDPE Cage Net</option>
+                                                        <option class="hideFirst tid1" value="Nylon Multifilament">Nylon
+                                                            Multifilament
+                                                        </option>
+                                                        <option class="hideFirst tid1" value="Nylon Monomulti">Nylon
+                                                            Monomulti
+                                                        </option>
+                                                        <option class="hideFirst tid2" value="Danline Rope">Danline
+                                                            Rope
+                                                        </option>
+                                                        <option class="hideFirst tid2" value="Hanks D">Hanks D</option>
+                                                        <option class="hideFirst tid3" value="Rong Pata">Rong Pata
+                                                        </option>
+                                                        <option class="hideFirst tid4" value="White Knotless">White
+                                                            Knotless
+                                                        </option>
+                                                        <option class="hideFirst tid4" value="Green HDPE Knotless">Green
+                                                            HDPE Knotless
+                                                        </option>
+                                                        <option class="hideFirst tid4" value="Black HDPE Knotless">Black
+                                                            HDPE Knotless
+                                                        </option>
+                                                        <option class="hideFirst tid5"
+                                                                value="Nylon Multifilament Fishingnet">Nylon
+                                                            Multifilament Fishingnet
+                                                        </option>
+                                                        <option class="hideFirst tid5"
+                                                                value="Nylon Mono Multi Fishingnet">Nylon Mono Multi
+                                                            Fishingnet
+                                                        </option>
+                                                        <option class="hideFirst tid5" value="HT Fishingnet">HT
+                                                            Fishingnet
+                                                        </option>
+                                                        <option class="hideFirst tid5" value="HDPE Fishingnet">HDPE
+                                                            Fishingnet
+                                                        </option>
+                                                        <option class="hideFirst tid5" value="HDPE Cage Net">HDPE Cage
+                                                            Net
+                                                        </option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -130,8 +157,8 @@
                                                         class="form-control {{($errors->has('size')) ? 'is-invalid' : ''}}"
                                                         name="size">
                                                         <option selected disabled hidden value="">Choose...</option>
-                                                            <option value="Small">Small</option>
-                                                            <option value="Big">Big</option>
+                                                        <option value="Small">Small</option>
+                                                        <option value="Big">Big</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -266,6 +293,10 @@
                                                     </select>
                                                 </div>
                                             </div>
+
+
+
+
                                             <div class="form-group row hideFirst hideSecond tid7">
                                                 <label class="col-xl-3 col-lg-3 col-form-label">
                                                     Grade No
@@ -366,12 +397,12 @@
                                                     @endif
                                                 </div>
                                             </div>
-{{--                                            <div class="form-group row">--}}
-{{--                                                <label class="col-xl-3 col-lg-3 col-form-label">Description</label>--}}
-{{--                                                <div class="col-lg-9 col-xl-6">--}}
-{{--                                                    <textarea id="summernote" name="description"></textarea>--}}
-{{--                                                </div>--}}
-{{--                                            </div>--}}
+                                            {{--                                            <div class="form-group row">--}}
+                                            {{--                                                <label class="col-xl-3 col-lg-3 col-form-label">Description</label>--}}
+                                            {{--                                                <div class="col-lg-9 col-xl-6">--}}
+                                            {{--                                                    <textarea id="summernote" name="description"></textarea>--}}
+                                            {{--                                                </div>--}}
+                                            {{--                                            </div>--}}
                                             <div
                                                 class="kt-separator kt-separator--space-lg kt-separator--fit kt-separator--border-solid"></div>
                                             <div class="kt-form__actions">
@@ -404,7 +435,7 @@
     <!--begin::Page Vendors(used by this page) -->
     <!--end::Page Vendors -->
 
-{{--    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>--}}
+    {{--    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>--}}
 
     <!--end::Page Scripts -->
     <script>
@@ -426,28 +457,28 @@
                     // name select show
                     $("#nameSelect").show();
                     // which option
-                    if (type == 1){
+                    if (type == 1) {
                         $(".tid1").show();
-                    } else if (type == 2){
+                    } else if (type == 2) {
                         $(".tid2").show();
-                    } else if (type == 3){
+                    } else if (type == 3) {
                         $(".tid3").show();
-                    } else if (type == 4){
+                    } else if (type == 4) {
                         $(".tid4").show();
-                    } else if (type == 5){
+                    } else if (type == 5) {
                         $(".tid5").show();
                     }
                 } else {
                     // name field show
                     $("#nameType").show();
-                    if (type == 6){
+                    if (type == 6) {
                         // $(".tid6").show();
-                    } else if (type == 7){
+                    } else if (type == 7) {
                         $(".tid7").show();
-                    } else if (type == 8){
+                    } else if (type == 8) {
                         // same as tid7
                         $(".tid7").show();
-                    } else if (type == 9){
+                    } else if (type == 9) {
                         // same as tid7
                         $(".tid7").show();
                     }
@@ -456,42 +487,39 @@
             $("#NameSelect").on('change', function () {
                 $(".hideSecond").hide();
                 var name = $(this).val();
-                if (name == 'Nylon Multifilament'){
+                if (name == 'Nylon Multifilament') {
                     $(".ns1").show();
-                } else if (name == 'Nylon Monomulti'){
+                } else if (name == 'Nylon Monomulti') {
                     $(".ns2").show();
-                } else if (name == 'Danline Rope'){
+                } else if (name == 'Danline Rope') {
                     $(".ns3").show();
-                } else if (name == 'hanks D'){
+                } else if (name == 'Hanks D') {
                     $(".ns4").show();
-                } else if (name == 'Rong Pata'){
+                } else if (name == 'Rong Pata') {
                     // same as ns3
                     $(".ns3").show();
-                } else if (name == 'White Knotless'){
+                } else if (name == 'White Knotless') {
                     $(".ns6").show();
-                } else if (name == 'Green HDPE Knotless'){
+                } else if (name == 'Green HDPE Knotless') {
                     $(".ns7").show();
-                } else if (name == 'Black HDPE Knotless'){
+                } else if (name == 'Black HDPE Knotless') {
                     // same as ns7
                     $(".ns7").show();
-                } else if (name == 'Nylon Multifilament Fishingnet'){
+                } else if (name == 'Nylon Multifilament Fishingnet') {
                     $(".ns9").show();
-                } else if (name == 'Nylon Mono Multi Fishingnet'){
+                } else if (name == 'Nylon Mono Multi Fishingnet') {
                     // same as ns9
                     $(".ns9").show();
-                } else if (name == 'HT Fishingnet'){
+                } else if (name == 'HT Fishingnet') {
                     // same as ns9
                     $(".ns9").show();
-                } else if (name == 'HDPE Fishingnet'){
+                } else if (name == 'HDPE Fishingnet') {
                     $(".ns12").show();
-                } else if (name == 'HDPE Cage Net'){
+                } else if (name == 'HDPE Cage Net') {
                     $(".ns13").show();
                 }
 
             });
-
-
-
 
 
         });

@@ -145,12 +145,10 @@ class ProductController extends Controller
     {
         if (Auth::user()->can('product')) {
             $pedit = Product::find($pid);
+            $pedit['type'] = Producttype::find($pedit->producttype_id)->name;
             $rawMaterial = $pedit->rawMaterials()->get();
             $allRawMaterials = Rawmaterial::all();
-            $datalist['name'] = DB::select(DB::raw('SELECT name FROM products GROUP BY name'));
-            $datalist['type'] = DB::select(DB::raw('SELECT type FROM products GROUP BY type'));
-            $datalist['unit'] = DB::select(DB::raw('SELECT unit FROM products GROUP BY unit'));
-            return view('product.edit', compact('datalist', 'pedit', 'rawMaterial', 'allRawMaterials'));
+            return view('product.edit', compact('pedit', 'rawMaterial', 'allRawMaterials'));
         } else {
             abort(403);
         }
@@ -161,36 +159,45 @@ class ProductController extends Controller
     {
         if (Auth::user()->can('product')) {
             $request->validate([
-                'name' => 'required',
+                'identification' => 'required',
                 'type' => 'required',
+                'name' => 'required',
                 'minimumStorage' => 'required|min:0',
                 'unit' => 'required',
             ]);
             $p = Product::find($pid);
+            $p->identification = $request->identification;
+            $p->producttype_id = $request->type;
             $p->name = $request->name;
-            $p->type = $request->type;
+            $p->minimum_storage = $request->minimumStorage;
+            $p->unit = $request->unit;
+            $p->size = $request->size;
             if ($request->filled('sizeDenier')) {
                 $request->validate([
                     'sizeDenier' => 'min:0',
                 ]);
                 $p->size_denier = $request->sizeDenier;
-                $p->size_mm = null;
             }
             if ($request->filled('sizeMm')) {
                 $request->validate([
                     'sizeMm' => 'min:0',
                 ]);
                 $p->size_mm = $request->sizeMm;
-                $p->size_denier = null;
             }
             if ($request->filled('plys')) {
                 $p->plys = $request->plys;
             }
-            if ($request->filled('meshSize')) {
+            if ($request->filled('meshSizeMm')) {
                 $request->validate([
-                    'meshSize' => 'min:0',
+                    'meshSizeMm' => 'min:0',
                 ]);
-                $p->mesh_size = $request->meshSize;
+                $p->mesh_size_mm = $request->meshSizeMm;
+            }
+            if ($request->filled('meshSizeInch')) {
+                $request->validate([
+                    'meshSizeInch' => 'min:0',
+                ]);
+                $p->mesh_size_inch = $request->meshSizeInch;
             }
             if ($request->filled('depth')) {
                 $request->validate([
@@ -204,18 +211,24 @@ class ProductController extends Controller
                 ]);
                 $p->twin_size = $request->twinSize;
             }
-            if ($request->filled('twistType')) {
-                $p->twist_type = $request->twistType;
+            if ($request->filled('length')) {
+                $request->validate([
+                    'length' => 'min:0',
+                ]);
+                $p->length = $request->length;
             }
-            if ($request->filled('twistCondition')) {
-                $p->twist_condition = $request->twistCondition;
-            }
+            $p->twin_size_unit = $request->twinSizeunit;
             if ($request->filled('strand')) {
                 $p->strand = $request->strand;
             }
-            $p->minimum_storage = $request->minimumStorage;
-            $p->unit = $request->unit;
-            $p->description = $request->description;
+            $p->coil_type = $request->coilType;
+            $p->grade_no = $request->gradeNo;
+            $p->mfi = $request->mfi;
+            $p->mfr = $request->mfr;
+            $p->melting_point = $request->meltingPoint;
+            $p->density = $request->density;
+            $p->upload_tds = $request->uploadTds;
+            $p->upload_msds = $request->uploadMsds;
             $p->update();
             Session::flash('Success', "The Product has been updated successfully.");
             return redirect()->back();

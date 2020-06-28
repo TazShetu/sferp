@@ -78,11 +78,6 @@ Route::delete('/raw-material/delete/{rmid}', 'RawmaterialController@destroy')->n
 Route::get('/raw-material/edit/{rmid}', 'RawmaterialController@edit')->name('rawMaterial.edit');
 Route::post('/raw-material/update/{rmid}', 'RawmaterialController@update')->name('rawMaterial.update');
 
-
-
-
-
-
 Route::get('/product', 'ProductController@list')->name('product.list');
 Route::get('/product/create', 'ProductController@create')->name('product.create');
 Route::post('/product/store', 'ProductController@store')->name('product.store');
@@ -90,12 +85,6 @@ Route::delete('/product/delete/{pid}', 'ProductController@destroy')->name('produ
 Route::get('/product/edit/{pid}', 'ProductController@edit')->name('product.edit');
 Route::post('/product/update/{pid}', 'ProductController@update')->name('product.update');
 Route::post('/product/update/rawMaterial/{pid}', 'ProductController@updateProductRawmaterial')->name('product.update.rawmaterial');
-
-
-
-
-
-
 
 Route::get('/warehouse', 'WarehouseController@index')->name('warehouse.index');
 Route::post('/warehouse/store', 'WarehouseController@store')->name('warehouse.store');
