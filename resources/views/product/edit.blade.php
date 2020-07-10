@@ -195,20 +195,20 @@
                                                         <div class="col-lg-9 col-xl-6">
                                                             <input
                                                                 class="form-control {{($errors->has('plys')) ? 'is-invalid' : ''}}"
-                                                                type="text" name="plys" value="{{old('plys')}}">
+                                                                type="number" name="plys" value="{{$pedit->plys}}">
                                                         </div>
                                                     </div>
                                                 @endif
-                                                @if(($pedit->name == 'White Knotless'))
+                                                @if(($pedit->name == 'White Knotless') || ($pedit->name == 'HDPE Trap Net') )
                                                     <div class="form-group row hideFirst hideSecond ns6">
                                                         <label class="col-xl-3 col-lg-3 col-form-label">
-                                                            Mesh Size mm
+                                                            Mesh Size (mm)
                                                         </label>
                                                         <div class="col-lg-9 col-xl-6">
                                                             <input
                                                                 class="form-control {{($errors->has('meshSizeMm')) ? 'is-invalid' : ''}}"
-                                                                type="number" name="meshSize"
-                                                                value="{{old('meshSizeMm')}}"
+                                                                type="number" name="meshSizeMm"
+                                                                value="{{$pedit->mesh_size_mm}}"
                                                                 step="0.01" min="0">
                                                         </div>
                                                     </div>
@@ -216,13 +216,13 @@
                                                 @if(($pedit->name == 'Nylon Multifilament Fishingnet') || ($pedit->name == 'Nylon Mono Multi Fishingnet') || ($pedit->name == 'HT Fishingnet'))
                                                     <div class="form-group row hideFirst hideSecond ns9">
                                                         <label class="col-xl-3 col-lg-3 col-form-label">
-                                                            Mesh Size inch
+                                                            Mesh Size (inch)
                                                         </label>
                                                         <div class="col-lg-9 col-xl-6">
                                                             <input
                                                                 class="form-control {{($errors->has('meshSizeInch')) ? 'is-invalid' : ''}}"
-                                                                type="number" name="meshSize"
-                                                                value="{{old('meshSizeInch')}}"
+                                                                type="number" name="meshSizeInch"
+                                                                value="{{$pedit->mesh_size_inch}}"
                                                                 step="0.01" min="0">
                                                         </div>
                                                     </div>
@@ -235,7 +235,7 @@
                                                         <div class="col-lg-9 col-xl-6">
                                                             <input
                                                                 class="form-control {{($errors->has('depth')) ? 'is-invalid' : ''}}"
-                                                                type="number" name="depth" value="{{old('depth')}}"
+                                                                type="number" name="depth" value="{{$pedit->depth}}"
                                                                 step="0.01" min="0">
                                                         </div>
                                                     </div>
@@ -249,7 +249,7 @@
                                                             <input
                                                                 class="form-control {{($errors->has('twinSize')) ? 'is-invalid' : ''}}"
                                                                 type="number" name="twinSize"
-                                                                value="{{old('twinSize')}}"
+                                                                value="{{$pedit->twin_size}}"
                                                                 step="0.01" min="0">
                                                         </div>
                                                     </div>
@@ -287,7 +287,7 @@
                                                         <div class="col-lg-9 col-xl-6">
                                                             <input
                                                                 class="form-control {{($errors->has('length')) ? 'is-invalid' : ''}}"
-                                                                type="number" name="length" value="{{old('length')}}"
+                                                                type="number" name="length" value="{{$pedit->length}}"
                                                                 step="0.01" min="0">
                                                         </div>
                                                     </div>
@@ -338,6 +338,61 @@
                                                         </div>
                                                     </div>
                                                 @endif
+                                                @if(($pedit->name == 'HDPE Trap Net'))
+                                                    <div class="form-group row hideFirst hideSecond ns14">
+                                                        <label class="col-xl-3 col-lg-3 col-form-label">
+                                                            Weight (kg)
+                                                        </label>
+                                                        <div class="col-lg-9 col-xl-6">
+                                                            <input
+                                                                class="form-control {{($errors->has('weight')) ? 'is-invalid' : ''}}"
+                                                                type="number" name="weight" value="{{$pedit->weight}}"
+                                                                step="0.01" min="0">
+                                                        </div>
+                                                    </div>
+                                                @endif
+                                                @if(($pedit->name == 'HDPE Trap Net'))
+                                                    <div class="form-group row hideFirst hideSecond ns14">
+                                                        <label class="col-xl-3 col-lg-3 col-form-label">
+                                                            Frame no.
+                                                        </label>
+                                                        <div class="col-lg-9 col-xl-6">
+                                                            <input
+                                                                class="form-control {{($errors->has('framneNo')) ? 'is-invalid' : ''}}"
+                                                                type="number" name="framneNo"
+                                                                value="{{$pedit->frame_no}}"
+                                                                min="0">
+                                                        </div>
+                                                    </div>
+                                                @endif
+                                                @if(($pedit->name == 'HDPE Trap Net'))
+                                                    <div class="form-group row hideFirst hideSecond ns14">
+                                                        <label class="col-xl-3 col-lg-3 col-form-label">
+                                                            Frame Size Width (cm)
+                                                        </label>
+                                                        <div class="col-lg-9 col-xl-6">
+                                                            <input
+                                                                class="form-control {{($errors->has('frameSizeWidth')) ? 'is-invalid' : ''}}"
+                                                                type="number" name="frameSizeWidth"
+                                                                value="{{$pedit->frame_size_width}}"
+                                                                step="0.01" min="0">
+                                                        </div>
+                                                    </div>
+                                                @endif
+                                                @if(($pedit->name == 'HDPE Trap Net'))
+                                                    <div class="form-group row hideFirst hideSecond ns14">
+                                                        <label class="col-xl-3 col-lg-3 col-form-label">
+                                                            Frame Size Height (cm)
+                                                        </label>
+                                                        <div class="col-lg-9 col-xl-6">
+                                                            <input
+                                                                class="form-control {{($errors->has('frameSizeHeight')) ? 'is-invalid' : ''}}"
+                                                                type="number" name="frameSizeHeight"
+                                                                value="{{$pedit->frame_size_height}}"
+                                                                step="0.01" min="0">
+                                                        </div>
+                                                    </div>
+                                                @endif
                                             @else
                                                 <div class="form-group row hideFirst" id="nameType">
                                                     <label class="col-xl-3 col-lg-3 col-form-label">
@@ -348,7 +403,8 @@
                                                             class="Name form-control {{($errors->has('name')) ? 'is-invalid' : ''}}"
                                                             type="text" name="name" value="{{$pedit->name}}">
                                                         @if($errors->has('name'))
-                                                            <span class="invalid-feedback">{{$errors->first('name')}}</span>
+                                                            <span
+                                                                class="invalid-feedback">{{$errors->first('name')}}</span>
                                                         @endif
                                                     </div>
                                                 </div>
@@ -358,8 +414,8 @@
                                                     </label>
                                                     <div class="col-lg-9 col-xl-6">
                                                         <input value="{{$pedit->grade_no}}"
-                                                            class="form-control {{($errors->has('gradeNo')) ? 'is-invalid' : ''}}"
-                                                            type="text" name="gradeNo">
+                                                               class="form-control {{($errors->has('gradeNo')) ? 'is-invalid' : ''}}"
+                                                               type="text" name="gradeNo">
                                                     </div>
                                                 </div>
                                                 <div class="form-group row hideFirst hideSecond tid7">
@@ -368,8 +424,8 @@
                                                     </label>
                                                     <div class="col-lg-9 col-xl-6">
                                                         <input value="{{$pedit->mfi}}"
-                                                            class="form-control {{($errors->has('mfi')) ? 'is-invalid' : ''}}"
-                                                            type="text" name="mfi">
+                                                               class="form-control {{($errors->has('mfi')) ? 'is-invalid' : ''}}"
+                                                               type="text" name="mfi">
                                                     </div>
                                                 </div>
                                                 <div class="form-group row hideFirst hideSecond tid7">
@@ -378,8 +434,8 @@
                                                     </label>
                                                     <div class="col-lg-9 col-xl-6">
                                                         <input value="{{$pedit->mfr}}"
-                                                            class="form-control {{($errors->has('mfr')) ? 'is-invalid' : ''}}"
-                                                            type="text" name="mfr">
+                                                               class="form-control {{($errors->has('mfr')) ? 'is-invalid' : ''}}"
+                                                               type="text" name="mfr">
                                                     </div>
                                                 </div>
                                                 <div class="form-group row hideFirst hideSecond tid7">
@@ -388,8 +444,8 @@
                                                     </label>
                                                     <div class="col-lg-9 col-xl-6">
                                                         <input value="{{$pedit->melting_point}}"
-                                                            class="form-control {{($errors->has('meltingPoint')) ? 'is-invalid' : ''}}"
-                                                            type="number" name="meltingPoint" step="0.01" min="0">
+                                                               class="form-control {{($errors->has('meltingPoint')) ? 'is-invalid' : ''}}"
+                                                               type="number" name="meltingPoint" step="0.01" min="0">
                                                     </div>
                                                 </div>
                                                 <div class="form-group row hideFirst hideSecond tid7">
@@ -398,8 +454,8 @@
                                                     </label>
                                                     <div class="col-lg-9 col-xl-6">
                                                         <input value="{{$pedit->density}}"
-                                                            class="form-control {{($errors->has('density')) ? 'is-invalid' : ''}}"
-                                                            type="number" name="density" step="0.01" min="0">
+                                                               class="form-control {{($errors->has('density')) ? 'is-invalid' : ''}}"
+                                                               type="number" name="density" step="0.01" min="0">
                                                     </div>
                                                 </div>
                                                 <div class="form-group row hideFirst hideSecond tid7">
@@ -408,8 +464,8 @@
                                                     </label>
                                                     <div class="col-lg-9 col-xl-6">
                                                         <input value="{{$pedit->upload_tds}}"
-                                                            class="form-control {{($errors->has('uploadTds')) ? 'is-invalid' : ''}}"
-                                                            type="number" name="uploadTds" step="0.01" min="0">
+                                                               class="form-control {{($errors->has('uploadTds')) ? 'is-invalid' : ''}}"
+                                                               type="number" name="uploadTds" step="0.01" min="0">
                                                     </div>
                                                 </div>
                                                 <div class="form-group row hideFirst hideSecond tid7">
@@ -418,8 +474,8 @@
                                                     </label>
                                                     <div class="col-lg-9 col-xl-6">
                                                         <input value="{{$pedit->upload_msds}}"
-                                                            class="form-control {{($errors->has('uploadMsds')) ? 'is-invalid' : ''}}"
-                                                            type="number" name="uploadMsds" step="0.01" min="0">
+                                                               class="form-control {{($errors->has('uploadMsds')) ? 'is-invalid' : ''}}"
+                                                               type="number" name="uploadMsds" step="0.01" min="0">
                                                     </div>
                                                 </div>
                                             @endif

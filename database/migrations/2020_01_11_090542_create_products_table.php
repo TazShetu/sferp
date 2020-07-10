@@ -31,6 +31,10 @@ class CreateProductsTable extends Migration
             $table->integer('strand')->nullable();
             // Hanks / Coil
             $table->string('coil_type')->nullable();
+            $table->float('weight')->nullable();
+            $table->integer('frame_no')->nullable();
+            $table->float('frame_size_width')->nullable();
+            $table->float('frame_size_height')->nullable();
             $table->float('length')->nullable();
             $table->string('grade_no')->nullable();
             $table->string('mfi')->nullable();

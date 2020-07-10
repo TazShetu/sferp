@@ -145,6 +145,9 @@
                                                         <option class="hideFirst tid5" value="HDPE Cage Net">HDPE Cage
                                                             Net
                                                         </option>
+                                                        <option class="hideFirst tid5" value="HDPE Trap Net">HDPE Trap
+                                                            Net
+                                                        </option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -191,28 +194,29 @@
                                                 <div class="col-lg-9 col-xl-6">
                                                     <input
                                                         class="form-control {{($errors->has('plys')) ? 'is-invalid' : ''}}"
-                                                        type="text" name="plys" value="{{old('plys')}}">
+                                                        type="number" name="plys" value="{{old('plys')}}">
                                                 </div>
                                             </div>
-                                            <div class="form-group row hideFirst hideSecond ns6">
+                                            <div class="form-group row hideFirst hideSecond ns6 ns14">
                                                 <label class="col-xl-3 col-lg-3 col-form-label">
-                                                    Mesh Size mm
+                                                    Mesh Size (mm)
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">
                                                     <input
                                                         class="form-control {{($errors->has('meshSizeMm')) ? 'is-invalid' : ''}}"
-                                                        type="number" name="meshSize" value="{{old('meshSizeMm')}}"
+                                                        type="number" name="meshSizeMm" value="{{old('meshSizeMm')}}"
                                                         step="0.01" min="0">
                                                 </div>
                                             </div>
                                             <div class="form-group row hideFirst hideSecond ns9">
                                                 <label class="col-xl-3 col-lg-3 col-form-label">
-                                                    Mesh Size inch
+                                                    Mesh Size (inch)
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">
                                                     <input
                                                         class="form-control {{($errors->has('meshSizeInch')) ? 'is-invalid' : ''}}"
-                                                        type="number" name="meshSize" value="{{old('meshSizeInch')}}"
+                                                        type="number" name="meshSizeInch"
+                                                        value="{{old('meshSizeInch')}}"
                                                         step="0.01" min="0">
                                                 </div>
                                             </div>
@@ -254,7 +258,7 @@
                                                     </select>
                                                 </div>
                                             </div>
-                                            <div class="form-group row hideFirst hideSecond ns13">
+                                            <div class="form-group row hideFirst hideSecond ns13 ns14">
                                                 <label class="col-xl-3 col-lg-3 col-form-label">
                                                     Length
                                                 </label>
@@ -293,10 +297,52 @@
                                                     </select>
                                                 </div>
                                             </div>
-
-
-
-
+                                            <div class="form-group row hideFirst hideSecond ns14">
+                                                <label class="col-xl-3 col-lg-3 col-form-label">
+                                                    Weight (kg)
+                                                </label>
+                                                <div class="col-lg-9 col-xl-6">
+                                                    <input
+                                                        class="form-control {{($errors->has('weight')) ? 'is-invalid' : ''}}"
+                                                        type="number" name="weight" value="{{old('weight')}}"
+                                                        step="0.01" min="0">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row hideFirst hideSecond ns14">
+                                                <label class="col-xl-3 col-lg-3 col-form-label">
+                                                    Frame no.
+                                                </label>
+                                                <div class="col-lg-9 col-xl-6">
+                                                    <input
+                                                        class="form-control {{($errors->has('framneNo')) ? 'is-invalid' : ''}}"
+                                                        type="number" name="framneNo" value="{{old('framneNo')}}"
+                                                        min="0">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row hideFirst hideSecond ns14">
+                                                <label class="col-xl-3 col-lg-3 col-form-label">
+                                                    Frame Size Width (cm)
+                                                </label>
+                                                <div class="col-lg-9 col-xl-6">
+                                                    <input
+                                                        class="form-control {{($errors->has('frameSizeWidth')) ? 'is-invalid' : ''}}"
+                                                        type="number" name="frameSizeWidth"
+                                                        value="{{old('frameSizeWidth')}}"
+                                                        step="0.01" min="0">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row hideFirst hideSecond ns14">
+                                                <label class="col-xl-3 col-lg-3 col-form-label">
+                                                    Frame Size Height (cm)
+                                                </label>
+                                                <div class="col-lg-9 col-xl-6">
+                                                    <input
+                                                        class="form-control {{($errors->has('frameSizeHeight')) ? 'is-invalid' : ''}}"
+                                                        type="number" name="frameSizeHeight"
+                                                        value="{{old('frameSizeHeight')}}"
+                                                        step="0.01" min="0">
+                                                </div>
+                                            </div>
                                             <div class="form-group row hideFirst hideSecond tid7">
                                                 <label class="col-xl-3 col-lg-3 col-form-label">
                                                     Grade No
@@ -487,6 +533,7 @@
             $("#NameSelect").on('change', function () {
                 $(".hideSecond").hide();
                 var name = $(this).val();
+                // console.log(name);
                 if (name == 'Nylon Multifilament') {
                     $(".ns1").show();
                 } else if (name == 'Nylon Monomulti') {
@@ -517,6 +564,8 @@
                     $(".ns12").show();
                 } else if (name == 'HDPE Cage Net') {
                     $(".ns13").show();
+                } else if (name == 'HDPE Trap Net') {
+                    $(".ns14").show();
                 }
 
             });

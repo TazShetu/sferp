@@ -120,6 +120,30 @@ class ProductController extends Controller
                 ]);
                 $p->length = $request->length;
             }
+            if ($request->filled('weight')) {
+                $request->validate([
+                    'weight' => 'min:0',
+                ]);
+                $p->weight = $request->weight;
+            }
+            if ($request->filled('framneNo')) {
+                $request->validate([
+                    'framneNo' => 'min:0',
+                ]);
+                $p->frame_no = $request->framneNo;
+            }
+            if ($request->filled('frameSizeWidth')) {
+                $request->validate([
+                    'frameSizeWidth' => 'min:0',
+                ]);
+                $p->frame_size_width = $request->frameSizeWidth;
+            }
+            if ($request->filled('frameSizeHeight')) {
+                $request->validate([
+                    'frameSizeHeight' => 'min:0',
+                ]);
+                $p->frame_size_height = $request->frameSizeHeight;
+            }
             $p->twin_size_unit = $request->twinSizeunit;
             if ($request->filled('strand')) {
                 $p->strand = $request->strand;
@@ -216,6 +240,30 @@ class ProductController extends Controller
                     'length' => 'min:0',
                 ]);
                 $p->length = $request->length;
+            }
+            if ($request->filled('weight')) {
+                $request->validate([
+                    'weight' => 'min:0',
+                ]);
+                $p->weight = $request->weight;
+            }
+            if ($request->filled('framneNo')) {
+                $request->validate([
+                    'framneNo' => 'min:0',
+                ]);
+                $p->frame_no = $request->framneNo;
+            }
+            if ($request->filled('frameSizeWidth')) {
+                $request->validate([
+                    'frameSizeWidth' => 'min:0',
+                ]);
+                $p->frame_size_width = $request->frameSizeWidth;
+            }
+            if ($request->filled('frameSizeHeight')) {
+                $request->validate([
+                    'frameSizeHeight' => 'min:0',
+                ]);
+                $p->frame_size_height = $request->frameSizeHeight;
             }
             $p->twin_size_unit = $request->twinSizeunit;
             if ($request->filled('strand')) {
