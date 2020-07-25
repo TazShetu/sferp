@@ -8,7 +8,7 @@
         <div class="kt-container  kt-container--fluid ">
             <div class="kt-subheader__main">
                 <h3 class="kt-subheader__title">
-                    Product Create
+                    Create Product
                 </h3>
                 <span class="kt-subheader__separator kt-subheader__separator--v"></span>
                 <div class="kt-subheader__breadcrumbs">
@@ -75,7 +75,7 @@
                                                             class="form-control {{($errors->has('type')) ? 'is-invalid' : ''}}">
                                                         <option selected disabled hidden value="">Choose...</option>
                                                         @foreach($pts as $d)
-                                                            <option value="{{$d->id}}">{{$d->name}}</option>
+                                                            <option value="{{$d->id}}">{{$d->display_name}}</option>
                                                         @endforeach
                                                     </select>
                                                     @if($errors->has('type'))
@@ -87,7 +87,7 @@
 
                                             <div class="form-group row hideFirst" id="nameType">
                                                 <label class="col-xl-3 col-lg-3 col-form-label">
-                                                    Name*
+                                                    Name of the Product*
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">
                                                     <input
@@ -100,54 +100,19 @@
                                             </div>
                                             <div class="form-group row hideFirst" id="nameSelect">
                                                 <label class="col-xl-3 col-lg-3 col-form-label">
-                                                    Name*
+                                                    Name of the Product*
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">
                                                     <select
                                                         class="Name form-control {{($errors->has('name')) ? 'is-invalid' : ''}}"
                                                         name="name" id="NameSelect">
                                                         <option selected disabled hidden value="">Choose...</option>
-                                                        <option class="hideFirst tid1" value="Nylon Multifilament">Nylon
-                                                            Multifilament
-                                                        </option>
-                                                        <option class="hideFirst tid1" value="Nylon Monomulti">Nylon
-                                                            Monomulti
-                                                        </option>
-                                                        <option class="hideFirst tid2" value="Danline Rope">Danline
-                                                            Rope
-                                                        </option>
-                                                        <option class="hideFirst tid2" value="Hanks D">Hanks D</option>
-                                                        <option class="hideFirst tid3" value="Rong Pata">Rong Pata
-                                                        </option>
-                                                        <option class="hideFirst tid4" value="White Knotless">White
-                                                            Knotless
-                                                        </option>
-                                                        <option class="hideFirst tid4" value="Green HDPE Knotless">Green
-                                                            HDPE Knotless
-                                                        </option>
-                                                        <option class="hideFirst tid4" value="Black HDPE Knotless">Black
-                                                            HDPE Knotless
-                                                        </option>
-                                                        <option class="hideFirst tid5"
-                                                                value="Nylon Multifilament Fishingnet">Nylon
-                                                            Multifilament Fishingnet
-                                                        </option>
-                                                        <option class="hideFirst tid5"
-                                                                value="Nylon Mono Multi Fishingnet">Nylon Mono Multi
-                                                            Fishingnet
-                                                        </option>
-                                                        <option class="hideFirst tid5" value="HT Fishingnet">HT
-                                                            Fishingnet
-                                                        </option>
-                                                        <option class="hideFirst tid5" value="HDPE Fishingnet">HDPE
-                                                            Fishingnet
-                                                        </option>
-                                                        <option class="hideFirst tid5" value="HDPE Cage Net">HDPE Cage
-                                                            Net
-                                                        </option>
-                                                        <option class="hideFirst tid5" value="HDPE Trap Net">HDPE Trap
-                                                            Net
-                                                        </option>
+                                                        @foreach($pns as $pn)
+                                                            <option class="hideFirst {{$pn->type_class}}"
+                                                                    value="{{$pn->name}}">
+                                                                {{$pn->display_name}}
+                                                            </option>
+                                                        @endforeach
                                                     </select>
                                                 </div>
                                             </div>
@@ -169,66 +134,81 @@
                                                 <label class="col-xl-3 col-lg-3 col-form-label">
                                                     Size (denier)
                                                 </label>
-                                                <div class="col-lg-9 col-xl-6">
+                                                <div class="col-lg-9 col-xl-6 input-group">
                                                     <input
                                                         class="form-control {{($errors->has('sizeDenier')) ? 'is-invalid' : ''}}"
                                                         type="number" name="sizeDenier" id="size_denier"
                                                         value="{{old('sizeDenier')}}" step="0.01" min="0">
+                                                    <div class="input-group-append">
+                                                        <span class="input-group-text">denier</span>
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="form-group row hideFirst hideSecond ns2 ns3 ns4">
                                                 <label class="col-xl-3 col-lg-3 col-form-label">
                                                     Size (mm)
                                                 </label>
-                                                <div class="col-lg-9 col-xl-6">
+                                                <div class="col-lg-9 col-xl-6 input-group">
                                                     <input
                                                         class="form-control {{($errors->has('sizeMm')) ? 'is-invalid' : ''}}"
                                                         type="number" name="sizeMm" value="{{old('sizeMm')}}"
                                                         id="size_mm" step="0.01" min="0">
+                                                    <div class="input-group-append">
+                                                        <span class="input-group-text">mm</span>
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="form-group row hideFirst hideSecond ns1 ns2">
                                                 <label class="col-xl-3 col-lg-3 col-form-label">
-                                                    PLYS
+                                                    Number of PLYS
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">
                                                     <input
                                                         class="form-control {{($errors->has('plys')) ? 'is-invalid' : ''}}"
-                                                        type="number" name="plys" value="{{old('plys')}}">
+                                                        type="number" name="plys" value="{{old('plys')}}" min="0">
                                                 </div>
                                             </div>
                                             <div class="form-group row hideFirst hideSecond ns6 ns14">
                                                 <label class="col-xl-3 col-lg-3 col-form-label">
-                                                    Mesh Size (mm)
+                                                    Mesh Size
                                                 </label>
-                                                <div class="col-lg-9 col-xl-6">
+                                                <div class="col-lg-9 col-xl-6 input-group">
                                                     <input
                                                         class="form-control {{($errors->has('meshSizeMm')) ? 'is-invalid' : ''}}"
                                                         type="number" name="meshSizeMm" value="{{old('meshSizeMm')}}"
                                                         step="0.01" min="0">
+                                                    <div class="input-group-append">
+                                                        <span class="input-group-text">mm</span>
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="form-group row hideFirst hideSecond ns9">
                                                 <label class="col-xl-3 col-lg-3 col-form-label">
-                                                    Mesh Size (inch)
+                                                    Mesh Size
                                                 </label>
-                                                <div class="col-lg-9 col-xl-6">
+                                                <div class="col-lg-9 col-xl-6 input-group">
                                                     <input
                                                         class="form-control {{($errors->has('meshSizeInch')) ? 'is-invalid' : ''}}"
                                                         type="number" name="meshSizeInch"
                                                         value="{{old('meshSizeInch')}}"
                                                         step="0.01" min="0">
+                                                    <div class="input-group-append">
+                                                        <span class="input-group-text">inch</span>
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="form-group row hideFirst hideSecond ns6 ns7 ns9 ns12">
                                                 <label class="col-xl-3 col-lg-3 col-form-label">
                                                     Depth
                                                 </label>
-                                                <div class="col-lg-9 col-xl-6">
+                                                <div class="col-lg-9 col-xl-6 input-group">
                                                     <input
                                                         class="form-control {{($errors->has('depth')) ? 'is-invalid' : ''}}"
                                                         type="number" name="depth" value="{{old('depth')}}"
                                                         step="0.01" min="0">
+                                                    <div class="input-group-append">
+                                                        <span class="input-group-text">হাত</span>
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="form-group row hideFirst hideSecond ns9 ns12 ns13">
@@ -387,10 +367,13 @@
                                                 <label class="col-xl-3 col-lg-3 col-form-label">
                                                     Density
                                                 </label>
-                                                <div class="col-lg-9 col-xl-6">
+                                                <div class="col-lg-9 col-xl-6 input-group">
                                                     <input
                                                         class="form-control {{($errors->has('density')) ? 'is-invalid' : ''}}"
                                                         type="number" name="density" step="0.01" min="0">
+                                                    <div class="input-group-append">
+                                                        <span class="input-group-text">g/cm<sup>3</sup></span>
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="form-group row hideFirst hideSecond tid7">

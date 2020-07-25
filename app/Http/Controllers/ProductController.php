@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Customerproductdiscount;
 use App\Product;
+use App\Productname;
 use App\Producttype;
 use App\Rawmaterial;
 use Illuminate\Http\Request;
@@ -51,7 +52,8 @@ class ProductController extends Controller
     {
         if (Auth::user()->can('product')) {
             $pts = Producttype::all();
-            return view('product.create', compact('pts'));
+            $pns = Productname::all();
+            return view('product.create', compact('pts', 'pns'));
         } else {
             abort(403);
         }
@@ -169,10 +171,14 @@ class ProductController extends Controller
     {
         if (Auth::user()->can('product')) {
             $pedit = Product::find($pid);
-            $pedit['type'] = Producttype::find($pedit->producttype_id)->name;
+            $pedit['type'] = Producttype::find($pedit->producttype_id)->display_name;
             $rawMaterial = $pedit->rawMaterials()->get();
             $allRawMaterials = Rawmaterial::all();
-            return view('product.edit', compact('pedit', 'rawMaterial', 'allRawMaterials'));
+            $pdn = null;
+            if (($pedit->producttype_id * 1) < 6){
+                $pdn = Productname::where('name', $pedit->name)->first()->display_name;
+            }
+            return view('product.edit', compact('pedit', 'rawMaterial', 'allRawMaterials', 'pdn'));
         } else {
             abort(403);
         }
