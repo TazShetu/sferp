@@ -20,14 +20,35 @@ class MachineController extends Controller
     }
 
 
-    public function list()
+    public function list(Request $request)
     {
         if (Auth::user()->can('machine')) {
-            $machines = Machine::paginate(10);
+            if ($request->factoryId){
+                $machines = Machine::where('manufacturer', 'LIKE', "%{$request->manufacturer}%")
+                    ->Where('category', 'LIKE', "%{$request->category}%")
+                    ->Where('factory_id', 'LIKE', "$request->factoryId")
+                    ->Where('manufacture_country', 'LIKE', "%{$request->country}%")
+                    ->paginate(10);
+            }else {
+                $machines = Machine::where('manufacturer', 'LIKE', "%{$request->manufacturer}%")
+                    ->Where('category', 'LIKE', "%{$request->category}%")
+                    ->Where('manufacture_country', 'LIKE', "%{$request->country}%")
+                    ->paginate(10);
+            }
             foreach ($machines as $m) {
                 $m['factory'] = Factory::find($m->factory_id)->name;
             }
-            return view('machine.list', compact('machines'));
+            $factories = Factory::all();
+            if ($request->factoryId){
+                $machines->appends(['manufacturer' => "$request->manufacturer", 'category' => "$request->category", 'factoryId' => "$request->factoryId", 'country' => "$request->country"]);
+            } else {
+                $machines->appends(['manufacturer' => "$request->manufacturer", 'category' => "$request->category", 'country' => "$request->country"]);
+            }
+            $query = $request->all();
+            if ((count($query) > 0) && array_key_exists("factoryId", $query)){
+                $query['factoryName'] = Factory::find($query['factoryId'])->name;
+            }
+            return view('machine.list', compact('machines', 'factories', 'query'));
         } else {
             abort(403);
         }

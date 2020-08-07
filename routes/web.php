@@ -169,6 +169,20 @@ Route::get('/product/stock/out', 'ProductstockoutController@out')->name('product
 Route::post('/product/stock/out/{psid}', 'ProductstockoutController@outStore')->name('product.stock.out.store');
 Route::get('/product/stock/out/history', 'ProductstockoutController@history')->name('product.stock.out.history');
 
+Route::get('/Designation/setup', 'DesignationController@index')->name('designation');
+Route::post('/Designation/store', 'DesignationController@store')->name('designation.store');
+Route::delete('/Designation/delete/{did}', 'DesignationController@destroy')->name('designation.delete');
+Route::get('/Designation/edit/{did}', 'DesignationController@edit')->name('designation.edit');
+Route::post('/Designation/update/{did}', 'DesignationController@update')->name('designation.update');
+
+Route::get('/Employee/list', 'EmployeeController@index')->name('employee.list');
+Route::get('/Employee/create', 'EmployeeController@create')->name('employee.create');
+Route::post('/Employee/store', 'EmployeeController@store')->name('employee.store');
+Route::get('/Employee/edit/{eid}', 'EmployeeController@edit')->name('employee.edit');
+Route::post('/Employee/update/{eid}', 'EmployeeController@update')->name('employee.update');
+Route::delete('/Employee/delete/{eid}', 'EmployeeController@destroy')->name('employee.delete');
+
+
 
 
 

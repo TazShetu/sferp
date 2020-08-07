@@ -18,5 +18,21 @@ class MachinesTableSeeder extends Seeder
         $f->manufacture_country = 'Germany';
         $f->type = 'A++ Energy Saving';
         $f->save();
+
+
+        $f = new Machine;
+        $f->category = 'Rope Machine 2';
+        $f->factory_id = '2';
+        $f->manufacturer = 'Simense';
+        $f->tag = 'Simense Rope;.;Machine;.;2';
+        $f->manufacture_country = 'Germany';
+        $f->save();
+        $f = new Machine;
+        $f->category = 'Rope Machine 20';
+        $f->factory_id = '2';
+        $f->manufacturer = 'Simense';
+        $f->tag = 'Simense Rope;.;Machine;.;20';
+        $f->manufacture_country = 'Germany';
+        $f->save();
     }
 }

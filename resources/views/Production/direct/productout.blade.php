@@ -49,11 +49,11 @@
 @section('content')
     <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
         @if(session('Success'))
-            <div class="alert alert-success text-center">
+            <div class="alert alert-success text-center" id="toaster">
                 {{session('Success')}}
             </div>
         @elseif(session('unsuccess'))
-            <div class="alert alert-warning text-center">
+            <div class="alert alert-warning text-center" id="toaster">
                 {{session('unsuccess')}}
             </div>
         @endif

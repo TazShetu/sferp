@@ -11,20 +11,44 @@ class CreateProductsTable extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('identification')->unique();
+            $table->integer('producttype_id');
             $table->string('name');
-            $table->string('type');
+            $table->string('unit');
+            $table->integer('minimum_storage');
+            // small / big
+            $table->string('size')->nullable();
             $table->float('size_denier')->nullable();
             $table->float('size_mm')->nullable();
-            $table->string('plys')->nullable();
-            $table->float('mesh_size')->nullable();
+            $table->integer('plys')->nullable();
+            $table->float('mesh_size_mm')->nullable();
+            $table->float('mesh_size_inch')->nullable();
             $table->float('depth')->nullable();
-            $table->float('twin_size')->nullable();
-            $table->string('twist_type')->nullable();
-            $table->string('twist_condition')->nullable();
-            $table->string('strand')->nullable();
-            $table->integer('minimum_storage');
-            $table->string('unit');
-            $table->text('description')->nullable();
+            $table->float('twin_size_denier')->nullable();
+            $table->float('twin_size_ply')->nullable();
+            $table->float('twin_size_no')->nullable();
+            $table->float('twin_size_mm')->nullable();
+            // 3 / 4
+            $table->integer('strand')->nullable();
+            // Hanks / Coil
+            $table->string('coil_type')->nullable();
+            $table->float('weight')->nullable();
+            $table->integer('frame_no')->nullable();
+            $table->float('frame_size_width')->nullable();
+            $table->float('frame_size_height')->nullable();
+            $table->float('length')->nullable();
+            $table->string('grade_no')->nullable();
+            $table->string('mfi')->nullable();
+            $table->string('mfr')->nullable();
+            $table->float('melting_point')->nullable();
+            $table->float('density')->nullable();
+            $table->string('upload_tds')->nullable();
+            $table->string('upload_msds')->nullable();
+            $table->string('dropper')->nullable();
+            $table->float('body_cm')->nullable();
+            $table->float('body_ply')->nullable();
+            $table->float('tail_cm')->nullable();
+            $table->float('tail_ply')->nullable();
             $table->timestamps();
         });
     }

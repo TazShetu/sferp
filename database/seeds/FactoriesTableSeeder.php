@@ -13,5 +13,11 @@ class FactoriesTableSeeder extends Seeder
         $f->established_date = '1984-11-26';
         $f->save();
 
+        $ff = new Factory;
+        $ff->name = 'Sagar Fishing Net Industries (Pvt.) Ltd. 2';
+        $ff->address = 'Shakhari Bazar, Rampal, Munshiganj';
+        $ff->established_date = '1984-11-26';
+        $ff->save();
+
     }
 }
