@@ -255,42 +255,62 @@
                                                         </div>
                                                     </div>
                                                 @endif
-                                                @if(($pedit->name == 'Nylon Multifilament Fishingnet') || ($pedit->name == 'Nylon Mono Multi Fishingnet') || ($pedit->name == 'HT Fishingnet') || ($pedit->name == 'HDPE Fishingnet') || ($pedit->name == 'HDPE Cage Net'))
+                                                @if(($pedit->name == 'Nylon Multifilament Fishingnet') || ($pedit->name == 'HT Fishingnet') || ($pedit->name == 'HDPE Cage Net'))
                                                     <div class="form-group row hideFirst hideSecond ns9 ns12 ns13">
                                                         <label class="col-xl-3 col-lg-3 col-form-label">
                                                             Twin Size
                                                         </label>
-                                                        <div class="col-lg-9 col-xl-6">
+                                                        <div class="col-lg-2 col-xl-2 input-group">
                                                             <input
-                                                                class="form-control {{($errors->has('twinSize')) ? 'is-invalid' : ''}}"
-                                                                type="number" name="twinSize"
-                                                                value="{{$pedit->twin_size}}"
+                                                                class="form-control {{($errors->has('twinSizeDenier')) ? 'is-invalid' : ''}}"
+                                                                type="number" name="twinSizeDenier" value="{{$pedit->twin_size_denier}}"
                                                                 step="0.01" min="0">
+                                                            <div class="input-group-append">
+                                                                <span class="input-group-text">Denier</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-2 col-xl-2 input-group">
+                                                            <input
+                                                                class="form-control {{($errors->has('twinSizePly')) ? 'is-invalid' : ''}}"
+                                                                type="number" name="twinSizePly" value="{{$pedit->twin_size_ply}}"
+                                                                step="0.01" min="0">
+                                                            <div class="input-group-append">
+                                                                <span class="input-group-text">Ply</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-2 col-xl-2 input-group">
+                                                            <input
+                                                                class="form-control {{($errors->has('twinSizeNo')) ? 'is-invalid' : ''}}"
+                                                                type="number" name="twinSizeNo" value="{{$pedit->twin_size_no}}"
+                                                                step="0.01" min="0">
+                                                            <div class="input-group-append">
+                                                                <span class="input-group-text">no.</span>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 @endif
-                                                @if(($pedit->name == 'Nylon Multifilament Fishingnet') || ($pedit->name == 'Nylon Mono Multi Fishingnet') || ($pedit->name == 'HT Fishingnet') || ($pedit->name == 'HDPE Fishingnet') || ($pedit->name == 'HDPE Cage Net'))
+                                                @if(($pedit->name == 'Nylon Mono Multi Fishingnet') || ($pedit->name == 'HDPE Fishingnet'))
                                                     <div class="form-group row hideFirst hideSecond ns9 ns12 ns13">
                                                         <label class="col-xl-3 col-lg-3 col-form-label">
-                                                            Twin Size Unit
+                                                            Twin Size
                                                         </label>
-                                                        <div class="col-lg-9 col-xl-6">
-                                                            <select
-                                                                class="form-control {{($errors->has('twinSizeunit')) ? 'is-invalid' : ''}}"
-                                                                name="twinSizeunit">
-                                                                @if($pedit->twin_size_unit)
-                                                                    <option selected hidden
-                                                                            value="{{$pedit->twin_size_unit}}">{{$pedit->twin_size_unit}}
-                                                                    </option>
-                                                                @else
-                                                                    <option selected disabled hidden value="">Choose...
-                                                                    </option>
-                                                                @endif
-                                                                <option value="Deiner">Deiner</option>
-                                                                <option value="Ply">Ply</option>
-                                                                <option value="No">No</option>
-                                                                <option value="mm">mm</option>
-                                                            </select>
+                                                        <div class="col-lg-3 col-xl-3 input-group">
+                                                            <input
+                                                                class="form-control {{($errors->has('twinSizeMm')) ? 'is-invalid' : ''}}"
+                                                                type="number" name="twinSizeMm" value="{{$pedit->twin_size_mm}}"
+                                                                step="0.01" min="0">
+                                                            <div class="input-group-append">
+                                                                <span class="input-group-text">mm</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-2 col-xl-2 input-group">
+                                                            <input
+                                                                class="form-control {{($errors->has('twinSizePly')) ? 'is-invalid' : ''}}"
+                                                                type="number" name="twinSizePly" value="{{$pedit->twin_size_ply}}"
+                                                                step="0.01" min="0">
+                                                            <div class="input-group-append">
+                                                                <span class="input-group-text">Ply</span>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 @endif
@@ -501,11 +521,14 @@
                                                 <label class="col-xl-3 col-lg-3 col-form-label">
                                                     Minimum Storage Amount*
                                                 </label>
-                                                <div class="col-lg-9 col-xl-6">
+                                                <div class="col-lg-9 col-xl-6 input-group">
                                                     <input
                                                         class="form-control {{($errors->has('minimumStorage')) ? 'is-invalid' : ''}}"
                                                         type="number" name="minimumStorage" required min="0"
                                                         value="{{$pedit->minimum_storage}}">
+                                                    <div class="input-group-append">
+                                                        <span class="input-group-text">{{$pedit->unit}}</span>
+                                                    </div>
                                                     @if($errors->has('minimumStorage'))
                                                         <span
                                                             class="invalid-feedback">{{$errors->first('minimumStorage')}}</span>
@@ -519,8 +542,7 @@
                                                 <div class="col-lg-9 col-xl-6">
                                                     <input
                                                         class="form-control {{($errors->has('unit')) ? 'is-invalid' : ''}}"
-                                                        type="text" name="unit" required
-                                                        placeholder="Piece Carton etc"
+                                                        type="text" name="unit" required readonly
                                                         value="{{$pedit->unit}}">
                                                     @if($errors->has('unit'))
                                                         <span class="invalid-feedback">{{$errors->first('unit')}}</span>

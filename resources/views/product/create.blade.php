@@ -132,7 +132,7 @@
                                             </div>
                                             <div class="form-group row hideFirst hideSecond ns1">
                                                 <label class="col-xl-3 col-lg-3 col-form-label">
-                                                    Size (denier)
+                                                    Size
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6 input-group">
                                                     <input
@@ -146,7 +146,7 @@
                                             </div>
                                             <div class="form-group row hideFirst hideSecond ns2 ns3 ns4">
                                                 <label class="col-xl-3 col-lg-3 col-form-label">
-                                                    Size (mm)
+                                                    Size
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6 input-group">
                                                     <input
@@ -211,31 +211,68 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="form-group row hideFirst hideSecond ns9 ns12 ns13">
+
+
+
+
+
+
+
+
+
+                                            <div class="form-group row hideFirst hideSecond ns9 ns13">
                                                 <label class="col-xl-3 col-lg-3 col-form-label">
                                                     Twin Size
                                                 </label>
-                                                <div class="col-lg-9 col-xl-6">
+                                                <div class="col-lg-2 col-xl-2 input-group">
                                                     <input
-                                                        class="form-control {{($errors->has('twinSize')) ? 'is-invalid' : ''}}"
-                                                        type="number" name="twinSize" value="{{old('twinSize')}}"
+                                                        class="form-control {{($errors->has('twinSizeDenier')) ? 'is-invalid' : ''}}"
+                                                        type="number" name="twinSizeDenier" value="{{old('twinSizeDenier')}}"
                                                         step="0.01" min="0">
+                                                    <div class="input-group-append">
+                                                        <span class="input-group-text">Denier</span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-2 col-xl-2 input-group">
+                                                    <input
+                                                        class="form-control {{($errors->has('twinSizePly')) ? 'is-invalid' : ''}}"
+                                                        type="number" name="twinSizePly" value="{{old('twinSizePly')}}"
+                                                        step="0.01" min="0">
+                                                    <div class="input-group-append">
+                                                        <span class="input-group-text">Ply</span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-2 col-xl-2 input-group">
+                                                    <input
+                                                        class="form-control {{($errors->has('twinSizeNo')) ? 'is-invalid' : ''}}"
+                                                        type="number" name="twinSizeNo" value="{{old('twinSizeNo')}}"
+                                                        step="0.01" min="0">
+                                                    <div class="input-group-append">
+                                                        <span class="input-group-text">no.</span>
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div class="form-group row hideFirst hideSecond ns9 ns12 ns13">
+                                            <div class="form-group row hideFirst hideSecond ns12">
                                                 <label class="col-xl-3 col-lg-3 col-form-label">
-                                                    Twin Size Unit
+                                                    Twin Size
                                                 </label>
-                                                <div class="col-lg-9 col-xl-6">
-                                                    <select
-                                                        class="form-control {{($errors->has('twinSizeunit')) ? 'is-invalid' : ''}}"
-                                                        name="twinSizeunit">
-                                                        <option selected disabled hidden value="">Choose...</option>
-                                                        <option value="Deiner">Deiner</option>
-                                                        <option value="Ply">Ply</option>
-                                                        <option value="No">No</option>
-                                                        <option value="mm">mm</option>
-                                                    </select>
+                                                <div class="col-lg-3 col-xl-3 input-group">
+                                                    <input
+                                                        class="form-control {{($errors->has('twinSizeMm')) ? 'is-invalid' : ''}}"
+                                                        type="number" name="twinSizeMm" value="{{old('twinSizeMm')}}"
+                                                        step="0.01" min="0">
+                                                    <div class="input-group-append">
+                                                        <span class="input-group-text">mm</span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-3 col-xl-3 input-group">
+                                                    <input
+                                                        class="form-control {{($errors->has('twinSizePly')) ? 'is-invalid' : ''}}"
+                                                        type="number" name="twinSizePly" value="{{old('twinSizePly')}}"
+                                                        step="0.01" min="0">
+                                                    <div class="input-group-append">
+                                                        <span class="input-group-text">Ply</span>
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="form-group row hideFirst hideSecond ns13 ns14">
@@ -400,11 +437,14 @@
                                                 <label class="col-xl-3 col-lg-3 col-form-label">
                                                     Minimum Storage Amount*
                                                 </label>
-                                                <div class="col-lg-9 col-xl-6">
+                                                <div class="col-lg-9 col-xl-6 input-group">
                                                     <input
                                                         class="form-control {{($errors->has('minimumStorage')) ? 'is-invalid' : ''}}"
                                                         type="number" name="minimumStorage" required min="0"
                                                         value="{{old('minimumStorage')}}">
+                                                    <div class="input-group-append">
+                                                        <span class="input-group-text" id="msrt"></span>
+                                                    </div>
                                                     @if($errors->has('minimumStorage'))
                                                         <span
                                                             class="invalid-feedback">{{$errors->first('minimumStorage')}}</span>
@@ -413,17 +453,16 @@
                                             </div>
                                             <div class="form-group row">
                                                 <label class="col-xl-3 col-lg-3 col-form-label">
-                                                    Unit*
+                                                    Unit
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">
                                                     <input
                                                         class="form-control {{($errors->has('unit')) ? 'is-invalid' : ''}}"
-                                                        type="text" name="unit" required
-                                                        placeholder="Piece Carton etc"
+                                                        type="text" name="unit" required readonly
                                                         value="{{old('unit')}}">
-                                                    @if($errors->has('unit'))
-                                                        <span class="invalid-feedback">{{$errors->first('unit')}}</span>
-                                                    @endif
+                                                    {{--                                                    @if($errors->has('unit'))--}}
+                                                    {{--                                                        <span class="invalid-feedback">{{$errors->first('unit')}}</span>--}}
+                                                    {{--                                                    @endif--}}
                                                 </div>
                                             </div>
                                             {{--                                            <div class="form-group row">--}}
@@ -516,6 +555,8 @@
             $("#NameSelect").on('change', function () {
                 $(".hideSecond").hide();
                 var name = $(this).val();
+                $("#msrt").html('Kg');
+                $("input[name=unit]").val('Kg');
                 // console.log(name);
                 if (name == 'Nylon Multifilament') {
                     $(".ns1").show();
@@ -532,14 +573,18 @@
                     $(".ns6").show();
                 } else if (name == 'Green HDPE Knotless') {
                     $(".ns7").show();
+                    $("#msrt").html('Piece');
+                    $("input[name=unit]").val('Piece');
                 } else if (name == 'Black HDPE Knotless') {
                     // same as ns7
                     $(".ns7").show();
+                    $("#msrt").html('Piece');
+                    $("input[name=unit]").val('Piece');
                 } else if (name == 'Nylon Multifilament Fishingnet') {
                     $(".ns9").show();
                 } else if (name == 'Nylon Mono Multi Fishingnet') {
-                    // same as ns9
-                    $(".ns9").show();
+                    // same as ns12
+                    $(".ns12").show();
                 } else if (name == 'HT Fishingnet') {
                     // same as ns9
                     $(".ns9").show();
@@ -549,6 +594,8 @@
                     $(".ns13").show();
                 } else if (name == 'HDPE Trap Net') {
                     $(".ns14").show();
+                    $("#msrt").html('Piece');
+                    $("input[name=unit]").val('Piece');
                 }
 
             });

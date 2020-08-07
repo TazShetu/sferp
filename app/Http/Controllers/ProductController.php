@@ -110,11 +110,29 @@ class ProductController extends Controller
                 ]);
                 $p->depth = $request->depth;
             }
-            if ($request->filled('twinSize')) {
+            if ($request->filled('twinSizeDenier')) {
                 $request->validate([
-                    'twinSize' => 'min:0',
+                    'twinSizeDenier' => 'min:0',
                 ]);
-                $p->twin_size = $request->twinSize;
+                $p->twin_size_denier = $request->twinSizeDenier;
+            }
+            if ($request->filled('twinSizePly')) {
+                $request->validate([
+                    'twinSizePly' => 'min:0',
+                ]);
+                $p->twin_size_ply = $request->twinSizePly;
+            }
+            if ($request->filled('twinSizeNo')) {
+                $request->validate([
+                    'twinSizeNo' => 'min:0',
+                ]);
+                $p->twin_size_no = $request->twinSizeNo;
+            }
+            if ($request->filled('twinSizeMm')) {
+                $request->validate([
+                    'twinSizeMm' => 'min:0',
+                ]);
+                $p->twin_size_mm = $request->twinSizeMm;
             }
             if ($request->filled('length')) {
                 $request->validate([
@@ -146,7 +164,6 @@ class ProductController extends Controller
                 ]);
                 $p->frame_size_height = $request->frameSizeHeight;
             }
-            $p->twin_size_unit = $request->twinSizeunit;
             if ($request->filled('strand')) {
                 $p->strand = $request->strand;
             }
@@ -235,11 +252,29 @@ class ProductController extends Controller
                 ]);
                 $p->depth = $request->depth;
             }
-            if ($request->filled('twinSize')) {
+            if ($request->filled('twinSizeDenier')) {
                 $request->validate([
-                    'twinSize' => 'min:0',
+                    'twinSizeDenier' => 'min:0',
                 ]);
-                $p->twin_size = $request->twinSize;
+                $p->twin_size_denier = $request->twinSizeDenier;
+            }
+            if ($request->filled('twinSizePly')) {
+                $request->validate([
+                    'twinSizePly' => 'min:0',
+                ]);
+                $p->twin_size_ply = $request->twinSizePly;
+            }
+            if ($request->filled('twinSizeNo')) {
+                $request->validate([
+                    'twinSizeNo' => 'min:0',
+                ]);
+                $p->twin_size_no = $request->twinSizeNo;
+            }
+            if ($request->filled('twinSizeMm')) {
+                $request->validate([
+                    'twinSizeMm' => 'min:0',
+                ]);
+                $p->twin_size_mm = $request->twinSizeMm;
             }
             if ($request->filled('length')) {
                 $request->validate([
@@ -271,7 +306,6 @@ class ProductController extends Controller
                 ]);
                 $p->frame_size_height = $request->frameSizeHeight;
             }
-            $p->twin_size_unit = $request->twinSizeunit;
             if ($request->filled('strand')) {
                 $p->strand = $request->strand;
             }

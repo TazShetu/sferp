@@ -24,9 +24,10 @@ class CreateProductsTable extends Migration
             $table->float('mesh_size_mm')->nullable();
             $table->float('mesh_size_inch')->nullable();
             $table->float('depth')->nullable();
-            $table->float('twin_size')->nullable();
-            // Deiner / Ply / No / mm (dropdown)
-            $table->string('twin_size_unit')->nullable();
+            $table->float('twin_size_denier')->nullable();
+            $table->float('twin_size_ply')->nullable();
+            $table->float('twin_size_no')->nullable();
+            $table->float('twin_size_mm')->nullable();
             // 3 / 4
             $table->integer('strand')->nullable();
             // Hanks / Coil
