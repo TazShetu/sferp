@@ -26,11 +26,11 @@
 @section('content')
     <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
         @if(session('Success'))
-            <div class="alert alert-success text-center">
+            <div class="alert alert-success text-center" id="toaster">
                 {{session('Success')}}
             </div>
         @elseif(session('unsuccess'))
-            <div class="alert alert-warning text-center">
+            <div class="alert alert-warning text-center" id="toaster">
                 {{session('unsuccess')}}
             </div>
         @endif
@@ -96,7 +96,7 @@
                                                     <div class="col-lg-9 col-xl-6">
                                                         <input
                                                             class="form-control {{($errors->has('countryOfOrigin')) ? 'is-invalid' : ''}}"
-                                                            type="text" name="countryOfOrigin" required
+                                                            type="text" name="countryOfOrigin"
                                                             value="{{old('countryOfOrigin')}}" list="countryOfOrigin">
                                                         @if($errors->has('countryOfOrigin'))
                                                             <span
@@ -172,7 +172,7 @@
                                                     <div class="col-lg-9 col-xl-6">
                                                         <input
                                                             class="form-control {{($errors->has('priceInCnf')) ? 'is-invalid' : ''}}"
-                                                            type="number" name="priceInCnf" required min="0" step="0.01"
+                                                            type="number" name="priceInCnf" min="0" step="0.01"
                                                             value="{{old('priceInCnf')}}">
                                                         @if($errors->has('priceInCnf'))
                                                             <span
@@ -187,7 +187,7 @@
                                                     <div class="col-lg-9 col-xl-6">
                                                         <input
                                                             class="form-control {{($errors->has('priceInFob')) ? 'is-invalid' : ''}}"
-                                                            type="number" name="priceInFob" required min="0" step="0.01"
+                                                            type="number" name="priceInFob" min="0" step="0.01"
                                                             value="{{old('priceInFob')}}">
                                                         @if($errors->has('priceInFob'))
                                                             <span

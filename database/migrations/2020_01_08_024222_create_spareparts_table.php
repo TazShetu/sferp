@@ -15,11 +15,12 @@ class CreateSparepartsTable extends Migration
             $table->string('model');
             $table->string('type');
             $table->string('description');
-            $table->string('part_number');
-            $table->string('identity_number');
-            $table->string('code_number');
+            $table->string('part_number')->nullable();
+            $table->string('identity_number')->nullable();
+            $table->string('code_number')->nullable();
             $table->integer('minimum_storage');
             $table->string('unit');
+            $table->text('description_2')->nullable();
             $table->timestamps();
         });
     }

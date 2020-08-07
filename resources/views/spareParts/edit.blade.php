@@ -1,5 +1,8 @@
 @extends('layouts.m')
 @section('title', 'Spare Parts Edit')
+@section('link')
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+@endsection
 @section('content_head')
     <div class="kt-subheader   kt-grid__item" id="kt_subheader">
         <div class="kt-container  kt-container--fluid ">
@@ -25,11 +28,11 @@
 @section('content')
     <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
         @if(session('Success'))
-            <div class="alert alert-success text-center">
+            <div class="alert alert-success text-center" id="toaster">
                 {{session('Success')}}
             </div>
         @elseif(session('unsuccess'))
-            <div class="alert alert-warning text-center">
+            <div class="alert alert-warning text-center" id="toaster">
                 {{session('unsuccess')}}
             </div>
         @endif
@@ -42,7 +45,8 @@
                                 <div class="kt-section kt-section--first">
                                     {{--                                    @if(!empty($machines))--}}
                                     {{--      Form Start    --}}
-                                    <form action="{{route('spareParts.update', ['spid' => $spedit->id])}}" method="post">
+                                    <form action="{{route('spareParts.update', ['spid' => $spedit->id])}}"
+                                          method="post">
                                         @csrf
                                         <div class="kt-section__body">
                                             <div class="form-group row">
@@ -50,11 +54,27 @@
                                                     Manufacturer Name
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">
-                                                    <input class="form-control {{($errors->has('manufacturerName')) ? 'is-invalid' : ''}}"
-                                                           type="text" name="manufacturerName" required
-                                                           value="{{$spedit->manufacturer}}" list="manufacturer">
+                                                    <input
+                                                        class="form-control {{($errors->has('manufacturerName')) ? 'is-invalid' : ''}}"
+                                                        type="text" name="manufacturerName" required
+                                                        value="{{$spedit->manufacturer}}" list="manufacturer">
                                                     @if($errors->has('manufacturerName'))
-                                                        <span class="invalid-feedback">{{$errors->first('manufacturerName')}}</span>
+                                                        <span
+                                                            class="invalid-feedback">{{$errors->first('manufacturerName')}}</span>
+                                                    @endif
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-xl-3 col-lg-3 col-form-label">
+                                                    Type / Category
+                                                </label>
+                                                <div class="col-lg-9 col-xl-6">
+                                                    <input
+                                                        class="form-control {{($errors->has('type')) ? 'is-invalid' : ''}}"
+                                                        type="text" name="type" required
+                                                        value="{{$spedit->type}}" list="type">
+                                                    @if($errors->has('type'))
+                                                        <span class="invalid-feedback">{{$errors->first('type')}}</span>
                                                     @endif
                                                 </div>
                                             </div>
@@ -63,24 +83,13 @@
                                                     Model
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">
-                                                    <input class="form-control {{($errors->has('model')) ? 'is-invalid' : ''}}"
-                                                           type="text" name="model" required
-                                                           value="{{$spedit->model}}" list="model">
+                                                    <input
+                                                        class="form-control {{($errors->has('model')) ? 'is-invalid' : ''}}"
+                                                        type="text" name="model" required
+                                                        value="{{$spedit->model}}" list="model">
                                                     @if($errors->has('model'))
-                                                        <span class="invalid-feedback">{{$errors->first('model')}}</span>
-                                                    @endif
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label class="col-xl-3 col-lg-3 col-form-label">
-                                                    Type
-                                                </label>
-                                                <div class="col-lg-9 col-xl-6">
-                                                    <input class="form-control {{($errors->has('type')) ? 'is-invalid' : ''}}"
-                                                           type="text" name="type" required
-                                                           value="{{$spedit->type}}" list="type">
-                                                    @if($errors->has('type'))
-                                                        <span class="invalid-feedback">{{$errors->first('type')}}</span>
+                                                        <span
+                                                            class="invalid-feedback">{{$errors->first('model')}}</span>
                                                     @endif
                                                 </div>
                                             </div>
@@ -106,11 +115,12 @@
                                                     Part Number
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">
-                                                    <input class="form-control {{($errors->has('partNumber')) ? 'is-invalid' : ''}}"
-                                                           type="text" name="partNumber" required
-                                                           value="{{$spedit->part_number}}">
+                                                    <input
+                                                        class="form-control {{($errors->has('partNumber')) ? 'is-invalid' : ''}}"
+                                                        type="text" name="partNumber" value="{{$spedit->part_number}}">
                                                     @if($errors->has('partNumber'))
-                                                        <span class="invalid-feedback">{{$errors->first('partNumber')}}</span>
+                                                        <span
+                                                            class="invalid-feedback">{{$errors->first('partNumber')}}</span>
                                                     @endif
                                                 </div>
                                             </div>
@@ -119,13 +129,15 @@
                                                     Identity Number
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">
-                                                    <input class="form-control {{($errors->has('identityNumber')) ? 'is-invalid' : ''}}"
-                                                           type="text" name="identityNumber" required
-                                                           value="{{$spedit->identity_number}}">
+                                                    <input
+                                                        class="form-control {{($errors->has('identityNumber')) ? 'is-invalid' : ''}}"
+                                                        type="text" name="identityNumber"
+                                                        value="{{$spedit->identity_number}}">
                                                     @if($errors->has('identityNumber'))
-                                                        <span class="invalid-feedback">{{$errors->first('identityNumber')}}</span>
+                                                        <span
+                                                            class="invalid-feedback">{{$errors->first('identityNumber')}}</span>
                                                     @endif
-{{--                                                    <span class="form-text text-muted">It has to be unique*</span>--}}
+                                                    {{--                                                    <span class="form-text text-muted">It has to be unique*</span>--}}
                                                 </div>
                                             </div>
                                             <div class="form-group row">
@@ -133,11 +145,12 @@
                                                     Code Number
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">
-                                                    <input class="form-control {{($errors->has('codeNumber')) ? 'is-invalid' : ''}}"
-                                                           type="text" name="codeNumber" required
-                                                           value="{{$spedit->code_number}}">
+                                                    <input
+                                                        class="form-control {{($errors->has('codeNumber')) ? 'is-invalid' : ''}}"
+                                                        type="text" name="codeNumber" value="{{$spedit->code_number}}">
                                                     @if($errors->has('codeNumber'))
-                                                        <span class="invalid-feedback">{{$errors->first('codeNumber')}}</span>
+                                                        <span
+                                                            class="invalid-feedback">{{$errors->first('codeNumber')}}</span>
                                                     @endif
                                                 </div>
                                             </div>
@@ -146,11 +159,13 @@
                                                     Minimum Storage Amount
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">
-                                                    <input class="form-control {{($errors->has('minimumStorage')) ? 'is-invalid' : ''}}"
-                                                           type="number" name="minimumStorage" required min="0"
-                                                           value="{{$spedit->minimum_storage}}">
+                                                    <input
+                                                        class="form-control {{($errors->has('minimumStorage')) ? 'is-invalid' : ''}}"
+                                                        type="number" name="minimumStorage" required min="0"
+                                                        value="{{$spedit->minimum_storage}}">
                                                     @if($errors->has('minimumStorage'))
-                                                        <span class="invalid-feedback">{{$errors->first('minimumStorage')}}</span>
+                                                        <span
+                                                            class="invalid-feedback">{{$errors->first('minimumStorage')}}</span>
                                                     @endif
                                                 </div>
                                             </div>
@@ -159,16 +174,26 @@
                                                     Unit
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">
-                                                    <input class="form-control {{($errors->has('unit')) ? 'is-invalid' : ''}}"
-                                                           type="text" name="unit" required
-                                                           placeholder="Kg Litre etc"
-                                                           value="{{$spedit->unit}}" list="unit">
+                                                    <input
+                                                        class="form-control {{($errors->has('unit')) ? 'is-invalid' : ''}}"
+                                                        type="text" name="unit" required
+                                                        placeholder="Kg Litre etc"
+                                                        value="{{$spedit->unit}}" list="unit">
                                                     @if($errors->has('unit'))
                                                         <span class="invalid-feedback">{{$errors->first('unit')}}</span>
                                                     @endif
                                                 </div>
                                             </div>
-                                            <div class="kt-separator kt-separator--space-lg kt-separator--fit kt-separator--border-solid"></div>
+                                            <div class="form-group row">
+                                                <label class="col-xl-3 col-lg-3 col-form-label">Description</label>
+                                                <div class="col-lg-9 col-xl-6">
+                                                    <textarea id="summernote" name="description_2">
+                                                        {!! $spedit->description_2 !!}
+                                                    </textarea>
+                                                </div>
+                                            </div>
+                                            <div
+                                                class="kt-separator kt-separator--space-lg kt-separator--fit kt-separator--border-solid"></div>
                                             <div class="kt-form__actions">
                                                 <div class="row">
                                                     <div class="col-xl-3"></div>
@@ -238,4 +263,16 @@
     {{--    <script src="{{asset('plugins/select2/select2.full.min.js')}}" type="text/javascript"></script>--}}
 
     <!--end::Page Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+
+    <script>
+        $(function () {
+            $('#summernote').summernote({
+                height: 200,                 // set editor height
+                // minHeight: null,             // set minimum height of editor
+                // maxHeight: null,             // set maximum height of editor
+                // focus: true                  // set focus to editable area after initializing summernote
+            });
+        });
+    </script>
 @endsection

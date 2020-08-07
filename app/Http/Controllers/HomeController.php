@@ -58,6 +58,26 @@ class HomeController extends Controller
     }
 
 
+
+    public function dashboardProduction()
+    {
+        return view('dashboard.production');
+    }
+
+
+    public function dashboardInventory()
+    {
+        return view('dashboard.inventory');
+    }
+
+
+    public function dashboardSells()
+    {
+        return view('dashboard.sells');
+    }
+
+
+
     public function user()
     {
         if (Auth::user()->can('user')) {

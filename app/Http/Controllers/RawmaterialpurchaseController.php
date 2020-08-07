@@ -17,14 +17,41 @@ class RawmaterialpurchaseController extends Controller
     }
 
 
-    public function history()
+    public function history(Request $request)
     {
         if (Auth::user()->can('raw_material_purchase')) {
-           $histories = Rawmaterialpurchase::orderBy('created_at', 'DESC')->paginate(10);
+            if ($request->rid){
+                $histories = Rawmaterialpurchase::Where('rawmaterial_id', 'LIKE', "$request->rid")
+                    ->where('status', 'LIKE', "%{$request->status}%")
+                    ->Where('invoice_number', 'LIKE', "%{$request->invoice}%")
+                    ->Where('quantity', 'LIKE', "%{$request->quantity}%")
+                    ->Where('total_price', 'LIKE', "%{$request->price}%")
+                    ->Where('purchase_from', 'LIKE', "%{$request->seller}%")
+                    ->Where('lc_number', 'LIKE', "%{$request->lc}%")
+                    ->paginate(10);
+            }else {
+                $histories = Rawmaterialpurchase::where('status', 'LIKE', "%{$request->status}%")
+                    ->Where('invoice_number', 'LIKE', "%{$request->invoice}%")
+                    ->Where('quantity', 'LIKE', "%{$request->quantity}%")
+                    ->Where('total_price', 'LIKE', "%{$request->price}%")
+                    ->Where('purchase_from', 'LIKE', "%{$request->seller}%")
+                    ->Where('lc_number', 'LIKE', "%{$request->lc}%")
+                    ->paginate(10);
+            }
            foreach ($histories as $h){
                $h['raw_material'] = Rawmaterial::find($h->rawmaterial_id)->auto_id;
            }
-           return view('PURCHASE.HISTORY.rawMaterial', compact('histories'));
+            $rawMaterials = Rawmaterial::all();
+            if ($request->rid){
+                $histories->appends(['rid' => "$request->rid", 'status' => "$request->status", 'invoice' => "$request->invoice", 'quantity' => "$request->quantity", 'price' => "$request->price", 'seller' => "$request->seller", 'lc' => "$request->lc"]);
+            } else {
+                $histories->appends(['status' => "$request->status", 'invoice' => "$request->invoice", 'quantity' => "$request->quantity", 'price' => "$request->price", 'seller' => "$request->seller", 'lc' => "$request->lc"]);
+            }
+            $query = $request->all();
+            if ((count($query) > 0) && array_key_exists("rid", $query)){
+                $query['RawMaterialD'] = Rawmaterial::find($query['rid'])->auto_id;
+            }
+           return view('PURCHASE.HISTORY.rawMaterial', compact('histories', 'query', 'rawMaterials'));
         } else {
             abort(403);
         }

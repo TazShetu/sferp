@@ -17,15 +17,27 @@ class SparepartsController extends Controller
     }
 
 
-    public function list()
+    public function list(Request $request)
     {
         if (Auth::user()->can('spare_parts')) {
-            $spareParts = Spareparts::paginate(10);
-            return view('spareParts.list', compact('spareParts'));
+            $spareParts = Spareparts::where('type', 'LIKE', "%{$request->type}%")->Where('description', 'LIKE', "%{$request->tag}%")->paginate(10);
+            foreach ($spareParts as $s) {
+                $ms = $s->machines()->get();
+                $machines = [];
+                foreach ($ms as $m) {
+                    $t = str_replace(';.;', ' ', $m->tag);
+                    $machines[] = $t;
+                }
+                $s['machines'] = $machines;
+            }
+            $spareParts->appends(['type' => "$request->type", 'tag' => "$request->tag"]);
+            $query = $request->all();
+            return view('spareParts.list', compact('spareParts', 'query'));
         } else {
             abort(403);
         }
     }
+
 
     public function create()
     {
@@ -49,10 +61,9 @@ class SparepartsController extends Controller
                 'manufacturerName' => 'required',
                 'model' => 'required',
                 'type' => 'required',
-                'partNumber' => 'required',
-//                'identityNumber' => 'required|unique:spareparts,identity_number',
-                'identityNumber' => 'required',
-                'codeNumber' => 'required',
+//                'partNumber' => 'required',
+//                'identityNumber' => 'required',
+//                'codeNumber' => 'required',
                 'minimumStorage' => 'required|min:0',
                 'unit' => 'required',
             ]);
@@ -66,6 +77,7 @@ class SparepartsController extends Controller
             $s->code_number = $request->codeNumber;
             $s->minimum_storage = $request->minimumStorage;
             $s->unit = $request->unit;
+            $s->description_2 = $request->description_2;
             $s->save();
             Session::flash('Success', "The Spare Parts has been created successfully.");
             return redirect()->route('spareParts.list');
@@ -111,9 +123,9 @@ class SparepartsController extends Controller
                 'manufacturerName' => 'required',
                 'model' => 'required',
                 'type' => 'required',
-                'partNumber' => 'required',
-                'identityNumber' => 'required',
-                'codeNumber' => 'required',
+//                'partNumber' => 'required',
+//                'identityNumber' => 'required',
+//                'codeNumber' => 'required',
                 'minimumStorage' => 'required|min:0',
                 'unit' => 'required',
             ]);
@@ -132,6 +144,7 @@ class SparepartsController extends Controller
             $s->code_number = $request->codeNumber;
             $s->minimum_storage = $request->minimumStorage;
             $s->unit = $request->unit;
+            $s->description_2 = $request->description_2;
             $s->update();
             Session::flash('Success', "The Spare Parts has been updated successfully.");
             return redirect()->back();

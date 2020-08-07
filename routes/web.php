@@ -16,6 +16,9 @@ Route::get('/forbidden', 'HomeController@test')->name('test');
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/notification/minimum-storage', 'HomeController@minimumStorage')->name('minimum.storage');
+Route::get('/home-production', 'HomeController@dashboardProduction')->name('home.production');
+Route::get('/home-inventory', 'HomeController@dashboardInventory')->name('home.inventory');
+Route::get('/home-sells', 'HomeController@dashboardSells')->name('home.sells');
 
 Route::get('/permission', 'AclController@permission')->name('permission');
 Route::get('/permission-edit/{pid}', 'AclController@permissionEdit')->name('permission.edit');
@@ -40,10 +43,10 @@ Route::post('/customer-individual-update/{cid}', 'CustomerController@individualU
 Route::post('/customer-product-discount-update/{cid}', 'CustomerController@productDiscountUpdate')->name('customer.product.discount.update');
 Route::get('/customer-profile/{cid}', 'CustomerController@show')->name('customer.profile');
 Route::delete('/customer-delete/{cid}', 'CustomerController@destroy')->name('customer.delete');
-
 Route::get('/customer-edit/{cid}', 'CustomerController@edit')->name('customer.edit');
 Route::post('/customer-update/{cid}', 'CustomerController@update')->name('customer.update');
 Route::post('/customer-update-contact-person/{cid}', 'CustomerController@updateContactPerson')->name('customer.update.contact.person');
+Route::post('/customer-update-extra/{cid}', 'CustomerController@updateExtra')->name('customer.update.extra');
 
 Route::get('/factories', 'FactoryController@list')->name('factory.list');
 Route::get('/factories/create', 'FactoryController@create')->name('factory.create');
@@ -64,6 +67,7 @@ Route::get('/machine/create', 'MachineController@create')->name('machine.create'
 Route::post('/machine/store', 'MachineController@store')->name('machine.store');
 Route::delete('/machine/delete/{mid}', 'MachineController@destroy')->name('machine.delete');
 Route::get('/machine/edit/{mid}', 'MachineController@edit')->name('machine.edit');
+Route::get('/machine/manual/download/{mid}', 'MachineController@mmd')->name('machine.manual.download');
 Route::post('/machine/update/{mid}', 'MachineController@update')->name('machine.update');
 Route::post('/machine/update/sparepart/{mid}', 'MachineController@updateMachineSparePart')->name('machine.update.sparepart');
 
@@ -164,6 +168,20 @@ Route::get('/product/stock/in/history', 'ProductstockinController@history')->nam
 Route::get('/product/stock/out', 'ProductstockoutController@out')->name('product.stock.out');
 Route::post('/product/stock/out/{psid}', 'ProductstockoutController@outStore')->name('product.stock.out.store');
 Route::get('/product/stock/out/history', 'ProductstockoutController@history')->name('product.stock.out.history');
+
+Route::get('/Designation/setup', 'DesignationController@index')->name('designation');
+Route::post('/Designation/store', 'DesignationController@store')->name('designation.store');
+Route::delete('/Designation/delete/{did}', 'DesignationController@destroy')->name('designation.delete');
+Route::get('/Designation/edit/{did}', 'DesignationController@edit')->name('designation.edit');
+Route::post('/Designation/update/{did}', 'DesignationController@update')->name('designation.update');
+
+Route::get('/Employee/list', 'EmployeeController@index')->name('employee.list');
+Route::get('/Employee/create', 'EmployeeController@create')->name('employee.create');
+Route::post('/Employee/store', 'EmployeeController@store')->name('employee.store');
+Route::get('/Employee/edit/{eid}', 'EmployeeController@edit')->name('employee.edit');
+Route::post('/Employee/update/{eid}', 'EmployeeController@update')->name('employee.update');
+Route::delete('/Employee/delete/{eid}', 'EmployeeController@destroy')->name('employee.delete');
+
 
 
 

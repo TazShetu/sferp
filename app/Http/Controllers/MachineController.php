@@ -20,14 +20,35 @@ class MachineController extends Controller
     }
 
 
-    public function list()
+    public function list(Request $request)
     {
         if (Auth::user()->can('machine')) {
-            $machines = Machine::paginate(10);
+            if ($request->factoryId){
+                $machines = Machine::where('manufacturer', 'LIKE', "%{$request->manufacturer}%")
+                    ->Where('category', 'LIKE', "%{$request->category}%")
+                    ->Where('factory_id', 'LIKE', "$request->factoryId")
+                    ->Where('manufacture_country', 'LIKE', "%{$request->country}%")
+                    ->paginate(10);
+            }else {
+                $machines = Machine::where('manufacturer', 'LIKE', "%{$request->manufacturer}%")
+                    ->Where('category', 'LIKE', "%{$request->category}%")
+                    ->Where('manufacture_country', 'LIKE', "%{$request->country}%")
+                    ->paginate(10);
+            }
             foreach ($machines as $m) {
                 $m['factory'] = Factory::find($m->factory_id)->name;
             }
-            return view('machine.list', compact('machines'));
+            $factories = Factory::all();
+            if ($request->factoryId){
+                $machines->appends(['manufacturer' => "$request->manufacturer", 'category' => "$request->category", 'factoryId' => "$request->factoryId", 'country' => "$request->country"]);
+            } else {
+                $machines->appends(['manufacturer' => "$request->manufacturer", 'category' => "$request->category", 'country' => "$request->country"]);
+            }
+            $query = $request->all();
+            if ((count($query) > 0) && array_key_exists("factoryId", $query)){
+                $query['factoryName'] = Factory::find($query['factoryId'])->name;
+            }
+            return view('machine.list', compact('machines', 'factories', 'query'));
         } else {
             abort(403);
         }
@@ -55,9 +76,9 @@ class MachineController extends Controller
                 'category' => 'required',
                 'factory' => 'required',
                 'manufacturerName' => 'required',
-                'typeOrModelNumber' => 'required',
-                'serialNumber' => 'required|unique:machines,identification_code',
-                'manufacturerYear' => 'required',
+//                'typeOrModelNumber' => 'required',
+//                'serialNumber' => 'required|unique:machines,identification_code',
+//                'manufacturerYear' => 'required',
                 'countryOfOrigin' => 'required',
             ]);
             $m = new Machine;
@@ -124,6 +145,20 @@ class MachineController extends Controller
                 ]);
                 $m->ld_ratio = $request->LDRatio;
             }
+            if ($request->filled('ringSize')) {
+                $request->validate([
+                    'ringSize' => 'min:0',
+                ]);
+                $m->ring_size = $request->ringSize;
+            }
+            $m->manual_location = $request->manualLocation;
+            if ($request->hasFile('manual')) {
+                $img = $request->manual;
+                $img_name = time() . $img->getClientOriginalName();
+                $a = $img->move('uploads/Manual/machine', $img_name);
+                $d = 'uploads/Manual/machine/' . $img_name;
+                $m->manual = $d;
+            }
             $m->save();
             Session::flash('Success', "The Machine has been created successfully.");
             return redirect()->route('machine.list');
@@ -158,17 +193,12 @@ class MachineController extends Controller
                 'category' => 'required',
                 'factory' => 'required',
                 'manufacturerName' => 'required',
-                'typeOrModelNumber' => 'required',
-                'serialNumber' => 'required',
-                'manufacturerYear' => 'required',
+//                'typeOrModelNumber' => 'required',
+//                'serialNumber' => 'required',
+//                'manufacturerYear' => 'required',
                 'countryOfOrigin' => 'required',
             ]);
             $m = Machine::find($mid);
-            if ($m->identification_code != $request->serialNumber) {
-                $request->validate([
-                    'serialNumber' => 'unique:machines,identification_code',
-                ]);
-            }
             $m->category = $request->category;
             $m->factory_id = $request->factory;
             $m->manufacturer = $request->manufacturerName;
@@ -231,6 +261,23 @@ class MachineController extends Controller
                 ]);
                 $m->ld_ratio = $request->LDRatio;
             }
+            if ($request->filled('ringSize')) {
+                $request->validate([
+                    'ringSize' => 'min:0',
+                ]);
+                $m->ring_size = $request->ringSize;
+            }
+            $m->manual_location = $request->manualLocation;
+            if ($request->hasFile('manual')) {
+                if($m->manual){
+                    unlink($m->manual);
+                }
+                $img = $request->manual;
+                $img_name = time() . $img->getClientOriginalName();
+                $a = $img->move('uploads/Manual/machine', $img_name);
+                $d = 'uploads/Manual/machine/' . $img_name;
+                $m->manual = $d;
+            }
             $m->update();
             Session::flash('Success', "The Machine has been updated successfully.");
             return redirect()->back();
@@ -269,6 +316,14 @@ class MachineController extends Controller
         } else {
             abort(403);
         }
+    }
+
+
+
+    public function mmd($mid)
+    {
+        $m = Machine::find($mid);
+        return response()->download(public_path($m->manual));
     }
 
 

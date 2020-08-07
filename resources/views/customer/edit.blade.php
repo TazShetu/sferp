@@ -25,11 +25,11 @@
 @section('content')
     <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
         @if(session('Success'))
-            <div class="alert alert-success text-center">
+            <div class="alert alert-success text-center" id="toaster">
                 {{session('Success')}}
             </div>
         @elseif(session('unsuccess'))
-            <div class="alert alert-warning text-center">
+            <div class="alert alert-warning text-center" id="toaster">
                 {{session('unsuccess')}}
             </div>
         @endif
@@ -108,13 +108,34 @@
                                 <svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" class="kt-svg-icon">
                                     <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                                         <rect x="0" y="0" width="24" height="24"/>
-                                        <path d="M5.5,6 C6.32842712,6 7,6.67157288 7,7.5 L7,18.5 C7,19.3284271 6.32842712,20 5.5,20 C4.67157288,20 4,19.3284271 4,18.5 L4,7.5 C4,6.67157288 4.67157288,6 5.5,6 Z M11.5,11 C12.3284271,11 13,11.6715729 13,12.5 L13,18.5 C13,19.3284271 12.3284271,20 11.5,20 C10.6715729,20 10,19.3284271 10,18.5 L10,12.5 C10,11.6715729 10.6715729,11 11.5,11 Z M17.5,15 C18.3284271,15 19,15.6715729 19,16.5 L19,18.5 C19,19.3284271 18.3284271,20 17.5,20 C16.6715729,20 16,19.3284271 16,18.5 L16,16.5 C16,15.6715729 16.6715729,15 17.5,15 Z" fill="#000000"/>
+                                        <path
+                                            d="M5.5,6 C6.32842712,6 7,6.67157288 7,7.5 L7,18.5 C7,19.3284271 6.32842712,20 5.5,20 C4.67157288,20 4,19.3284271 4,18.5 L4,7.5 C4,6.67157288 4.67157288,6 5.5,6 Z M11.5,11 C12.3284271,11 13,11.6715729 13,12.5 L13,18.5 C13,19.3284271 12.3284271,20 11.5,20 C10.6715729,20 10,19.3284271 10,18.5 L10,12.5 C10,11.6715729 10.6715729,11 11.5,11 Z M17.5,15 C18.3284271,15 19,15.6715729 19,16.5 L19,18.5 C19,19.3284271 18.3284271,20 17.5,20 C16.6715729,20 16,19.3284271 16,18.5 L16,16.5 C16,15.6715729 16.6715729,15 17.5,15 Z"
+                                            fill="#000000"/>
                                     </g>
                                 </svg>
                                 Product Discount
                             </a>
                         </li>
                         {{--                        @endif--}}
+
+
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#kt_user_edit_tab_5" role="tab">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1" class="kt-svg-icon">
+                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                        <rect x="0" y="0" width="24" height="24"/>
+                                        <path d="M17,2 L19,2 C20.6568542,2 22,3.34314575 22,5 L22,19 C22,20.6568542 20.6568542,22 19,22 L17,22 L17,2 Z" fill="#000000" opacity="0.3"/>
+                                        <path d="M4,2 L16,2 C17.6568542,2 19,3.34314575 19,5 L19,19 C19,20.6568542 17.6568542,22 16,22 L4,22 C3.44771525,22 3,21.5522847 3,21 L3,3 C3,2.44771525 3.44771525,2 4,2 Z M11.1176481,13.709585 C10.6725287,14.1547043 9.99251947,14.2650547 9.42948307,13.9835365 C8.86644666,13.7020183 8.18643739,13.8123686 7.74131803,14.2574879 L6.2303083,15.7684977 C6.17542087,15.8233851 6.13406645,15.8902979 6.10952004,15.9639372 C6.02219616,16.2259088 6.16377615,16.5090688 6.42574781,16.5963927 L7.77956724,17.0476658 C9.07965249,17.4810276 10.5130001,17.1426601 11.4820264,16.1736338 L15.4812434,12.1744168 C16.3714821,11.2841781 16.5921828,9.92415954 16.0291464,8.79808673 L15.3965752,7.53294436 C15.3725414,7.48487691 15.3409156,7.44099843 15.302915,7.40299777 C15.1076528,7.20773562 14.7910703,7.20773562 14.5958082,7.40299777 L13.0032662,8.99553978 C12.5581468,9.44065914 12.4477965,10.1206684 12.7293147,10.6837048 C13.0108329,11.2467412 12.9004826,11.9267505 12.4553632,12.3718698 L11.1176481,13.709585 Z" fill="#000000"/>
+                                    </g>
+                                </svg>
+                                Extra Contact info
+                            </a>
+                        </li>
+
+
+
+
+
                     </ul>
                 </div>
             </div>
@@ -215,8 +236,7 @@
                                                 <div class="col-lg-9 col-xl-6">
                                                     <input
                                                         class="form-control {{$errors->has('binNumber') ? 'is-invalid' : ''}}"
-                                                        type="text" name="binNumber"
-                                                        required value="{{$customer->bin}}">
+                                                        type="text" name="binNumber" value="{{$customer->bin}}">
                                                     @if($errors->has('binNumber'))
                                                         <span
                                                             class="invalid-feedback">{{$errors->first('binNumber')}}</span>
@@ -231,7 +251,8 @@
                                                         <input type="file" class="custom-file-input" id="customFile2"
                                                                name="binFile">
                                                         <label class="custom-file-label" style="text-align: left;"
-                                                               for="customFile2">VAT registration / BIN Certificate File</label>
+                                                               for="customFile2">VAT registration / BIN Certificate
+                                                            File</label>
                                                     </div>
                                                     <span class="form-text text-muted">Max file size is 10MB and max number of files is 1.</span>
                                                 </div>
@@ -244,7 +265,7 @@
                                                     <input
                                                         class="form-control {{$errors->has('tinNumber') ? 'is-invalid' : ''}}"
                                                         type="text" placeholder="TIN Number" name="tinNumber"
-                                                        required value="{{$customer->tin}}">
+                                                        value="{{$customer->tin}}">
                                                     @if($errors->has('tinNumber'))
                                                         <span
                                                             class="invalid-feedback">{{$errors->first('tinNumber')}}</span>
@@ -272,7 +293,7 @@
                                                     <input
                                                         class="form-control {{$errors->has('nidNumber') ? 'is-invalid' : ''}}"
                                                         type="text" name="nidNumber"
-                                                        required value="{{$customer->nid}}">
+                                                        value="{{$customer->nid}}">
                                                     @if($errors->has('nidNumber'))
                                                         <span
                                                             class="invalid-feedback">{{$errors->first('nidNumber')}}</span>
@@ -371,7 +392,7 @@
                                                                     class="la la-at"></i></span></div>
                                                         <input
                                                             class="form-control {{$errors->has('businessEmail') ? 'is-invalid' : ''}}"
-                                                            type="email" name="businessEmail" required
+                                                            type="email" name="businessEmail"
                                                             value="{{$customer->business_email}}">
                                                         @if($errors->has('businessEmail'))
                                                             <span
@@ -431,8 +452,8 @@
                                                             <span
                                                                 class="invalid-feedback">{{$errors->first('companySite')}}</span>
                                                         @endif
-{{--                                                        <div class="input-group-append"><span--}}
-{{--                                                                class="input-group-text">.com</span></div>--}}
+                                                        {{--                                                        <div class="input-group-append"><span--}}
+                                                        {{--                                                                class="input-group-text">.com</span></div>--}}
                                                     </div>
                                                 </div>
                                             </div>
@@ -609,7 +630,9 @@
                         </div>
                     </div>
                     @if((($customer->customertype_id * 1) == 1) || (($customer->customertype_id * 1) == 2))
+
                         @include('include.m.customerEdit.hierarchy')
+
                     @endif
                     @if(count($products) > 0)
                         <div class="tab-pane" id="kt_user_edit_tab_4" role="tabpanel">
@@ -781,6 +804,9 @@
                             </div>
                         </div>
                     @endif
+
+                    @include('include.m.customerEdit.extra')
+
                 </div>
             </div>
         </div>

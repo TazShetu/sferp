@@ -15,11 +15,13 @@ class RawmaterialController extends Controller
         $this->middleware('auth');
     }
 
-    public function list()
+    public function list(Request $request)
     {
         if (Auth::user()->can('raw_material')) {
-            $rawMaterials = Rawmaterial::paginate(10);
-            return view('rawMaterial.list', compact('rawMaterials'));
+            $rawMaterials = Rawmaterial::where('auto_id', 'LIKE', "%{$request->identityNumber}%")->Where('country_origin', 'LIKE', "%{$request->countryOrigin}%")->paginate(10);
+            $rawMaterials->appends(['identityNumber' => "$request->identityNumber", 'countryOrigin' => "$request->countryOrigin"]);
+            $query = $request->all();
+            return view('rawMaterial.list', compact('rawMaterials', 'query'));
         } else {
             abort(403);
         }
