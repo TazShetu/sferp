@@ -5,7 +5,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ProductController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ProductController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/migrations/2020_01_11_090542_create_products_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_01_11_090542_create_products_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/ProductsTableSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/ProductsTableSeeder.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/product/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/product/create.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/product/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/product/edit.blade.php" afterDir="false" />
     </list>
@@ -289,7 +288,7 @@
       <workItem from="1595493983345" duration="184000" />
       <workItem from="1595670166999" duration="6820000" />
       <workItem from="1595737514688" duration="10000" />
-      <workItem from="1596798025365" duration="5228000" />
+      <workItem from="1596798025365" duration="9456000" />
     </task>
     <servers />
   </component>
@@ -305,10 +304,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="276" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1596800486211" />
-    <state x="646" y="236" width="758" height="638" key="find.popup" timestamp="1593245132634">
+    <state x="646" y="236" width="758" height="638" key="find.popup" timestamp="1596808086328">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="646" y="236" width="758" height="638" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1593245132634" />
+    <state x="646" y="236" width="758" height="638" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1596808086328" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1594360689142">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -409,22 +408,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/resources/views/product/create.blade.php</url>
-          <line>318</line>
-          <option name="timeStamp" value="348" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/resources/views/product/create.blade.php</url>
-          <line>340</line>
-          <option name="timeStamp" value="349" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/resources/views/product/create.blade.php</url>
-          <line>352</line>
-          <option name="timeStamp" value="350" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/resources/views/product/create.blade.php</url>
-          <line>594</line>
+          <line>664</line>
           <option name="timeStamp" value="365" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">

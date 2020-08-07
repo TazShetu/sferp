@@ -164,17 +164,54 @@ class ProductController extends Controller
                 ]);
                 $p->frame_size_height = $request->frameSizeHeight;
             }
+            if ($request->filled('bodyCm')) {
+                $request->validate([
+                    'bodyCm' => 'min:0',
+                ]);
+                $p->body_cm = $request->bodyCm;
+            }
+            if ($request->filled('bodyPly')) {
+                $request->validate([
+                    'bodyPly' => 'min:0',
+                ]);
+                $p->body_ply = $request->bodyPly;
+            }
+            if ($request->filled('tailCm')) {
+                $request->validate([
+                    'tailCm' => 'min:0',
+                ]);
+                $p->tail_cm = $request->tailCm;
+            }
+            if ($request->filled('tailPly')) {
+                $request->validate([
+                    'tailPly' => 'min:0',
+                ]);
+                $p->tail_ply = $request->tailPly;
+            }
             if ($request->filled('strand')) {
                 $p->strand = $request->strand;
             }
             $p->coil_type = $request->coilType;
+            $p->dropper = $request->dropper;
             $p->grade_no = $request->gradeNo;
             $p->mfi = $request->mfi;
             $p->mfr = $request->mfr;
             $p->melting_point = $request->meltingPoint;
             $p->density = $request->density;
-            $p->upload_tds = $request->uploadTds;
-            $p->upload_msds = $request->uploadMsds;
+            if ($request->hasFile('uploadTds')){
+                $img = $request->uploadTds;
+                $img_name = time() . $img->getClientOriginalName();
+                $img->move('uploads/Products/TDS', $img_name);
+                $d = 'uploads/Products/TDS/' . $img_name;
+                $p->upload_tds = $d;
+            }
+            if ($request->hasFile('uploadMsds')){
+                $img = $request->uploadMsds;
+                $img_name = time() . $img->getClientOriginalName();
+                $img->move('uploads/Products/MSDS', $img_name);
+                $d = 'uploads/Products/MSDS/' . $img_name;
+                $p->upload_msds = $d;
+            }
             $p->save();
             Session::flash('Success', "The Product has been created successfully.");
             return redirect()->route('product.list');
@@ -306,17 +343,60 @@ class ProductController extends Controller
                 ]);
                 $p->frame_size_height = $request->frameSizeHeight;
             }
+            if ($request->filled('bodyCm')) {
+                $request->validate([
+                    'bodyCm' => 'min:0',
+                ]);
+                $p->body_cm = $request->bodyCm;
+            }
+            if ($request->filled('bodyPly')) {
+                $request->validate([
+                    'bodyPly' => 'min:0',
+                ]);
+                $p->body_ply = $request->bodyPly;
+            }
+            if ($request->filled('tailCm')) {
+                $request->validate([
+                    'tailCm' => 'min:0',
+                ]);
+                $p->tail_cm = $request->tailCm;
+            }
+            if ($request->filled('tailPly')) {
+                $request->validate([
+                    'tailPly' => 'min:0',
+                ]);
+                $p->tail_ply = $request->tailPly;
+            }
             if ($request->filled('strand')) {
                 $p->strand = $request->strand;
             }
             $p->coil_type = $request->coilType;
+            $p->dropper = $request->dropper;
             $p->grade_no = $request->gradeNo;
             $p->mfi = $request->mfi;
             $p->mfr = $request->mfr;
             $p->melting_point = $request->meltingPoint;
             $p->density = $request->density;
-            $p->upload_tds = $request->uploadTds;
-            $p->upload_msds = $request->uploadMsds;
+            if ($request->hasFile('uploadTds')){
+                if ($p->upload_tds){
+                    unlink($p->upload_tds);
+                }
+                $img = $request->uploadTds;
+                $img_name = time() . $img->getClientOriginalName();
+                $img->move('uploads/Products/TDS', $img_name);
+                $d = 'uploads/Products/TDS/' . $img_name;
+                $p->upload_tds = $d;
+            }
+            if ($request->hasFile('uploadMsds')){
+                if ($p->upload_msds){
+                    unlink($p->upload_msds);
+                }
+                $img = $request->uploadMsds;
+                $img_name = time() . $img->getClientOriginalName();
+                $img->move('uploads/Products/MSDS', $img_name);
+                $d = 'uploads/Products/MSDS/' . $img_name;
+                $p->upload_msds = $d;
+            }
             $p->update();
             Session::flash('Success', "The Product has been updated successfully.");
             return redirect()->back();

@@ -42,8 +42,13 @@ class CreateProductsTable extends Migration
             $table->string('mfr')->nullable();
             $table->float('melting_point')->nullable();
             $table->float('density')->nullable();
-            $table->float('upload_tds')->nullable();
-            $table->float('upload_msds')->nullable();
+            $table->string('upload_tds')->nullable();
+            $table->string('upload_msds')->nullable();
+            $table->string('dropper')->nullable();
+            $table->float('body_cm')->nullable();
+            $table->float('body_ply')->nullable();
+            $table->float('tail_cm')->nullable();
+            $table->float('tail_ply')->nullable();
             $table->timestamps();
         });
     }

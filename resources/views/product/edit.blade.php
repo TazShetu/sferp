@@ -205,7 +205,7 @@
                                                         </div>
                                                     </div>
                                                 @endif
-                                                @if(($pedit->name == 'White Knotless') || ($pedit->name == 'HDPE Trap Net') )
+                                                @if(($pedit->name == 'White Knotless'))
                                                     <div class="form-group row hideFirst hideSecond ns6">
                                                         <label class="col-xl-3 col-lg-3 col-form-label">
                                                             Mesh Size
@@ -314,16 +314,19 @@
                                                         </div>
                                                     </div>
                                                 @endif
-                                                @if(($pedit->name == 'HDPE Cage Net'))
+                                                @if(($pedit->name == 'HDPE Trap Net'))
                                                     <div class="form-group row hideFirst hideSecond ns13">
                                                         <label class="col-xl-3 col-lg-3 col-form-label">
                                                             Length
                                                         </label>
-                                                        <div class="col-lg-9 col-xl-6">
+                                                        <div class="col-lg-9 col-xl-6 input-group">
                                                             <input
                                                                 class="form-control {{($errors->has('length')) ? 'is-invalid' : ''}}"
                                                                 type="number" name="length" value="{{$pedit->length}}"
                                                                 step="0.01" min="0">
+                                                            <div class="input-group-append">
+                                                                <span class="input-group-text">meter</span>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 @endif
@@ -376,20 +379,23 @@
                                                 @if(($pedit->name == 'HDPE Trap Net'))
                                                     <div class="form-group row hideFirst hideSecond ns14">
                                                         <label class="col-xl-3 col-lg-3 col-form-label">
-                                                            Weight (kg)
+                                                            Weight
                                                         </label>
-                                                        <div class="col-lg-9 col-xl-6">
+                                                        <div class="col-lg-9 col-xl-6 input-group">
                                                             <input
                                                                 class="form-control {{($errors->has('weight')) ? 'is-invalid' : ''}}"
                                                                 type="number" name="weight" value="{{$pedit->weight}}"
                                                                 step="0.01" min="0">
+                                                            <div class="input-group-append">
+                                                                <span class="input-group-text">Kg</span>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 @endif
                                                 @if(($pedit->name == 'HDPE Trap Net'))
                                                     <div class="form-group row hideFirst hideSecond ns14">
                                                         <label class="col-xl-3 col-lg-3 col-form-label">
-                                                            Frame no.
+                                                            Number of Frames
                                                         </label>
                                                         <div class="col-lg-9 col-xl-6">
                                                             <input
@@ -403,28 +409,107 @@
                                                 @if(($pedit->name == 'HDPE Trap Net'))
                                                     <div class="form-group row hideFirst hideSecond ns14">
                                                         <label class="col-xl-3 col-lg-3 col-form-label">
-                                                            Frame Size Width (cm)
+                                                            Frame Size Width
                                                         </label>
-                                                        <div class="col-lg-9 col-xl-6">
+                                                        <div class="col-lg-9 col-xl-6 input-group">
                                                             <input
                                                                 class="form-control {{($errors->has('frameSizeWidth')) ? 'is-invalid' : ''}}"
                                                                 type="number" name="frameSizeWidth"
                                                                 value="{{$pedit->frame_size_width}}"
                                                                 step="0.01" min="0">
+                                                            <div class="input-group-append">
+                                                                <span class="input-group-text">cm</span>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 @endif
                                                 @if(($pedit->name == 'HDPE Trap Net'))
                                                     <div class="form-group row hideFirst hideSecond ns14">
                                                         <label class="col-xl-3 col-lg-3 col-form-label">
-                                                            Frame Size Height (cm)
+                                                            Frame Size Height
                                                         </label>
-                                                        <div class="col-lg-9 col-xl-6">
+                                                        <div class="col-lg-9 col-xl-6 input-group">
                                                             <input
                                                                 class="form-control {{($errors->has('frameSizeHeight')) ? 'is-invalid' : ''}}"
                                                                 type="number" name="frameSizeHeight"
                                                                 value="{{$pedit->frame_size_height}}"
                                                                 step="0.01" min="0">
+                                                            <div class="input-group-append">
+                                                                <span class="input-group-text">cm</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                @endif
+                                                @if(($pedit->name == 'HDPE Trap Net'))
+                                                    <div class="form-group row hideFirst hideSecond ns14">
+                                                        <label class="col-xl-3 col-lg-3 col-form-label">
+                                                            Dropper
+                                                        </label>
+                                                        <div class="col-lg-9 col-xl-6">
+                                                            <select
+                                                                class="form-control {{($errors->has('dropper')) ? 'is-invalid' : ''}}"
+                                                                name="dropper">
+                                                                @if($pedit->dropper)
+                                                                    <option selected hidden
+                                                                            value="{{$pedit->dropper}}">{{$pedit->dropper}}
+                                                                    </option>
+                                                                @else
+                                                                    <option selected disabled hidden value="">Choose...
+                                                                    </option>
+                                                                @endif
+                                                                <option value="With">With</option>
+                                                                <option value="Without">Without</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                @endif
+                                                @if(($pedit->name == 'HDPE Trap Net'))
+                                                    <div class="form-group row hideFirst hideSecond ns14">
+                                                        <label class="col-xl-3 col-lg-3 col-form-label">
+                                                            Body
+                                                        </label>
+                                                        <div class="col-lg-3 col-xl-3 input-group">
+                                                            <input
+                                                                class="form-control {{($errors->has('bodyCm')) ? 'is-invalid' : ''}}"
+                                                                type="number" name="bodyCm" value="{{$pedit->body_cm}}"
+                                                                step="0.01" min="0">
+                                                            <div class="input-group-append">
+                                                                <span class="input-group-text">cm</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-3 col-xl-3 input-group">
+                                                            <input
+                                                                class="form-control {{($errors->has('bodyPly')) ? 'is-invalid' : ''}}"
+                                                                type="number" name="bodyPly" value="{{$pedit->body_ply}}"
+                                                                step="0.01" min="0">
+                                                            <div class="input-group-append">
+                                                                <span class="input-group-text">Ply</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                @endif
+                                                @if(($pedit->name == 'HDPE Trap Net'))
+                                                    <div class="form-group row hideFirst hideSecond ns14">
+                                                        <label class="col-xl-3 col-lg-3 col-form-label">
+                                                            Tail
+                                                        </label>
+                                                        <div class="col-lg-3 col-xl-3 input-group">
+                                                            <input
+                                                                class="form-control {{($errors->has('tailCm')) ? 'is-invalid' : ''}}"
+                                                                type="number" name="tailCm" value="{{$pedit->tail_cm}}"
+                                                                step="0.01" min="0">
+                                                            <div class="input-group-append">
+                                                                <span class="input-group-text">cm</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-3 col-xl-3 input-group">
+                                                            <input
+                                                                class="form-control {{($errors->has('tailPly')) ? 'is-invalid' : ''}}"
+                                                                type="number" name="tailPly" value="{{$pedit->tail_ply}}"
+                                                                step="0.01" min="0">
+                                                            <div class="input-group-append">
+                                                                <span class="input-group-text">Ply</span>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 @endif
@@ -503,7 +588,7 @@
                                                     <div class="col-lg-9 col-xl-6">
                                                         <input value="{{$pedit->upload_tds}}"
                                                                class="form-control {{($errors->has('uploadTds')) ? 'is-invalid' : ''}}"
-                                                               type="number" name="uploadTds" step="0.01" min="0">
+                                                               type="file" name="uploadTds">
                                                     </div>
                                                 </div>
                                                 <div class="form-group row hideFirst hideSecond tid7">
@@ -513,7 +598,7 @@
                                                     <div class="col-lg-9 col-xl-6">
                                                         <input value="{{$pedit->upload_msds}}"
                                                                class="form-control {{($errors->has('uploadMsds')) ? 'is-invalid' : ''}}"
-                                                               type="number" name="uploadMsds" step="0.01" min="0">
+                                                               type="file" name="uploadMsds">
                                                     </div>
                                                 </div>
                                             @endif

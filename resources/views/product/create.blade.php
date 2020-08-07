@@ -168,7 +168,7 @@
                                                         type="number" name="plys" value="{{old('plys')}}" min="0">
                                                 </div>
                                             </div>
-                                            <div class="form-group row hideFirst hideSecond ns6 ns14">
+                                            <div class="form-group row hideFirst hideSecond ns6">
                                                 <label class="col-xl-3 col-lg-3 col-form-label">
                                                     Mesh Size
                                                 </label>
@@ -211,15 +211,6 @@
                                                     </div>
                                                 </div>
                                             </div>
-
-
-
-
-
-
-
-
-
                                             <div class="form-group row hideFirst hideSecond ns9 ns13">
                                                 <label class="col-xl-3 col-lg-3 col-form-label">
                                                     Twin Size
@@ -227,7 +218,8 @@
                                                 <div class="col-lg-2 col-xl-2 input-group">
                                                     <input
                                                         class="form-control {{($errors->has('twinSizeDenier')) ? 'is-invalid' : ''}}"
-                                                        type="number" name="twinSizeDenier" value="{{old('twinSizeDenier')}}"
+                                                        type="number" name="twinSizeDenier"
+                                                        value="{{old('twinSizeDenier')}}"
                                                         step="0.01" min="0">
                                                     <div class="input-group-append">
                                                         <span class="input-group-text">Denier</span>
@@ -275,15 +267,64 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            <div class="form-group row hideFirst hideSecond ns14">
+                                                <label class="col-xl-3 col-lg-3 col-form-label">
+                                                    Body
+                                                </label>
+                                                <div class="col-lg-3 col-xl-3 input-group">
+                                                    <input
+                                                        class="form-control {{($errors->has('bodyCm')) ? 'is-invalid' : ''}}"
+                                                        type="number" name="bodyCm" value="{{old('bodyCm')}}"
+                                                        step="0.01" min="0">
+                                                    <div class="input-group-append">
+                                                        <span class="input-group-text">cm</span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-3 col-xl-3 input-group">
+                                                    <input
+                                                        class="form-control {{($errors->has('bodyPly')) ? 'is-invalid' : ''}}"
+                                                        type="number" name="bodyPly" value="{{old('bodyPly')}}"
+                                                        step="0.01" min="0">
+                                                    <div class="input-group-append">
+                                                        <span class="input-group-text">Ply</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row hideFirst hideSecond ns14">
+                                                <label class="col-xl-3 col-lg-3 col-form-label">
+                                                    Tail
+                                                </label>
+                                                <div class="col-lg-3 col-xl-3 input-group">
+                                                    <input
+                                                        class="form-control {{($errors->has('tailCm')) ? 'is-invalid' : ''}}"
+                                                        type="number" name="tailCm" value="{{old('tailCm')}}"
+                                                        step="0.01" min="0">
+                                                    <div class="input-group-append">
+                                                        <span class="input-group-text">cm</span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-3 col-xl-3 input-group">
+                                                    <input
+                                                        class="form-control {{($errors->has('tailPly')) ? 'is-invalid' : ''}}"
+                                                        type="number" name="tailPly" value="{{old('tailPly')}}"
+                                                        step="0.01" min="0">
+                                                    <div class="input-group-append">
+                                                        <span class="input-group-text">Ply</span>
+                                                    </div>
+                                                </div>
+                                            </div>
                                             <div class="form-group row hideFirst hideSecond ns13 ns14">
                                                 <label class="col-xl-3 col-lg-3 col-form-label">
                                                     Length
                                                 </label>
-                                                <div class="col-lg-9 col-xl-6">
+                                                <div class="col-lg-9 col-xl-6 input-group">
                                                     <input
                                                         class="form-control {{($errors->has('length')) ? 'is-invalid' : ''}}"
                                                         type="number" name="length" value="{{old('length')}}"
                                                         step="0.01" min="0">
+                                                    <div class="input-group-append">
+                                                        <span class="input-group-text">meter</span>
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="form-group row hideFirst hideSecond ns3 ns4">
@@ -316,18 +357,35 @@
                                             </div>
                                             <div class="form-group row hideFirst hideSecond ns14">
                                                 <label class="col-xl-3 col-lg-3 col-form-label">
-                                                    Weight (kg)
+                                                    Dropper
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">
-                                                    <input
-                                                        class="form-control {{($errors->has('weight')) ? 'is-invalid' : ''}}"
-                                                        type="number" name="weight" value="{{old('weight')}}"
-                                                        step="0.01" min="0">
+                                                    <select
+                                                        class="form-control {{($errors->has('dropper')) ? 'is-invalid' : ''}}"
+                                                        name="dropper">
+                                                        <option selected disabled hidden value="">Choose...</option>
+                                                        <option value="With">With</option>
+                                                        <option value="Without">Without</option>
+                                                    </select>
                                                 </div>
                                             </div>
                                             <div class="form-group row hideFirst hideSecond ns14">
                                                 <label class="col-xl-3 col-lg-3 col-form-label">
-                                                    Frame no.
+                                                    Weight
+                                                </label>
+                                                <div class="col-lg-9 col-xl-6 input-group">
+                                                    <input
+                                                        class="form-control {{($errors->has('weight')) ? 'is-invalid' : ''}}"
+                                                        type="number" name="weight" value="{{old('weight')}}"
+                                                        step="0.01" min="0">
+                                                    <div class="input-group-append">
+                                                        <span class="input-group-text">Kg</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row hideFirst hideSecond ns14">
+                                                <label class="col-xl-3 col-lg-3 col-form-label">
+                                                    Number of Frames
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">
                                                     <input
@@ -338,26 +396,32 @@
                                             </div>
                                             <div class="form-group row hideFirst hideSecond ns14">
                                                 <label class="col-xl-3 col-lg-3 col-form-label">
-                                                    Frame Size Width (cm)
+                                                    Frame Size Width
                                                 </label>
-                                                <div class="col-lg-9 col-xl-6">
+                                                <div class="col-lg-9 col-xl-6 input-group">
                                                     <input
                                                         class="form-control {{($errors->has('frameSizeWidth')) ? 'is-invalid' : ''}}"
                                                         type="number" name="frameSizeWidth"
                                                         value="{{old('frameSizeWidth')}}"
                                                         step="0.01" min="0">
+                                                    <div class="input-group-append">
+                                                        <span class="input-group-text">cm</span>
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="form-group row hideFirst hideSecond ns14">
                                                 <label class="col-xl-3 col-lg-3 col-form-label">
-                                                    Frame Size Height (cm)
+                                                    Frame Size Height
                                                 </label>
-                                                <div class="col-lg-9 col-xl-6">
+                                                <div class="col-lg-9 col-xl-6 input-group">
                                                     <input
                                                         class="form-control {{($errors->has('frameSizeHeight')) ? 'is-invalid' : ''}}"
                                                         type="number" name="frameSizeHeight"
                                                         value="{{old('frameSizeHeight')}}"
                                                         step="0.01" min="0">
+                                                    <div class="input-group-append">
+                                                        <span class="input-group-text">cm</span>
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="form-group row hideFirst hideSecond tid7">
@@ -413,6 +477,8 @@
                                                     </div>
                                                 </div>
                                             </div>
+
+
                                             <div class="form-group row hideFirst hideSecond tid7">
                                                 <label class="col-xl-3 col-lg-3 col-form-label">
                                                     Upload Tds
@@ -420,7 +486,7 @@
                                                 <div class="col-lg-9 col-xl-6">
                                                     <input
                                                         class="form-control {{($errors->has('uploadTds')) ? 'is-invalid' : ''}}"
-                                                        type="number" name="uploadTds" step="0.01" min="0">
+                                                        type="file" name="uploadTds">
                                                 </div>
                                             </div>
                                             <div class="form-group row hideFirst hideSecond tid7">
@@ -430,7 +496,7 @@
                                                 <div class="col-lg-9 col-xl-6">
                                                     <input
                                                         class="form-control {{($errors->has('uploadMsds')) ? 'is-invalid' : ''}}"
-                                                        type="number" name="uploadMsds" step="0.01" min="0">
+                                                        type="file" name="uploadMsds">
                                                 </div>
                                             </div>
                                             <div class="form-group row">
@@ -538,9 +604,13 @@
                     }
                 } else {
                     // name field show
+                    $("#msrt").html('Bags');
+                    $("input[name=unit]").val('Bags');
                     $("#nameType").show();
                     if (type == 6) {
                         // $(".tid6").show();
+                        $("#msrt").html('Kg');
+                        $("input[name=unit]").val('Kg');
                     } else if (type == 7) {
                         $(".tid7").show();
                     } else if (type == 8) {
