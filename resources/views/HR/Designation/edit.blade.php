@@ -63,14 +63,27 @@
                                                 <div class="kt-section__body">
                                                     <div class="form-group row">
                                                         <label class="col-xl-3 col-lg-3 col-form-label">
-                                                            Title
+                                                            Type
+                                                        </label>
+                                                        <div class="col-lg-9 col-xl-6">
+                                                            <select name="type" readonly="readonly"
+                                                                    class="form-control {{($errors->has('type')) ? 'is-invalid' : ''}}">
+                                                                <option selected disabled hidden value="">
+                                                                    {{$dedit->type}}
+                                                                </option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label class="col-xl-3 col-lg-3 col-form-label">
+                                                            Title*
                                                         </label>
                                                         <div class="col-lg-9 col-xl-6">
                                                             <input
                                                                 class="form-control {{$errors->has('title') ? 'is-invalid' : ''}}"
                                                                 type="text" name="title"
                                                                 required value="{{$dedit->title}}">
-                                                            <span class="form-text text-muted">Has to be unique.</span>
+{{--                                                            <span class="form-text text-muted">Has to be unique.</span>--}}
                                                             @if($errors->has('title'))
                                                                 <span
                                                                     class="invalid-feedback">{{$errors->first('title')}}</span>
@@ -125,6 +138,7 @@
                             <thead>
                             <tr>
                                 <th scope="col">#</th>
+                                <th scope="col">Type</th>
                                 <th scope="col">Title</th>
                                 <th scope="col">Action</th>
                             </tr>
@@ -133,6 +147,7 @@
                             @foreach($designations as $i => $designation)
                                 <tr>
                                     <th scope="row">{{$i + 1}}</th>
+                                    <td>{{$designation->type}}</td>
                                     <td>{{$designation->title}}</td>
                                     <td>
                                         @if($designation->id != $dedit->id)

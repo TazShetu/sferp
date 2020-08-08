@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Designation;
+use App\Employeetype;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -19,8 +20,12 @@ class DesignationController extends Controller
     public function index()
     {
         if (Auth::user()->can('hr_designation')) {
-            $designations = Designation::orderBy('title')->get();
-            return view('HR.Designation.index', compact('designations'));
+            $types = Employeetype::all();
+            $designations = Designation::orderBy('employeetype_id')->get();
+            foreach ($designations as $d){
+                $d['type'] = Employeetype::find($d->employeetype_id)->title;
+            }
+            return view('HR.Designation.index', compact('types', 'designations'));
         } else {
             abort(403);
         }
@@ -31,12 +36,15 @@ class DesignationController extends Controller
     {
         if (Auth::user()->can('hr_designation')) {
             $this->validate($request, [
-                'title' => 'required|unique:designations,title',
+//                'title' => 'required|unique:designations,title',
+                'type' => 'required',
+                'title' => 'required',
             ]);
             $j = new Designation;
+            $j->employeetype_id = $request->type;
             $j->title = $request->title;
             $j->save();
-            Session::flash('Success', "Designation '$j->title' has been created successfully.");
+            Session::flash('Success', "Designation has been created successfully.");
             return redirect()->back();
         } else {
             abort(403);
@@ -48,7 +56,12 @@ class DesignationController extends Controller
     {
         if (Auth::user()->can('hr_designation')) {
             $dedit = Designation::find($did);
-            $designations = Designation::orderBy('title')->get();
+            $dedit['type'] = Employeetype::find($dedit->employeetype_id)->title;
+//            $types = Employeetype::all();
+            $designations = Designation::orderBy('employeetype_id')->get();
+            foreach ($designations as $d){
+                $d['type'] = Employeetype::find($d->employeetype_id)->title;
+            }
             return view('HR.Designation.edit', compact('dedit', 'designations'));
         } else {
             abort(403);
@@ -60,12 +73,12 @@ class DesignationController extends Controller
     {
         if (Auth::user()->can('hr_designation')) {
             $this->validate($request, [
-                'title' => 'required|unique:designations,title',
+                'title' => 'required',
             ]);
             $j = Designation::find($did);
             $j->title = $request->title;
             $j->update();
-            Session::flash('Success', "Designation '$j->title' has been updated successfully.");
+            Session::flash('Success', "Designation has been updated successfully.");
             return redirect()->back();
         } else {
             abort(403);
