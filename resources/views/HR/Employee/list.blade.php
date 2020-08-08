@@ -63,10 +63,10 @@
                                             @endforeach
                                         </select>
                                     </div>
-                                    <div class="form-group mx-sm-4 mb-2">
-                                        <input type="text" name="mobile" class="form-control" placeholder="Mobile"
-                                               value="{{$query ? ($query['mobile'] ? $query['mobile'] : '') : ''}}">
-                                    </div>
+{{--                                    <div class="form-group mx-sm-4 mb-2">--}}
+{{--                                        <input type="text" name="mobile" class="form-control" placeholder="Mobile"--}}
+{{--                                               value="{{$query ? ($query['mobile'] ? $query['mobile'] : '') : ''}}">--}}
+{{--                                    </div>--}}
                                     <button type="submit" class="btn btn-primary mb-2">Confirm Search</button>
                                 </form>
                             </div>
@@ -97,8 +97,8 @@
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Name</th>
+                        <th scope="col">Type</th>
                         <th scope="col">Designation</th>
-                        <th scope="col">Mobile</th>
                         <th scope="col">Action</th>
                     </tr>
                     </thead>
@@ -107,8 +107,8 @@
                         <tr>
                             <th scope="row">{{$employees->firstItem() + $i}}</th>
                             <td>{{$e->name}}</td>
+                            <td>{{$e->type}}</td>
                             <td>{{$e->designation}}</td>
-                            <td>{{$e->mobile}}</td>
                             <td>
                                 <a href="{{route('employee.edit', ['eid' => $e->id])}}" title="Edit"
                                    class="btn btn-sm btn-clean btn-icon btn-icon-md">

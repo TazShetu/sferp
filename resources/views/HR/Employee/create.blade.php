@@ -47,7 +47,53 @@
                                         <div class="kt-section__body">
                                             <div class="form-group row">
                                                 <label class="col-xl-3 col-lg-3 col-form-label">
-                                                    Name*
+                                                    Companies*
+                                                </label>
+                                                <div class="col-lg-9 col-xl-6">
+                                                    <div class="kt-checkbox-list">
+                                                        @foreach($factories as $f)
+                                                            <label
+                                                                class="kt-checkbox kt-checkbox--tick kt-checkbox--success">
+                                                                <input type="checkbox" name="factory[]"
+                                                                       value="{{$f->id}}">{{$f->name}}
+                                                                <span></span>
+                                                            </label>
+                                                        @endforeach
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-xl-3 col-lg-3 col-form-label">
+                                                    Employee Type*
+                                                </label>
+                                                <div class="col-lg-9 col-xl-6">
+                                                    <select name="type" required id="type"
+                                                            class="form-control {{($errors->has('type')) ? 'is-invalid' : ''}}">
+                                                        <option selected disabled hidden value="">Choose...
+                                                        </option>
+                                                        @foreach($types as $type)
+                                                            <option
+                                                                value="{{$type->id}}">{{$type->title}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-xl-3 col-lg-3 col-form-label">
+                                                    Designation*
+                                                </label>
+                                                <div class="col-lg-9 col-xl-6">
+                                                    <select name="designation" required id="designation"
+                                                            class="form-control {{($errors->has('designation')) ? 'is-invalid' : ''}}">
+                                                        <option selected disabled hidden value="">
+                                                            Select Employee Type First
+                                                        </option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-xl-3 col-lg-3 col-form-label">
+                                                    Full Name*
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">
                                                     <input
@@ -61,88 +107,27 @@
                                             </div>
                                             <div class="form-group row">
                                                 <label class="col-xl-3 col-lg-3 col-form-label">
-                                                    Designation*
+                                                    Date Of Joining
                                                 </label>
-                                                <div class="col-lg-9 col-xl-6">
-                                                    <select
-                                                        class="form-control {{($errors->has('designation')) ? 'is-invalid' : ''}}"
-                                                        name="designation" required>
-                                                        <option selected disabled hidden value="">Choose...</option>
-                                                        @foreach($designations as $d)
-                                                            <option value="{{$d->id}}">{{$d->title}}</option>
-                                                        @endforeach
-                                                    </select>
-                                                    @if($errors->has('designation'))
-                                                        <span
-                                                            class="invalid-feedback">{{$errors->first('designation')}}</span>
-                                                    @endif
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label class="col-xl-3 col-lg-3 col-form-label">
-                                                    Mobile*
-                                                </label>
-                                                <div class="col-lg-9 col-xl-6">
-                                                    <input
-                                                        class="form-control {{($errors->has('mobile')) ? 'is-invalid' : ''}}"
-                                                        type="text" name="mobile" required
-                                                        value="{{old('mobile')}}">
-                                                    @if($errors->has('mobile'))
-                                                        <span
-                                                            class="invalid-feedback">{{$errors->first('mobile')}}</span>
-                                                    @endif
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label class="col-xl-3 col-lg-3 col-form-label">
-                                                    Email
-                                                </label>
-                                                <div class="col-lg-9 col-xl-6">
-                                                    <input class="form-control" type="email" name="email"
-                                                           value="{{old('email')}}">
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label class="col-xl-3 col-lg-3 col-form-label">
-                                                    Address
-                                                </label>
-                                                <div class="col-lg-9 col-xl-6">
-                                                    <input class="form-control" type="text" name="address"
-                                                           value="{{old('address')}}">
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label class="col-xl-3 col-lg-3 col-form-label">
-                                                    Date Of Birth</label>
                                                 <div class="col-lg-9 col-xl-6">
                                                     <div class="input-group date">
                                                         <input
-                                                            class="form-control {{$errors->has('dateOfBirth') ? 'is-invalid' : ''}}"
-                                                            type="text" name="dateOfBirth" readonly
+                                                            class="form-control {{$errors->has('dateOfJoining') ? 'is-invalid' : ''}}"
+                                                            type="text" name="dateOfJoining" readonly required
                                                             placeholder="Select date" id="kt_datepicker_3"
-                                                            value="{{old('dateOfBirth')}}">
+                                                            value="{{old('dateOfJoining')}}">
                                                         <div class="input-group-append">
 														<span class="input-group-text">
 															<i class="la la-calendar-check-o"></i>
 														</span>
                                                         </div>
                                                     </div>
-                                                    @if($errors->has('dateOfBirth'))
+                                                    @if($errors->has('dateOfJoining'))
                                                         <span
-                                                            class="invalid-feedback">{{$errors->first('dateOfBirth')}}</span>
+                                                            class="invalid-feedback">{{$errors->first('dateOfJoining')}}</span>
                                                     @endif
                                                 </div>
                                             </div>
-                                            <div class="form-group row">
-                                                <label class="col-xl-3 col-lg-3 col-form-label">
-                                                    NID number
-                                                </label>
-                                                <div class="col-lg-9 col-xl-6">
-                                                    <input class="form-control" type="text" name="nid"
-                                                           value="{{old('nid')}}">
-                                                </div>
-                                            </div>
-
                                             <div
                                                 class="kt-separator kt-separator--space-lg kt-separator--fit kt-separator--border-solid"></div>
                                             <div class="kt-form__actions">
@@ -180,6 +165,19 @@
     {{--    <script src="{{asset('m/assets/js/pages/custom/user/edit-user.js')}}" type="text/javascript"></script>--}}
     <script src="{{asset('m/assets/js/pages/crud/forms/widgets/bootstrap-datepicker.js')}}"
             type="text/javascript"></script>
+    <script>
+        $(document).on('change', "#type", function () {
+            var tid = $(this).val();
+            $.ajax({
+                url: '{{URL::to('/ajax/employees/tidToDesignation')}}',
+                data: {tid: tid},
+                method: "GET",
+                success: function (r) {
+                    $("#designation").html(r);
+                }
+            });
+        });
+    </script>
 
 
     {{--    <script src="{{asset('m/assets/js/pages/crud/file-upload/uppy.js')}}" type="text/javascript"></script>--}}

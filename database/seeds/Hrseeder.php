@@ -23,6 +23,7 @@ class Hrseeder extends Seeder
         $d = new Designation;
         $d->employeetype_id = 1;
         $d->title = 'Manager';
+        $d->code = 'SM';
         $d->save();
 
 //        $e = new Employee;

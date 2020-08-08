@@ -71,10 +71,6 @@
                                                                         value="{{$type->id}}">{{$type->title}}</option>
                                                                 @endforeach
                                                             </select>
-                                                            @if($errors->has('title'))
-                                                                <span
-                                                                    class="invalid-feedback">{{$errors->first('title')}}</span>
-                                                            @endif
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
@@ -93,8 +89,19 @@
                                                             @endif
                                                         </div>
                                                     </div>
-                                                    {{--                                                    <div class="form-group form-group-last row">--}}
-                                                    {{--                                                    </div>--}}
+                                                    <div class="form-group row">
+                                                        <label class="col-xl-3 col-lg-3 col-form-label">
+                                                            Code
+                                                        </label>
+                                                        <div class="col-lg-9 col-xl-6">
+                                                            <input class="form-control {{$errors->has('code') ? 'is-invalid' : ''}}"
+                                                                   type="text" placeholder="Code" name="code" required
+                                                                   value="{{old('code')}}">
+                                                            @if($errors->has('code'))
+                                                                <span class="invalid-feedback">{{$errors->first('code')}}</span>
+                                                            @endif
+                                                        </div>
+                                                    </div>
                                                     <div
                                                         class="kt-separator kt-separator--space-lg kt-separator--fit kt-separator--border-solid"></div>
                                                     <div class="kt-form__actions">
@@ -143,6 +150,7 @@
                                 <th scope="col">#</th>
                                 <th scope="col">Type</th>
                                 <th scope="col">Title</th>
+                                <th scope="col">Code</th>
                                 <th scope="col">Action</th>
                             </tr>
                             </thead>
@@ -152,6 +160,7 @@
                                     <th scope="row">{{$i + 1}}</th>
                                     <td>{{$designation->type}}</td>
                                     <td>{{$designation->title}}</td>
+                                    <td>{{$designation->code}}</td>
                                     <td>
                                         <a href="{{route('designation.edit', ['did' => $designation->id])}}"
                                            title="Edit"

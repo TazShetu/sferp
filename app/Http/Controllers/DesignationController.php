@@ -39,10 +39,12 @@ class DesignationController extends Controller
 //                'title' => 'required|unique:designations,title',
                 'type' => 'required',
                 'title' => 'required',
+                'code' => 'required',
             ]);
             $j = new Designation;
             $j->employeetype_id = $request->type;
             $j->title = $request->title;
+            $j->code = $request->code;
             $j->save();
             Session::flash('Success', "Designation has been created successfully.");
             return redirect()->back();
@@ -74,9 +76,11 @@ class DesignationController extends Controller
         if (Auth::user()->can('hr_designation')) {
             $this->validate($request, [
                 'title' => 'required',
+                'code' => 'required',
             ]);
             $j = Designation::find($did);
             $j->title = $request->title;
+            $j->code = $request->code;
             $j->update();
             Session::flash('Success', "Designation has been updated successfully.");
             return redirect()->back();

@@ -181,6 +181,7 @@ Route::post('/Employee/store', 'EmployeeController@store')->name('employee.store
 Route::get('/Employee/edit/{eid}', 'EmployeeController@edit')->name('employee.edit');
 Route::post('/Employee/update/{eid}', 'EmployeeController@update')->name('employee.update');
 Route::delete('/Employee/delete/{eid}', 'EmployeeController@destroy')->name('employee.delete');
+Route::get('/ajax/employees/tidToDesignation', 'EmployeeController@tidToDesignation');
 
 
 
