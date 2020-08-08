@@ -1,11 +1,11 @@
 @extends('layouts.m')
-@section('title', 'Factory List')
+@section('title', 'Company List')
 @section('content_head')
     <div class="kt-subheader   kt-grid__item" id="kt_subheader">
         <div class="kt-container  kt-container--fluid ">
             <div class="kt-subheader__main">
                 <h3 class="kt-subheader__title">
-                    Factories
+                    Companies
                 </h3>
                 <span class="kt-subheader__separator kt-subheader__separator--v"></span>
                 <div class="kt-subheader__group" id="kt_subheader_search">
@@ -15,7 +15,7 @@
                 </div>
             </div>
             <div class="kt-subheader__toolbar">
-                <a href="{{route('factory.create')}}" class="btn btn-label-brand btn-bold">Add Factory </a>
+                <a href="{{route('factory.create')}}" class="btn btn-label-brand btn-bold">Add Company </a>
             </div>
         </div>
     </div>
@@ -41,7 +41,7 @@
                         <i class="kt-font-brand flaticon2-line-chart"></i>
                     </span>
                     <h3 class="kt-portlet__head-title">
-                        All Factories
+                        All Companies
                     </h3>
                 </div>
             </div>

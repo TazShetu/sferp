@@ -1,17 +1,17 @@
 @extends('layouts.m')
-@section('title', 'Factory Create')
+@section('title', 'Company Create')
 @section('content_head')
     <div class="kt-subheader   kt-grid__item" id="kt_subheader">
         <div class="kt-container  kt-container--fluid ">
             <div class="kt-subheader__main">
                 <h3 class="kt-subheader__title">
-                    Create Factory
+                    Create Company
                 </h3>
                 <span class="kt-subheader__separator kt-subheader__separator--v"></span>
                 <div class="kt-subheader__breadcrumbs">
                     <a href="{{route('home')}}" class="kt-subheader__breadcrumbs-home"><i class="flaticon2-shelter"></i></a>
                     <span class="kt-subheader__breadcrumbs-separator"></span>
-                    <a href="{{route('factory.list')}}" class="kt-subheader__breadcrumbs-link">Factory</a>
+                    <a href="{{route('factory.list')}}" class="kt-subheader__breadcrumbs-link">Company</a>
                     <span class="kt-subheader__breadcrumbs-separator"></span>
                     <a href="{{route('factory.create')}}"
                        class="kt-subheader__breadcrumbs-link kt-subheader__breadcrumbs-link--active"

@@ -48,12 +48,12 @@ Route::post('/customer-update/{cid}', 'CustomerController@update')->name('custom
 Route::post('/customer-update-contact-person/{cid}', 'CustomerController@updateContactPerson')->name('customer.update.contact.person');
 Route::post('/customer-update-extra/{cid}', 'CustomerController@updateExtra')->name('customer.update.extra');
 
-Route::get('/factories', 'FactoryController@list')->name('factory.list');
-Route::get('/factories/create', 'FactoryController@create')->name('factory.create');
-Route::post('/factories/store', 'FactoryController@store')->name('factory.store');
-Route::get('/factories/edit/{fid}', 'FactoryController@edit')->name('factory.edit');
-Route::post('/factories/update/{fid}', 'FactoryController@update')->name('factory.update');
-Route::delete('/factories/delete/{fid}', 'FactoryController@destroy')->name('factory.delete');
+Route::get('/companies', 'FactoryController@list')->name('factory.list');
+Route::get('/companies/create', 'FactoryController@create')->name('factory.create');
+Route::post('/companies/store', 'FactoryController@store')->name('factory.store');
+Route::get('/companies/edit/{fid}', 'FactoryController@edit')->name('factory.edit');
+Route::post('/companies/update/{fid}', 'FactoryController@update')->name('factory.update');
+Route::delete('/companies/delete/{fid}', 'FactoryController@destroy')->name('factory.delete');
 
 Route::get('/spare-parts', 'SparepartsController@list')->name('spareParts.list');
 Route::get('/spare-parts/create', 'SparepartsController@create')->name('spareParts.create');
