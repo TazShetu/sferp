@@ -3,18 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="72b65107-1734-42e2-a0ce-dd862e20aa6b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Employee.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Employee.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Factory.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Factory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/DesignationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/DesignationController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/EmployeeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/EmployeeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_06_27_130258_create_designations_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_06_27_130258_create_designations_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_06_27_145452_create_employees_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_06_27_145452_create_employees_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/Hrseeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/Hrseeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/HR/Designation/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/HR/Designation/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/HR/Designation/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/HR/Designation/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/HR/Employee/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/HR/Employee/create.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/HR/Employee/list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/HR/Employee/list.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -139,7 +129,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="add_unversioned_files" value="$PROJECT_DIR$/Theme/metronic/demo1/components/custom/iconbox.html" />
-    <property name="last_opened_file_path" value="C:/xampp_5.6.3/htdocs/mj" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../spicemall" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -298,7 +288,7 @@
       <workItem from="1595737514688" duration="10000" />
       <workItem from="1596798025365" duration="9668000" />
       <workItem from="1596878442223" duration="6544000" />
-      <workItem from="1596886144168" duration="3159000" />
+      <workItem from="1596886144168" duration="4733000" />
     </task>
     <servers />
   </component>
@@ -310,10 +300,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="276" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1596887691671" />
-    <state x="740" y="276" key="FileChooserDialogImpl" timestamp="1596800486211">
+    <state x="740" y="276" key="FileChooserDialogImpl" timestamp="1596890047992">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="276" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1596800486211" />
+    <state x="740" y="276" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1596890047992" />
     <state x="646" y="236" width="758" height="638" key="find.popup" timestamp="1596887668596">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -426,51 +416,6 @@
           <line>12</line>
           <option name="timeStamp" value="366" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/app/Http/Controllers/EmployeeController.php</url>
-          <line>45</line>
-          <option name="timeStamp" value="375" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/app/Http/Controllers/EmployeeController.php</url>
-          <line>44</line>
-          <option name="timeStamp" value="376" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/app/Http/Controllers/EmployeeController.php</url>
-          <line>43</line>
-          <option name="timeStamp" value="377" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/app/Http/Controllers/EmployeeController.php</url>
-          <line>38</line>
-          <option name="timeStamp" value="378" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/app/Http/Controllers/EmployeeController.php</url>
-          <line>37</line>
-          <option name="timeStamp" value="379" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/app/Http/Controllers/EmployeeController.php</url>
-          <line>23</line>
-          <option name="timeStamp" value="380" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/app/Http/Controllers/EmployeeController.php</url>
-          <line>24</line>
-          <option name="timeStamp" value="381" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/app/Http/Controllers/EmployeeController.php</url>
-          <line>25</line>
-          <option name="timeStamp" value="382" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/app/Http/Controllers/EmployeeController.php</url>
-          <line>26</line>
-          <option name="timeStamp" value="383" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/Theme/metronic/demo1/assets/js/pages/crud/datatables/basic/basic.js</url>
           <line>104</line>
@@ -493,7 +438,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php-line-method">
           <url>file://$PROJECT_DIR$/app/Http/Controllers/EmployeeController.php</url>
-          <line>112</line>
+          <line>122</line>
           <properties>
             <option name="className" value="\App\Http\Controllers\EmployeeController" />
             <option name="methodName" value="edit" />
@@ -502,7 +447,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php-line-method">
           <url>file://$PROJECT_DIR$/app/Http/Controllers/EmployeeController.php</url>
-          <line>125</line>
+          <line>135</line>
           <properties>
             <option name="className" value="\App\Http\Controllers\EmployeeController" />
             <option name="methodName" value="update" />
@@ -511,7 +456,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php-line-method">
           <url>file://$PROJECT_DIR$/app/Http/Controllers/EmployeeController.php</url>
-          <line>152</line>
+          <line>162</line>
           <properties>
             <option name="className" value="\App\Http\Controllers\EmployeeController" />
             <option name="methodName" value="destroy" />

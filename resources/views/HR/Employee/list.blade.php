@@ -48,25 +48,28 @@
                                     @csrf
                                     <div class="form-group mx-sm-4 mb-2">
                                         <input type="text" name="name" class="form-control"
-                                               placeholder="Name" value="{{$query ? ($query['name'] ? $query['name'] : '') : ''}}">
+                                               placeholder="Name"
+                                               value="{{$query ? ($query['name'] ? $query['name'] : '') : ''}}">
                                     </div>
 
                                     <div class="form-group mx-sm-4 mb-2">
-                                        <select class="form-control" name="designationId">
-                                            @if((count($query) > 0) && array_key_exists("designationId", $query))
-                                                <option selected hidden value="{{$query['designationId']}}">{{$query['designationName']}}</option>
+                                        <select class="form-control" name="typeDesignation">
+                                            @if((count($query) > 0) && array_key_exists("typeDesignation", $query))
+                                                <option selected hidden
+                                                        value="{{$query['typeDesignation']}}">{{$query['typeDesignationName']}}</option>
                                             @else
-                                                <option selected disabled hidden value="">Designations</option>
+                                                <option selected disabled hidden value="">Type -> Designations</option>
                                             @endif
-                                            @foreach($designations as $d)
-                                                <option value="{{$d->id}}">{{$d->title}}</option>
+                                            @foreach($types as $ts)
+                                                @if(count($ts->designation) > 0)
+                                                    @foreach($ts->designation as $d)
+                                                        <option value="{{$ts->id}}._.{{$d->id}}">{{$ts->title}}
+                                                            -> {{$d->title}}</option>
+                                                    @endforeach
+                                                @endif
                                             @endforeach
                                         </select>
                                     </div>
-{{--                                    <div class="form-group mx-sm-4 mb-2">--}}
-{{--                                        <input type="text" name="mobile" class="form-control" placeholder="Mobile"--}}
-{{--                                               value="{{$query ? ($query['mobile'] ? $query['mobile'] : '') : ''}}">--}}
-{{--                                    </div>--}}
                                     <button type="submit" class="btn btn-primary mb-2">Confirm Search</button>
                                 </form>
                             </div>

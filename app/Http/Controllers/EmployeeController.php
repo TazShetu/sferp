@@ -21,9 +21,13 @@ class EmployeeController extends Controller
     public function index(Request $request)
     {
         if (Auth::user()->can('hr_employee')) {
-            if ($request->designationId) {
+            if ($request->typeDesignation) {
+                $s =  explode("._.", $request->typeDesignation);
+                $tid = $s[0];
+                $did = $s[1];
                 $employees = Employee::Where('name', 'LIKE', "%{$request->name}%")
-                    ->Where('designation_id', 'LIKE', "$request->designationId")
+                    ->Where('designation_id', 'LIKE', "$did")
+                    ->Where('employeetype_id', 'LIKE', "$tid")
                     ->paginate(10);
             } else {
                 $employees = Employee::Where('name', 'LIKE', "%{$request->name}%")
@@ -33,18 +37,24 @@ class EmployeeController extends Controller
                 $e['designation'] = Designation::find($e->designation_id)->title;
                 $e['type'] = Employeetype::find($e->employeetype_id)->title;
             }
-            $designations = Designation::all();
+//            $designations = Designation::all();
             $types = Employeetype::all();
-            if ($request->designationId) {
-                $employees->appends(['name' => "$request->name", 'designationId' => "$request->designationId"]);
+            foreach ($types as $t){
+                $t['designation'] = Designation::where('employeetype_id', $t->id)->get();
+            }
+            if ($request->typeDesignation) {
+                $employees->appends(['name' => "$request->name", 'typeDesignation' => "$request->typeDesignation"]);
             } else {
                 $employees->appends(['name' => "$request->name"]);
             }
             $query = $request->all();
-            if ((count($query) > 0) && array_key_exists("designationId", $query)) {
-                $query['designationName'] = Designation::find($query['designationId'])->title;
+            if ((count($query) > 0) && array_key_exists("typeDesignation", $query)) {
+                $s =  explode("._.", $query['typeDesignation']);
+                $tid = $s[0];
+                $did = $s[1];
+                $query['typeDesignationName'] = Employeetype::find($tid)->title . " -> " . Designation::find($did)->title;
             }
-            return view('HR.Employee.list', compact('employees', 'designations', 'query', 'types'));
+            return view('HR.Employee.list', compact('employees', 'query', 'types'));
         } else {
             abort(403);
         }
