@@ -41,11 +41,13 @@ class FactoryController extends Controller
         if (Auth::user()->can('factory')) {
             $request->validate([
                 'name' => 'required',
+                'code' => 'required',
                 'address' => 'required',
                 'establishedDate' => 'required',
             ]);
             $factory = new Factory;
             $factory->name = $request->name;
+            $factory->code = $request->code;
             $factory->address = $request->address;
             $factory->established_date =  date('Y-m-d',strtotime($request->establishedDate));
             if ($request->hasFile('image')){
@@ -80,11 +82,13 @@ class FactoryController extends Controller
         if (Auth::user()->can('factory')) {
             $request->validate([
                 'name' => 'required',
+                'code' => 'required',
                 'address' => 'required',
                 'establishedDate' => 'required',
             ]);
             $factory = Factory::find($fid);
             $factory->name = $request->name;
+            $factory->code = $request->code;
             $factory->address = $request->address;
             $factory->established_date =  date('Y-m-d',strtotime($request->establishedDate));
             if ($request->hasFile('image')){

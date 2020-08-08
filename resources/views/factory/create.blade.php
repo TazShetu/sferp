@@ -72,6 +72,19 @@
                                             </div>
                                             <div class="form-group row">
                                                 <label class="col-xl-3 col-lg-3 col-form-label">
+                                                    Code
+                                                </label>
+                                                <div class="col-lg-9 col-xl-6">
+                                                    <input class="form-control {{$errors->has('code') ? 'is-invalid' : ''}}"
+                                                           type="text" placeholder="Code" name="code" required
+                                                           value="{{old('code')}}">
+                                                    @if($errors->has('code'))
+                                                        <span class="invalid-feedback">{{$errors->first('code')}}</span>
+                                                    @endif
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-xl-3 col-lg-3 col-form-label">
                                                     Address
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">

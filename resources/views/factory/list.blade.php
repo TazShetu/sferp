@@ -53,6 +53,7 @@
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Name</th>
+                        <th scope="col">Code</th>
                         <th scope="col">Address</th>
                         <th scope="col">Established Date</th>
                         <th scope="col">Action</th>
@@ -73,11 +74,10 @@
                                                 @endif
                                         >
                                     </div>
-                                    <div class="kt-user-card-v2__details">
-                                            {{$factory->name}}
-                                    </div>
+                                    <div class="kt-user-card-v2__details">{{$factory->name}}</div>
                                 </div>
                             </td>
+                            <td>{{$factory->code}}</td>
                             <td>{{$factory->address}}</td>
                             <td>{{$factory->established_date}}</td>
                             <td>

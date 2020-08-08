@@ -45,7 +45,7 @@
                                                              style="background-image: url('{{asset($fedit->image)}}');"
                                                              @else
                                                              style="background-image: url({{asset('factory.jpg')}})"
-                                                                @endif
+                                                            @endif
                                                         ></div>
                                                         <label class="kt-avatar__upload" data-toggle="kt-tooltip"
                                                                title="" data-original-title="Change avatar">
@@ -66,10 +66,22 @@
                                                     Name
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">
-                                                    <input class="form-control {{$errors->has('name') ? 'is-invalid' : ''}}"
-                                                           type="text" name="name" required value="{{$fedit->name}}">
+                                                    <input type="text" name="name" required value="{{$fedit->name}}"
+                                                           class="form-control {{$errors->has('name') ? 'is-invalid' : ''}}">
                                                     @if($errors->has('name'))
                                                         <span class="invalid-feedback">{{$errors->first('name')}}</span>
+                                                    @endif
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-xl-3 col-lg-3 col-form-label">
+                                                    Code
+                                                </label>
+                                                <div class="col-lg-9 col-xl-6">
+                                                    <input type="text" name="code" required value="{{$fedit->code}}"
+                                                           class="form-control {{$errors->has('code') ? 'is-invalid' : ''}}">
+                                                    @if($errors->has('code'))
+                                                        <span class="invalid-feedback">{{$errors->first('code')}}</span>
                                                     @endif
                                                 </div>
                                             </div>
@@ -78,11 +90,13 @@
                                                     Address
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">
-                                                    <input class="form-control {{$errors->has('address') ? 'is-invalid' : ''}}"
-                                                           type="text" name="address" required
-                                                           value="{{$fedit->address}}">
+                                                    <input
+                                                        class="form-control {{$errors->has('address') ? 'is-invalid' : ''}}"
+                                                        type="text" name="address" required
+                                                        value="{{$fedit->address}}">
                                                     @if($errors->has('address'))
-                                                        <span class="invalid-feedback">{{$errors->first('address')}}</span>
+                                                        <span
+                                                            class="invalid-feedback">{{$errors->first('address')}}</span>
                                                     @endif
                                                 </div>
                                             </div>
@@ -91,10 +105,11 @@
                                                     Established Date</label>
                                                 <div class="col-lg-9 col-xl-6">
                                                     <div class="input-group date">
-                                                        <input class="form-control {{$errors->has('establishedDate') ? 'is-invalid' : ''}}"
-                                                               type="text" name="establishedDate" required readonly
-                                                               id="kt_datepicker_3"
-                                                               value="{{date('m/d/Y',strtotime($fedit->established_date))}}">
+                                                        <input
+                                                            class="form-control {{$errors->has('establishedDate') ? 'is-invalid' : ''}}"
+                                                            type="text" name="establishedDate" required readonly
+                                                            id="kt_datepicker_3"
+                                                            value="{{date('m/d/Y',strtotime($fedit->established_date))}}">
                                                         <div class="input-group-append">
 														<span class="input-group-text">
 															<i class="la la-calendar-check-o"></i>
@@ -102,11 +117,13 @@
                                                         </div>
                                                     </div>
                                                     @if($errors->has('establishedDate'))
-                                                        <span class="invalid-feedback">{{$errors->first('establishedDate')}}</span>
+                                                        <span
+                                                            class="invalid-feedback">{{$errors->first('establishedDate')}}</span>
                                                     @endif
                                                 </div>
                                             </div>
-                                            <div class="kt-separator kt-separator--space-lg kt-separator--fit kt-separator--border-solid"></div>
+                                            <div
+                                                class="kt-separator kt-separator--space-lg kt-separator--fit kt-separator--border-solid"></div>
                                             <div class="kt-form__actions">
                                                 <div class="row">
                                                     <div class="col-xl-3"></div>
