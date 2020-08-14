@@ -26,11 +26,14 @@ class Hrseeder extends Seeder
         $d->code = 'SM';
         $d->save();
 
-//        $e = new Employee;
-//        $e->designation_id = '1';
-//        $e->name = 'Sample Name';
-//        $e->mobile = '01711456325';
-//        $e->save();
+        $e = new Employee;
+        $e->employeetype_id = '1';
+        $e->designation_id = '1';
+        $e->doj = '2020-09-03';
+        $e->name = 'Sample Name';
+        $e->code = 'SFNISFNI2SM1';
+        $e->save();
+        $e->factories()->attach(1);
 
     }
 }

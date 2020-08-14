@@ -55,7 +55,8 @@
                                                             <label
                                                                 class="kt-checkbox kt-checkbox--tick kt-checkbox--success">
                                                                 <input type="checkbox" name="factory[]"
-                                                                       value="{{$f->id}}">{{$f->name}}
+                                                                       value="{{$f->id}}">
+                                                                {{$f->name}}
                                                                 <span></span>
                                                             </label>
                                                         @endforeach

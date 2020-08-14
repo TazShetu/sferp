@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Designation;
 use App\Employee;
+use App\Employeedetail;
 use App\Employeetype;
 use App\Factory;
 use Illuminate\Http\Request;
@@ -109,7 +110,7 @@ class EmployeeController extends Controller
             }
             if ($success) {
                 Session::flash('Success', "The Employee has been created successfully.");
-                return redirect()->route('employee.list');
+                return redirect()->route('employee.edit', ['eid' => $e->id]);
             } else {
                 Session::flash('unsuccess', "Something went wrong :(");
                 return redirect()->back();
@@ -124,36 +125,58 @@ class EmployeeController extends Controller
     {
         if (Auth::user()->can('hr_employee')) {
             $eedit = Employee::find($eid);
-            $eedit['designation'] = Designation::find($eedit->designation_id)->title;
-            $designations = Designation::all();
-            return view('HR.Employee.edit', compact('eedit', 'designations'));
+            $eedit['type'] = Employeetype::find($eedit->employeetype_id)->title;
+            $eedit['designation'] = Designation::find($eedit->designation_id);
+            $eedit['factories'] = $eedit->factories()->get();
+            $eedit['details'] = Employeedetail::where('employee_id', $eid)->first();
+
+//            dd($eedit->details);
+
+            $designations = Designation::where('employeetype_id', $eedit->employeetype_id)->get();
+            $factories = Factory::all();
+            return view('HR.Employee.edit', compact('eedit', 'designations', 'factories'));
         } else {
             abort(403);
         }
     }
 
 
-    public function update(Request $request, $eid)
+    public function updateMain(Request $request, $eid)
     {
         if (Auth::user()->can('hr_employee')) {
             $request->validate([
-                'name' => 'required',
+                'factory' => 'required',
                 'designation' => 'required',
-                'mobile' => 'required',
+                'name' => 'required',
+                'dateOfJoining' => 'required',
             ]);
-            $e = Employee::find($eid);
-            $e->name = $request->name;
-            $e->designation_id = $request->designation;
-            $e->mobile = $request->mobile;
-            if ($request->filled('dateOfBirth')) {
-                $e->dob = date('Y-m-d', strtotime($request->dateOfBirth));
+            DB::beginTransaction();
+            try {
+                $e = Employee::find($eid);
+                $e->designation_id = $request->designation;
+                $e->name = $request->name;
+                $e->doj = date('Y-m-d', strtotime($request->dateOfJoining));
+                $code = '';
+                foreach ($request->factory as $f) {
+                    $code .= Factory::find($f)->code;
+                }
+                $code .= Designation::find($request->designation)->code;
+                $e->code = $code.$e->id;
+                $e->update();
+                $e->factories()->sync($request->factory);
+                DB::commit();
+                $success = true;
+            } catch (\Exception $e) {
+                $success = false;
+                DB::rollback();
             }
-            $e->email = $request->email;
-            $e->address = $request->address;
-            $e->nid = $request->nid;
-            $e->update();
-            Session::flash('Success', "The Employee has been updated successfully.");
-            return redirect()->back();
+            if ($success) {
+                Session::flash('Success', "The Employee has been updated successfully.");
+                return redirect()->back();
+            } else {
+                Session::flash('unsuccess', "Something went wrong :(");
+                return redirect()->back();
+            }
         } else {
             abort(403);
         }

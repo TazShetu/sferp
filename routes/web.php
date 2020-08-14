@@ -177,11 +177,19 @@ Route::post('/Designation/update/{did}', 'DesignationController@update')->name('
 
 Route::get('/Employee/list', 'EmployeeController@index')->name('employee.list');
 Route::get('/Employee/create', 'EmployeeController@create')->name('employee.create');
+Route::get('/ajax/employees/tidToDesignation', 'EmployeeController@tidToDesignation');
 Route::post('/Employee/store', 'EmployeeController@store')->name('employee.store');
 Route::get('/Employee/edit/{eid}', 'EmployeeController@edit')->name('employee.edit');
-Route::post('/Employee/update/{eid}', 'EmployeeController@update')->name('employee.update');
+Route::post('/Employee/update/main/{eid}', 'EmployeeController@updateMain')->name('employee.update.main');
+Route::post('/Employee/update/personal_info/{eid}', 'EmployeedetailsController@updatePinfo')->name('employee.update.pinfo');
+Route::post('/Employee/update/staff/academic_background/{eid}', 'EmployeedetailsController@updateStaffAC')->name('employee.update.staff.ac');
+Route::post('/Employee/update/address/{eid}', 'EmployeedetailsController@updateAddress')->name('employee.update.address');
+Route::post('/Employee/update/contact_info/{eid}', 'EmployeedetailsController@updateCinfo')->name('employee.update.cinfo');
+Route::post('/Employee/update/family_info/{eid}', 'EmployeedetailsController@updateFinfo')->name('employee.update.finfo');
+Route::post('/Employee/update/staff/sibling/{eid}', 'EmployeedetailsController@updateStaffS')->name('employee.update.staff.sibling');
+Route::post('/Employee/update/experience/{eid}', 'EmployeedetailsController@updateExperience')->name('employee.update.experience');
+
 Route::delete('/Employee/delete/{eid}', 'EmployeeController@destroy')->name('employee.delete');
-Route::get('/ajax/employees/tidToDesignation', 'EmployeeController@tidToDesignation');
 
 
 
