@@ -10,14 +10,13 @@ class CreateEmployeesTable extends Migration
     public function up()
     {
         Schema::create('employees', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->bigIncrements('id')->index();
+//            $table->integer('factory_id');
+            $table->integer('employeetype_id')->index();
+            $table->integer('designation_id')->index();
+            $table->date('doj');
             $table->string('name');
-            $table->integer('designation_id');
-            $table->string('mobile');
-            $table->date('dob')->nullable();
-            $table->string('email')->nullable();
-            $table->string('address')->nullable();
-            $table->string('nid')->nullable();
+            $table->string('code');
             $table->timestamps();
         });
     }

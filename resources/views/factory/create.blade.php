@@ -1,17 +1,17 @@
 @extends('layouts.m')
-@section('title', 'Factory Create')
+@section('title', 'Company Create')
 @section('content_head')
     <div class="kt-subheader   kt-grid__item" id="kt_subheader">
         <div class="kt-container  kt-container--fluid ">
             <div class="kt-subheader__main">
                 <h3 class="kt-subheader__title">
-                    Create Factory
+                    Create Company
                 </h3>
                 <span class="kt-subheader__separator kt-subheader__separator--v"></span>
                 <div class="kt-subheader__breadcrumbs">
                     <a href="{{route('home')}}" class="kt-subheader__breadcrumbs-home"><i class="flaticon2-shelter"></i></a>
                     <span class="kt-subheader__breadcrumbs-separator"></span>
-                    <a href="{{route('factory.list')}}" class="kt-subheader__breadcrumbs-link">Factory</a>
+                    <a href="{{route('factory.list')}}" class="kt-subheader__breadcrumbs-link">Company</a>
                     <span class="kt-subheader__breadcrumbs-separator"></span>
                     <a href="{{route('factory.create')}}"
                        class="kt-subheader__breadcrumbs-link kt-subheader__breadcrumbs-link--active"
@@ -67,6 +67,19 @@
                                                            value="{{old('name')}}">
                                                     @if($errors->has('name'))
                                                         <span class="invalid-feedback">{{$errors->first('name')}}</span>
+                                                    @endif
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-xl-3 col-lg-3 col-form-label">
+                                                    Code
+                                                </label>
+                                                <div class="col-lg-9 col-xl-6">
+                                                    <input class="form-control {{$errors->has('code') ? 'is-invalid' : ''}}"
+                                                           type="text" placeholder="Code" name="code" required
+                                                           value="{{old('code')}}">
+                                                    @if($errors->has('code'))
+                                                        <span class="invalid-feedback">{{$errors->first('code')}}</span>
                                                     @endif
                                                 </div>
                                             </div>

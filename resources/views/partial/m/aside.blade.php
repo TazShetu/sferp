@@ -172,7 +172,7 @@
                             <li class="kt-menu__item  " aria-haspopup="true">
                                 <a href="{{route('factory.list')}}" class="kt-menu__link ">
                                     <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>
-                                    <span class="kt-menu__link-text">Factory Setup</span>
+                                    <span class="kt-menu__link-text">Company Setup</span>
                                 </a>
                             </li>
                             @endpermission

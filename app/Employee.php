@@ -10,4 +10,9 @@ class Employee extends Model
         return $this->belongsTo('App\Designation');
     }
 
+    public function factories(){
+        return $this->belongsToMany('App\Factory');
+    }
+
+
 }

@@ -48,12 +48,12 @@ Route::post('/customer-update/{cid}', 'CustomerController@update')->name('custom
 Route::post('/customer-update-contact-person/{cid}', 'CustomerController@updateContactPerson')->name('customer.update.contact.person');
 Route::post('/customer-update-extra/{cid}', 'CustomerController@updateExtra')->name('customer.update.extra');
 
-Route::get('/factories', 'FactoryController@list')->name('factory.list');
-Route::get('/factories/create', 'FactoryController@create')->name('factory.create');
-Route::post('/factories/store', 'FactoryController@store')->name('factory.store');
-Route::get('/factories/edit/{fid}', 'FactoryController@edit')->name('factory.edit');
-Route::post('/factories/update/{fid}', 'FactoryController@update')->name('factory.update');
-Route::delete('/factories/delete/{fid}', 'FactoryController@destroy')->name('factory.delete');
+Route::get('/companies', 'FactoryController@list')->name('factory.list');
+Route::get('/companies/create', 'FactoryController@create')->name('factory.create');
+Route::post('/companies/store', 'FactoryController@store')->name('factory.store');
+Route::get('/companies/edit/{fid}', 'FactoryController@edit')->name('factory.edit');
+Route::post('/companies/update/{fid}', 'FactoryController@update')->name('factory.update');
+Route::delete('/companies/delete/{fid}', 'FactoryController@destroy')->name('factory.delete');
 
 Route::get('/spare-parts', 'SparepartsController@list')->name('spareParts.list');
 Route::get('/spare-parts/create', 'SparepartsController@create')->name('spareParts.create');
@@ -177,9 +177,23 @@ Route::post('/Designation/update/{did}', 'DesignationController@update')->name('
 
 Route::get('/Employee/list', 'EmployeeController@index')->name('employee.list');
 Route::get('/Employee/create', 'EmployeeController@create')->name('employee.create');
+Route::get('/ajax/employees/tidToDesignation', 'EmployeeController@tidToDesignation');
 Route::post('/Employee/store', 'EmployeeController@store')->name('employee.store');
 Route::get('/Employee/edit/{eid}', 'EmployeeController@edit')->name('employee.edit');
-Route::post('/Employee/update/{eid}', 'EmployeeController@update')->name('employee.update');
+Route::post('/Employee/update/main/{eid}', 'EmployeeController@updateMain')->name('employee.update.main');
+Route::post('/Employee/update/personal_info/{eid}', 'EmployeedetailsController@updatePinfo')->name('employee.update.pinfo');
+Route::post('/Employee/update/staff/academic_background/{eid}', 'EmployeedetailsController@updateStaffAC')->name('employee.update.staff.ac');
+Route::post('/Employee/update/address/{eid}', 'EmployeedetailsController@updateAddress')->name('employee.update.address');
+Route::post('/Employee/update/contact_info/{eid}', 'EmployeedetailsController@updateCinfo')->name('employee.update.cinfo');
+Route::post('/Employee/update/family_info/{eid}', 'EmployeedetailsController@updateFinfo')->name('employee.update.finfo');
+Route::post('/Employee/update/staff/sibling/{eid}', 'EmployeedetailsController@updateStaffS')->name('employee.update.staff.sibling');
+Route::post('/Employee/update/experience/{eid}', 'EmployeedetailsController@updateExperience')->name('employee.update.experience');
+Route::post('/Employee/update/emergency_contact/{eid}', 'EmployeedetailsController@updateEmergencyContact')->name('employee.update.emergencyContact');
+Route::post('/Employee/update/staff/bank/{eid}', 'EmployeedetailsController@updateStaffBank')->name('employee.update.staff.bank');
+Route::post('/Employee/update/staff/mobile_bank/{eid}', 'EmployeedetailsController@updateStaffBankM')->name('employee.update.staff.bank.mobile');
+Route::post('/Employee/update/height_academic_level/{eid}', 'EmployeedetailsController@updateAB')->name('employee.update.ab');
+Route::post('/Employee/update/security_guard/third_party_company/{eid}', 'EmployeedetailsController@updateSGTPC')->name('employee.update.sg.tpc');
+
 Route::delete('/Employee/delete/{eid}', 'EmployeeController@destroy')->name('employee.delete');
 
 
