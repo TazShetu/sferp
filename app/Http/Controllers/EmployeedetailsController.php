@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Employeedetail;
+use App\Employeefile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -180,7 +181,7 @@ class EmployeedetailsController extends Controller
             $e->company_2 = $request->cname2;
             $e->designation_2 = $request->designation2;
             if ($request->filled('from2')) {
-                $e->from_2 =  date('Y-m-d', strtotime($request->from2));
+                $e->from_2 = date('Y-m-d', strtotime($request->from2));
             }
             if ($request->filled('to2')) {
                 $e->to_2 = date('Y-m-d', strtotime($request->to2));
@@ -189,7 +190,7 @@ class EmployeedetailsController extends Controller
             $e->company_3 = $request->cname3;
             $e->designation_3 = $request->designation3;
             if ($request->filled('from3')) {
-                $e->from_3 =  date('Y-m-d', strtotime($request->from3));
+                $e->from_3 = date('Y-m-d', strtotime($request->from3));
             }
             if ($request->filled('to3')) {
                 $e->to_3 = date('Y-m-d', strtotime($request->to3));
@@ -202,7 +203,6 @@ class EmployeedetailsController extends Controller
             abort(403);
         }
     }
-
 
 
     public function updateEmergencyContact(Request $request, $eid)
@@ -312,11 +312,38 @@ class EmployeedetailsController extends Controller
             $e->tpc_cp_mobile_1 = $request->cpmobile1;
             $e->tpc_cp_name_2 = $request->cpname2;
             $e->tpc_cp_mobile_2 = $request->cpmobile2;
-
-
-
             $e->save();
             Session::flash('Success', "The Employee has been updated successfully.");
+            return redirect()->back();
+        } else {
+            abort(403);
+        }
+    }
+
+
+    public function updateEFUpload(Request $request, $eid)
+    {
+        if (Auth::user()->can('hr_employee')) {
+            $request->validate([
+                'description' => 'required',
+//                'file2' => 'required',
+            ]);
+            $e = new Employeefile;
+            $e->employee_id = $eid;
+            $e->description = $request->description;
+            if ($request->hasFile('file2')) {
+                $img = $request->file2;
+//                $img_name = time() . $img->getClientOriginalName();
+                $img_name = $img->getClientOriginalName();
+                $img->move('uploads/Employee/Files', $img_name);
+                $d = 'uploads/Employee/Files/' . $img_name;
+                $e->file = $d;
+            } else {
+                Session::flash('unsuccess', "Do not mess with the original code !!!");
+                return redirect()->back();
+            }
+            $e->save();
+            Session::flash('Success', "The File has been uploaded successfully.");
             return redirect()->back();
         } else {
             abort(403);

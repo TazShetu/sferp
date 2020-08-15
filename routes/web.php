@@ -193,7 +193,9 @@ Route::post('/Employee/update/staff/bank/{eid}', 'EmployeedetailsController@upda
 Route::post('/Employee/update/staff/mobile_bank/{eid}', 'EmployeedetailsController@updateStaffBankM')->name('employee.update.staff.bank.mobile');
 Route::post('/Employee/update/height_academic_level/{eid}', 'EmployeedetailsController@updateAB')->name('employee.update.ab');
 Route::post('/Employee/update/security_guard/third_party_company/{eid}', 'EmployeedetailsController@updateSGTPC')->name('employee.update.sg.tpc');
-
+Route::post('/Employee/employee_file_upload/{eid}', 'EmployeedetailsController@updateEFUpload')->name('employee.file.upload');
+Route::get('/Employee/employee_file_download/{fid}', 'EmployeeController@fileDownload')->name('employee.file.download');
+Route::get('/Employee/employee_file_delete/{fid}', 'EmployeeController@fileDelete')->name('employee.file.delete');
 Route::delete('/Employee/delete/{eid}', 'EmployeeController@destroy')->name('employee.delete');
 
 
