@@ -188,6 +188,11 @@ Route::post('/Employee/update/contact_info/{eid}', 'EmployeedetailsController@up
 Route::post('/Employee/update/family_info/{eid}', 'EmployeedetailsController@updateFinfo')->name('employee.update.finfo');
 Route::post('/Employee/update/staff/sibling/{eid}', 'EmployeedetailsController@updateStaffS')->name('employee.update.staff.sibling');
 Route::post('/Employee/update/experience/{eid}', 'EmployeedetailsController@updateExperience')->name('employee.update.experience');
+Route::post('/Employee/update/emergency_contact/{eid}', 'EmployeedetailsController@updateEmergencyContact')->name('employee.update.emergencyContact');
+Route::post('/Employee/update/staff/bank/{eid}', 'EmployeedetailsController@updateStaffBank')->name('employee.update.staff.bank');
+Route::post('/Employee/update/staff/mobile_bank/{eid}', 'EmployeedetailsController@updateStaffBankM')->name('employee.update.staff.bank.mobile');
+Route::post('/Employee/update/height_academic_level/{eid}', 'EmployeedetailsController@updateAB')->name('employee.update.ab');
+Route::post('/Employee/update/security_guard/third_party_company/{eid}', 'EmployeedetailsController@updateSGTPC')->name('employee.update.sg.tpc');
 
 Route::delete('/Employee/delete/{eid}', 'EmployeeController@destroy')->name('employee.delete');
 

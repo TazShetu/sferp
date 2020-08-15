@@ -16,6 +16,7 @@ class CreateEmployeedetailsTable extends Migration
             $table->string('m_status')->nullable();
             $table->string('b_number')->nullable();
             $table->string('nid')->nullable();
+            $table->string('height_academic')->nullable();
             $table->string('school_ssc')->nullable();
             $table->string('date_ssc')->nullable();
             $table->string('result_ssc')->nullable();
@@ -51,7 +52,6 @@ class CreateEmployeedetailsTable extends Migration
             $table->string('sibling_2_profession')->nullable();
             $table->string('sibling_3_name')->nullable();
             $table->string('sibling_3_profession')->nullable();
-
             $table->string('company_1')->nullable();
             $table->string('designation_1')->nullable();
             $table->date('from_1')->nullable();
@@ -67,6 +67,36 @@ class CreateEmployeedetailsTable extends Migration
             $table->date('from_3')->nullable();
             $table->date('to_3')->nullable();
             $table->string('duration_3')->nullable();
+            $table->string('ecname_1')->nullable();
+            $table->string('ecmobile_1')->nullable();
+            $table->string('ecrelation_1')->nullable();
+            $table->text('ecaddress_1')->nullable();
+            $table->string('ecname_2')->nullable();
+            $table->string('ecmobile_2')->nullable();
+            $table->string('ecrelation_2')->nullable();
+            $table->text('ecaddress_2')->nullable();
+            $table->string('baccount_1')->nullable();
+            $table->string('baccount_type_1')->nullable();
+            $table->string('bank_1')->nullable();
+            $table->string('branch_1')->nullable();
+            $table->string('baccount_2')->nullable();
+            $table->string('baccount_type_2')->nullable();
+            $table->string('bank_2')->nullable();
+            $table->string('branch_2')->nullable();
+            $table->string('baccount_3')->nullable();
+            $table->string('baccount_type_3')->nullable();
+            $table->string('bank_3')->nullable();
+            $table->string('branch_3')->nullable();
+            $table->string('bkash')->nullable();
+            $table->string('nagad')->nullable();
+            $table->string('rocket')->nullable();
+            $table->string('ucash')->nullable();
+            $table->string('third_party_company')->nullable();
+            $table->text('third_party_company_address')->nullable();
+            $table->string('tpc_cp_name_1')->nullable();
+            $table->string('tpc_cp_mobile_1')->nullable();
+            $table->string('tpc_cp_name_2')->nullable();
+            $table->string('tpc_cp_mobile_2')->nullable();
 
 
             $table->timestamps();

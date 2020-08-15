@@ -3,12 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="72b65107-1734-42e2-a0ce-dd862e20aa6b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/EmployeeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/EmployeeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_06_27_130258_create_designations_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_06_27_130258_create_designations_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_06_27_145452_create_employees_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_06_27_145452_create_employees_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_08_08_164224_create_employee_factory_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_08_08_164224_create_employee_factory_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/Hrseeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/Hrseeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/HR/Employee/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/HR/Employee/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/EmployeedetailsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/EmployeedetailsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_08_14_125827_create_employeedetails_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_08_14_125827_create_employeedetails_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/HR/Employee/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/HR/Employee/edit.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
@@ -296,7 +292,8 @@
       <workItem from="1596878442223" duration="6544000" />
       <workItem from="1596886144168" duration="4961000" />
       <workItem from="1596891166374" duration="425000" />
-      <workItem from="1597386239615" duration="19638000" />
+      <workItem from="1597386239615" duration="19683000" />
+      <workItem from="1597464823744" duration="5307000" />
     </task>
     <servers />
   </component>
@@ -430,7 +427,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/routes/web.php</url>
-          <line>191</line>
+          <line>196</line>
           <option name="timeStamp" value="377" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">

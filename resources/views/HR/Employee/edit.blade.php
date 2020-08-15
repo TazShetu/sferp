@@ -465,6 +465,51 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                        @else
+                                            <div class="card">
+                                                <div class="card-header">
+                                                    <div class="card-title collapsed" data-toggle="collapse"
+                                                         data-target="#collapseStaffEducation2" aria-expanded="false"
+                                                         aria-controls="collapseStaffEducation2">
+                                                        Academic Background
+                                                    </div>
+                                                </div>
+                                                <div id="collapseStaffEducation2" class="collapse"
+                                                     aria-labelledby="headingTwo1"
+                                                     data-parent="#accordionExample1" style="">
+                                                    <div class="card-body">
+                                                        {{--      Form Start Academic Bacground   --}}
+                                                        <form method="post"
+                                                              action="{{route('employee.update.ab', ['eid' => $eedit->id])}}">
+                                                            @csrf
+                                                            <div class="form-group row">
+                                                                <label class="col-xl-3 col-lg-3 col-form-label">
+                                                                    Height Academic Level
+                                                                </label>
+                                                                <div class="col-lg-8 col-xl-7">
+                                                                    <input class="form-control" type="text" name="hal"
+                                                                           value="{{$eedit->details ?  $eedit->details->height_academic : ''}}">
+                                                                </div>
+                                                            </div>
+                                                            <div class="kt-form__actions">
+                                                                <div class="row">
+                                                                    <div class="col-xl-3"></div>
+                                                                    <div class="col-lg-9 col-xl-6">
+                                                                        <button type="submit"
+                                                                                class="btn btn-label-brand btn-bold">
+                                                                            Save Changes
+                                                                        </button>
+                                                                        <a href="javascript:void (0)"
+                                                                           data-link="{{route('cancel')}}"
+                                                                           class="cancel btn btn-label-danger btn-bold float-right">Reset</a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                        {{--Form End Academic Bacground --}}
+                                                    </div>
+                                                </div>
+                                            </div>
                                         @endif
                                         {{--Address--}}
                                         <div class="card">
@@ -838,8 +883,6 @@
                                                 </div>
                                             </div>
                                         @endif
-
-
                                         {{--Experience--}}
                                         @if(($eedit->employeetype_id * 1) == 1)
                                             <div class="card">
@@ -1157,17 +1200,6 @@
                                                             </div>
 
 
-
-
-
-
-
-
-
-
-
-
-
                                                             <div class="kt-form__actions">
                                                                 <div class="row">
                                                                     <div class="col-xl-3"></div>
@@ -1187,7 +1219,447 @@
                                                     </div>
                                                 </div>
                                             </div>
-
+                                        @endif
+                                        {{--Emergency Contact --}}
+                                        <div class="card">
+                                            <div class="card-header">
+                                                <div class="card-title collapsed" data-toggle="collapse"
+                                                     data-target="#collapseEmergencyContact" aria-expanded="false"
+                                                     aria-controls="collapseEmergencyContact">
+                                                    Emergency Contact
+                                                </div>
+                                            </div>
+                                            <div id="collapseEmergencyContact" class="collapse"
+                                                 aria-labelledby="headingTwo1"
+                                                 data-parent="#accordionExample1" style="">
+                                                <div class="card-body">
+                                                    {{--      Form Start Emergency Contact    --}}
+                                                    <form method="post"
+                                                          action="{{route('employee.update.emergencyContact', ['eid' => $eedit->id])}}">
+                                                        @csrf
+                                                        <div class="form-group row">
+                                                            <label class="col-xl-2 col-lg-2 col-form-label">
+                                                                Contact One
+                                                            </label>
+                                                            <div class="col-lg-3 col-xl-3 input-group">
+                                                                <input class="form-control" type="text" name="cname1"
+                                                                       value="{{$eedit->details ?  $eedit->details->ecname_1: ''}}">
+                                                                <div class="input-group-append">
+                                                                    <span class="input-group-text">Name</span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-3 col-xl-3 input-group date">
+                                                                <input class="form-control" type="text" name="mobile1"
+                                                                       value="{{$eedit->details ?  $eedit->details->ecmobile_1 : ''}}">
+                                                                <div class="input-group-append">
+                                                                    <span class="input-group-text">Mobile</span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-2 col-xl-2 input-group">
+                                                                <input class="form-control" type="text" name="relation1"
+                                                                       value="{{$eedit->details ?  $eedit->details->ecrelation_1 : ''}}">
+                                                                <div class="input-group-append">
+                                                                    <span class="input-group-text">Relation</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label class="col-xl-2 col-lg-2 col-form-label"></label>
+                                                            <div class="col-lg-8 col-xl-8 input-group">
+                                                                <input class="form-control" type="text" name="address1"
+                                                                       value="{{$eedit->details ?  $eedit->details->ecaddress_1 : ''}}">
+                                                                <div class="input-group-append">
+                                                                    <span class="input-group-text">Address</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label class="col-xl-2 col-lg-2 col-form-label">
+                                                                Contact Two
+                                                            </label>
+                                                            <div class="col-lg-3 col-xl-3 input-group">
+                                                                <input class="form-control" type="text" name="cname2"
+                                                                       value="{{$eedit->details ?  $eedit->details->ecname_2: ''}}">
+                                                                <div class="input-group-append">
+                                                                    <span class="input-group-text">Name</span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-3 col-xl-3 input-group date">
+                                                                <input class="form-control" type="text" name="mobile2"
+                                                                       value="{{$eedit->details ?  $eedit->details->ecmobile_2 : ''}}">
+                                                                <div class="input-group-append">
+                                                                    <span class="input-group-text">Mobile</span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-2 col-xl-2 input-group">
+                                                                <input class="form-control" type="text" name="relation2"
+                                                                       value="{{$eedit->details ?  $eedit->details->ecrelation_2 : ''}}">
+                                                                <div class="input-group-append">
+                                                                    <span class="input-group-text">Relation</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label class="col-xl-2 col-lg-2 col-form-label"></label>
+                                                            <div class="col-lg-8 col-xl-8 input-group">
+                                                                <input class="form-control" type="text" name="address2"
+                                                                       value="{{$eedit->details ?  $eedit->details->ecaddress_2 : ''}}">
+                                                                <div class="input-group-append">
+                                                                    <span class="input-group-text">Address</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="kt-form__actions">
+                                                            <div class="row">
+                                                                <div class="col-xl-3"></div>
+                                                                <div class="col-lg-9 col-xl-6">
+                                                                    <button type="submit"
+                                                                            class="btn btn-label-brand btn-bold">
+                                                                        Save Changes
+                                                                    </button>
+                                                                    <a href="javascript:void (0)"
+                                                                       data-link="{{route('cancel')}}"
+                                                                       class="cancel btn btn-label-danger btn-bold float-right">Reset</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                    {{--Form End Emergency Contact --}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {{--Bank Account--}}
+                                        @if(($eedit->employeetype_id * 1) == 1)
+                                            <div class="card">
+                                                <div class="card-header">
+                                                    <div class="card-title collapsed" data-toggle="collapse"
+                                                         data-target="#collapseBankAccount" aria-expanded="false"
+                                                         aria-controls="collapseBankAccount">
+                                                        Bank Account(s)
+                                                    </div>
+                                                </div>
+                                                <div id="collapseBankAccount" class="collapse"
+                                                     aria-labelledby="headingTwo1"
+                                                     data-parent="#accordionExample1" style="">
+                                                    <div class="card-body">
+                                                        {{--      Form Start Bank Account   --}}
+                                                        <form method="post"
+                                                              action="{{route('employee.update.staff.bank', ['eid' => $eedit->id])}}">
+                                                            @csrf
+                                                            <div class="form-group row">
+                                                                <label class="col-xl-3 col-lg-3 col-form-label">
+                                                                    Account One
+                                                                </label>
+                                                                <div class="col-lg-4 col-xl-4 input-group">
+                                                                    <input class="form-control" type="text"
+                                                                           name="account1"
+                                                                           value="{{$eedit->details ?  $eedit->details->baccount_1: ''}}">
+                                                                    <div class="input-group-append">
+                                                                        <span class="input-group-text">Ac. Number</span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-3 col-xl-3 input-group date">
+                                                                    <input class="form-control" type="text"
+                                                                           name="type1"
+                                                                           value="{{$eedit->details ?  $eedit->details->baccount_type_1 : ''}}">
+                                                                    <div class="input-group-append">
+                                                                        <span class="input-group-text">Ac. Type</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label class="col-xl-3 col-lg-3 col-form-label"></label>
+                                                                <div class="col-lg-4 col-xl-4 input-group">
+                                                                    <input class="form-control" type="text"
+                                                                           name="bank1"
+                                                                           value="{{$eedit->details ?  $eedit->details->bank_1: ''}}">
+                                                                    <div class="input-group-append">
+                                                                        <span class="input-group-text">Bank</span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-3 col-xl-3 input-group date">
+                                                                    <input class="form-control" type="text"
+                                                                           name="branch1"
+                                                                           value="{{$eedit->details ?  $eedit->details->branch_1 : ''}}">
+                                                                    <div class="input-group-append">
+                                                                        <span class="input-group-text">Branch</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label class="col-xl-3 col-lg-3 col-form-label">
+                                                                    Account Two
+                                                                </label>
+                                                                <div class="col-lg-4 col-xl-4 input-group">
+                                                                    <input class="form-control" type="text"
+                                                                           name="account2"
+                                                                           value="{{$eedit->details ?  $eedit->details->baccount_2: ''}}">
+                                                                    <div class="input-group-append">
+                                                                        <span class="input-group-text">Ac. Number</span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-3 col-xl-3 input-group date">
+                                                                    <input class="form-control" type="text"
+                                                                           name="type2"
+                                                                           value="{{$eedit->details ?  $eedit->details->baccount_type_2 : ''}}">
+                                                                    <div class="input-group-append">
+                                                                        <span class="input-group-text">Ac. Type</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label class="col-xl-3 col-lg-3 col-form-label"></label>
+                                                                <div class="col-lg-4 col-xl-4 input-group">
+                                                                    <input class="form-control" type="text"
+                                                                           name="bank2"
+                                                                           value="{{$eedit->details ?  $eedit->details->bank_2: ''}}">
+                                                                    <div class="input-group-append">
+                                                                        <span class="input-group-text">Bank</span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-3 col-xl-3 input-group date">
+                                                                    <input class="form-control" type="text"
+                                                                           name="branch2"
+                                                                           value="{{$eedit->details ?  $eedit->details->branch_2 : ''}}">
+                                                                    <div class="input-group-append">
+                                                                        <span class="input-group-text">Branch</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label class="col-xl-3 col-lg-3 col-form-label">
+                                                                    Account Three
+                                                                </label>
+                                                                <div class="col-lg-4 col-xl-4 input-group">
+                                                                    <input class="form-control" type="text"
+                                                                           name="account3"
+                                                                           value="{{$eedit->details ?  $eedit->details->baccount_3: ''}}">
+                                                                    <div class="input-group-append">
+                                                                        <span class="input-group-text">Ac. Number</span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-3 col-xl-3 input-group date">
+                                                                    <input class="form-control" type="text"
+                                                                           name="type3"
+                                                                           value="{{$eedit->details ?  $eedit->details->baccount_type_3 : ''}}">
+                                                                    <div class="input-group-append">
+                                                                        <span class="input-group-text">Ac. Type</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label class="col-xl-3 col-lg-3 col-form-label"></label>
+                                                                <div class="col-lg-4 col-xl-4 input-group">
+                                                                    <input class="form-control" type="text"
+                                                                           name="bank3"
+                                                                           value="{{$eedit->details ?  $eedit->details->bank_3: ''}}">
+                                                                    <div class="input-group-append">
+                                                                        <span class="input-group-text">Bank</span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-3 col-xl-3 input-group date">
+                                                                    <input class="form-control" type="text"
+                                                                           name="branch3"
+                                                                           value="{{$eedit->details ?  $eedit->details->branch_3 : ''}}">
+                                                                    <div class="input-group-append">
+                                                                        <span class="input-group-text">Branch</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="kt-form__actions">
+                                                                <div class="row">
+                                                                    <div class="col-xl-3"></div>
+                                                                    <div class="col-lg-9 col-xl-6">
+                                                                        <button type="submit"
+                                                                                class="btn btn-label-brand btn-bold">
+                                                                            Save Changes
+                                                                        </button>
+                                                                        <a href="javascript:void (0)"
+                                                                           data-link="{{route('cancel')}}"
+                                                                           class="cancel btn btn-label-danger btn-bold float-right">Reset</a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                        {{--Form End Bank Account --}}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        @endif
+                                        {{--Mobile Banking--}}
+                                        @if(($eedit->employeetype_id * 1) == 1)
+                                            <div class="card">
+                                                <div class="card-header" id="headingTwo">
+                                                    <div class="card-title collapsed" data-toggle="collapse"
+                                                         data-target="#collapseMobileBanking" aria-expanded="false"
+                                                         aria-controls="collapseMobileBanking">
+                                                        Mobile Banking
+                                                    </div>
+                                                </div>
+                                                <div id="collapseMobileBanking" class="collapse"
+                                                     aria-labelledby="headingTwo1"
+                                                     data-parent="#accordionExample1" style="">
+                                                    <div class="card-body">
+                                                        {{--      Form Start Mobile Banking  --}}
+                                                        <form method="post"
+                                                              action="{{route('employee.update.staff.bank.mobile', ['eid' => $eedit->id])}}">
+                                                            @csrf
+                                                            <div class="form-group row">
+                                                                <label class="col-xl-3 col-lg-3 col-form-label">
+                                                                    bKash
+                                                                </label>
+                                                                <div class="col-lg-9 col-xl-6">
+                                                                    <input class="form-control" type="text" name="bkash"
+                                                                           value="{{$eedit->details ?  $eedit->details->bkash : ''}}">
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label class="col-xl-3 col-lg-3 col-form-label">
+                                                                    Nagad
+                                                                </label>
+                                                                <div class="col-lg-9 col-xl-6">
+                                                                    <input class="form-control" type="text" name="nagad"
+                                                                           value="{{$eedit->details ?  $eedit->details->nagad : ''}}">
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label class="col-xl-3 col-lg-3 col-form-label">
+                                                                    Rocket
+                                                                </label>
+                                                                <div class="col-lg-9 col-xl-6">
+                                                                    <input class="form-control" type="text"
+                                                                           name="rocket"
+                                                                           value="{{$eedit->details ?  $eedit->details->rocket : ''}}">
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label class="col-xl-3 col-lg-3 col-form-label">
+                                                                    UCash
+                                                                </label>
+                                                                <div class="col-lg-9 col-xl-6">
+                                                                    <input class="form-control" type="text" name="ucash"
+                                                                           value="{{$eedit->details ?  $eedit->details->ucash : ''}}">
+                                                                </div>
+                                                            </div>
+                                                            <div class="kt-form__actions">
+                                                                <div class="row">
+                                                                    <div class="col-xl-3"></div>
+                                                                    <div class="col-lg-9 col-xl-6">
+                                                                        <button type="submit"
+                                                                                class="btn btn-label-brand btn-bold">
+                                                                            Save Changes
+                                                                        </button>
+                                                                        <a href="javascript:void (0)"
+                                                                           data-link="{{route('cancel')}}"
+                                                                           class="cancel btn btn-label-danger btn-bold float-right">Reset</a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                        {{--Form End Mobile Banking --}}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        @endif
+                                        {{--THIRD-PARTY COMPANIES--}}
+                                        @if(($eedit->employeetype_id * 1) == 5)
+                                            <div class="card">
+                                                <div class="card-header" id="headingTwo">
+                                                    <div class="card-title collapsed" data-toggle="collapse"
+                                                         data-target="#collapseThirdParty" aria-expanded="false"
+                                                         aria-controls="collapseThirdParty">
+                                                        Third-Party Companies
+                                                    </div>
+                                                </div>
+                                                <div id="collapseThirdParty" class="collapse"
+                                                     aria-labelledby="headingTwo1"
+                                                     data-parent="#accordionExample1" style="">
+                                                    <div class="card-body">
+                                                        {{--      Form Start Mobile Banking  --}}
+                                                        <form method="post"
+                                                              action="{{route('employee.update.sg.tpc', ['eid' => $eedit->id])}}">
+                                                            @csrf
+                                                            <div class="form-group row">
+                                                                <label class="col-xl-3 col-lg-3 col-form-label">
+                                                                    Name Of Company
+                                                                </label>
+                                                                <div class="col-lg-9 col-xl-6">
+                                                                    <input class="form-control" type="text"
+                                                                           name="company"
+                                                                           value="{{$eedit->details ?  $eedit->details->third_party_company : ''}}">
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label class="col-xl-3 col-lg-3 col-form-label">
+                                                                    Address
+                                                                </label>
+                                                                <div class="col-lg-9 col-xl-6">
+                                                                    <input class="form-control" type="text"
+                                                                           name="address"
+                                                                           value="{{$eedit->details ?  $eedit->details->third_party_company_address : ''}}">
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label class="col-xl-3 col-lg-3 col-form-label">
+                                                                    Contact Person One
+                                                                </label>
+                                                                <div class="col-lg-3 col-xl-3 input-group">
+                                                                    <input class="form-control" type="text"
+                                                                           name="cpname1"
+                                                                           value="{{$eedit->details ?  $eedit->details->tpc_cp_name_1: ''}}">
+                                                                    <div class="input-group-append">
+                                                                        <span class="input-group-text">Name</span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-3 col-xl-3 input-group date">
+                                                                    <input class="form-control" type="text"
+                                                                           name="cpmobile1"
+                                                                           value="{{$eedit->details ?  $eedit->details->tpc_cp_mobile_1 : ''}}">
+                                                                    <div class="input-group-append">
+                                                                        <span class="input-group-text">Mobile</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label class="col-xl-3 col-lg-3 col-form-label">
+                                                                    Contact Person Two
+                                                                </label>
+                                                                <div class="col-lg-3 col-xl-3 input-group">
+                                                                    <input class="form-control" type="text"
+                                                                           name="cpname2"
+                                                                           value="{{$eedit->details ?  $eedit->details->tpc_cp_name_2: ''}}">
+                                                                    <div class="input-group-append">
+                                                                        <span class="input-group-text">Name</span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-3 col-xl-3 input-group date">
+                                                                    <input class="form-control" type="text"
+                                                                           name="cpmobile2"
+                                                                           value="{{$eedit->details ?  $eedit->details->tpc_cp_mobile_2 : ''}}">
+                                                                    <div class="input-group-append">
+                                                                        <span class="input-group-text">Mobile</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="kt-form__actions">
+                                                                <div class="row">
+                                                                    <div class="col-xl-3"></div>
+                                                                    <div class="col-lg-9 col-xl-6">
+                                                                        <button type="submit"
+                                                                                class="btn btn-label-brand btn-bold">
+                                                                            Save Changes
+                                                                        </button>
+                                                                        <a href="javascript:void (0)"
+                                                                           data-link="{{route('cancel')}}"
+                                                                           class="cancel btn btn-label-danger btn-bold float-right">Reset</a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                        {{--Form End Mobile Banking --}}
+                                                    </div>
+                                                </div>
+                                            </div>
                                         @endif
 
                                     </div>

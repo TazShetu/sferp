@@ -204,5 +204,125 @@ class EmployeedetailsController extends Controller
     }
 
 
+
+    public function updateEmergencyContact(Request $request, $eid)
+    {
+        if (Auth::user()->can('hr_employee')) {
+            $e = Employeedetail::where('employee_id', $eid)->first();
+            if (!$e) {
+                $e = new Employeedetail;
+                $e->employee_id = $eid;
+            }
+            $e->ecname_1 = $request->cname1;
+            $e->ecmobile_1 = $request->mobile1;
+            $e->ecrelation_1 = $request->relation1;
+            $e->ecaddress_1 = $request->address1;
+            $e->ecname_2 = $request->cname2;
+            $e->ecmobile_2 = $request->mobile2;
+            $e->ecrelation_2 = $request->relation2;
+            $e->ecaddress_2 = $request->address2;
+            $e->save();
+            Session::flash('Success', "The Employee has been updated successfully.");
+            return redirect()->back();
+        } else {
+            abort(403);
+        }
+    }
+
+
+    public function updateStaffBank(Request $request, $eid)
+    {
+        if (Auth::user()->can('hr_employee')) {
+            $e = Employeedetail::where('employee_id', $eid)->first();
+            if (!$e) {
+                $e = new Employeedetail;
+                $e->employee_id = $eid;
+            }
+            $e->baccount_1 = $request->account1;
+            $e->baccount_type_1 = $request->type1;
+            $e->bank_1 = $request->bank1;
+            $e->branch_1 = $request->branch1;
+            $e->baccount_2 = $request->account2;
+            $e->baccount_type_2 = $request->type2;
+            $e->bank_2 = $request->bank2;
+            $e->branch_2 = $request->branch2;
+            $e->baccount_3 = $request->account3;
+            $e->baccount_type_3 = $request->type3;
+            $e->bank_3 = $request->bank3;
+            $e->branch_3 = $request->branch3;
+            $e->save();
+            Session::flash('Success', "The Employee has been updated successfully.");
+            return redirect()->back();
+        } else {
+            abort(403);
+        }
+    }
+
+
+    public function updateStaffBankM(Request $request, $eid)
+    {
+        if (Auth::user()->can('hr_employee')) {
+            $e = Employeedetail::where('employee_id', $eid)->first();
+            if (!$e) {
+                $e = new Employeedetail;
+                $e->employee_id = $eid;
+            }
+            $e->bkash = $request->bkash;
+            $e->nagad = $request->nagad;
+            $e->rocket = $request->rocket;
+            $e->ucash = $request->ucash;
+            $e->save();
+            Session::flash('Success', "The Employee has been updated successfully.");
+            return redirect()->back();
+        } else {
+            abort(403);
+        }
+    }
+
+
+    public function updateAB(Request $request, $eid)
+    {
+        if (Auth::user()->can('hr_employee')) {
+            $e = Employeedetail::where('employee_id', $eid)->first();
+            if (!$e) {
+                $e = new Employeedetail;
+                $e->employee_id = $eid;
+            }
+            $e->height_academic = $request->hal;
+            $e->save();
+            Session::flash('Success', "The Employee has been updated successfully.");
+            return redirect()->back();
+        } else {
+            abort(403);
+        }
+    }
+
+
+    public function updateSGTPC(Request $request, $eid)
+    {
+        if (Auth::user()->can('hr_employee')) {
+            $e = Employeedetail::where('employee_id', $eid)->first();
+            if (!$e) {
+                $e = new Employeedetail;
+                $e->employee_id = $eid;
+            }
+            $e->third_party_company = $request->company;
+            $e->third_party_company_address = $request->address;
+            $e->tpc_cp_name_1 = $request->cpname1;
+            $e->tpc_cp_mobile_1 = $request->cpmobile1;
+            $e->tpc_cp_name_2 = $request->cpname2;
+            $e->tpc_cp_mobile_2 = $request->cpmobile2;
+
+
+
+            $e->save();
+            Session::flash('Success', "The Employee has been updated successfully.");
+            return redirect()->back();
+        } else {
+            abort(403);
+        }
+    }
+
+
 }
 
