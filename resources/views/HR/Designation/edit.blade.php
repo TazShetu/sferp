@@ -58,27 +58,54 @@
                                 <div class="kt-form kt-form--label-right">
                                     <div class="kt-form__body">
                                         <div class="kt-section kt-section--first">
-                                            <form action="{{route('designation.update', ['did' => $dedit->id])}}" method="post">
+                                            <form action="{{route('designation.update', ['did' => $dedit->id])}}"
+                                                  method="post">
                                                 @csrf
                                                 <div class="kt-section__body">
                                                     <div class="form-group row">
                                                         <label class="col-xl-3 col-lg-3 col-form-label">
-                                                            Title
+                                                            Type
+                                                        </label>
+                                                        <div class="col-lg-9 col-xl-6">
+                                                            <select name="type" readonly="readonly"
+                                                                    class="form-control {{($errors->has('type')) ? 'is-invalid' : ''}}">
+                                                                <option selected disabled hidden value="">
+                                                                    {{$dedit->type}}
+                                                                </option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label class="col-xl-3 col-lg-3 col-form-label">
+                                                            Title*
                                                         </label>
                                                         <div class="col-lg-9 col-xl-6">
                                                             <input
                                                                 class="form-control {{$errors->has('title') ? 'is-invalid' : ''}}"
                                                                 type="text" name="title"
                                                                 required value="{{$dedit->title}}">
-                                                            <span class="form-text text-muted">Has to be unique.</span>
+                                                            {{--                                                            <span class="form-text text-muted">Has to be unique.</span>--}}
                                                             @if($errors->has('title'))
                                                                 <span
                                                                     class="invalid-feedback">{{$errors->first('title')}}</span>
                                                             @endif
                                                         </div>
                                                     </div>
-                                                    {{--                                                    <div class="form-group form-group-last row">--}}
-                                                    {{--                                                    </div>--}}
+                                                    <div class="form-group row">
+                                                        <label class="col-xl-3 col-lg-3 col-form-label">
+                                                            Code
+                                                        </label>
+                                                        <div class="col-lg-9 col-xl-6">
+                                                            <input
+                                                                class="form-control {{$errors->has('code') ? 'is-invalid' : ''}}"
+                                                                type="text" name="code" required
+                                                                value="{{$dedit->code}}">
+                                                            @if($errors->has('code'))
+                                                                <span
+                                                                    class="invalid-feedback">{{$errors->first('code')}}</span>
+                                                            @endif
+                                                        </div>
+                                                    </div>
                                                     <div
                                                         class="kt-separator kt-separator--space-lg kt-separator--fit kt-separator--border-solid"></div>
                                                     <div class="kt-form__actions">
@@ -125,7 +152,9 @@
                             <thead>
                             <tr>
                                 <th scope="col">#</th>
+                                <th scope="col">Type</th>
                                 <th scope="col">Title</th>
+                                <th scope="col">Code</th>
                                 <th scope="col">Action</th>
                             </tr>
                             </thead>
@@ -133,7 +162,9 @@
                             @foreach($designations as $i => $designation)
                                 <tr>
                                     <th scope="row">{{$i + 1}}</th>
+                                    <td>{{$designation->type}}</td>
                                     <td>{{$designation->title}}</td>
+                                    <td>{{$designation->code}}</td>
                                     <td>
                                         @if($designation->id != $dedit->id)
                                             <a href="{{route('designation.edit', ['did' => $designation->id])}}"

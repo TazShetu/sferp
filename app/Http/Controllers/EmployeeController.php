@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Designation;
 use App\Employee;
+use App\Employeedetail;
+use App\Employeefile;
+use App\Employeetype;
+use App\Factory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -19,30 +23,40 @@ class EmployeeController extends Controller
     public function index(Request $request)
     {
         if (Auth::user()->can('hr_employee')) {
-            if ($request->designationId){
+            if ($request->typeDesignation) {
+                $s = explode("._.", $request->typeDesignation);
+                $tid = $s[0];
+                $did = $s[1];
                 $employees = Employee::Where('name', 'LIKE', "%{$request->name}%")
-                    ->Where('designation_id', 'LIKE', "$request->designationId")
-                    ->Where('mobile', 'LIKE', "%{$request->mobile}%")
+                    ->Where('designation_id', 'LIKE', "$did")
+                    ->Where('employeetype_id', 'LIKE', "$tid")
                     ->paginate(10);
-            }else {
+            } else {
                 $employees = Employee::Where('name', 'LIKE', "%{$request->name}%")
-                    ->Where('mobile', 'LIKE', "%{$request->mobile}%")
                     ->paginate(10);
             }
             foreach ($employees as $e) {
                 $e['designation'] = Designation::find($e->designation_id)->title;
+                $e['type'] = Employeetype::find($e->employeetype_id)->title;
             }
-            $designations = Designation::all();
-            if ($request->factoryId){
-                $employees->appends(['name' => "$request->name", 'designationId' => "$request->designationId", 'mobile' => "$request->mobile"]);
+//            $designations = Designation::all();
+            $types = Employeetype::all();
+            foreach ($types as $t) {
+                $t['designation'] = Designation::where('employeetype_id', $t->id)->get();
+            }
+            if ($request->typeDesignation) {
+                $employees->appends(['name' => "$request->name", 'typeDesignation' => "$request->typeDesignation"]);
             } else {
-                $employees->appends(['name' => "$request->name", 'mobile' => "$request->mobile"]);
+                $employees->appends(['name' => "$request->name"]);
             }
             $query = $request->all();
-            if ((count($query) > 0) && array_key_exists("designationId", $query)){
-                $query['designationName'] = Designation::find($query['designationId'])->title;
+            if ((count($query) > 0) && array_key_exists("typeDesignation", $query)) {
+                $s = explode("._.", $query['typeDesignation']);
+                $tid = $s[0];
+                $did = $s[1];
+                $query['typeDesignationName'] = Employeetype::find($tid)->title . " -> " . Designation::find($did)->title;
             }
-            return view('HR.Employee.list', compact('employees', 'designations', 'query'));
+            return view('HR.Employee.list', compact('employees', 'query', 'types'));
         } else {
             abort(403);
         }
@@ -53,8 +67,9 @@ class EmployeeController extends Controller
     public function create()
     {
         if (Auth::user()->can('hr_employee')) {
-            $designations = Designation::all();
-            return view('HR.Employee.create', compact('designations'));
+            $factories = Factory::all();
+            $types = Employeetype::all();
+            return view('HR.Employee.create', compact('factories', 'types'));
         } else {
             abort(403);
         }
@@ -65,23 +80,42 @@ class EmployeeController extends Controller
     {
         if (Auth::user()->can('hr_employee')) {
             $request->validate([
-                'name' => 'required',
+                'factory' => 'required',
+                'type' => 'required',
                 'designation' => 'required',
-                'mobile' => 'required',
+                'name' => 'required',
+                'dateOfJoining' => 'required',
             ]);
-            $e = new Employee;
-            $e->name = $request->name;
-            $e->designation_id = $request->designation;
-            $e->mobile = $request->mobile;
-            if ($request->filled('dateOfBirth')){
-                $e->dob = date('Y-m-d', strtotime($request->dateOfBirth));
+            DB::beginTransaction();
+            try {
+                $e = new Employee;
+                $e->employeetype_id = $request->type;
+                $e->designation_id = $request->designation;
+                $e->name = $request->name;
+                $e->doj = date('Y-m-d', strtotime($request->dateOfJoining));
+                $code = '';
+                foreach ($request->factory as $f) {
+                    $code .= Factory::find($f)->code;
+                }
+                $code .= Designation::find($request->designation)->code;
+                $e->code = $code;
+                $e->save();
+                $e->code = $e->code . $e->id;
+                $e->update();
+                $e->factories()->attach($request->factory);
+                DB::commit();
+                $success = true;
+            } catch (\Exception $e) {
+                $success = false;
+                DB::rollback();
             }
-            $e->email = $request->email;
-            $e->address = $request->address;
-            $e->nid = $request->nid;
-            $e->save();
-            Session::flash('Success', "The Employee has been created successfully.");
-            return redirect()->route('employee.list');
+            if ($success) {
+                Session::flash('Success', "The Employee has been created successfully.");
+                return redirect()->route('employee.edit', ['eid' => $e->id]);
+            } else {
+                Session::flash('unsuccess', "Something went wrong :(");
+                return redirect()->back();
+            }
         } else {
             abort(403);
         }
@@ -92,36 +126,59 @@ class EmployeeController extends Controller
     {
         if (Auth::user()->can('hr_employee')) {
             $eedit = Employee::find($eid);
-            $eedit['designation'] = Designation::find($eedit->designation_id)->title;
-            $designations = Designation::all();
-            return view('HR.Employee.edit', compact('eedit', 'designations'));
+            $eedit['type'] = Employeetype::find($eedit->employeetype_id)->title;
+            $eedit['designation'] = Designation::find($eedit->designation_id);
+            $eedit['factories'] = $eedit->factories()->get();
+            $eedit['details'] = Employeedetail::where('employee_id', $eid)->first();
+            $eedit['files'] = Employeefile::where('employee_id', $eid)->get();
+//            if (count($eedit['files']) > 0) {
+//
+//            }
+            $designations = Designation::where('employeetype_id', $eedit->employeetype_id)->get();
+            $factories = Factory::all();
+            return view('HR.Employee.edit', compact('eedit', 'designations', 'factories'));
         } else {
             abort(403);
         }
     }
 
 
-    public function update(Request $request, $eid)
+    public function updateMain(Request $request, $eid)
     {
         if (Auth::user()->can('hr_employee')) {
             $request->validate([
-                'name' => 'required',
+                'factory' => 'required',
                 'designation' => 'required',
-                'mobile' => 'required',
+                'name' => 'required',
+                'dateOfJoining' => 'required',
             ]);
-            $e = Employee::find($eid);
-            $e->name = $request->name;
-            $e->designation_id = $request->designation;
-            $e->mobile = $request->mobile;
-            if ($request->filled('dateOfBirth')){
-                $e->dob = date('Y-m-d', strtotime($request->dateOfBirth));
+            DB::beginTransaction();
+            try {
+                $e = Employee::find($eid);
+                $e->designation_id = $request->designation;
+                $e->name = $request->name;
+                $e->doj = date('Y-m-d', strtotime($request->dateOfJoining));
+                $code = '';
+                foreach ($request->factory as $f) {
+                    $code .= Factory::find($f)->code;
+                }
+                $code .= Designation::find($request->designation)->code;
+                $e->code = $code . $e->id;
+                $e->update();
+                $e->factories()->sync($request->factory);
+                DB::commit();
+                $success = true;
+            } catch (\Exception $e) {
+                $success = false;
+                DB::rollback();
             }
-            $e->email = $request->email;
-            $e->address = $request->address;
-            $e->nid = $request->nid;
-            $e->update();
-            Session::flash('Success', "The Employee has been updated successfully.");
-            return redirect()->back();
+            if ($success) {
+                Session::flash('Success', "The Employee has been updated successfully.");
+                return redirect()->back();
+            } else {
+                Session::flash('unsuccess', "Something went wrong :(");
+                return redirect()->back();
+            }
         } else {
             abort(403);
         }
@@ -131,11 +188,69 @@ class EmployeeController extends Controller
     public function destroy($eid)
     {
         if (Auth::user()->can('hr_employee')) {
-            Employee::find($eid)->delete();
+            $e = Employee::find($eid);
+            $e->factories()->detach();
+            Employeedetail::where('employee_id', $eid)->delete();
+            $efs = Employeefile::where('employee_id', $eid)->get();
+            if (count($efs) > 0){
+                foreach ($efs as $ef){
+                    unlink($ef->file);
+                    $ef->delete();
+                }
+            }
+            $e->delete();
             Session::flash('Success', "The Employee has has been deleted successfully.");
             return redirect()->back();
         } else {
             abort(403);
         }
     }
+
+
+    public function tidToDesignation(Request $request)
+    {
+        if (request()->ajax()) {
+            $html = '';
+            $tid = $request->tid;
+            $ds = Designation::where('employeetype_id', $tid)->get();
+            if (count($ds) > 0) {
+                foreach ($ds as $d) {
+                    $html .= "<option value=" . $d->id . ">" . $d->title . "</option>";
+                }
+            } else {
+                $html .= '<option selected disabled hidden value="">No Designation in this Employee Type</option>';
+            }
+
+            return $html;
+        } else {
+            return json_encode(['success' => false]);
+        }
+    }
+
+
+    public function fileDownload($fid)
+    {
+        if (Auth::user()->can('hr_employee')) {
+            $f = Employeefile::find($fid);
+            return response()->download(public_path($f->file));
+        } else {
+            abort(403);
+        }
+    }
+
+
+    public function fileDelete($fid)
+    {
+        if (Auth::user()->can('hr_employee')) {
+            $f = Employeefile::find($fid);
+            unlink($f->file);
+            $f->delete();
+            Session::flash('Success', "The File has has been deleted successfully.");
+            return redirect()->back();
+        } else {
+            abort(403);
+        }
+    }
+
+
 }

@@ -12,6 +12,7 @@ class CreateFactoriesTable extends Migration
         Schema::create('factories', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
+            $table->string('code');
             $table->string('address');
             $table->date('established_date');
             $table->string('image')->nullable();
