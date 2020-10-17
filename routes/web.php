@@ -198,6 +198,13 @@ Route::get('/Employee/employee_file_download/{fid}', 'EmployeeController@fileDow
 Route::get('/Employee/employee_file_delete/{fid}', 'EmployeeController@fileDelete')->name('employee.file.delete');
 Route::delete('/Employee/delete/{eid}', 'EmployeeController@destroy')->name('employee.delete');
 
+Route::get('/bank_account', 'BankaccountController@list')->name('bankAccount.list');
+Route::get('/bank_account/create', 'BankaccountController@create')->name('bankAccount.create');
+Route::post('/bank_account/store', 'BankaccountController@store')->name('bankAccount.store');
+Route::delete('/bank_account/delete/{baid}', 'BankaccountController@destroy')->name('bankAccount.delete');
+Route::get('/bank_account/edit/{baid}', 'BankaccountController@edit')->name('bankAccount.edit');
+Route::post('/bank_account/update/{baid}', 'BankaccountController@update')->name('bankAccount.update');
+
 
 
 

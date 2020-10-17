@@ -258,7 +258,7 @@
                                                 @if(($pedit->name == 'Nylon Multifilament Fishingnet') || ($pedit->name == 'HT Fishingnet') || ($pedit->name == 'HDPE Cage Net'))
                                                     <div class="form-group row hideFirst hideSecond ns9 ns12 ns13">
                                                         <label class="col-xl-3 col-lg-3 col-form-label">
-                                                            Twin Size
+                                                            Twine Size
                                                         </label>
                                                         <div class="col-lg-2 col-xl-2 input-group">
                                                             <input
@@ -292,7 +292,7 @@
                                                 @if(($pedit->name == 'Nylon Mono Multi Fishingnet') || ($pedit->name == 'HDPE Fishingnet'))
                                                     <div class="form-group row hideFirst hideSecond ns9 ns12 ns13">
                                                         <label class="col-xl-3 col-lg-3 col-form-label">
-                                                            Twin Size
+                                                            Twine Size
                                                         </label>
                                                         <div class="col-lg-3 col-xl-3 input-group">
                                                             <input

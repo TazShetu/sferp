@@ -176,6 +176,14 @@
                                 </a>
                             </li>
                             @endpermission
+                            @permission('bank_account')
+                            <li class="kt-menu__item  " aria-haspopup="true">
+                                <a href="{{route('bankAccount.list')}}" class="kt-menu__link ">
+                                    <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>
+                                    <span class="kt-menu__link-text">Bank Account</span>
+                                </a>
+                            </li>
+                            @endpermission
                             @permission('spare_parts')
                             <li class="kt-menu__item  " aria-haspopup="true">
                                 <a href="{{route('spareParts.list')}}" class="kt-menu__link ">

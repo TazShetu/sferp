@@ -213,7 +213,7 @@
                                             </div>
                                             <div class="form-group row hideFirst hideSecond ns9 ns13">
                                                 <label class="col-xl-3 col-lg-3 col-form-label">
-                                                    Twin Size
+                                                    Twine Size
                                                 </label>
                                                 <div class="col-lg-2 col-xl-2 input-group">
                                                     <input
@@ -246,7 +246,7 @@
                                             </div>
                                             <div class="form-group row hideFirst hideSecond ns12">
                                                 <label class="col-xl-3 col-lg-3 col-form-label">
-                                                    Twin Size
+                                                    Twine Size
                                                 </label>
                                                 <div class="col-lg-3 col-xl-3 input-group">
                                                     <input

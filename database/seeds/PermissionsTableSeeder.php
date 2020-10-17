@@ -42,6 +42,8 @@ class PermissionsTableSeeder extends Seeder
             26 => ["hr_designation", "Designation in HR", "Designation in HR"],
             27 => ["hr_employee", "Employee in HR", "Employee in HR"],
 
+            28 => ["bank_account", "Bank Account", "Bank Account menu"],
+
         ];
 
         $s = Role::find(1);
