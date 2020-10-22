@@ -157,7 +157,7 @@ Route::get('/ajax/raw-material-production-in/fidToMachine', 'Rawmaterialproducti
 Route::post('/raw-material/production/in', 'RawmaterialproductioninController@inStore')->name('raw-material.production.in.store');
 Route::get('/raw-material/production/in/history', 'RawmaterialproductioninController@history')->name('raw-material.production.in.history');
 
-Route::get('/product/production/out', 'ProductproductionoutController@in')->name('product.production.out');
+Route::get('/product/production/out', 'ProductproductionoutController@out')->name('product.production.out');
 Route::get('/ajax/product-production-out/pidToUnit', 'ProductproductionoutController@ajaxPidToUnit');
 Route::post('/product/production/out', 'ProductproductionoutController@inStore')->name('product.production.out.store');
 Route::get('/product/production/out/history', 'ProductproductionoutController@history')->name('product.production.out.history');

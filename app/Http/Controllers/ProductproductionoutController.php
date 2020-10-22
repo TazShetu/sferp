@@ -20,7 +20,7 @@ class ProductproductionoutController extends Controller
     }
 
 
-    public function in()
+    public function out()
     {
         if (Auth::user()->can('product_out_production')) {
             $products = Product::all();
