@@ -81,7 +81,9 @@
                                                                 <option selected disabled hidden value="">Choose...
                                                                 </option>
                                                                 @foreach($products as $p)
-                                                                    <option value="{{$p->id}}">{{$p->name}}</option>
+                                                                    <option value="{{$p->id}}">
+                                                                        {{$p->name}} (I){{$p->identification}}
+                                                                    </option>
                                                                 @endforeach
                                                             </select>
                                                         </div>

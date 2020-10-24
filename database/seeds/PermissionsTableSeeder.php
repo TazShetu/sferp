@@ -28,19 +28,20 @@ class PermissionsTableSeeder extends Seeder
             15 => ["raw_material_receive", "Raw Material Receive", "Raw Material Receive under Purchase menu"],
             16 => ["sparepart_stock", "Spare Part Stock", "Spare Part Stock under Purchase menu"],
             17 => ["raw_material_stock", "Raw Material Stock", "Raw Material Stock under Purchase menu"],
-
             18 => ["stock_out_raw_material", "Raw Material Stock Out", "Raw Material Stock Out under Stock"],
             19 => ["stock_in_raw_material", "Raw Material Stock In", "Raw Material Stock In under Stock"],
             20 => ["stock_out_spare_part", "Spare Part Stock Out", "Spare Part Stock Out under Stock"],
             21 => ["stock_in_spare_part", "Spare Part Stock In", "Spare Part Stock In under Stock"],
             22 => ["stock_out_product", "Product Stock Out", "Product Stock Out under Stock"],
             23 => ["stock_in_product", "Product Stock In", "Product Stock In under Stock"],
-
             24 => ["raw_material_in_production", "Raw Material In for Production", "Raw Material In for Production"],
             25 => ["product_out_production", "Product Out From Production", "Product Out From Production"],
-
             26 => ["hr_designation", "Designation in HR", "Designation in HR"],
             27 => ["hr_employee", "Employee in HR", "Employee in HR"],
+            28 => ["bank_account", "Bank Account", "Bank Account menu"],
+
+            29 => ["daily_sheet_dhaka", "Daily Sheet Dhaka", "Daily Sheet Dhaka menu"],
+
 
         ];
 

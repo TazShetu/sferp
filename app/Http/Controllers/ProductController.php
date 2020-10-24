@@ -64,7 +64,7 @@ class ProductController extends Controller
     {
         if (Auth::user()->can('product')) {
             $request->validate([
-                'identification' => 'required',
+                'identification' => 'required|unique:products,identification',
                 'type' => 'required',
                 'name' => 'required',
                 'minimumStorage' => 'required|min:0',
@@ -92,23 +92,35 @@ class ProductController extends Controller
             if ($request->filled('plys')) {
                 $p->plys = $request->plys;
             }
-            if ($request->filled('meshSizeMm')) {
+            if ($request->filled('mesh_size_1')) {
                 $request->validate([
-                    'meshSizeMm' => 'min:0',
+                    'mesh_size_1' => 'min:0',
                 ]);
-                $p->mesh_size_mm = $request->meshSizeMm;
+                $p->mesh_size_1 = $request->mesh_size_1;
+                $p->mesh_size_unit = $request->mesh_size_unit;
             }
-            if ($request->filled('meshSizeInch')) {
+            if ($request->filled('mesh_size_2')) {
                 $request->validate([
-                    'meshSizeInch' => 'min:0',
+                    'mesh_size_2' => 'min:0',
+                    'mesh_size_3' => 'min:0',
                 ]);
-                $p->mesh_size_inch = $request->meshSizeInch;
+                $p->mesh_size_2 = $request->mesh_size_2;
+                $p->mesh_size_3 = $request->mesh_size_3;
+                $p->mesh_size_unit = $request->mesh_size_unit;
             }
             if ($request->filled('depth')) {
                 $request->validate([
                     'depth' => 'min:0',
                 ]);
                 $p->depth = $request->depth;
+                $p->depth_unit = $request->depth_unit;
+            }
+            if ($request->filled('sizeww')) {
+                $request->validate([
+                    'sizeww' => 'min:0',
+                ]);
+                $p->sizeww = $request->sizeww;
+                $p->sizeww_unit = $request->sizeww_unit;
             }
             if ($request->filled('twinSizeDenier')) {
                 $request->validate([
@@ -243,7 +255,7 @@ class ProductController extends Controller
     {
         if (Auth::user()->can('product')) {
             $request->validate([
-                'identification' => 'required',
+                'identification' => 'required|unique:products,identification,' . $pid,
                 'type' => 'required',
                 'name' => 'required',
                 'minimumStorage' => 'required|min:0',
@@ -271,23 +283,35 @@ class ProductController extends Controller
             if ($request->filled('plys')) {
                 $p->plys = $request->plys;
             }
-            if ($request->filled('meshSizeMm')) {
+            if ($request->filled('mesh_size_1')) {
                 $request->validate([
-                    'meshSizeMm' => 'min:0',
+                    'mesh_size_1' => 'min:0',
                 ]);
-                $p->mesh_size_mm = $request->meshSizeMm;
+                $p->mesh_size_1 = $request->mesh_size_1;
+                $p->mesh_size_unit = $request->mesh_size_unit;
             }
-            if ($request->filled('meshSizeInch')) {
+            if ($request->filled('mesh_size_2')) {
                 $request->validate([
-                    'meshSizeInch' => 'min:0',
+                    'mesh_size_2' => 'min:0',
+                    'mesh_size_3' => 'min:0',
                 ]);
-                $p->mesh_size_inch = $request->meshSizeInch;
+                $p->mesh_size_2 = $request->mesh_size_2;
+                $p->mesh_size_3 = $request->mesh_size_3;
+                $p->mesh_size_unit = $request->mesh_size_unit;
             }
             if ($request->filled('depth')) {
                 $request->validate([
                     'depth' => 'min:0',
                 ]);
                 $p->depth = $request->depth;
+                $p->depth_unit = $request->depth_unit;
+            }
+            if ($request->filled('sizeww')) {
+                $request->validate([
+                    'sizeww' => 'min:0',
+                ]);
+                $p->sizeww = $request->sizeww;
+                $p->sizeww_unit = $request->sizeww_unit;
             }
             if ($request->filled('twinSizeDenier')) {
                 $request->validate([

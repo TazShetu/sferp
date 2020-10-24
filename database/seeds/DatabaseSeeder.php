@@ -20,5 +20,6 @@ class DatabaseSeeder extends Seeder
         $this->call(RawmaterialpurchasesTableSeeder::class);
         $this->call(ProductsTableSeeder::class);
         $this->call(Hrseeder::class);
+        $this->call(DsddSeeder::class);
     }
 }

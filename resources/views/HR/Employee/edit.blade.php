@@ -1662,6 +1662,102 @@
                                             </div>
                                         @endif
 
+
+                                        {{--Supporting Documents--}}
+                                        <div class="card">
+                                            <div class="card-header" id="headingTwo">
+                                                <div class="card-title collapsed" data-toggle="collapse"
+                                                     data-target="#collapseSupportDocument" aria-expanded="false"
+                                                     aria-controls="collapseSupportDocument">
+                                                    Supporting Documents
+                                                </div>
+                                            </div>
+                                            <div id="collapseSupportDocument" class="collapse"
+                                                 aria-labelledby="headingTwo1"
+                                                 data-parent="#accordionExample1" style="">
+                                                <div class="card-body">
+                                                    @if(count($eedit->files) > 0)
+                                                        <div class="row">
+                                                            <div class="col-md-10 offset-md-1">
+                                                                <table class="table table-hover">
+                                                                    <thead>
+                                                                    <tr>
+                                                                        <th scope="col">#</th>
+                                                                        <th scope="col">Description</th>
+                                                                        <th scope="col">File</th>
+                                                                        <th scope="col">Action</th>
+                                                                    </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                    @foreach($eedit->files as $i => $f)
+                                                                        <tr>
+                                                                            <td>{{$i + 1}}</td>
+                                                                            <td>{{$f->description}}</td>
+                                                                            {{--<td>{{str_replace("uploads/Employee/Files/", "", $f->file)}}</td>--}}
+                                                                            <td>{{substr($f->file, 23)}}</td>
+                                                                            <td>
+                                                                                <a href="{{route('employee.file.download', ['fid' => $f->id])}}"
+                                                                                   title="Download"
+                                                                                   class="btn btn-sm btn-clean btn-icon btn-icon-md">
+                                                                                    <i class="flaticon-download"></i>
+                                                                                </a>
+                                                                                <a href="{{route('employee.file.delete', ['fid' => $f->id])}}"
+                                                                                   title="Delete"
+                                                                                   class="btn btn-sm btn-clean btn-icon btn-icon-md"
+                                                                                   onclick="return confirm('Are you sure you want to delete the file ?')">
+                                                                                    <i class="la la-trash"
+                                                                                       style="color: #fd397a;"></i>
+                                                                                </a>
+                                                                            </td>
+                                                                        </tr>
+                                                                    @endforeach
+
+                                                                    </tbody>
+                                                                </table>
+
+                                                            </div>
+                                                        </div>
+                                                        <hr>
+                                                    @endif
+
+                                                    {{--      Form Start File Upload  --}}
+                                                    <form method="post" enctype="multipart/form-data"
+                                                          action="{{route('employee.file.upload', ['eid' => $eedit->id])}}">
+                                                        @csrf
+                                                        <div class="form-group row">
+                                                            <label class="col-xl-2 col-lg-2 col-form-label">
+                                                                File Upload
+                                                            </label>
+                                                            <div class="col-lg-3 col-xl-3">
+                                                                <input class="form-control" type="text" required
+                                                                       name="description" placeholder="Description">
+                                                                @if($errors->has('Description'))
+                                                                    <span
+                                                                        class="invalid-feedback">{{$errors->first('Description')}}</span>
+                                                                @endif
+                                                            </div>
+                                                            <div class="col-lg-3 col-xl-3">
+                                                                <input class="form-control" type="file"
+                                                                       name="file2" required>
+                                                                @if($errors->has('file2'))
+                                                                    <span
+                                                                        class="invalid-feedback">{{$errors->first('file2')}}</span>
+                                                                @endif
+                                                            </div>
+                                                            <div class="col-lg-3 col-xl-3">
+                                                                <button type="submit"
+                                                                        class="btn btn-label-brand btn-bold">
+                                                                    Upload
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                    {{--Form End File Upload --}}
+                                                </div>
+                                            </div>
+                                        </div>
+
+
                                     </div>
                                 </div>
                             </div>

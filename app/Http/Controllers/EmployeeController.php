@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Designation;
 use App\Employee;
 use App\Employeedetail;
+use App\Employeefile;
 use App\Employeetype;
 use App\Factory;
 use Illuminate\Http\Request;
@@ -23,7 +24,7 @@ class EmployeeController extends Controller
     {
         if (Auth::user()->can('hr_employee')) {
             if ($request->typeDesignation) {
-                $s =  explode("._.", $request->typeDesignation);
+                $s = explode("._.", $request->typeDesignation);
                 $tid = $s[0];
                 $did = $s[1];
                 $employees = Employee::Where('name', 'LIKE', "%{$request->name}%")
@@ -40,7 +41,7 @@ class EmployeeController extends Controller
             }
 //            $designations = Designation::all();
             $types = Employeetype::all();
-            foreach ($types as $t){
+            foreach ($types as $t) {
                 $t['designation'] = Designation::where('employeetype_id', $t->id)->get();
             }
             if ($request->typeDesignation) {
@@ -50,7 +51,7 @@ class EmployeeController extends Controller
             }
             $query = $request->all();
             if ((count($query) > 0) && array_key_exists("typeDesignation", $query)) {
-                $s =  explode("._.", $query['typeDesignation']);
+                $s = explode("._.", $query['typeDesignation']);
                 $tid = $s[0];
                 $did = $s[1];
                 $query['typeDesignationName'] = Employeetype::find($tid)->title . " -> " . Designation::find($did)->title;
@@ -99,7 +100,7 @@ class EmployeeController extends Controller
                 $code .= Designation::find($request->designation)->code;
                 $e->code = $code;
                 $e->save();
-                $e->code = $e->code.$e->id;
+                $e->code = $e->code . $e->id;
                 $e->update();
                 $e->factories()->attach($request->factory);
                 DB::commit();
@@ -129,9 +130,10 @@ class EmployeeController extends Controller
             $eedit['designation'] = Designation::find($eedit->designation_id);
             $eedit['factories'] = $eedit->factories()->get();
             $eedit['details'] = Employeedetail::where('employee_id', $eid)->first();
-
-//            dd($eedit->details);
-
+            $eedit['files'] = Employeefile::where('employee_id', $eid)->get();
+//            if (count($eedit['files']) > 0) {
+//
+//            }
             $designations = Designation::where('employeetype_id', $eedit->employeetype_id)->get();
             $factories = Factory::all();
             return view('HR.Employee.edit', compact('eedit', 'designations', 'factories'));
@@ -161,7 +163,7 @@ class EmployeeController extends Controller
                     $code .= Factory::find($f)->code;
                 }
                 $code .= Designation::find($request->designation)->code;
-                $e->code = $code.$e->id;
+                $e->code = $code . $e->id;
                 $e->update();
                 $e->factories()->sync($request->factory);
                 DB::commit();
@@ -186,7 +188,17 @@ class EmployeeController extends Controller
     public function destroy($eid)
     {
         if (Auth::user()->can('hr_employee')) {
-            Employee::find($eid)->delete();
+            $e = Employee::find($eid);
+            $e->factories()->detach();
+            Employeedetail::where('employee_id', $eid)->delete();
+            $efs = Employeefile::where('employee_id', $eid)->get();
+            if (count($efs) > 0){
+                foreach ($efs as $ef){
+                    unlink($ef->file);
+                    $ef->delete();
+                }
+            }
+            $e->delete();
             Session::flash('Success', "The Employee has has been deleted successfully.");
             return redirect()->back();
         } else {
@@ -212,6 +224,31 @@ class EmployeeController extends Controller
             return $html;
         } else {
             return json_encode(['success' => false]);
+        }
+    }
+
+
+    public function fileDownload($fid)
+    {
+        if (Auth::user()->can('hr_employee')) {
+            $f = Employeefile::find($fid);
+            return response()->download(public_path($f->file));
+        } else {
+            abort(403);
+        }
+    }
+
+
+    public function fileDelete($fid)
+    {
+        if (Auth::user()->can('hr_employee')) {
+            $f = Employeefile::find($fid);
+            unlink($f->file);
+            $f->delete();
+            Session::flash('Success', "The File has has been deleted successfully.");
+            return redirect()->back();
+        } else {
+            abort(403);
         }
     }
 
