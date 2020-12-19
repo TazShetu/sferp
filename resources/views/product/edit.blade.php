@@ -654,6 +654,26 @@
                                                 </div>
                                                 <div class="form-group row hideFirst hideSecond tid7">
                                                     <label class="col-xl-3 col-lg-3 col-form-label">
+                                                        Luster
+                                                    </label>
+                                                    <div class="col-lg-9 col-xl-6">
+                                                        <input value="{{$pedit->luster}}"
+                                                               class="form-control {{($errors->has('luster')) ? 'is-invalid' : ''}}"
+                                                               type="text" name="luster">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row hideFirst hideSecond tid7">
+                                                    <label class="col-xl-3 col-lg-3 col-form-label">
+                                                        Nominal Denier
+                                                    </label>
+                                                    <div class="col-lg-9 col-xl-6">
+                                                        <input value="{{$pedit->nominal_denier}}"
+                                                               class="form-control {{($errors->has('nominal_denier')) ? 'is-invalid' : ''}}"
+                                                               type="text" name="nominal_denier">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row hideFirst hideSecond tid7">
+                                                    <label class="col-xl-3 col-lg-3 col-form-label">
                                                         Upload Tds
                                                     </label>
                                                     <div class="col-lg-9 col-xl-6">

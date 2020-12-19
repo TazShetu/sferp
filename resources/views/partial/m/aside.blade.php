@@ -1,6 +1,3 @@
-<!-- Uncomment this to display the close button of the panel
-<button class="kt-aside-close " id="kt_aside_close_btn"><i class="la la-close"></i></button>
--->
 <div class="kt-aside  kt-aside--fixed  kt-grid__item kt-grid kt-grid--desktop kt-grid--hor-desktop"
      id="kt_aside">
 
@@ -42,9 +39,7 @@
 									</svg></span>
             </button>
 
-            <!--
-    <button class="kt-aside__brand-aside-toggler kt-aside__brand-aside-toggler--left" id="kt_aside_toggler"><span></span></button>
-    -->
+
         </div>
     </div>
     <!-- end:: Aside -->
@@ -139,14 +134,6 @@
                                 </a>
                             </li>
                             @endpermission
-                            {{--                            @permission('user_permission')--}}
-                            {{--                            <li class="kt-menu__item " aria-haspopup="true">--}}
-                            {{--                                <a href="{{route('user.permission')}}" class="kt-menu__link ">--}}
-                            {{--                                    <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>--}}
-                            {{--                                    <span class="kt-menu__link-text">[[User Permission]]</span>--}}
-                            {{--                                </a>--}}
-                            {{--                            </li>--}}
-                            {{--                            @endpermission--}}
                         </ul>
                     </div>
                 </li>
@@ -200,14 +187,14 @@
                                 </a>
                             </li>
                             @endpermission
-                            @permission('raw_material')
-                            <li class="kt-menu__item  " aria-haspopup="true">
-                                <a href="{{route('rawMaterial.list')}}" class="kt-menu__link ">
-                                    <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>
-                                    <span class="kt-menu__link-text">Raw Materials Setup</span>
-                                </a>
-                            </li>
-                            @endpermission
+{{--                            @permission('raw_material')--}}
+{{--                            <li class="kt-menu__item  " aria-haspopup="true">--}}
+{{--                                <a href="{{route('rawMaterial.list')}}" class="kt-menu__link ">--}}
+{{--                                    <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>--}}
+{{--                                    <span class="kt-menu__link-text">Raw Materials Setup</span>--}}
+{{--                                </a>--}}
+{{--                            </li>--}}
+{{--                            @endpermission--}}
                             @permission('product')
                             <li class="kt-menu__item  " aria-haspopup="true">
                                 <a href="{{route('product.list')}}" class="kt-menu__link ">
@@ -296,14 +283,14 @@
                                 </a>
                             </li>
                             @endpermission
-                            @permission('raw_material_purchase')
-                            <li class="kt-menu__item  " aria-haspopup="true">
-                                <a href="{{route('raw-material.purchase')}}" class="kt-menu__link ">
-                                    <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>
-                                    <span class="kt-menu__link-text">Raw Material</span>
-                                </a>
-                            </li>
-                            @endpermission
+{{--                            @permission('raw_material_purchase')--}}
+{{--                            <li class="kt-menu__item  " aria-haspopup="true">--}}
+{{--                                <a href="{{route('raw-material.purchase')}}" class="kt-menu__link ">--}}
+{{--                                    <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>--}}
+{{--                                    <span class="kt-menu__link-text">Raw Material</span>--}}
+{{--                                </a>--}}
+{{--                            </li>--}}
+{{--                            @endpermission--}}
                             @permission('sparepart_purchase|raw_material_purchase')
                             <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"
                                 data-ktmenu-submenu-toggle="hover">
@@ -329,14 +316,14 @@
                                             </a>
                                         </li>
                                         @endpermission
-                                        @permission('raw_material_purchase')
-                                        <li class="kt-menu__item  " aria-haspopup="true">
-                                            <a href="{{route('raw-material.purchase.history')}}" class="kt-menu__link ">
-                                                <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>
-                                                <span class="kt-menu__link-text">Raw Material</span>
-                                            </a>
-                                        </li>
-                                        @endpermission
+{{--                                        @permission('raw_material_purchase')--}}
+{{--                                        <li class="kt-menu__item  " aria-haspopup="true">--}}
+{{--                                            <a href="{{route('raw-material.purchase.history')}}" class="kt-menu__link ">--}}
+{{--                                                <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>--}}
+{{--                                                <span class="kt-menu__link-text">Raw Material</span>--}}
+{{--                                            </a>--}}
+{{--                                        </li>--}}
+{{--                                        @endpermission--}}
                                     </ul>
                                 </div>
                             </li>
@@ -366,14 +353,14 @@
                                             </a>
                                         </li>
                                         @endpermission
-                                        @permission('raw_material_receive')
-                                        <li class="kt-menu__item  " aria-haspopup="true">
-                                            <a href="{{route('raw-material.purchase.receive')}}" class="kt-menu__link ">
-                                                <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>
-                                                <span class="kt-menu__link-text">Raw Material</span>
-                                            </a>
-                                        </li>
-                                        @endpermission
+{{--                                        @permission('raw_material_receive')--}}
+{{--                                        <li class="kt-menu__item  " aria-haspopup="true">--}}
+{{--                                            <a href="{{route('raw-material.purchase.receive')}}" class="kt-menu__link ">--}}
+{{--                                                <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>--}}
+{{--                                                <span class="kt-menu__link-text">Raw Material</span>--}}
+{{--                                            </a>--}}
+{{--                                        </li>--}}
+{{--                                        @endpermission--}}
                                     </ul>
                                 </div>
                             </li>
@@ -403,14 +390,14 @@
                                             </a>
                                         </li>
                                         @endpermission
-                                        @permission('raw_material_stock')
-                                        <li class="kt-menu__item  " aria-haspopup="true">
-                                            <a href="{{route('raw-material.purchase.store')}}" class="kt-menu__link ">
-                                                <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>
-                                                <span class="kt-menu__link-text">Raw Material</span>
-                                            </a>
-                                        </li>
-                                        @endpermission
+{{--                                        @permission('raw_material_stock')--}}
+{{--                                        <li class="kt-menu__item  " aria-haspopup="true">--}}
+{{--                                            <a href="{{route('raw-material.purchase.store')}}" class="kt-menu__link ">--}}
+{{--                                                <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>--}}
+{{--                                                <span class="kt-menu__link-text">Raw Material</span>--}}
+{{--                                            </a>--}}
+{{--                                        </li>--}}
+{{--                                        @endpermission--}}
                                     </ul>
                                 </div>
                             </li>
@@ -461,14 +448,14 @@
                                             </a>
                                         </li>
                                         @endpermission
-                                        @permission('stock_out_raw_material')
-                                        <li class="kt-menu__item  " aria-haspopup="true">
-                                            <a href="{{route('raw-material.stock.out')}}" class="kt-menu__link ">
-                                                <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>
-                                                <span class="kt-menu__link-text">Raw Material</span>
-                                            </a>
-                                        </li>
-                                        @endpermission
+{{--                                        @permission('stock_out_raw_material')--}}
+{{--                                        <li class="kt-menu__item  " aria-haspopup="true">--}}
+{{--                                            <a href="{{route('raw-material.stock.out')}}" class="kt-menu__link ">--}}
+{{--                                                <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>--}}
+{{--                                                <span class="kt-menu__link-text">Raw Material</span>--}}
+{{--                                            </a>--}}
+{{--                                        </li>--}}
+{{--                                        @endpermission--}}
                                         @permission('stock_out_product')
                                         <li class="kt-menu__item  " aria-haspopup="true">
                                             <a href="{{route('product.stock.out')}}" class="kt-menu__link ">
@@ -506,14 +493,14 @@
                                             </a>
                                         </li>
                                         @endpermission
-                                        @permission('stock_in_raw_material')
-                                        <li class="kt-menu__item  " aria-haspopup="true">
-                                            <a href="{{route('raw-material.stock.in')}}" class="kt-menu__link ">
-                                                <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>
-                                                <span class="kt-menu__link-text">Raw Material</span>
-                                            </a>
-                                        </li>
-                                        @endpermission
+{{--                                        @permission('stock_in_raw_material')--}}
+{{--                                        <li class="kt-menu__item  " aria-haspopup="true">--}}
+{{--                                            <a href="{{route('raw-material.stock.in')}}" class="kt-menu__link ">--}}
+{{--                                                <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>--}}
+{{--                                                <span class="kt-menu__link-text">Raw Material</span>--}}
+{{--                                            </a>--}}
+{{--                                        </li>--}}
+{{--                                        @endpermission--}}
                                         @permission('stock_in_product')
                                         <li class="kt-menu__item  " aria-haspopup="true">
                                             <a href="{{route('product.stock.in')}}" class="kt-menu__link ">
@@ -547,19 +534,19 @@
                                     <span class="kt-menu__link-text">Production</span>
                                 </span>
                             </li>
-                            @permission('raw_material_in_production')
-                            <li class="kt-menu__item  " aria-haspopup="true">
-                                <a href="{{route('raw-material.production.in')}}" class="kt-menu__link ">
-                                    <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>
-                                    <span class="kt-menu__link-text">Raw Material In</span>
-                                </a>
-                            </li>
-                            @endpermission
+{{--                            @permission('raw_material_in_production')--}}
+{{--                            <li class="kt-menu__item  " aria-haspopup="true">--}}
+{{--                                <a href="{{route('raw-material.production.in')}}" class="kt-menu__link ">--}}
+{{--                                    <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>--}}
+{{--                                    <span class="kt-menu__link-text">Raw Material In</span>--}}
+{{--                                </a>--}}
+{{--                            </li>--}}
+{{--                            @endpermission--}}
                             @permission('product_out_production')
                             <li class="kt-menu__item  " aria-haspopup="true">
                                 <a href="{{route('product.production.out')}}" class="kt-menu__link ">
                                     <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>
-                                    <span class="kt-menu__link-text">Product Out</span>
+                                    <span class="kt-menu__link-text">Finished Products</span>
                                 </a>
                             </li>
                             @endpermission

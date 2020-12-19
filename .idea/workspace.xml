@@ -32,9 +32,33 @@
   <component name="ChangeListManager">
     <list default="true" id="72b65107-1734-42e2-a0ce-dd862e20aa6b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/PermissionsTableSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/PermissionsTableSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MachineController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MachineController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ProductController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ProductController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_12_09_164519_create_machines_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_12_09_164519_create_machines_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_01_11_090542_create_products_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_01_11_090542_create_products_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_02_02_040723_create_rawmaterialpurchases_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_02_02_040723_create_rawmaterialpurchases_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_02_02_040911_create_sparepartspurchases_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_02_02_040911_create_sparepartspurchases_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_24_111840_create_openingbalancestores_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_10_24_111840_create_openingbalancestores_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_24_115902_create_dsddcustomers_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_10_24_115902_create_dsddcustomers_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_24_164201_create_dsddbankwithdrawls_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_10_24_164201_create_dsddbankwithdrawls_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_24_172049_create_dsdcbankdeposits_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_10_24_172049_create_dsdcbankdeposits_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_24_223357_create_dsddcashins_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_10_24_223357_create_dsddcashins_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_24_225117_create_dsdccashpayments_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_10_24_225117_create_dsdccashpayments_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_24_230759_create_dsdcpurchasefactories_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_10_24_230759_create_dsdcpurchasefactories_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_24_231315_create_dsdclocaltransports_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_10_24_231315_create_dsdclocaltransports_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_24_232011_create_dsdcpettycashes_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_10_24_232011_create_dsdcpettycashes_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/MachinesTableSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/MachinesTableSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/ProductsTableSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/ProductsTableSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/UsersTableSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/UsersTableSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Production/direct/productout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Production/direct/productout.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Stock/in/productindex.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Stock/in/productindex.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/include/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/include/login.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/machine/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/machine/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/machine/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/machine/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/machine/list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/machine/list.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/partial/m/aside.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/partial/m/aside.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/product/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/product/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/product/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/product/edit.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -158,7 +182,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="add_unversioned_files" value="$PROJECT_DIR$/Theme/metronic/demo1/components/custom/iconbox.html" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../xampp7.3.16/htdocs/sp" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -321,7 +345,15 @@
       <workItem from="1603367180533" duration="3000" />
       <workItem from="1603379196546" duration="612000" />
       <workItem from="1603427195193" duration="596000" />
-      <workItem from="1603515077862" duration="21501000" />
+      <workItem from="1603515077862" duration="21670000" />
+      <workItem from="1603683890784" duration="636000" />
+      <workItem from="1603689760372" duration="599000" />
+      <workItem from="1603860955140" duration="8000" />
+      <workItem from="1604045597724" duration="1401000" />
+      <workItem from="1604588908319" duration="1233000" />
+      <workItem from="1604723498374" duration="180000" />
+      <workItem from="1607875460433" duration="681000" />
+      <workItem from="1608363385510" duration="7396000" />
     </task>
     <servers />
   </component>
@@ -349,18 +381,18 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="622" y="148" key="#phpunit.xml/0.0.1920.1040@0.0.1920.1040" timestamp="1603558470571" />
-    <state x="740" y="276" key="FileChooserDialogImpl" timestamp="1603379215600">
+    <state x="740" y="276" key="FileChooserDialogImpl" timestamp="1608377767063">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="276" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1603379215600" />
-    <state x="646" y="236" width="758" height="638" key="find.popup" timestamp="1602946494394">
+    <state x="740" y="276" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1608377767063" />
+    <state x="461" y="165" key="SettingsEditor" timestamp="1603689748711">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="646" y="236" width="758" height="638" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1602946494394" />
-    <state x="616" y="240" key="run.anything.popup" timestamp="1597390709302">
+    <state x="461" y="165" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1603689748711" />
+    <state x="646" y="236" width="758" height="638" key="find.popup" timestamp="1608378303547">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="616" y="240" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1597390709302" />
+    <state x="646" y="236" width="758" height="638" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1608378303547" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -452,7 +484,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/database/seeds/ProductsTableSeeder.php</url>
-          <line>64</line>
+          <line>65</line>
           <option name="timeStamp" value="347" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">

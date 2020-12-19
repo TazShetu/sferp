@@ -81,7 +81,7 @@
                                                                 </option>
                                                                 @foreach($products as $r)
                                                                     <option value="{{$r->id}}">
-                                                                        {{$r->name}} (I){{$r->identification}}
+                                                                        {{$r->name}} - {{$r->identification}}
                                                                     </option>
                                                                 @endforeach
                                                             </select>

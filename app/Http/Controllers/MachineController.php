@@ -76,7 +76,7 @@ class MachineController extends Controller
                 'category' => 'required',
                 'factory' => 'required',
                 'manufacturerName' => 'required',
-//                'typeOrModelNumber' => 'required',
+                'typeOrModelNumber' => 'required',
 //                'serialNumber' => 'required|unique:machines,identification_code',
 //                'manufacturerYear' => 'required',
                 'countryOfOrigin' => 'required',
@@ -159,6 +159,13 @@ class MachineController extends Controller
                 $d = 'uploads/Manual/machine/' . $img_name;
                 $m->manual = $d;
             }
+            if ($request->hasFile('smanual')) {
+                $img = $request->smanual;
+                $img_name = time() . $img->getClientOriginalName();
+                $a = $img->move('uploads/Manual/machine', $img_name);
+                $d = 'uploads/Manual/machine/' . $img_name;
+                $m->smanual = $d;
+            }
             $m->save();
             Session::flash('Success', "The Machine has been created successfully.");
             return redirect()->route('machine.list');
@@ -193,7 +200,7 @@ class MachineController extends Controller
                 'category' => 'required',
                 'factory' => 'required',
                 'manufacturerName' => 'required',
-//                'typeOrModelNumber' => 'required',
+                'typeOrModelNumber' => 'required',
 //                'serialNumber' => 'required',
 //                'manufacturerYear' => 'required',
                 'countryOfOrigin' => 'required',

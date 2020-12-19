@@ -181,7 +181,7 @@
                                 </div>
                             </div>
 
-                            <span style="color:#E8F0FE;">Test User Email: sagar@gmail.com Password: 123456</span>
+                            <span style="color:#E8F0FE;">Test User Email: sagar@gmail.com Password: 123456789A</span>
 
                             <div class="kt-login__actions">
                                 <button type="submit" class="btn btn-pill kt-login__btn-primary">Sign In

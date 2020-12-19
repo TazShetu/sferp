@@ -1,8 +1,12 @@
 <?php
-
+use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () {
-    return view('welcome');
+    if (Auth::user()){
+        return redirect()->route('home');
+    } else {
+        return view('welcome');
+    }
 });
 Route::get('/cancel', function () {
     return redirect()->back();

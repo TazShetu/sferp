@@ -13,8 +13,8 @@ class CreateDsddcustomersTable extends Migration
             $table->bigIncrements('id');
             $table->integer('customer_id');
             $table->string('payment_type');
-            $table->float('amount');
-            $table->float('amount_2')->nullable();
+            $table->double('amount');
+            $table->double('amount_2')->nullable();
             $table->date('date');
             $table->timestamps();
         });

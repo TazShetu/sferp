@@ -12,7 +12,7 @@ class CreateOpeningbalancestoresTable extends Migration
         Schema::create('openingbalancestores', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->date('date');
-            $table->float('closing_balance');
+            $table->double('closing_balance');
             $table->timestamps();
         });
     }

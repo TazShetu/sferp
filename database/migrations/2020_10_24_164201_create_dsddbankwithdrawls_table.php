@@ -12,8 +12,8 @@ class CreateDsddbankwithdrawlsTable extends Migration
         Schema::create('dsddbankwithdrawls', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('bankaccount_id');
-            $table->float('amount');
-            $table->float('amount_2')->nullable();
+            $table->double('amount');
+            $table->double('amount_2')->nullable();
             $table->string('info');
             $table->date('date');
             $table->timestamps();

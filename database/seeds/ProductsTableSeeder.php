@@ -10,7 +10,7 @@ class ProductsTableSeeder extends Seeder
 
     public function run()
     {
-        // can not change the order of Product type
+        // can not change the order of Product type, only add new one at bottom
         $pts = [
             0 => ["Twin", 'Twine (সুতা)'],
             1 => ["Daline", 'Danline'],
@@ -21,6 +21,7 @@ class ProductsTableSeeder extends Seeder
             6 => ["Nylon Chips", 'Nylon Chips'],
             7 => ["Polypropylene Chips", 'Polypropylene Chips'],
             8 => ["High Density Polythylene Chips", 'High Density Polythylene Chips'],
+            9 => ["FDY", 'FDY (Polyester)'],
         ];
         foreach ($pts as $pt) {
             $p = new Producttype;

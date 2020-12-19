@@ -575,6 +575,26 @@
                                                         type="file" name="uploadMsds">
                                                 </div>
                                             </div>
+                                            <div class="form-group row hideFirst hideSecond tid10">
+                                                <label class="col-xl-3 col-lg-3 col-form-label">
+                                                    Luster
+                                                </label>
+                                                <div class="col-lg-9 col-xl-6">
+                                                    <input
+                                                        class="form-control {{($errors->has('luster')) ? 'is-invalid' : ''}}"
+                                                        type="text" name="luster">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row hideFirst hideSecond tid10">
+                                                <label class="col-xl-3 col-lg-3 col-form-label">
+                                                    Nominal Denier
+                                                </label>
+                                                <div class="col-lg-9 col-xl-6">
+                                                    <input
+                                                        class="form-control {{($errors->has('nominal_denier')) ? 'is-invalid' : ''}}"
+                                                        type="text" name="nominal_denier">
+                                                </div>
+                                            </div>
                                             <div class="form-group row">
                                                 <label class="col-xl-3 col-lg-3 col-form-label">
                                                     Minimum Storage Amount*
@@ -680,13 +700,11 @@
                     }
                 } else {
                     // name field show
-                    $("#msrt").html('Bags');
-                    $("input[name=unit]").val('Bags');
+                    $("#msrt").html('Kg');
+                    $("input[name=unit]").val('Kg');
                     $("#nameType").show();
                     if (type == 6) {
                         // $(".tid6").show();
-                        $("#msrt").html('Kg');
-                        $("input[name=unit]").val('Kg');
                     } else if (type == 7) {
                         $(".tid7").show();
                     } else if (type == 8) {
@@ -695,6 +713,8 @@
                     } else if (type == 9) {
                         // same as tid7
                         $(".tid7").show();
+                    } else if (type == 10) {
+                        $(".tid10").show();
                     }
                 }
             });

@@ -210,6 +210,8 @@ class ProductController extends Controller
             $p->mfr = $request->mfr;
             $p->melting_point = $request->meltingPoint;
             $p->density = $request->density;
+            $p->luster = $request->luster;
+            $p->nominal_denier = $request->nominal_denier;
             if ($request->hasFile('uploadTds')){
                 $img = $request->uploadTds;
                 $img_name = time() . $img->getClientOriginalName();
@@ -401,6 +403,8 @@ class ProductController extends Controller
             $p->mfr = $request->mfr;
             $p->melting_point = $request->meltingPoint;
             $p->density = $request->density;
+            $p->luster = $request->luster;
+            $p->nominal_denier = $request->nominal_denier;
             if ($request->hasFile('uploadTds')){
                 if ($p->upload_tds){
                     unlink($p->upload_tds);
