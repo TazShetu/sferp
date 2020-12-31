@@ -215,6 +215,7 @@ Route::get('/daily_sheet_dhaka/debit/bank_withdraw', 'DsddebitController@bankWit
 Route::post('/daily_sheet_dhaka/debit/bank_withdraw/store', 'DsddebitController@bankWithdrawStore')->name('dsdd.bankWithdraw.store');
 Route::get('/daily_sheet_dhaka/debit/cash_in', 'DsddebitController@cashIn')->name('dsdd.cashIn');
 Route::post('/daily_sheet_dhaka/debit/cash_in/store', 'DsddebitController@cashInStore')->name('dsdd.cashIn.store');
+Route::post('/daily_sheet_dhaka/debit/product_in/store', 'DsddebitController@productInStore')->name('dsdd.productIn.store');
 
 Route::get('/daily_sheet_dhaka/credit/bank_deposit', 'DsdcreditController@bankDeposit')->name('dsdc.bankDeposit');
 Route::post('/daily_sheet_dhaka/credit/bank_deposit/store', 'DsdcreditController@bankDepositStore')->name('dsdc.bankDeposit.store');
@@ -226,9 +227,12 @@ Route::get('/daily_sheet_dhaka/credit/local_transport', 'DsdcreditController@loc
 Route::post('/daily_sheet_dhaka/credit/local_transport/store', 'DsdcreditController@localTransportStore')->name('dsdc.localTransport.store');
 Route::get('/daily_sheet_dhaka/credit/petty_cash', 'DsdcreditController@pettyCash')->name('dsdc.pettyCash');
 Route::post('/daily_sheet_dhaka/credit/petty_cash/store', 'DsdcreditController@pettyCashStore')->name('dsdc.pettyCash.store');
+Route::post('/daily_sheet_dhaka/credit/product_sale/store', 'DsdcreditController@productSaleStore')->name('dsdc.productSale.store');
 
 
 Route::get('/daily_sheet_dhaka', 'DsddebitController@dsd')->name('dsd');
+
+Route::get('/daily_sheet_dhaka/main', 'DsddebitController@main')->name('dsd.main');
 
 
 

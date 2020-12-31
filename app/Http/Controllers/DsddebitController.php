@@ -8,11 +8,14 @@ use App\Dsdcbankdeposit;
 use App\Dsdccashpayment;
 use App\Dsdclocaltransport;
 use App\Dsdcpettycash;
+use App\Dsdcprodustsale;
 use App\Dsdcpurchasefactory;
 use App\Dsddbankwithdrawl;
 use App\Dsddcashin;
 use App\Dsddcustomer;
+use App\Dsddprodustin;
 use App\Openingbalancestore;
+use App\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -24,6 +27,56 @@ class DsddebitController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+    }
+
+
+    public function main()
+    {
+        if (Auth::user()->can('daily_sheet_dhaka')) {
+            // Sheet data
+            $yesterday = date('Y-m-d', strtotime("-1 days"));
+            $ob = 0;
+            $obc = Openingbalancestore::where('date', $yesterday)->first();
+            if ($obc) {
+                $ob = $obc->closing_balance;
+            }
+            $dcs = Dsddcustomer::where('date', date('Y-m-d'))->get();
+            foreach ($dcs as $dc) {
+                $dc['name'] = Customer::find($dc->customer_id)->name;
+            }
+            $dbws = Dsddbankwithdrawl::where('date', date('Y-m-d'))->get();
+            foreach ($dbws as $dbw) {
+                $dbw['acname'] = Bankaccount::find($dbw->bankaccount_id)->ac_name;
+            }
+            $dcis = Dsddcashin::where('date', date('Y-m-d'))->get();
+            $dpis = Dsddprodustin::where('date', date('Y-m-d'))->get();
+            foreach ($dpis as $dpi) {
+                $dpi['product_name'] = Product::find($dpi->product_id)->name;
+            }
+            $cbds = Dsdcbankdeposit::where('date', date('Y-m-d'))->get();
+            foreach ($cbds as $cbd) {
+                $cbd['acname'] = Bankaccount::find($dbw->bankaccount_id)->ac_name;
+            }
+            $ccps = Dsdccashpayment::where('date', date('Y-m-d'))->get();
+            $cpfs = Dsdcpurchasefactory::where('date', date('Y-m-d'))->get();
+            $clts = Dsdclocaltransport::where('date', date('Y-m-d'))->get();
+            $cpcs = Dsdcpettycash::where('date', date('Y-m-d'))->get();
+            $cpss = Dsdcprodustsale::where('date', date('Y-m-d'))->get();
+            foreach ($cpss as $cps) {
+                $cps['product_name'] = Product::find($cps->product_id)->name;
+                $cps['customer_name'] = Customer::find($cps->customer_id)->name;
+            }
+
+            // debit Customers
+            $customers = Customer::all();
+            $bas = Bankaccount::all();
+            $products = Product::all();
+
+            return view('dsd.main', compact('ob', 'dcs', 'dbws', 'cbds', 'dcis', 'ccps', 'cpfs', 'clts', 'cpcs', 'dpis', 'cpss',
+                                                    'customers', 'bas', 'products'));
+        } else {
+            abort(403);
+        }
     }
 
 
@@ -155,6 +208,27 @@ class DsddebitController extends Controller
             $ba->for = $request->for;
             $ba->date = date('Y-m-d');
             $ba->save();
+            Session::flash('Success', "The Data has been entered successfully.");
+            return redirect()->back();
+        } else {
+            abort(403);
+        }
+    }
+
+
+    public function productInStore(Request $request)
+    {
+        if (Auth::user()->can('daily_sheet_dhaka')) {
+            $request->validate([
+                'product' => 'required',
+                'quantity' => 'required',
+            ]);
+            $c = new Dsddprodustin;
+            $c->product_id = $request->product;
+            $c->quantity = $request->quantity;
+            $c->note = $request->note;
+            $c->date = date('Y-m-d');
+            $c->save();
             Session::flash('Success', "The Data has been entered successfully.");
             return redirect()->back();
         } else {

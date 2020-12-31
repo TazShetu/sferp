@@ -457,8 +457,8 @@
 <script>
     $(function () {
         setTimeout(function () {
-            $('#toaster').hide(10000);
-        }, 3000);
+            $('#toaster').hide(1000);
+        }, 10000);
     });
 </script>
 </body>

@@ -7,6 +7,7 @@ use App\Dsdcbankdeposit;
 use App\Dsdccashpayment;
 use App\Dsdclocaltransport;
 use App\Dsdcpettycash;
+use App\Dsdcprodustsale;
 use App\Dsdcpurchasefactory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -178,6 +179,29 @@ class DsdcreditController extends Controller
             $ba->amount = $request->amount;
             $ba->date = date('Y-m-d');
             $ba->save();
+            Session::flash('Success', "The Data has been entered successfully.");
+            return redirect()->back();
+        } else {
+            abort(403);
+        }
+    }
+
+
+    public function productSaleStore(Request $request)
+    {
+        if (Auth::user()->can('daily_sheet_dhaka')) {
+            $request->validate([
+                'product' => 'required',
+                'customer_id' => 'required',
+                'quantity' => 'required',
+            ]);
+            $c = new Dsdcprodustsale;
+            $c->product_id = $request->product;
+            $c->customer_id = $request->customer_id;
+            $c->quantity = $request->quantity;
+            $c->note = $request->note;
+            $c->date = date('Y-m-d');
+            $c->save();
             Session::flash('Success', "The Data has been entered successfully.");
             return redirect()->back();
         } else {
