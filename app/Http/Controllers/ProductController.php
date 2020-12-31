@@ -212,6 +212,10 @@ class ProductController extends Controller
             $p->density = $request->density;
             $p->luster = $request->luster;
             $p->nominal_denier = $request->nominal_denier;
+            $p->manufacturer = $request->manufacturer;
+            $p->country_origin = $request->country_origin;
+            $p->viscosity = $request->viscosity;
+            $p->relative_density = $request->relative_density;
             if ($request->hasFile('uploadTds')){
                 $img = $request->uploadTds;
                 $img_name = time() . $img->getClientOriginalName();
@@ -405,6 +409,10 @@ class ProductController extends Controller
             $p->density = $request->density;
             $p->luster = $request->luster;
             $p->nominal_denier = $request->nominal_denier;
+            $p->manufacturer = $request->manufacturer;
+            $p->country_origin = $request->country_origin;
+            $p->viscosity = $request->viscosity;
+            $p->relative_density = $request->relative_density;
             if ($request->hasFile('uploadTds')){
                 if ($p->upload_tds){
                     unlink($p->upload_tds);

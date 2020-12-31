@@ -500,6 +500,46 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            <div class="form-group row hideFirst hideSecond tid7 tid10">
+                                                <label class="col-xl-3 col-lg-3 col-form-label">
+                                                    Manufacture Name
+                                                </label>
+                                                <div class="col-lg-9 col-xl-6">
+                                                    <input
+                                                        class="form-control {{($errors->has('manufacturer')) ? 'is-invalid' : ''}}"
+                                                        type="text" name="manufacturer">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row hideFirst hideSecond tid7 tid10">
+                                                <label class="col-xl-3 col-lg-3 col-form-label">
+                                                    Country Of Origin
+                                                </label>
+                                                <div class="col-lg-9 col-xl-6">
+                                                    <input
+                                                        class="form-control {{($errors->has('country_origin')) ? 'is-invalid' : ''}}"
+                                                        type="text" name="country_origin">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row hideFirst hideSecond tid7 tid10">
+                                                <label class="col-xl-3 col-lg-3 col-form-label">
+                                                    Relative Density
+                                                </label>
+                                                <div class="col-lg-9 col-xl-6">
+                                                    <input
+                                                        class="form-control {{($errors->has('relative_density')) ? 'is-invalid' : ''}}"
+                                                        type="text" name="relative_density">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row hideFirst hideSecond tid7 tid10">
+                                                <label class="col-xl-3 col-lg-3 col-form-label">
+                                                    Viscosity
+                                                </label>
+                                                <div class="col-lg-9 col-xl-6">
+                                                    <input
+                                                        class="form-control {{($errors->has('viscosity')) ? 'is-invalid' : ''}}"
+                                                        type="number" name="viscosity" step="0.01" min="0">
+                                                </div>
+                                            </div>
                                             <div class="form-group row hideFirst hideSecond tid7">
                                                 <label class="col-xl-3 col-lg-3 col-form-label">
                                                     Grade No
