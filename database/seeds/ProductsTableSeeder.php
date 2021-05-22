@@ -47,7 +47,7 @@ class ProductsTableSeeder extends Seeder
         $p2->name = 'Nylon Monomulti';
         $p2->size_mm = '1';
         $p2->plys = '1';
-        $p2->unit = 'kg';
+        $p2->unit = 'pound';
         $p2->minimum_storage = '1';
         $p2->save();
 

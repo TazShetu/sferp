@@ -15,6 +15,7 @@ class CreateDsdccashpaymentsTable extends Migration
             $table->string('for');
             $table->double('amount');
             $table->double('amount_2')->nullable();
+            $table->string('unit');
             $table->date('date');
             $table->timestamps();
         });

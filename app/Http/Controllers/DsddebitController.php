@@ -16,6 +16,7 @@ use App\Dsddcustomer;
 use App\Dsddprodustin;
 use App\Openingbalancestore;
 use App\Product;
+use App\Spareparts;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -55,7 +56,7 @@ class DsddebitController extends Controller
             }
             $cbds = Dsdcbankdeposit::where('date', date('Y-m-d'))->get();
             foreach ($cbds as $cbd) {
-                $cbd['acname'] = Bankaccount::find($dbw->bankaccount_id)->ac_name;
+                $cbd['acname'] = Bankaccount::find($cbd->bankaccount_id)->ac_name;
             }
             $ccps = Dsdccashpayment::where('date', date('Y-m-d'))->get();
             $cpfs = Dsdcpurchasefactory::where('date', date('Y-m-d'))->get();
@@ -72,8 +73,10 @@ class DsddebitController extends Controller
             $bas = Bankaccount::all();
             $products = Product::all();
 
+            $sps = Spareparts::all();
+
             return view('dsd.main', compact('ob', 'dcs', 'dbws', 'cbds', 'dcis', 'ccps', 'cpfs', 'clts', 'cpcs', 'dpis', 'cpss',
-                                                    'customers', 'bas', 'products'));
+                                                    'customers', 'bas', 'products', 'sps'));
         } else {
             abort(403);
         }
@@ -137,11 +140,13 @@ class DsddebitController extends Controller
                 'customer_id' => 'required',
                 'payment_type' => 'required',
                 'amount' => 'required',
+                'unit' => 'required',
             ]);
             $c = new Dsddcustomer;
             $c->customer_id = $request->customer_id;
             $c->payment_type = $request->payment_type;
             $c->amount = $request->amount;
+            $c->unit = $request->unit;
             $c->date = date('Y-m-d');
             $c->save();
             Session::flash('Success', "The Data has been entered successfully.");
@@ -170,11 +175,13 @@ class DsddebitController extends Controller
                 'bankaccount_id' => 'required',
                 'info' => 'required',
                 'amount' => 'required',
+                'unit' => 'required',
             ]);
             $ba = new Dsddbankwithdrawl;
             $ba->bankaccount_id = $request->bankaccount_id;
             $ba->amount = $request->amount;
             $ba->info = $request->info;
+            $ba->unit = $request->unit;
             $ba->date = date('Y-m-d');
             $ba->save();
             Session::flash('Success', "The Data has been entered successfully.");
@@ -201,10 +208,12 @@ class DsddebitController extends Controller
             $request->validate([
                 'deposit_by' => 'required',
                 'amount' => 'required',
+                'unit' => 'required',
             ]);
             $ba = new Dsddcashin;
             $ba->deposit_by = $request->deposit_by;
             $ba->amount = $request->amount;
+            $ba->unit = $request->unit;
             $ba->for = $request->for;
             $ba->date = date('Y-m-d');
             $ba->save();

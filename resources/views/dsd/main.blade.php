@@ -81,42 +81,10 @@
                                                                 <th scope="row">{{$i + 1}}</th>
                                                                 <td>{{$dc->name}}</td>
                                                                 <td>{{$dc->payment_type}}</td>
-                                                                <td>{{$dc->amount}}</td>
+                                                                <td>{{$dc->amount}} {{$dc->unit}}</td>
                                                             </tr>
                                                             @php
                                                                 $ob = $ob + $dc->amount
-                                                            @endphp
-                                                        @empty
-                                                            <tr>
-                                                                <th scope="row"></th>
-                                                                <td>Nothing to show</td>
-                                                                <td></td>
-                                                                <td></td>
-                                                            </tr>
-                                                        @endforelse
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                                <div class="kt-section kt-section--first">
-                                                    <table class="table table-hover">
-                                                        <thead>
-                                                        <tr>
-                                                            <th scope="col">Cash Deposit</th>
-                                                            <th scope="col">Deposited By</th>
-                                                            <th scope="col">Amount</th>
-                                                            <th scope="col">For</th>
-                                                        </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                        @forelse($dcis as $i => $dci)
-                                                            <tr>
-                                                                <th scope="row">{{$i + 1}}</th>
-                                                                <td>{{$dci->deposit_by}}</td>
-                                                                <td>{{$dci->amount}}</td>
-                                                                <td>{{$dci->for}}</td>
-                                                            </tr>
-                                                            @php
-                                                                $ob = $ob + $dci->amount
                                                             @endphp
                                                         @empty
                                                             <tr>
@@ -145,10 +113,42 @@
                                                                 <th scope="row">{{$i + 1}}</th>
                                                                 <td>{{$dbw->acname}}</td>
                                                                 <td>{{$dbw->info}}</td>
-                                                                <td>{{$dbw->amount}}</td>
+                                                                <td>{{$dbw->amount}} {{$dbw->unit}}</td>
                                                             </tr>
                                                             @php
                                                                 $ob = $ob + $dbw->amount
+                                                            @endphp
+                                                        @empty
+                                                            <tr>
+                                                                <th scope="row"></th>
+                                                                <td>Nothing to show</td>
+                                                                <td></td>
+                                                                <td></td>
+                                                            </tr>
+                                                        @endforelse
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <div class="kt-section kt-section--first">
+                                                    <table class="table table-hover">
+                                                        <thead>
+                                                        <tr>
+                                                            <th scope="col">Cash Deposit</th>
+                                                            <th scope="col">Deposited By</th>
+                                                            <th scope="col">Amount</th>
+                                                            <th scope="col">For</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        @forelse($dcis as $i => $dci)
+                                                            <tr>
+                                                                <th scope="row">{{$i + 1}}</th>
+                                                                <td>{{$dci->deposit_by}}</td>
+                                                                <td>{{$dci->amount}} {{$dci->unit}}</td>
+                                                                <td>{{$dci->for}}</td>
+                                                            </tr>
+                                                            @php
+                                                                $ob = $ob + $dci->amount
                                                             @endphp
                                                         @empty
                                                             <tr>
@@ -285,6 +285,20 @@
                                                                                         step="0.01" min="0" required>
                                                                                 </div>
                                                                             </div>
+                                                                            <div class="form-group row">
+                                                                                <label
+                                                                                    class="col-xl-3 col-lg-3 col-form-label">
+                                                                                    Unit
+                                                                                </label>
+                                                                                <div class="col-lg-9 col-xl-6">
+                                                                                    <select
+                                                                                        class="form-control kt-selectpicker {{($errors->has('unit')) ? 'is-invalid' : ''}}"
+                                                                                        name="unit" required>
+                                                                                        <option value="TAKA">TAKA</option>
+                                                                                        <option value="USD">USD</option>
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
                                                                             <div
                                                                                 class="kt-separator kt-separator--space-lg kt-separator--fit kt-separator--border-solid"></div>
                                                                             <div class="kt-form__actions">
@@ -334,7 +348,7 @@
                                                                                     Bank Account
                                                                                 </label>
                                                                                 <div class="col-lg-9 col-xl-6">
-                                                                                    <select
+                                                                                    <select id="bank_account"
                                                                                         class="form-control kt-selectpicker {{($errors->has('bankaccount_id')) ? 'is-invalid' : ''}}"
                                                                                         name="bankaccount_id"
                                                                                         data-live-search="true"
@@ -358,6 +372,17 @@
                                                                             <div class="form-group row">
                                                                                 <label
                                                                                     class="col-xl-3 col-lg-3 col-form-label">
+                                                                                    Bank
+                                                                                </label>
+                                                                                <div class="col-lg-9 col-xl-6">
+                                                                                    <input class="form-control"
+                                                                                        type="text" name="bank_name"
+                                                                                        id="bank_name" readonly>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="form-group row">
+                                                                                <label
+                                                                                    class="col-xl-3 col-lg-3 col-form-label">
                                                                                     Amount
                                                                                 </label>
                                                                                 <div class="col-lg-9 col-xl-6">
@@ -370,6 +395,20 @@
                                                                                         <span
                                                                                             class="invalid-feedback">{{$errors->first('amount')}}</span>
                                                                                     @endif
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="form-group row">
+                                                                                <label
+                                                                                    class="col-xl-3 col-lg-3 col-form-label">
+                                                                                    Unit
+                                                                                </label>
+                                                                                <div class="col-lg-9 col-xl-6">
+                                                                                    <select
+                                                                                        class="form-control kt-selectpicker {{($errors->has('unit')) ? 'is-invalid' : ''}}"
+                                                                                        name="unit" required>
+                                                                                        <option value="TAKA">TAKA</option>
+                                                                                        <option value="USD">USD</option>
+                                                                                    </select>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="form-group row">
@@ -418,7 +457,7 @@
                                                                 <div class="card-title collapsed" data-toggle="collapse"
                                                                      data-target="#collapseCashIn" aria-expanded="false"
                                                                      aria-controls="collapseCashIn">
-                                                                    Cash In
+                                                                    Cash Deposit
                                                                 </div>
                                                             </div>
                                                             <div id="collapseCashIn" class="collapse"
@@ -434,7 +473,7 @@
                                                                             <div class="form-group row">
                                                                                 <label
                                                                                     class="col-xl-3 col-lg-3 col-form-label">
-                                                                                    Deposit By
+                                                                                    Deposited By
                                                                                 </label>
                                                                                 <div class="col-lg-9 col-xl-6">
                                                                                     <input
@@ -463,6 +502,20 @@
                                                                                         <span
                                                                                             class="invalid-feedback">{{$errors->first('amount')}}</span>
                                                                                     @endif
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="form-group row">
+                                                                                <label
+                                                                                    class="col-xl-3 col-lg-3 col-form-label">
+                                                                                    Unit
+                                                                                </label>
+                                                                                <div class="col-lg-9 col-xl-6">
+                                                                                    <select
+                                                                                        class="form-control kt-selectpicker {{($errors->has('unit')) ? 'is-invalid' : ''}}"
+                                                                                        name="unit" required>
+                                                                                        <option value="TAKA">TAKA</option>
+                                                                                        <option value="USD">USD</option>
+                                                                                    </select>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="form-group row">
@@ -511,7 +564,7 @@
                                                                      data-target="#collapseProductIn"
                                                                      aria-expanded="false"
                                                                      aria-controls="collapseProductIn">
-                                                                    Product In
+                                                                    Product(s) In
                                                                 </div>
                                                             </div>
                                                             <div id="collapseProductIn" class="collapse"
@@ -530,10 +583,9 @@
                                                                                     Products
                                                                                 </label>
                                                                                 <div class="col-lg-9 col-xl-6">
-                                                                                    <select
+                                                                                    <select id="productD"
                                                                                         class="form-control kt-selectpicker"
                                                                                         name="product" required
-                                                                                        id="product"
                                                                                         data-live-search="true"
                                                                                         data-size="7">
                                                                                         <option selected disabled hidden
@@ -554,15 +606,20 @@
                                                                                     Quantity
                                                                                 </label>
                                                                                 <div class="col-lg-9 col-xl-6">
-                                                                                    <input
-                                                                                        class="form-control {{($errors->has('quantity')) ? 'is-invalid' : ''}}"
-                                                                                        type="number" name="quantity"
-                                                                                        value="{{old('quantity')}}"
-                                                                                        required>
-                                                                                    @if($errors->has('quantity'))
-                                                                                        <span
-                                                                                            class="invalid-feedback">{{$errors->first('quantity')}}</span>
-                                                                                    @endif
+                                                                                    <div class="input-group">
+                                                                                        <input
+                                                                                            class="form-control {{($errors->has('quantity')) ? 'is-invalid' : ''}}"
+                                                                                            type="number" name="quantity"
+                                                                                            value="{{old('quantity')}}"
+                                                                                            required>
+                                                                                        @if($errors->has('quantity'))
+                                                                                            <span
+                                                                                                class="invalid-feedback">{{$errors->first('quantity')}}</span>
+                                                                                        @endif
+                                                                                        <div class="input-group-append"><span
+                                                                                                class="input-group-text" id="unitD">.</span>
+                                                                                        </div>
+                                                                                    </div>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="form-group row">
@@ -648,7 +705,7 @@
                                                                 <td>{{$cbd->acname}}</td>
                                                                 <td>{{$cbd->info}}</td>
                                                                 <td>{{$cbd->payment_type}}</td>
-                                                                <td>{{$cbd->amount}}</td>
+                                                                <td>{{$cbd->amount}} {{$cbd->unit}}</td>
                                                             </tr>
                                                             @php
                                                                 $ob = $ob - $cbd->amount
@@ -680,7 +737,7 @@
                                                                 <th scope="row">{{$i + 1}}</th>
                                                                 <td>{{$ccp->to}}</td>
                                                                 <td>{{$ccp->for}}</td>
-                                                                <td>{{$ccp->amount}}</td>
+                                                                <td>{{$ccp->amount}} {{$ccp->unit}}</td>
                                                             </tr>
                                                             @php
                                                                 $ob = $ob - $ccp->amount
@@ -712,7 +769,7 @@
                                                                 <th scope="row">{{$i + 1}}</th>
                                                                 <td>{{$cpf->to}}</td>
                                                                 <td>{{$cpf->for}}</td>
-                                                                <td>{{$cpf->amount}}</td>
+                                                                <td>{{$cpf->amount}} {{$cpf->unit}}</td>
                                                             </tr>
                                                             @php
                                                                 $ob = $ob - $cpf->amount
@@ -744,7 +801,7 @@
                                                                 <th scope="row">{{$i + 1}}</th>
                                                                 <td>{{$clt->to}}</td>
                                                                 <td>{{$clt->for}}</td>
-                                                                <td>{{$clt->amount}}</td>
+                                                                <td>{{$clt->amount}} {{$clt->unit}}</td>
                                                             </tr>
                                                             @php
                                                                 $ob = $ob - $clt->amount
@@ -776,7 +833,7 @@
                                                                 <th scope="row">{{$i + 1}}</th>
                                                                 <td>{{$cpc->to}}</td>
                                                                 <td>{{$cpc->for}}</td>
-                                                                <td>{{$cpc->amount}}</td>
+                                                                <td>{{$cpc->amount}} {{$cpc->unit}}</td>
                                                             </tr>
                                                             @php
                                                                 $ob = $ob - $cpc->amount
@@ -873,7 +930,7 @@
                                                                                     Bank Account
                                                                                 </label>
                                                                                 <div class="col-lg-9 col-xl-6">
-                                                                                    <select
+                                                                                    <select id="bank_accountC"
                                                                                         class="form-control kt-selectpicker {{($errors->has('bankaccount_id')) ? 'is-invalid' : ''}}"
                                                                                         name="bankaccount_id"
                                                                                         data-live-search="true"
@@ -892,6 +949,17 @@
                                                                                         <span
                                                                                             class="invalid-feedback">{{$errors->first('bankaccount_id')}}</span>
                                                                                     @endif
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="form-group row">
+                                                                                <label
+                                                                                    class="col-xl-3 col-lg-3 col-form-label">
+                                                                                    Bank
+                                                                                </label>
+                                                                                <div class="col-lg-9 col-xl-6">
+                                                                                    <input class="form-control"
+                                                                                           type="text" name="bank_nameC"
+                                                                                           id="bank_nameC" readonly>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="form-group row">
@@ -933,6 +1001,20 @@
                                                                                         <span
                                                                                             class="invalid-feedback">{{$errors->first('amount')}}</span>
                                                                                     @endif
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="form-group row">
+                                                                                <label
+                                                                                    class="col-xl-3 col-lg-3 col-form-label">
+                                                                                    Unit
+                                                                                </label>
+                                                                                <div class="col-lg-9 col-xl-6">
+                                                                                    <select
+                                                                                        class="form-control kt-selectpicker {{($errors->has('unit')) ? 'is-invalid' : ''}}"
+                                                                                        name="unit" required>
+                                                                                        <option value="TAKA">TAKA</option>
+                                                                                        <option value="USD">USD</option>
+                                                                                    </select>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="form-group row">
@@ -1044,6 +1126,20 @@
                                                                                     @endif
                                                                                 </div>
                                                                             </div>
+                                                                            <div class="form-group row">
+                                                                                <label
+                                                                                    class="col-xl-3 col-lg-3 col-form-label">
+                                                                                    Unit
+                                                                                </label>
+                                                                                <div class="col-lg-9 col-xl-6">
+                                                                                    <select
+                                                                                        class="form-control kt-selectpicker {{($errors->has('unit')) ? 'is-invalid' : ''}}"
+                                                                                        name="unit" required>
+                                                                                        <option value="TAKA">TAKA</option>
+                                                                                        <option value="USD">USD</option>
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
                                                                             <div
                                                                                 class="kt-separator kt-separator--space-lg kt-separator--fit kt-separator--border-solid"></div>
                                                                             <div class="kt-form__actions">
@@ -1091,6 +1187,28 @@
                                                                             <div class="form-group row">
                                                                                 <label
                                                                                     class="col-xl-3 col-lg-3 col-form-label">
+                                                                                    Spare Parts
+                                                                                </label>
+                                                                                <div class="col-lg-9 col-xl-6">
+                                                                                    <select
+                                                                                        class="form-control kt-selectpicker {{($errors->has('sparepart')) ? 'is-invalid' : ''}}"
+                                                                                        name="sparepart"
+                                                                                        data-live-search="true"
+                                                                                        data-size="7" required>
+                                                                                        <option selected disabled hidden
+                                                                                                value="">Choose...
+                                                                                        </option>
+                                                                                        @foreach($sps as $pn)
+                                                                                            <option value="{{$pn->id}}">
+                                                                                                {{$pn->description}}
+                                                                                            </option>
+                                                                                        @endforeach
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="form-group row">
+                                                                                <label
+                                                                                    class="col-xl-3 col-lg-3 col-form-label">
                                                                                     To
                                                                                 </label>
                                                                                 <div class="col-lg-9 col-xl-6">
@@ -1113,11 +1231,11 @@
                                                                                     <input
                                                                                         class="form-control {{($errors->has('for')) ? 'is-invalid' : ''}}"
                                                                                         type="text" name="for"
-                                                                                        value="{{old('for')}}" required>
-                                                                                    @if($errors->has('for'))
-                                                                                        <span
-                                                                                            class="invalid-feedback">{{$errors->first('for')}}</span>
-                                                                                    @endif
+                                                                                        value="{{old('for')}}">
+{{--                                                                                    @if($errors->has('for'))--}}
+{{--                                                                                        <span--}}
+{{--                                                                                            class="invalid-feedback">{{$errors->first('for')}}</span>--}}
+{{--                                                                                    @endif--}}
                                                                                 </div>
                                                                             </div>
                                                                             <div class="form-group row">
@@ -1135,6 +1253,20 @@
                                                                                         <span
                                                                                             class="invalid-feedback">{{$errors->first('amount')}}</span>
                                                                                     @endif
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="form-group row">
+                                                                                <label
+                                                                                    class="col-xl-3 col-lg-3 col-form-label">
+                                                                                    Unit
+                                                                                </label>
+                                                                                <div class="col-lg-9 col-xl-6">
+                                                                                    <select
+                                                                                        class="form-control kt-selectpicker {{($errors->has('unit')) ? 'is-invalid' : ''}}"
+                                                                                        name="unit" required>
+                                                                                        <option value="TAKA">TAKA</option>
+                                                                                        <option value="USD">USD</option>
+                                                                                    </select>
                                                                                 </div>
                                                                             </div>
                                                                             <div
@@ -1230,6 +1362,20 @@
                                                                                     @endif
                                                                                 </div>
                                                                             </div>
+                                                                            <div class="form-group row">
+                                                                                <label
+                                                                                    class="col-xl-3 col-lg-3 col-form-label">
+                                                                                    Unit
+                                                                                </label>
+                                                                                <div class="col-lg-9 col-xl-6">
+                                                                                    <select
+                                                                                        class="form-control kt-selectpicker {{($errors->has('unit')) ? 'is-invalid' : ''}}"
+                                                                                        name="unit" required>
+                                                                                        <option value="TAKA">TAKA</option>
+                                                                                        <option value="USD">USD</option>
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
                                                                             <div
                                                                                 class="kt-separator kt-separator--space-lg kt-separator--fit kt-separator--border-solid"></div>
                                                                             <div class="kt-form__actions">
@@ -1322,6 +1468,20 @@
                                                                                     @endif
                                                                                 </div>
                                                                             </div>
+                                                                            <div class="form-group row">
+                                                                                <label
+                                                                                    class="col-xl-3 col-lg-3 col-form-label">
+                                                                                    Unit
+                                                                                </label>
+                                                                                <div class="col-lg-9 col-xl-6">
+                                                                                    <select
+                                                                                        class="form-control kt-selectpicker {{($errors->has('unit')) ? 'is-invalid' : ''}}"
+                                                                                        name="unit" required>
+                                                                                        <option value="TAKA">TAKA</option>
+                                                                                        <option value="USD">USD</option>
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
                                                                             <div
                                                                                 class="kt-separator kt-separator--space-lg kt-separator--fit kt-separator--border-solid"></div>
                                                                             <div class="kt-form__actions">
@@ -1352,7 +1512,7 @@
                                                                      data-target="#collapseProductSale"
                                                                      aria-expanded="false"
                                                                      aria-controls="collapseProductSale">
-                                                                    Product Sale
+                                                                    Product(s) Sale
                                                                 </div>
                                                             </div>
                                                             <div id="collapseProductSale" class="collapse"
@@ -1371,10 +1531,9 @@
                                                                                     Products
                                                                                 </label>
                                                                                 <div class="col-lg-9 col-xl-6">
-                                                                                    <select
+                                                                                    <select id="productC"
                                                                                         class="form-control kt-selectpicker"
                                                                                         name="product" required
-                                                                                        id="product"
                                                                                         data-live-search="true"
                                                                                         data-size="7">
                                                                                         <option selected disabled hidden
@@ -1418,15 +1577,20 @@
                                                                                     Quantity
                                                                                 </label>
                                                                                 <div class="col-lg-9 col-xl-6">
-                                                                                    <input
-                                                                                        class="form-control {{($errors->has('quantity')) ? 'is-invalid' : ''}}"
-                                                                                        type="number" name="quantity"
-                                                                                        value="{{old('quantity')}}"
-                                                                                        required>
-                                                                                    @if($errors->has('quantity'))
-                                                                                        <span
-                                                                                            class="invalid-feedback">{{$errors->first('quantity')}}</span>
-                                                                                    @endif
+                                                                                    <div class="input-group">
+                                                                                        <input
+                                                                                            class="form-control {{($errors->has('quantity')) ? 'is-invalid' : ''}}"
+                                                                                            type="number" name="quantity"
+                                                                                            value="{{old('quantity')}}"
+                                                                                            required>
+                                                                                        @if($errors->has('quantity'))
+                                                                                            <span
+                                                                                                class="invalid-feedback">{{$errors->first('quantity')}}</span>
+                                                                                        @endif
+                                                                                        <div class="input-group-append"><span
+                                                                                                class="input-group-text" id="unitC">.</span>
+                                                                                        </div>
+                                                                                    </div>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="form-group row">
@@ -1491,6 +1655,31 @@
 
 
     <script src="{{asset('m/assets/js/pages/crud/forms/widgets/bootstrap-select.js')}}" type="text/javascript"></script>
+    <script>
+
+        const jbas = {!! $bas->toJson() !!};
+        const products = {!! $products->toJson() !!}
+
+        $(function() {
+
+            $("#bank_account").on('change', function () {
+                $("#bank_name").val(jbas.find(element => element.id == $(this).val())['name']);
+            })
+
+            $("#bank_accountC").on('change', function () {
+                $("#bank_nameC").val(jbas.find(element => element.id == $(this).val())['name']);
+            })
+
+            $("#productD").on('change', function () {
+                $("#unitD").html(products.find(element => element.id == $(this).val())['unit']);
+            });
+
+            $("#productC").on('change', function () {
+                $("#unitC").html(products.find(element => element.id == $(this).val())['unit']);
+            });
+
+        });
+    </script>
 
 
     <!--end::Page Scripts -->

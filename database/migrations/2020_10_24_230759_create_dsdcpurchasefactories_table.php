@@ -11,10 +11,12 @@ class CreateDsdcpurchasefactoriesTable extends Migration
     {
         Schema::create('dsdcpurchasefactories', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->integer('sparepart_id');
             $table->string('to');
-            $table->string('for');
+            $table->string('for')->nullable();
             $table->double('amount');
             $table->double('amount_2')->nullable();
+            $table->string('unit');
             $table->date('date');
             $table->timestamps();
         });

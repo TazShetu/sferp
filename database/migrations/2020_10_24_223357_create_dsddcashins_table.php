@@ -15,6 +15,7 @@ class CreateDsddcashinsTable extends Migration
             $table->string('for')->nullable();
             $table->double('amount');
             $table->double('amount_2')->nullable();
+            $table->string('unit');
             $table->date('date');
             $table->timestamps();
         });

@@ -15,6 +15,7 @@ class CreateDsddcustomersTable extends Migration
             $table->string('payment_type');
             $table->double('amount');
             $table->double('amount_2')->nullable();
+            $table->string('unit');
             $table->date('date');
             $table->timestamps();
         });

@@ -14,6 +14,7 @@ class CreateDsddbankwithdrawlsTable extends Migration
             $table->integer('bankaccount_id');
             $table->double('amount');
             $table->double('amount_2')->nullable();
+            $table->string('unit');
             $table->string('info');
             $table->date('date');
             $table->timestamps();

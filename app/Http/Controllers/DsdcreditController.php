@@ -41,10 +41,12 @@ class DsdcreditController extends Controller
                 'info' => 'required',
                 'amount' => 'required',
                 'payment_type' => 'required',
+                'unit' => 'required',
             ]);
             $ba = new Dsdcbankdeposit;
             $ba->bankaccount_id = $request->bankaccount_id;
             $ba->amount = $request->amount;
+            $ba->unit = $request->unit;
             $ba->info = $request->info;
             $ba->payment_type = $request->payment_type;
             $ba->date = date('Y-m-d');
@@ -74,11 +76,13 @@ class DsdcreditController extends Controller
                 'to' => 'required',
                 'for' => 'required',
                 'amount' => 'required',
+                'unit' => 'required',
             ]);
             $ba = new Dsdccashpayment;
             $ba->to = $request->to;
             $ba->for = $request->for;
             $ba->amount = $request->amount;
+            $ba->unit = $request->unit;
             $ba->date = date('Y-m-d');
             $ba->save();
             Session::flash('Success', "The Data has been entered successfully.");
@@ -104,13 +108,17 @@ class DsdcreditController extends Controller
         if (Auth::user()->can('daily_sheet_dhaka')) {
             $request->validate([
                 'to' => 'required',
-                'for' => 'required',
+//                'for' => 'required',
                 'amount' => 'required',
+                'unit' => 'required',
+                'sparepart' => 'required',
             ]);
             $ba = new Dsdcpurchasefactory;
             $ba->to = $request->to;
             $ba->for = $request->for;
             $ba->amount = $request->amount;
+            $ba->unit = $request->unit;
+            $ba->sparepart_id = $request->sparepart;
             $ba->date = date('Y-m-d');
             $ba->save();
             Session::flash('Success', "The Data has been entered successfully.");
@@ -139,11 +147,13 @@ class DsdcreditController extends Controller
                 'to' => 'required',
                 'for' => 'required',
                 'amount' => 'required',
+                'unit' => 'required',
             ]);
             $ba = new Dsdclocaltransport;
             $ba->to = $request->to;
             $ba->for = $request->for;
             $ba->amount = $request->amount;
+            $ba->unit = $request->unit;
             $ba->date = date('Y-m-d');
             $ba->save();
             Session::flash('Success', "The Data has been entered successfully.");
@@ -172,11 +182,13 @@ class DsdcreditController extends Controller
                 'to' => 'required',
                 'for' => 'required',
                 'amount' => 'required',
+                'unit' => 'required',
             ]);
             $ba = new Dsdcpettycash;
             $ba->to = $request->to;
             $ba->for = $request->for;
             $ba->amount = $request->amount;
+            $ba->unit = $request->unit;
             $ba->date = date('Y-m-d');
             $ba->save();
             Session::flash('Success', "The Data has been entered successfully.");
