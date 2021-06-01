@@ -34,16 +34,11 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/DsdcreditController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/DsdcreditController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/DsddebitController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/DsddebitController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_24_115902_create_dsddcustomers_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_10_24_115902_create_dsddcustomers_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_24_164201_create_dsddbankwithdrawls_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_10_24_164201_create_dsddbankwithdrawls_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_24_172049_create_dsdcbankdeposits_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_10_24_172049_create_dsdcbankdeposits_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_24_223357_create_dsddcashins_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_10_24_223357_create_dsddcashins_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_24_225117_create_dsdccashpayments_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_10_24_225117_create_dsdccashpayments_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_24_230759_create_dsdcpurchasefactories_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_10_24_230759_create_dsdcpurchasefactories_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_24_231315_create_dsdclocaltransports_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_10_24_231315_create_dsdclocaltransports_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_24_232011_create_dsdcpettycashes_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_10_24_232011_create_dsdcpettycashes_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/ProductsTableSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/ProductsTableSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Openingbalancestore.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_24_111840_create_openingbalancestores_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/dsd/main.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dsd/main.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -172,11 +167,19 @@
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JavaScript Debug.DsdcreditController.php">
+    <configuration name="DsdcreditController.php" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/sferp/Http/Controllers/DsdcreditController.php" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
     <configuration name="phpunit.xml" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
       <TestRunner scope="XML" />
       <method v="2" />
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JavaScript Debug.DsdcreditController.php" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -347,7 +350,10 @@
       <workItem from="1620281781510" duration="405000" />
       <workItem from="1620306957953" duration="1566000" />
       <workItem from="1621494103429" duration="1410000" />
-      <workItem from="1621652618746" duration="9177000" />
+      <workItem from="1621652618746" duration="9777000" />
+      <workItem from="1621698476818" duration="14000" />
+      <workItem from="1622472442043" duration="3751000" />
+      <workItem from="1622552888768" duration="3401000" />
     </task>
     <servers />
   </component>
@@ -367,10 +373,18 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1621501714889">
+    <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1622555014842">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1621501714889" />
+    <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1622555014842" />
+    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1621698488821">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1621698488821" />
+    <state x="668" y="239" width="583" height="562" key="find.popup" timestamp="1622555539138">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="668" y="239" width="583" height="562" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1622555539138" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -469,11 +483,6 @@
           <url>file://$PROJECT_DIR$/database/seeds/Hrseeder.php</url>
           <line>12</line>
           <option name="timeStamp" value="366" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/app/Http/Controllers/DsddebitController.php</url>
-          <line>38</line>
-          <option name="timeStamp" value="374" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/Theme/metronic/demo1/assets/js/pages/crud/datatables/basic/basic.js</url>

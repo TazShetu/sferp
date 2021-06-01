@@ -1,8 +1,8 @@
 @include('bnTime')
-@php
-    $time = time();
-    $Bdate = BDdate($time);
-@endphp
+{{--@php--}}
+{{--    $time = time();--}}
+{{--    $Bdate = BDdate($time);--}}
+{{--@endphp--}}
 @extends('layouts.m')
 @section('title', 'Daily Sheet Dhaka Debit Customer')
 @section('content_head')
@@ -32,14 +32,35 @@
             <div class="kt-portlet__head">
                 <div class="kt-portlet__head-label">
                     <h3 class="kt-portlet__head-title">
-                        {{date('jS M Y')}}
+                        {{--                        {{date('jS M Y')}}--}}
+                        {{ date('jS M Y', strtotime($ds->date))}}
                     </h3>
                 </div>
-                <div class="kt-portlet__head-label">
-                    <h3 class="kt-portlet__head-title">
-                        {{$Bdate}}
-                    </h3>
-                </div>
+                @if(date('jS M Y') != date('jS M Y', strtotime($ds->date)))
+                    <div class="kt-portlet__head-label">
+                        {{--                    <h3 class="kt-portlet__head-title">--}}
+                        {{--                        {{$Bdate}}--}}
+                        {{--                    </h3>--}}
+                        <a href="#" class="btn btn-danger"
+                           onclick="if (confirm('Are you sure you want to close daily sheet')) {
+                               event.preventDefault(); document.getElementById('closing_form').submit();
+                           }">
+                            Close Daily Sheet
+                        </a>
+                        <form id="closing_form" action="{{ route('dsd.closing') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+
+
+
+                    </div>
+                @else
+                    <div class="kt-portlet__head-label">
+                        <a href="" class="btn btn-danger disabled">
+                            Please Close Tomorrow
+                        </a>
+                    </div>
+                @endif
             </div>
         </div>
 
@@ -294,8 +315,9 @@
                                                                                     <select
                                                                                         class="form-control kt-selectpicker {{($errors->has('unit')) ? 'is-invalid' : ''}}"
                                                                                         name="unit" required>
-                                                                                        <option value="TAKA">TAKA</option>
-                                                                                        <option value="USD">USD</option>
+                                                                                        <option value="TAKA">TAKA
+                                                                                        </option>
+                                                                                        {{--                                                                                        <option value="USD">USD</option>--}}
                                                                                     </select>
                                                                                 </div>
                                                                             </div>
@@ -349,10 +371,10 @@
                                                                                 </label>
                                                                                 <div class="col-lg-9 col-xl-6">
                                                                                     <select id="bank_account"
-                                                                                        class="form-control kt-selectpicker {{($errors->has('bankaccount_id')) ? 'is-invalid' : ''}}"
-                                                                                        name="bankaccount_id"
-                                                                                        data-live-search="true"
-                                                                                        data-size="7" required>
+                                                                                            class="form-control kt-selectpicker {{($errors->has('bankaccount_id')) ? 'is-invalid' : ''}}"
+                                                                                            name="bankaccount_id"
+                                                                                            data-live-search="true"
+                                                                                            data-size="7" required>
                                                                                         <option selected disabled hidden
                                                                                                 value="">Choose...
                                                                                         </option>
@@ -376,8 +398,8 @@
                                                                                 </label>
                                                                                 <div class="col-lg-9 col-xl-6">
                                                                                     <input class="form-control"
-                                                                                        type="text" name="bank_name"
-                                                                                        id="bank_name" readonly>
+                                                                                           type="text" name="bank_name"
+                                                                                           id="bank_name" readonly>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="form-group row">
@@ -406,8 +428,9 @@
                                                                                     <select
                                                                                         class="form-control kt-selectpicker {{($errors->has('unit')) ? 'is-invalid' : ''}}"
                                                                                         name="unit" required>
-                                                                                        <option value="TAKA">TAKA</option>
-                                                                                        <option value="USD">USD</option>
+                                                                                        <option value="TAKA">TAKA
+                                                                                        </option>
+                                                                                        {{--                                                                                        <option value="USD">USD</option>--}}
                                                                                     </select>
                                                                                 </div>
                                                                             </div>
@@ -513,8 +536,9 @@
                                                                                     <select
                                                                                         class="form-control kt-selectpicker {{($errors->has('unit')) ? 'is-invalid' : ''}}"
                                                                                         name="unit" required>
-                                                                                        <option value="TAKA">TAKA</option>
-                                                                                        <option value="USD">USD</option>
+                                                                                        <option value="TAKA">TAKA
+                                                                                        </option>
+                                                                                        {{--                                                                                        <option value="USD">USD</option>--}}
                                                                                     </select>
                                                                                 </div>
                                                                             </div>
@@ -584,10 +608,10 @@
                                                                                 </label>
                                                                                 <div class="col-lg-9 col-xl-6">
                                                                                     <select id="productD"
-                                                                                        class="form-control kt-selectpicker"
-                                                                                        name="product" required
-                                                                                        data-live-search="true"
-                                                                                        data-size="7">
+                                                                                            class="form-control kt-selectpicker"
+                                                                                            name="product" required
+                                                                                            data-live-search="true"
+                                                                                            data-size="7">
                                                                                         <option selected disabled hidden
                                                                                                 value="">Choose...
                                                                                         </option>
@@ -609,7 +633,8 @@
                                                                                     <div class="input-group">
                                                                                         <input
                                                                                             class="form-control {{($errors->has('quantity')) ? 'is-invalid' : ''}}"
-                                                                                            type="number" name="quantity"
+                                                                                            type="number"
+                                                                                            name="quantity"
                                                                                             value="{{old('quantity')}}"
                                                                                             required>
                                                                                         @if($errors->has('quantity'))
@@ -617,7 +642,8 @@
                                                                                                 class="invalid-feedback">{{$errors->first('quantity')}}</span>
                                                                                         @endif
                                                                                         <div class="input-group-append"><span
-                                                                                                class="input-group-text" id="unitD">.</span>
+                                                                                                class="input-group-text"
+                                                                                                id="unitD">.</span>
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
@@ -931,10 +957,10 @@
                                                                                 </label>
                                                                                 <div class="col-lg-9 col-xl-6">
                                                                                     <select id="bank_accountC"
-                                                                                        class="form-control kt-selectpicker {{($errors->has('bankaccount_id')) ? 'is-invalid' : ''}}"
-                                                                                        name="bankaccount_id"
-                                                                                        data-live-search="true"
-                                                                                        data-size="7" required>
+                                                                                            class="form-control kt-selectpicker {{($errors->has('bankaccount_id')) ? 'is-invalid' : ''}}"
+                                                                                            name="bankaccount_id"
+                                                                                            data-live-search="true"
+                                                                                            data-size="7" required>
                                                                                         <option selected disabled hidden
                                                                                                 value="">Choose...
                                                                                         </option>
@@ -1012,8 +1038,9 @@
                                                                                     <select
                                                                                         class="form-control kt-selectpicker {{($errors->has('unit')) ? 'is-invalid' : ''}}"
                                                                                         name="unit" required>
-                                                                                        <option value="TAKA">TAKA</option>
-                                                                                        <option value="USD">USD</option>
+                                                                                        <option value="TAKA">TAKA
+                                                                                        </option>
+                                                                                        {{--                                                                                        <option value="USD">USD</option>--}}
                                                                                     </select>
                                                                                 </div>
                                                                             </div>
@@ -1135,8 +1162,9 @@
                                                                                     <select
                                                                                         class="form-control kt-selectpicker {{($errors->has('unit')) ? 'is-invalid' : ''}}"
                                                                                         name="unit" required>
-                                                                                        <option value="TAKA">TAKA</option>
-                                                                                        <option value="USD">USD</option>
+                                                                                        <option value="TAKA">TAKA
+                                                                                        </option>
+                                                                                        {{--                                                                                        <option value="USD">USD</option>--}}
                                                                                     </select>
                                                                                 </div>
                                                                             </div>
@@ -1232,10 +1260,10 @@
                                                                                         class="form-control {{($errors->has('for')) ? 'is-invalid' : ''}}"
                                                                                         type="text" name="for"
                                                                                         value="{{old('for')}}">
-{{--                                                                                    @if($errors->has('for'))--}}
-{{--                                                                                        <span--}}
-{{--                                                                                            class="invalid-feedback">{{$errors->first('for')}}</span>--}}
-{{--                                                                                    @endif--}}
+                                                                                    {{--                                                                                    @if($errors->has('for'))--}}
+                                                                                    {{--                                                                                        <span--}}
+                                                                                    {{--                                                                                            class="invalid-feedback">{{$errors->first('for')}}</span>--}}
+                                                                                    {{--                                                                                    @endif--}}
                                                                                 </div>
                                                                             </div>
                                                                             <div class="form-group row">
@@ -1264,8 +1292,9 @@
                                                                                     <select
                                                                                         class="form-control kt-selectpicker {{($errors->has('unit')) ? 'is-invalid' : ''}}"
                                                                                         name="unit" required>
-                                                                                        <option value="TAKA">TAKA</option>
-                                                                                        <option value="USD">USD</option>
+                                                                                        <option value="TAKA">TAKA
+                                                                                        </option>
+                                                                                        {{--                                                                                        <option value="USD">USD</option>--}}
                                                                                     </select>
                                                                                 </div>
                                                                             </div>
@@ -1371,8 +1400,9 @@
                                                                                     <select
                                                                                         class="form-control kt-selectpicker {{($errors->has('unit')) ? 'is-invalid' : ''}}"
                                                                                         name="unit" required>
-                                                                                        <option value="TAKA">TAKA</option>
-                                                                                        <option value="USD">USD</option>
+                                                                                        <option value="TAKA">TAKA
+                                                                                        </option>
+                                                                                        {{--                                                                                        <option value="USD">USD</option>--}}
                                                                                     </select>
                                                                                 </div>
                                                                             </div>
@@ -1477,8 +1507,9 @@
                                                                                     <select
                                                                                         class="form-control kt-selectpicker {{($errors->has('unit')) ? 'is-invalid' : ''}}"
                                                                                         name="unit" required>
-                                                                                        <option value="TAKA">TAKA</option>
-                                                                                        <option value="USD">USD</option>
+                                                                                        <option value="TAKA">TAKA
+                                                                                        </option>
+                                                                                        {{--                                                                                        <option value="USD">USD</option>--}}
                                                                                     </select>
                                                                                 </div>
                                                                             </div>
@@ -1532,10 +1563,10 @@
                                                                                 </label>
                                                                                 <div class="col-lg-9 col-xl-6">
                                                                                     <select id="productC"
-                                                                                        class="form-control kt-selectpicker"
-                                                                                        name="product" required
-                                                                                        data-live-search="true"
-                                                                                        data-size="7">
+                                                                                            class="form-control kt-selectpicker"
+                                                                                            name="product" required
+                                                                                            data-live-search="true"
+                                                                                            data-size="7">
                                                                                         <option selected disabled hidden
                                                                                                 value="">Choose...
                                                                                         </option>
@@ -1580,7 +1611,8 @@
                                                                                     <div class="input-group">
                                                                                         <input
                                                                                             class="form-control {{($errors->has('quantity')) ? 'is-invalid' : ''}}"
-                                                                                            type="number" name="quantity"
+                                                                                            type="number"
+                                                                                            name="quantity"
                                                                                             value="{{old('quantity')}}"
                                                                                             required>
                                                                                         @if($errors->has('quantity'))
@@ -1588,7 +1620,8 @@
                                                                                                 class="invalid-feedback">{{$errors->first('quantity')}}</span>
                                                                                         @endif
                                                                                         <div class="input-group-append"><span
-                                                                                                class="input-group-text" id="unitC">.</span>
+                                                                                                class="input-group-text"
+                                                                                                id="unitC">.</span>
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
@@ -1660,7 +1693,7 @@
         const jbas = {!! $bas->toJson() !!};
         const products = {!! $products->toJson() !!}
 
-        $(function() {
+        $(function () {
 
             $("#bank_account").on('change', function () {
                 $("#bank_name").val(jbas.find(element => element.id == $(this).val())['name']);
