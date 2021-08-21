@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Openingbalancestore extends Model
+class DailySheet extends Model
 {
     //
 }

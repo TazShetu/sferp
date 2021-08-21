@@ -13,7 +13,9 @@ class CreateDsdcpettycashesTable extends Migration
             $table->bigIncrements('id');
             $table->string('to');
             $table->string('for');
-            $table->float('amount');
+            $table->double('amount');
+            $table->double('amount_2')->nullable();
+            $table->string('unit');
             $table->date('date');
             $table->timestamps();
         });

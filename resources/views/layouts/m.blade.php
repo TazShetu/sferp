@@ -134,7 +134,8 @@
 
 <!-- begin::Body -->
 <body class="kt-quick-panel--right kt-demo-panel--right kt-offcanvas-panel--right kt-header--fixed kt-header-mobile--fixed kt-subheader--enabled kt-subheader--fixed kt-subheader--solid kt-aside--enabled kt-aside--fixed kt-page--loading">
-<div id="loader" style="background: url('{{asset('loader.gif')}}') 50% 50% no-repeat rgb(255, 255, 255);"></div>
+<div id="loader" style="background: url('{{asset('loader.gif')}}') 50% 50% no-repeat rgb(255, 255, 255);">
+</div>
 
 <!-- begin:: Page -->
 
@@ -246,10 +247,10 @@
 <script src="{{asset('m/assets/plugins/general/jquery/dist/jquery.js')}}" type="text/javascript"></script>
 {{--side menu active--}}
 <script>
-    $(window).on('load', function () {
-        $("#loader").fadeOut("fast");
-    });
+    // $(window).on('load', function () {
+    // });
     $(function () {
+        $("#loader").fadeOut("fast");
         let url = location.href;
         if (url.includes('?')) {
             // only take the url before ?
@@ -457,8 +458,8 @@
 <script>
     $(function () {
         setTimeout(function () {
-            $('#toaster').hide(10000);
-        }, 3000);
+            $('#toaster').hide(1000);
+        }, 10000);
     });
 </script>
 </body>

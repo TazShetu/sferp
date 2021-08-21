@@ -15,19 +15,13 @@ use Illuminate\Support\Facades\Session;
 class HomeController extends Controller
 {
 
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
-
     public function index()
     {
         $n = null;
         $products = Product::all();
         $sps = Spareparts::all();
         $rms = Rawmaterial::all();
-        if (compact($products) > 0){
+        if (compact($products) > 0) {
             foreach ($products as $p) {
                 $stock = DB::table('productstocks')->where('product_id', $p->id)->sum('quantity');
                 if (($p->minimum_storage * 1) > $stock) {
@@ -58,7 +52,6 @@ class HomeController extends Controller
     }
 
 
-
     public function dashboardProduction()
     {
         return view('dashboard.production');
@@ -77,51 +70,44 @@ class HomeController extends Controller
     }
 
 
-
     public function user()
     {
-        if (Auth::user()->can('user')) {
-            $users = User::where('id', '>', 6)->get();
-            $roles = Role::all();
-            return view('user.index', compact('roles', 'users'));
-        } else {
-            abort(403);
-        }
+        abort_unless(Auth::user()->can('user'), 403);
+        $users = User::where('id', '>', 6)->get();
+        $roles = Role::all();
+        return view('user.index', compact('roles', 'users'));
     }
 
 
     public function userStore(Request $request)
     {
-        if (Auth::user()->can('user')) {
-            $request->validate([
-                'name' => 'required',
-                'email' => 'required|unique:users,email',
-                'password' => 'required|confirmed',
-                'roles' => 'required',
-            ]);
-            DB::beginTransaction();
-            try {
-                $u = new User;
-                $u->name = $request->name;
-                $u->email = $request->email;
-                $u->password = bcrypt($request->password);
-                $u->save();
-                $u->attachRoles($request->roles);
-                DB::commit();
-                $success = true;
-            } catch (\Exception $e) {
-                $success = false;
-                DB::rollback();
-            }
-            if ($success) {
-                Session::flash('Success', "The User has been created successfully.");
-                return redirect()->back();
-            } else {
-                Session::flash('unsuccess', "Something went wrong :(");
-                return redirect()->back();
-            }
+        abort_unless(Auth::user()->can('user'), 403);
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|unique:users,email',
+            'password' => 'required|confirmed',
+            'roles' => 'required',
+        ]);
+        DB::beginTransaction();
+        try {
+            $u = new User;
+            $u->name = $request->name;
+            $u->email = $request->email;
+            $u->password = bcrypt($request->password);
+            $u->save();
+            $u->attachRoles($request->roles);
+            DB::commit();
+            $success = true;
+        } catch (\Exception $e) {
+            $success = false;
+            DB::rollback();
+        }
+        if ($success) {
+            Session::flash('Success', "The User has been created successfully.");
+            return redirect()->back();
         } else {
-            abort(403);
+            Session::flash('unsuccess', "Something went wrong :(");
+            return redirect()->back();
         }
     }
 

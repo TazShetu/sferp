@@ -115,12 +115,12 @@
                                             </div>
                                             <div class="form-group row">
                                                 <label class="col-xl-3 col-lg-3 col-form-label">
-                                                    Type / Model Number
+                                                    Type / Model Number*
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">
                                                     <input
                                                         class="form-control {{($errors->has('typeOrModelNumber')) ? 'is-invalid' : ''}}"
-                                                        type="text" name="typeOrModelNumber"
+                                                        type="text" name="typeOrModelNumber" required
                                                         value="{{old('typeOrModelNumber')}}" list="type">
                                                     @if($errors->has('typeOrModelNumber'))
                                                         <span
@@ -339,11 +339,20 @@
                                             </div>
                                             <div class="form-group row">
                                                 <label class="col-xl-3 col-lg-3 col-form-label">
-                                                    Manual
+                                                    Machine Manual
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">
                                                     <input class="form-control"
                                                            type="file" name="manual">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-xl-3 col-lg-3 col-form-label">
+                                                    Spareparts Manual
+                                                </label>
+                                                <div class="col-lg-9 col-xl-6">
+                                                    <input class="form-control"
+                                                           type="file" name="smanual">
                                                 </div>
                                             </div>
                                             <div

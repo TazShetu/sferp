@@ -4,18 +4,17 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDsddcustomersTable extends Migration
+class CreateDsdcprodustsalesTable extends Migration
 {
 
     public function up()
     {
-        Schema::create('dsddcustomers', function (Blueprint $table) {
+        Schema::create('dsdcprodustsales', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->integer('product_id');
             $table->integer('customer_id');
-            $table->string('payment_type');
-            $table->double('amount');
-            $table->double('amount_2')->nullable();
-            $table->string('unit');
+            $table->decimal('quantity');
+            $table->string('note')->nullable();
             $table->date('date');
             $table->timestamps();
         });
@@ -24,6 +23,6 @@ class CreateDsddcustomersTable extends Migration
 
     public function down()
     {
-        Schema::dropIfExists('dsddcustomers');
+        Schema::dropIfExists('dsdcprodustsales');
     }
 }

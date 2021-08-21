@@ -32,9 +32,41 @@
   <component name="ChangeListManager">
     <list default="true" id="72b65107-1734-42e2-a0ce-dd862e20aa6b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/PermissionsTableSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/PermissionsTableSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AclController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AclController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/BankaccountController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/BankaccountController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CustomerController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CustomerController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/DesignationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/DesignationController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/DsdcreditController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/DsdcreditController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/DsddebitController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/DsddebitController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/EmployeeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/EmployeeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/EmployeedetailsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/EmployeedetailsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/FactoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/FactoryController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MachineController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MachineController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ProductController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ProductController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ProductproductionoutController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ProductproductionoutController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ProductstockinController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ProductstockinController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ProductstockoutController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ProductstockoutController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/RawmaterialController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/RawmaterialController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/RawmaterialproductioninController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/RawmaterialproductioninController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/RawmaterialpurchaseController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/RawmaterialpurchaseController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/RawmaterialstockinController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/RawmaterialstockinController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/RawmaterialstockoutController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/RawmaterialstockoutController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/RawmaterialstoreController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/RawmaterialstoreController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/SparepartsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/SparepartsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/SparepartspurchaseController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/SparepartspurchaseController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/SparepartsstockinController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/SparepartsstockinController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/SparepartsstockoutController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/SparepartsstockoutController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/SparepartsstoreController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/SparepartsstoreController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/SroomController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/SroomController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/WarehouseController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/WarehouseController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_31_184702_create_dsddprodustins_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_31_184702_create_dsddprodustins_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_31_194138_create_dsdcprodustsales_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_31_194138_create_dsdcprodustsales_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/DailySheetsTableSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/DailySheetsTableSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dsd/main.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dsd/main.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/m.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/m.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/partial/m/aside.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/partial/m/aside.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/partial/m/footer.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/partial/m/footer.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -153,23 +185,34 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="NEW_TOOLWINDOW_STRIPE_DEFAULTS" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="add_unversioned_files" value="$PROJECT_DIR$/Theme/metronic/demo1/components/custom/iconbox.html" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../xampp7.3.16/htdocs/sp" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../liveWallpaper" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="vue.rearranger.settings.migration" value="true" />
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JavaScript Debug.DsdcreditController.php">
+    <configuration name="DsdcreditController.php" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/sferp/Http/Controllers/DsdcreditController.php" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
     <configuration name="phpunit.xml" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
       <TestRunner scope="XML" />
       <method v="2" />
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JavaScript Debug.DsdcreditController.php" />
+      </list>
+    </recent_temporary>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -321,12 +364,42 @@
       <workItem from="1603367180533" duration="3000" />
       <workItem from="1603379196546" duration="612000" />
       <workItem from="1603427195193" duration="596000" />
-      <workItem from="1603515077862" duration="21501000" />
+      <workItem from="1603515077862" duration="21670000" />
+      <workItem from="1603683890784" duration="636000" />
+      <workItem from="1603689760372" duration="599000" />
+      <workItem from="1603860955140" duration="8000" />
+      <workItem from="1604045597724" duration="1401000" />
+      <workItem from="1604588908319" duration="1233000" />
+      <workItem from="1604723498374" duration="180000" />
+      <workItem from="1607875460433" duration="681000" />
+      <workItem from="1608363385510" duration="7693000" />
+      <workItem from="1609407789847" duration="2745000" />
+      <workItem from="1609413177210" duration="8374000" />
+      <workItem from="1609477823585" duration="80000" />
+      <workItem from="1620205475834" duration="2921000" />
+      <workItem from="1620211219940" duration="267000" />
+      <workItem from="1620211740158" duration="1227000" />
+      <workItem from="1620281781510" duration="405000" />
+      <workItem from="1620306957953" duration="1566000" />
+      <workItem from="1621494103429" duration="1410000" />
+      <workItem from="1621652618746" duration="9777000" />
+      <workItem from="1621698476818" duration="14000" />
+      <workItem from="1622472442043" duration="3751000" />
+      <workItem from="1622552888768" duration="4610000" />
+      <workItem from="1623422919600" duration="596000" />
+      <workItem from="1623463207566" duration="8362000" />
+      <workItem from="1623682535941" duration="273000" />
+      <workItem from="1623850161950" duration="10000" />
+      <workItem from="1625296164106" duration="793000" />
+      <workItem from="1627803339596" duration="376000" />
+      <workItem from="1629476364017" duration="358000" />
+      <workItem from="1629517423613" duration="4026000" />
+      <workItem from="1629522448678" duration="2796000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="2" />
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -339,28 +412,6 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="690" y="276" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1603539080737">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="690" y="276" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1603539080737" />
-    <state x="622" y="148" key="#phpunit.xml" timestamp="1603558470571">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="622" y="148" key="#phpunit.xml/0.0.1920.1040@0.0.1920.1040" timestamp="1603558470571" />
-    <state x="740" y="276" key="FileChooserDialogImpl" timestamp="1603379215600">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="740" y="276" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1603379215600" />
-    <state x="646" y="236" width="758" height="638" key="find.popup" timestamp="1602946494394">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="646" y="236" width="758" height="638" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1602946494394" />
-    <state x="616" y="240" key="run.anything.popup" timestamp="1597390709302">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="616" y="240" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1597390709302" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -384,11 +435,6 @@
           <url>file://$PROJECT_DIR$/Theme/metronic/demo1/crud/forms/widgets/bootstrap-datepicker.html</url>
           <line>2051</line>
           <option name="timeStamp" value="79" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/app/Http/Controllers/AclController.php</url>
-          <line>157</line>
-          <option name="timeStamp" value="114" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/Theme/metronic/demo1/crud/forms/widgets/select2.html</url>
@@ -417,33 +463,18 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/app/Http/Controllers/FactoryController.php</url>
-          <line>116</line>
+          <line>95</line>
           <option name="timeStamp" value="156" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/app/Http/Controllers/WarehouseController.php</url>
-          <line>101</line>
+          <line>84</line>
           <option name="timeStamp" value="240" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/app/Http/Controllers/SroomController.php</url>
-          <line>100</line>
+          <line>83</line>
           <option name="timeStamp" value="253" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/app/Http/Controllers/SparepartsstockoutController.php</url>
-          <line>95</line>
-          <option name="timeStamp" value="278" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/app/Http/Controllers/RawmaterialstockoutController.php</url>
-          <line>95</line>
-          <option name="timeStamp" value="280" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/app/Http/Controllers/SparepartsstockinController.php</url>
-          <line>91</line>
-          <option name="timeStamp" value="283" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/database/seeds/ProductsTableSeeder.php</url>
@@ -452,13 +483,18 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/database/seeds/ProductsTableSeeder.php</url>
-          <line>64</line>
+          <line>65</line>
           <option name="timeStamp" value="347" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/database/seeds/Hrseeder.php</url>
           <line>12</line>
           <option name="timeStamp" value="366" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/resources/views/partial/m/aside.blade.php</url>
+          <line>707</line>
+          <option name="timeStamp" value="368" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/Theme/metronic/demo1/assets/js/pages/crud/datatables/basic/basic.js</url>

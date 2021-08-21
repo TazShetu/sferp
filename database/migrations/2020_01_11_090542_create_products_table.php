@@ -54,6 +54,12 @@ class CreateProductsTable extends Migration
             $table->float('tail_ply')->nullable();
             $table->float('sizeww')->nullable();
             $table->string('sizeww_unit')->nullable();
+            $table->string('luster')->nullable();
+            $table->string('nominal_denier')->nullable();
+            $table->string('manufacturer')->nullable();
+            $table->string('country_origin')->nullable();
+            $table->float('viscosity')->nullable();
+            $table->string('relative_density')->nullable();
             $table->timestamps();
         });
     }

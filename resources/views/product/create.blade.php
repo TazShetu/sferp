@@ -500,6 +500,46 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            <div class="form-group row hideFirst hideSecond tid7 tid10">
+                                                <label class="col-xl-3 col-lg-3 col-form-label">
+                                                    Manufacture Name
+                                                </label>
+                                                <div class="col-lg-9 col-xl-6">
+                                                    <input
+                                                        class="form-control {{($errors->has('manufacturer')) ? 'is-invalid' : ''}}"
+                                                        type="text" name="manufacturer">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row hideFirst hideSecond tid7 tid10">
+                                                <label class="col-xl-3 col-lg-3 col-form-label">
+                                                    Country Of Origin
+                                                </label>
+                                                <div class="col-lg-9 col-xl-6">
+                                                    <input
+                                                        class="form-control {{($errors->has('country_origin')) ? 'is-invalid' : ''}}"
+                                                        type="text" name="country_origin">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row hideFirst hideSecond tid7 tid10">
+                                                <label class="col-xl-3 col-lg-3 col-form-label">
+                                                    Relative Density
+                                                </label>
+                                                <div class="col-lg-9 col-xl-6">
+                                                    <input
+                                                        class="form-control {{($errors->has('relative_density')) ? 'is-invalid' : ''}}"
+                                                        type="text" name="relative_density">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row hideFirst hideSecond tid7 tid10">
+                                                <label class="col-xl-3 col-lg-3 col-form-label">
+                                                    Viscosity
+                                                </label>
+                                                <div class="col-lg-9 col-xl-6">
+                                                    <input
+                                                        class="form-control {{($errors->has('viscosity')) ? 'is-invalid' : ''}}"
+                                                        type="number" name="viscosity" step="0.01" min="0">
+                                                </div>
+                                            </div>
                                             <div class="form-group row hideFirst hideSecond tid7">
                                                 <label class="col-xl-3 col-lg-3 col-form-label">
                                                     Grade No
@@ -573,6 +613,26 @@
                                                     <input
                                                         class="form-control {{($errors->has('uploadMsds')) ? 'is-invalid' : ''}}"
                                                         type="file" name="uploadMsds">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row hideFirst hideSecond tid10">
+                                                <label class="col-xl-3 col-lg-3 col-form-label">
+                                                    Luster
+                                                </label>
+                                                <div class="col-lg-9 col-xl-6">
+                                                    <input
+                                                        class="form-control {{($errors->has('luster')) ? 'is-invalid' : ''}}"
+                                                        type="text" name="luster">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row hideFirst hideSecond tid10">
+                                                <label class="col-xl-3 col-lg-3 col-form-label">
+                                                    Nominal Denier
+                                                </label>
+                                                <div class="col-lg-9 col-xl-6">
+                                                    <input
+                                                        class="form-control {{($errors->has('nominal_denier')) ? 'is-invalid' : ''}}"
+                                                        type="text" name="nominal_denier">
                                                 </div>
                                             </div>
                                             <div class="form-group row">
@@ -680,13 +740,11 @@
                     }
                 } else {
                     // name field show
-                    $("#msrt").html('Bags');
-                    $("input[name=unit]").val('Bags');
+                    $("#msrt").html('Kg');
+                    $("input[name=unit]").val('Kg');
                     $("#nameType").show();
                     if (type == 6) {
                         // $(".tid6").show();
-                        $("#msrt").html('Kg');
-                        $("input[name=unit]").val('Kg');
                     } else if (type == 7) {
                         $(".tid7").show();
                     } else if (type == 8) {
@@ -695,6 +753,8 @@
                     } else if (type == 9) {
                         // same as tid7
                         $(".tid7").show();
+                    } else if (type == 10) {
+                        $(".tid10").show();
                     }
                 }
             });

@@ -13,7 +13,9 @@ class CreateDsddcashinsTable extends Migration
             $table->bigIncrements('id');
             $table->string('deposit_by');
             $table->string('for')->nullable();
-            $table->float('amount');
+            $table->double('amount');
+            $table->double('amount_2')->nullable();
+            $table->string('unit');
             $table->date('date');
             $table->timestamps();
         });

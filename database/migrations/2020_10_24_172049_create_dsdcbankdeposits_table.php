@@ -12,8 +12,9 @@ class CreateDsdcbankdepositsTable extends Migration
         Schema::create('dsdcbankdeposits', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('bankaccount_id');
-            $table->float('amount');
-            $table->float('amount_2')->nullable();
+            $table->double('amount');
+            $table->double('amount_2')->nullable();
+            $table->string('unit');
             $table->string('payment_type');
             $table->string('info');
             $table->date('date');

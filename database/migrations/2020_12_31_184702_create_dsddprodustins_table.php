@@ -4,15 +4,17 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateOpeningbalancestoresTable extends Migration
+class CreateDsddprodustinsTable extends Migration
 {
 
     public function up()
     {
-        Schema::create('openingbalancestores', function (Blueprint $table) {
+        Schema::create('dsddprodustins', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->integer('product_id');
+            $table->decimal('quantity');
+            $table->string('note')->nullable();
             $table->date('date');
-            $table->float('closing_balance');
             $table->timestamps();
         });
     }
@@ -20,6 +22,6 @@ class CreateOpeningbalancestoresTable extends Migration
 
     public function down()
     {
-        Schema::dropIfExists('openingbalancestores');
+        Schema::dropIfExists('dsddprodustins');
     }
 }

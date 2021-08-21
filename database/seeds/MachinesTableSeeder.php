@@ -26,6 +26,7 @@ class MachinesTableSeeder extends Seeder
         $f->manufacturer = 'Simense';
         $f->tag = 'Simense Rope;.;Machine;.;2';
         $f->manufacture_country = 'Germany';
+        $f->type = 'Type A';
         $f->save();
         $f = new Machine;
         $f->category = 'Rope Machine 20';
@@ -33,6 +34,7 @@ class MachinesTableSeeder extends Seeder
         $f->manufacturer = 'Simense';
         $f->tag = 'Simense Rope;.;Machine;.;20';
         $f->manufacture_country = 'Germany';
+        $f->type = 'Type B';
         $f->save();
     }
 }
