@@ -12,7 +12,7 @@ class CreateDsddprodustinsTable extends Migration
         Schema::create('dsddprodustins', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('product_id');
-            $table->integer('quantity');
+            $table->decimal('quantity');
             $table->string('note')->nullable();
             $table->date('date');
             $table->timestamps();

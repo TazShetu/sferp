@@ -13,7 +13,7 @@ class CreateDsdcprodustsalesTable extends Migration
             $table->bigIncrements('id');
             $table->integer('product_id');
             $table->integer('customer_id');
-            $table->integer('quantity');
+            $table->decimal('quantity');
             $table->string('note')->nullable();
             $table->date('date');
             $table->timestamps();

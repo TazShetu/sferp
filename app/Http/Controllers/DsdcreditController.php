@@ -20,10 +20,6 @@ use Illuminate\Support\Facades\Session;
 
 class DsdcreditController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
 
 
 //    public function bankDeposit()
@@ -39,27 +35,24 @@ class DsdcreditController extends Controller
 
     public function bankDepositStore(Request $request)
     {
-        if (Auth::user()->can('daily_sheet_dhaka')) {
-            $request->validate([
-                'bankaccount_id' => 'required',
-                'info' => 'required',
-                'amount' => 'required',
-                'payment_type' => 'required',
-                'unit' => 'required',
-            ]);
-            $ba = new Dsdcbankdeposit;
-            $ba->bankaccount_id = $request->bankaccount_id;
-            $ba->amount = $request->amount;
-            $ba->unit = $request->unit;
-            $ba->info = $request->info;
-            $ba->payment_type = $request->payment_type;
-            $ba->date = DB::table('daily_sheets')->latest('id')->first()->date;
-            $ba->save();
-            Session::flash('Success', "The Data has been entered successfully.");
-            return redirect()->back();
-        } else {
-            abort(403);
-        }
+        abort_unless(Auth::user()->can('daily_sheet_dhaka'), 403);
+        $request->validate([
+            'bankaccount_id' => 'required',
+            'info' => 'required',
+            'amount' => 'required',
+            'payment_type' => 'required',
+            'unit' => 'required',
+        ]);
+        $ba = new Dsdcbankdeposit;
+        $ba->bankaccount_id = $request->bankaccount_id;
+        $ba->amount = $request->amount;
+        $ba->unit = $request->unit;
+        $ba->info = $request->info;
+        $ba->payment_type = $request->payment_type;
+        $ba->date = DB::table('daily_sheets')->latest('id')->first()->date;
+        $ba->save();
+        Session::flash('Success', "The Data has been entered successfully.");
+        return redirect()->back();
     }
 
 
@@ -75,25 +68,22 @@ class DsdcreditController extends Controller
 
     public function cashPaymentStore(Request $request)
     {
-        if (Auth::user()->can('daily_sheet_dhaka')) {
-            $request->validate([
-                'to' => 'required',
-                'for' => 'required',
-                'amount' => 'required',
-                'unit' => 'required',
-            ]);
-            $ba = new Dsdccashpayment;
-            $ba->to = $request->to;
-            $ba->for = $request->for;
-            $ba->amount = $request->amount;
-            $ba->unit = $request->unit;
-            $ba->date = DB::table('daily_sheets')->latest('id')->first()->date;
-            $ba->save();
-            Session::flash('Success', "The Data has been entered successfully.");
-            return redirect()->back();
-        } else {
-            abort(403);
-        }
+        abort_unless(Auth::user()->can('daily_sheet_dhaka'), 403);
+        $request->validate([
+            'to' => 'required',
+            'for' => 'required',
+            'amount' => 'required',
+            'unit' => 'required',
+        ]);
+        $ba = new Dsdccashpayment;
+        $ba->to = $request->to;
+        $ba->for = $request->for;
+        $ba->amount = $request->amount;
+        $ba->unit = $request->unit;
+        $ba->date = DB::table('daily_sheets')->latest('id')->first()->date;
+        $ba->save();
+        Session::flash('Success', "The Data has been entered successfully.");
+        return redirect()->back();
     }
 
 
@@ -109,27 +99,24 @@ class DsdcreditController extends Controller
 
     public function purchaseFactoryStore(Request $request)
     {
-        if (Auth::user()->can('daily_sheet_dhaka')) {
-            $request->validate([
-                'to' => 'required',
+        abort_unless(Auth::user()->can('daily_sheet_dhaka'), 403);
+        $request->validate([
+            'to' => 'required',
 //                'for' => 'required',
-                'amount' => 'required',
-                'unit' => 'required',
-                'sparepart' => 'required',
-            ]);
-            $ba = new Dsdcpurchasefactory;
-            $ba->to = $request->to;
-            $ba->for = $request->for;
-            $ba->amount = $request->amount;
-            $ba->unit = $request->unit;
-            $ba->sparepart_id = $request->sparepart;
-            $ba->date = DB::table('daily_sheets')->latest('id')->first()->date;
-            $ba->save();
-            Session::flash('Success', "The Data has been entered successfully.");
-            return redirect()->back();
-        } else {
-            abort(403);
-        }
+            'amount' => 'required',
+            'unit' => 'required',
+            'sparepart' => 'required',
+        ]);
+        $ba = new Dsdcpurchasefactory;
+        $ba->to = $request->to;
+        $ba->for = $request->for;
+        $ba->amount = $request->amount;
+        $ba->unit = $request->unit;
+        $ba->sparepart_id = $request->sparepart;
+        $ba->date = DB::table('daily_sheets')->latest('id')->first()->date;
+        $ba->save();
+        Session::flash('Success', "The Data has been entered successfully.");
+        return redirect()->back();
     }
 
 
@@ -146,25 +133,22 @@ class DsdcreditController extends Controller
 
     public function localTransportStore(Request $request)
     {
-        if (Auth::user()->can('daily_sheet_dhaka')) {
-            $request->validate([
-                'to' => 'required',
-                'for' => 'required',
-                'amount' => 'required',
-                'unit' => 'required',
-            ]);
-            $ba = new Dsdclocaltransport;
-            $ba->to = $request->to;
-            $ba->for = $request->for;
-            $ba->amount = $request->amount;
-            $ba->unit = $request->unit;
-            $ba->date = DB::table('daily_sheets')->latest('id')->first()->date;
-            $ba->save();
-            Session::flash('Success', "The Data has been entered successfully.");
-            return redirect()->back();
-        } else {
-            abort(403);
-        }
+        abort_unless(Auth::user()->can('daily_sheet_dhaka'), 403);
+        $request->validate([
+            'to' => 'required',
+            'for' => 'required',
+            'amount' => 'required',
+            'unit' => 'required',
+        ]);
+        $ba = new Dsdclocaltransport;
+        $ba->to = $request->to;
+        $ba->for = $request->for;
+        $ba->amount = $request->amount;
+        $ba->unit = $request->unit;
+        $ba->date = DB::table('daily_sheets')->latest('id')->first()->date;
+        $ba->save();
+        Session::flash('Success', "The Data has been entered successfully.");
+        return redirect()->back();
     }
 
 
@@ -181,53 +165,48 @@ class DsdcreditController extends Controller
 
     public function pettyCashStore(Request $request)
     {
-        if (Auth::user()->can('daily_sheet_dhaka')) {
-            $request->validate([
-                'to' => 'required',
-                'for' => 'required',
-                'amount' => 'required',
-                'unit' => 'required',
-            ]);
-            $ba = new Dsdcpettycash;
-            $ba->to = $request->to;
-            $ba->for = $request->for;
-            $ba->amount = $request->amount;
-            $ba->unit = $request->unit;
-            $ba->date = DB::table('daily_sheets')->latest('id')->first()->date;
-            $ba->save();
-            Session::flash('Success', "The Data has been entered successfully.");
-            return redirect()->back();
-        } else {
-            abort(403);
-        }
+        abort_unless(Auth::user()->can('daily_sheet_dhaka'), 403);
+        $request->validate([
+            'to' => 'required',
+            'for' => 'required',
+            'amount' => 'required',
+            'unit' => 'required',
+        ]);
+        $ba = new Dsdcpettycash;
+        $ba->to = $request->to;
+        $ba->for = $request->for;
+        $ba->amount = $request->amount;
+        $ba->unit = $request->unit;
+        $ba->date = DB::table('daily_sheets')->latest('id')->first()->date;
+        $ba->save();
+        Session::flash('Success', "The Data has been entered successfully.");
+        return redirect()->back();
     }
 
 
     public function productSaleStore(Request $request)
     {
-        if (Auth::user()->can('daily_sheet_dhaka')) {
-            $request->validate([
-                'product' => 'required',
-                'customer_id' => 'required',
-                'quantity' => 'required',
-            ]);
-            $c = new Dsdcprodustsale;
-            $c->product_id = $request->product;
-            $c->customer_id = $request->customer_id;
-            $c->quantity = $request->quantity;
-            $c->note = $request->note;
-            $c->date = DB::table('daily_sheets')->latest('id')->first()->date;
-            $c->save();
-            Session::flash('Success', "The Data has been entered successfully.");
-            return redirect()->back();
-        } else {
-            abort(403);
-        }
+        abort_unless(Auth::user()->can('daily_sheet_dhaka'), 403);
+        $request->validate([
+            'product' => 'required',
+            'customer_id' => 'required',
+            'quantity' => 'required',
+        ]);
+        $c = new Dsdcprodustsale;
+        $c->product_id = $request->product;
+        $c->customer_id = $request->customer_id;
+        $c->quantity = $request->quantity;
+        $c->note = $request->note;
+        $c->date = DB::table('daily_sheets')->latest('id')->first()->date;
+        $c->save();
+        Session::flash('Success', "The Data has been entered successfully.");
+        return redirect()->back();
     }
 
 
     public function closing()
     {
+        abort_unless(Auth::user()->can('daily_sheet_dhaka'), 403);
         $ds = DB::table('daily_sheets')->latest('id')->first();
         $ob = $ds->opening_balance;
         $dcs = Dsddcustomer::where('date', $ds->date)->get();
@@ -266,15 +245,12 @@ class DsdcreditController extends Controller
         $dse->closing_balance = $ob;
         $dse->update();
         $dsn = new DailySheet;
-        $dsn->date = date('Y-m-d', strtotime($ds->date .' +1 day'));
+        $dsn->date = date('Y-m-d', strtotime($ds->date . ' +1 day'));
         $dsn->opening_balance = $ob;
         $dsn->save();
         Session::flash('Success', "Daily Sheet is closed for date '$ds->date'");
         return redirect()->back();
     }
-
-
-
 
 
 }

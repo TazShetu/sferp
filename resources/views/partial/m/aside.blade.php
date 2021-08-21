@@ -187,14 +187,14 @@
                                 </a>
                             </li>
                             @endpermission
-{{--                            @permission('raw_material')--}}
-{{--                            <li class="kt-menu__item  " aria-haspopup="true">--}}
-{{--                                <a href="{{route('rawMaterial.list')}}" class="kt-menu__link ">--}}
-{{--                                    <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>--}}
-{{--                                    <span class="kt-menu__link-text">Raw Materials Setup</span>--}}
-{{--                                </a>--}}
-{{--                            </li>--}}
-{{--                            @endpermission--}}
+                            {{--                            @permission('raw_material')--}}
+                            {{--                            <li class="kt-menu__item  " aria-haspopup="true">--}}
+                            {{--                                <a href="{{route('rawMaterial.list')}}" class="kt-menu__link ">--}}
+                            {{--                                    <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>--}}
+                            {{--                                    <span class="kt-menu__link-text">Raw Materials Setup</span>--}}
+                            {{--                                </a>--}}
+                            {{--                            </li>--}}
+                            {{--                            @endpermission--}}
                             @permission('product')
                             <li class="kt-menu__item  " aria-haspopup="true">
                                 <a href="{{route('product.list')}}" class="kt-menu__link ">
@@ -283,14 +283,14 @@
                                 </a>
                             </li>
                             @endpermission
-{{--                            @permission('raw_material_purchase')--}}
-{{--                            <li class="kt-menu__item  " aria-haspopup="true">--}}
-{{--                                <a href="{{route('raw-material.purchase')}}" class="kt-menu__link ">--}}
-{{--                                    <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>--}}
-{{--                                    <span class="kt-menu__link-text">Raw Material</span>--}}
-{{--                                </a>--}}
-{{--                            </li>--}}
-{{--                            @endpermission--}}
+                            {{--                            @permission('raw_material_purchase')--}}
+                            {{--                            <li class="kt-menu__item  " aria-haspopup="true">--}}
+                            {{--                                <a href="{{route('raw-material.purchase')}}" class="kt-menu__link ">--}}
+                            {{--                                    <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>--}}
+                            {{--                                    <span class="kt-menu__link-text">Raw Material</span>--}}
+                            {{--                                </a>--}}
+                            {{--                            </li>--}}
+                            {{--                            @endpermission--}}
                             @permission('sparepart_purchase|raw_material_purchase')
                             <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"
                                 data-ktmenu-submenu-toggle="hover">
@@ -316,14 +316,14 @@
                                             </a>
                                         </li>
                                         @endpermission
-{{--                                        @permission('raw_material_purchase')--}}
-{{--                                        <li class="kt-menu__item  " aria-haspopup="true">--}}
-{{--                                            <a href="{{route('raw-material.purchase.history')}}" class="kt-menu__link ">--}}
-{{--                                                <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>--}}
-{{--                                                <span class="kt-menu__link-text">Raw Material</span>--}}
-{{--                                            </a>--}}
-{{--                                        </li>--}}
-{{--                                        @endpermission--}}
+                                        {{--                                        @permission('raw_material_purchase')--}}
+                                        {{--                                        <li class="kt-menu__item  " aria-haspopup="true">--}}
+                                        {{--                                            <a href="{{route('raw-material.purchase.history')}}" class="kt-menu__link ">--}}
+                                        {{--                                                <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>--}}
+                                        {{--                                                <span class="kt-menu__link-text">Raw Material</span>--}}
+                                        {{--                                            </a>--}}
+                                        {{--                                        </li>--}}
+                                        {{--                                        @endpermission--}}
                                     </ul>
                                 </div>
                             </li>
@@ -353,14 +353,14 @@
                                             </a>
                                         </li>
                                         @endpermission
-{{--                                        @permission('raw_material_receive')--}}
-{{--                                        <li class="kt-menu__item  " aria-haspopup="true">--}}
-{{--                                            <a href="{{route('raw-material.purchase.receive')}}" class="kt-menu__link ">--}}
-{{--                                                <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>--}}
-{{--                                                <span class="kt-menu__link-text">Raw Material</span>--}}
-{{--                                            </a>--}}
-{{--                                        </li>--}}
-{{--                                        @endpermission--}}
+                                        {{--                                        @permission('raw_material_receive')--}}
+                                        {{--                                        <li class="kt-menu__item  " aria-haspopup="true">--}}
+                                        {{--                                            <a href="{{route('raw-material.purchase.receive')}}" class="kt-menu__link ">--}}
+                                        {{--                                                <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>--}}
+                                        {{--                                                <span class="kt-menu__link-text">Raw Material</span>--}}
+                                        {{--                                            </a>--}}
+                                        {{--                                        </li>--}}
+                                        {{--                                        @endpermission--}}
                                     </ul>
                                 </div>
                             </li>
@@ -390,14 +390,14 @@
                                             </a>
                                         </li>
                                         @endpermission
-{{--                                        @permission('raw_material_stock')--}}
-{{--                                        <li class="kt-menu__item  " aria-haspopup="true">--}}
-{{--                                            <a href="{{route('raw-material.purchase.store')}}" class="kt-menu__link ">--}}
-{{--                                                <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>--}}
-{{--                                                <span class="kt-menu__link-text">Raw Material</span>--}}
-{{--                                            </a>--}}
-{{--                                        </li>--}}
-{{--                                        @endpermission--}}
+                                        {{--                                        @permission('raw_material_stock')--}}
+                                        {{--                                        <li class="kt-menu__item  " aria-haspopup="true">--}}
+                                        {{--                                            <a href="{{route('raw-material.purchase.store')}}" class="kt-menu__link ">--}}
+                                        {{--                                                <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>--}}
+                                        {{--                                                <span class="kt-menu__link-text">Raw Material</span>--}}
+                                        {{--                                            </a>--}}
+                                        {{--                                        </li>--}}
+                                        {{--                                        @endpermission--}}
                                     </ul>
                                 </div>
                             </li>
@@ -448,14 +448,14 @@
                                             </a>
                                         </li>
                                         @endpermission
-{{--                                        @permission('stock_out_raw_material')--}}
-{{--                                        <li class="kt-menu__item  " aria-haspopup="true">--}}
-{{--                                            <a href="{{route('raw-material.stock.out')}}" class="kt-menu__link ">--}}
-{{--                                                <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>--}}
-{{--                                                <span class="kt-menu__link-text">Raw Material</span>--}}
-{{--                                            </a>--}}
-{{--                                        </li>--}}
-{{--                                        @endpermission--}}
+                                        {{--                                        @permission('stock_out_raw_material')--}}
+                                        {{--                                        <li class="kt-menu__item  " aria-haspopup="true">--}}
+                                        {{--                                            <a href="{{route('raw-material.stock.out')}}" class="kt-menu__link ">--}}
+                                        {{--                                                <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>--}}
+                                        {{--                                                <span class="kt-menu__link-text">Raw Material</span>--}}
+                                        {{--                                            </a>--}}
+                                        {{--                                        </li>--}}
+                                        {{--                                        @endpermission--}}
                                         @permission('stock_out_product')
                                         <li class="kt-menu__item  " aria-haspopup="true">
                                             <a href="{{route('product.stock.out')}}" class="kt-menu__link ">
@@ -493,14 +493,14 @@
                                             </a>
                                         </li>
                                         @endpermission
-{{--                                        @permission('stock_in_raw_material')--}}
-{{--                                        <li class="kt-menu__item  " aria-haspopup="true">--}}
-{{--                                            <a href="{{route('raw-material.stock.in')}}" class="kt-menu__link ">--}}
-{{--                                                <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>--}}
-{{--                                                <span class="kt-menu__link-text">Raw Material</span>--}}
-{{--                                            </a>--}}
-{{--                                        </li>--}}
-{{--                                        @endpermission--}}
+                                        {{--                                        @permission('stock_in_raw_material')--}}
+                                        {{--                                        <li class="kt-menu__item  " aria-haspopup="true">--}}
+                                        {{--                                            <a href="{{route('raw-material.stock.in')}}" class="kt-menu__link ">--}}
+                                        {{--                                                <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>--}}
+                                        {{--                                                <span class="kt-menu__link-text">Raw Material</span>--}}
+                                        {{--                                            </a>--}}
+                                        {{--                                        </li>--}}
+                                        {{--                                        @endpermission--}}
                                         @permission('stock_in_product')
                                         <li class="kt-menu__item  " aria-haspopup="true">
                                             <a href="{{route('product.stock.in')}}" class="kt-menu__link ">
@@ -534,14 +534,14 @@
                                     <span class="kt-menu__link-text">Production</span>
                                 </span>
                             </li>
-{{--                            @permission('raw_material_in_production')--}}
-{{--                            <li class="kt-menu__item  " aria-haspopup="true">--}}
-{{--                                <a href="{{route('raw-material.production.in')}}" class="kt-menu__link ">--}}
-{{--                                    <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>--}}
-{{--                                    <span class="kt-menu__link-text">Raw Material In</span>--}}
-{{--                                </a>--}}
-{{--                            </li>--}}
-{{--                            @endpermission--}}
+                            {{--                            @permission('raw_material_in_production')--}}
+                            {{--                            <li class="kt-menu__item  " aria-haspopup="true">--}}
+                            {{--                                <a href="{{route('raw-material.production.in')}}" class="kt-menu__link ">--}}
+                            {{--                                    <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>--}}
+                            {{--                                    <span class="kt-menu__link-text">Raw Material In</span>--}}
+                            {{--                                </a>--}}
+                            {{--                            </li>--}}
+                            {{--                            @endpermission--}}
                             @permission('product_out_production')
                             <li class="kt-menu__item  " aria-haspopup="true">
                                 <a href="{{route('product.production.out')}}" class="kt-menu__link ">
@@ -556,140 +556,167 @@
                 @endpermission
 
 
-{{--                @permission('daily_sheet_dhaka')--}}
-{{--                <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"--}}
-{{--                    data-ktmenu-submenu-toggle="hover">--}}
-{{--                    <a href="javascript:;" class="kt-menu__link kt-menu__toggle">--}}
-{{--                        <span class="kt-menu__link-icon">--}}
-{{--                            <i class="flaticon-web"></i>--}}
-{{--                        </span>--}}
-{{--                        <span class="kt-menu__link-text">Daily Sheet</span>--}}
-{{--                        <i class="kt-menu__ver-arrow la la-angle-right"></i>--}}
-{{--                    </a>--}}
-{{--                    <div class="kt-menu__submenu "><span class="kt-menu__arrow"></span>--}}
-{{--                        <ul class="kt-menu__subnav">--}}
-{{--                            <li class="kt-menu__item  kt-menu__item--parent" aria-haspopup="true">--}}
-{{--                                <span class="kt-menu__link">--}}
-{{--                                    <span class="kt-menu__link-text">Daily Sheet</span>--}}
-{{--                                </span>--}}
-{{--                            </li>--}}
-{{--                            --}}{{--                            @permission('stock_out_raw_material|stock_out_spare_part|stock_out_product')--}}
-{{--                            <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"--}}
-{{--                                data-ktmenu-submenu-toggle="hover">--}}
-{{--                                <a href="javascript:;" class="kt-menu__link kt-menu__toggle">--}}
-{{--                                    <span class="kt-menu__link-icon">--}}
-{{--                                        <i class="flaticon-add-circular-button"></i>--}}
-{{--                                    </span>--}}
-{{--                                    <span class="kt-menu__link-text">Debit জমা</span>--}}
-{{--                                    <i class="kt-menu__ver-arrow la la-angle-right"></i>--}}
-{{--                                </a>--}}
-{{--                                <div class="kt-menu__submenu "><span class="kt-menu__arrow"></span>--}}
-{{--                                    <ul class="kt-menu__subnav">--}}
-{{--                                        <li class="kt-menu__item  kt-menu__item--parent" aria-haspopup="true">--}}
-{{--                                            <span class="kt-menu__link">--}}
-{{--                                                <span class="kt-menu__link-text">Debit জমা</span>--}}
-{{--                                            </span>--}}
-{{--                                        </li>--}}
-{{--                                        --}}{{--                                        @permission('stock_out_spare_part')--}}
-{{--                                        <li class="kt-menu__item  " aria-haspopup="true">--}}
-{{--                                            <a href="{{route('dsdd.customer')}}" class="kt-menu__link ">--}}
-{{--                                                <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>--}}
-{{--                                                <span class="kt-menu__link-text">Customers</span>--}}
-{{--                                            </a>--}}
-{{--                                        </li>--}}
-{{--                                        --}}{{--                                        @endpermission--}}
-{{--                                        <li class="kt-menu__item  " aria-haspopup="true">--}}
-{{--                                            <a href="{{route('dsdd.bankWithdraw')}}" class="kt-menu__link ">--}}
-{{--                                                <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>--}}
-{{--                                                <span class="kt-menu__link-text">Bank Withdraw</span>--}}
-{{--                                            </a>--}}
-{{--                                        </li>--}}
-{{--                                        <li class="kt-menu__item  " aria-haspopup="true">--}}
-{{--                                            <a href="{{route('dsdd.cashIn')}}" class="kt-menu__link ">--}}
-{{--                                                <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>--}}
-{{--                                                <span class="kt-menu__link-text">Cash In</span>--}}
-{{--                                            </a>--}}
-{{--                                        </li>--}}
-{{--                                    </ul>--}}
-{{--                                </div>--}}
-{{--                            </li>--}}
-{{--                            --}}{{--                            @endpermission--}}
-{{--                            --}}{{--                            @permission('stock_in_raw_material|stock_in_spare_part|stock_in_product')--}}
-{{--                            <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"--}}
-{{--                                data-ktmenu-submenu-toggle="hover">--}}
-{{--                                <a href="javascript:;" class="kt-menu__link kt-menu__toggle">--}}
-{{--                                    <span class="kt-menu__link-icon">--}}
-{{--                                        <i class="la la-minus-circle"></i>--}}
-{{--                                    </span>--}}
-{{--                                    <span class="kt-menu__link-text">Credit খরচ</span>--}}
-{{--                                    <i class="kt-menu__ver-arrow la la-angle-right"></i>--}}
-{{--                                </a>--}}
-{{--                                <div class="kt-menu__submenu "><span class="kt-menu__arrow"></span>--}}
-{{--                                    <ul class="kt-menu__subnav">--}}
-{{--                                        <li class="kt-menu__item  kt-menu__item--parent" aria-haspopup="true">--}}
-{{--                                            <span class="kt-menu__link">--}}
-{{--                                                <span class="kt-menu__link-text">Credit খরচ</span>--}}
-{{--                                            </span>--}}
-{{--                                        </li>--}}
-{{--                                        --}}{{--                                        @permission('stock_in_spare_part')--}}
-{{--                                        <li class="kt-menu__item  " aria-haspopup="true">--}}
-{{--                                            <a href="{{route('dsdc.bankDeposit')}}" class="kt-menu__link ">--}}
-{{--                                                <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>--}}
-{{--                                                <span class="kt-menu__link-text">Bank Deposit</span>--}}
-{{--                                            </a>--}}
-{{--                                        </li>--}}
-{{--                                        --}}{{--                                        @endpermission--}}
-{{--                                        <li class="kt-menu__item  " aria-haspopup="true">--}}
-{{--                                            <a href="{{route('dsdc.cashPayment')}}" class="kt-menu__link ">--}}
-{{--                                                <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>--}}
-{{--                                                <span class="kt-menu__link-text">Cash Payment</span>--}}
-{{--                                            </a>--}}
-{{--                                        </li>--}}
-{{--                                        <li class="kt-menu__item  " aria-haspopup="true">--}}
-{{--                                            <a href="{{route('dsdc.purchaseFactory')}}" class="kt-menu__link ">--}}
-{{--                                                <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>--}}
-{{--                                                <span class="kt-menu__link-text">Purchase for Factory</span>--}}
-{{--                                            </a>--}}
-{{--                                        </li>--}}
-{{--                                        <li class="kt-menu__item  " aria-haspopup="true">--}}
-{{--                                            <a href="{{route('dsdc.localTransport')}}" class="kt-menu__link ">--}}
-{{--                                                <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>--}}
-{{--                                                <span class="kt-menu__link-text">Local Transport</span>--}}
-{{--                                            </a>--}}
-{{--                                        </li>--}}
-{{--                                        <li class="kt-menu__item  " aria-haspopup="true">--}}
-{{--                                            <a href="{{route('dsdc.pettyCash')}}" class="kt-menu__link ">--}}
-{{--                                                <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>--}}
-{{--                                                <span class="kt-menu__link-text">Petty Cash</span>--}}
-{{--                                            </a>--}}
-{{--                                        </li>--}}
-{{--                                    </ul>--}}
-{{--                                </div>--}}
-{{--                            </li>--}}
-{{--                            <li class="kt-menu__item  " aria-haspopup="true">--}}
-{{--                                <a href="{{route('dsd')}}" class="kt-menu__link ">--}}
-{{--                                     <span class="kt-menu__link-icon">--}}
-{{--                                        <i class="flaticon-exclamation-square"></i>--}}
-{{--                                    </span>--}}
-{{--                                    <span class="kt-menu__link-text">Sales Center</span>--}}
-{{--                                </a>--}}
-{{--                            </li>--}}
-{{--                        </ul>--}}
-{{--                    </div>--}}
-{{--                </li>--}}
-{{--                @endpermission--}}
+                {{--                @permission('daily_sheet_dhaka')--}}
+                {{--                <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"--}}
+                {{--                    data-ktmenu-submenu-toggle="hover">--}}
+                {{--                    <a href="javascript:;" class="kt-menu__link kt-menu__toggle">--}}
+                {{--                        <span class="kt-menu__link-icon">--}}
+                {{--                            <i class="flaticon-web"></i>--}}
+                {{--                        </span>--}}
+                {{--                        <span class="kt-menu__link-text">Daily Sheet</span>--}}
+                {{--                        <i class="kt-menu__ver-arrow la la-angle-right"></i>--}}
+                {{--                    </a>--}}
+                {{--                    <div class="kt-menu__submenu "><span class="kt-menu__arrow"></span>--}}
+                {{--                        <ul class="kt-menu__subnav">--}}
+                {{--                            <li class="kt-menu__item  kt-menu__item--parent" aria-haspopup="true">--}}
+                {{--                                <span class="kt-menu__link">--}}
+                {{--                                    <span class="kt-menu__link-text">Daily Sheet</span>--}}
+                {{--                                </span>--}}
+                {{--                            </li>--}}
+                {{--                            --}}{{--                            @permission('stock_out_raw_material|stock_out_spare_part|stock_out_product')--}}
+                {{--                            <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"--}}
+                {{--                                data-ktmenu-submenu-toggle="hover">--}}
+                {{--                                <a href="javascript:;" class="kt-menu__link kt-menu__toggle">--}}
+                {{--                                    <span class="kt-menu__link-icon">--}}
+                {{--                                        <i class="flaticon-add-circular-button"></i>--}}
+                {{--                                    </span>--}}
+                {{--                                    <span class="kt-menu__link-text">Debit জমা</span>--}}
+                {{--                                    <i class="kt-menu__ver-arrow la la-angle-right"></i>--}}
+                {{--                                </a>--}}
+                {{--                                <div class="kt-menu__submenu "><span class="kt-menu__arrow"></span>--}}
+                {{--                                    <ul class="kt-menu__subnav">--}}
+                {{--                                        <li class="kt-menu__item  kt-menu__item--parent" aria-haspopup="true">--}}
+                {{--                                            <span class="kt-menu__link">--}}
+                {{--                                                <span class="kt-menu__link-text">Debit জমা</span>--}}
+                {{--                                            </span>--}}
+                {{--                                        </li>--}}
+                {{--                                        --}}{{--                                        @permission('stock_out_spare_part')--}}
+                {{--                                        <li class="kt-menu__item  " aria-haspopup="true">--}}
+                {{--                                            <a href="{{route('dsdd.customer')}}" class="kt-menu__link ">--}}
+                {{--                                                <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>--}}
+                {{--                                                <span class="kt-menu__link-text">Customers</span>--}}
+                {{--                                            </a>--}}
+                {{--                                        </li>--}}
+                {{--                                        --}}{{--                                        @endpermission--}}
+                {{--                                        <li class="kt-menu__item  " aria-haspopup="true">--}}
+                {{--                                            <a href="{{route('dsdd.bankWithdraw')}}" class="kt-menu__link ">--}}
+                {{--                                                <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>--}}
+                {{--                                                <span class="kt-menu__link-text">Bank Withdraw</span>--}}
+                {{--                                            </a>--}}
+                {{--                                        </li>--}}
+                {{--                                        <li class="kt-menu__item  " aria-haspopup="true">--}}
+                {{--                                            <a href="{{route('dsdd.cashIn')}}" class="kt-menu__link ">--}}
+                {{--                                                <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>--}}
+                {{--                                                <span class="kt-menu__link-text">Cash In</span>--}}
+                {{--                                            </a>--}}
+                {{--                                        </li>--}}
+                {{--                                    </ul>--}}
+                {{--                                </div>--}}
+                {{--                            </li>--}}
+                {{--                            --}}{{--                            @endpermission--}}
+                {{--                            --}}{{--                            @permission('stock_in_raw_material|stock_in_spare_part|stock_in_product')--}}
+                {{--                            <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"--}}
+                {{--                                data-ktmenu-submenu-toggle="hover">--}}
+                {{--                                <a href="javascript:;" class="kt-menu__link kt-menu__toggle">--}}
+                {{--                                    <span class="kt-menu__link-icon">--}}
+                {{--                                        <i class="la la-minus-circle"></i>--}}
+                {{--                                    </span>--}}
+                {{--                                    <span class="kt-menu__link-text">Credit খরচ</span>--}}
+                {{--                                    <i class="kt-menu__ver-arrow la la-angle-right"></i>--}}
+                {{--                                </a>--}}
+                {{--                                <div class="kt-menu__submenu "><span class="kt-menu__arrow"></span>--}}
+                {{--                                    <ul class="kt-menu__subnav">--}}
+                {{--                                        <li class="kt-menu__item  kt-menu__item--parent" aria-haspopup="true">--}}
+                {{--                                            <span class="kt-menu__link">--}}
+                {{--                                                <span class="kt-menu__link-text">Credit খরচ</span>--}}
+                {{--                                            </span>--}}
+                {{--                                        </li>--}}
+                {{--                                        --}}{{--                                        @permission('stock_in_spare_part')--}}
+                {{--                                        <li class="kt-menu__item  " aria-haspopup="true">--}}
+                {{--                                            <a href="{{route('dsdc.bankDeposit')}}" class="kt-menu__link ">--}}
+                {{--                                                <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>--}}
+                {{--                                                <span class="kt-menu__link-text">Bank Deposit</span>--}}
+                {{--                                            </a>--}}
+                {{--                                        </li>--}}
+                {{--                                        --}}{{--                                        @endpermission--}}
+                {{--                                        <li class="kt-menu__item  " aria-haspopup="true">--}}
+                {{--                                            <a href="{{route('dsdc.cashPayment')}}" class="kt-menu__link ">--}}
+                {{--                                                <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>--}}
+                {{--                                                <span class="kt-menu__link-text">Cash Payment</span>--}}
+                {{--                                            </a>--}}
+                {{--                                        </li>--}}
+                {{--                                        <li class="kt-menu__item  " aria-haspopup="true">--}}
+                {{--                                            <a href="{{route('dsdc.purchaseFactory')}}" class="kt-menu__link ">--}}
+                {{--                                                <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>--}}
+                {{--                                                <span class="kt-menu__link-text">Purchase for Factory</span>--}}
+                {{--                                            </a>--}}
+                {{--                                        </li>--}}
+                {{--                                        <li class="kt-menu__item  " aria-haspopup="true">--}}
+                {{--                                            <a href="{{route('dsdc.localTransport')}}" class="kt-menu__link ">--}}
+                {{--                                                <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>--}}
+                {{--                                                <span class="kt-menu__link-text">Local Transport</span>--}}
+                {{--                                            </a>--}}
+                {{--                                        </li>--}}
+                {{--                                        <li class="kt-menu__item  " aria-haspopup="true">--}}
+                {{--                                            <a href="{{route('dsdc.pettyCash')}}" class="kt-menu__link ">--}}
+                {{--                                                <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>--}}
+                {{--                                                <span class="kt-menu__link-text">Petty Cash</span>--}}
+                {{--                                            </a>--}}
+                {{--                                        </li>--}}
+                {{--                                    </ul>--}}
+                {{--                                </div>--}}
+                {{--                            </li>--}}
+                {{--                            <li class="kt-menu__item  " aria-haspopup="true">--}}
+                {{--                                <a href="{{route('dsd')}}" class="kt-menu__link ">--}}
+                {{--                                     <span class="kt-menu__link-icon">--}}
+                {{--                                        <i class="flaticon-exclamation-square"></i>--}}
+                {{--                                    </span>--}}
+                {{--                                    <span class="kt-menu__link-text">Sales Center</span>--}}
+                {{--                                </a>--}}
+                {{--                            </li>--}}
+                {{--                        </ul>--}}
+                {{--                    </div>--}}
+                {{--                </li>--}}
+                {{--                @endpermission--}}
 
 
                 @permission('daily_sheet_dhaka')
-                <li class="kt-menu__item  " aria-haspopup="true">
-                    <a href="{{route('dsd.main')}}" class="kt-menu__link ">
+                <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"
+                    data-ktmenu-submenu-toggle="hover">
+                    <a href="javascript:;" class="kt-menu__link kt-menu__toggle">
                         <span class="kt-menu__link-icon">
                             <i class="flaticon-web"></i>
                         </span>
                         <span class="kt-menu__link-text">Daily Sheet</span>
+                        <i class="kt-menu__ver-arrow la la-angle-right"></i>
                     </a>
+                    <div class="kt-menu__submenu "><span class="kt-menu__arrow"></span>
+                        <ul class="kt-menu__subnav">
+                            <li class="kt-menu__item  kt-menu__item--parent" aria-haspopup="true">
+                                <span class="kt-menu__link">
+                                    <span class="kt-menu__link-text">Daily Sheet</span>
+                                </span>
+                            </li>
+                            @permission('daily_sheet_dhaka')
+                            <li class="kt-menu__item  " aria-haspopup="true">
+                                <a href="{{route('dsd.main')}}" class="kt-menu__link ">
+                                    <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>
+                                    <span class="kt-menu__link-text">Main</span>
+                                </a>
+                            </li>
+                            <li class="kt-menu__item  " aria-haspopup="true">
+                                <a href="#" class="kt-menu__link ">
+                                    <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>
+                                    <span class="kt-menu__link-text">Search</span>
+                                </a>
+                            </li>
+                            @endpermission
+                        </ul>
+                    </div>
                 </li>
                 @endpermission
+
+
                 <li class="kt-menu__section ">
                     <h4 class="kt-menu__section-text">HR</h4>
                     <i class="kt-menu__section-icon flaticon-more-v2"></i>
