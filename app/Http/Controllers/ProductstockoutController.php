@@ -19,7 +19,6 @@ class ProductstockoutController extends Controller
 
     public function out()
     {
-        abort_unless(Auth::user()->can('stock_out_product'), 403);
         $ps = Productstock::paginate(20);
         foreach ($ps as $sp) {
             $s = Product::find($sp->product_id);
@@ -39,7 +38,6 @@ class ProductstockoutController extends Controller
 
     public function outStore(Request $request, $psid)
     {
-        abort_unless(Auth::user()->can('stock_out_product'), 403);
         $request->validate([
             'outQuantity' => 'required|min:1',
         ]);
@@ -82,7 +80,6 @@ class ProductstockoutController extends Controller
 
     public function history()
     {
-        abort_unless(Auth::user()->can('stock_out_product'), 403);
         $psos = Productstockout::orderBy('created_at', 'DESC')->paginate(20);
         foreach ($psos as $sp) {
             $s = Product::find($sp->product_id);

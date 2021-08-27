@@ -13,7 +13,6 @@ class RawmaterialController extends Controller
 
     public function list(Request $request)
     {
-        abort_unless(Auth::user()->can('raw_material'), 403);
         $rawMaterials = Rawmaterial::where('auto_id', 'LIKE', "%{$request->identityNumber}%")->Where('country_origin', 'LIKE', "%{$request->countryOrigin}%")->paginate(10);
         $rawMaterials->appends(['identityNumber' => "$request->identityNumber", 'countryOrigin' => "$request->countryOrigin"]);
         $query = $request->all();
@@ -23,7 +22,6 @@ class RawmaterialController extends Controller
 
     public function create()
     {
-        abort_unless(Auth::user()->can('raw_material'), 403);
         $datalist['countryOfOrigin'] = DB::select(DB::raw('SELECT country_origin FROM rawmaterials GROUP BY country_origin'));
         $datalist['manufacturer'] = DB::select(DB::raw('SELECT manufacturer FROM rawmaterials GROUP BY manufacturer'));
         $datalist['unit'] = DB::select(DB::raw('SELECT unit FROM rawmaterials GROUP BY unit'));
@@ -33,7 +31,6 @@ class RawmaterialController extends Controller
 
     public function store(Request $request)
     {
-        abort_unless(Auth::user()->can('raw_material'), 403);
         $request->validate([
             'type' => 'required',
             'manufacturerName' => 'required',
@@ -79,7 +76,6 @@ class RawmaterialController extends Controller
 
     public function edit($rmid)
     {
-        abort_unless(Auth::user()->can('raw_material'), 403);
         $rmedit = Rawmaterial::find($rmid);
         $datalist['countryOfOrigin'] = DB::select(DB::raw('SELECT country_origin FROM rawmaterials GROUP BY country_origin'));
         $datalist['manufacturer'] = DB::select(DB::raw('SELECT manufacturer FROM rawmaterials GROUP BY manufacturer'));
@@ -90,7 +86,6 @@ class RawmaterialController extends Controller
 
     public function update(Request $request, $rmid)
     {
-        abort_unless(Auth::user()->can('raw_material'), 403);
         $request->validate([
             'type' => 'required',
             'manufacturerName' => 'required',
@@ -136,7 +131,6 @@ class RawmaterialController extends Controller
 
     public function destroy($rmid)
     {
-        abort_unless(Auth::user()->can('raw_material'), 403);
         $r = Rawmaterial::find($rmid);
         $r->products()->detach();
         $r->delete();

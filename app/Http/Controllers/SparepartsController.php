@@ -13,7 +13,6 @@ class SparepartsController extends Controller
 
     public function list(Request $request)
     {
-        abort_unless(Auth::user()->can('spare_parts'), 403);
         $spareParts = Spareparts::where('type', 'LIKE', "%{$request->type}%")->Where('description', 'LIKE', "%{$request->tag}%")->paginate(10);
         foreach ($spareParts as $s) {
             $ms = $s->machines()->get();
@@ -32,7 +31,6 @@ class SparepartsController extends Controller
 
     public function create()
     {
-        abort_unless(Auth::user()->can('spare_parts'), 403);
 //            $machines = DB::select(DB::raw('SELECT tag FROM machines GROUP BY tag'));
         $datalist['manufacturer'] = DB::select(DB::raw('SELECT manufacturer FROM spareparts GROUP BY manufacturer'));
         $datalist['model'] = DB::select(DB::raw('SELECT model FROM spareparts GROUP BY model'));
@@ -44,7 +42,6 @@ class SparepartsController extends Controller
 
     public function store(Request $request)
     {
-        abort_unless(Auth::user()->can('spare_parts'), 403);
         $request->validate([
             'manufacturerName' => 'required',
             'model' => 'required',
@@ -74,7 +71,6 @@ class SparepartsController extends Controller
 
     public function destroy($spid)
     {
-        abort_unless(Auth::user()->can('spare_parts'), 403);
         $s = Spareparts::find($spid);
         $s->machines()->detach();
         $s->delete();
@@ -85,7 +81,6 @@ class SparepartsController extends Controller
 
     public function edit($spid)
     {
-        abort_unless(Auth::user()->can('spare_parts'), 403);
         $spedit = Spareparts::find($spid);
         $datalist['manufacturer'] = DB::select(DB::raw('SELECT manufacturer FROM spareparts GROUP BY manufacturer'));
         $datalist['model'] = DB::select(DB::raw('SELECT model FROM spareparts GROUP BY model'));
@@ -97,7 +92,6 @@ class SparepartsController extends Controller
 
     public function update(Request $request, $spid)
     {
-        abort_unless(Auth::user()->can('spare_parts'), 403);
         $request->validate([
             'manufacturerName' => 'required',
             'model' => 'required',

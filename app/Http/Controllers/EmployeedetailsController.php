@@ -14,7 +14,6 @@ class EmployeedetailsController extends Controller
 
     public function updatePinfo(Request $request, $eid)
     {
-        abort_unless(Auth::user()->can('hr_employee'), 403);
         $e = Employeedetail::where('employee_id', $eid)->first();
         if (!$e) {
             $e = new Employeedetail;
@@ -35,7 +34,6 @@ class EmployeedetailsController extends Controller
 
     public function updateStaffAC(Request $request, $eid)
     {
-        abort_unless(Auth::user()->can('hr_employee'), 403);
         $e = Employeedetail::where('employee_id', $eid)->first();
         if (!$e) {
             $e = new Employeedetail;
@@ -61,7 +59,6 @@ class EmployeedetailsController extends Controller
 
     public function updateAddress(Request $request, $eid)
     {
-        abort_unless(Auth::user()->can('hr_employee'), 403);
         $e = Employeedetail::where('employee_id', $eid)->first();
         if (!$e) {
             $e = new Employeedetail;
@@ -78,7 +75,6 @@ class EmployeedetailsController extends Controller
 
     public function updateCinfo(Request $request, $eid)
     {
-        abort_unless(Auth::user()->can('hr_employee'), 403);
         $e = Employeedetail::where('employee_id', $eid)->first();
         if (!$e) {
             $e = new Employeedetail;
@@ -96,7 +92,6 @@ class EmployeedetailsController extends Controller
 
     public function updateFinfo(Request $request, $eid)
     {
-        abort_unless(Auth::user()->can('hr_employee'), 403);
         $e = Employeedetail::where('employee_id', $eid)->first();
         if (!$e) {
             $e = new Employeedetail;
@@ -120,7 +115,6 @@ class EmployeedetailsController extends Controller
 
     public function updateStaffS(Request $request, $eid)
     {
-        abort_unless(Auth::user()->can('hr_employee'), 403);
         $e = Employeedetail::where('employee_id', $eid)->first();
         if (!$e) {
             $e = new Employeedetail;
@@ -140,7 +134,6 @@ class EmployeedetailsController extends Controller
 
     public function updateExperience(Request $request, $eid)
     {
-        abort_unless(Auth::user()->can('hr_employee'), 403);
         $e = Employeedetail::where('employee_id', $eid)->first();
         if (!$e) {
             $e = new Employeedetail;
@@ -181,7 +174,6 @@ class EmployeedetailsController extends Controller
 
     public function updateEmergencyContact(Request $request, $eid)
     {
-        abort_unless(Auth::user()->can('hr_employee'), 403);
         $e = Employeedetail::where('employee_id', $eid)->first();
         if (!$e) {
             $e = new Employeedetail;
@@ -203,7 +195,6 @@ class EmployeedetailsController extends Controller
 
     public function updateStaffBank(Request $request, $eid)
     {
-        abort_unless(Auth::user()->can('hr_employee'), 403);
         $e = Employeedetail::where('employee_id', $eid)->first();
         if (!$e) {
             $e = new Employeedetail;
@@ -229,7 +220,6 @@ class EmployeedetailsController extends Controller
 
     public function updateStaffBankM(Request $request, $eid)
     {
-        abort_unless(Auth::user()->can('hr_employee'), 403);
         $e = Employeedetail::where('employee_id', $eid)->first();
         if (!$e) {
             $e = new Employeedetail;
@@ -247,7 +237,6 @@ class EmployeedetailsController extends Controller
 
     public function updateAB(Request $request, $eid)
     {
-        abort_unless(Auth::user()->can('hr_employee'), 403);
         $e = Employeedetail::where('employee_id', $eid)->first();
         if (!$e) {
             $e = new Employeedetail;
@@ -262,7 +251,6 @@ class EmployeedetailsController extends Controller
 
     public function updateSGTPC(Request $request, $eid)
     {
-        abort_unless(Auth::user()->can('hr_employee'), 403);
         $e = Employeedetail::where('employee_id', $eid)->first();
         if (!$e) {
             $e = new Employeedetail;
@@ -282,7 +270,6 @@ class EmployeedetailsController extends Controller
 
     public function updateEFUpload(Request $request, $eid)
     {
-        abort_unless(Auth::user()->can('hr_employee'), 403);
         $request->validate([
             'description' => 'required',
 //                'file2' => 'required',

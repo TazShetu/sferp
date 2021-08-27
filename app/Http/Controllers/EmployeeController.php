@@ -18,7 +18,6 @@ class EmployeeController extends Controller
 
     public function index(Request $request)
     {
-        abort_unless(Auth::user()->can('hr_employee'), 403);
         if ($request->typeDesignation) {
             $s = explode("._.", $request->typeDesignation);
             $tid = $s[0];
@@ -58,7 +57,6 @@ class EmployeeController extends Controller
 
     public function create()
     {
-        abort_unless(Auth::user()->can('hr_employee'), 403);
         $factories = Factory::all();
         $types = Employeetype::all();
         return view('HR.Employee.create', compact('factories', 'types'));
@@ -67,7 +65,6 @@ class EmployeeController extends Controller
 
     public function store(Request $request)
     {
-        abort_unless(Auth::user()->can('hr_employee'), 403);
         $request->validate([
             'factory' => 'required',
             'type' => 'required',
@@ -110,7 +107,6 @@ class EmployeeController extends Controller
 
     public function edit($eid)
     {
-        abort_unless(Auth::user()->can('hr_employee'), 403);
         $eedit = Employee::find($eid);
         $eedit['type'] = Employeetype::find($eedit->employeetype_id)->title;
         $eedit['designation'] = Designation::find($eedit->designation_id);
@@ -128,7 +124,6 @@ class EmployeeController extends Controller
 
     public function updateMain(Request $request, $eid)
     {
-        abort_unless(Auth::user()->can('hr_employee'), 403);
         $request->validate([
             'factory' => 'required',
             'designation' => 'required',
@@ -167,7 +162,6 @@ class EmployeeController extends Controller
 
     public function destroy($eid)
     {
-        abort_unless(Auth::user()->can('hr_employee'), 403);
         $e = Employee::find($eid);
         $e->factories()->detach();
         Employeedetail::where('employee_id', $eid)->delete();
@@ -207,7 +201,6 @@ class EmployeeController extends Controller
 
     public function fileDownload($fid)
     {
-        abort_unless(Auth::user()->can('hr_employee'), 403);
         $f = Employeefile::find($fid);
         return response()->download(public_path($f->file));
     }
@@ -215,7 +208,6 @@ class EmployeeController extends Controller
 
     public function fileDelete($fid)
     {
-        abort_unless(Auth::user()->can('hr_employee'), 403);
         $f = Employeefile::find($fid);
         unlink($f->file);
         $f->delete();

@@ -16,7 +16,6 @@ class MachineController extends Controller
 
     public function list(Request $request)
     {
-        abort_unless(Auth::user()->can('machine'), 403);
         if ($request->factoryId) {
             $machines = Machine::where('manufacturer', 'LIKE', "%{$request->manufacturer}%")
                 ->Where('category', 'LIKE', "%{$request->category}%")
@@ -48,7 +47,6 @@ class MachineController extends Controller
 
     public function create()
     {
-        abort_unless(Auth::user()->can('machine'), 403);
         $factories = Factory::all();
         $datalist['category'] = DB::select(DB::raw('SELECT category FROM machines GROUP BY category'));
         $datalist['manufacturer'] = DB::select(DB::raw('SELECT manufacturer FROM machines GROUP BY manufacturer'));
@@ -59,7 +57,6 @@ class MachineController extends Controller
 
     public function store(Request $request)
     {
-        abort_unless(Auth::user()->can('machine'), 403);
         $request->validate([
             'category' => 'required',
             'factory' => 'required',
@@ -162,7 +159,6 @@ class MachineController extends Controller
 
     public function edit($mid)
     {
-        abort_unless(Auth::user()->can('machine'), 403);
         $medit = Machine::find($mid);
         $spareParts = $medit->spareparts()->get();
         $allSpareParts = Spareparts::all();
@@ -177,7 +173,6 @@ class MachineController extends Controller
 
     public function update(Request $request, $mid)
     {
-        abort_unless(Auth::user()->can('machine'), 403);
         $request->validate([
             'category' => 'required',
             'factory' => 'required',
@@ -275,7 +270,6 @@ class MachineController extends Controller
 
     public function destroy($mid)
     {
-        abort_unless(Auth::user()->can('machine'), 403);
         $m = Machine::find($mid);
         $m->spareparts()->detach();
         Machine::find($mid)->delete();
@@ -286,7 +280,6 @@ class MachineController extends Controller
 
     public function updateMachineSparePart(Request $request, $mid)
     {
-        abort_unless(Auth::user()->can('machine'), 403);
         $machine = Machine::find($mid);
         if ($request->filled('sparePart')) {
             $spareparts = array_unique($request->sparePart);

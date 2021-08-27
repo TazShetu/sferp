@@ -17,7 +17,6 @@ class RawmaterialproductioninController extends Controller
 
     public function in()
     {
-        abort_unless(Auth::user()->can('raw_material_in_production'), 403);
         $rawmaterials = Rawmaterial::all();
         $factories = Factory::all();
         return view('Production.direct.rawmaterialin', compact('rawmaterials', 'factories'));
@@ -59,7 +58,6 @@ class RawmaterialproductioninController extends Controller
 
     public function inStore(Request $request)
     {
-        abort_unless(Auth::user()->can('raw_material_in_production'), 403);
         $request->validate([
             'rawMaterial' => 'required',
             'quantity' => 'required|min:1',
@@ -80,7 +78,6 @@ class RawmaterialproductioninController extends Controller
 
     public function history()
     {
-        abort_unless(Auth::user()->can('raw_material_in_production'), 403);
         $rmsos = Rawmaterialproductionin::orderBy('created_at', 'DESC')->paginate(20);
         foreach ($rmsos as $sp) {
             $s = Rawmaterial::find($sp->rawmaterial_id);

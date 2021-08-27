@@ -19,7 +19,6 @@ class ProductstockinController extends Controller
 
     public function in()
     {
-        abort_unless(Auth::user()->can('stock_in_product'), 403);
         $products = Product::all();
         $warehouses = Warehouse::all();
         return view('Stock.in.productindex', compact('products', 'warehouses'));
@@ -28,7 +27,6 @@ class ProductstockinController extends Controller
 
     public function inStore(Request $request)
     {
-        abort_unless(Auth::user()->can('stock_in_product'), 403);
         $request->validate([
             'product' => 'required',
             'quantity' => 'required|min:1',
@@ -76,7 +74,6 @@ class ProductstockinController extends Controller
 
     public function history()
     {
-        abort_unless(Auth::user()->can('stock_in_product'), 403);
         $psos = Productstockin::orderBy('created_at', 'DESC')->paginate(20);
         foreach ($psos as $sp) {
             $s = Product::find($sp->product_id);

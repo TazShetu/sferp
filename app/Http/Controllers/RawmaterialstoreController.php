@@ -19,7 +19,6 @@ class RawmaterialstoreController extends Controller
 
     public function storeIndex()
     {
-        abort_unless(Auth::user()->can('raw_material_stock'), 403);
         $receives = Rawmaterialpurchase::where('status', 'received')->orderBy('created_at', 'DESC')->get();
         foreach ($receives as $r) {
             $r['raw_material'] = Rawmaterial::find($r->rawmaterial_id)->auto_id;
@@ -30,7 +29,6 @@ class RawmaterialstoreController extends Controller
 
     public function storeSinglePurchase($rmpid)
     {
-        abort_unless(Auth::user()->can('raw_material_stock'), 403);
         $rmp = Rawmaterialpurchase::find($rmpid);
         if ($rmp) {
             $rmp['raw_material'] = Rawmaterial::find($rmp->rawmaterial_id)->auto_id;
@@ -111,7 +109,6 @@ class RawmaterialstoreController extends Controller
 
     public function stock(Request $request, $rmpid)
     {
-        abort_unless(Auth::user()->can('raw_material_stock'), 403);
         $request->validate([
             'rawMaterial' => 'required',
             'quantity' => 'required',

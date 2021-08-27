@@ -14,7 +14,6 @@ class RawmaterialpurchaseController extends Controller
 
     public function history(Request $request)
     {
-        abort_unless(Auth::user()->can('raw_material_purchase'), 403);
         if ($request->rid) {
             $histories = Rawmaterialpurchase::Where('rawmaterial_id', 'LIKE', "$request->rid")
                 ->where('status', 'LIKE', "%{$request->status}%")
@@ -52,7 +51,6 @@ class RawmaterialpurchaseController extends Controller
 
     public function index()
     {
-        abort_unless(Auth::user()->can('raw_material_purchase'), 403);
         $rawmaterials = Rawmaterial::all();
 //            $warehouses = Warehouse::all();
         $datalist['currency'] = DB::select(DB::raw('SELECT currency FROM rawmaterialpurchases GROUP BY currency'));
@@ -78,7 +76,6 @@ class RawmaterialpurchaseController extends Controller
 
     public function store(Request $request)
     {
-        abort_unless(Auth::user()->can('raw_material_purchase'), 403);
         $request->validate([
             'rawMaterial' => 'required',
             'invoiceDate' => 'required',
@@ -135,7 +132,6 @@ class RawmaterialpurchaseController extends Controller
 
     public function destroy($rpid)
     {
-        abort_unless(Auth::user()->can('raw_material_purchase'), 403);
         Rawmaterialpurchase::find($rpid)->delete();
         Session::flash('Success', "The Raw Material Purchase History has been deleted successfully.");
         return redirect()->back();
@@ -144,7 +140,6 @@ class RawmaterialpurchaseController extends Controller
 
     public function edit($rpid)
     {
-        abort_unless(Auth::user()->can('raw_material_purchase'), 403);
         $rpedit = Rawmaterialpurchase::find($rpid);
         $rpedit['rawmaterial'] = Rawmaterial::find($rpedit->rawmaterial_id)->auto_id;
         $rawmaterials = Rawmaterial::all();
@@ -159,7 +154,6 @@ class RawmaterialpurchaseController extends Controller
 
     public function update(Request $request, $rpid)
     {
-        abort_unless(Auth::user()->can('raw_material_purchase'), 403);
         $request->validate([
             'rawMaterial' => 'required',
             'invoiceDate' => 'required',
@@ -216,7 +210,6 @@ class RawmaterialpurchaseController extends Controller
 
     public function receiveIndex()
     {
-        abort_unless(Auth::user()->can('raw_material_purchase'), 403);
         $histories = Rawmaterialpurchase::where('status', 'pending')->orWhere('status', 'received')->orderBy('status', 'ASC')->orderBy('created_at', 'DESC')->paginate(10);
         foreach ($histories as $h) {
             $h['raw_material'] = Rawmaterial::find($h->rawmaterial_id)->auto_id;
@@ -227,7 +220,6 @@ class RawmaterialpurchaseController extends Controller
 
     public function received(Request $request, $rpid)
     {
-        abort_unless(Auth::user()->can('raw_material_purchase'), 403);
         $h = Rawmaterialpurchase::find($rpid);
         $h->status = 'received';
         $h->receive_user_id = Auth::id();
@@ -239,7 +231,6 @@ class RawmaterialpurchaseController extends Controller
 
     public function notReceived(Request $request, $rpid)
     {
-        abort_unless(Auth::user()->can('raw_material_purchase'), 403);
         $h = Rawmaterialpurchase::find($rpid);
         $h->status = 'pending';
         $h->receive_user_id = null;

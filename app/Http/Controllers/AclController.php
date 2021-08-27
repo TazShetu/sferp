@@ -14,7 +14,6 @@ class AclController extends Controller
 
     public function permission()
     {
-        abort_unless(Auth::user()->can('permission'), 403);
         $permissions = Permission::paginate(10);
         return view('permission.index', compact('permissions'));
     }
@@ -22,7 +21,6 @@ class AclController extends Controller
 
     public function permissionEdit($pid)
     {
-        abort_unless(Auth::user()->can('permission'), 403);
         $pedit = Permission::find($pid);
         $permissions = Permission::paginate(10);
         return view('permission.edit', compact('permissions', 'pedit'));
@@ -31,7 +29,6 @@ class AclController extends Controller
 
     public function permissionUpdate(Request $request, $pid)
     {
-        abort_unless(Auth::user()->can('permission'), 403);
         $request->validate([
             'description' => 'required',
         ]);
@@ -45,7 +42,6 @@ class AclController extends Controller
 
     public function role()
     {
-        abort_unless(Auth::user()->can('role'), 403);
         $permissions = Permission::all();
         $roles = Role::all();
         return view('role.index', compact('permissions', 'roles'));
@@ -54,7 +50,6 @@ class AclController extends Controller
 
     public function roleStore(Request $request)
     {
-        abort_unless(Auth::user()->can('role'), 403);
         $request->validate([
             'name' => 'required|unique:roles,name',
             'permissions' => 'required',
@@ -86,7 +81,6 @@ class AclController extends Controller
 
     public function roleEdit($rid)
     {
-        abort_unless(Auth::user()->can('role'), 403);
         $permissions = Permission::all();
         $roles = Role::all();
         $redit = Role::find($rid);
@@ -97,7 +91,6 @@ class AclController extends Controller
 
     public function roleUpdate(Request $request, $rid)
     {
-        abort_unless(Auth::user()->can('role'), 403);
         $request->validate([
             'name' => 'required',
             'permissions' => 'required',
@@ -132,7 +125,6 @@ class AclController extends Controller
 
     public function roleDelete($rid)
     {
-        abort_unless(Auth::user()->can('role'), 403);
         $r = Role::find($rid);
         if (count($r->users()->get()) > 0) {
             Session::flash('unsuccess', "The Role cannot be deleted as it has assigned users.");

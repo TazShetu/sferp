@@ -35,7 +35,6 @@ class DsdcreditController extends Controller
 
     public function bankDepositStore(Request $request)
     {
-        abort_unless(Auth::user()->can('daily_sheet_dhaka'), 403);
         $request->validate([
             'bankaccount_id' => 'required',
             'info' => 'required',
@@ -68,7 +67,6 @@ class DsdcreditController extends Controller
 
     public function cashPaymentStore(Request $request)
     {
-        abort_unless(Auth::user()->can('daily_sheet_dhaka'), 403);
         $request->validate([
             'to' => 'required',
             'for' => 'required',
@@ -99,7 +97,6 @@ class DsdcreditController extends Controller
 
     public function purchaseFactoryStore(Request $request)
     {
-        abort_unless(Auth::user()->can('daily_sheet_dhaka'), 403);
         $request->validate([
             'to' => 'required',
 //                'for' => 'required',
@@ -133,7 +130,6 @@ class DsdcreditController extends Controller
 
     public function localTransportStore(Request $request)
     {
-        abort_unless(Auth::user()->can('daily_sheet_dhaka'), 403);
         $request->validate([
             'to' => 'required',
             'for' => 'required',
@@ -165,7 +161,6 @@ class DsdcreditController extends Controller
 
     public function pettyCashStore(Request $request)
     {
-        abort_unless(Auth::user()->can('daily_sheet_dhaka'), 403);
         $request->validate([
             'to' => 'required',
             'for' => 'required',
@@ -186,7 +181,6 @@ class DsdcreditController extends Controller
 
     public function productSaleStore(Request $request)
     {
-        abort_unless(Auth::user()->can('daily_sheet_dhaka'), 403);
         $request->validate([
             'product' => 'required',
             'customer_id' => 'required',
@@ -206,7 +200,6 @@ class DsdcreditController extends Controller
 
     public function closing()
     {
-        abort_unless(Auth::user()->can('daily_sheet_dhaka'), 403);
         $ds = DB::table('daily_sheets')->latest('id')->first();
         $ob = $ds->opening_balance;
         $dcs = Dsddcustomer::where('date', $ds->date)->get();

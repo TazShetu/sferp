@@ -16,7 +16,6 @@ class SroomController extends Controller
 
     public function index()
     {
-        abort_unless(Auth::user()->can('sparepart_room'), 403);
         $srooms = Sroom::all();
         return view('sroom.index', compact('srooms'));
     }
@@ -24,7 +23,6 @@ class SroomController extends Controller
 
     public function store(Request $request)
     {
-        abort_unless(Auth::user()->can('sparepart_room'), 403);
         $request->validate([
             'name' => 'required',
         ]);
@@ -39,7 +37,6 @@ class SroomController extends Controller
 
     public function edit($srid)
     {
-        abort_unless(Auth::user()->can('sparepart_room'), 403);
         $sroom = Sroom::find($srid);
         $rows = $sroom->rows()->get();
         foreach ($rows as $r) {
@@ -65,7 +62,6 @@ class SroomController extends Controller
 
     public function update(Request $request, $srid)
     {
-        abort_unless(Auth::user()->can('sparepart_room'), 403);
         $request->validate([
             'name' => 'required',
         ]);
@@ -79,7 +75,6 @@ class SroomController extends Controller
 
     public function destroy($srid)
     {
-        abort_unless(Auth::user()->can('sparepart_room'), 403);
         $sroom = Sroom::find($srid);
         // check it has stock history or not
         // if it, has then can not delete
@@ -101,7 +96,6 @@ class SroomController extends Controller
 
     public function rowUpdate(Request $request, $srid)
     {
-        abort_unless(Auth::user()->can('sparepart_room'), 403);
         DB::beginTransaction();
         try {
             if ($request->filled('rowName')) {
@@ -184,7 +178,6 @@ class SroomController extends Controller
 
     public function rackUpdate(Request $request, $srid)
     {
-        abort_unless(Auth::user()->can('sparepart_room'), 403);
         if ($request->filled('row')) {
             foreach ($request->row as $f) {
                 if ($f == null) {

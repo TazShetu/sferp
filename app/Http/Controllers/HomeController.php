@@ -72,7 +72,6 @@ class HomeController extends Controller
 
     public function user()
     {
-        abort_unless(Auth::user()->can('user'), 403);
         $users = User::where('id', '>', 6)->get();
         $roles = Role::all();
         return view('user.index', compact('roles', 'users'));
@@ -81,7 +80,6 @@ class HomeController extends Controller
 
     public function userStore(Request $request)
     {
-        abort_unless(Auth::user()->can('user'), 403);
         $request->validate([
             'name' => 'required',
             'email' => 'required|unique:users,email',
@@ -114,70 +112,61 @@ class HomeController extends Controller
 
     public function userEdit($uid)
     {
-        if ((Auth::user()->can('user')) && (($uid * 1) > 6)) {
-            $users = User::where('id', '>', 6)->get();
-            $roles = Role::all();
-            $uedit = User::find($uid);
-            $redits = $uedit->roles()->get();
-            return view('user.edit', compact('roles', 'users', 'uedit', 'redits'));
-        } else {
-            abort(403);
-        }
+        abort_unless(($uid * 1) > 6, 403);
+        $users = User::where('id', '>', 6)->get();
+        $roles = Role::all();
+        $uedit = User::find($uid);
+        $redits = $uedit->roles()->get();
+        return view('user.edit', compact('roles', 'users', 'uedit', 'redits'));
     }
 
 
     public function userUpdate(Request $request, $uid)
     {
-        if ((Auth::user()->can('user')) && (($uid * 1) > 6)) {
-            $request->validate([
-                'name' => 'required',
-                'email' => 'required',
-                'roles' => 'required',
-            ]);
+        abort_unless(($uid * 1) > 6, 403);
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'roles' => 'required',
+        ]);
+        if ($request->filled('password')) {
+            $request->validate(['password' => 'required|confirmed']);
+        }
+        $u = User::find($uid);
+        if ($u->email != $request->email) {
+            $request->validate(['email' => 'unique:users,email',]);
+        }
+        DB::beginTransaction();
+        try {
+            $u->name = $request->name;
+            $u->email = $request->email;
             if ($request->filled('password')) {
-                $request->validate(['password' => 'required|confirmed']);
+                $u->password = bcrypt($request->password);
             }
-            $u = User::find($uid);
-            if ($u->email != $request->email) {
-                $request->validate(['email' => 'unique:users,email',]);
-            }
-            DB::beginTransaction();
-            try {
-                $u->name = $request->name;
-                $u->email = $request->email;
-                if ($request->filled('password')) {
-                    $u->password = bcrypt($request->password);
-                }
-                $u->update();
-                $u->syncRoles($request->roles);
-                DB::commit();
-                $success = true;
-            } catch (\Exception $e) {
-                $success = false;
-                DB::rollback();
-            }
-            if ($success) {
-                Session::flash('Success', "The User has been updated successfully.");
-                return redirect()->route('users');
-            } else {
-                Session::flash('unsuccess', "Something went wrong :(");
-                return redirect()->route('users');
-            }
+            $u->update();
+            $u->syncRoles($request->roles);
+            DB::commit();
+            $success = true;
+        } catch (\Exception $e) {
+            $success = false;
+            DB::rollback();
+        }
+        if ($success) {
+            Session::flash('Success', "The User has been updated successfully.");
+            return redirect()->route('users');
         } else {
-            abort(403);
+            Session::flash('unsuccess', "Something went wrong :(");
+            return redirect()->route('users');
         }
     }
 
 
     public function userDelete($uid)
     {
-        if ((Auth::user()->can('user')) && (($uid * 1) > 6)) {
-            User::find($uid)->delete();
-            Session::flash('Success', "The User has been deleted successfully.");
-            return redirect()->back();
-        } else {
-            abort(403);
-        }
+        abort_unless(($uid * 1) > 6, 403);
+        User::find($uid)->delete();
+        Session::flash('Success', "The User has been deleted successfully.");
+        return redirect()->back();
     }
 
 
@@ -218,7 +207,8 @@ class HomeController extends Controller
 
     public function test()
     {
-        return view('test');
+        dd('in test');
+//        return view('test');
     }
 
 

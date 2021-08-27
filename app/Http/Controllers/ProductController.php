@@ -17,7 +17,6 @@ class ProductController extends Controller
 
     public function list(Request $request)
     {
-        abort_unless(Auth::user()->can('product'), 403);
         if ($request->ptid) {
             $products = Product::Where('identification', 'LIKE', "%{$request->identity}%")
                 ->Where('producttype_id', 'LIKE', "$request->ptid")
@@ -47,7 +46,6 @@ class ProductController extends Controller
 
     public function create()
     {
-        abort_unless(Auth::user()->can('product'), 403);
         $pts = Producttype::all();
         $pns = Productname::all();
         return view('product.create', compact('pts', 'pns'));
@@ -56,7 +54,6 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
-        abort_unless(Auth::user()->can('product'), 403);
         $request->validate([
             'identification' => 'required|unique:products,identification',
             'type' => 'required',
@@ -232,7 +229,6 @@ class ProductController extends Controller
 
     public function edit($pid)
     {
-        abort_unless(Auth::user()->can('product'), 403);
         $pedit = Product::find($pid);
         $pedit['type'] = Producttype::find($pedit->producttype_id)->display_name;
         $rawMaterial = $pedit->rawMaterials()->get();
@@ -247,7 +243,6 @@ class ProductController extends Controller
 
     public function update(Request $request, $pid)
     {
-        abort_unless(Auth::user()->can('product'), 403);
         $request->validate([
             'identification' => 'required|unique:products,identification,' . $pid,
             'type' => 'required',
@@ -429,7 +424,6 @@ class ProductController extends Controller
 
     public function destroy($pid)
     {
-        abort_unless(Auth::user()->can('product'), 403);
         DB::beginTransaction();
         try {
             $p = Product::find($pid);
@@ -454,7 +448,6 @@ class ProductController extends Controller
 
     public function updateProductRawmaterial(Request $request, $pid)
     {
-        abort_unless(Auth::user()->can('product'), 403);
         $product = Product::find($pid);
         if ($request->filled('rawMaterial')) {
             $rawMaterials = array_unique($request->rawMaterial);

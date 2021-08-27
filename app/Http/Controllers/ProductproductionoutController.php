@@ -17,7 +17,6 @@ class ProductproductionoutController extends Controller
 
     public function out()
     {
-        abort_unless(Auth::user()->can('product_out_production'), 403);
         $products = Product::all();
         $factories = Factory::all();
         return view('Production.direct.productout', compact('products', 'factories'));
@@ -38,7 +37,6 @@ class ProductproductionoutController extends Controller
 
     public function inStore(Request $request)
     {
-        abort_unless(Auth::user()->can('product_out_production'), 403);
         $request->validate([
             'product' => 'required',
             'quantity' => 'required|min:1',
@@ -59,7 +57,6 @@ class ProductproductionoutController extends Controller
 
     public function history()
     {
-        abort_unless(Auth::user()->can('product_out_production'), 403);
         $pofp = Productproductionout::orderBy('created_at', 'DESC')->paginate(20);
         foreach ($pofp as $sp) {
             $s = Product::find($sp->product_id);

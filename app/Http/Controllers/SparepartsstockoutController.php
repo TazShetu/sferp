@@ -19,7 +19,6 @@ class SparepartsstockoutController extends Controller
 
     public function out()
     {
-        abort_unless(Auth::user()->can('stock_out_spare_part'), 403);
         $sps = Sparepartsstock::paginate(20);
         foreach ($sps as $sp) {
             $s = Spareparts::find($sp->spareparts_id);
@@ -39,7 +38,6 @@ class SparepartsstockoutController extends Controller
 
     public function outStore(Request $request, $spsid)
     {
-        abort_unless(Auth::user()->can('stock_out_spare_part'), 403);
         $request->validate([
             'outQuantity' => 'required|min:1',
         ]);
@@ -82,7 +80,6 @@ class SparepartsstockoutController extends Controller
 
     public function history()
     {
-        abort_unless(Auth::user()->can('stock_out_spare_part'), 403);
         $spsos = Sparepartsstockout::orderBy('created_at', 'DESC')->paginate(20);
         foreach ($spsos as $sp) {
             $s = Spareparts::find($sp->spareparts_id);

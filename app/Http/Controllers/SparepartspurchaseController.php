@@ -15,7 +15,6 @@ class SparepartspurchaseController extends Controller
 
     public function history(Request $request)
     {
-        abort_unless(Auth::user()->can('sparepart_purchase'), 403);
         if ($request->spid) {
             $histories = Sparepartspurchase::Where('spareparts_id', 'LIKE', "$request->spid")
                 ->where('status', 'LIKE', "%{$request->status}%")
@@ -53,7 +52,6 @@ class SparepartspurchaseController extends Controller
 
     public function index()
     {
-        abort_unless(Auth::user()->can('sparepart_purchase'), 403);
         $spareparts = Spareparts::all();
         $datalist['countryOfOrigin'] = DB::select(DB::raw('SELECT country_origin FROM sparepartspurchases GROUP BY country_origin'));
         $datalist['countryOfPurchase'] = DB::select(DB::raw('SELECT country_purchase FROM sparepartspurchases GROUP BY country_purchase'));
@@ -76,7 +74,6 @@ class SparepartspurchaseController extends Controller
 
     public function store(Request $request)
     {
-        abort_unless(Auth::user()->can('sparepart_purchase'), 403);
         $request->validate([
             'sparePart' => 'required',
             'quantity' => 'required',
@@ -135,7 +132,6 @@ class SparepartspurchaseController extends Controller
 
     public function destroy($spid)
     {
-        abort_unless(Auth::user()->can('sparepart_purchase'), 403);
         Sparepartspurchase::find($spid)->delete();
         Session::flash('Success', "The Spare Part Purchase History has been deleted successfully.");
         return redirect()->back();
@@ -144,7 +140,6 @@ class SparepartspurchaseController extends Controller
 
     public function edit($spid)
     {
-        abort_unless(Auth::user()->can('sparepart_purchase'), 403);
         $spedit = Sparepartspurchase::find($spid);
         $spedit['spare_part'] = Spareparts::find($spedit->spareparts_id)->description;
         $spareparts = Spareparts::all();
@@ -157,7 +152,6 @@ class SparepartspurchaseController extends Controller
 
     public function update(Request $request, $spid)
     {
-        abort_unless(Auth::user()->can('sparepart_purchase'), 403);
         $request->validate([
             'sparePart' => 'required',
             'quantity' => 'required',
@@ -216,7 +210,6 @@ class SparepartspurchaseController extends Controller
 
     public function receiveIndex()
     {
-        abort_unless(Auth::user()->can('sparepart_receive'), 403);
         $histories = Sparepartspurchase::where('status', 'pending')->orWhere('status', 'received')->orderBy('status', 'ASC')->orderBy('created_at', 'DESC')->paginate(10);
         foreach ($histories as $h) {
             $h['spare_part'] = Spareparts::find($h->spareparts_id)->description;
@@ -227,7 +220,6 @@ class SparepartspurchaseController extends Controller
 
     public function received(Request $request, $spid)
     {
-        abort_unless(Auth::user()->can('sparepart_receive'), 403);
         $h = Sparepartspurchase::find($spid);
         $h->status = 'received';
         $h->receive_user_id = Auth::id();
@@ -239,7 +231,6 @@ class SparepartspurchaseController extends Controller
 
     public function notReceived(Request $request, $spid)
     {
-        abort_unless(Auth::user()->can('sparepart_receive'), 403);
         $h = Sparepartspurchase::find($spid);
         $h->status = 'pending';
         $h->receive_user_id = null;

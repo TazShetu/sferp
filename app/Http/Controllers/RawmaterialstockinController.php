@@ -19,7 +19,6 @@ class RawmaterialstockinController extends Controller
 
     public function in()
     {
-        abort_unless(Auth::user()->can('stock_in_raw_material'), 403);
         $rawmaterials = Rawmaterial::all();
         $warehouses = Warehouse::all();
         return view('Stock.in.rawmaterialindex', compact('rawmaterials', 'warehouses'));
@@ -28,7 +27,6 @@ class RawmaterialstockinController extends Controller
 
     public function inStore(Request $request)
     {
-        abort_unless(Auth::user()->can('stock_in_raw_material'), 403);
         $request->validate([
             'rawMaterial' => 'required',
             'quantity' => 'required|min:1',
@@ -76,7 +74,6 @@ class RawmaterialstockinController extends Controller
 
     public function history()
     {
-        abort_unless(Auth::user()->can('stock_in_raw_material'), 403);
         $rmsos = Rawmaterialstockin::orderBy('created_at', 'DESC')->paginate(20);
         foreach ($rmsos as $sp) {
             $s = Rawmaterial::find($sp->rawmaterial_id);

@@ -19,7 +19,6 @@ class RawmaterialstockoutController extends Controller
 
     public function out()
     {
-        abort_unless(Auth::user()->can('stock_out_raw_material'), 403);
         $rms = Rawmaterialstock::paginate(20);
         foreach ($rms as $sp) {
             $s = Rawmaterial::find($sp->rawmaterial_id);
@@ -39,7 +38,6 @@ class RawmaterialstockoutController extends Controller
 
     public function outStore(Request $request, $rmsid)
     {
-        abort_unless(Auth::user()->can('stock_out_raw_material'), 403);
         $request->validate([
             'outQuantity' => 'required|min:1',
         ]);
@@ -82,7 +80,6 @@ class RawmaterialstockoutController extends Controller
 
     public function history()
     {
-        abort_unless(Auth::user()->can('stock_out_raw_material'), 403);
         $rmsos = Rawmaterialstockout::orderBy('created_at', 'DESC')->paginate(20);
         foreach ($rmsos as $sp) {
             $s = Rawmaterial::find($sp->rawmaterial_id);

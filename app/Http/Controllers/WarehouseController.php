@@ -17,7 +17,6 @@ class WarehouseController extends Controller
 
     public function index()
     {
-        abort_unless(Auth::user()->can('ware_house'), 403);
         $warehouses = Warehouse::all();
         return view('warehouse.index', compact('warehouses'));
     }
@@ -25,7 +24,6 @@ class WarehouseController extends Controller
 
     public function store(Request $request)
     {
-        abort_unless(Auth::user()->can('ware_house'), 403);
         $request->validate([
             'name' => 'required',
         ]);
@@ -40,7 +38,6 @@ class WarehouseController extends Controller
 
     public function edit($wid)
     {
-        abort_unless(Auth::user()->can('ware_house'), 403);
         $warehouse = Warehouse::find($wid);
         $floors = $warehouse->floors()->get();
         foreach ($floors as $f) {
@@ -66,7 +63,6 @@ class WarehouseController extends Controller
 
     public function update(Request $request, $wid)
     {
-        abort_unless(Auth::user()->can('ware_house'), 403);
         $request->validate([
             'name' => 'required',
         ]);
@@ -80,7 +76,6 @@ class WarehouseController extends Controller
 
     public function destroy($wid)
     {
-        abort_unless(Auth::user()->can('ware_house'), 403);
         $warehouse = Warehouse::find($wid);
         // check it has stock history or not
         // if it, has then can not delete
@@ -103,7 +98,6 @@ class WarehouseController extends Controller
 
     public function floorUpdate(Request $request, $wid)
     {
-        abort_unless(Auth::user()->can('ware_house'), 403);
         DB::beginTransaction();
         try {
             if ($request->filled('floorName')) {
@@ -186,7 +180,6 @@ class WarehouseController extends Controller
 
     public function roomUpdate(Request $request, $wid)
     {
-        abort_unless(Auth::user()->can('ware_house'), 403);
         if ($request->filled('floor')) {
             foreach ($request->floor as $f) {
                 if ($f == null) {

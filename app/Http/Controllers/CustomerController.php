@@ -19,7 +19,6 @@ class CustomerController extends Controller
 
     public function list()
     {
-        abort_unless(Auth::user()->can('customer'), 403);
         $customers = Customer::paginate(4);
         foreach ($customers as $c) {
             $c['type'] = Customertype::find($c->customertype_id)->title;
@@ -29,7 +28,6 @@ class CustomerController extends Controller
 
     public function create()
     {
-        abort_unless(Auth::user()->can('customer'), 403);
         $customerTypes = Customertype::all();
         return view('customer.create', compact('customerTypes'));
     }
@@ -37,7 +35,6 @@ class CustomerController extends Controller
 
     public function store(Request $request)
     {
-        abort_unless(Auth::user()->can('customer'), 403);
         $request->validate([
             'name' => 'required',
             'dateOfBirth' => 'required',
@@ -108,7 +105,6 @@ class CustomerController extends Controller
 
     public function show($cid)
     {
-        abort_unless(Auth::user()->can('customer'), 403);
         $customer = Customer::find($cid);
         $customer['type'] = Customertype::find($customer->customertype_id)->title;
         $cPersons = Contactperson::where('customer_id', $cid)->get();
@@ -181,7 +177,6 @@ class CustomerController extends Controller
 
     public function edit($cid)
     {
-        abort_unless(Auth::user()->can('customer'), 403);
         $customer = Customer::find($cid);
         $customer['type'] = Customertype::find($customer->customertype_id)->title;
         $cPersons = Contactperson::where('customer_id', $cid)->get();
@@ -223,7 +218,6 @@ class CustomerController extends Controller
 
     public function update(Request $request, $cid)
     {
-        abort_unless(Auth::user()->can('customer'), 403);
         $request->validate([
             'name' => 'required',
             'dateOfBirth' => 'required',
@@ -321,7 +315,6 @@ class CustomerController extends Controller
 
     public function updateContactPerson(Request $request, $cid)
     {
-        abort_unless(Auth::user()->can('customer'), 403);
         $request->validate([
             'cName' => 'required',
             'designation' => 'required',
@@ -360,7 +353,6 @@ class CustomerController extends Controller
 
     public function destroy($cid)
     {
-        abort_unless(Auth::user()->can('customer'), 403);
         // first check for all connections, if exist then can not delete //////////////////////////////////////////////
         DB::beginTransaction();
         try {
@@ -394,7 +386,6 @@ class CustomerController extends Controller
 
     public function subDealerUpdate(Request $request, $cid)
     {
-        abort_unless(Auth::user()->can('customer'), 403);
         DB::beginTransaction();
         try {
             Customerrelation::where('parent_id', $cid)->where('child_type_id', '2')->delete();
@@ -427,7 +418,6 @@ class CustomerController extends Controller
 
     public function individualUpdate(Request $request, $cid)
     {
-        abort_unless(Auth::user()->can('customer'), 403);
         DB::beginTransaction();
         try {
             Customerrelation::where('parent_id', $cid)->where('child_type_id', '3')->delete();
@@ -461,7 +451,6 @@ class CustomerController extends Controller
 
     public function productDiscountUpdate(Request $request, $cid)
     {
-        abort_unless(Auth::user()->can('customer'), 403);
         if (($request->filled('product')) || ($request->filled('discount'))) {
             $request->validate([
                 'product.*' => 'required',
@@ -503,7 +492,6 @@ class CustomerController extends Controller
 
     public function updateExtra(Request $request, $cid)
     {
-        abort_unless(Auth::user()->can('customer'), 403);
         $request->validate([
             'type' => 'required',
             'details' => 'required',

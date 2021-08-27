@@ -19,7 +19,6 @@ class SparepartsstockinController extends Controller
 
     public function in()
     {
-        abort_unless(Auth::user()->can('stock_in_spare_part'), 403);
         $spareparts = Spareparts::all();
         $srooms = Sroom::all();
         return view('Stock.in.sparepartsindex', compact('spareparts', 'srooms'));
@@ -28,7 +27,6 @@ class SparepartsstockinController extends Controller
 
     public function inStore(Request $request)
     {
-        abort_unless(Auth::user()->can('stock_in_spare_part'), 403);
         $request->validate([
             'sparePart' => 'required',
             'quantity' => 'required|min:1',
@@ -76,7 +74,6 @@ class SparepartsstockinController extends Controller
 
     public function history()
     {
-        abort_unless(Auth::user()->can('stock_in_spare_part'), 403);
         $spsos = Sparepartsstockin::orderBy('created_at', 'DESC')->paginate(20);
         foreach ($spsos as $sp) {
             $s = Spareparts::find($sp->spareparts_id);

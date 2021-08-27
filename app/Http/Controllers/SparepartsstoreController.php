@@ -19,7 +19,6 @@ class SparepartsstoreController extends Controller
 
     public function storeIndex()
     {
-        abort_unless(Auth::user()->can('sparepart_stock'), 403);
         $receives = Sparepartspurchase::where('status', 'received')->orderBy('created_at', 'DESC')->get();
         foreach ($receives as $r) {
             $r['spare_part'] = Spareparts::find($r->spareparts_id)->description;
@@ -30,7 +29,6 @@ class SparepartsstoreController extends Controller
 
     public function storeSinglePurchase($sphid)
     {
-        abort_unless(Auth::user()->can('sparepart_stock'), 403);
         $sph = Sparepartspurchase::find($sphid);
         if ($sph) {
             $sph['spare_part'] = Spareparts::find($sph->spareparts_id)->description;
@@ -113,7 +111,6 @@ class SparepartsstoreController extends Controller
 
     public function stock(Request $request, $sphid)
     {
-        abort_unless(Auth::user()->can('sparepart_stock'), 403);
         $request->validate([
             'sparePart' => 'required',
             'quantity' => 'required',

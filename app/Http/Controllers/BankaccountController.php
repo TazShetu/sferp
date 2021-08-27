@@ -14,7 +14,6 @@ class BankaccountController extends Controller
 
     public function list(Request $request)
     {
-        abort_unless(Auth::user()->can('bank_account'), 403);
         $bankAccount = Bankaccount::where('name', 'LIKE', "%{$request->name}%")->Where('ac_name', 'LIKE', "%{$request->ac_name}%")->Where('ac_number', 'LIKE', "%{$request->ac_number}%")->paginate(10);
         $bankAccount->appends(['name' => "$request->name", 'ac_name' => "$request->ac_name", 'ac_number' => "$request->ac_number"]);
         $query = $request->all();
@@ -24,7 +23,6 @@ class BankaccountController extends Controller
 
     public function create()
     {
-        abort_unless(Auth::user()->can('bank_account'), 403);
         $datalist['name'] = DB::select(DB::raw('SELECT name FROM bankaccounts GROUP BY name'));
         return view('bankAccounts.create', compact('datalist'));
     }
@@ -32,7 +30,6 @@ class BankaccountController extends Controller
 
     public function store(Request $request)
     {
-        abort_unless(Auth::user()->can('bank_account'), 403);
         $request->validate([
             'name' => 'required',
             'ac_name' => 'required',
@@ -50,7 +47,6 @@ class BankaccountController extends Controller
 
     public function destroy($baid)
     {
-        abort_unless(Auth::user()->can('bank_account'), 403);
         Bankaccount::find($baid)->delete();
         Session::flash('Success', "The bank Account has been deleted successfully.");
         return redirect()->back();
@@ -59,7 +55,6 @@ class BankaccountController extends Controller
 
     public function edit($baid)
     {
-        abort_unless(Auth::user()->can('bank_account'), 403);
         $baedit = Bankaccount::find($baid);
         $datalist['name'] = DB::select(DB::raw('SELECT name FROM bankaccounts GROUP BY name'));
         return view('bankAccounts.edit', compact('baedit', 'datalist'));
@@ -68,7 +63,6 @@ class BankaccountController extends Controller
 
     public function update(Request $request, $baid)
     {
-        abort_unless(Auth::user()->can('bank_account'), 403);
         $request->validate([
             'name' => 'required',
             'ac_name' => 'required',

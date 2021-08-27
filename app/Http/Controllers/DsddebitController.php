@@ -27,7 +27,6 @@ class DsddebitController extends Controller
 
     public function main()
     {
-        abort_unless(Auth::user()->can('daily_sheet_dhaka'), 403);
         // Sheet data
         $ds = DB::table('daily_sheets')->latest('id')->first();
         $ob = $ds->opening_balance;
@@ -111,7 +110,6 @@ class DsddebitController extends Controller
 
     public function customerStore(Request $request)
     {
-        abort_unless(Auth::user()->can('daily_sheet_dhaka'), 403);
         $request->validate([
             'customer_id' => 'required',
             'payment_type' => 'required',
@@ -143,7 +141,6 @@ class DsddebitController extends Controller
 
     public function bankWithdrawStore(Request $request)
     {
-        abort_unless(Auth::user()->can('daily_sheet_dhaka'), 403);
         $request->validate([
             'bankaccount_id' => 'required',
             'info' => 'required',
@@ -174,7 +171,6 @@ class DsddebitController extends Controller
 
     public function cashInStore(Request $request)
     {
-        abort_unless(Auth::user()->can('daily_sheet_dhaka'), 403);
         $request->validate([
             'deposit_by' => 'required',
             'amount' => 'required',
@@ -194,7 +190,6 @@ class DsddebitController extends Controller
 
     public function productInStore(Request $request)
     {
-        abort_unless(Auth::user()->can('daily_sheet_dhaka'), 403);
         $request->validate([
             'product' => 'required',
             'quantity' => 'required',

@@ -13,21 +13,18 @@ class FactoryController extends Controller
 
     public function list()
     {
-        abort_unless(Auth::user()->can('factory'), 403);
         $factories = Factory::all();
         return view('factory.list', compact('factories'));
     }
 
-    public function create()
-    {
-        abort_unless(Auth::user()->can('factory'), 403);
-        return view('factory.create');
-    }
+//    public function create()
+//    {
+//        return view('factory.create');
+//    }
 
 
     public function store(Request $request)
     {
-        abort_unless(Auth::user()->can('factory'), 403);
         $request->validate([
             'name' => 'required',
             'code' => 'required',
@@ -54,7 +51,6 @@ class FactoryController extends Controller
 
     public function edit($fid)
     {
-        abort_unless(Auth::user()->can('factory'), 403);
         $fedit = Factory::find($fid);
         return view('factory.edit', compact('fedit'));
     }
@@ -62,7 +58,6 @@ class FactoryController extends Controller
 
     public function update(Request $request, $fid)
     {
-        abort_unless(Auth::user()->can('factory'), 403);
         $request->validate([
             'name' => 'required',
             'code' => 'required',
@@ -92,7 +87,6 @@ class FactoryController extends Controller
 
     public function destroy($fid)
     {
-        abort_unless(Auth::user()->can('factory'), 403);
         //check all dependencyes first ///////////////////////////////////////////////////
         $factory = Factory::find($fid);
         if ($factory->image) {

@@ -14,7 +14,6 @@ class DesignationController extends Controller
 
     public function index()
     {
-        abort_unless(Auth::user()->can('hr_designation'), 403);
         $types = Employeetype::all();
         $designations = Designation::orderBy('employeetype_id')->get();
         foreach ($designations as $d) {
@@ -26,7 +25,6 @@ class DesignationController extends Controller
 
     public function store(Request $request)
     {
-        abort_unless(Auth::user()->can('hr_designation'), 403);
         $this->validate($request, [
 //                'title' => 'required|unique:designations,title',
             'type' => 'required',
@@ -45,7 +43,6 @@ class DesignationController extends Controller
 
     public function edit($did)
     {
-        abort_unless(Auth::user()->can('hr_designation'), 403);
         $dedit = Designation::find($did);
         $dedit['type'] = Employeetype::find($dedit->employeetype_id)->title;
 //            $types = Employeetype::all();
@@ -59,7 +56,6 @@ class DesignationController extends Controller
 
     public function update(Request $request, $did)
     {
-        abort_unless(Auth::user()->can('hr_designation'), 403);
         $this->validate($request, [
             'title' => 'required',
             'code' => 'required',
@@ -75,7 +71,6 @@ class DesignationController extends Controller
 
     public function destroy($did)
     {
-        abort_unless(Auth::user()->can('hr_designation'), 403);
         $d = Designation::find($did);
         $es = $d->employees()->get();
         if (count($es) > 0) {
