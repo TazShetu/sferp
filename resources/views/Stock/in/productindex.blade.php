@@ -80,7 +80,9 @@
                                                                 <option selected disabled hidden value="">Choose...
                                                                 </option>
                                                                 @foreach($products as $r)
-                                                                    <option value="{{$r->id}}">{{$r->name}}</option>
+                                                                    <option value="{{$r->id}}">
+                                                                        {{$r->name}} - {{$r->identification}}
+                                                                    </option>
                                                                 @endforeach
                                                             </select>
                                                         </div>

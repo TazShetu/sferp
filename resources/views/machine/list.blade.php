@@ -22,11 +22,11 @@
             <div class="alert alert-success text-center" id="toaster">
                 {{session('Success')}}
             </div>
-            {{--        @elseif(session('Cannotdelete'))--}}
-            {{--            <div class="alert alert-warning text-center" id="toaster">--}}
-            {{--                {{session('Cannotdelete')}}--}}
-            {{--            </div>--}}
-        @endif
+        {{--        @elseif(session('Cannotdelete'))--}}
+        {{--            <div class="alert alert-warning text-center" id="toaster">--}}
+        {{--                {{session('Cannotdelete')}}--}}
+        {{--            </div>--}}
+    @endif
 
     <!--begin::Portlet-->
         <div class="kt-portlet ">
@@ -48,16 +48,18 @@
                                     @csrf
                                     <div class="form-group mx-sm-3 mb-2">
                                         <input type="text" name="manufacturer" class="form-control"
-                                               placeholder="Manufacturer" value="{{$query ? ($query['manufacturer'] ? $query['manufacturer'] : '') : ''}}">
+                                               placeholder="Manufacturer"
+                                               value="{{$query ? ($query['manufacturer'] ? $query['manufacturer'] : '') : ''}}">
                                     </div>
                                     <div class="form-group mx-sm-3 mb-2">
                                         <input type="text" name="category" class="form-control" placeholder="Category"
-                                        value="{{$query ? ($query['category'] ? $query['category'] : '') : ''}}">
+                                               value="{{$query ? ($query['category'] ? $query['category'] : '') : ''}}">
                                     </div>
                                     <div class="form-group mx-sm-3 mb-2">
                                         <select class="form-control" name="factoryId">
                                             @if((count($query) > 0) && array_key_exists("factoryId", $query))
-                                                <option selected hidden value="{{$query['factoryId']}}">{{$query['factoryName']}}</option>
+                                                <option selected hidden
+                                                        value="{{$query['factoryId']}}">{{$query['factoryName']}}</option>
                                             @else
                                                 <option selected disabled hidden value="">Factories</option>
                                             @endif
@@ -68,7 +70,8 @@
                                     </div>
                                     <div class="form-group mx-sm-3 mb-2">
                                         <input type="text" name="country" class="form-control"
-                                               placeholder="Country Of Origin" value="{{$query ? ($query['country'] ? $query['country'] : '') : ''}}">
+                                               placeholder="Country Of Origin"
+                                               value="{{$query ? ($query['country'] ? $query['country'] : '') : ''}}">
                                     </div>
                                     <button type="submit" class="btn btn-primary mb-2">Confirm Search</button>
                                 </form>
@@ -79,7 +82,7 @@
                 <!--end::Accordion-->
             </div>
         </div>
-    <!--end::Portlet-->
+        <!--end::Portlet-->
 
         <!--begin::Portlet-->
         <div class="kt-portlet kt-portlet--mobile">
@@ -99,6 +102,7 @@
                     <thead>
                     <tr>
                         <th scope="col">#</th>
+                        <th scope="col">Type / Model</th>
                         <th scope="col">Manufacturer</th>
                         <th scope="col">Category</th>
                         <th scope="col">Factory</th>
@@ -110,6 +114,7 @@
                     @foreach($machines as $i => $m)
                         <tr>
                             <th scope="row">{{$machines->firstItem() + $i}}</th>
+                            <td>{{$m->type}}</td>
                             <td>{{$m->manufacturer}}</td>
                             <td>{{$m->category}}</td>
                             <td>{{$m->factory}}</td>
@@ -128,6 +133,16 @@
                                         <i class="la la-trash" style="color: #fd397a;"></i>
                                     </button>
                                 </form>
+                                @if($m->manual)
+                                    <a href="{{route('machine.manual.download', ['mid' => $m->id])}}"
+                                       class="btn btn-sm">
+                                        <i class="fa fa-file-download"></i>
+                                    </a>
+                                @else
+                                    <a href="#" class="btn btn-sm disabled" disabled="">
+                                        <i class="fa fa-file-download"></i>
+                                    </a>
+                                @endif
                             </td>
                         </tr>
                     @endforeach

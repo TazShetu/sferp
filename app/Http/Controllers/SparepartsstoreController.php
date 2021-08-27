@@ -17,41 +17,27 @@ use Illuminate\Support\Facades\Session;
 class SparepartsstoreController extends Controller
 {
 
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
-
     public function storeIndex()
     {
-        if (Auth::user()->can('sparepart_stock')) {
-            $receives = Sparepartspurchase::where('status', 'received')->orderBy('created_at', 'DESC')->get();
-            foreach ($receives as $r) {
-                $r['spare_part'] = Spareparts::find($r->spareparts_id)->description;
-            }
-            return view('PURCHASE.STORE.spareParts', compact('receives'));
-        } else {
-            abort(403);
+        $receives = Sparepartspurchase::where('status', 'received')->orderBy('created_at', 'DESC')->get();
+        foreach ($receives as $r) {
+            $r['spare_part'] = Spareparts::find($r->spareparts_id)->description;
         }
+        return view('PURCHASE.STORE.spareParts', compact('receives'));
     }
 
 
     public function storeSinglePurchase($sphid)
     {
-        if (Auth::user()->can('sparepart_stock')) {
-            $sph = Sparepartspurchase::find($sphid);
-            if ($sph) {
-                $sph['spare_part'] = Spareparts::find($sph->spareparts_id)->description;
-                $srooms = Sroom::all();
+        $sph = Sparepartspurchase::find($sphid);
+        if ($sph) {
+            $sph['spare_part'] = Spareparts::find($sph->spareparts_id)->description;
+            $srooms = Sroom::all();
 
-                return view('PURCHASE.STORE.sparePartStore', compact('sph', 'srooms'));
-            } else {
-                Session::flash('unsuccess', "Please do not mess with the URL :(");
-                return redirect()->back();
-            }
+            return view('PURCHASE.STORE.sparePartStore', compact('sph', 'srooms'));
         } else {
-            abort(403);
+            Session::flash('unsuccess', "Please do not mess with the URL :(");
+            return redirect()->back();
         }
     }
 
@@ -125,54 +111,50 @@ class SparepartsstoreController extends Controller
 
     public function stock(Request $request, $sphid)
     {
-        if (Auth::user()->can('sparepart_stock')) {
-            $request->validate([
-                'sparePart' => 'required',
-                'quantity' => 'required',
-                'sparePartRoom' => 'required',
-            ]);
-            DB::beginTransaction();
-            try {
-                $sph = Sparepartspurchase::find($sphid);
-                $sph->status = 'stored';
-                $sph->update();
-                $s = new Sparepartsstore;
-                $ss = Sparepartsstock::where('spareparts_id', $request->sparePart)->where('sroom_id', $request->sparePartRoom)->where('row_id', $request->row)->where('rack_id', $request->rack)->first();
-                if (!$ss){
-                    $ss = new Sparepartsstock;
-                }
-                $s->spareparts_id = $request->sparePart;
-                $ss->spareparts_id = $request->sparePart;
-                $s->quantity = $request->quantity;
-                $ss->quantity = $ss->quantity + $request->quantity;
-                $s->sroom_id = $request->sparePartRoom;
-                $ss->sroom_id = $request->sparePartRoom;
-                if ($request->filled('row')) {
-                    $s->row_id = $request->row;
-                    $ss->row_id = $request->row;
-                }
-                if ($request->filled('rack')) {
-                    $s->rack_id = $request->rack;
-                    $ss->rack_id = $request->rack;
-                }
-                $s->user_id = Auth::id();
-                $s->save();
-                $ss->save();
-                DB::commit();
-                $success = true;
-            } catch (\Exception $e) {
-                $success = false;
-                DB::rollback();
+        $request->validate([
+            'sparePart' => 'required',
+            'quantity' => 'required',
+            'sparePartRoom' => 'required',
+        ]);
+        DB::beginTransaction();
+        try {
+            $sph = Sparepartspurchase::find($sphid);
+            $sph->status = 'stored';
+            $sph->update();
+            $s = new Sparepartsstore;
+            $ss = Sparepartsstock::where('spareparts_id', $request->sparePart)->where('sroom_id', $request->sparePartRoom)->where('row_id', $request->row)->where('rack_id', $request->rack)->first();
+            if (!$ss) {
+                $ss = new Sparepartsstock;
             }
-            if ($success) {
-                Session::flash('Success', "The Spare Part has been stored successfully.");
-                return redirect()->route('spare-part.purchase.store');
-            } else {
-                Session::flash('unsuccess', "Something went wrong :(");
-                return redirect()->back();
+            $s->spareparts_id = $request->sparePart;
+            $ss->spareparts_id = $request->sparePart;
+            $s->quantity = $request->quantity;
+            $ss->quantity = $ss->quantity + $request->quantity;
+            $s->sroom_id = $request->sparePartRoom;
+            $ss->sroom_id = $request->sparePartRoom;
+            if ($request->filled('row')) {
+                $s->row_id = $request->row;
+                $ss->row_id = $request->row;
             }
+            if ($request->filled('rack')) {
+                $s->rack_id = $request->rack;
+                $ss->rack_id = $request->rack;
+            }
+            $s->user_id = Auth::id();
+            $s->save();
+            $ss->save();
+            DB::commit();
+            $success = true;
+        } catch (\Exception $e) {
+            $success = false;
+            DB::rollback();
+        }
+        if ($success) {
+            Session::flash('Success', "The Spare Part has been stored successfully.");
+            return redirect()->route('spare-part.purchase.store');
         } else {
-            abort(403);
+            Session::flash('unsuccess', "Something went wrong :(");
+            return redirect()->back();
         }
     }
 

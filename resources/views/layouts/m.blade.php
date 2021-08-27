@@ -48,7 +48,7 @@
           type="text/css"/>
     <link href="{{asset('m/assets/plugins/general/dropzone/dist/dropzone.css')}}" rel="stylesheet" type="text/css"/>
     <link href="{{asset('m/assets/plugins/general/quill/dist/quill.snow.css')}}" rel="stylesheet" type="text/css"/>
-    <link href="{{asset('m/assets/plugins/general/@yaireo/tagify/dist/tagify.css')}}" rel="stylesheet" type="text/css"/>
+{{--    <link href="{{asset('m/assets/plugins/general/@yaireo/tagify/dist/tagify.css')}}" rel="stylesheet" type="text/css"/>--}}
 {{--    <link href="{{asset('m/assets/plugins/general/summernote/dist/summernote.css')}}" rel="stylesheet" type="text/css"/>--}}
     <link href="{{asset('m/assets/plugins/general/bootstrap-markdown/css/bootstrap-markdown.min.css')}}"
           rel="stylesheet" type="text/css"/>
@@ -134,7 +134,8 @@
 
 <!-- begin::Body -->
 <body class="kt-quick-panel--right kt-demo-panel--right kt-offcanvas-panel--right kt-header--fixed kt-header-mobile--fixed kt-subheader--enabled kt-subheader--fixed kt-subheader--solid kt-aside--enabled kt-aside--fixed kt-page--loading">
-<div id="loader" style="background: url('{{asset('loader.gif')}}') 50% 50% no-repeat rgb(255, 255, 255);"></div>
+<div id="loader" style="background: url('{{asset('loader.gif')}}') 50% 50% no-repeat rgb(255, 255, 255);">
+</div>
 
 <!-- begin:: Page -->
 
@@ -246,10 +247,10 @@
 <script src="{{asset('m/assets/plugins/general/jquery/dist/jquery.js')}}" type="text/javascript"></script>
 {{--side menu active--}}
 <script>
-    $(window).on('load', function () {
-        $("#loader").fadeOut("fast");
-    });
+    // $(window).on('load', function () {
+    // });
     $(function () {
+        $("#loader").fadeOut("fast");
         let url = location.href;
         if (url.includes('?')) {
             // only take the url before ?
@@ -324,9 +325,9 @@
 <script src="{{asset('m/assets/plugins/general/js/global/integration/plugins/dropzone.init.js')}}"
         type="text/javascript"></script>
 <script src="{{asset('m/assets/plugins/general/quill/dist/quill.js')}}" type="text/javascript"></script>
-<script src="{{asset('m/assets/plugins/general/@yaireo/tagify/dist/tagify.polyfills.min.js')}}"
-        type="text/javascript"></script>
-<script src="{{asset('m/assets/plugins/general/@yaireo/tagify/dist/tagify.min.js')}}" type="text/javascript"></script>
+{{--<script src="{{asset('m/assets/plugins/general/@yaireo/tagify/dist/tagify.polyfills.min.js')}}"--}}
+{{--        type="text/javascript"></script>--}}
+{{--<script src="{{asset('m/assets/plugins/general/@yaireo/tagify/dist/tagify.min.js')}}" type="text/javascript"></script>--}}
 {{--<script src="{{asset('m/assets/plugins/general/summernote/dist/summernote.js')}}" type="text/javascript"></script>--}}
 <script src="{{asset('m/assets/plugins/general/markdown/lib/markdown.js')}}" type="text/javascript"></script>
 <script src="{{asset('m/assets/plugins/general/bootstrap-markdown/js/bootstrap-markdown.js')}}"
@@ -457,8 +458,8 @@
 <script>
     $(function () {
         setTimeout(function () {
-            $('#toaster').hide(10000);
-        }, 3000);
+            $('#toaster').hide(1000);
+        }, 10000);
     });
 </script>
 </body>

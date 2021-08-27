@@ -31,6 +31,7 @@ class CreateMachinesTable extends Migration
             $table->float('ld_ratio')->nullable();
             $table->float('ring_size')->nullable();
             $table->string('manual')->nullable();
+            $table->string('smanual')->nullable();
             $table->string('manual_location')->nullable();
             $table->timestamps();
         });

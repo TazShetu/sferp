@@ -158,12 +158,12 @@
                                             </div>
                                             <div class="form-group row">
                                                 <label class="col-xl-3 col-lg-3 col-form-label">
-                                                    Type / Model Number
+                                                    Type / Model Number*
                                                 </label>
                                                 <div class="col-lg-9 col-xl-6">
                                                     <input
                                                         class="form-control {{($errors->has('typeOrModelNumber')) ? 'is-invalid' : ''}}"
-                                                        type="text" name="typeOrModelNumber"
+                                                        type="text" name="typeOrModelNumber" required
                                                         value="{{$medit->type}}" list="type">
                                                     @if($errors->has('typeOrModelNumber'))
                                                         <span

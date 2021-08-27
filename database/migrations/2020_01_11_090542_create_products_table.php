@@ -21,9 +21,12 @@ class CreateProductsTable extends Migration
             $table->float('size_denier')->nullable();
             $table->float('size_mm')->nullable();
             $table->integer('plys')->nullable();
-            $table->float('mesh_size_mm')->nullable();
-            $table->float('mesh_size_inch')->nullable();
+            $table->integer('mesh_size_1')->nullable();
+            $table->integer('mesh_size_2')->nullable();
+            $table->integer('mesh_size_3')->nullable();
+            $table->string('mesh_size_unit')->nullable();
             $table->float('depth')->nullable();
+            $table->string('depth_unit')->nullable();
             $table->float('twin_size_denier')->nullable();
             $table->float('twin_size_ply')->nullable();
             $table->float('twin_size_no')->nullable();
@@ -49,6 +52,14 @@ class CreateProductsTable extends Migration
             $table->float('body_ply')->nullable();
             $table->float('tail_cm')->nullable();
             $table->float('tail_ply')->nullable();
+            $table->float('sizeww')->nullable();
+            $table->string('sizeww_unit')->nullable();
+            $table->string('luster')->nullable();
+            $table->string('nominal_denier')->nullable();
+            $table->string('manufacturer')->nullable();
+            $table->string('country_origin')->nullable();
+            $table->float('viscosity')->nullable();
+            $table->string('relative_density')->nullable();
             $table->timestamps();
         });
     }

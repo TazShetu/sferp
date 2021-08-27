@@ -59,23 +59,23 @@
                                 Product
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" data-toggle="tab"
-                               href="#kt_product_edit_tab_2" role="tab">
-                                <svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" class="kt-svg-icon">
-                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                        <rect x="0" y="0" width="24" height="24"/>
-                                        <path
-                                            d="M8.46446609,11.2928932 L7.40380592,10.232233 C7.20854378,10.0369709 7.20854378,9.72038841 7.40380592,9.52512627 L8.1109127,8.81801948 C8.30617485,8.62275734 8.62275734,8.62275734 8.81801948,8.81801948 L15.1819805,15.1819805 C15.3772427,15.3772427 15.3772427,15.6938252 15.1819805,15.8890873 L14.4748737,16.5961941 C14.2796116,16.7914562 13.9630291,16.7914562 13.767767,16.5961941 L12.7071068,15.5355339 L7.05025253,21.1923882 C6.26920395,21.9734367 5.00287399,21.9734367 4.22182541,21.1923882 L2.80761184,19.7781746 C2.02656326,18.997126 2.02656326,17.7307961 2.80761184,16.9497475 L8.46446609,11.2928932 Z M4.5753788,18.0104076 C4.38011665,18.2056698 4.38011665,18.5222523 4.5753788,18.7175144 C4.77064094,18.9127766 5.08722343,18.9127766 5.28248558,18.7175144 L9.52512627,14.4748737 C9.72038841,14.2796116 9.72038841,13.9630291 9.52512627,13.767767 C9.32986412,13.5725048 9.01328163,13.5725048 8.81801948,13.767767 L4.5753788,18.0104076 Z"
-                                            fill="#000000" opacity="0.3"/>
-                                        <path
-                                            d="M16.9497475,5.63603897 L16.7788182,5.4651097 C16.5835561,5.26984755 16.5835561,4.95326506 16.7788182,4.75800292 C16.8266988,4.71012232 16.8838059,4.67246608 16.9466763,4.64731796 L19.4720576,3.63716542 C19.657766,3.56288206 19.869875,3.60641908 20.0113063,3.74785037 L20.2521496,3.98869366 C20.3935809,4.13012495 20.4371179,4.342234 20.3628346,4.52794239 L19.352682,7.05332375 C19.2501253,7.30971551 18.9591401,7.43442346 18.7027484,7.33186676 C18.6398781,7.30671864 18.5827709,7.2690624 18.5348903,7.2211818 L18.363961,7.05025253 L12.7071068,12.7071068 L11.2928932,11.2928932 L16.9497475,5.63603897 Z"
-                                            fill="#000000"/>
-                                    </g>
-                                </svg>
-                                Raw Material
-                            </a>
-                        </li>
+{{--                        <li class="nav-item">--}}
+{{--                            <a class="nav-link" data-toggle="tab"--}}
+{{--                               href="#kt_product_edit_tab_2" role="tab">--}}
+{{--                                <svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" class="kt-svg-icon">--}}
+{{--                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">--}}
+{{--                                        <rect x="0" y="0" width="24" height="24"/>--}}
+{{--                                        <path--}}
+{{--                                            d="M8.46446609,11.2928932 L7.40380592,10.232233 C7.20854378,10.0369709 7.20854378,9.72038841 7.40380592,9.52512627 L8.1109127,8.81801948 C8.30617485,8.62275734 8.62275734,8.62275734 8.81801948,8.81801948 L15.1819805,15.1819805 C15.3772427,15.3772427 15.3772427,15.6938252 15.1819805,15.8890873 L14.4748737,16.5961941 C14.2796116,16.7914562 13.9630291,16.7914562 13.767767,16.5961941 L12.7071068,15.5355339 L7.05025253,21.1923882 C6.26920395,21.9734367 5.00287399,21.9734367 4.22182541,21.1923882 L2.80761184,19.7781746 C2.02656326,18.997126 2.02656326,17.7307961 2.80761184,16.9497475 L8.46446609,11.2928932 Z M4.5753788,18.0104076 C4.38011665,18.2056698 4.38011665,18.5222523 4.5753788,18.7175144 C4.77064094,18.9127766 5.08722343,18.9127766 5.28248558,18.7175144 L9.52512627,14.4748737 C9.72038841,14.2796116 9.72038841,13.9630291 9.52512627,13.767767 C9.32986412,13.5725048 9.01328163,13.5725048 8.81801948,13.767767 L4.5753788,18.0104076 Z"--}}
+{{--                                            fill="#000000" opacity="0.3"/>--}}
+{{--                                        <path--}}
+{{--                                            d="M16.9497475,5.63603897 L16.7788182,5.4651097 C16.5835561,5.26984755 16.5835561,4.95326506 16.7788182,4.75800292 C16.8266988,4.71012232 16.8838059,4.67246608 16.9466763,4.64731796 L19.4720576,3.63716542 C19.657766,3.56288206 19.869875,3.60641908 20.0113063,3.74785037 L20.2521496,3.98869366 C20.3935809,4.13012495 20.4371179,4.342234 20.3628346,4.52794239 L19.352682,7.05332375 C19.2501253,7.30971551 18.9591401,7.43442346 18.7027484,7.33186676 C18.6398781,7.30671864 18.5827709,7.2690624 18.5348903,7.2211818 L18.363961,7.05025253 L12.7071068,12.7071068 L11.2928932,11.2928932 L16.9497475,5.63603897 Z"--}}
+{{--                                            fill="#000000"/>--}}
+{{--                                    </g>--}}
+{{--                                </svg>--}}
+{{--                                Raw Material--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
                     </ul>
                 </div>
             </div>
@@ -138,7 +138,7 @@
                                                         </select>
                                                     </div>
                                                 </div>
-                                                @if(($pedit->name == 'Green HDPE Knotless') || ($pedit->name == 'Black HDPE Knotless'))
+                                                @if(($pedit->name == 'Green HDPE Knotless') || ($pedit->name == 'Black HDPE Knotless') || ($pedit->name == 'White Knotless'))
                                                     <div class="form-group row hideFirst hideSecond ns7">
                                                         <label class="col-xl-3 col-lg-3 col-form-label">
                                                             Size
@@ -201,41 +201,72 @@
                                                         <div class="col-lg-9 col-xl-6">
                                                             <input
                                                                 class="form-control {{($errors->has('plys')) ? 'is-invalid' : ''}}"
-                                                                type="number" name="plys" value="{{$pedit->plys}}" min="0">
+                                                                type="number" name="plys" value="{{$pedit->plys}}"
+                                                                min="0">
                                                         </div>
                                                     </div>
                                                 @endif
-                                                @if(($pedit->name == 'White Knotless'))
-                                                    <div class="form-group row hideFirst hideSecond ns6">
+                                                @if(($pedit->name == 'White Knotless') || ($pedit->name == 'Nylon Multifilament Fishingnet') || ($pedit->name == 'Nylon Mono Multi Fishingnet') || ($pedit->name == 'HT Fishingnet'))
+                                                    <div class="form-group row hideFirst hideSecond ns6 ns9 ns10"
+                                                         style="margin-bottom: 0">
+                                                        <label class="col-xl-3 col-lg-3 col-form-label"></label>
+                                                        <div class="col-lg-3 col-xl-3 input-group">
+                                                        </div>
+                                                        <div class="col-lg-2 col-xl-2 input-group">
+                                                            <input
+                                                                class="form-control ml-3 {{($errors->has('mesh_size_2')) ? 'is-invalid' : ''}}"
+                                                                type="number" name="mesh_size_2"
+                                                                value="{{$pedit->mesh_size_2}}"
+                                                                min="0">
+                                                        </div>
+                                                        <div class="col-lg-1 col-xl-1 input-group">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row hideFirst hideSecond ns6 ns9 ns10"
+                                                         style="margin-bottom: 0">
                                                         <label class="col-xl-3 col-lg-3 col-form-label">
                                                             Mesh Size
                                                         </label>
-                                                        <div class="col-lg-9 col-xl-6 input-group">
+                                                        <div class="col-lg-3 col-xl-3 input-group">
                                                             <input
-                                                                class="form-control {{($errors->has('meshSizeMm')) ? 'is-invalid' : ''}}"
-                                                                type="number" name="meshSizeMm"
-                                                                value="{{$pedit->mesh_size_mm}}"
-                                                                step="0.01" min="0">
+                                                                class="form-control {{($errors->has('mesh_size_1')) ? 'is-invalid' : ''}}"
+                                                                type="number" name="mesh_size_1"
+                                                                value="{{$pedit->mesh_size_1}}"
+                                                                min="0">
+                                                        </div>
+                                                        <div class="col-lg-2 col-xl-2 input-group">
+                                                            <p style="    margin-left: auto; margin-right: auto; margin-top: 7px;">
+                                                                -----------------------</p>
+                                                        </div>
+                                                        <div class="col-lg-1 col-xl-1 input-group">
                                                             <div class="input-group-append">
-                                                                <span class="input-group-text">mm</span>
+                                                                <select
+                                                                    class="input-group-text ml-3 {{($errors->has('mesh_size_unit')) ? 'is-invalid' : ''}}"
+                                                                    name="mesh_size_unit">
+                                                                    <option
+                                                                        value="Inch" {{($pedit->mesh_size_unit == 'Inch') ? 'selected' : ''}}>
+                                                                        Inch
+                                                                    </option>
+                                                                    <option
+                                                                        value="mm" {{($pedit->mesh_size_unit == 'mm') ? 'selected' : ''}}>
+                                                                        mm
+                                                                    </option>
+                                                                </select>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                @endif
-                                                @if(($pedit->name == 'Nylon Multifilament Fishingnet') || ($pedit->name == 'Nylon Mono Multi Fishingnet') || ($pedit->name == 'HT Fishingnet'))
-                                                    <div class="form-group row hideFirst hideSecond ns9">
-                                                        <label class="col-xl-3 col-lg-3 col-form-label">
-                                                            Mesh Size
-                                                        </label>
-                                                        <div class="col-lg-9 col-xl-6 input-group">
+                                                    <div class="form-group row hideFirst hideSecond ns6 ns9 ns10">
+                                                        <label class="col-xl-3 col-lg-3 col-form-label"></label>
+                                                        <div class="col-lg-3 col-xl-3 input-group">
+                                                        </div>
+                                                        <div class="col-lg-2 col-xl-2 input-group">
                                                             <input
-                                                                class="form-control {{($errors->has('meshSizeInch')) ? 'is-invalid' : ''}}"
-                                                                type="number" name="meshSizeInch"
-                                                                value="{{$pedit->mesh_size_inch}}"
-                                                                step="0.01" min="0">
-                                                            <div class="input-group-append">
-                                                                <span class="input-group-text">inch</span>
-                                                            </div>
+                                                                class="form-control ml-3 {{($errors->has('mesh_size_3')) ? 'is-invalid' : ''}}"
+                                                                type="number" name="mesh_size_3"
+                                                                value="{{$pedit->mesh_size_3}}"
+                                                                min="0">
+                                                        </div>
+                                                        <div class="col-lg-1 col-xl-1 input-group">
                                                         </div>
                                                     </div>
                                                 @endif
@@ -250,7 +281,18 @@
                                                                 type="number" name="depth" value="{{$pedit->depth}}"
                                                                 step="0.01" min="0">
                                                             <div class="input-group-append">
-                                                                <span class="input-group-text">হাত</span>
+                                                                <select
+                                                                    class="input-group-text {{($errors->has('depth_unit')) ? 'is-invalid' : ''}}"
+                                                                    name="depth_unit">
+                                                                    <option
+                                                                        value="হাত" {{($pedit->depth_unit == 'হাত') ? 'selected' : ''}}>
+                                                                        হাত
+                                                                    </option>
+                                                                    <option
+                                                                        value="খোপ" {{($pedit->depth_unit == 'খোপ') ? 'selected' : ''}}>
+                                                                        খোপ
+                                                                    </option>
+                                                                </select>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -258,46 +300,54 @@
                                                 @if(($pedit->name == 'Nylon Multifilament Fishingnet') || ($pedit->name == 'HT Fishingnet') || ($pedit->name == 'HDPE Cage Net'))
                                                     <div class="form-group row hideFirst hideSecond ns9 ns12 ns13">
                                                         <label class="col-xl-3 col-lg-3 col-form-label">
-                                                            Twin Size
+                                                            Twine Size
                                                         </label>
                                                         <div class="col-lg-2 col-xl-2 input-group">
                                                             <input
-                                                                class="form-control {{($errors->has('twinSizeDenier')) ? 'is-invalid' : ''}}"
-                                                                type="number" name="twinSizeDenier" value="{{$pedit->twin_size_denier}}"
-                                                                step="0.01" min="0">
-                                                            <div class="input-group-append">
-                                                                <span class="input-group-text">Denier</span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-2 col-xl-2 input-group">
-                                                            <input
-                                                                class="form-control {{($errors->has('twinSizePly')) ? 'is-invalid' : ''}}"
-                                                                type="number" name="twinSizePly" value="{{$pedit->twin_size_ply}}"
-                                                                step="0.01" min="0">
-                                                            <div class="input-group-append">
-                                                                <span class="input-group-text">Ply</span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-2 col-xl-2 input-group">
-                                                            <input
                                                                 class="form-control {{($errors->has('twinSizeNo')) ? 'is-invalid' : ''}}"
-                                                                type="number" name="twinSizeNo" value="{{$pedit->twin_size_no}}"
+                                                                type="number" name="twinSizeNo"
+                                                                value="{{$pedit->twin_size_no}}"
                                                                 step="0.01" min="0">
                                                             <div class="input-group-append">
                                                                 <span class="input-group-text">no.</span>
                                                             </div>
                                                         </div>
+                                                        <div class="col-lg-1 col-xl-1 input-group">
+                                                            <p style="margin-left: auto; margin-right: auto;">OR</p>
+                                                        </div>
+                                                        <div class="col-lg-2 col-xl-2 input-group">
+                                                            <input
+                                                                class="form-control {{($errors->has('twinSizeDenier')) ? 'is-invalid' : ''}}"
+                                                                type="number" name="twinSizeDenier"
+                                                                value="{{$pedit->twin_size_denier}}"
+                                                                step="0.01" min="0">
+                                                            <div class="input-group-append">
+                                                                <span class="input-group-text">Denier</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-1 col-xl-1 input-group">
+                                                            <input
+                                                                class="form-control {{($errors->has('twinSizePly')) ? 'is-invalid' : ''}}"
+                                                                type="number" name="twinSizePly"
+                                                                value="{{$pedit->twin_size_ply}}"
+                                                                step="0.01" min="0">
+                                                            <div class="input-group-append">
+                                                                <span class="input-group-text">Ply</span>
+                                                            </div>
+                                                        </div>
+
                                                     </div>
                                                 @endif
                                                 @if(($pedit->name == 'Nylon Mono Multi Fishingnet') || ($pedit->name == 'HDPE Fishingnet'))
                                                     <div class="form-group row hideFirst hideSecond ns9 ns12 ns13">
                                                         <label class="col-xl-3 col-lg-3 col-form-label">
-                                                            Twin Size
+                                                            Twine Size
                                                         </label>
                                                         <div class="col-lg-3 col-xl-3 input-group">
                                                             <input
                                                                 class="form-control {{($errors->has('twinSizeMm')) ? 'is-invalid' : ''}}"
-                                                                type="number" name="twinSizeMm" value="{{$pedit->twin_size_mm}}"
+                                                                type="number" name="twinSizeMm"
+                                                                value="{{$pedit->twin_size_mm}}"
                                                                 step="0.01" min="0">
                                                             <div class="input-group-append">
                                                                 <span class="input-group-text">mm</span>
@@ -306,10 +356,38 @@
                                                         <div class="col-lg-2 col-xl-2 input-group">
                                                             <input
                                                                 class="form-control {{($errors->has('twinSizePly')) ? 'is-invalid' : ''}}"
-                                                                type="number" name="twinSizePly" value="{{$pedit->twin_size_ply}}"
+                                                                type="number" name="twinSizePly"
+                                                                value="{{$pedit->twin_size_ply}}"
                                                                 step="0.01" min="0">
                                                             <div class="input-group-append">
                                                                 <span class="input-group-text">Ply</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                @endif
+                                                @if(($pedit->name == 'Nylon Mono Multi Fishingnet'))
+                                                    <div class="form-group row hideFirst hideSecond ns12">
+                                                        <label class="col-xl-3 col-lg-3 col-form-label">
+                                                            Size (Weight-wise)
+                                                        </label>
+                                                        <div class="col-lg-9 col-xl-6 input-group">
+                                                            <input
+                                                                class="form-control {{($errors->has('sizeww')) ? 'is-invalid' : ''}}"
+                                                                type="number" name="sizeww" value="{{$pedit->sizeww}}"
+                                                                step="0.01" min="0">
+                                                            <div class="input-group-append">
+                                                                <select
+                                                                    class="input-group-text {{($errors->has('sizeww_unit')) ? 'is-invalid' : ''}}"
+                                                                    name="sizeww_unit">
+                                                                    <option
+                                                                        value="Grams" {{($pedit->sizeww_unit == 'Grams') ? 'selected' : ''}}>
+                                                                        Grams
+                                                                    </option>
+                                                                    <option
+                                                                        value="Kg" {{($pedit->sizeww_unit == 'Kg') ? 'selected' : ''}}>
+                                                                        Kg
+                                                                    </option>
+                                                                </select>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -480,7 +558,8 @@
                                                         <div class="col-lg-3 col-xl-3 input-group">
                                                             <input
                                                                 class="form-control {{($errors->has('bodyPly')) ? 'is-invalid' : ''}}"
-                                                                type="number" name="bodyPly" value="{{$pedit->body_ply}}"
+                                                                type="number" name="bodyPly"
+                                                                value="{{$pedit->body_ply}}"
                                                                 step="0.01" min="0">
                                                             <div class="input-group-append">
                                                                 <span class="input-group-text">Ply</span>
@@ -505,7 +584,8 @@
                                                         <div class="col-lg-3 col-xl-3 input-group">
                                                             <input
                                                                 class="form-control {{($errors->has('tailPly')) ? 'is-invalid' : ''}}"
-                                                                type="number" name="tailPly" value="{{$pedit->tail_ply}}"
+                                                                type="number" name="tailPly"
+                                                                value="{{$pedit->tail_ply}}"
                                                                 step="0.01" min="0">
                                                             <div class="input-group-append">
                                                                 <span class="input-group-text">Ply</span>
@@ -526,6 +606,50 @@
                                                             <span
                                                                 class="invalid-feedback">{{$errors->first('name')}}</span>
                                                         @endif
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row hideFirst hideSecond tid7 tid10">
+                                                    <label class="col-xl-3 col-lg-3 col-form-label">
+                                                        Manufacture Name
+                                                    </label>
+                                                    <div class="col-lg-9 col-xl-6">
+                                                        <input
+                                                            class="form-control {{($errors->has('manufacturer')) ? 'is-invalid' : ''}}"
+                                                            type="text" name="manufacturer"
+                                                            value="{{$pedit->manufacturer}}">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row hideFirst hideSecond tid7 tid10">
+                                                    <label class="col-xl-3 col-lg-3 col-form-label">
+                                                        Country Of Origin
+                                                    </label>
+                                                    <div class="col-lg-9 col-xl-6">
+                                                        <input
+                                                            class="form-control {{($errors->has('country_origin')) ? 'is-invalid' : ''}}"
+                                                            type="text" name="country_origin"
+                                                            value="{{$pedit->country_origin}}">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row hideFirst hideSecond tid7 tid10">
+                                                    <label class="col-xl-3 col-lg-3 col-form-label">
+                                                        Relative Density
+                                                    </label>
+                                                    <div class="col-lg-9 col-xl-6">
+                                                        <input
+                                                            class="form-control {{($errors->has('relative_density')) ? 'is-invalid' : ''}}"
+                                                            type="text" name="relative_density"
+                                                            value="{{$pedit->relative_density}}">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row hideFirst hideSecond tid7 tid10">
+                                                    <label class="col-xl-3 col-lg-3 col-form-label">
+                                                        Viscosity
+                                                    </label>
+                                                    <div class="col-lg-9 col-xl-6">
+                                                        <input
+                                                            class="form-control {{($errors->has('viscosity')) ? 'is-invalid' : ''}}"
+                                                            type="number" name="viscosity" step="0.01" min="0"
+                                                            value="{{$pedit->viscosity}}">
                                                     </div>
                                                 </div>
                                                 <div class="form-group row hideFirst hideSecond tid7">
@@ -579,6 +703,26 @@
                                                         <div class="input-group-append">
                                                             <span class="input-group-text">g/cm<sup>3</sup></span>
                                                         </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row hideFirst hideSecond tid7">
+                                                    <label class="col-xl-3 col-lg-3 col-form-label">
+                                                        Luster
+                                                    </label>
+                                                    <div class="col-lg-9 col-xl-6">
+                                                        <input value="{{$pedit->luster}}"
+                                                               class="form-control {{($errors->has('luster')) ? 'is-invalid' : ''}}"
+                                                               type="text" name="luster">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row hideFirst hideSecond tid7">
+                                                    <label class="col-xl-3 col-lg-3 col-form-label">
+                                                        Nominal Denier
+                                                    </label>
+                                                    <div class="col-lg-9 col-xl-6">
+                                                        <input value="{{$pedit->nominal_denier}}"
+                                                               class="form-control {{($errors->has('nominal_denier')) ? 'is-invalid' : ''}}"
+                                                               type="text" name="nominal_denier">
                                                     </div>
                                                 </div>
                                                 <div class="form-group row hideFirst hideSecond tid7">

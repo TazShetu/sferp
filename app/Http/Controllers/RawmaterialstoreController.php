@@ -16,39 +16,27 @@ use Illuminate\Support\Facades\Session;
 
 class RawmaterialstoreController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
 
     public function storeIndex()
     {
-        if (Auth::user()->can('raw_material_stock')) {
-            $receives = Rawmaterialpurchase::where('status', 'received')->orderBy('created_at', 'DESC')->get();
-            foreach ($receives as $r) {
-                $r['raw_material'] = Rawmaterial::find($r->rawmaterial_id)->auto_id;
-            }
-            return view('PURCHASE.STORE.rawMaterials', compact('receives'));
-        } else {
-            abort(403);
+        $receives = Rawmaterialpurchase::where('status', 'received')->orderBy('created_at', 'DESC')->get();
+        foreach ($receives as $r) {
+            $r['raw_material'] = Rawmaterial::find($r->rawmaterial_id)->auto_id;
         }
+        return view('PURCHASE.STORE.rawMaterials', compact('receives'));
     }
 
 
     public function storeSinglePurchase($rmpid)
     {
-        if (Auth::user()->can('raw_material_stock')) {
-            $rmp = Rawmaterialpurchase::find($rmpid);
-            if ($rmp) {
-                $rmp['raw_material'] = Rawmaterial::find($rmp->rawmaterial_id)->auto_id;
-                $warehouses = Warehouse::all();
-                return view('PURCHASE.STORE.rawMaterilaStore', compact('rmp', 'warehouses'));
-            } else {
-                Session::flash('unsuccess', "Please do not mess with the URL :(");
-                return redirect()->back();
-            }
+        $rmp = Rawmaterialpurchase::find($rmpid);
+        if ($rmp) {
+            $rmp['raw_material'] = Rawmaterial::find($rmp->rawmaterial_id)->auto_id;
+            $warehouses = Warehouse::all();
+            return view('PURCHASE.STORE.rawMaterilaStore', compact('rmp', 'warehouses'));
         } else {
-            abort(403);
+            Session::flash('unsuccess', "Please do not mess with the URL :(");
+            return redirect()->back();
         }
     }
 
@@ -121,54 +109,50 @@ class RawmaterialstoreController extends Controller
 
     public function stock(Request $request, $rmpid)
     {
-        if (Auth::user()->can('raw_material_stock')) {
-            $request->validate([
-                'rawMaterial' => 'required',
-                'quantity' => 'required',
-                'warehouse' => 'required',
-            ]);
-            DB::beginTransaction();
-            try {
-                $rmp = Rawmaterialpurchase::find($rmpid);
-                $rmp->status = 'stored';
-                $rmp->update();
-                $r = new Rawmaterialstore;
-                $rr = Rawmaterialstock::where('rawmaterial_id', $request->rawMaterial)->where('warehouse_id', $request->warehouse)->where('floor_id', $request->floor)->where('room_id', $request->room)->first();
-                if (!$rr){
-                    $rr = new Rawmaterialstock;
-                }
-                $r->rawmaterial_id = $request->rawMaterial;
-                $rr->rawmaterial_id = $request->rawMaterial;
-                $r->quantity = $request->quantity;
-                $rr->quantity = $rr->quantity + $request->quantity;
-                $r->warehouse_id = $request->warehouse;
-                $rr->warehouse_id = $request->warehouse;
-                if ($request->filled('floor')) {
-                    $r->floor_id = $request->floor;
-                    $rr->floor_id = $request->floor;
-                }
-                if ($request->filled('room')) {
-                    $r->room_id = $request->room;
-                    $rr->room_id = $request->room;
-                }
-                $r->user_id = Auth::id();
-                $r->save();
-                $rr->save();
-                DB::commit();
-                $success = true;
-            } catch (\Exception $e) {
-                $success = false;
-                DB::rollback();
+        $request->validate([
+            'rawMaterial' => 'required',
+            'quantity' => 'required',
+            'warehouse' => 'required',
+        ]);
+        DB::beginTransaction();
+        try {
+            $rmp = Rawmaterialpurchase::find($rmpid);
+            $rmp->status = 'stored';
+            $rmp->update();
+            $r = new Rawmaterialstore;
+            $rr = Rawmaterialstock::where('rawmaterial_id', $request->rawMaterial)->where('warehouse_id', $request->warehouse)->where('floor_id', $request->floor)->where('room_id', $request->room)->first();
+            if (!$rr) {
+                $rr = new Rawmaterialstock;
             }
-            if ($success) {
-                Session::flash('Success', "The Raw Material has been stored successfully.");
-                return redirect()->route('spare-part.purchase.store');
-            } else {
-                Session::flash('unsuccess', "Something went wrong :(");
-                return redirect()->back();
+            $r->rawmaterial_id = $request->rawMaterial;
+            $rr->rawmaterial_id = $request->rawMaterial;
+            $r->quantity = $request->quantity;
+            $rr->quantity = $rr->quantity + $request->quantity;
+            $r->warehouse_id = $request->warehouse;
+            $rr->warehouse_id = $request->warehouse;
+            if ($request->filled('floor')) {
+                $r->floor_id = $request->floor;
+                $rr->floor_id = $request->floor;
             }
+            if ($request->filled('room')) {
+                $r->room_id = $request->room;
+                $rr->room_id = $request->room;
+            }
+            $r->user_id = Auth::id();
+            $r->save();
+            $rr->save();
+            DB::commit();
+            $success = true;
+        } catch (\Exception $e) {
+            $success = false;
+            DB::rollback();
+        }
+        if ($success) {
+            Session::flash('Success', "The Raw Material has been stored successfully.");
+            return redirect()->route('spare-part.purchase.store');
         } else {
-            abort(403);
+            Session::flash('unsuccess', "Something went wrong :(");
+            return redirect()->back();
         }
     }
 
